@@ -3,126 +3,156 @@
   "id": "itinerary-guerra-fria-e-ordem-internacional",
   "slug": "guerra-fria-e-ordem-internacional",
   "kind": "historico",
-  "title": "A Guerra Fria e o Mundo em Transformação",
-  "question": "Como a Guerra Fria moldou a geopolítica global e as instituições internacionais?",
-  "deck": "Este itinerário explora as raízes da Guerra Fria, o papel da ONU e da OTAN, e os principais conflitos e tensões geopolíticas do século XX.",
-  "summary": "Este percurso analisa a Guerra Fria como um conflito ideológico e geopolítico, destacando seus impactos nas relações internacionais e nas instituições globais.",
+  "title": "A Guerra Fria e a reconfiguração da ordem internacional",
+  "question": "Como a rivalidade bipolar entre Estados Unidos e União Soviética moldou organismos multilaterais, alianças militares e conflitos periféricos?",
+  "deck": "Das origens da bipolaridade no pós-1945 à ONU, às alianças militares, à cisão sino-soviética e às crises de Suez e do Vietnã, seis estações examinam a geopolítica global entre 1945 e 1991.",
+  "summary": "O trajeto analisa a arquitetura internacional erguida após a Segunda Guerra Mundial, contrastando instituições de cooperação multilateral e dissuasão nuclear com fraturas internas nos blocos, descolonização armada e guerras regionais fora da Europa.",
+  "updatedAt": "2026-11-18",
+  "version": "1.1.0",
   "status": "reviewed-ai",
   "coverage": "complete",
   "review": {
     "status": "assistant",
-    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+    "notes": "[conferência de IA] Percurso padronizado e conferido com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
   },
   "stops": [
     {
       "id": "wiki-topic-guerra-fria",
-      "title": "Origens da Guerra Fria",
-      "reason": "Esta parada introduz o contexto histórico da Guerra Fria, suas raízes ideológicas e o início da rivalidade entre EUA e URSS.",
-      "question": "Quais foram os principais fatores que contribuíram para o surgimento da Guerra Fria?",
-      "destination": {
-        "type": "verbete",
-        "slug": "guerra-fria"
-      },
-      "justification": "Começamos pelo conceito central do itinerário.",
+      "title": "Origens da bipolaridade e dissuasão nuclear",
+      "reason": "Examina a partilha de zonas de influência na Europa entre 1945 e 1947, a Doutrina Truman, o Plano Marshall e a corrida armamentista atômica que estruturou por quatro décadas a disputa sistêmica entre Washington e Moscou.",
+      "question": "Por que o colapso da aliança antifascista em 1945 deu lugar a blocos econômicos e militares antagônicos?",
+      "destination": { "type": "verbete", "slug": "guerra-fria" },
+      "justification": "Fixa o quadro geopolítico geral antes da análise dos fóruns diplomáticos e conflitos localizados.",
       "contextEntityId": "wiki-topic-guerra-fria",
-      "sourceIds": ["src-1"]
+      "sourceIds": ["src-guerra-fria"]
     },
     {
       "id": "wiki-topic-organizacao-das-nacoes-unidas",
-      "title": "A ONU e a Busca pela Paz",
-      "reason": "Esta parada explora o papel da ONU como um mecanismo de cooperação internacional e sua tentativa de manter a paz durante a Guerra Fria.",
-      "question": "Como a ONU tentou lidar com as tensões da Guerra Fria e promover a cooperação internacional?",
-      "destination": {
-        "type": "verbete",
-        "slug": "organizacao-das-nacoes-unidas"
-      },
-      "justification": "A ONU é uma instituição crucial para entender a geopolítica da época.",
+      "title": "A ONU e os limites do multilateralismo no pós-guerra",
+      "reason": "Avalia a criação das Nações Unidas em 1945 e do Conselho de Segurança com poder de veto às grandes potências, analisando como a organização buscou mediar crises humanitárias e descolonização apesar do bloqueio bipolar constante.",
+      "question": "Em que medida o poder de veto no Conselho de Segurança condicionou a atuação diplomática da ONU durante a Guerra Fria?",
+      "destination": { "type": "verbete", "slug": "organizacao-das-nacoes-unidas" },
+      "justification": "Mostra a principal arena institucional erguida para evitar um terceiro conflito mundial.",
       "contextEntityId": "wiki-topic-organizacao-das-nacoes-unidas",
-      "sourceIds": ["src-1"]
+      "sourceIds": ["src-onu"]
     },
     {
       "id": "wiki-topic-aliados-da-segunda-guerra-mundial",
-      "title": "A OTAN e a Aliança Ocidental",
-      "reason": "Esta parada analisa a formação da OTAN como uma resposta à expansão soviética e seu papel na contenção do comunismo.",
-      "question": "Qual foi o papel da OTAN na Guerra Fria e como ela moldou a segurança europeia?",
-      "destination": {
-        "type": "verbete",
-        "slug": "aliados-da-segunda-guerra-mundial"
-      },
-      "justification": "A OTAN é um elemento fundamental para entender a bipolaridade da Guerra Fria.",
+      "title": "De coalizão aliada a blocos militares permanentes",
+      "reason": "Acompanha a passagem dos pactos de guerra da coalizão aliada contra o Eixo para alianças estratégicas antagonistas na Europa e no Pacífico, revelando como antigas parcerias estratégicas cristalizaram fronteiras ideológicas duradouras.",
+      "question": "Como acordos desenhados em conferências aliadas de 1945 derivaram em tratados militares rivais no pós-guerra?",
+      "destination": { "type": "verbete", "slug": "aliados-da-segunda-guerra-mundial" },
+      "justification": "Esclarece a continuidade e a ruptura entre a Segunda Guerra Mundial e o sistema de segurança bipolar.",
       "contextEntityId": "wiki-topic-aliados-da-segunda-guerra-mundial",
-      "sourceIds": ["src-1"]
+      "sourceIds": ["src-aliados", "src-guerra-fria"]
     },
     {
       "id": "wiki-topic-ruptura-sino-sovietica",
-      "title": "A Divisão do Bloco Soviético",
-      "reason": "Esta parada explora a ruptura entre a China e a URSS, mostrando a complexidade e as fragilidades do bloco comunista.",
-      "question": "Como a ruptura sino-soviética impactou a Guerra Fria e a geopolítica global?",
-      "destination": {
-        "type": "verbete",
-        "slug": "ruptura-sino-sovietica"
-      },
-      "justification": "A ruptura demonstra a diversidade dentro do bloco comunista.",
+      "title": "A ruptura sino-soviética e a fragmentação do bloco socialista",
+      "reason": "Analisa as divergências ideológicas e geopolíticas entre Pequim e Moscou a partir do fim dos anos 1950 — da crítica à desestalinização à disputa por liderança no Terceiro Mundo —, desmentindo a imagem de um campo comunista monolítico.",
+      "question": "Que impactos teve o rompimento entre China e União Soviética no equilíbrio estratégico da Guerra Fria?",
+      "destination": { "type": "verbete", "slug": "ruptura-sino-sovietica" },
+      "justification": "Evidencia fraturas internas decisivas que alteraram tanto a diplomacia asiática quanto partidos comunistas pelo mundo.",
       "contextEntityId": "wiki-topic-ruptura-sino-sovietica",
-      "sourceIds": ["src-1"]
+      "sourceIds": ["src-sino-sov"]
     },
     {
       "id": "wiki-topic-crise-de-suez",
-      "title": "A Crise de Suez e a Ascensão do Nacionalismo",
-      "reason": "Esta parada analisa a crise de Suez como um exemplo de como a Guerra Fria se manifestou em conflitos regionais e a ascensão do nacionalismo.",
-      "question": "Como a Crise de Suez demonstrou a influência da Guerra Fria em conflitos regionais?",
-      "destination": {
-        "type": "verbete",
-        "slug": "crise-de-suez"
-      },
-      "justification": "A crise de Suez é um exemplo concreto da Guerra Fria em ação.",
+      "title": "Crise de Suez, descolonização e nacionalismo periférico",
+      "reason": "Examina o conflito de 1956 em torno da nacionalização do Canal de Suez pelo Egito de Nasser, marcando o declínio franco-britânico como potências coloniais e a ascensão do não-alinhamento e da disputa por influência no Oriente Médio.",
+      "question": "Como a Crise de Suez acelerou a crise dos impérios coloniais europeus frente às superpotências emergentes?",
+      "destination": { "type": "verbete", "slug": "crise-de-suez" },
+      "justification": "Ilustra a interseção entre movimentos nacionalistas anticoloniais e cálculo estratégico de EUA e URSS.",
       "contextEntityId": "wiki-topic-crise-de-suez",
-      "sourceIds": ["src-1"]
+      "sourceIds": ["src-suez"]
+    },
+    {
+      "id": "rede-guerra-fria-global",
+      "title": "A Guerra Fria no mapa relacional de alianças e guerras",
+      "reason": "Conecta no grafo os conflitos regionais da Ásia e da África, a crise do golpe de 1964 na América Latina e os debates entre liberalismo, marxismo e socialismo real ao longo da disputa bipolar do século XX.",
+      "question": "Como tratados, instituições internacionais e guerras regionais formam uma rede interdependente entre 1945 e 1991?",
+      "destination": { "type": "grafo", "nodeId": "wiki-topic-guerra-fria" },
+      "justification": "Integra no grafo todas as dimensões diplomáticas, militares e ideológicas percorridas.",
+      "contextEntityId": "wiki-topic-guerra-fria",
+      "sourceIds": ["src-guerra-fria", "src-onu", "src-sino-sov"]
     }
   ],
   "branches": [
     {
       "id": "branch-guerra-da-coreia",
       "fromStop": "wiki-topic-guerra-fria",
-      "title": "A Guerra da Coreia: Um Conflito Frio",
-      "reason": "A Guerra da Coreia foi um dos primeiros grandes conflitos da Guerra Fria, mostrando a escalada de tensões entre EUA e URSS.",
-      "question": "Como a Guerra da Coreia exemplifica a natureza da Guerra Fria?",
-      "destination": {
-        "type": "verbete",
-        "slug": "guerra-da-coreia"
-      },
-      "justification": "A Guerra da Coreia é um ponto crucial para entender a Guerra Fria.",
+      "title": "A Guerra da Coreia e a militarização da Ásia Oriental",
+      "reason": "Analisa o primeiro grande conflito armado indireto da Guerra Fria (1950–1953) e seu papel na expansão de pactos militares e do orçamento de defesa norte-americano.",
+      "question": "De que maneira a divisão coreana testou os limites entre contenção localizada e escalada militar global?",
+      "destination": { "type": "verbete", "slug": "guerra-da-coreia" },
+      "justification": "Contextualiza a entrada precoce do Leste Asiático na lógica armada da bipolaridade.",
       "convergesAt": "wiki-topic-organizacao-das-nacoes-unidas"
+    },
+    {
+      "id": "branch-guerra-do-vietna",
+      "fromStop": "wiki-topic-ruptura-sino-sovietica",
+      "title": "Guerra do Vietnã: descolonização e intervenção armada",
+      "reason": "Examina o conflito mais prolongado da Guerra Fria asiática, confrontando guerrilha nacionalista, guerra aérea convencional e crise interna na sociedade norte-americana.",
+      "question": "Por que a Guerra do Vietnã se tornou o ponto mais agudo entre guerra anticolonial e contenção ideológica?",
+      "destination": { "type": "verbete", "slug": "guerra-do-vietna" },
+      "justification": "Aprofunda o impacto regional do conflito ideológico no Sudeste Asiático após a ruptura sino-soviética.",
+      "convergesAt": "rede-guerra-fria-global"
     },
     {
       "id": "branch-impacto-global",
       "fromStop": "wiki-topic-organizacao-das-nacoes-unidas",
-      "title": "O Impacto da Guerra Fria no Mundo",
-      "reason": "Esta ramificação explora os impactos da Guerra Fria em diferentes regiões do mundo, como a África, a Ásia e a América Latina.",
-      "question": "Como a Guerra Fria moldou a geopolítica e as relações internacionais em diferentes regiões do mundo?",
-      "destination": {
-        "type": "catalogo",
-        "path": "acontecimentos"
-      },
-      "justification": "A Guerra Fria teve impactos globais que vão além da bipolaridade.",
-      "exit": "Saída paralela para consulta contextual antes de retomar o eixo principal."
+      "title": "Explorar crises e processos no catálogo de acontecimentos",
+      "reason": "Permite navegar por revoluções, golpes de Estado e tratados internacionais do século XX vinculados aos blocos geopolíticos.",
+      "question": "Quais eventos em África, Ásia e América Latina ilustram o impacto da bipolaridade fora da Europa?",
+      "destination": { "type": "catalogo", "path": "acontecimentos" },
+      "justification": "Amplia a perspectiva geográfica da Guerra Fria pelo catálogo cronológico do acervo.",
+      "exit": "Saída paralela para consulta de episódios e crises internacionais."
     }
   ],
   "connections": [
     {
-      "destination": {
-        "type": "catalogo",
-        "path": "ideologias"
-      },
-      "reason": "Para aprofundar a compreensão das ideologias que marcaram a Guerra Fria"
+      "destination": { "type": "catalogo", "path": "ideologias" },
+      "reason": "Situa as matrizes ideológicas — liberalismo, marxismo e tradições nacionalistas — em disputa durante o ciclo bipolar."
+    },
+    {
+      "destination": { "type": "leitura", "slug": "liberalismo" },
+      "reason": "Examina o debate liberal do pós-guerra sobre contenção estatal, economia de mercado e democracias ocidentais."
+    },
+    {
+      "destination": { "type": "leitura", "slug": "marxismo" },
+      "reason": "Acompanha as clivagens internas do campo socialista e comunista ao longo do século XX frente à experiência soviética."
     }
   ],
   "sources": [
     {
-      "id": "src-1",
-      "title": "História da Guerra Fria - Editora X"
+      "id": "src-guerra-fria",
+      "title": "Registro histórico: Guerra Fria",
+      "url": "https://pt.wikipedia.org/wiki/Guerra_Fria"
+    },
+    {
+      "id": "src-onu",
+      "title": "Registro institucional: Organização das Nações Unidas",
+      "url": "https://pt.wikipedia.org/wiki/Organiza%C3%A7%C3%A3o_das_Na%C3%A7%C3%B5es_Unidas"
+    },
+    {
+      "id": "src-aliados",
+      "title": "Registro histórico: Aliados da Segunda Guerra Mundial",
+      "url": "https://pt.wikipedia.org/wiki/Aliados_da_Segunda_Guerra_Mundial"
+    },
+    {
+      "id": "src-sino-sov",
+      "title": "Registro histórico: Ruptura sino-soviética",
+      "url": "https://pt.wikipedia.org/wiki/Ruptura_sino-sovi%C3%A9tica"
+    },
+    {
+      "id": "src-suez",
+      "title": "Registro histórico: Crise de Suez",
+      "url": "https://pt.wikipedia.org/wiki/Crise_de_Suez"
+    },
+    {
+      "id": "src-vietna",
+      "title": "Registro histórico: Guerra do Vietnã",
+      "url": "https://pt.wikipedia.org/wiki/Guerra_do_Vietn%C3%A3"
     }
-  ],
-  "updatedAt": "2026-11-17",
-  "version": "1.0.0"
+  ]
 }

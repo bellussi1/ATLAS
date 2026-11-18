@@ -3,126 +3,146 @@
   "id": "itinerary-socialismo-reforma-e-revolucao",
   "slug": "socialismo-reforma-e-revolucao",
   "kind": "comparativo",
-  "title": "Socialismo Revolucionário, Reformismo Social-Democrata e Autogestão Anarquista",
-  "question": "Como as diferentes visões sobre a transformação social se manifestaram no século XX?",
-  "deck": "Este itinerário explora as divergências e convergências entre o socialismo revolucionário, o reformismo social-democrata e a autogestão anarquista, analisando suas raízes, principais teóricos e impactos históricos.",
-  "summary": "Explore as diferentes abordagens para a construção de uma sociedade mais justa, desde a revolução até a reforma gradual, e a busca por uma sociedade sem Estado.",
+  "title": "Socialismo revolucionário, reformismo e autogestão",
+  "question": "Por que o movimento operário dividiu-se entre ruptura revolucionária, reforma parlamentar e autogestão sem Estado?",
+  "deck": "Do socialismo revolucionário ao revisionismo parlamentar, ao anarcossindicalismo, ao socialismo libertário e aos conselhos operários, seis paradas reconstroem os debates sobre estratégia, Estado e democracia no campo socialista.",
+  "summary": "O trajeto compara as soluções organizativas construídas pela esquerda desde a Primeira Internacional em torno da posse do poder político: tomar e transformar o aparelho estatal pela revolução, conquistar reformas graduais via sufrágio ou substituí-lo por autogestão federada.",
+  "updatedAt": "2026-11-18",
+  "version": "1.1.0",
   "status": "reviewed-ai",
   "coverage": "complete",
   "review": {
     "status": "assistant",
-    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+    "notes": "[conferência de IA] Percurso padronizado e conferido com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
   },
   "stops": [
     {
       "id": "wiki-topic-socialismo-revolucionario",
-      "title": "Socialismo Revolucionário",
-      "reason": "Introdução ao conceito de socialismo revolucionário, suas características e principais teóricos. Aborda a crença na necessidade de uma revolução para derrubar o capitalismo e estabelecer uma sociedade socialista.",
-      "question": "Quais as principais características do socialismo revolucionário?",
-      "destination": {
-        "type": "verbete",
-        "slug": "socialismo-revolucionario"
-      },
-      "justification": "Ponto de partida para entender as diferentes visões sobre a transformação social.",
+      "title": "Socialismo revolucionário e ruptura com o Estado burguês",
+      "reason": "Apresenta as correntes que defendem a insuficiência das concessões eleitorais para superar o capitalismo, sustentando que greves insurreicionais ou revoluções armadas devem desmontar a máquina estatal preexistente e socializar os meios de produção.",
+      "question": "Por que teóricos revolucionários argumentam que o Estado capitalista não pode ser apenas ocupado por eleições?",
+      "destination": { "type": "verbete", "slug": "socialismo-revolucionario" },
+      "justification": "Define a hipótese da ruptura radical como primeiro polo da controvérsia estratégica operária.",
       "contextEntityId": "wiki-topic-socialismo-revolucionario",
-      "sourceIds": ["src-1"]
+      "sourceIds": ["src-soc-rev"]
     },
     {
       "id": "wiki-topic-reformismo-marxismo",
-      "title": "Reformismo Marxista",
-      "reason": "Exploração do reformismo marxista como uma alternativa ao socialismo revolucionário. Aborda a crença na possibilidade de alcançar o socialismo através de reformas graduais dentro do sistema capitalista.",
-      "question": "Como o reformismo marxista se diferencia do socialismo revolucionário?",
-      "destination": {
-        "type": "verbete",
-        "slug": "reformismo-marxismo"
-      },
-      "justification": "Apresenta uma visão alternativa à revolução, abrindo espaço para a discussão sobre as diferentes estratégias para a transformação social.",
+      "title": "Revisionismo e estratégia reformista gradual",
+      "reason": "Analisa a formulação de Eduard Bernstein e alas da social-democracia europeia segundo a qual ampliação do voto universal, força sindical e legislação social permitem transformar gradualmente o capitalismo por via democrática.",
+      "question": "Que argumentos econômicos e eleitorais fundamentaram a aposta na transição gradual e parlamentar?",
+      "destination": { "type": "verbete", "slug": "reformismo-marxismo" },
+      "justification": "Contrapõe diretamente a aposta na reforma contínua à tese do colapso e da insurreição revolucionária.",
       "contextEntityId": "wiki-topic-reformismo-marxismo",
-      "sourceIds": ["src-1"]
+      "sourceIds": ["src-reformismo"]
     },
     {
       "id": "wiki-topic-anarcossindicalismo",
-      "title": "Anarcossindicalismo",
-      "reason": "Introdução ao anarcossindicalismo como uma corrente anarquista que busca a autogestão e a abolição do Estado através da organização sindical.",
-      "question": "Como o anarcossindicalismo propõe a construção de uma sociedade sem Estado?",
-      "destination": {
-        "type": "verbete",
-        "slug": "anarcossindicalismo"
-      },
-      "justification": "Apresenta uma perspectiva anarquista sobre a organização social e econômica, complementando as visões anteriores.",
+      "title": "Anarcossindicalismo: ação direta e sindicato revolucionário",
+      "reason": "Examina a corrente que elege sindicatos federados e a greve geral expropriadora como sujeitos imediatos da transformação social, recusando tanto a mediação partidária eleitoral quanto a construção de governos socialistas autoritários.",
+      "question": "Como o sindicato atua no projeto anarcossindicalista como embrião da gestão econômica pós-capitalista?",
+      "destination": { "type": "verbete", "slug": "anarcossindicalismo" },
+      "justification": "Introduz a alternativa libertária de transformação baseada na organização autônoma nos locais de trabalho.",
       "contextEntityId": "wiki-topic-anarcossindicalismo",
-      "sourceIds": ["src-1"]
+      "sourceIds": ["src-anarcossind"]
     },
     {
       "id": "wiki-topic-socialismo-libertario",
-      "title": "Socialismo Libertário",
-      "reason": "Exploração do socialismo libertário como uma corrente que busca a liberdade individual e a autogestão dentro de uma sociedade socialista.",
-      "question": "Quais os elementos que unem o socialismo libertário ao anarcossindicalismo?",
-      "destination": {
-        "type": "verbete",
-        "slug": "socialismo-libertario"
-      },
-      "justification": "Destaca a conexão entre diferentes correntes que buscam a liberdade individual e a autogestão.",
+      "title": "Socialismo libertário e recusa do centralismo burocrático",
+      "reason": "Mapeia as convergências entre alas antiautoritárias do marxismo e tradições anarquistas na defesa de liberdade de imprensa, controle operário direto, revogabilidade de delegados e desconfiança diante do partido único.",
+      "question": "Que princípios políticos aproximam correntes libertárias contra a centralização partidária e estatal?",
+      "destination": { "type": "verbete", "slug": "socialismo-libertario" },
+      "justification": "Alarga o arco comparativo além do anarquismo clássico para abarcar críticas socialistas à estatização burocrática.",
       "contextEntityId": "wiki-topic-socialismo-libertario",
-      "sourceIds": ["src-1"]
+      "sourceIds": ["src-soc-lib"]
     },
     {
       "id": "wiki-topic-comunismo-de-conselhos",
-      "title": "Comunismo de Conselhos",
-      "reason": "Análise do comunismo de conselhos como uma corrente que busca a autogestão através de conselhos de trabalhadores e a abolição do Estado.",
-      "question": "Como o comunismo de conselhos se diferencia do socialismo libertário?",
-      "destination": {
-        "type": "grafo",
-        "nodeId": "wiki-topic-comunismo-de-conselhos"
-      },
-      "justification": "Apresenta uma corrente específica dentro do comunismo que busca a autogestão através de conselhos, aprofundando a discussão sobre diferentes modelos de organização social.",
+      "title": "Comunismo de conselhos na rede de correntes operárias",
+      "reason": "Explora no grafo o comunismo conselhista de pensadores como Anton Pannekoek e Herman Gorter, que enxergava os conselhos operários da Alemanha e da Rússia (1917–1921) como forma superior ao parlamentarismo e ao partido leninista.",
+      "question": "Por que o conselhismo recusou simultaneamente os parlamentos burgueses e a liderança partidária de vanguarda?",
+      "destination": { "type": "grafo", "nodeId": "wiki-topic-comunismo-de-conselhos" },
+      "justification": "Posiciona no mapa relacional uma corrente histórica frequentemente oculta pela polaridade tradicional reforma-partido.",
       "contextEntityId": "wiki-topic-comunismo-de-conselhos",
-      "sourceIds": ["src-1"]
+      "sourceIds": ["src-conselhos", "src-soc-lib"]
+    },
+    {
+      "id": "sintese-social-democracia",
+      "title": "A consolidação institucional da social-democracia",
+      "reason": "Fecha o itinerário na leitura contínua sobre a social-democracia para acompanhar como as disputas de fim do século XIX desaguaram na construção de partidos reformistas, economia mista e Estados de bem-estar no século XX.",
+      "question": "Como as cisões entre reformistas e revolucionários moldaram o perfil contemporâneo dos partidos social-democratas?",
+      "destination": { "type": "leitura", "slug": "social-democracia", "anchor": "vertentes" },
+      "justification": "Conecta o mapa comparativo das estratégias operárias à síntese histórica completa da vertente reformista.",
+      "contextEntityId": "wiki-topic-social-democracia",
+      "sourceIds": ["src-social-dem"]
     }
   ],
   "branches": [
     {
       "id": "branch-reformismo-social-democracia",
       "fromStop": "wiki-topic-reformismo-marxismo",
-      "title": "Reformismo Social-Democrata",
-      "reason": "Explorar a evolução do reformismo marxista para o socialismo democrático, analisando suas características e principais partidos.",
-      "question": "Como o reformismo marxista se traduziu em partidos social-democratas?",
-      "destination": {
-        "type": "verbete",
-        "slug": "socialismo-democratico"
-      },
-      "justification": "Explica a trajetória histórica do reformismo marxista e sua influência na formação de partidos social-democratas.",
-      "convergesAt": "wiki-topic-anarcossindicalismo"
+      "title": "Socialismo democrático e pluralismo político",
+      "reason": "Analisa a evolução do socialismo democrático como doutrina que recusa o monopólio partidário soviético e defende economia regulada sob direitos civis plenos.",
+      "question": "O que distingue o socialismo democrático tanto do capitalismo desregulado quanto do marxismo-leninismo?",
+      "destination": { "type": "verbete", "slug": "socialismo-democratico" },
+      "justification": "Precisa os desdobramentos programáticos da ruptura com a ortodoxia soviética no século XX.",
+      "convergesAt": "sintese-social-democracia"
     },
     {
       "id": "branch-socialismo-revolucionario-exemplos",
       "fromStop": "wiki-topic-socialismo-revolucionario",
-      "title": "Exemplos de Socialismo Revolucionário",
-      "reason": "Analisar exemplos históricos de movimentos e regimes inspirados no socialismo revolucionário, como a Revolução Russa e a China Maoista.",
-      "question": "Quais foram os principais movimentos e regimes inspirados no socialismo revolucionário?",
-      "destination": {
-        "type": "grafo",
-        "nodeId": "wiki-topic-socialismo-revolucionario"
-      },
-      "justification": "Apresenta exemplos concretos da aplicação do socialismo revolucionário na história, mostrando seus impactos e desafios.",
-      "exit": "Saída paralela para aprofundamento no verbete."
+      "title": "A Revolução Russa de 1917 como ponto de clivagem",
+      "reason": "Examina o acontecimento histórico que redefiniu o movimento operário mundial, dividindo socialistas em torno dos sovietes, do bolchevismo e da Terceira Internacional.",
+      "question": "Por que os acontecimentos de 1917 transformaram uma disputa teórica em cisão organizativa permanente na esquerda?",
+      "destination": { "type": "verbete", "slug": "russian-revolution" },
+      "justification": "Ancora as divergências estratégicas no maior laboratório revolucionário do século XX.",
+      "exit": "Saída para consulta detalhada sobre a Revolução Russa de 1917."
     }
   ],
   "connections": [
     {
-      "destination": {
-        "type": "catalogo",
-        "path": "acontecimentos"
-      },
-      "reason": "Conectar o estudo com eventos históricos relacionados aos movimentos e ideias explorados."
+      "destination": { "type": "leitura", "slug": "marxismo" },
+      "reason": "Aprofunda os textos teóricos de Marx, Engels, Luxemburgo e Lenin que serviram de base ao debate estratégico operário."
+    },
+    {
+      "destination": { "type": "leitura", "slug": "anarquismo" },
+      "reason": "Reconstitui a tradição antiautoritária desde Proudhon e Bakunin até experiências sindicais e coletivizações históricas."
+    },
+    {
+      "destination": { "type": "catalogo", "path": "acontecimentos" },
+      "reason": "Permite situar episódios como a Comuna de Paris, a Revolução Russa e a greve de 1917 na cronologia política do acervo."
     }
   ],
   "sources": [
     {
-      "id": "src-1",
-      "title": "Enciclopédia Britannica"
+      "id": "src-soc-rev",
+      "title": "Registro histórico: Socialismo revolucionário",
+      "url": "https://pt.wikipedia.org/wiki/Socialismo_revolucion%C3%A1rio"
+    },
+    {
+      "id": "src-reformismo",
+      "title": "Registro histórico: Reformismo marxista",
+      "url": "https://pt.wikipedia.org/wiki/Reformismo_(marxismo)"
+    },
+    {
+      "id": "src-anarcossind",
+      "title": "Registro histórico: Anarcossindicalismo",
+      "url": "https://pt.wikipedia.org/wiki/Anarcossindicalismo"
+    },
+    {
+      "id": "src-soc-lib",
+      "title": "Registro conceitual: Socialismo libertário",
+      "url": "https://pt.wikipedia.org/wiki/Socialismo_libert%C3%A1rio"
+    },
+    {
+      "id": "src-conselhos",
+      "title": "Registro histórico: Comunismo de conselhos",
+      "url": "https://pt.wikipedia.org/wiki/Comunismo_de_conselhos"
+    },
+    {
+      "id": "src-social-dem",
+      "title": "Registro histórico: Social-democracia",
+      "url": "https://pt.wikipedia.org/wiki/Social-democracia"
     }
-  ],
-  "updatedAt": "2026-11-17",
-  "version": "1.0.0"
+  ]
 }

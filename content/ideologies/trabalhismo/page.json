@@ -13,7 +13,7 @@
   "identity": {
     "accent": "teal",
     "palette": "social-democracia",
-    "signature": "Leitura montada do grafo",
+    "signature": "Síntese editorial assistida sobre o grafo",
     "keyVisualization": "timeline"
   },
   "portrait": null,
@@ -22,16 +22,24 @@
     {
       "id": "introducao",
       "anchor": "introducao",
-      "title": "O que é?",
+      "title": "Estado, trabalho e nação",
       "kicker": "O que é?",
       "minutes": 1,
       "narrative": [
-        "O trabalhismo brasileiro é uma corrente política, ideologia e tradição política do Brasil que defende a integração da classe trabalhadora ao Estado nacional por meio da legislação social, do nacionalismo e do desenvolvimentismo. Suas origens remontam às primeiras décadas do século XX, e ele se consolidou durante a Era Vargas, com a fundação do Partido Trabalhista Brasileiro em 1945. Ao longo do século XX influenciou a política brasileira, sobretudo nos governos de Getúlio Vargas e João Goulart, e permanece objeto de múltiplas interpretações historiográficas sobre sua natureza ideológica."
+        "O trabalhismo brasileiro designa uma corrente política, ideologia e cultura cívica consolidada entre as décadas de 1930 e 1960 que propõe integrar a classe trabalhadora ao Estado nacional por meio da legislação social, da valorização do trabalho e de projetos de desenvolvimento industrial.",
+        "Diferente de tradições socialistas revolucionárias ou do liberalismo clássico, o trabalhismo aposta na mediação estatal entre capital e trabalho, combinando direitos trabalhistas regulados em lei, sindicalismo reconhecido e defesa da soberania econômica nacional.",
+        "Sua trajetória institucional ligou-se profundamente aos governos de Getúlio Vargas, à fundação do Partido Trabalhista Brasileiro (PTB) em 1945 e ao programa de reformas de base defendido por João Goulart até o golpe civil-militar de 1964.",
+        "Na historiografia brasileira, o conceito é objeto de intensa disputa interpretativa: enquanto parte dos estudiosos enfatiza o avanço da cidadania social e da identidade operária, outra vertente destaca os mecanismos de tutela corporativa sobre os sindicatos."
       ],
-      "question": "O que define Trabalhismo?",
-      "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
+      "question": "O que define o trabalhismo como tradição política brasileira?",
+      "bridge": "Para situar essas escolhas institucionais, o próximo capítulo examina as raízes históricas do movimento.",
       "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
-      "review": null,
+      "review": {
+        "question": "Por que o trabalhismo brasileiro combina nacionalismo econômico e direitos trabalhistas?",
+        "answer": "Porque associa o desenvolvimento do mercado interno e da indústria à incorporação jurídica e política dos assalariados sob coordenação estatal.",
+        "rationale": "Relacione industrialização, papel do Estado e integração da força de trabalho.",
+        "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"]
+      },
       "gap": null,
       "coverage": "complete",
       "layout": "introduction",
@@ -44,12 +52,20 @@
       "kicker": "Origens e formação",
       "minutes": 1,
       "narrative": [
-        "As origens do trabalhismo são situadas pelo verbete nas transformações políticas e sociais das primeiras décadas do século XX, com influência do castilhismo, do positivismo, do tenentismo e do movimento operário."
+        "As origens do trabalhismo remetem à crise da Primeira República nas décadas de 1910 e 1920, marcada pela urbanização acelerada, pelas grandes greves operárias como a de 1917 e pela pressão das camadas médias urbanas por reformas eleitorais e sociais.",
+        "No plano das ideias, confluíram influências heterogêneas: o castilhismo positivista gaúcho, com sua defesa de um Estado forte acima de facções oligárquicas; o solidarismo e a doutrina social católica crítica do laissez-faire; o nacionalismo do movimento tenentista; e demandas históricas do sindicalismo operário.",
+        "Historiadores como Angela de Castro Gomes ressaltam que o trabalhismo não constituiu mera repetição do castilhismo nem simples cópia de modelos corporativos europeus, mas uma reinterpretação brasileira orientada para a questão social urbana.",
+        "Após a Revolução de 1930, a criação do Ministério do Trabalho, Indústria e Comércio deslocou os conflitos trabalhistas da esfera estritamente policial para a regulação pública sistemática."
       ],
-      "question": "Como e em que contexto Trabalhismo surgiu?",
-      "bridge": "Visto o contexto de formação, seguem os princípios e traços centrais.",
+      "question": "Que matrizes políticas e sociais deram origem ao trabalhismo no Brasil?",
+      "bridge": "Compreendida a formação histórica, o capítulo seguinte organiza seus pilares programáticos.",
       "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
-      "review": null,
+      "review": {
+        "question": "O que mudou na relação entre Estado e movimento operário depois de 1930?",
+        "answer": "A questão trabalhista deixou de ser tratada apenas como caso de polícia e passou a contar com ministério próprio, justiça especializada e mediação legal pelo Estado.",
+        "rationale": "Contraste a Primeira República com a institucionalização iniciada na Era Vargas.",
+        "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"]
+      },
       "gap": null,
       "coverage": "complete",
       "layout": "documents",
@@ -81,12 +97,20 @@
       "kicker": "Pilares e princípios",
       "minutes": 1,
       "narrative": [
-        "O trabalhismo é caracterizado pela defesa da integração da classe trabalhadora ao Estado nacional por meio da ampliação da legislação social."
+        "O núcleo programático do trabalhismo articula três frentes: proteção jurídica ao trabalhador assalariado (salário mínimo, férias, previdência e Justiça do Trabalho), intervenção estatal orientadora no desenvolvimento econômico e ampliação da soberania sobre setores estratégicos.",
+        "Ao invés da abolição da propriedade privada, o trabalhismo sustenta o capitalismo regulado e a função social da propriedade, buscando equilibrar lucros empresariais e participação crescente dos salários na renda nacional.",
+        "Na formulação doutrinária de teóricos como Alberto Pasqualini, essa proposta assumia caráter de reforma moral e social progressiva, valorizando a educação pública, a redução das desigualdades regionais e a solidariedade coletiva.",
+        "No plano democrático de 1945 a 1964, o trabalhismo vinculou a sobrevivência da democracia política à realização de reformas estruturais no campo, no sistema tributário e no acesso ao ensino."
       ],
-      "question": "Quais ideias e práticas estruturam Trabalhismo?",
-      "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
+      "question": "Quais ideias e instituições estruturam o projeto trabalhista?",
+      "bridge": "Com os eixos centrais delineados, o próximo capítulo fixa o vocabulário próprio da tradição.",
       "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
-      "review": null,
+      "review": {
+        "question": "Como o trabalhismo concilia capitalismo, propriedade privada e justiça social?",
+        "answer": "Defende a função social da propriedade e a mediação estatal para expandir direitos, salário e mercado interno sem suprimir a iniciativa privada.",
+        "rationale": "Identifique a recusa tanto do liberalismo ortodoxo quanto da ruptura revolucionária.",
+        "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"]
+      },
       "gap": null,
       "coverage": "complete",
       "layout": "concepts",
@@ -118,11 +142,12 @@
       "kicker": "Conceitos e palavras-chave",
       "minutes": 1,
       "narrative": [
-        "Também chamada de trabalhismo, nacional-trabalhismo, Partido Trabalhista Brasileiro, PTB.",
-        "Conceitos ligados à tradição: Estado, Classe trabalhadora, Cultura política, Era Vargas, Doutrina Social da Igreja, Política do Brasil, Greve geral de 1917, Neomercantilismo, Populismo."
+        "Além das denominações históricas ligadas ao getulismo e ao PTB, o vocabulário trabalhista gira em torno de categorias jurídicas e políticas como cidadania regulada, sindicalismo de Estado, desenvolvimentismo, nacionalismo econômico e reformas de base.",
+        "Durante décadas, a palavra trabalhismo também foi tensionada por rótulos externos como populismo, categoria adotada por sociólogos e cientistas políticos para descrever alianças multiclassistas urbanas sob liderança personalista.",
+        "Estudos históricos mais recentes propõem distinguir a propaganda estatal do pacto efetivo de direitos materiais, mostrando que trabalhadores e sindicatos se apropriaram da legislação da CLT para exigir seu cumprimento nos tribunais do trabalho."
       ],
-      "question": "Que termos e conceitos ajudam a compreender Trabalhismo?",
-      "bridge": "Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.",
+      "question": "Que termos concentram as disputas em torno da experiência trabalhista?",
+      "bridge": "Fixados os conceitos, o próximo capítulo acompanha os marcos cronológicos de 1930 aos anos 1980.",
       "sourceIds": [
         "src-wiki-ideologia-trabalhismo-brasileiro",
         "src-wiki-topic-estado",
@@ -173,17 +198,20 @@
       "kicker": "História e épocas",
       "minutes": 1,
       "narrative": [
-        "Criação do Ministério do Trabalho, Indústria e Comércio, medida da Era Vargas.",
-        "Promulgação da Consolidação das Leis do Trabalho (CLT).",
-        "Institucionalização do trabalhismo com a fundação do Partido Trabalhista Brasileiro (PTB).",
-        "Golpe de Estado que interrompeu o processo de reformas do governo João Goulart.",
-        "Fundação do Partido Democrático Trabalhista (PDT), que reivindicou a tradição trabalhista.",
-        "O trabalhismo consolidou-se durante a Era Vargas, período em que a legislação trabalhista passou a ocupar posição central nas relações entre Estado, capital e trabalho."
+        "Entre 1930 e 1945, a Era Vargas lançou as bases institucionais da proteção trabalhista, culminando na promulgação da Consolidação das Leis do Trabalho (CLT) em 1943, ainda durante o regime autoritário do Estado Novo.",
+        "Em 1945, com o retorno das eleições pluripartidárias, Getúlio Vargas e lideranças sindicais fundaram o Partido Trabalhista Brasileiro (PTB), que cresceu rapidamente até tornar-se a principal força parlamentar reformista no início dos anos 1960.",
+        "No segundo governo Vargas (1951–1954) e na gestão de João Goulart (1961–1964), o trabalhismo radicalizou a pauta nacionalista e social — com a criação da Petrobras e a defesa das reformas de base agrária, urbana e bancária — até ser interrompido pelo golpe de 1964 e pela extinção partidária de 1965.",
+        "Na redemocratização, a disputa pela sigla do PTB resultou na fundação do Partido Democrático Trabalhista (PDT) por Leonel Brizola em 1980 e influenciou o capítulo da ordem social da Constituição de 1988."
       ],
-      "question": "Em que períodos históricos Trabalhismo se formou e mudou?",
-      "bridge": "Da cronologia, passamos às pessoas e obras ligadas à tradição.",
+      "question": "Quais marcos históricos definem os ciclos do trabalhismo no Brasil?",
+      "bridge": "Através desses ciclos atuaram lideranças, parlamentares e formuladores reunidos a seguir.",
       "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
-      "review": null,
+      "review": {
+        "question": "Que papel tiveram a CLT de 1943 e a fundação do PTB em 1945 na continuidade do trabalhismo?",
+        "answer": "A CLT consolidou em lei os direitos trabalhistas e a estrutura sindical, enquanto o PTB transformou essa base social em partido eleitoral competitivo na democracia de 1946–1964.",
+        "rationale": "Separe o legado jurídico do Estado Novo de sua expressão partidária democrática.",
+        "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"]
+      },
       "gap": null,
       "coverage": "complete",
       "layout": "timeline",
@@ -286,10 +314,12 @@
       "kicker": "Pensadores e obras",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: Getúlio Vargas, Auguste Comte, João Goulart, Leonel Brizola, Jânio Quadros, San Tiago Dantas, Júlio de Castilhos, Alberto Pasqualini, Juscelino Kubitschek, Luiz Inácio Lula da Silva, Karl Marx."
+        "A figura pública de Getúlio Vargas simbolizou a origem da legislação social e da articulação nacional-desenvolvimentista, embora a elaboração teórica e parlamentar do trabalhismo tenha contado com formuladores decisivos no período democrático.",
+        "Alberto Pasqualini, no Rio Grande do Sul, deu consistência doutrinária ao trabalhismo solidarista, recusando tanto a estatização integral quanto a mercantilização irrestrita do trabalho e defendendo planejamento democrático.",
+        "Na geração seguinte, João Goulart conduziu o PTB à aliança com sindicatos e movimentos rurais pela agenda das reformas de base, enquanto San Tiago Dantas propôs no ministério uma frente reformista institucional e Leonel Brizola encampou a mobilização popular nacionalista antes de fundar o PDT no pós-anistia."
       ],
-      "question": "Quem formulou, liderou ou registrou Trabalhismo?",
-      "bridge": "Dos autores, seguimos para as correntes e desdobramentos relacionados.",
+      "question": "Quem formulou e liderou a doutrina e a ação política trabalhistas?",
+      "bridge": "Esses dirigentes representavam alas distintas dentro do campo trabalhista.",
       "sourceIds": [
         "src-wiki-topic-getulio-vargas",
         "src-wiki-topic-auguste-comte",
@@ -333,10 +363,19 @@
       "title": "Correntes e vertentes",
       "kicker": "Correntes e vertentes",
       "minutes": 1,
-      "narrative": ["Correntes relacionadas: Positivismo."],
-      "question": "Que correntes dialogam ou disputam espaço com Trabalhismo?",
-      "bridge": "Vistas as correntes, o capítulo seguinte examina experiências, partidos e instituições.",
-      "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
+      "narrative": [
+        "Embora identificado por décadas a uma liderança central, o trabalhismo abrigou vertentes distintas em seu interior, especialmente após a consolidação do PTB na República de 1946.",
+        "Uma ala moderada e pragmática privilegiava alianças governistas com o PSD e acordos graduais dentro das regras corporativas; outra, representada pelo solidarismo de Alberto Pasqualini, insistia na formação doutrinária e na eficiência administrativa.",
+        "Nos anos iniciais da década de 1960, uma corrente nacional-reformista — associada a João Goulart, Leonel Brizola e ao Grupo Compacto parlamentar — aproximou o partido de sindicatos combativos e movimentos camponeses pelas reformas de base, antes que o pós-1979 separasse a sigla histórica do PTB do PDT brizolista."
+      ],
+      "question": "Que correntes disputaram o sentido do trabalhismo brasileiro?",
+      "bridge": "Das ideias e lideranças às instituições concretas: o capítulo seguinte focaliza experiências históricas.",
+      "sourceIds": [
+        "src-wiki-ideologia-trabalhismo-brasileiro",
+        "src-wiki-topic-partido-trabalhista-brasileiro-1945",
+        "src-wiki-topic-castilhismo",
+        "src-wiki-topic-tenentismo"
+      ],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -344,10 +383,18 @@
       "blocks": [
         {
           "type": "entities",
-          "entityIds": ["wiki-topic-positivismo"],
           "mode": "concepts",
+          "entityIds": [
+            "wiki-ideologia-trabalhismo-brasileiro",
+            "wiki-topic-partido-trabalhista-brasileiro-1945",
+            "wiki-topic-castilhismo",
+            "wiki-topic-tenentismo"
+          ],
           "notes": {
-            "wiki-topic-positivismo": "O positivismo influenciou o trabalhismo brasileiro, segundo o verbete."
+            "wiki-ideologia-trabalhismo-brasileiro": "Matriz que combina legislação trabalhista, nacionalismo econômico e integração institucional dos assalariados.",
+            "wiki-topic-partido-trabalhista-brasileiro-1945": "Partido histórico que abrigou alas moderadas, solidaristas de Pasqualini e correntes reformistas radicalizadas nos anos 1960.",
+            "wiki-topic-castilhismo": "Herança positivista gaúcha centrada na autonomia do Executivo e na incorporação do proletariado sem guerra civil.",
+            "wiki-topic-tenentismo": "Movimento político-militar dos anos 1920 cujas críticas às oligarquias confluíram na Revolução de 1930."
           }
         }
       ]
@@ -359,10 +406,12 @@
       "kicker": "Experiências históricas",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: Castilhismo, Tenentismo, Golpe de Estado, Cidadania, Guerra Fria, Petrobras, Partido Trabalhista Brasileiro (1945), Revolução de 1930, Exército Brasileiro, Golpe de Estado no Brasil em 1964, Justiça do Trabalho, Comissão Econômica para a América Latina e o Caribe, Grande Depressão, Segunda Guerra Mundial, Igreja Católica."
+        "A institucionalização trabalhista materializou-se em órgãos e empresas criadas entre as décadas de 1930 e 1950: o Ministério do Trabalho, a Justiça do Trabalho, a consolidação da CLT em 1943 e empresas estatais estratégicas como a Petrobras.",
+        "No terreno econômico, o trabalhismo dialogou com o industrialismo substitutivo de importações e com formulações da Comissão Econômica para a América Latina e o Caribe (CEPAL) voltadas para a superação do subdesenvolvimento agrário.",
+        "A ampliação da organização sindical na cidade e no campo, contudo, acirrou o conflito distributivo durante a Guerra Fria e culminou na coalizão civil-militar de 1964, que depôs Goulart e submeteu os sindicatos a intervenções prolongadas."
       ],
-      "question": "Em quais acontecimentos, partidos e instituições Trabalhismo se materializou?",
-      "bridge": "Das experiências históricas, a leitura passa às controvérsias e debates.",
+      "question": "Quais instituições, políticas públicas e conflitos materializaram o trabalhismo?",
+      "bridge": "Os resultados e limites dessas políticas alimentaram um debate historiográfico duradouro.",
       "sourceIds": [
         "src-wiki-ideologia-trabalhismo-brasileiro",
         "src-wiki-topic-guerra-fria",
@@ -377,7 +426,15 @@
         "src-wiki-topic-segunda-guerra-mundial",
         "src-wiki-topic-igreja-catolica"
       ],
-      "review": null,
+      "review": {
+        "question": "Por que a Justiça do Trabalho e a CLT ocupam lugar central nas experiências trabalhistas?",
+        "answer": "Porque criaram instâncias jurídicas permanentes em que contratos, férias, salário mínimo e conflitos trabalhistas passaram a ser pleiteados pelos assalariados.",
+        "rationale": "Observe a dimensão institucional permanente para além de gestões presidenciais isoladas.",
+        "sourceIds": [
+          "src-wiki-ideologia-trabalhismo-brasileiro",
+          "src-wiki-topic-justica-do-trabalho"
+        ]
+      },
       "gap": null,
       "coverage": "complete",
       "layout": "documents",
@@ -418,13 +475,19 @@
       "kicker": "Argumentos, críticas e respostas",
       "minutes": 1,
       "narrative": [
-        "Angela de Castro Gomes observa que o trabalhismo não constituiu mera continuidade do castilhismo, pois incorporou outras matrizes políticas e intelectuais.",
-        "Parte dos autores enfatiza a contribuição do modelo trabalhista para a cidadania social, enquanto outros destacam seu caráter corporativo."
+        "Desde os anos 1970, interpretações sociológicas e históricas dividiram-se sobre o caráter emancipador ou controlador da política varguista e do legado trabalhista posterior.",
+        "Uma vertente crítica, ligada ao conceito de populismo e sindicalismo corporativo, sustenta que o imposto sindical, o reconhecimento oficial dos sindicatos e o veto à autonomia organizativa integraram os trabalhadores sob tutela autoritária do Estado.",
+        "Em resposta, historiadores como Angela de Castro Gomes e Jorge Ferreira argumentam que a linguagem trabalhista fundou uma consciência de direitos reais, permitindo que trabalhadores cobrassem do Estado e dos patrões o cumprimento efetivo das leis trabalhistas e construíssem mobilizações autônomas nos anos 1950 e 1960."
       ],
-      "question": "Quais críticas e controvérsias cercam Trabalhismo?",
-      "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
+      "question": "Como a historiografia diverge sobre tutela corporativa e cidadania social no trabalhismo?",
+      "bridge": "Essas controvérsias aproximam e distinguem o trabalhismo de outras tradições políticas.",
       "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
-      "review": null,
+      "review": {
+        "question": "Qual o núcleo do debate entre as teses do controle corporativo e da conquista de cidadania no trabalhismo?",
+        "answer": "A disputa opõe leituras centradas na tutela sindical criada pelo Estado varguista àquelas que enfatizam o uso ativo dos direitos trabalhistas pelos próprios assalariados.",
+        "rationale": "Contraponha estrutura jurídica restritiva e agência coletiva dos trabalhadores.",
+        "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"]
+      },
       "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
       "coverage": "partial",
       "layout": "debate",
@@ -435,27 +498,45 @@
           "items": [
             {
               "id": "critica-1",
-              "title": "Crítica ou controvérsia 1",
-              "kicker": "Argumentos e críticas",
-              "summary": "Angela de Castro Gomes observa que o trabalhismo não constituiu mera continuidade do castilhismo, pois incorporou outras matrizes políticas e intelectuais.",
+              "title": "Inovação na questão social",
+              "kicker": "Interpretação historiográfica",
+              "summary": "O trabalhismo deslocou a questão operária da repressão policial para o direito social estatal.",
               "paragraphs": [
-                "Angela de Castro Gomes observa que o trabalhismo não constituiu mera continuidade do castilhismo, pois incorporou outras matrizes políticas e intelectuais."
+                "Angela de Castro Gomes sustenta que a principal inovação do projeto trabalhista foi reconhecer legalmente o trabalho como elemento da cidadania nacional, retirando o conflito fabril do tratamento exclusivamente repressivo."
               ],
               "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
               "entityIds": ["wiki-ideologia-trabalhismo-brasileiro"],
-              "classification": "alegação empírica"
+              "classification": "interpretação"
             },
             {
               "id": "critica-2",
-              "title": "Crítica ou controvérsia 2",
-              "kicker": "Argumentos e críticas",
-              "summary": "Parte dos autores enfatiza a contribuição do modelo trabalhista para a cidadania social, enquanto outros destacam seu caráter corporativo.",
+              "title": "Corporativismo e tutela sindical",
+              "kicker": "Argumentos críticos",
+              "summary": "Estudos apontam os limites da autonomia operária sob o imposto sindical e a CLT.",
               "paragraphs": [
-                "Parte dos autores enfatiza a contribuição do modelo trabalhista para a cidadania social, enquanto outros destacam seu caráter corporativo."
+                "Pesquisadores como Marcelo Badaró Mattos destacam que a estrutura sindical atrelada ao Ministério do Trabalho restringiu greves, limitou a pluralidade sindical e subordinou organizações operárias ao controle governamental."
               ],
               "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
-              "entityIds": ["wiki-ideologia-trabalhismo-brasileiro"],
-              "classification": "alegação empírica"
+              "entityIds": [
+                "wiki-ideologia-trabalhismo-brasileiro",
+                "wiki-topic-justica-do-trabalho"
+              ],
+              "classification": "interpretação"
+            },
+            {
+              "id": "critica-3",
+              "title": "Apropriação operária dos direitos",
+              "kicker": "Debate recente",
+              "summary": "Trabalhadores mobilizaram as garantias da CLT para pressionar patrões e governos.",
+              "paragraphs": [
+                "Contra a ideia de passividade popular, a história social do trabalho mostra que sindicatos urbanos e ligas camponesas usaram a retórica trabalhista e a Justiça do Trabalho para ampliar greves, salários reais e exigências de reforma agrária."
+              ],
+              "sourceIds": [
+                "src-wiki-ideologia-trabalhismo-brasileiro",
+                "src-wiki-topic-justica-do-trabalho"
+              ],
+              "entityIds": ["wiki-topic-joao-goulart", "wiki-topic-justica-do-trabalho"],
+              "classification": "interpretação"
             }
           ]
         }
@@ -468,10 +549,12 @@
       "kicker": "Conexões com outras tradições",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: Doutrina Social da Igreja, Classe trabalhadora, Estado, Era Vargas, Comércio, Indústria, Brasil, Nacionalismo, Positivismo, Comunismo, Socialismo, Império do Brasil, Esquerda (política), Direita (política), Social-democracia, Anarcossindicalismo, Primeira República Brasileira, Desenvolvimentismo, Período Populista, Solidarismo, Liberalismo, Autoritarismo, Democracia."
+        "No plano comparado, o trabalhismo brasileiro dialoga com partidos social-democratas e trabalhistas europeus na defesa da proteção social, do pleno emprego e da regulação do mercado, embora tenha nascido em uma economia agroexportadora em industrialização acelerada e sob tutela inicial de um Estado centralizador.",
+        "Com o marxismo e o PCB, manteve relações oscilantes entre frentes nacionalistas nos anos 1950–1964 e disputas agudas sobre a direção sindical e o horizonte anticapitalista ou reformista do movimento operário.",
+        "Ao mesmo tempo, confrontou correntes liberais ortodoxas — sobretudo a UDN no pós-1945 — que acusavam o estatismo trabalhista de asfixiar a iniciativa privada e inflar o gasto público."
       ],
-      "question": "Como Trabalhismo se liga ao restante do grafo?",
-      "bridge": "Para aprofundar além do mapa, seguem as referências de leitura.",
+      "question": "Como o trabalhismo brasileiro se aproxima e se separa da social-democracia e do marxismo?",
+      "bridge": "A seguir, um roteiro de obras introdutórias e estudos históricos permite aprofundar o tema.",
       "sourceIds": [
         "src-wiki-ideologia-trabalhismo-brasileiro",
         "src-wiki-topic-brasil",
@@ -540,10 +623,12 @@
       "kicker": "Roteiro de leitura",
       "minutes": 1,
       "narrative": [
-        "Angela de Castro Gomes publicou A invenção do trabalhismo, obra listada na bibliografia do verbete."
+        "A historiografia brasileira consolidou a partir dos anos 1980 estudos que revisitaram os arquivos do Ministério do Trabalho, da imprensa sindical e dos diretórios regionais do PTB para além do debate imediato sobre populismo.",
+        "Combinar análises clássicas sobre a formação da classe trabalhadora sob o Estado Novo com biografias políticas de Getúlio Vargas, João Goulart e Leonel Brizola ajuda a compreender tanto a estrutura legal quanto a dinâmica eleitoral e sindical do período.",
+        "As indicações abaixo reúnem textos historiográficos fundamentais para situar as correntes internas e as interpretações concorrentes dessa tradição no Brasil."
       ],
-      "question": "Que obras e documentos aprofundam o estudo de Trabalhismo?",
-      "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
+      "question": "Quais obras históricas e análises ajudam a estudar o trabalhismo com rigor?",
+      "bridge": "Todas as referências utilizadas nos capítulos constam na bibliografia final.",
       "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
       "review": null,
       "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
@@ -551,20 +636,51 @@
       "layout": "documents",
       "blocks": [
         {
-          "type": "explorations",
-          "mode": "principles",
-          "items": [
+          "type": "reading-path",
+          "works": [
             {
-              "id": "leitura-1",
-              "title": "Leitura citada",
-              "kicker": "Roteiro de leitura",
-              "summary": "Angela de Castro Gomes publicou A invenção do trabalhismo, obra listada na bibliografia do verbete.",
-              "paragraphs": [
-                "Angela de Castro Gomes publicou A invenção do trabalhismo, obra listada na bibliografia do verbete."
-              ],
-              "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
-              "entityIds": ["wiki-ideologia-trabalhismo-brasileiro"],
-              "classification": "alegação empírica"
+              "title": "A invenção do trabalhismo",
+              "author": "Angela de Castro Gomes",
+              "year": "1988",
+              "edition": "Rio de Janeiro: IUPERJ / Relume-Dumará",
+              "level": "introdutório",
+              "theme": "Formação do projeto trabalhista e relação entre Estado, trabalho e cidadania na Era Vargas",
+              "why": "Referência historiográfica básica sobre como o trabalhismo construiu legitimidade política em torno dos direitos sociais.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "Trabalhadores do Brasil: o imaginário popular",
+              "author": "Jorge Ferreira",
+              "year": "1997",
+              "edition": "Rio de Janeiro: Editora FGV",
+              "level": "intermediário",
+              "theme": "Cartas de trabalhadores a Vargas e apropriação cotidiana dos direitos trabalhistas",
+              "why": "Mostra a recepção ativa e crítica da legislação social pelos assalariados urbanos nos anos 1930–1945.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "O populismo e sua história: debate e crítica",
+              "author": "Jorge Ferreira (org.)",
+              "year": "2001",
+              "edition": "Rio de Janeiro: Civilização Brasileira",
+              "level": "avançado",
+              "theme": "Balanço crítico do conceito de populismo na sociologia e história política brasileiras",
+              "why": "Reúne diferentes interpretações para confrontar as teses de manipulação estatal e agência dos trabalhadores.",
+              "kind": "crítica",
+              "entityId": null
+            },
+            {
+              "title": "1964: Do golpe à democracia",
+              "author": "Jorge Ferreira e Angela de Castro Gomes",
+              "year": "2014",
+              "edition": "Rio de Janeiro: Civilização Brasileira",
+              "level": "intermediário",
+              "theme": "Crise do governo João Goulart, reformas de base e rupturas institucionais",
+              "why": "Examina a radicalização reformista do trabalhismo democrático até o golpe civil-militar de 1964.",
+              "kind": "estudo",
+              "entityId": "wiki-topic-joao-goulart"
             }
           ]
         }
@@ -577,9 +693,11 @@
       "kicker": "Fontes e metodologia",
       "minutes": 1,
       "narrative": [
-        "Reúne 13 afirmações da fonte principal e 45 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
+        "A exposição dos doze capítulos articula registros biográficos, institucionais e cronológicos mantidos no grafo sobre a Era Vargas, o PTB, a CLT e as reformas de base.",
+        "Onde há lacunas documentais — como na comparação sistemática de programas regionais trabalhistas ou de textos doutrinários integrais de Pasqualini e San Tiago Dantas —, as notas editoriais registram os limites do recorte.",
+        "A relação bibliográfica abaixo consolida todas as fontes referenciadas nos capítulos e nas fichas complementares de entidades ligadas ao trabalhismo brasileiro."
       ],
-      "question": "Quais fontes sustentam a leitura sobre Trabalhismo?",
+      "question": "Em quais documentos e registros enciclopédicos se apoia este dossiê?",
       "bridge": null,
       "sourceIds": [
         "src-wiki-ideologia-trabalhismo-brasileiro",
@@ -626,7 +744,9 @@
         "src-wiki-topic-periodo-populista",
         "src-wiki-topic-solidarismo",
         "src-wiki-topic-autoritarismo",
-        "src-wiki-topic-democracia"
+        "src-wiki-topic-democracia",
+        "src-wiki-topic-castilhismo",
+        "src-wiki-topic-tenentismo"
       ],
       "review": null,
       "gap": null,
@@ -680,7 +800,9 @@
             "src-wiki-topic-periodo-populista",
             "src-wiki-topic-solidarismo",
             "src-wiki-topic-autoritarismo",
-            "src-wiki-topic-democracia"
+            "src-wiki-topic-democracia",
+            "src-wiki-topic-castilhismo",
+            "src-wiki-topic-tenentismo"
           ]
         }
       ]

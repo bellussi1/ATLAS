@@ -13,7 +13,7 @@
   "identity": {
     "accent": "teal",
     "palette": "marx",
-    "signature": "Leitura montada do grafo",
+    "signature": "Síntese editorial assistida sobre o grafo",
     "keyVisualization": "timeline"
   },
   "portrait": null,
@@ -22,16 +22,24 @@
     {
       "id": "introducao",
       "anchor": "introducao",
-      "title": "O que é?",
+      "title": "Estado soviético, burocracia e poder",
       "kicker": "O que é?",
       "minutes": 1,
       "narrative": [
-        "Stalinismo é o nome dado à ideologia e às políticas implementadas por Josef Stalin na União Soviética entre 1927 e 1953 e em Estados satélites soviéticos entre 1944 e 1953. O termo abrange a industrialização acelerada, a coletivização forçada, o culto de personalidade, a repressão em massa e a subordinação dos partidos comunistas estrangeiros ao Partido Comunista da União Soviética. Após a morte de Stalin, a desestalinização iniciada por Khrushchov reduziu a influência dessa ideologia."
+        "O stalinismo designa o conjunto de doutrinas políticas, práticas de governo e transformações socioeconômicas associadas ao domínio exercido por Josef Stalin na União Soviética entre fins da década de 1920 e sua morte em 1953.",
+        "Enquanto forma histórica específica dentro do campo comunista, combinou economia integralmente planificada, industrialização pesada acelerada e coletivização agrícola compulsória com ditadura burocrática de partido único, polícia política onipresente e culto estatal à personalidade.",
+        "No plano internacional, o stalinismo moldou a orientação da Internacional Comunista (Komintern) e dos partidos comunistas alinhados a Moscou até meados do século XX, convertendo a defesa da União Soviética em critério decisivo da política externa socialista.",
+        "Na historiografia e nos debates da própria esquerda, discute-se intensamente se o stalinismo decorreu de rupturas estruturais com a tradição marxista e leninista original ou de seu desdobramento autoritário sob cerco externo e atraso industrial."
       ],
-      "question": "O que define Stalinismo?",
-      "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
+      "question": "O que caracteriza o stalinismo na história da União Soviética e do comunismo?",
+      "bridge": "Para compreender como esse modelo se formou, o capítulo seguinte acompanha a sucessão pós-Lenin nos anos 1920.",
       "sourceIds": ["src-wiki-topic-stalinismo"],
-      "review": null,
+      "review": {
+        "question": "Quais elementos distinguem o stalinismo como sistema histórico específico na URSS?",
+        "answer": "A combinação de planejamento econômico centralizado e industrialização forçada com concentração pessoal de poder, expurgos em massa e controle ideológico sobre partido e Estado.",
+        "rationale": "Articule transformação econômica estatal e mecanismo político autocrático.",
+        "sourceIds": ["src-wiki-topic-stalinismo"]
+      },
       "gap": null,
       "coverage": "complete",
       "layout": "introduction",
@@ -44,14 +52,20 @@
       "kicker": "Origens e formação",
       "minutes": 1,
       "narrative": [
-        "Stalin passou a ocupar o cargo de secretário-geral do Comitê Central do Partido Comunista da União Soviética. (1922-04-03).",
-        "Morte de Stalin, que encerrou o período de sua liderança. (1953-03-05).",
-        "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto."
+        "A formação do stalinismo resultou da crise política aberta na União Soviética após a Guerra Civil Russa e a morte de Vladimir Lenin em 1924, num país devastado economicamente, majoritariamente rural e isolado após o fracasso de revoluções na Europa Ocidental.",
+        "Na disputa pela sucessão, Josef Stalin utilizou o cargo de secretário-geral para controlar nomeações do aparelho partidário e derrotar sucessivamente a Oposição de Esquerda liderada por Leon Trótski e depois antigos aliados como Bukharin.",
+        "O abandono da Nova Política Econômica (NEP) em 1928 marcou a guinada rumo ao primeiro Plano Quinquenal e à coletivização compulsória do campo, encerrando o espaço de debate interno tolerado no início da década de 1920.",
+        "Ao justificar medidas extraordinárias como resposta à ameaça capitalista externa e ao atraso agrário herdado do Império Russo, a direção stalinista transformou o aparato partidário de vanguarda em burocracia estatal verticalizada."
       ],
-      "question": "Como e em que contexto Stalinismo surgiu?",
-      "bridge": "Visto o contexto de formação, seguem os princípios e traços centrais.",
+      "question": "Como Stalin consolidou o controle do partido após a Revolução Russa e a morte de Lenin?",
+      "bridge": "Assumido o controle partidário, o regime definiu seus pilares econômicos e doutrinários.",
       "sourceIds": ["src-wiki-topic-stalinismo"],
-      "review": null,
+      "review": {
+        "question": "Por que a secretaria-geral do partido foi decisiva na vitória de Stalin na década de 1920?",
+        "answer": "Porque permitiu nomear quadros regionais, controlar congressos partidários e isolar correntes rivais antes que o confronto chegasse às bases.",
+        "rationale": "Observe o peso organizacional do controle administrativo sobre o partido.",
+        "sourceIds": ["src-wiki-topic-stalinismo"]
+      },
       "gap": "Usa fatos documentados da fonte principal porque não há seção separada de origens no grafo.",
       "coverage": "partial",
       "layout": "documents",
@@ -107,15 +121,20 @@
       "kicker": "Pilares e princípios",
       "minutes": 1,
       "narrative": [
-        "Stalin passou a ocupar o cargo de secretário-geral do Comitê Central do Partido Comunista da União Soviética. (1922-04-03).",
-        "Morte de Stalin, que encerrou o período de sua liderança. (1953-03-05).",
-        "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto.",
-        "Historiadores divergem quanto ao papel do stalinismo."
+        "A doutrina do socialismo em um só país constituiu a peça ideológica central do stalinismo ao sustentar que a URSS poderia construir uma sociedade socialista industrialmente autossuficiente sem aguardar revoluções vitoriosas no Ocidente.",
+        "Sob o rótulo oficial de marxismo-leninismo, codificou-se uma ortodoxia estatal simplificada em manuais obrigatórios para o ensino, a ciência, a história e a produção cultural (realismo socialista).",
+        "Outro dogma característico afirmava que a luta de classes se intensificava à medida que a construção socialista avançava, tese usada nos anos 1930 para legitimar o endurecimento penal, a caça a supostos sabotadores e a criminalização de toda dissidência.",
+        "No plano institucional, a abolição das frações internas e a fusão prática entre órgãos partidários e administração estatal tornaram a lealdade ao centro decisório o critério supremo da vida pública soviética."
       ],
-      "question": "Quais ideias e práticas estruturam Stalinismo?",
-      "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
+      "question": "Quais formulações doutrinárias justificavam o planejamento central e a repressão estatal?",
+      "bridge": "Esses eixos doutrinários apoiam-se no vocabulário técnico e político examinado a seguir.",
       "sourceIds": ["src-wiki-topic-stalinismo"],
-      "review": null,
+      "review": {
+        "question": "De que modo a tese da \"intensificação da luta de classes\" justificou os expurgos dos anos 1930?",
+        "answer": "Ao sustentar que inimigos internos continuariam atuando mesmo após a abolição da propriedade privada, converteu divergências políticas e falhas econômicas em supostas conspirações contra-revolucionárias.",
+        "rationale": "Ligue a tese doutrinária à criminalização da oposição interna.",
+        "sourceIds": ["src-wiki-topic-stalinismo"]
+      },
       "gap": "Reúne passagens descritivas registradas na fonte principal; síntese doutrinária estruturada ainda pendente.",
       "coverage": "partial",
       "layout": "concepts",
@@ -181,11 +200,12 @@
       "kicker": "Conceitos e palavras-chave",
       "minutes": 1,
       "narrative": [
-        "Também chamada de Estalinismo, Stalinism.",
-        "Conceitos ligados à tradição: Ditador, Burguesia, Urbanização, Industrialização, Revolução."
+        "Compreender o stalinismo requer distinguir categorias oficiais do léxico soviético — como planejamento quinquenal, coletivização, marxismo-leninismo e centralismo democrático — de conceitos analíticos elaborados por historiadores e opositores.",
+        "No campo crítico e historiográfico destacam-se noções como burocracia degenerada (no trotskismo), ditadura autocrática, capitalismo de Estado, totalitarismo e terror político institucionalizado.",
+        "Eventos estruturais como o sistema Gulag e a grande fome de 1932–1933 (Holodomor) tornaram-se conceitos-chave para dimensionar o custo humano da modernização estatal acelerada."
       ],
-      "question": "Que termos e conceitos ajudam a compreender Stalinismo?",
-      "bridge": "Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.",
+      "question": "Que conceitos históricos descrevem a economia, o poder e o terror no período stalinista?",
+      "bridge": "Estabelecidos esses conceitos, o capítulo seguinte traça a cronologia de 1924 a 1956.",
       "sourceIds": [
         "src-wiki-topic-stalinismo",
         "src-wiki-topic-ditador",
@@ -225,11 +245,21 @@
       "title": "História e épocas",
       "kicker": "História e épocas",
       "minutes": 1,
-      "narrative": ["Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto."],
-      "question": "Em que períodos históricos Stalinismo se formou e mudou?",
-      "bridge": "Da cronologia, passamos às pessoas e obras ligadas à tradição.",
+      "narrative": [
+        "Entre 1924 e 1928 definiu-se a derrota das oposições internas e o início da industrialização dirigida pelo Primeiro Plano Quinquenal, acompanhada da deskulakização e da coletivização agrária forçada em todo o território soviético.",
+        "Entre 1932 e 1933, a requisiçao brutal de grãos nas áreas agrárias combinada à desorganização da coletivização provocou fome severa, atingindo de forma particularmente letal a Ucrânia no episódio conhecido como Holodomor.",
+        "Entre 1936 e 1938 desenrolou-se o Grande Expurgo, com processos públicos de Moscou contra antigos dirigentes bolcheviques, execuções sumárias, depuração do alto comando do Exército Vermelho e expansão massiva dos campos do Gulag.",
+        "Após a vitória militar sobre a Alemanha nazista na Segunda Guerra Mundial (1941–1945) e a formação do bloco do Leste na Guerra Fria, a morte de Stalin em 1953 abriu espaço ao relatório secreto de Nikita Khruschov em 1956, marco inicial da desestalinização."
+      ],
+      "question": "Que fases marcam a ascensão, apogeu e crítica oficial do stalinismo?",
+      "bridge": "Através desses períodos enfrentaram-se lideranças políticas e figuras históricas analisadas adiante.",
       "sourceIds": ["src-wiki-topic-stalinismo"],
-      "review": null,
+      "review": {
+        "question": "Por que o XX Congresso do PCUS em 1956 representou uma inflexão crítica na história comunista?",
+        "answer": "Porque o próprio comando soviético denunciou os expurgos e o culto à personalidade de Stalin, abalando a ortodoxia nos partidos comunistas dentro e fora da URSS.",
+        "rationale": "Avalie o impacto interno na URSS e externo nos partidos alinhados.",
+        "sourceIds": ["src-wiki-topic-stalinismo"]
+      },
       "gap": null,
       "coverage": "complete",
       "layout": "timeline",
@@ -239,22 +269,63 @@
           "mode": "principles",
           "items": [
             {
-              "id": "marco-1",
-              "title": "1956",
-              "kicker": "Marco datado",
-              "summary": "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto.",
+              "id": "ep-stal-1924",
+              "title": "1924–1928 · Disputa sucessória",
+              "kicker": "URSS",
+              "summary": "Derrota da Oposição de Esquerda e consolidação do socialismo em um só país.",
               "paragraphs": [
-                "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto."
+                "Após a morte de Lenin em 1924, Stalin utilizou o aparelho partidário para neutralizar Leon Trótski e reorientar o país da NEP para a industrialização acelerada sob comando central."
               ],
               "sourceIds": ["src-wiki-topic-stalinismo"],
-              "entityIds": ["wiki-topic-stalinismo"],
+              "entityIds": ["person-joseph-stalin", "person-leon-trotsky"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ep-stal-1932",
+              "title": "1932–1933 · Coletivização e Holodomor",
+              "kicker": "Campo soviético",
+              "summary": "Requisições agrícolas forçadas provocam fome catastrófica, especialmente na Ucrânia.",
+              "paragraphs": [
+                "A resistência camponesa à coletivização e as metas inflexíveis de coleta estatal de grãos resultaram em milhões de mortos por inanição entre 1932 e 1933."
+              ],
+              "sourceIds": ["src-wiki-topic-holodomor", "src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-holodomor"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ep-stal-1936",
+              "title": "1936–1938 · Grande Expurgo e Gulag",
+              "kicker": "Repressão estatal",
+              "summary": "Processos políticos, fuzilamentos e multiplicação dos campos de trabalho forçado.",
+              "paragraphs": [
+                "Conduzido pela polícia política (NKVD), o Grande Expurgo eliminou a velha guarda bolchevique e enviou centenas de milhares de cidadãos e opositores reais ou supostos ao sistema Gulag."
+              ],
+              "sourceIds": ["src-wiki-topic-grande-expurgo", "src-wiki-topic-gulag"],
+              "entityIds": ["wiki-topic-grande-expurgo", "wiki-topic-gulag"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-1",
+              "title": "1956 · Relatório secreto e desestalinização",
+              "kicker": "Marco datado",
+              "summary": "Denúncia dos crimes e do culto à personalidade no XX Congresso do PCUS.",
+              "paragraphs": [
+                "Em fevereiro de 1956, três anos após a morte de Stalin, Nikita Khruschov apresentou ao XX Congresso do Partido Comunista da União Soviética denúncias contra os expurgos e o culto ao líder, abrindo um ciclo parcial de revisões e crises no bloco socialista."
+              ],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo", "wiki-topic-desestalinizacao"],
               "classification": "alegação empírica"
             }
           ]
         },
         {
           "type": "chronology",
-          "epochs": [{ "itemId": "marco-1", "start": 1956, "end": 1956 }],
+          "epochs": [
+            { "itemId": "ep-stal-1924", "start": 1924, "end": 1928 },
+            { "itemId": "ep-stal-1932", "start": 1932, "end": 1933 },
+            { "itemId": "ep-stal-1936", "start": 1936, "end": 1938 },
+            { "itemId": "marco-1", "start": 1956, "end": 1956 }
+          ],
           "entityIds": ["wiki-topic-stalinismo"],
           "markerIds": [],
           "markerNotes": {}
@@ -268,10 +339,12 @@
       "kicker": "Pensadores e obras",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: Leon Trótski, Josef Stalin, Lenin, Karl Marx, Mikhail Gorbatchov, Friedrich Engels, Adolf Hitler, Antonio Gramsci."
+        "Além de Josef Stalin como centro decisório e doutrinário do regime após 1928, a história do período remete diretamente ao legado institucional de Vladimir Lenin, cuja morte precoce precipitou a disputa sobre o ritmo da industrialização e a democracia partidária.",
+        "Leon Trótski tornou-se o principal crítico marxista no exílio até ser assassinado no México em 1940, analisando a burocracia soviética como casta parasitária que usurpara o poder operário sem restaurar o capitalismo.",
+        "Décadas depois, lideranças reformadoras soviéticas até Mikhail Gorbatchov retomaram críticas profundas ao modelo centralizado e burocrático herdado do período stalinista."
       ],
-      "question": "Quem formulou, liderou ou registrou Stalinismo?",
-      "bridge": "Dos autores, seguimos para as correntes e desdobramentos relacionados.",
+      "question": "Quais dirigentes, críticos e opositores personificaram o ciclo stalinista?",
+      "bridge": "As disputas entre esses atores desdobraram-se em correntes políticas divergentes.",
       "sourceIds": ["src-wiki-topic-mikhail-gorbatchov", "src-wiki-topic-adolf-hitler"],
       "review": null,
       "gap": null,
@@ -301,9 +374,13 @@
       "title": "Correntes e vertentes",
       "kicker": "Correntes e vertentes",
       "minutes": 1,
-      "narrative": ["Correntes relacionadas: Trotskismo."],
-      "question": "Que correntes dialogam ou disputam espaço com Stalinismo?",
-      "bridge": "Vistas as correntes, o capítulo seguinte examina experiências, partidos e instituições.",
+      "narrative": [
+        "A codificação do marxismo-leninismo stalinista transformou-se em matriz de partidos comunistas ligados à Terceira Internacional, mas gerou cisões duradouras à esquerda.",
+        "O trotskismo defendeu a \"revolução permanente\" e a derrubada política da burocracia soviética; correntes como o comunismo de conselhos e o socialismo libertário romperam ainda mais cedo com a própria forma-partido bolchevique.",
+        "Nos anos 1960 e 1970, enquanto a ruptura sino-soviética criticava a desestalinização pela ótica maoísta, partidos ocidentais evoluíram para o eurocomunismo, aceitando eleições pluralistas e rejeitando o modelo autoritário soviético; no Brasil, tensões semelhantes atravessaram as cisões entre PCB e PCdoB."
+      ],
+      "question": "Que correntes derivaram ou se opuseram ao stalinismo dentro do movimento comunista?",
+      "bridge": "Dessas cisões passamos às experiências concretas soviéticas e internacionais.",
       "sourceIds": ["src-wiki-topic-trotskismo"],
       "review": null,
       "gap": null,
@@ -327,10 +404,12 @@
       "kicker": "Experiências históricas",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: Partido Comunista da Alemanha, Partido Comunista da União Soviética, Partido Comunista Francês, Gulag, Holodomor, Revolução de Outubro, Bolchevique, Capitalismo, Autocracia, Grande Expurgo, Ruptura sino-soviética, Revolução Russa de 1917, Internacional Comunista, Sindicato, Guerra Civil Chinesa, Guerra do Vietnã, Revolução Húngara de 1956, Kuomintang, Guerra da Coreia."
+        "No terreno material, os planos quinquenais transformaram em poucos lustros uma economia agrária em potência industrial e militar pesada — fator decisivo para a resistência soviética contra a invasão alemã na Segunda Guerra Mundial — ao custo de compressão severa do consumo popular e destruição da autonomia camponesa.",
+        "Simultaneamente, a estrutura repressiva do Grande Expurgo e dos campos do Gulag institucionalizou o trabalho forçado em obras de infraestrutura e mineração ártica, além da deportação de nacionalidades inteiras.",
+        "Na política internacional do pós-1945, a extensão desse modelo ao Leste Europeu consolidou Estados de partido único subordinados a Moscou — como revelado na repressão à Revolução Húngara de 1956 — e marcou os alinhamentos da Guerra Fria na Ásia e na América Latina."
       ],
-      "question": "Em quais acontecimentos, partidos e instituições Stalinismo se materializou?",
-      "bridge": "Das experiências históricas, a leitura passa às controvérsias e debates.",
+      "question": "Quais políticas econômicas, repressivas e geopolíticas concretizaram o regime stalinista?",
+      "bridge": "O balanço dessas experiências alimenta debates historiográficos profundos até hoje.",
       "sourceIds": [
         "src-wikidata-verbetes",
         "src-wiki-topic-gulag",
@@ -347,9 +426,19 @@
         "src-wiki-topic-guerra-do-vietna",
         "src-wiki-topic-revolucao-hungara-de-1956",
         "src-wiki-topic-kuomintang",
-        "src-wiki-topic-guerra-da-coreia"
+        "src-wiki-topic-guerra-da-coreia",
+        "src-wiki-topic-stalinismo"
       ],
-      "review": null,
+      "review": {
+        "question": "Qual o paradoxo econômico-social destacado nos estudos sobre os planos quinquenais?",
+        "answer": "A obtenção de rápida industrialização pesada e alfabetização massiva em paralelo à fome agrária, escassez crônica de bens de consumo e expansão do trabalho forçado.",
+        "rationale": "Evite reduções unilaterais ao considerar industrialização e coerção juntas.",
+        "sourceIds": [
+          "src-wiki-topic-stalinismo",
+          "src-wiki-topic-gulag",
+          "src-wiki-topic-holodomor"
+        ]
+      },
       "gap": null,
       "coverage": "complete",
       "layout": "documents",
@@ -388,11 +477,20 @@
       "title": "Argumentos, críticas e respostas",
       "kicker": "Argumentos, críticas e respostas",
       "minutes": 1,
-      "narrative": ["Historiadores divergem quanto ao papel do stalinismo."],
-      "question": "Quais críticas e controvérsias cercam Stalinismo?",
-      "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
+      "narrative": [
+        "Um debate central opõe a tese da continuidade — para a qual o stalinismo apenas levou às últimas consequências o monopólio partidário instaurado por Lenin após 1917 — à tese da descontinuidade, defendida por autores como Moshe Lewin e Stephen Cohen, que veem em 1929 uma verdadeira \"revolução de cima\" que rompeu com a cultura plural dos primeiros anos soviéticos.",
+        "Outra polêmica duradoura contrapõe a escola do totalitarismo (focada no terror ideológico e no controle estatal absoluto) a estudos de história social revisionista que examinam como pressões burocráticas, mobilidade social ascendente e conflitos regionais moldaram as dinâmicas locais dos expurgos.",
+        "Também permanecem vivas as controvérsias sobre a quantificação das vítimas da fome de 1932–1933 e do Gulag após a abertura parcial dos arquivos soviéticos nos anos 1990."
+      ],
+      "question": "Como historiadores discutem a relação entre Lenin, Stalin e o conceito de totalitarismo?",
+      "bridge": "Essas controvérsias definem a posição do stalinismo frente a outras ideologias modernas.",
       "sourceIds": ["src-wiki-topic-stalinismo"],
-      "review": null,
+      "review": {
+        "question": "Em que diverge a leitura da \"continuidade\" em relação à tese da ruptura em 1929?",
+        "answer": "A primeira vê o stalinismo como desdobramento direto do monopólio bolchevique iniciado com Lenin; a segunda interpreta a guinada de 1928–1929 e os expurgos como mutação burocrática e policial qualitativa.",
+        "rationale": "Contrastam determinismo institucional de 1917 e transformação estrutural dos anos 1930.",
+        "sourceIds": ["src-wiki-topic-stalinismo"]
+      },
       "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
       "coverage": "partial",
       "layout": "debate",
@@ -403,13 +501,39 @@
           "items": [
             {
               "id": "critica-1",
-              "title": "Crítica ou controvérsia",
-              "kicker": "Argumentos e críticas",
-              "summary": "Historiadores divergem quanto ao papel do stalinismo.",
-              "paragraphs": ["Historiadores divergem quanto ao papel do stalinismo."],
+              "title": "Continuidade versus ruptura com 1917",
+              "kicker": "Historiografia",
+              "summary": "Historiadores divergem quanto à continuidade entre o bolchevismo de Lenin e o regime stalinista.",
+              "paragraphs": [
+                "Correntes liberais e conservadoras apontam o partido único de 1918–1921 como germe direto do stalinismo; historiadores sociais e críticos marxistas sustentam que a estatização total e o terror sistemático dos anos 1930 configuraram uma ruptura contrarrevolucionária com a década de 1920."
+              ],
               "sourceIds": ["src-wiki-topic-stalinismo"],
               "entityIds": ["wiki-topic-stalinismo"],
-              "classification": "alegação empírica"
+              "classification": "interpretação"
+            },
+            {
+              "id": "debate-stal-modernizacao",
+              "title": "Modernização forçada e custo humano",
+              "kicker": "Economia política",
+              "summary": "Análises debatem se havia vias não coercitivas de industrialização nos anos 1920.",
+              "paragraphs": [
+                "Estudos econômicos comparam a coletivização forçada com alternativas propostas por Nikolai Bukharin dentro da NEP, avaliando o impacto estrutural da violência rural sobre a produtividade agrícola soviética nas décadas seguintes."
+              ],
+              "sourceIds": ["src-wiki-topic-stalinismo", "src-wiki-topic-holodomor"],
+              "entityIds": ["wiki-topic-stalinismo", "wiki-topic-holodomor"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "debate-stal-totalitarismo",
+              "title": "Modelo totalitário e história social",
+              "kicker": "Metodologia histórica",
+              "summary": "A pesquisa arquivística pós-1991 redefiniu visões sobre centralização e caos administrativo.",
+              "paragraphs": [
+                "A consulta parcial aos arquivos soviéticos confirmou a escala massiva do terror coordenado pelo topo político, mas também revelou improvisação, conflitos entre ministérios e denúncias locais que complicam modelos puramente mecânicos."
+              ],
+              "sourceIds": ["src-wiki-topic-stalinismo", "src-wiki-topic-grande-expurgo"],
+              "entityIds": ["wiki-topic-grande-expurgo", "wiki-topic-gulag"],
+              "classification": "interpretação"
             }
           ]
         }
@@ -422,10 +546,12 @@
       "kicker": "Conexões com outras tradições",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: Totalitarismo, União Soviética, Comunismo, Leninismo, Marxismo, Socialismo, Império Russo, República Socialista Federativa Soviética da Rússia, Social-democracia, Marxismo-leninismo, Liberalismo, Autoritarismo, Democracia."
+        "A distância entre o stalinismo e a social-democracia consolidou-se definitivamente nos anos 1920 e 1930, aprofundada pela tática do \"social-fascismo\" e pela repressão a socialistas moderados no Leste Europeu após 1945.",
+        "Com o trotskismo, o anarquismo e a esquerda antistalinista, o conflito deu origem a críticas teóricas sistemáticas sobre burocracia, liberdade sindical e emancipação operária em Estados estatizados.",
+        "Ao mesmo tempo, teóricos liberais e conservadores tomaram a experiência soviética dos anos 1930 como prova empírica de que a abolição da propriedade privada conduz inevitavelmente à supressão das liberdades individuais."
       ],
-      "question": "Como Stalinismo se liga ao restante do grafo?",
-      "bridge": "Para aprofundar além do mapa, seguem as referências de leitura.",
+      "question": "Como o stalinismo se relaciona com marxismo, social-democracia, trotskismo e totalitarismo?",
+      "bridge": "A seguir estão reunidas obras clássicas e historiográficas para aprofundar o estudo do período soviético.",
       "sourceIds": [
         "src-wiki-topic-totalitarismo",
         "src-wiki-topic-uniao-sovietica",
@@ -468,9 +594,13 @@
       "title": "Roteiro de leitura",
       "kicker": "Roteiro de leitura",
       "minutes": 1,
-      "narrative": ["Obras ligadas à tradição: Manifesto Comunista."],
-      "question": "Que obras e documentos aprofundam o estudo de Stalinismo?",
-      "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
+      "narrative": [
+        "A literatura sobre o stalinismo combina análises políticas escritas por opositores contemporâneos aos acontecimentos, pesquisas baseadas nos arquivos abertos após 1991 e grandes histórias econômicas da sociedade soviética.",
+        "Confrontar fontes divergentes — da crítica trotskista às investigações de história social e aos estudos sobre o sistema concentracionário — evita generalizações simplistas e permite distinguir dados documentados de disputas conceituais.",
+        "O roteiro abaixo indica títulos de referência para situar o contexto revolucionário, a consolidação do poder nos anos 1930 e o impacto sobre o movimento operário internacional."
+      ],
+      "question": "Quais estudos históricos e testemunhos ajudam a examinar o período stalinista?",
+      "bridge": "Todas as fontes citadas integram a bibliografia compilada no capítulo final.",
       "sourceIds": [],
       "review": null,
       "gap": "Obras ligadas à tradição; edição e nível de leitura ainda pendentes.",
@@ -478,10 +608,53 @@
       "layout": "documents",
       "blocks": [
         {
-          "type": "entities",
-          "entityIds": ["work-communist-manifesto"],
-          "mode": "documents",
-          "notes": {}
+          "type": "reading-path",
+          "works": [
+            {
+              "title": "A revolução traída",
+              "author": "Leon Trótski",
+              "year": "1936",
+              "edition": "São Paulo: Sundermann",
+              "level": "intermediário",
+              "theme": "Crítica marxista de oposição à burocracia soviética e à consolidação stalinista",
+              "why": "Texto clássico que formula a interpretação trotskista da degeneração burocrática do Estado operário.",
+              "kind": "primária",
+              "entityId": "person-leon-trotsky"
+            },
+            {
+              "title": "Stalin: o século soviético",
+              "author": "Moshe Lewin",
+              "year": "2005",
+              "edition": "Rio de Janeiro: Record",
+              "level": "avançado",
+              "theme": "Burocracia estatal, camponeses, industrialização e dinâmica de poder na URSS",
+              "why": "Analisa a relação estrutural entre sociedade agrária, máquina burocrática e autocracia pessoal.",
+              "kind": "estudo",
+              "entityId": "person-joseph-stalin"
+            },
+            {
+              "title": "Arquipélago Gulag",
+              "author": "Aleksandr Soljenítsin",
+              "year": "1973",
+              "edition": "São Paulo: Carambaia",
+              "level": "intermediário",
+              "theme": "Memória literária e documental do sistema prisional e de trabalho forçado soviético",
+              "why": "Marco histórico na denúncia internacional da amplitude repressiva dos campos de trabalho na URSS.",
+              "kind": "crítica",
+              "entityId": "wiki-topic-gulag"
+            },
+            {
+              "title": "A Revolução Russa",
+              "author": "Sheila Fitzpatrick",
+              "year": "1982",
+              "edition": "São Paulo: Todavia",
+              "level": "introdutório",
+              "theme": "Síntese histórica de 1917 ao Grande Expurgo dos anos 1930",
+              "why": "Introdução concisa para acompanhar a passagem da crise revolucionária para a institucionalização stalinista.",
+              "kind": "introdução",
+              "entityId": "event-russian-revolution"
+            }
+          ]
         }
       ]
     },
@@ -492,9 +665,11 @@
       "kicker": "Fontes e metodologia",
       "minutes": 1,
       "narrative": [
-        "Reúne 4 afirmações da fonte principal e 32 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
+        "A exposição apoia-se nos verbetes históricos dedicados à União Soviética, ao Holodomor, ao Grande Expurgo, ao Gulag e às correntes socialistas divergentes.",
+        "Nos capítulos marcados como parciais — como o roteiro de controvérsias historiográficas e a recepção detalhada na América Latina —, as ressalvas assinalam pontos abertos à ampliação de fontes primárias.",
+        "A listagem abaixo consolida todas as fontes citadas ao longo da leitura, preservando o rastreio completo entre afirmações e referências."
       ],
-      "question": "Quais fontes sustentam a leitura sobre Stalinismo?",
+      "question": "Quais referências sustentam os capítulos sobre o stalinismo?",
       "bridge": null,
       "sourceIds": [
         "src-wiki-topic-stalinismo",

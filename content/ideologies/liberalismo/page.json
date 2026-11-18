@@ -38,11 +38,7 @@
       }
     ]
   },
-  "review": {
-    "status": "com-fontes",
-    "reviewer": null,
-    "updatedAt": "2026-11-06"
-  },
+  "review": { "status": "com-fontes", "reviewer": null, "updatedAt": "2026-11-06" },
   "identity": {
     "accent": "teal",
     "signature": "Contratos, limites ao poder e liberdades em disputa",
@@ -54,9 +50,7 @@
       "question": "O que um governo pode legitimamente exigir de você?",
       "bridge": "Para entender essas respostas, comece pelos textos e revoluções que as formularam.",
       "gap": null,
-      "sourceIds": [
-        "source-sep-liberalism"
-      ],
+      "sourceIds": ["source-sep-liberalism"],
       "id": "introducao",
       "anchor": "introducao",
       "title": "Liberdade contra o poder",
@@ -74,26 +68,20 @@
         "question": "Por que a pergunta liberal é sobre limites do poder, e não apenas sobre liberdade individual?",
         "answer": "Porque a tradição nasce da pergunta sobre por que obedecer e até onde o governo pode ir; a liberdade individual é uma das respostas, junto com consentimento, direitos e limites institucionais.",
         "rationale": "Distinga a pergunta fundadora das respostas que ela recebe.",
-        "sourceIds": [
-          "source-sep-liberalism"
-        ]
+        "sourceIds": ["source-sep-liberalism"]
       }
     },
     {
       "question": "Que problemas os primeiros liberais tentavam resolver?",
       "bridge": "Dessas obras saem os princípios que atravessam a tradição.",
       "gap": null,
-      "sourceIds": [
-        "source-sep-locke-political",
-        "source-sep-montesquieu",
-        "source-sep-smith"
-      ],
+      "sourceIds": ["source-sep-locke-political", "source-sep-montesquieu", "source-sep-smith"],
       "id": "origens",
       "anchor": "origens",
       "title": "Contratos, poderes e comércio",
       "kicker": "Origens e formação",
       "layout": "documents",
-      "minutes": 2,
+      "minutes": 1,
       "narrative": [
         "Na Inglaterra das guerras civis e da Revolução Gloriosa, Locke sustenta que o poder político existe para proteger vida, liberdade e propriedade e perde legitimidade quando as viola. O consentimento e o direito de resistência entram no vocabulário político.",
         "Na França absolutista, Montesquieu defende que só o poder limita o poder. Na Escócia do Iluminismo, Smith descreve como a divisão do trabalho e o comércio produzem riqueza sem um plano central.",
@@ -104,11 +92,7 @@
         {
           "type": "entities",
           "mode": "thinkers",
-          "entityIds": [
-            "person-john-locke",
-            "person-montesquieu",
-            "person-adam-smith"
-          ],
+          "entityIds": ["person-john-locke", "person-montesquieu", "person-adam-smith"],
           "notes": {
             "person-john-locke": "Fundamenta o governo no consentimento e nos direitos naturais.",
             "person-montesquieu": "Propõe separar poderes para proteger a liberdade política.",
@@ -120,25 +104,20 @@
         "question": "Como Locke liga consentimento, propriedade e direito de resistência?",
         "answer": "O poder político existe para proteger vida, liberdade e propriedade; se viola essa finalidade, perde legitimidade, e o consentimento dos governados fundamenta o direito de resistência.",
         "rationale": "Reconstrua a cadeia de argumentos, não apenas o nome do autor.",
-        "sourceIds": [
-          "source-sep-locke-political"
-        ]
+        "sourceIds": ["source-sep-locke-political"]
       }
     },
     {
       "question": "O que torna um governo legítimo?",
       "bridge": "Esses compromissos dependem de conceitos que descrevem como a sociedade funciona.",
       "gap": null,
-      "sourceIds": [
-        "source-sep-liberalism",
-        "source-sep-liberty"
-      ],
+      "sourceIds": ["source-sep-liberalism", "source-sep-liberty"],
       "id": "principios",
       "anchor": "principios",
       "title": "Limites ao poder",
       "kicker": "Pilares e princípios",
       "layout": "concepts",
-      "minutes": 2,
+      "minutes": 1,
       "narrative": [
         "Três compromissos atravessam a tradição: governo apoiado em consentimento e direitos; poder dividido e limitado; proteção da esfera individual contra a interferência arbitrária. Cada um foi formulado por autores identificáveis e admite interpretações diferentes.",
         "A liberdade negativa pergunta quais obstáculos externos impedem a ação; a liberdade positiva pergunta quem governa a própria vida. Berlin mostra que as duas podem entrar em conflito.",
@@ -158,13 +137,8 @@
               "paragraphs": [
                 "No Segundo tratado, Locke sustenta que as pessoas têm direitos à vida, à liberdade e à propriedade anteriores ao governo, e que instituem a autoridade política para protegê-los. Um governo que os viola pode ser resistido."
               ],
-              "sourceIds": [
-                "source-locke-two-treatises",
-                "source-sep-locke-political"
-              ],
-              "entityIds": [
-                "person-john-locke"
-              ],
+              "sourceIds": ["source-locke-two-treatises", "source-sep-locke-political"],
+              "entityIds": ["person-john-locke"],
               "classification": "tese atribuída"
             },
             {
@@ -175,13 +149,8 @@
               "paragraphs": [
                 "Em O espírito das leis, Montesquieu argumenta que a liberdade política depende de que nenhum poder concentre as funções de fazer leis, executá-las e julgar."
               ],
-              "sourceIds": [
-                "source-montesquieu-esprit",
-                "source-sep-montesquieu"
-              ],
-              "entityIds": [
-                "person-montesquieu"
-              ],
+              "sourceIds": ["source-montesquieu-esprit", "source-sep-montesquieu"],
+              "entityIds": ["person-montesquieu"],
               "classification": "tese atribuída"
             },
             {
@@ -192,13 +161,8 @@
               "paragraphs": [
                 "Em Sobre a liberdade, Mill defende ampla liberdade de pensamento, expressão e modos de vida, e restringe a interferência social aos casos de dano a terceiros."
               ],
-              "sourceIds": [
-                "source-mill-on-liberty",
-                "source-sep-mill"
-              ],
-              "entityIds": [
-                "person-john-stuart-mill"
-              ],
+              "sourceIds": ["source-mill-on-liberty", "source-sep-mill"],
+              "entityIds": ["person-john-stuart-mill"],
               "classification": "tese atribuída"
             }
           ]
@@ -208,9 +172,7 @@
         "question": "Quais são os três compromissos liberais e por que eles podem entrar em tensão?",
         "answer": "Consentimento e direitos, poder dividido e limitação da esfera individual; a tensão aparece quando a proteção da liberdade exige intervenção ou quando a maioria pressiona direitos.",
         "rationale": "Compare princípios e localize seus conflitos.",
-        "sourceIds": [
-          "source-sep-liberalism"
-        ],
+        "sourceIds": ["source-sep-liberalism"],
         "revisit": [
           {
             "entityId": "person-john-locke",
@@ -223,16 +185,13 @@
       "question": "Liberdade de quê, e para quê?",
       "bridge": "Antes de ver quem as defendeu, situe essas ideias no tempo.",
       "gap": null,
-      "sourceIds": [
-        "source-sep-liberalism",
-        "source-sep-liberty"
-      ],
+      "sourceIds": ["source-sep-liberalism", "source-sep-liberty"],
       "id": "conceitos",
       "anchor": "conceitos",
       "title": "Mercado, maioria e liberdade",
       "kicker": "Conceitos e palavras-chave",
       "layout": "concepts",
-      "minutes": 2,
+      "minutes": 1,
       "narrative": [
         "A divisão do trabalho aumenta a produtividade e cria dependência mútua; o mercado coordena decisões dispersas por preços e incentivos. Smith vê nisso uma fonte de riqueza, mas também de desigualdade e de trabalho repetitivo.",
         "Mill alerta para a tirania da maioria: a opinião pública pode oprimir tanto quanto o Estado. Berlin distingue liberdade de não impedimento e liberdade de autogoverno. Hayek descreve a ordem espontânea do mercado como um limite ao planejamento central.",
@@ -252,14 +211,8 @@
               "paragraphs": [
                 "Smith explica o crescimento da riqueza pela divisão do trabalho, limitada pela extensão do mercado. Ele também defendia educação pública e criticava monopólios e acordos entre comerciantes."
               ],
-              "sourceIds": [
-                "source-smith-wealth",
-                "source-sep-smith"
-              ],
-              "entityIds": [
-                "person-adam-smith",
-                "work-wealth-of-nations"
-              ],
+              "sourceIds": ["source-smith-wealth", "source-sep-smith"],
+              "entityIds": ["person-adam-smith", "work-wealth-of-nations"],
               "classification": "tese atribuída"
             },
             {
@@ -270,13 +223,8 @@
               "paragraphs": [
                 "Tocqueville admirou a igualdade de condições nos Estados Unidos, mas alertou que a maioria pode exercer um poder difuso sobre o pensamento e os costumes."
               ],
-              "sourceIds": [
-                "source-tocqueville-democracy",
-                "source-sep-tocqueville"
-              ],
-              "entityIds": [
-                "person-alexis-de-tocqueville"
-              ],
+              "sourceIds": ["source-tocqueville-democracy", "source-sep-tocqueville"],
+              "entityIds": ["person-alexis-de-tocqueville"],
               "classification": "tese atribuída"
             },
             {
@@ -287,13 +235,8 @@
               "paragraphs": [
                 "Berlin distingue a liberdade negativa, ausência de interferência, da positiva, autogoverno. Ele alerta que a segunda pode justificar coerção em nome do verdadeiro interesse das pessoas."
               ],
-              "sourceIds": [
-                "source-berlin-two-concepts",
-                "source-sep-liberty"
-              ],
-              "entityIds": [
-                "person-isaiah-berlin"
-              ],
+              "sourceIds": ["source-berlin-two-concepts", "source-sep-liberty"],
+              "entityIds": ["person-isaiah-berlin"],
               "classification": "tese atribuída"
             }
           ]
@@ -303,9 +246,7 @@
         "question": "Como a divisão do trabalho produz riqueza e, ao mesmo tempo, dependência e desigualdade em Smith?",
         "answer": "A divisão aumenta a produtividade e a cooperação, mas especializa os trabalhadores, cria dependência mútua e distribui de forma desigual os ganhos.",
         "rationale": "Reconheça um efeito ambivalente, não uma virtude ou um defeito único.",
-        "sourceIds": [
-          "source-sep-liberalism"
-        ]
+        "sourceIds": ["source-sep-liberalism"]
       }
     },
     {
@@ -323,7 +264,7 @@
       "title": "Épocas do liberalismo",
       "kicker": "História e épocas",
       "layout": "concepts",
-      "minutes": 2,
+      "minutes": 1,
       "narrative": [
         "A periodização é didática: as revoluções e a filosofia política dos séculos XVII e XVIII; o liberalismo clássico e o utilitarismo do XIX; o liberalismo social e o debate com o keynesianismo no XX; o neoliberalismo e a crise do Estado de bem-estar.",
         "As fronteiras são aproximadas. O liberalismo na América Latina, incluindo o Brasil imperial e republicano, exige bibliografia própria.",
@@ -333,31 +274,11 @@
         {
           "type": "chronology",
           "epochs": [
-            {
-              "itemId": "lib-epoch-revolutions",
-              "start": 1688,
-              "end": 1799
-            },
-            {
-              "itemId": "lib-epoch-classical",
-              "start": 1800,
-              "end": 1870
-            },
-            {
-              "itemId": "lib-epoch-social",
-              "start": 1880,
-              "end": 1945
-            },
-            {
-              "itemId": "lib-epoch-postwar",
-              "start": 1944,
-              "end": 1973
-            },
-            {
-              "itemId": "lib-epoch-neoliberal",
-              "start": 1973,
-              "end": 2008
-            }
+            { "itemId": "lib-epoch-revolutions", "start": 1688, "end": 1799 },
+            { "itemId": "lib-epoch-classical", "start": 1800, "end": 1870 },
+            { "itemId": "lib-epoch-social", "start": 1880, "end": 1945 },
+            { "itemId": "lib-epoch-postwar", "start": 1944, "end": 1973 },
+            { "itemId": "lib-epoch-neoliberal", "start": 1973, "end": 2008 }
           ],
           "entityIds": [
             "person-john-locke",
@@ -421,10 +342,7 @@
                 "source-mill-on-liberty",
                 "source-sep-liberalism"
               ],
-              "entityIds": [
-                "person-alexis-de-tocqueville",
-                "person-john-stuart-mill"
-              ],
+              "entityIds": ["person-alexis-de-tocqueville", "person-john-stuart-mill"],
               "classification": "interpretação"
             },
             {
@@ -436,12 +354,8 @@
                 "Autores como T. H. Green e L. T. Hobhouse argumentaram que a liberdade não é só ausência de coerção: depende de condições materiais que o Estado pode garantir.",
                 "Esse liberalismo social, ou novo liberalismo, dialogou com reformas trabalhistas e com a economia de Keynes, e afastou-se do laissez-faire."
               ],
-              "sourceIds": [
-                "source-sep-liberalism"
-              ],
-              "entityIds": [
-                "ideology-social-liberalism"
-              ],
+              "sourceIds": ["source-sep-liberalism"],
+              "entityIds": ["ideology-social-liberalism"],
               "classification": "interpretação"
             },
             {
@@ -458,10 +372,7 @@
                 "source-mont-pelerin-1947",
                 "source-berlin-two-concepts"
               ],
-              "entityIds": [
-                "person-friedrich-hayek",
-                "person-isaiah-berlin"
-              ],
+              "entityIds": ["person-friedrich-hayek", "person-isaiah-berlin"],
               "classification": "tese atribuída"
             },
             {
@@ -477,9 +388,7 @@
                 "liberalism-source-wikipedia-ideology-neoliberalism",
                 "source-sep-liberalism"
               ],
-              "entityIds": [
-                "ideology-neoliberalism"
-              ],
+              "entityIds": ["ideology-neoliberalism"],
               "classification": "alegação empírica"
             }
           ]
@@ -490,9 +399,7 @@
         "question": "Por que a periodização do liberalismo não é uma sucessão de doutrinas que se substituem?",
         "answer": "Porque clássico, social e neoliberal convivem e disputam o mesmo vocabulário; a periodização destaca ênfases históricas, não o desaparecimento das correntes anteriores.",
         "rationale": "Diferencie periodização didática de substituição histórica.",
-        "sourceIds": [
-          "source-sep-liberalism"
-        ]
+        "sourceIds": ["source-sep-liberalism"]
       }
     },
     {
@@ -544,9 +451,7 @@
         "question": "Compare a liberdade em Mill e Berlin: o que muda na preocupação central?",
         "answer": "Mill investiga os limites da maioria sobre o indivíduo; Berlin distingue liberdade negativa e positiva e alerta para os riscos de ambas. A pergunta se desloca da tirania da maioria para a natureza da liberdade.",
         "rationale": "Compare duas formulações do mesmo valor.",
-        "sourceIds": [
-          "source-sep-liberalism"
-        ]
+        "sourceIds": ["source-sep-liberalism"]
       }
     },
     {
@@ -564,7 +469,7 @@
       "title": "Três liberalismos em conflito",
       "kicker": "Correntes e vertentes",
       "layout": "graph",
-      "minutes": 2,
+      "minutes": 1,
       "narrative": [
         "O liberalismo clássico desconfia do Estado e valoriza o mercado; o liberalismo social aceita a intervenção para garantir liberdade efetiva; o liberalismo igualitário ou das capacidades desloca a pergunta para o que as pessoas podem fazer.",
         "A rede mostra influências e críticas documentadas. Linhas de influência não são descendência linear.",
@@ -583,12 +488,8 @@
               "paragraphs": [
                 "Enfatiza direitos individuais, Estado de direito e comércio livre. Diverge internamente sobre quanto o Estado deve fazer além de proteger direitos."
               ],
-              "sourceIds": [
-                "source-sep-liberalism"
-              ],
-              "entityIds": [
-                "ideology-classical-liberalism"
-              ],
+              "sourceIds": ["source-sep-liberalism"],
+              "entityIds": ["ideology-classical-liberalism"],
               "classification": "interpretação"
             },
             {
@@ -599,13 +500,8 @@
               "paragraphs": [
                 "Defende educação, saúde e proteção social como meios de ampliar a liberdade real, sem abandonar direitos civis e políticos."
               ],
-              "sourceIds": [
-                "source-sep-liberalism"
-              ],
-              "entityIds": [
-                "ideology-social-liberalism",
-                "person-john-stuart-mill"
-              ],
+              "sourceIds": ["source-sep-liberalism"],
+              "entityIds": ["ideology-social-liberalism", "person-john-stuart-mill"],
               "classification": "interpretação"
             },
             {
@@ -620,10 +516,7 @@
                 "liberalism-source-wikipedia-ideology-neoliberalism",
                 "source-hayek-road"
               ],
-              "entityIds": [
-                "ideology-neoliberalism",
-                "person-friedrich-hayek"
-              ],
+              "entityIds": ["ideology-neoliberalism", "person-friedrich-hayek"],
               "classification": "interpretação"
             }
           ]
@@ -646,9 +539,7 @@
         "question": "O que distingue liberalismo clássico, social e neoliberal?",
         "answer": "O clássico desconfia do Estado e valoriza o mercado; o social aceita intervenção para garantir liberdade efetiva; o neoliberal reforça o mercado e critica o planejamento estatal.",
         "rationale": "Compare as três correntes cartografadas pelo critério de intervenção e liberdade efetiva.",
-        "sourceIds": [
-          "source-sep-liberalism"
-        ],
+        "sourceIds": ["source-sep-liberalism"],
         "revisit": [
           {
             "entityId": "person-john-stuart-mill",
@@ -692,13 +583,8 @@
               "paragraphs": [
                 "A Revolução Gloriosa e a Declaração de Direitos de 1689 limitaram a Coroa. Locke voltou do exílio e publicou os Dois tratados no mesmo ano."
               ],
-              "sourceIds": [
-                "source-sep-locke-political"
-              ],
-              "entityIds": [
-                "event-glorious-revolution",
-                "person-john-locke"
-              ],
+              "sourceIds": ["source-sep-locke-political"],
+              "entityIds": ["event-glorious-revolution", "person-john-locke"],
               "classification": "alegação empírica"
             },
             {
@@ -709,12 +595,8 @@
               "paragraphs": [
                 "Smith lecionou filosofia moral em Glasgow antes de publicar A riqueza das nações (Londres, 1776)."
               ],
-              "sourceIds": [
-                "source-sep-smith"
-              ],
-              "entityIds": [
-                "person-adam-smith"
-              ],
+              "sourceIds": ["source-sep-smith"],
+              "entityIds": ["person-adam-smith"],
               "classification": "alegação empírica"
             },
             {
@@ -725,12 +607,8 @@
               "paragraphs": [
                 "A Declaração de 1776 e a Constituição de 1787 incorporaram linguagem de direitos e separação de poderes, convivendo com a escravidão."
               ],
-              "sourceIds": [
-                "liberalism-source-wikipedia-event-american-revolution"
-              ],
-              "entityIds": [
-                "event-american-revolution"
-              ],
+              "sourceIds": ["liberalism-source-wikipedia-event-american-revolution"],
+              "entityIds": ["event-american-revolution"],
               "classification": "alegação empírica"
             },
             {
@@ -745,9 +623,7 @@
                 "liberalism-source-wikipedia-event-french-revolution",
                 "source-burke-reflections"
               ],
-              "entityIds": [
-                "event-french-revolution"
-              ],
+              "entityIds": ["event-french-revolution"],
               "classification": "alegação empírica"
             },
             {
@@ -758,12 +634,8 @@
               "paragraphs": [
                 "A reunião de abril de 1947 fundou a Mont Pelerin Society, que se tornou uma rede internacional de economistas e intelectuais liberais."
               ],
-              "sourceIds": [
-                "source-mont-pelerin-1947"
-              ],
-              "entityIds": [
-                "person-friedrich-hayek"
-              ],
+              "sourceIds": ["source-mont-pelerin-1947"],
+              "entityIds": ["person-friedrich-hayek"],
               "classification": "alegação empírica"
             },
             {
@@ -780,9 +652,7 @@
                 "source-lib-escravidao",
                 "source-lib-cf88"
               ],
-              "entityIds": [
-                "article-constituicao-1988"
-              ],
+              "entityIds": ["article-constituicao-1988"],
               "classification": "interpretação"
             }
           ]
@@ -793,9 +663,7 @@
         "question": "Como Inglaterra, Escócia, França e Estados Unidos disputam o liberalismo de formas diferentes?",
         "answer": "Cada lugar coloca problemas institucionais distintos, como revoluções, Iluminismo, absolutismo e constituição; a tradição responde a esses contextos, não a uma essência única.",
         "rationale": "Relacione instituições e conjunturas nacionais à tradição.",
-        "sourceIds": [
-          "source-sep-liberalism"
-        ]
+        "sourceIds": ["source-sep-liberalism"]
       }
     },
     {
@@ -816,7 +684,7 @@
       "title": "Críticas à liberdade liberal",
       "kicker": "Argumentos, críticas e respostas",
       "layout": "debate",
-      "minutes": 2,
+      "minutes": 1,
       "narrative": [
         "O debate entre liberdade negativa e positiva é interno: Berlin reconstrói as duas posições e mostra os riscos de cada uma. Burke, Marx, Polanyi e os comunitaristas criticam o liberalismo por razões diferentes.",
         "Cada crítica tem autoria e alvo próprios; elas não se somam em um veredito. Apenas um debate segue o quadro completo de defesa, crítica, resposta e limites.",
@@ -839,13 +707,8 @@
                   "Em Dois conceitos de liberdade (1958), Berlin distingue duas perguntas: qual é a área em que alguém pode agir sem interferência, e quem ou o que controla suas ações. Ele vê na segunda resposta, a do autodomínio, um risco: dividir a pessoa num eu “superior” e outro “inferior” permitiria coagir alguém em nome do que seria seu verdadeiro interesse.",
                   "Como avaliar: separar a distinção conceitual do alerta político que Berlin formula no contexto da Guerra Fria, que a enciclopédia registra."
                 ],
-                "sourceIds": [
-                  "source-berlin-two-concepts",
-                  "source-sep-liberty"
-                ],
-                "entityIds": [
-                  "person-isaiah-berlin"
-                ],
+                "sourceIds": ["source-berlin-two-concepts", "source-sep-liberty"],
+                "entityIds": ["person-isaiah-berlin"],
                 "classification": "tese atribuída"
               },
               "criticism": {
@@ -857,9 +720,7 @@
                   "Em What’s Wrong with Negative Liberty (1979), Charles Taylor contrapõe um “conceito de oportunidade”, centrado no que a pessoa pode fazer, a um “conceito de exercício”, centrado em agir de fato segundo escolhas próprias. Para ele, a versão negativa deixa de fora essa segunda dimensão.",
                   "Como criticar com rigor: identificar qual premissa é contestada (o que conta como obstáculo, e se obstáculos internos contam) em vez de reduzir a posição de Berlin à defesa de um mercado sem regras."
                 ],
-                "sourceIds": [
-                  "source-sep-liberty"
-                ],
+                "sourceIds": ["source-sep-liberty"],
                 "entityIds": [],
                 "classification": "interpretação"
               },
@@ -872,9 +733,7 @@
                   "A enciclopédia registra a proposta de Gerald MacCallum: liberdade é sempre a de um agente, livre de certos obstáculos, para fazer ou ser algo. Nessa leitura, negativos e positivos divergem sobre o que conta como agente, obstáculo e fim, e não sobre dois conceitos opostos.",
                   "Eric Nelson (2005) argumenta, além disso, que autores classificados como positivos também definiam liberdade como ausência de restrições. Não se apresenta aqui uma réplica direta de Berlin a Taylor: ela não foi incorporada ao recorte."
                 ],
-                "sourceIds": [
-                  "source-sep-liberty"
-                ],
+                "sourceIds": ["source-sep-liberty"],
                 "entityIds": [],
                 "classification": "interpretação"
               },
@@ -887,9 +746,7 @@
                   "O debate é conceitual. Avaliar políticas concretas (tributação, assistência, regulação) exige evidência empírica específica, que este recorte não apresenta.",
                   "Há ainda uma terceira posição, republicana (Pettit, Skinner), que define liberdade como ausência de dominação. A enciclopédia registra que segue em aberto se ela constitui de fato um terceiro conceito."
                 ],
-                "sourceIds": [
-                  "source-sep-liberty"
-                ],
+                "sourceIds": ["source-sep-liberty"],
                 "entityIds": [],
                 "classification": "limitação editorial"
               }
@@ -908,12 +765,8 @@
               "paragraphs": [
                 "Nas Reflexões sobre a Revolução na França, Burke critica a pretensão de reconstruir a sociedade a partir de princípios racionais e direitos universais."
               ],
-              "sourceIds": [
-                "source-burke-reflections"
-              ],
-              "entityIds": [
-                "event-french-revolution"
-              ],
+              "sourceIds": ["source-burke-reflections"],
+              "entityIds": ["event-french-revolution"],
               "classification": "tese atribuída"
             },
             {
@@ -924,12 +777,8 @@
               "paragraphs": [
                 "Marx distingue emancipação política e emancipação humana e vê nos direitos do homem a proteção do indivíduo egoísta, separado da comunidade. A crítica antecipa o debate posterior entre liberalismo e socialismo."
               ],
-              "sourceIds": [
-                "source-marx-jewish-question"
-              ],
-              "entityIds": [
-                "person-karl-marx"
-              ],
+              "sourceIds": ["source-marx-jewish-question"],
+              "entityIds": ["person-karl-marx"],
               "classification": "tese atribuída"
             },
             {
@@ -940,9 +789,7 @@
               "paragraphs": [
                 "Em A grande transformação, Polanyi argumenta que o mercado autorregulado do século XIX nunca existiu sem intervenção estatal e gerou contramovimentos sociais."
               ],
-              "sourceIds": [
-                "source-polanyi-transformation"
-              ],
+              "sourceIds": ["source-polanyi-transformation"],
               "entityIds": [],
               "classification": "tese atribuída"
             },
@@ -954,9 +801,7 @@
               "paragraphs": [
                 "Autores como Michael Sandel, Alasdair MacIntyre, Charles Taylor e Michael Walzer criticaram a concepção liberal de pessoa e de neutralidade do Estado; liberais responderam distinguindo teoria política e metafísica."
               ],
-              "sourceIds": [
-                "source-sep-communitarianism"
-              ],
+              "sourceIds": ["source-sep-communitarianism"],
               "entityIds": [],
               "classification": "interpretação"
             }
@@ -968,9 +813,7 @@
         "question": "Por que a crítica de Berlin à liberdade positiva é interna ao liberalismo, e não apenas uma crítica externa?",
         "answer": "Porque Berlin reconhece a liberdade positiva como parte da tradição, mas mostra o risco de que um ideal de autonomia justifique coerção; a crítica vem dos próprios valores liberais.",
         "rationale": "Examine uma objeção que nasce dos próprios valores liberais.",
-        "sourceIds": [
-          "source-berlin-two-concepts"
-        ],
+        "sourceIds": ["source-berlin-two-concepts"],
         "revisit": [
           {
             "entityId": "person-john-stuart-mill",
@@ -999,20 +842,13 @@
         "A rede do acervo reúne registros de descoberta; relações tipadas com outras tradições ainda não estão documentadas com fontes.",
         "No Brasil, o liberalismo se conecta ao trabalhismo e à social-democracia pela disputa sobre direitos sociais e limites do Estado. A Constituição de 1988 é o ponto em que essas linguagens se encontram e se tensionam."
       ],
-      "blocks": [
-        {
-          "type": "atlas",
-          "rootEntityId": "ideology-liberalism"
-        }
-      ],
+      "blocks": [{ "type": "atlas", "rootEntityId": "ideology-liberalism" }],
       "coverage": "partial",
       "review": {
         "question": "O que separa liberalismo de republicanismo, conservadorismo e socialismo?",
         "answer": "Compartilham perguntas sobre liberdade, ordem e igualdade, mas divergem sobre consentimento, mercado, tradição e intervenção; a comparação não deve transformar diálogo em fusão.",
         "rationale": "Compare tradições por suas respostas, não por rótulos.",
-        "sourceIds": [
-          "source-lib-cf88"
-        ],
+        "sourceIds": ["source-lib-cf88"],
         "revisit": [
           {
             "entityId": "ideology-classical-liberalism",
@@ -1027,14 +863,15 @@
       "title": "Roteiro de leituras",
       "kicker": "Roteiro de leitura",
       "layout": "documents",
-      "minutes": 2,
+      "minutes": 1,
       "question": "Por onde começar a ler os liberais e seus críticos?",
       "bridge": "Para conferir cada argumento, volte às fontes desta leitura.",
       "gap": null,
       "sourceIds": [],
       "narrative": [
-        "O roteiro começa por textos curtos e acessíveis, passa por obras clássicas e chega a estudos e críticas. A ordem ajuda a construir vocabulário antes de enfrentar os textos longos.",
-        "Textos primários permitem conferir o argumento; introduções e estudos situam o debate; críticas mostram os limites. As edições indicadas são as originais ou as primeiras traduções."
+        "Traduzir e comparar autores ingleses, franceses e escoceses do século XVII ao XIX exige cuidado com o vocabulário institucional de cada época: propriedade, tolerância, interesse e representação não têm exatamente o mesmo alcance em Locke, Montesquieu e Mill.",
+        "Textos primários permitem conferir os argumentos originais sobre consentimento e limites do poder; introduções e estudos comparativos situam o debate entre liberalismo clássico, social e contemporâneo.",
+        "No exame da recepção brasileira, confrontar tratados europeus com discursos e projetos constitucionais do século XIX e XX ajuda a medir o alcance e os impasses dessas ideias em sociedades marcadas por hierarquias rígidas."
       ],
       "blocks": [
         {
@@ -1163,7 +1000,8 @@
             }
           ]
         }
-      ]
+      ],
+      "coverage": "complete"
     },
     {
       "question": "Como conferir o que foi dito aqui?",
@@ -1205,8 +1043,9 @@
       "layout": "sources",
       "minutes": 1,
       "narrative": [
-        "A leitura distingue textos primários, estudos acadêmicos e obras de divulgação. As afirmações são atribuídas a autores e acompanhadas de fontes; a bibliografia de cada capítulo indica onde conferir.",
-        "Uma síntese com fontes não é o mesmo que uma versão verificada por especialista. O estado editorial aparece no selo da página e na área de fontes."
+        "Cada capítulo declara os tratados, compêndios e verbetes em que se apoia. Nos pontos marcados como parciais, a própria exposição aponta quais correntes contemporâneas ainda demandam documentação complementar.",
+        "A separação entre definição conceitual, trajetória institucional e controvérsia normativa possibilita verificar em cada fonte o que pertence à formulação dos autores e o que decorre de interpretação posterior.",
+        "A lista bibliográfica reúne tratados filosóficos clássicos, entradas de enciclopédias acadêmicas e referências documentais sobre experiências constitucionais comparadas."
       ],
       "blocks": [
         {
@@ -1241,7 +1080,8 @@
             "liberalism-source-wikipedia-ideology-liberalism"
           ]
         }
-      ]
+      ],
+      "coverage": "complete"
     }
   ]
 }

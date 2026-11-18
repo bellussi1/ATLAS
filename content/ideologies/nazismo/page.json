@@ -13,7 +13,7 @@
   "identity": {
     "accent": "teal",
     "palette": "fascismo",
-    "signature": "Leitura montada do grafo",
+    "signature": "Síntese editorial assistida sobre o grafo",
     "keyVisualization": "timeline"
   },
   "portrait": null,
@@ -22,17 +22,24 @@
     {
       "id": "introducao",
       "anchor": "introducao",
-      "title": "O que é?",
+      "title": "Ideologia, regime e ruptura",
       "kicker": "O que é?",
       "minutes": 1,
       "narrative": [
-        "O nazismo, oficialmente nacional-socialismo, é uma ideologia associada a Adolf Hitler e ao Partido Nazista (NSDAP), na Alemanha. O verbete a descreve como uma forma de fascismo que despreza a democracia liberal, incorpora racismo científico, antissemitismo, anticomunismo e eugenia. Seu partido foi fundado em 1919 e o programa de 25 pontos foi proclamado em 1920. O texto trata sua ascensão após a derrota alemã na Primeira Guerra Mundial, a perseguição aos judeus e o Holocausto, em que foram mortos entre 5 e 6 milhões de pessoas nos campos de concentração.",
-        "Posição política descrita na fonte: extrema direita."
+        "O nazismo — formalmente nacional-socialismo — foi a ideologia e o regime totalitário conduzido por Adolf Hitler e pelo Partido Nacional-Socialista dos Trabalhadores Alemães (NSDAP), que governou a Alemanha de 1933 até a derrota militar na Segunda Guerra Mundial em 1945.",
+        "Embora classificado pela ciência política como uma variante extrema do fascismo europeu, o nazismo distinguiu-se pelo peso central atribuído ao racismo biológico, ao antissemitismo eliminacionista e à eugenia como critérios de pertencimento e exclusão estatal.",
+        "Do ponto de vista institucional, rejeitou frontalmente a democracia liberal, a separação de poderes, o pluralismo partidário e as organizações autônomas de trabalhadores, instaurando um Estado policial e de partido único subordinado ao princípio da autoridade suprema do líder.",
+        "A expansão militarista na Europa e a radicalização das políticas raciais culminaram no Holocausto — o extermínio sistemático de milhões de judeus e de outros grupos perseguidos — e na destruição em massa da Segunda Guerra Mundial."
       ],
-      "question": "O que define Nazismo?",
-      "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
+      "question": "O que caracteriza o nazismo na história política do século XX?",
+      "bridge": "Para explicar como esse movimento chegou ao poder, o próximo capítulo examina a Alemanha pós-1918.",
       "sourceIds": ["src-wiki-topic-nazismo"],
-      "review": null,
+      "review": {
+        "question": "O que diferencia o nazismo de regimes autoritários tradicionais ou conservadores?",
+        "answer": "A mobilização de massas sob partido único combinada ao determinismo racial biológico, à perseguição antissemita sistemática e ao projeto total de controle da sociedade e expansão territorial.",
+        "rationale": "Observe a fusão entre mobilização totalitária e hierarquia racial estatal.",
+        "sourceIds": ["src-wiki-topic-nazismo"]
+      },
       "gap": null,
       "coverage": "complete",
       "layout": "introduction",
@@ -45,12 +52,20 @@
       "kicker": "Origens e formação",
       "minutes": 1,
       "narrative": [
-        "O nazismo é descrito como uma forma de fascismo que despreza a democracia liberal e o sistema parlamentar."
+        "O movimento emergiu na Alemanha após a derrota na Primeira Guerra Mundial (1918), o colapso do Império Alemão e a assinatura do Tratado de Versalhes, em meio a hiperinflação, desemprego e instabilidade aguda da República de Weimar.",
+        "O NSDAP nasceu em Munique no imediato pós-guerra articulando ressentimentos nacionalistas, rejeição revanchista às reparações militares e grupos paramilitares como os Freikorps, hostis tanto à esquerda revolucionária quanto ao liberalismo parlamentar.",
+        "No plano intelectual, apropriou-se de correntes pangermânicas do século XIX — como as de Georg Ritter von Schönerer —, de interpretações distorcidas de filósofos nacionalistas e do darwinismo social aplicado à política.",
+        "Após o fracassado Putsch da Cervejaria em 1923, o partido reorientou-se para a combinação de propaganda de massa, violência de rua das milícias SA e disputa eleitoral dentro de Weimar, multiplicando seus votos após a Grande Depressão de 1929."
       ],
-      "question": "Como e em que contexto Nazismo surgiu?",
-      "bridge": "Visto o contexto de formação, seguem os princípios e traços centrais.",
+      "question": "Em que crise histórica e intelectual o movimento nazista se formou?",
+      "bridge": "Conhecida a origem alemã do entreguerras, seguem os eixos ideológicos do partido.",
       "sourceIds": ["src-wiki-topic-nazismo"],
-      "review": null,
+      "review": {
+        "question": "Por que a crise econômica de 1929 ampliou decisivamente o eleitorado do NSDAP?",
+        "answer": "O colapso econômico agravou o desemprego e radicalizou setores médios, rurais e elites conservadoras descontentes com a paralisia parlamentar de Weimar.",
+        "rationale": "Ligue a crise socioeconômica de Weimar à perda de apoio aos partidos republicanos.",
+        "sourceIds": ["src-wiki-topic-nazismo"]
+      },
       "gap": null,
       "coverage": "complete",
       "layout": "documents",
@@ -82,13 +97,20 @@
       "kicker": "Pilares e princípios",
       "minutes": 1,
       "narrative": [
-        "O nazismo incorpora racismo científico, antissemitismo, anticomunismo e uso de eugenia em seu credo.",
-        "O nazismo defendia a Volksgemeinschaft, comunidade do povo que uniria os alemães e excluiria os considerados estrangeiros."
+        "O núcleo ideológico nazista sustentava uma hierarquia pseudocientífica das raças humanas e definia a nação como comunidade sanguínea homogênea (Volksgemeinschaft), concebida como corpo coletivo ameaçado por inimigos internos e externos.",
+        "Essa concepção articulava anticomunismo radical, antiliberalismo e antissemitismo como eixos unificados, atribuindo crises econômicas, derrotas militares e conflitos de classe a supostas conspirações judaicas e internacionalistas.",
+        "Outro princípio estruturante era a doutrina do espaço vital (Lebensraum), segundo a qual a Alemanha deveria expandir suas fronteiras para o Leste Europeu mediante guerra de conquista, submissão e expropriação populacional.",
+        "Internamente, o princípio da liderança absoluta (Führerprinzip) anulava garantias constitucionais e concentrava legitimidade jurídica na vontade do chefe do Executivo, rebaixando a autonomia de tribunais, imprensa, sindicatos e universidades."
       ],
-      "question": "Quais ideias e práticas estruturam Nazismo?",
-      "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
+      "question": "Quais ideias estruturavam a propaganda e o Estado nacional-socialista?",
+      "bridge": "A partir desses pilares, o capítulo seguinte organiza os conceitos centrais desse léxico.",
       "sourceIds": ["src-wiki-topic-nazismo"],
-      "review": null,
+      "review": {
+        "question": "Qual o papel do conceito de Volksgemeinschaft no projeto político nazista?",
+        "answer": "Prometer unidade nacional e integração social por critério racial, neutralizando divisões de classe e justificando a exclusão violenta de grupos definidos como estranhos.",
+        "rationale": "Perceba a dupla face entre integração interna e exclusão violenta.",
+        "sourceIds": ["src-wiki-topic-nazismo"]
+      },
       "gap": null,
       "coverage": "complete",
       "layout": "concepts",
@@ -132,11 +154,12 @@
       "kicker": "Conceitos e palavras-chave",
       "minutes": 1,
       "narrative": [
-        "Também chamada de nacional-socialismo, Nazism, National Socialism, nazifascismo, NSDAP, Partido Nacional-Socialista dos Trabalhadores Alemães, National Socialist German Workers' Party, Partido Nazista, Adolf Hitler, hitlerismo.",
-        "Conceitos ligados à tradição: Alemães, Burguesia, Materialismo, Luta de classes, Conservadorismo."
+        "A compreensão do nazismo exige precisar categorias próprias do discurso do partido e conceitos analíticos construídos pela historiografia posterior para explicar seu funcionamento estatal.",
+        "Termos como eugenia, espaço vital, sincronização institucional (Gleichschaltung) e Estado racial descrevem práticas concretas de esterilização compulsória, censura cultural e dissolução do federalismo e dos partidos rivais em 1933–1934.",
+        "Ao lado do léxico endógeno, conceitos históricos como fascismo, totalitarismo, antissemitismo moderno e Estado de exceção situam o caso alemão dentro das crises mais amplas do entreguerras europeu."
       ],
-      "question": "Que termos e conceitos ajudam a compreender Nazismo?",
-      "bridge": "Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.",
+      "question": "Que termos-chave condensam o vocabulário político e repressivo do nazismo?",
+      "bridge": "Definidos os conceitos básicos, o próximo capítulo situa a sequência de eventos de 1920 a 1945.",
       "sourceIds": [
         "src-wiki-topic-nazismo",
         "src-wiki-topic-alemaes",
@@ -178,11 +201,21 @@
       "title": "História e épocas",
       "kicker": "História e épocas",
       "minutes": 1,
-      "narrative": ["Foram criadas as Leis de Nuremberg, que excluíam judeus da sociedade alemã."],
-      "question": "Em que períodos históricos Nazismo se formou e mudou?",
-      "bridge": "Da cronologia, passamos às pessoas e obras ligadas à tradição.",
+      "narrative": [
+        "Em 1920, Hitler ajudou a reformular o programa dos 25 pontos do NSDAP em Munique, consolidando sua linha ultranacionalista e antissemita; após a prisão em 1923–1924, redigiu Mein Kampf como síntese ideológica e estratégica.",
+        "Nomeado chanceler em janeiro de 1933 pelo presidente Paul von Hindenburg, Hitler aproveitou o incêndio do Reichstag e o Decreto de Habilitação para liquidar a oposição, ilegalizar sindicatos e concentrar o poder em 1934.",
+        "Em 1935, as Leis de Nuremberg retiraram a cidadania alemã dos judeus e institucionalizaram a segregação racial em lei estatal, antecipando o pogrom nacional de novembro de 1938 e a escalada militar na Áustria e na Tchecoslováquia.",
+        "A invasão da Polônia em setembro de 1939 deflagrou a Segunda Guerra Mundial, durante a qual o regime radicalizou a política de extermínio no Holocausto até a ocupação aliada de Berlim em maio de 1945."
+      ],
+      "question": "Quais datas demarcam a ascensão, radicalização e queda do Terceiro Reich?",
+      "bridge": "Ao longo dessa cronologia atuaram dirigentes e autores analisados no capítulo seguinte.",
       "sourceIds": ["src-wiki-topic-nazismo"],
-      "review": null,
+      "review": {
+        "question": "Como a passagem entre 1933 e 1935 revela a consolidação do Estado racial nazista?",
+        "answer": "Em 1933 ocorreu a destruição rápida do pluralismo político e jurídico de Weimar; em 1935, as Leis de Nuremberg converteram a perseguição ideológica em estatuto legal permanente.",
+        "rationale": "Distinguir desmonte institucional e codificação racial estatal.",
+        "sourceIds": ["src-wiki-topic-nazismo"]
+      },
       "gap": null,
       "coverage": "complete",
       "layout": "timeline",
@@ -192,22 +225,82 @@
           "mode": "principles",
           "items": [
             {
+              "id": "ep-naz-1920",
+              "title": "1920 · Programa do NSDAP",
+              "kicker": "Munique",
+              "summary": "Consolidação inicial do partido em torno de revanchismo e antissemitismo.",
+              "paragraphs": [
+                "Na capital da Baviera, o antigo partido trabalhista adotou o programa nacional-socialista dos 25 pontos em 1920, combinando rejeição a Versalhes, exclusão étnica da cidadania e hostilidade ao capital financeiro identificado aos judeus."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-nazismo",
+                "src-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes"
+              ],
+              "entityIds": [
+                "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+                "wiki-topic-munique"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ep-naz-1923",
+              "title": "1923 · Putsch e Mein Kampf",
+              "kicker": "República de Weimar",
+              "summary": "Frustração do golpe em Munique leva à aposta na via legal e eleitoral.",
+              "paragraphs": [
+                "Após a tentativa de golpe em Munique em novembro de 1923, a condenação na prisão de Landsberg deu origem a Mein Kampf, texto que sistematizou o racismo e a estratégia de conquista do Estado por dentro."
+              ],
+              "sourceIds": ["src-wiki-topic-nazismo", "src-wiki-topic-mein-kampf"],
+              "entityIds": ["wiki-topic-mein-kampf", "wiki-topic-adolf-hitler"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ep-naz-1933",
+              "title": "1933 · Tomada do poder",
+              "kicker": "Berlim",
+              "summary": "Nomeação de Hitler à chancelaria e extinção rápida da ordem democrática.",
+              "paragraphs": [
+                "Empossado em 30 de janeiro de 1933 sob apoio conservador, o gabinete nazista suspendeu direitos civis após o incêndio do Reichstag e aprovou poderes legislativos excepcionais que aboliram partidos opositores e sindicatos."
+              ],
+              "sourceIds": ["src-wiki-topic-nazismo", "src-wiki-topic-paul-von-hindenburg"],
+              "entityIds": ["wiki-topic-adolf-hitler", "wiki-topic-paul-von-hindenburg"],
+              "classification": "alegação empírica"
+            },
+            {
               "id": "marco-1",
-              "title": "1935",
+              "title": "1935 · Leis de Nuremberg",
               "kicker": "Marco datado",
               "summary": "Foram criadas as Leis de Nuremberg, que excluíam judeus da sociedade alemã.",
               "paragraphs": [
-                "Foram criadas as Leis de Nuremberg, que excluíam judeus da sociedade alemã."
+                "As Leis de Nuremberg codificaram critérios raciais de cidadania no Terceiro Reich, retirando direitos políticos da população judaica e proibindo casamentos entre judeus e cidadãos definidos como germânicos."
               ],
               "sourceIds": ["src-wiki-topic-nazismo"],
-              "entityIds": ["wiki-topic-nazismo"],
+              "entityIds": ["wiki-topic-nazismo", "wiki-topic-antissemitismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ep-naz-1939",
+              "title": "1939–1945 · Guerra e Holocausto",
+              "kicker": "Europa",
+              "summary": "Expansão militar, guetos, campos de extermínio e derrota em 1945.",
+              "paragraphs": [
+                "A agressão militar iniciada em 1939 ampliou o domínio alemão pela Europa ocupada e estruturou o aparelho industrial de extermínio do Holocausto até a rendição incondicional em maio de 1945."
+              ],
+              "sourceIds": ["src-wiki-topic-holocausto", "src-wiki-topic-segunda-guerra-mundial"],
+              "entityIds": ["wiki-topic-holocausto", "wiki-topic-segunda-guerra-mundial"],
               "classification": "alegação empírica"
             }
           ]
         },
         {
           "type": "chronology",
-          "epochs": [{ "itemId": "marco-1", "start": 1935, "end": 1935 }],
+          "epochs": [
+            { "itemId": "ep-naz-1920", "start": 1920, "end": 1920 },
+            { "itemId": "ep-naz-1923", "start": 1923, "end": 1925 },
+            { "itemId": "ep-naz-1933", "start": 1933, "end": 1933 },
+            { "itemId": "marco-1", "start": 1935, "end": 1935 },
+            { "itemId": "ep-naz-1939", "start": 1939, "end": 1945 }
+          ],
           "entityIds": ["wiki-topic-nazismo"],
           "markerIds": [],
           "markerNotes": {}
@@ -221,10 +314,12 @@
       "kicker": "Pensadores e obras",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: Johann Gottlieb Fichte, Georg Ritter von Schönerer, Adolf Hitler, Paul von Hindenburg, Guilherme II da Alemanha, Heinrich Himmler, Hermann Göring, Joseph Goebbels."
+        "A liderança inconteste de Adolf Hitler combinou propaganda carismática, formulação doutrinária em Mein Kampf e arbitragem final entre agências concorrentes do partido e do Estado.",
+        "No comando da máquina repressiva e de propaganda destacaram-se Joseph Goebbels, responsável pelo controle total dos meios de comunicação e da cultura, Heinrich Himmler, arquiteto da SS, da polícia secreta e dos campos de concentração, e Hermann Göring, coordenador inicial da polícia prussiana, da reindustrialização militar e da Luftwaffe.",
+        "A ascensão do regime contou também com a conivência de lideranças conservadoras e militares tradicionais da Alemanha imperial e de Weimar, personificadas no marechal e presidente Paul von Hindenburg, além da apropriação seletiva de autores nacionalistas alemães do século XIX."
       ],
-      "question": "Quem formulou, liderou ou registrou Nazismo?",
-      "bridge": "Dos autores, seguimos para as correntes e desdobramentos relacionados.",
+      "question": "Quais dirigentes e referências moldaram a doutrina e a máquina estatal nazista?",
+      "bridge": "A atuação desses dirigentes se ligou a movimentos afins e correntes comparadas no próximo capítulo.",
       "sourceIds": [
         "src-wiki-topic-nazismo",
         "src-wiki-topic-adolf-hitler",
@@ -265,15 +360,42 @@
       "title": "Correntes e vertentes",
       "kicker": "Correntes e vertentes",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
+      "narrative": [
+        "Dentro do próprio NSDAP coexistiram tensões nos anos 1920 entre a ala de Gregor e Otto Strasser, que enfatizava slogans anticapitalistas de corte nacionalista, e o grupo de Hitler voltado ao acordo com a grande indústria e os militares — conflito resolvido violentamente no expurgo da Noite das Facas Longas em 1934.",
+        "No plano comparado dos entreguerras, o nazismo alinhou-se ao fascismo italiano na recusa à democracia liberal e na exaltação militarista, mantendo porém especificidade radical pela centralidade absoluta do determinismo racial e da eugenia estatal.",
+        "Fora da Europa, movimentos como a Ação Integralista Brasileira emularam símbolos e rituais fascistas nos anos 1930; embora grupos neonazistas e círculos germanófilos no sul do Brasil tenham mantido conexões pontuais com Berlim, o integralismo priorizava o nacionalismo católico miscigenado e foi fechado por Getúlio Vargas em 1938."
+      ],
+      "question": "Como o nazismo se relaciona com o fascismo italiano, o eugenismo e nacionalismos locais?",
+      "bridge": "Das afinidades ideológicas passamos às práticas estatais e às repercussões internacionais, inclusive no Brasil.",
+      "sourceIds": [
+        "src-wiki-topic-nazismo",
+        "src-wiki-topic-fascismo",
+        "src-wiki-topic-eugenia",
+        "src-wiki-topic-antissemitismo",
+        "src-wiki-topic-integralismo-brasileiro"
+      ],
       "review": null,
-      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
-      "coverage": "pending",
+      "gap": "Relações entre fascismos europeus e correntes nacionalistas radicais seguem sínteses secundárias; falta mapeamento comparativo primário.",
+      "coverage": "partial",
       "layout": "documents",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "entities",
+          "mode": "concepts",
+          "entityIds": [
+            "wiki-topic-fascismo",
+            "wiki-topic-eugenia",
+            "wiki-topic-antissemitismo",
+            "wiki-topic-integralismo-brasileiro"
+          ],
+          "notes": {
+            "wiki-topic-fascismo": "Matriz autoritária europeia com a qual o nazismo compartilhou anticomunismo, partido único e culto ao líder, divergindo no peso do racismo biológico.",
+            "wiki-topic-eugenia": "Doutrina pseudocientífica de seleção humana radicalizada pelo regime alemão em esterilizações e assassinatos em massa.",
+            "wiki-topic-antissemitismo": "Eixo central da visão de mundo nazista que transformou preconceito secular em política estatal de extermínio.",
+            "wiki-topic-integralismo-brasileiro": "Movimento autoritário brasileiro dos anos 1930 inspirado nos fascismos europeus, porém distinto no projeto nacional-católico e na relação posterior com o Estado Novo."
+          }
+        }
+      ]
     },
     {
       "id": "experiencias",
@@ -282,10 +404,12 @@
       "kicker": "Experiências históricas",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: Freikorps, Partido Nacional-Socialista dos Trabalhadores Alemães, Grande Depressão, Primeira Guerra Mundial, Capitalismo, Holocausto, Segunda Guerra Mundial, Iluminismo, Monarquia, Ditadura."
+        "Entre 1933 e 1939, o regime combinou rearmamento estatal e grandes obras para reduzir o desemprego da Grande Depressão com a supressão de salários livres, greves e partidos, instituindo controle policial onipresente sobre a vida privada.",
+        "Com a eclosão da Segunda Guerra Mundial, a ocupação de grande parte da Europa converteu o aparato estatal alemão em sistema de trabalho escravo e extermínio industrializado, no qual cerca de seis milhões de judeus foram assassinados no Holocausto ao lado de ciganos, opositores políticos, prisioneiros soviéticos e pessoas com deficiência.",
+        "No Brasil, o Estado Novo de Getúlio Vargas oscilou diplomaticamente nos anos 1930 entre o comércio com a Alemanha e os Estados Unidos até romper com o Eixo em 1942 após o torpedeamento de navios mercantes, enviando a Força Expedicionária Brasileira para combater na Itália e proscrevendo organizações nazistas locais."
       ],
-      "question": "Em quais acontecimentos, partidos e instituições Nazismo se materializou?",
-      "bridge": "Das experiências históricas, a leitura passa às controvérsias e debates.",
+      "question": "Como funcionou o regime na sociedade alemã e qual foi seu impacto na Segunda Guerra e no Brasil?",
+      "bridge": "A dimensão dessa catástrofe deu origem a debates historiográficos centrais analisados a seguir.",
       "sourceIds": [
         "src-wiki-topic-nazismo",
         "src-wiki-wd-q7320",
@@ -298,7 +422,16 @@
         "src-wiki-topic-monarquia",
         "src-wiki-topic-ditadura"
       ],
-      "review": null,
+      "review": {
+        "question": "Por que a historiografia destaca o vínculo inseparável entre economia de guerra e perseguição racial no Terceiro Reich?",
+        "answer": "Porque o rearmamento, a conquista territorial no Leste e o trabalho compulsório nos campos de concentração financiaram e radicalizaram simultaneamente a máquina bélica e o extermínio.",
+        "rationale": "Integrar dinâmica econômica, expansão militar e política genocida.",
+        "sourceIds": [
+          "src-wiki-topic-nazismo",
+          "src-wiki-topic-holocausto",
+          "src-wiki-topic-segunda-guerra-mundial"
+        ]
+      },
       "gap": null,
       "coverage": "complete",
       "layout": "documents",
@@ -332,12 +465,19 @@
       "kicker": "Argumentos, críticas e respostas",
       "minutes": 1,
       "narrative": [
-        "O uso do termo Holocausto para vítimas não judias é contestado por muitos estudiosos."
+        "Um dos grandes debates do século XX confronta explicações intencionalistas — que enfatizam a execução planejada das ideias de Hitler desde Mein Kampf — e interpretações funcionalistas ou estruturalistas, que destacam a competição caótica entre agências estatais e partidárias como motor da radicalização cumulativa.",
+        "Outra controvérsia clássica opõe o conceito de totalitarismo, defendido por Hannah Arendt para comparar as dinâmicas de terror estatal do nazismo e do stalinismo, a leituras marxistas e sociais que analisam a aliança do regime com setores do grande capital e das elites tradicionais alemãs frente à crise de Weimar.",
+        "Discute-se ainda até que ponto a sociedade alemã aderiu por consentimento material e nacionalismo ou por coerção policial, bem como as razões pelas quais as democracias ocidentais tardaram em conter o expansionismo até 1939."
       ],
-      "question": "Quais críticas e controvérsias cercam Nazismo?",
-      "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
+      "question": "Como os historiadores divergem na interpretação do regime nazista?",
+      "bridge": "O exame dessas divergências situa o nazismo no mapa comparativo das tradições políticas.",
       "sourceIds": ["src-wiki-topic-nazismo"],
-      "review": null,
+      "review": {
+        "question": "O que opõe as interpretações intencionalista e funcionalista sobre o Terceiro Reich?",
+        "answer": "A primeira privilegia o planejamento ideológico prévio de Hitler, enquanto a segunda sublinha o papel da competição interna entre agências do Estado e do contexto da guerra na escalada radical.",
+        "rationale": "Compare ênfase doutrinária versus dinâmica institucional e conjuntural.",
+        "sourceIds": ["src-wiki-topic-nazismo"]
+      },
       "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
       "coverage": "partial",
       "layout": "debate",
@@ -348,15 +488,39 @@
           "items": [
             {
               "id": "critica-1",
-              "title": "Crítica ou controvérsia",
-              "kicker": "Argumentos e críticas",
-              "summary": "O uso do termo Holocausto para vítimas não judias é contestado por muitos estudiosos.",
+              "title": "Enquadramento histórico e ideológico",
+              "kicker": "Historiografia",
+              "summary": "Historiadores e cientistas políticos divergem sobre o peso das ideias originais frente às dinâmicas burocráticas.",
               "paragraphs": [
-                "O uso do termo Holocausto para vítimas não judias é contestado por muitos estudiosos."
+                "Interpretações intencionalistas atribuem o desfecho genocida a um projeto ideológico contínuo desde os anos 1920, enquanto análises funcionalistas enfatizam a radicalização progressiva resultante da guerra e da rivalidade entre órgãos do regime."
               ],
               "sourceIds": ["src-wiki-topic-nazismo"],
               "entityIds": ["wiki-topic-nazismo"],
-              "classification": "alegação empírica"
+              "classification": "interpretação"
+            },
+            {
+              "id": "debate-naz-totalitarismo",
+              "title": "Totalitarismo e comparação de regimes",
+              "kicker": "Ciência política",
+              "summary": "A comparação entre nazismo e stalinismo gera divergências conceituais profundas.",
+              "paragraphs": [
+                "Teóricos do totalitarismo destacam semelhanças no uso de polícia política, campos e partido único; historiadores críticos retrucam que objetivos sociais, bases de classe e projetos ideológicos tornam essa equiparação insuficiente."
+              ],
+              "sourceIds": ["src-wiki-topic-nazismo", "src-wiki-topic-totalitarismo"],
+              "entityIds": ["wiki-topic-nazismo", "wiki-topic-totalitarismo"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "debate-naz-sociedade",
+              "title": "Consenso social e coerção",
+              "kicker": "História social",
+              "summary": "Pesquisas analisam a mistura de benefícios materiais, propaganda e terror cotidiano.",
+              "paragraphs": [
+                "Estudos regionais e de arquivos da Gestapo mostram que a aceitação passiva ou ativa de parcela da população coexistiu com denúncias internas, vigilância constante e supressão impiedosa de dissidências."
+              ],
+              "sourceIds": ["src-wiki-topic-nazismo", "src-wiki-topic-ditadura"],
+              "entityIds": ["wiki-topic-nazismo", "wiki-topic-ditadura"],
+              "classification": "interpretação"
             }
           ]
         }
@@ -369,10 +533,12 @@
       "kicker": "Conexões com outras tradições",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: Alemanha Nazista, Nacionalismo, República de Weimar, Marxismo, Socialismo, Pseudociência, Extrema-direita, Democracia, Racismo, Alemanha, Direita (política), Liberalismo, Eugenia, Munique, Viena, Antissemitismo, Fascismo, Autoritarismo, Social-democracia."
+        "No espectro político, o nazismo rompeu tanto com o liberalismo constitucional e os direitos individuais quanto com o socialismo e o comunismo operário, embora tenha utilizado inicialmente retórica anticapitalista oportunista para atrair camadas empobrecidas pela crise.",
+        "Frente a ditaduras conservadoras tradicionais — inclusive regimes militares ou autoritários do século XX voltados à desmobilização política —, o nazismo distinguiu-se pelo impulso revolucionário reacionário, pela subordinação da religião e da justiça à raça e pela mobilização permanente das massas.",
+        "Sua derrota em 1945 redefiniu os tratados internacionais de direitos humanos, a tipificação jurídica do crime de genocídio e as constituições democráticas do pós-guerra."
       ],
-      "question": "Como Nazismo se liga ao restante do grafo?",
-      "bridge": "Para aprofundar além do mapa, seguem as referências de leitura.",
+      "question": "Quais fronteiras separam o nazismo do conservadorismo, da extrema direita e do autoritarismo clássico?",
+      "bridge": "A seguir, sugestões bibliográficas orientam o estudo histórico crítico do período.",
       "sourceIds": [
         "src-wikidata-verbetes",
         "src-wiki-topic-nacionalismo",
@@ -430,9 +596,13 @@
       "title": "Roteiro de leitura",
       "kicker": "Roteiro de leitura",
       "minutes": 1,
-      "narrative": ["Obras ligadas à tradição: Mein Kampf."],
-      "question": "Que obras e documentos aprofundam o estudo de Nazismo?",
-      "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
+      "narrative": [
+        "O estudo rigoroso do nazismo apoia-se em ampla documentação capturada em 1945 e em décadas de pesquisa arquivística conduzida por historiadores da Alemanha e de outros países.",
+        "Para analisar a doutrina original, documentos como Mein Kampf só devem ser lidos em perspectiva histórico-crítica acompanhados de comentários acadêmicos e estudos sobre propaganda política.",
+        "As obras reunidas abaixo oferecem sínteses introdutórias e estudos clássicos sobre Weimar, a tomada do poder, a teoria do totalitarismo e o extermínio sistemático na Europa ocupada."
+      ],
+      "question": "Que estudos históricos fundamentam a pesquisa sobre o Terceiro Reich e o Holocausto?",
+      "bridge": "A bibliografia final lista as referências documentais vinculadas aos registros do acervo.",
       "sourceIds": ["src-wiki-topic-mein-kampf"],
       "review": null,
       "gap": "Obras ligadas à tradição; edição e nível de leitura ainda pendentes.",
@@ -440,10 +610,53 @@
       "layout": "documents",
       "blocks": [
         {
-          "type": "entities",
-          "entityIds": ["wiki-topic-mein-kampf"],
-          "mode": "documents",
-          "notes": {}
+          "type": "reading-path",
+          "works": [
+            {
+              "title": "Origens do totalitarismo",
+              "author": "Hannah Arendt",
+              "year": "1951",
+              "edition": "São Paulo: Companhia das Letras",
+              "level": "intermediário",
+              "theme": "Antissemitismo moderno, imperialismo e movimentos totalitários do século XX",
+              "why": "Obra clássica de teoria política indispensável para discutir os fundamentos e mecanismos do terror totalitário.",
+              "kind": "estudo",
+              "entityId": "wiki-topic-totalitarismo"
+            },
+            {
+              "title": "A ditadura alemã",
+              "author": "Karl Dietrich Bracher",
+              "year": "1969",
+              "edition": "Colônia / Lisboa: Europa-América",
+              "level": "avançado",
+              "theme": "Estrutura política, ascensão do NSDAP e colapso da República de Weimar",
+              "why": "Analisa com rigor institucional como a paralisia constitucional alemã permitiu a captura legal e policial do Estado.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "A chegada do Terceiro Reich",
+              "author": "Richard J. Evans",
+              "year": "2003",
+              "edition": "São Paulo: Planeta",
+              "level": "introdutório",
+              "theme": "Cultura política alemã desde o Império até a consolidação ditatorial de 1933",
+              "why": "Síntese abrangente e acessível sobre a transformação da sociedade e das instituições alemãs na tomada do poder.",
+              "kind": "introdução",
+              "entityId": null
+            },
+            {
+              "title": "Mein Kampf (edição histórico-crítica comentada)",
+              "author": "Adolf Hitler (org. Christian Hartmann et al.)",
+              "year": "1925",
+              "edition": "Munique: Institut für Zeitgeschichte",
+              "level": "avançado",
+              "theme": "Fonte primária do programa ideológico e estratégico formulado em 1924–1925",
+              "why": "Registro documental primário útil em pesquisa especializada sob mediação crítica que desmonte afirmações falsas da propaganda.",
+              "kind": "primária",
+              "entityId": "wiki-topic-mein-kampf"
+            }
+          ]
         }
       ]
     },
@@ -454,9 +667,11 @@
       "kicker": "Fontes e metodologia",
       "minutes": 1,
       "narrative": [
-        "Reúne 9 afirmações da fonte principal e 38 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
+        "A leitura organiza registros sobre o NSDAP, dirigentes do Terceiro Reich, República de Weimar, eugenia, Holocausto e Segunda Guerra Mundial presentes no acervo de conhecimento.",
+        "Nos capítulos marcados como parciais — como a comparação detalhada entre fascismos e movimentos nacionalistas locais —, as notas de lacuna delimitam o que ainda depende de bibliografia comparada adicional.",
+        "Todas as entradas bibliográficas citadas nos doze capítulos constam consolidadas na listagem a seguir."
       ],
-      "question": "Quais fontes sustentam a leitura sobre Nazismo?",
+      "question": "Quais fontes documentais e enciclopédicas sustentam este recorte?",
       "bridge": null,
       "sourceIds": [
         "src-wiki-topic-nazismo",
@@ -496,7 +711,10 @@
         "src-wiki-topic-fascismo",
         "src-wiki-topic-autoritarismo",
         "src-wiki-topic-social-democracia",
-        "src-wiki-topic-mein-kampf"
+        "src-wiki-topic-mein-kampf",
+        "src-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+        "src-wiki-topic-integralismo-brasileiro",
+        "src-wiki-topic-totalitarismo"
       ],
       "review": null,
       "gap": null,
@@ -543,7 +761,10 @@
             "src-wiki-topic-fascismo",
             "src-wiki-topic-autoritarismo",
             "src-wiki-topic-social-democracia",
-            "src-wiki-topic-mein-kampf"
+            "src-wiki-topic-mein-kampf",
+            "src-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+            "src-wiki-topic-integralismo-brasileiro",
+            "src-wiki-topic-totalitarismo"
           ]
         }
       ]

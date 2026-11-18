@@ -3,132 +3,151 @@
   "id": "itinerary-trabalhismo-e-estado-social",
   "slug": "trabalhismo-e-estado-social",
   "kind": "historico",
-  "title": "Trabalhismo, Estado social e reformas no século XX",
-  "question": "Como projetos trabalhistas e social-democratas combinaram direitos do trabalho, industrialização e democracia representativa?",
-  "deck": "Um percurso histórico em seis paradas ligando a tradição trabalhista brasileira, a Era Vargas, as reformas de base de João Goulart, a social-democracia europeia e a rede de relações do acervo.",
-  "summary": "Acompanha a formação do trabalhismo no Brasil desde a institucionalização da legislação trabalhista nos anos 1930 até o debate das reformas de base nos anos 1960, contrastando suas coalizões, lideranças e tensões com o Estado de bem-estar social europeu.",
+  "title": "Trabalhismo brasileiro e Estado social em perspectiva comparada",
+  "question": "Como o trabalhismo combinou legislação social e nacionalismo desenvolvimentista no Brasil e em que se distingue da social-democracia europeia?",
+  "deck": "Da leitura sobre o trabalhismo brasileiro aos marcos da Era Vargas, às reformas de base de João Goulart, ao debate brizolista e ao contraste com o bem-estar social europeu, seis paradas investigam Estado e direitos do trabalho.",
+  "summary": "O trajeto articula a tradição brasileira nascida entre 1930 e 1964 com a comparação internacional: analisa como a CLT, a sindicalização oficial, o PTB e as reformas de base dialogaram e divergiram das experiências social-democratas europeias.",
+  "updatedAt": "2026-11-18",
+  "version": "1.1.0",
   "status": "reviewed-ai",
   "coverage": "complete",
   "review": {
     "status": "assistant",
-    "notes": "[conferência de IA] Percurso histórico estruturado e enriquecido sobre entidades, leituras e fontes compiladas; aguarda revisão humana para promoção a verified."
+    "notes": "[conferência de IA] Percurso padronizado e conferido com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
   },
   "stops": [
     {
       "id": "leitura-trabalhismo",
-      "title": "Trabalhismo: tradição, Estado e mundo do trabalho",
-      "reason": "Abre o percurso pela síntese conceitual e histórica da tradição trabalhista brasileira: como a questão social deixou de ser tratada apenas como caso de polícia para organizar sindicatos, legislação protetiva e projeto nacional-desenvolvimentista.",
-      "question": "De que modo o trabalhismo articulou direitos sociais, tutela sindical e projeto nacional?",
-      "justification": "Define o vocabulário de base (trabalhismo, corporativismo, sindicalismo e nacional-desenvolvimentismo) antes da entrada nos períodos e personagens.",
-      "destination": { "type": "leitura", "slug": "trabalhismo" },
+      "title": "O trabalhismo como tradição política brasileira",
+      "reason": "Apresenta o arcabouço conceitual e historiográfico do trabalhismo, examinando sua defesa da mediação estatal entre capital e trabalho, sua base salarial urbana e as controvérsias entre tutela corporativa e conquista de cidadania.",
+      "question": "Qual é o núcleo doutrinário que distingue o trabalhismo brasileiro tanto do liberalismo ortodoxo quanto do comunismo?",
+      "destination": { "type": "leitura", "slug": "trabalhismo", "anchor": "introducao" },
+      "justification": "Inicia pela leitura contínua de base para fixar categorias e interpretações antes dos verbetes históricos.",
+      "contextEntityId": "wiki-ideologia-trabalhismo-brasileiro",
       "sourceIds": ["src-leitura-trabalhismo"]
     },
     {
       "id": "marco-era-vargas",
-      "title": "Era Vargas: centralização estatal e legislação trabalhista",
-      "reason": "Situa o laboratório institucional de 1930–1945 em que o Estado brasileiro criou o Ministério do Trabalho, a Justiça do Trabalho e a Consolidação das Leis do Trabalho (CLT), ao mesmo tempo em que centralizou o poder e suprimiu autonomias durante o Estado Novo.",
-      "question": "Como a centralização política de 1930–1945 conviveu com a criação de direitos trabalhistas urbanos?",
-      "justification": "Conecta o plano das ideias ao marco cronológico e institucional que moldou o Estado brasileiro contemporâneo.",
+      "title": "A Era Vargas: industrialização e cidadania regulada",
+      "reason": "Analisa o período de 1930 a 1945 em que Ministério do Trabalho, previdência por categorias profissionais, salário mínimo e CLT reorganizaram o mercado urbano de trabalho enquanto suprimiam eleições e sindicatos independentes no Estado Novo.",
+      "question": "Por que a Era Vargas condensou expansão inédita da proteção trabalhista e centralização autoritária estatal?",
       "destination": { "type": "verbete", "slug": "era-vargas" },
+      "justification": "Situa o contexto institucional fundador onde surgiram leis, agências públicas e identidade trabalhista.",
       "contextEntityId": "wiki-topic-era-vargas",
-      "sourceIds": ["src-era-vargas", "src-leitura-trabalhismo"]
+      "sourceIds": ["src-era-vargas"]
     },
     {
       "id": "lideranca-vargas",
-      "title": "Getúlio Vargas: coalizão, tutela e conflito",
-      "reason": "Examina a trajetória política de Getúlio Vargas — da Revolução de 1930 ao retorno pelo voto em 1951 e à crise de agosto de 1954 — observando a tensão permanente entre mobilização trabalhista, alianças conservadoras e oposição liberal.",
-      "question": "Por que a figura de Vargas concentra tanto apoio popular quanto resistência liberal e conservadora?",
-      "justification": "Passa da estrutura institucional da Era Vargas à agência de sua liderança central e às disputas de legitimidade que atravessaram a República de 1946.",
+      "title": "Getúlio Vargas entre pacto desenvolvimentista e democracia",
+      "reason": "Examina a trajetória de Vargas na passagem da ditadura estado-novista para a fundação do PTB e o segundo governo eleito (1951–1954), marcado pela criação da Petrobras e pela aguda crise política que culminou em agosto de 1954.",
+      "question": "Como a liderança de Vargas articulou alianças operárias urbanas, soberania energética e disputas com a oposição liberal?",
       "destination": { "type": "verbete", "slug": "getulio-vargas" },
+      "justification": "Observa o papel de uma liderança política central na transição institucional para o período pluripartidário.",
       "contextEntityId": "wiki-topic-getulio-vargas",
       "sourceIds": ["src-vargas", "src-era-vargas"]
     },
     {
       "id": "reformas-goulart",
-      "title": "João Goulart e as reformas de base",
-      "reason": "Acompanha o deslocamento do trabalhismo nos anos 1960 para uma agenda de reformas estruturais — agrária, urbana, educacional, tributária e eleitoral — no contexto da Guerra Fria, até o golpe civil-militar de 1964.",
-      "question": "Que propostas das reformas de base acirraram o conflito político no início da década de 1960?",
-      "justification": "Mostra o ponto de inflexão democrático e conflitivo do trabalhismo pós-Vargas antes da ruptura institucional de 1964.",
+      "title": "João Goulart, PTB e a agenda das reformas de base",
+      "reason": "Acompanha o programa reformista do governo João Goulart entre 1961 e 1964, voltado às reformas agrária, urbana, bancária e universitária, e analisa a polarização distributiva e internacional que levou à ruptura militar de abril de 1964.",
+      "question": "Por que as reformas de base se tornaram o ponto de maior tensão política da experiência democrática de 1946?",
       "destination": { "type": "verbete", "slug": "joao-goulart" },
+      "justification": "Documenta a radicalização programática democrática do trabalhismo brasileiro antes do ciclo autoritário.",
       "contextEntityId": "wiki-topic-joao-goulart",
-      "sourceIds": ["src-goulart", "src-leitura-trabalhismo"]
+      "sourceIds": ["src-goulart"]
     },
     {
       "id": "contraste-social-democracia",
-      "title": "Social-democracia: bem-estar, regulação e parlamento",
-      "reason": "Desloca o olhar para a experiência europeia do pós-guerra, comparando partidos operários parlamentares, negociação coletiva autônoma e serviços universais com o modelo estatal-corporativo brasileiro.",
-      "question": "O que aproxima e o que distingue o trabalhismo brasileiro da social-democracia europeia?",
-      "justification": "Permite testar se o Estado social no Brasil seguiu o mesmo caminho institucional das social-democracias europeias ou construiu um arranjo próprio.",
-      "destination": { "type": "leitura", "slug": "social-democracia" },
+      "title": "Contraste internacional: social-democracia europeia",
+      "reason": "Compara o caso brasileiro com a trajetória dos partidos social-democratas europeus nascidos de sindicatos autônomos e economias industriais maduras, destacando semelhanças na regulação estatal e diferenças na base agrária e corporativa.",
+      "question": "O que aproxima o projeto social trabalhista do bem-estar social europeu e onde divergem suas bases sindicais?",
+      "destination": { "type": "leitura", "slug": "social-democracia", "anchor": "vertentes" },
+      "justification": "Evita isolar a política brasileira ao confrontar proteção social periférica e compromisso social-democrata.",
+      "contextEntityId": "wiki-topic-social-democracia",
       "sourceIds": ["src-leitura-social-democracia"]
     },
     {
       "id": "rede-trabalhismo",
-      "title": "Ligações do trabalhismo no grafo",
-      "reason": "Fecha o percurso no mapa interativo de relações, permitindo inspecionar em rede como lideranças, partidos, governos e conceitos econômicos se conectam a outras tradições do acervo.",
-      "question": "Quais instituições e atores conectam o trabalhismo a outras tradições do acervo?",
-      "justification": "Transforma a sequência linear das paradas em exploração espacial aberta para novas perguntas.",
-      "destination": { "type": "grafo", "nodeId": "wiki-topic-getulio-vargas" }
+      "title": "Rede de personagens, partidos e instituições trabalhistas",
+      "reason": "Reúne no grafo as conexões entre Getúlio Vargas, João Goulart, Alberto Pasqualini, Leonel Brizola, PTB, Justiça do Trabalho e correntes desenvolvimentistas e keynesianas do século XX.",
+      "question": "Que relações partidárias, sindicais e intelectuais ligam o getulismo original aos herdeiros trabalhistas do pós-1979?",
+      "destination": { "type": "grafo", "nodeId": "wiki-topic-getulio-vargas" },
+      "justification": "Visualiza na rede histórica a persistência e as bifurcações da linhagem trabalhista brasileira.",
+      "contextEntityId": "wiki-topic-getulio-vargas",
+      "sourceIds": ["src-vargas", "src-goulart", "src-leitura-trabalhismo"]
     }
   ],
   "branches": [
     {
       "id": "ramo-keynes",
       "fromStop": "marco-era-vargas",
-      "title": "Fundamentos econômicos: John Maynard Keynes",
-      "reason": "Explora o papel anticíclico do investimento público, da demanda agregada e do pleno emprego que embasou Estados sociais no século XX.",
-      "question": "Como a macroeconomia keynesiana justificou o investimento público e a regulação?",
-      "justification": "Fornece a ponte teórica entre a intervenção estatal dos anos 1930–1940 e o consenso social-democrata do pós-guerra.",
+      "title": "Diálogo com a macroeconomia keynesiana",
+      "reason": "Examina a convergência internacional entre políticas de pleno emprego, investimento estatal anticíclico e proteção ao mercado consumidor interno.",
+      "question": "Em que pontos o desenvolvimentismo trabalhista convergiu com os argumentos econômicos de John Maynard Keynes?",
       "destination": { "type": "verbete", "slug": "john-maynard-keynes" },
+      "justification": "Situa a política econômica trabalhista frente às transformações teóricas provocadas pela crise de 1929.",
       "convergesAt": "contraste-social-democracia"
     },
     {
       "id": "ramo-brizola",
       "fromStop": "reformas-goulart",
-      "title": "Leonel Brizola e a continuidade trabalhista",
-      "reason": "Segue a trajetória de Brizola da Campanha da Legalidade (1961) ao exílio e à fundação do PDT na redemocratização, com foco em educação pública e soberania nacional.",
-      "question": "Como o trabalhismo se reorganizou após 1964 em torno da educação pública e da soberania?",
-      "justification": "Mostra a continuidade histórica do trabalhismo além da ruptura de 1964.",
+      "title": "Leonel Brizola, legalidade e fundação do PDT",
+      "reason": "Acompanha o papel da Campanha da Legalidade em 1961, da atuação nacionalista pré-1964 e da reconstrução partidária no trabalhismo democrático após a anistia de 1979.",
+      "question": "Como o brizolismo reelaborou o legado de Vargas e Goulart na transição democrática dos anos 1980?",
       "destination": { "type": "verbete", "slug": "leonel-brizola" },
-      "exit": "Continua a leitura biográfica e histórica no verbete."
+      "justification": "Prolonga o eixo histórico trabalhista além da deposição de 1964 até a redemocratização.",
+      "convergesAt": "rede-trabalhismo"
+    },
+    {
+      "id": "ramo-alberto-pasqualini",
+      "fromStop": "leitura-trabalhismo",
+      "title": "Alberto Pasqualini e o solidarismo trabalhista",
+      "reason": "Examina a formulação doutrinária gaúcha que deu base teórica à reforma social gradual, à função social da propriedade e à educação pública dentro do PTB democrático.",
+      "question": "De que modo Alberto Pasqualini distinguiu o trabalhismo tanto do laissez-faire liberal quanto da estatização integral?",
+      "destination": { "type": "verbete", "slug": "alberto-pasqualini" },
+      "justification": "Aprofunda o eixo teórico solidarista que sustentou os quadros parlamentares trabalhistas no pós-1945.",
+      "exit": "Saída temática para consultar a biografia doutrinária de Alberto Pasqualini."
     }
   ],
   "connections": [
     {
       "destination": { "type": "catalogo", "path": "acontecimentos" },
-      "reason": "Consultar os acontecimentos políticos ligados ao século XX no acervo."
+      "reason": "Reúne marcos como a Revolução de 1930, a promulgação da CLT, o golpe de 1964 e a Constituinte de 1988."
     },
     {
       "destination": { "type": "catalogo", "path": "partidos" },
-      "reason": "Explorar partidos e organizações políticas registrados no ATLAS."
+      "reason": "Permite confrontar o PTB histórico de 1945 com o PDT brizolista e demais siglas partidárias registradas no acervo."
     },
     {
       "destination": { "type": "catalogo", "path": "pessoas" },
-      "reason": "Comparar lideranças, pensadores e atores históricos ligados ao período."
+      "reason": "Conecta lideranças políticas, juristas trabalhistas, economistas desenvolvimentistas e formuladores doutrinários relacionados."
     }
   ],
   "sources": [
     {
       "id": "src-leitura-trabalhismo",
-      "title": "ATLAS — Leitura contínua: Trabalhismo (compilação com fontes acadêmicas e referências históricas)"
+      "title": "Registro ideológico: Trabalhismo brasileiro",
+      "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro"
     },
     {
       "id": "src-era-vargas",
-      "title": "Verbete Era Vargas — registros enciclopédicos e dados históricos (Wikipédia CC BY-SA 4.0 / Wikidata CC0)"
+      "title": "Registro histórico: Era Vargas",
+      "url": "https://pt.wikipedia.org/wiki/Era_Vargas"
     },
     {
       "id": "src-vargas",
-      "title": "Verbete Getúlio Vargas — biografia política e relações documentadas no acervo"
+      "title": "Registro biográfico: Getúlio Vargas",
+      "url": "https://pt.wikipedia.org/wiki/Get%C3%BAlio_Vargas"
     },
     {
       "id": "src-goulart",
-      "title": "Verbete João Goulart — governo, reformas de base e crise de 1964"
+      "title": "Registro biográfico: João Goulart",
+      "url": "https://pt.wikipedia.org/wiki/Jo%C3%A3o_Goulart"
     },
     {
       "id": "src-leitura-social-democracia",
-      "title": "ATLAS — Leitura contínua: Social-democracia"
+      "title": "Registro histórico: Social-democracia",
+      "url": "https://pt.wikipedia.org/wiki/Social-democracia"
     }
-  ],
-  "updatedAt": "2026-11-16",
-  "version": "1.1.0"
+  ]
 }

@@ -3,113 +3,156 @@
   "id": "itinerary-ditadura-militar-e-redemocratizacao",
   "slug": "ditadura-militar-e-redemocratizacao",
   "kind": "historico",
-  "title": "Ditadura Militar no Brasil (1964-1985): Da Repressão à Redemocratização",
-  "question": "Como o regime militar brasileiro se estabeleceu, se sustentou e, finalmente, deu lugar à democracia?",
-  "deck": "Este itinerário explora a trajetória da ditadura militar no Brasil, desde o golpe de 1964 até a redemocratização em 1985, analisando seus pilares, impactos e o processo de retorno à democracia.",
-  "summary": "Este percurso analisa a ascensão, o funcionamento e a queda da ditadura militar no Brasil, culminando na redemocratização do país.",
+  "title": "Ditadura militar e redemocratização no Brasil",
+  "question": "Como o golpe de 1964 instaurou o regime militar no Brasil e que mobilizações civis e políticas conduziram à Constituinte de 1988?",
+  "deck": "Do rompimento institucional de 1964 ao fechamento político, à campanha das Diretas Já e à Constituição de 1988, seis paradas documentam a anatomia do regime autoritário brasileiro e o processo de transição democrática.",
+  "summary": "O trajeto percorre os vinte e um anos da ditadura militar brasileira desde a deposição de João Goulart até a reorganização democrática da década de 1980, articulando aparato repressivo, oposição legal e clandestina e reconstrução constitucional.",
+  "updatedAt": "2026-11-18",
+  "version": "1.1.0",
   "status": "reviewed-ai",
   "coverage": "complete",
   "review": {
     "status": "assistant",
-    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+    "notes": "[conferência de IA] Percurso padronizado e conferido com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
   },
   "stops": [
     {
       "id": "wiki-topic-golpe-de-estado-no-brasil-em-1964",
-      "title": "O Golpe de 1964",
-      "reason": "O golpe militar de 1964 marcou o início da ditadura no Brasil, depondo o presidente João Goulart e instaurando um regime autoritário. Este ponto inicial define o contexto histórico.",
-      "question": "Quais foram as causas e as consequências imediatas do golpe de 1964?",
-      "destination": {
-        "type": "verbete",
-        "slug": "golpe-de-estado-no-brasil-em-1964"
-      },
-      "justification": "Esta parada estabelece o ponto de partida da análise, contextualizando o início da ditadura.",
+      "title": "O golpe civil-militar de abril de 1964",
+      "reason": "Examina a conspiração de setores militares, lideranças empresariais, imprensa e governadores conservadores — com respaldo diplomático norte-americano — que depôs João Goulart e abriu caminho à edição dos primeiros atos institucionais.",
+      "question": "Quais fatores políticos internos e pressões internacionais da Guerra Fria convergiram para o golpe de 1964?",
+      "destination": { "type": "verbete", "slug": "golpe-de-estado-no-brasil-em-1964" },
+      "justification": "Situa a ruptura inaugural que interrompeu o ciclo constitucional de 1946 e deu origem ao regime de exceção.",
       "contextEntityId": "wiki-topic-golpe-de-estado-no-brasil-em-1964",
-      "sourceIds": ["src-1"]
+      "sourceIds": ["src-golpe-1964"]
     },
     {
       "id": "wiki-topic-ditadura-militar-brasileira",
-      "title": "A Ditadura Militar Brasileira",
-      "reason": "Esta parada explora as características principais da ditadura militar, como a repressão política, a censura e a intervenção estatal na economia.",
-      "question": "Quais foram as principais características e mecanismos de poder da ditadura militar no Brasil?",
-      "destination": {
-        "type": "verbete",
-        "slug": "ditadura-militar-brasileira"
-      },
-      "justification": "Após contextualizar o golpe, esta parada aprofunda a compreensão do regime ditatorial.",
+      "title": "Anatomia do regime militar: atos institucionais e repressão",
+      "reason": "Analisa o funcionamento do Estado autoritário entre 1964 e 1985: bipartidarismo compulsório (ARENA e MDB), eleições indiretas, censura à imprensa, cassações políticas e sistemática perseguição policial após o AI-5 de 1968.",
+      "question": "Como o regime militar combinou fachada parlamentar controlada e mecanismos arbitrários de segurança nacional?",
+      "destination": { "type": "verbete", "slug": "ditadura-militar-brasileira" },
+      "justification": "Apresenta a estrutura duradoura do regime antes de acompanhar os processos de resistência e abertura.",
       "contextEntityId": "wiki-topic-ditadura-militar-brasileira",
-      "sourceIds": ["src-1"]
+      "sourceIds": ["src-ditadura-1964"]
     },
     {
-      "id": "wiki-topic-humberto-castelo-branco",
-      "title": "Humberto Castelo Branco e a Consolidação da Ditadura",
-      "reason": "A presidência de Castelo Branco (1964-1967) foi crucial para a consolidação da ditadura, com a implementação de medidas repressivas e a criação de uma estrutura autoritária.",
-      "question": "Como a presidência de Castelo Branco contribuiu para a consolidação da ditadura militar?",
-      "destination": {
-        "type": "verbete",
-        "slug": "humberto-castelo-branco"
-      },
-      "justification": "Esta parada destaca a importância de um líder específico na consolidação do regime.",
-      "contextEntityId": "wiki-topic-humberto-castelo-branco",
-      "sourceIds": ["src-1"]
+      "id": "wiki-topic-diretas-ja",
+      "title": "A campanha das Diretas Já e a mobilização cívica",
+      "reason": "Retrata os grandes comícios de 1983–1984 pela aprovação da emenda Dante de Oliveira, reunindo partidos de oposição, sindicatos combativos, movimentos estudantis e sociedade civil pela restauração do voto direto presidencial.",
+      "question": "De que modo a mobilização de massas nas Diretas Já acelerou o esgotamento político da transição controlada?",
+      "destination": { "type": "verbete", "slug": "diretas-ja" },
+      "justification": "Evidencia a inflexão popular da abertura política mesmo após a derrota parlamentar da emenda em 1984.",
+      "contextEntityId": "wiki-topic-diretas-ja",
+      "sourceIds": ["src-diretas-ja"]
     },
     {
       "id": "wiki-topic-assembleia-nacional-constituinte-de-1987",
-      "title": "A Constituição de 1988 e a Redemocratização",
-      "reason": "A Constituição de 1988, elaborada pela Assembleia Nacional Constituinte, consolidou a redemocratização do Brasil, restaurando direitos e liberdades civis.",
-      "question": "Como a Constituição de 1988 contribuiu para a consolidação da democracia no Brasil?",
-      "destination": {
-        "type": "grafo",
-        "nodeId": "wiki-topic-assembleia-nacional-constituinte-de-1987"
-      },
-      "justification": "Esta parada marca o ponto de virada para a redemocratização.",
+      "title": "A Assembleia Nacional Constituinte de 1987–1988",
+      "reason": "Acompanha a instalação dos trabalhos constituintes após a posse civil em 1985, destacando o regimento aberto a emendas populares, o embate entre blocos progressistas e o Centrão parlamentar e a redefinição das competências públicas.",
+      "question": "Como a sociedade civil organizada interferiu diretamente nos debates e textos das comissões da Constituinte?",
+      "destination": { "type": "verbete", "slug": "assembleia-nacional-constituinte-de-1987" },
+      "justification": "Mostra a passagem da mobilização democrática de rua para a negociação institucional do novo pacto político.",
       "contextEntityId": "wiki-topic-assembleia-nacional-constituinte-de-1987",
-      "sourceIds": ["src-1"]
+      "sourceIds": ["src-constituinte-1987", "src-camara-constituinte"]
+    },
+    {
+      "id": "wiki-topic-constituicao-brasileira-de-1988",
+      "title": "A Constituição de 1988 e a refundação democrática",
+      "reason": "Examina o texto promulgado em 5 de outubro de 1988 que restabeleceu garantias individuais contra tortura e censura, consagrou o pluralismo partidário, ampliou o direito ao voto e criou o sistema integrado de seguridade social.",
+      "question": "Que cláusulas jurídicas e direitos sociais consolidaram a ruptura formal com o aparato autoritário militar?",
+      "destination": { "type": "verbete", "slug": "constituicao-brasileira-de-1988" },
+      "justification": "Consolida o desfecho institucional do processo de redemocratização examinado nas etapas anteriores.",
+      "contextEntityId": "wiki-topic-constituicao-brasileira-de-1988",
+      "sourceIds": ["src-cf-1988", "src-camara-constituinte"]
+    },
+    {
+      "id": "rede-ditadura-redemocratizacao",
+      "title": "Atores, organizações e eventos no grafo relacional",
+      "reason": "Integra no mapa de entidades os vínculos entre generais presidentes, organizações de resistência armada e sindical, campanhas pela anistia, lideranças trabalhistas exiladas e o texto constitucional da Nova República.",
+      "question": "Quais relações entre elites militares, oposição partidária e movimentos sociais atravessam o ciclo 1964–1988?",
+      "destination": { "type": "grafo", "nodeId": "wiki-topic-ditadura-militar-brasileira" },
+      "justification": "Sintetiza em rede o período autoritário e seus desdobramentos democráticos.",
+      "contextEntityId": "wiki-topic-ditadura-militar-brasileira",
+      "sourceIds": ["src-ditadura-1964", "src-golpe-1964", "src-cf-1988"]
     }
   ],
   "branches": [
     {
       "id": "ramo-repressao-e-censura",
       "fromStop": "wiki-topic-ditadura-militar-brasileira",
-      "title": "Repressão e Censura",
-      "reason": "Explorar as medidas de repressão e censura implementadas durante a ditadura militar.",
-      "question": "Quais foram as principais formas de repressão e censura utilizadas durante a ditadura?",
-      "destination": {
-        "type": "verbete",
-        "slug": "dissidencia"
-      },
-      "justification": "Esta ramificação aprofunda a compreensão da repressão política durante a ditadura.",
-      "convergesAt": "wiki-topic-humberto-castelo-branco"
+      "title": "Dissidência política, censura e exílio",
+      "reason": "Examina os mecanismos de contestação cultural, estudantil e partidária à censura, às prisões políticas e ao exílio imposto a parlamentares e intelectuais.",
+      "question": "Que formas de resistência civil e cultural enfrentaram o cerceamento das liberdades durante a ditadura?",
+      "destination": { "type": "verbete", "slug": "dissidencia" },
+      "justification": "Alarga a noção de resistência além das clivagens estritamente militares ou parlamentares.",
+      "convergesAt": "wiki-topic-diretas-ja"
     },
     {
       "id": "ramo-movimentos-de-oposicao",
       "fromStop": "wiki-topic-ditadura-militar-brasileira",
-      "title": "Movimentos de Oposição",
-      "reason": "Analisar os movimentos de oposição à ditadura militar, desde grupos clandestinos até a luta armada.",
-      "question": "Quais foram os principais movimentos de oposição à ditadura militar no Brasil?",
-      "destination": {
-        "type": "verbete",
-        "slug": "comando-de-libertacao-nacional"
-      },
-      "justification": "Esta ramificação explora as forças que lutaram contra a ditadura.",
-      "exit": "Saída paralela para consulta ao verbete sobre os movimentos de oposição ao regime."
+      "title": "Luta armada e organizações clandestinas",
+      "reason": "Acompanha o surgimento de grupos guerrilheiros urbanos e rurais após o AI-5, avaliando suas táticas, sua base estudantil e operária restrita e seu desmantelamento pelo aparato repressivo.",
+      "question": "Por que parte da oposição rompeu com a via institucional após 1968 em busca da guerrilha clandestina?",
+      "destination": { "type": "verbete", "slug": "comando-de-libertacao-nacional" },
+      "justification": "Documenta a vertente clandestina que atuou paralelamente à oposição parlamentar tolerada.",
+      "convergesAt": "wiki-topic-diretas-ja"
+    },
+    {
+      "id": "ramo-trabalhismo-pos-anistia",
+      "fromStop": "wiki-topic-diretas-ja",
+      "title": "Reorganização do trabalhismo pós-1979",
+      "reason": "Conecta a volta dos exilados políticos após a Lei de Anistia à disputa partidária que opôs PTB e PDT durante a abertura democrática.",
+      "question": "Como o retorno de lideranças depostas em 1964 reconfigurou o campo trabalhista na transição democrática?",
+      "destination": { "type": "leitura", "slug": "trabalhismo", "anchor": "epocas" },
+      "justification": "Liga a redemocratização aos desdobramentos contemporâneos da tradição trabalhista brasileira.",
+      "exit": "Saída para a leitura sobre o trabalhismo na transição pós-anistia."
     }
   ],
   "connections": [
     {
-      "destination": {
-        "type": "catalogo",
-        "path": "acontecimentos"
-      },
-      "reason": "Para aprofundar o estudo dos eventos históricos relacionados à ditadura militar."
+      "destination": { "type": "leitura", "slug": "trabalhismo" },
+      "reason": "Contextualiza o projeto político deposto em abril de 1964 e o rearranjo das siglas trabalhistas após a anistia de 1979."
+    },
+    {
+      "destination": { "type": "catalogo", "path": "acontecimentos" },
+      "reason": "Reúne marcos cronológicos de 1964 a 1988 lado a lado com outros conflitos e transições históricas."
+    },
+    {
+      "destination": { "type": "catalogo", "path": "pessoas" },
+      "reason": "Permite consultar biografias de presidentes militares, líderes cassados, juristas constituintes e militantes da transição."
     }
   ],
   "sources": [
     {
-      "id": "src-1",
-      "title": "Enciclopédia Brasileira de História"
+      "id": "src-golpe-1964",
+      "title": "Registro histórico: Golpe de Estado no Brasil em 1964",
+      "url": "https://pt.wikipedia.org/wiki/Golpe_de_Estado_no_Brasil_em_1964"
+    },
+    {
+      "id": "src-ditadura-1964",
+      "title": "Registro histórico: Ditadura militar brasileira",
+      "url": "https://pt.wikipedia.org/wiki/Ditadura_militar_brasileira"
+    },
+    {
+      "id": "src-diretas-ja",
+      "title": "Registro histórico: Diretas Já",
+      "url": "https://pt.wikipedia.org/wiki/Diretas_J%C3%A1"
+    },
+    {
+      "id": "src-constituinte-1987",
+      "title": "Registro institucional: Assembleia Nacional Constituinte de 1987",
+      "url": "https://pt.wikipedia.org/wiki/Assembleia_Nacional_Constituinte_de_1987"
+    },
+    {
+      "id": "src-cf-1988",
+      "title": "Constituição Federal de 1988 — Portal da Câmara dos Deputados",
+      "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html"
+    },
+    {
+      "id": "src-camara-constituinte",
+      "title": "30 anos da Constituinte — Portal da Câmara dos Deputados",
+      "url": "https://www.camara.leg.br/internet/agencia/infograficos-html5/constituinte/index.html"
     }
-  ],
-  "updatedAt": "2026-11-17",
-  "version": "1.0.0"
+  ]
 }

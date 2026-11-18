@@ -5,12 +5,15 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-import { loadR2Config, putImmutable, r2, sha256Hex } from '../content/r2-content.mjs';
+import { listR2Objects, loadR2Config, putImmutable, sha256Hex } from '../content/r2-content.mjs';
 import { listJsonResponses, rawKey } from './wikimedia/raw-store.mjs';
 
 const dryRun = process.argv.includes('--dry-run');
 const config = dryRun ? null : await loadR2Config();
 const responses = await listJsonResponses();
+const existingKeys = dryRun
+  ? new Set()
+  : new Set((await listR2Objects(config, 'raw/')).map((item) => item.key));
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 /** R2 answers 429 under bursts; retry those and transient server errors with backoff. */
@@ -28,37 +31,54 @@ async function withRetry(label, run) {
   }
 }
 
-for (const [sha256, response] of responses) {
+let processed = 0;
+let alreadyPublished = 0;
+let uploaded = 0;
+let missing = 0;
+const pending = responses.entries();
+
+async function processEntry([sha256, response]) {
   const key = rawKey(sha256);
+  if (existingKeys.has(key)) {
+    alreadyPublished += 1;
+    processed += 1;
+    return;
+  }
   let body;
   try {
     body = await readFile(join(response.directory, 'blobs', `${sha256}.bin`));
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
-    // Older captures may have dropped their local bodies after the blob was published.
-    if (dryRun) {
-      console.log(`[dry-run] sem corpo local: ${key}`);
-      continue;
-    }
-    const head = await withRetry(key, () => r2(config, 'HEAD', key));
-    if (head.status === 200) {
-      console.log(`já publicado, sem corpo local: ${key}`);
-      continue;
-    }
-    // A capture older than the local checkout may have lost its body; report it and keep going so
-    // the other captures still publish. The CI will surface the gap if that blob is ever needed.
+    missing += 1;
+    processed += 1;
     console.warn(`corpo ausente e não publicado: ${key} (${response.url})`);
-    continue;
+    return;
   }
   if (sha256Hex(body) !== sha256) throw new Error(`Falha de integridade: ${response.url}`);
   await withRetry(key, () =>
     putImmutable(
       config,
       { key, body, contentType: 'application/json; charset=utf-8', compress: true },
-      { dryRun },
+      { dryRun, quiet: dryRun || responses.size > 100 },
     ),
   );
-  // Small pause keeps the whole capture from arriving as one burst at the bucket.
-  await wait(25);
+  uploaded += 1;
+  processed += 1;
+  if (processed % 1000 === 0 || processed === responses.size) {
+    console.log(
+      `Progresso raw/: ${processed}/${responses.size} (${uploaded} publicados, ${alreadyPublished} já no R2)`,
+    );
+  }
 }
-console.log(`${responses.size} respostas JSON verificadas para raw/.`);
+
+async function worker() {
+  for (const entry of pending) await processEntry(entry);
+}
+
+await Promise.all(Array.from({ length: 8 }, worker));
+console.log(
+  `${responses.size} respostas JSON verificadas para raw/ (${uploaded} publicados, ${alreadyPublished} já no R2, ${missing} ausentes).`,
+);
+if (!dryRun && missing > 0) {
+  throw new Error(`${missing} respostas JSON ausentes sem cópia no R2.`);
+}
