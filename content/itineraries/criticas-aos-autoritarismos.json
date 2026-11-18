@@ -2,118 +2,142 @@
   "schemaVersion": 1,
   "id": "itinerary-criticas-aos-autoritarismos",
   "slug": "criticas-aos-autoritarismos",
-  "kind": "conceitual",
-  "title": "Totalitarismo, partido único e crítica pluralista",
-  "question": "Como conceitos de totalitarismo, liberalismo e socialismo antiautoritário analisam regimes de partido único e mobilização de massa?",
-  "deck": "Um percurso conceitual em cinco paradas investigando o conceito de totalitarismo, o caso do nazismo, as críticas anarquista e liberal ao monopólio do poder e sua rede de relações.",
-  "summary": "Examina os usos e limites da categoria totalitarismo na ciência política, analisa a arquitetura de terror e propaganda do nazismo e contrasta as respostas do anarquismo, da esquerda antistalinista e do constitucionalismo liberal.",
+  "kind": "comparativo",
+  "title": "Críticas aos autoritarismos: totalitarismo, liberdade e dissidência",
+  "question": "Sob que critérios tradições políticas concorrentes diagnosticaram o nazismo, o stalinismo e os regimes de partido único do século XX?",
+  "deck": "Partindo da categoria de totalitarismo e das experiências nazista e soviética, seis estações confrontam críticas liberais, socialistas antistalinistas e libertárias aos aparelhos policiais de partido único.",
+  "summary": "O trajeto compara como tradições distintas explicaram os regimes totalitários e autoritários modernos: a análise liberal da concentração estatal, a crítica anarquista a qualquer poder soberano e a oposição marxista antistalinista à burocracia repressiva.",
+  "updatedAt": "2026-11-18",
+  "version": "1.1.0",
   "status": "reviewed-ai",
   "coverage": "complete",
   "review": {
     "status": "assistant",
-    "notes": "[conferência de IA] Percurso conceitual estruturado e enriquecido sobre leituras e verbetes compilados; aguarda revisão humana para promoção a verified."
+    "notes": "[conferência de IA] Percurso padronizado e conferido com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
   },
   "stops": [
     {
       "id": "conceito-totalitarismo",
-      "title": "O conceito de totalitarismo e seus limites analíticos",
-      "reason": "Apresenta a formulação do conceito no século XX — mobilização permanente, partido único, controle da esfera privada e polícia política — junto às críticas historiográficas sobre sua generalidade.",
-      "question": "Em que pontos a categoria totalitarismo esclarece ou simplifica regimes históricos distintos?",
-      "justification": "Evita tomar um conceito controverso como sinônimo neutro, explicitando seus debates antes do estudo de caso.",
+      "title": "O conceito de totalitarismo na filosofia política",
+      "reason": "Delimita a categoria formulada por pensadores como Hannah Arendt e Carl Friedrich para distinguir ditaduras conservadoras tradicionais de regimes de massa marcados por ideologia única, terror policial e absorção da esfera privada.",
+      "question": "Que características institucionais separam o conceito de totalitarismo de autocracias ou ditaduras clássicas?",
       "destination": { "type": "verbete", "slug": "totalitarismo" },
+      "justification": "Define a ferramenta analítica de partida antes do exame dos casos históricos e das respostas ideológicas.",
       "contextEntityId": "wiki-topic-totalitarismo",
       "sourceIds": ["src-totalitarismo"]
     },
     {
       "id": "caso-nazismo",
-      "title": "Nazismo: racismo de Estado, violência e propaganda",
-      "reason": "Analisa a ideologia nacional-socialista, a destruição da República de Weimar, a perseguição sistemática e o papel da propaganda e do terror na consolidação do regime.",
-      "question": "Como o nazismo combinou mobilização de massas, antisemitismo e terror estatal?",
-      "justification": "Ancora a discussão conceitual em um caso histórico documentado com fontes e evidências.",
-      "destination": { "type": "leitura", "slug": "nazismo" },
-      "sourceIds": ["src-leitura-nazismo"]
+      "title": "Nazismo: mobilização de massa, Estado racial e exceção",
+      "reason": "Examina como o Terceiro Reich demoliu garantias constitucionais de Weimar em 1933, unificou partido e aparelho policial sob o Führerprinzip e converteu o racismo antissemita em política sistemática de extermínio industrial.",
+      "question": "Como propaganda totalitária, alianças conservadoras e terror racial atuaram na destruição da democracia alemã?",
+      "destination": { "type": "leitura", "slug": "nazismo", "anchor": "introducao" },
+      "justification": "Ancora a reflexão conceitual no caso histórico mais extremo de Estado policial e genocida do século XX.",
+      "contextEntityId": "wiki-topic-nazismo",
+      "sourceIds": ["src-leitura-nazismo", "src-totalitarismo"]
+    },
+    {
+      "id": "sistema-gulag-sovietico",
+      "title": "Stalinismo e o sistema concentracionário do Gulag",
+      "reason": "Analisa a expansão dos campos de trabalho forçado, os expurgos políticos dos anos 1930 e a subordinação burocrática da sociedade soviética sob comando autocrático, base empírica dos debates sobre simetrias e diferenças frente ao nazismo.",
+      "question": "De que modo a polícia política e o trabalho compulsório estruturaram o poder estatal na União Soviética stalinista?",
+      "destination": { "type": "verbete", "slug": "gulag" },
+      "justification": "Introduz o segundo grande referente histórico do século XX para evitar análises restritas a um único polo ideológico.",
+      "contextEntityId": "wiki-topic-gulag",
+      "sourceIds": ["src-gulag", "src-totalitarismo"]
     },
     {
       "id": "critica-anarquista-estado",
-      "title": "Anarquismo: a crítica radical à centralização do Estado",
-      "reason": "Mostra por que a tradição anarquista rejeita tanto a autocracia quanto a ditadura de partido único, apontando que a concentração burocrática do poder reproduz dominação.",
-      "question": "Por que os anarquistas advertiram contra a concentração de poder mesmo em nome da revolução?",
-      "justification": "Contrasta a crítica libertária de esquerda com as respostas estatais autoritárias do século XX.",
-      "destination": { "type": "leitura", "slug": "anarquismo" },
+      "title": "Crítica anarquista a toda soberania estatal centralizada",
+      "reason": "Recoloca a advertência libertária do século XIX segundo a qual preservar forças armadas, burocracias policiais e poder legislativo centralizados — mesmo sob rótulo popular — recria dominação sobre produtores e dissidentes.",
+      "question": "Por que autores anarquistas apontaram o próprio Estado centralizado como raiz comum de novas tiranias?",
+      "destination": { "type": "leitura", "slug": "anarquismo", "anchor": "debates" },
+      "justification": "Contrasta o diagnóstico estrutural libertário com explicações centradas apenas em desvios de liderança.",
+      "contextEntityId": "wiki-topic-anarquismo",
       "sourceIds": ["src-leitura-anarquismo"]
     },
     {
       "id": "critica-liberal-direitos",
-      "title": "Liberalismo: divisão de poderes e garantias individuais",
-      "reason": "Contrapõe ao poder ilimitado a exigência constitucional de freios e contrapesos, imprensa livre, pluralismo partidário e garantias individuais perante o Estado.",
-      "question": "Quais mecanismos institucionais o pensamento liberal propõe para conter o arbítrio estatal?",
-      "justification": "Apresenta a resposta institucionalista centrada em limites constitucionais ao exercício do poder.",
-      "destination": { "type": "leitura", "slug": "liberalismo" },
+      "title": "Defesa liberal do Estado de direito e da divisão de poderes",
+      "reason": "Examina o argumento constitucionalista que identifica na fragmentação institucional do poder, na imprensa autônoma e nas liberdades civis inegociáveis as salvaguardas indispensáveis contra projetos políticos totalizantes.",
+      "question": "Que garantias constitucionais e limites econômicos o liberalismo considera decisivos contra o arbítrio estatal?",
+      "destination": { "type": "leitura", "slug": "liberalismo", "anchor": "debates" },
+      "justification": "Contrapõe a tradição dos freios e contrapesos institucionais às propostas antiautoritárias sem Estado.",
+      "contextEntityId": "ideology-liberalism",
       "sourceIds": ["src-leitura-liberalismo"]
     },
     {
       "id": "rede-regimes",
-      "title": "Mapa de relações entre regimes, partidos e críticas",
-      "reason": "Abre o grafo para explorar visualmente os vínculos entre regimes autoritários, partidos, lideranças, exílios e pensadores críticos presentes no acervo.",
-      "question": "Quais eventos e autores conectam as experiências autoritárias às suas críticas?",
-      "justification": "Permite continuar a investigação seguindo relações verificadas no mapa.",
-      "destination": { "type": "grafo", "nodeId": "wiki-topic-totalitarismo" }
+      "title": "Síntese relacional: regimes autoritários e críticas no grafo",
+      "reason": "Reúne no grafo os verbetes de totalitarismo, fascismo, nazismo, stalinismo e correntes antistalinistas, tornando visíveis os pontos de convergência e polêmica sobre como classificar ditaduras do século XX.",
+      "question": "Onde as críticas liberais, anarquistas e socialistas dissidentes convergem ou divergem sobre autoritarismos?",
+      "destination": { "type": "grafo", "nodeId": "wiki-topic-totalitarismo" },
+      "justification": "Fecha o arco comparativo no nó do totalitarismo para exame direto das relações historiográficas.",
+      "contextEntityId": "wiki-topic-totalitarismo",
+      "sourceIds": ["src-totalitarismo", "src-leitura-nazismo", "src-gulag"]
     }
   ],
   "branches": [
     {
       "id": "ramo-esquerda-antistalinista",
-      "fromStop": "critica-anarquista-estado",
-      "title": "Esquerda antistalinista: divergências internas no campo socialista",
-      "reason": "Acompanha as correntes marxistas, conselhistas e socialistas democráticas que romperam com o autoritarismo soviético sob Stalin.",
-      "question": "Como setores da própria esquerda contestaram o stalinismo a partir de reivindicações democráticas?",
-      "justification": "Evita reduzir a crítica ao partido único apenas ao campo liberal, registrando o conflito interno no socialismo.",
+      "fromStop": "sistema-gulag-sovietico",
+      "title": "Críticas da esquerda antistalinista à burocracia soviética",
+      "reason": "Mapeia análises marxistas dissidentes — do trotskismo ao comunismo de conselhos — que denunciaram o terror de Moscou sem aderir à defesa do mercado capitalista.",
+      "question": "Como opositores socialistas contestaram o modelo stalinista em nome da democracia operária e sindical?",
       "destination": { "type": "verbete", "slug": "esquerda-antistalinista" },
-      "convergesAt": "rede-regimes"
+      "justification": "Impede que o debate sobre o autoritarismo soviético se reduza à oposição simples entre direita e esquerda.",
+      "convergesAt": "critica-anarquista-estado"
     },
     {
       "id": "ramo-catalogo-regimes",
-      "fromStop": "caso-nazismo",
-      "title": "Consultar regimes políticos no acervo",
-      "reason": "Abre o catálogo tipado de regimes para comparar características, períodos e classificações históricas documentadas.",
-      "question": "Quais regimes políticos estão documentados e classificados no acervo?",
-      "justification": "Oferece acesso direto às fichas comparativas de regimes.",
+      "fromStop": "critica-liberal-direitos",
+      "title": "Comparar regimes classificados no acervo",
+      "reason": "Abre o catálogo de formas de regime para examinar critérios metodológicos de classificação, atribuições bibliográficas e limites conceituais.",
+      "question": "Como a ciência política distingue democracia representativa, autocracia, fascismo e totalitarismo?",
       "destination": { "type": "catalogo", "path": "regimes" },
-      "exit": "Saída direta para o catálogo de regimes."
+      "justification": "Conecta o percurso comparativo às fichas tipológicas de regimes políticos.",
+      "exit": "Saída para o catálogo de regimes e tipologias políticas."
     }
   ],
   "connections": [
     {
       "destination": { "type": "catalogo", "path": "ideologias" },
-      "reason": "Explorar todas as tradições e correntes políticas registradas."
+      "reason": "Reúne os registros ideológicos contrastados no percurso ao lado de outras tradições políticas documentadas."
     },
     {
       "destination": { "type": "catalogo", "path": "regimes" },
-      "reason": "Comparar regimes autoritários, ditaduras e democracias no catálogo."
+      "reason": "Detalha classificações históricas de regimes democráticos e autoritários acompanhadas de atribuição e limites."
     },
     {
       "destination": { "type": "catalogo", "path": "acontecimentos" },
-      "reason": "Ver rupturas institucionais, golpes e guerras no século XX."
+      "reason": "Permite situar crises como a queda de Weimar, os processos de Moscou e a Segunda Guerra Mundial em sequência cronológica."
     }
   ],
   "sources": [
     {
       "id": "src-totalitarismo",
-      "title": "Verbete Totalitarismo — definições, historiografia e ligações no acervo"
+      "title": "Registro conceitual: Totalitarismo",
+      "url": "https://pt.wikipedia.org/wiki/Totalitarismo"
     },
     {
       "id": "src-leitura-nazismo",
-      "title": "ATLAS — Leitura contínua: Nazismo"
+      "title": "Registro histórico: Nazismo",
+      "url": "https://pt.wikipedia.org/wiki/Nazismo"
+    },
+    {
+      "id": "src-gulag",
+      "title": "Registro histórico: Sistema Gulag",
+      "url": "https://pt.wikipedia.org/wiki/Gulag"
     },
     {
       "id": "src-leitura-anarquismo",
-      "title": "ATLAS — Leitura contínua: Anarquismo"
+      "title": "Registro histórico: Anarquismo",
+      "url": "https://pt.wikipedia.org/wiki/Anarquismo"
     },
     {
       "id": "src-leitura-liberalismo",
-      "title": "ATLAS — Leitura contínua: Liberalismo"
+      "title": "Registro conceitual: Liberalismo",
+      "url": "https://pt.wikipedia.org/wiki/Liberalismo"
     }
-  ],
-  "updatedAt": "2026-11-16",
-  "version": "1.1.0"
+  ]
 }

@@ -312,8 +312,8 @@ test('relatório conta capítulos por cobertura e lista os motivos', () => {
 
 test('gera uma leitura válida no schema do build para cada ideologia da coleção principal', async () => {
   const result = await generateReadings({ atlasId: defaultAtlasId, write: false });
-  assert.equal(result.written.length, 53);
-  assert.equal(result.kept.length, 0);
+  assert.equal(result.written.length, 50);
+  assert.deepEqual([...result.kept].sort(), ['nazismo', 'stalinismo', 'trabalhismo']);
   assert.ok(result.reports.every((r) => r.complete.length >= 1));
 });
 

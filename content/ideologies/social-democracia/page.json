@@ -37,11 +37,7 @@
       }
     ]
   },
-  "review": {
-    "status": "rascunho",
-    "reviewer": null,
-    "updatedAt": "2026-11-06"
-  },
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-06" },
   "identity": {
     "accent": "ochre",
     "signature": "Reformas, pactos e fronteiras disputadas",
@@ -64,10 +60,7 @@
       ],
       "question": "Por que a social-democracia é tantas vezes confundida com o socialismo?",
       "bridge": "Para separar as duas coisas, é preciso voltar à Alemanha do século XIX, onde o nome ganhou organização.",
-      "sourceIds": [
-        "src-wiki-topic-social-democracia",
-        "src-wiki-topic-social-democracy"
-      ],
+      "sourceIds": ["src-wiki-topic-social-democracia", "src-wiki-topic-social-democracy"],
       "gap": "Definição baseada em fontes enciclopédicas; faltam literatura acadêmica e textos primários.",
       "coverage": "partial",
       "layout": "introduction",
@@ -76,9 +69,7 @@
         "question": "O que distingue social-democracia de socialismo revolucionário e de liberalismo social?",
         "answer": "A social-democracia quer reformar o capitalismo pela via política, com eleições, sindicatos e bem-estar, sem abolir o mercado; o socialismo revolucionário rompe com a ordem, e o liberalismo social prioriza liberdades individuais e mercado com menos ênfase em proteção coletiva.",
         "rationale": "Compare três respostas sobre mercado, Estado e mudança.",
-        "sourceIds": [
-          "src-wiki-topic-social-democracia"
-        ]
+        "sourceIds": ["src-wiki-topic-social-democracia"]
       }
     },
     {
@@ -101,19 +92,35 @@
         "src-wiki-topic-ferdinand-lassalle",
         "src-wiki-topic-wilhelm-liebknecht",
         "src-wiki-topic-august-bebel",
+        "src-wiki-topic-otto-von-bismarck",
         "src-wiki-topic-leis-antissocialistas"
       ],
       "gap": "Recorte limitado ao caso alemão. As origens britânica e escandinava ainda não foram cobertas.",
       "coverage": "partial",
       "layout": "documents",
-      "blocks": [],
+      "blocks": [
+        {
+          "type": "entities",
+          "mode": "thinkers",
+          "entityIds": [
+            "wiki-topic-ferdinand-lassalle",
+            "wiki-topic-august-bebel",
+            "wiki-topic-wilhelm-liebknecht",
+            "wiki-topic-otto-von-bismarck"
+          ],
+          "notes": {
+            "wiki-topic-ferdinand-lassalle": "Organizou a Associação Geral dos Trabalhadores Alemães em 1863, defendendo o sufrágio universal como via de reforma social.",
+            "wiki-topic-august-bebel": "Cofundador do partido em Eisenach e liderança central do SPD na legalidade e sob as leis antissocialistas.",
+            "wiki-topic-wilhelm-liebknecht": "Articulou com Bebel a fusão com os lassallianos em Gotha (1875) e dirigiu a imprensa partidária socialista.",
+            "wiki-topic-otto-von-bismarck": "Chanceler alemão cujas Leis Antissocialistas (1878–1890) proibiram organizações operárias e, ao mesmo tempo, instituíram os primeiros seguros sociais estatais."
+          }
+        }
+      ],
       "review": {
         "question": "Por que a unificação do partido em 1875 e as leis antissocialistas são decisivas para o SPD?",
         "answer": "A unificação organiza correntes operárias; a repressão de Bismarck força o partido a construir imprensa, sindicatos e rede eleitoral, moldando a social-democracia de massas.",
         "rationale": "Relacione organização partidária e repressão estatal.",
-        "sourceIds": [
-          "src-wiki-topic-leis-antissocialistas"
-        ]
+        "sourceIds": ["src-wiki-topic-leis-antissocialistas"]
       }
     },
     {
@@ -121,7 +128,7 @@
       "anchor": "principios",
       "title": "Reforma, democracia e igualdade",
       "kicker": "Pilares e princípios",
-      "minutes": 2,
+      "minutes": 1,
       "narrative": [
         "A social-democracia aceita a economia de mercado e busca corrigir seus resultados por impostos, serviços públicos, regulação e negociação coletiva. O Estado de bem-estar e a proteção social são centrais.",
         "A democracia representativa, o sufrágio universal e a liberdade sindical são meios e fins: permitem disputar o poder e limitar o arbítrio. A tradição não é pacifista nem revolucionária por definição; varia historicamente.",
@@ -151,13 +158,8 @@
               "paragraphs": [
                 "A estratégia gradualista transforma a sociedade por eleições, legislação e instituições, sem ruptura revolucionária. A igualdade social é buscada por reformas sucessivas e negociação, não pela abolição imediata do mercado."
               ],
-              "sourceIds": [
-                "src-wiki-topic-social-democracia",
-                "src-wiki-topic-social-democracy"
-              ],
-              "entityIds": [
-                "wiki-topic-social-democracia"
-              ],
+              "sourceIds": ["src-wiki-topic-social-democracia", "src-wiki-topic-social-democracy"],
+              "entityIds": ["wiki-topic-social-democracia"],
               "classification": "interpretação"
             },
             {
@@ -168,9 +170,7 @@
               "paragraphs": [
                 "O Programa de Godesberg, aprovado pelo SPD em 1959, rejeitou a luta de classes e o marxismo como base partidária. A decisão documenta a virada reformista do pós-guerra; é uma data e uma escolha política, não uma interpretação."
               ],
-              "sourceIds": [
-                "src-wiki-topic-social-democracia"
-              ],
+              "sourceIds": ["src-wiki-topic-social-democracia"],
               "entityIds": [],
               "classification": "alegação empírica"
             },
@@ -182,10 +182,7 @@
               "paragraphs": [
                 "O Estado de bem-estar social combina serviços públicos, transferências e regulação para reduzir desigualdades. Sindicatos fortes e democracia representativa são apresentados como instrumentos de justiça social dentro do capitalismo."
               ],
-              "sourceIds": [
-                "src-wiki-topic-social-democracia",
-                "src-wiki-topic-social-democracy"
-              ],
+              "sourceIds": ["src-wiki-topic-social-democracia", "src-wiki-topic-social-democracy"],
               "entityIds": [],
               "classification": "interpretação"
             }
@@ -196,9 +193,7 @@
         "question": "Como a social-democracia justifica corrigir o mercado sem aboli-lo?",
         "answer": "Por impostos, serviços públicos, regulação e negociação coletiva, que reduzem desigualdades e riscos sem substituir a economia de mercado.",
         "rationale": "Explique o mecanismo de proteção social dentro do mercado.",
-        "sourceIds": [
-          "src-wiki-topic-social-democracia"
-        ]
+        "sourceIds": ["src-wiki-topic-social-democracia"]
       }
     },
     {
@@ -217,19 +212,39 @@
       "bridge": "Antes das vertentes, situe essas palavras na história que as transformou.",
       "sourceIds": [
         "src-wiki-topic-social-democracy",
-        "src-wiki-topic-terceira-via"
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-terceira-via",
+        "src-wiki-topic-estado-de-bem-estar-social",
+        "src-wiki-topic-democracia-representativa",
+        "src-wiki-topic-leis-antissocialistas",
+        "src-wiki-topic-bolsa-familia"
       ],
       "gap": "Glossário ainda sem entradas próprias no acervo, como Estado de bem-estar e economia mista.",
       "coverage": "partial",
       "layout": "concepts",
-      "blocks": [],
+      "blocks": [
+        {
+          "type": "entities",
+          "mode": "concepts",
+          "entityIds": [
+            "wiki-topic-estado-de-bem-estar-social",
+            "wiki-topic-democracia-representativa",
+            "wiki-topic-leis-antissocialistas",
+            "wiki-topic-bolsa-familia"
+          ],
+          "notes": {
+            "wiki-topic-estado-de-bem-estar-social": "Arranjo institucional de seguridade, saúde, educação e regulação do trabalho que busca corrigir assimetrias de mercado.",
+            "wiki-topic-democracia-representativa": "Regime de sufrágio universal e pluralismo partidário adotado como meio e horizonte permanente da disputa social-democrata.",
+            "wiki-topic-leis-antissocialistas": "Legislação repressiva de 1878–1890 na Alemanha imperial que testou a resistência organizativa e eleitoral do SPD.",
+            "wiki-topic-bolsa-familia": "Programa brasileiro de transferência condicionada de renda citado nos debates sobre proteção social em economias periféricas."
+          }
+        }
+      ],
       "review": {
         "question": "Qual é a diferença entre reformismo e revisionismo?",
         "answer": "Reformismo é a estratégia política de transformar por eleições e instituições; revisionismo é a revisão teórica do marxismo que acompanha essa estratégia.",
         "rationale": "Distinga estratégia política e revisão teórica.",
-        "sourceIds": [
-          "src-wiki-topic-social-democracy"
-        ],
+        "sourceIds": ["src-wiki-topic-social-democracy"],
         "revisit": [
           {
             "entityId": "wiki-topic-leis-antissocialistas",
@@ -264,14 +279,99 @@
       "gap": "A linha do tempo europeia foi complementada por marcos brasileiros; faltam datas e instituições de outros países da América Latina.",
       "coverage": "partial",
       "layout": "timeline",
-      "blocks": [],
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ep-sd-1875",
+              "title": "1875 · Congresso de Gotha",
+              "kicker": "Unificação alemã",
+              "summary": "Fusão entre lassallianos e eisenachianos forma a matriz partidária do SPD.",
+              "paragraphs": [
+                "Em 1875, correntes operárias alemãs reuniram-se em Gotha para unificar organizações concorrentes em um partido único de alcance nacional, consolidado em 1890 sob o nome de SPD."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-social-democracia",
+                "src-wiki-topic-ferdinand-lassalle",
+                "src-wiki-topic-august-bebel"
+              ],
+              "entityIds": ["wiki-topic-ferdinand-lassalle", "wiki-topic-august-bebel"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ep-sd-1878",
+              "title": "1878–1890 · Clandestinidade e seguros sociais",
+              "kicker": "Império Alemão",
+              "summary": "Leis Antissocialistas convivem com a criação pioneira de previdência estatal.",
+              "paragraphs": [
+                "Sob Bismarck, a proibição de jornais e associações socialistas entre 1878 e 1890 não impediu o crescimento eleitoral do partido no Reichstag, em paralelo à introdução de seguros compulsórios contra doença e acidentes."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-leis-antissocialistas",
+                "src-wiki-topic-otto-von-bismarck"
+              ],
+              "entityIds": ["wiki-topic-leis-antissocialistas", "wiki-topic-otto-von-bismarck"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ep-sd-1899",
+              "title": "1899 · Disputa revisionista",
+              "kicker": "Segunda Internacional",
+              "summary": "Eduard Bernstein propõe abandonar o horizonte de colapso revolucionário.",
+              "paragraphs": [
+                "A publicação de As premissas do socialismo (1899) abriu controvérsia direta com Karl Kautsky e Rosa Luxemburgo sobre o peso das reformas parlamentares e sindicais frente à ruptura revolucionária."
+              ],
+              "sourceIds": ["src-wiki-topic-social-democracy", "src-wiki-topic-social-democracia"],
+              "entityIds": ["person-eduard-bernstein", "person-karl-kautsky"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ep-sd-1959",
+              "title": "1959 · Programa de Godesberg",
+              "kicker": "Pós-guerra",
+              "summary": "SPD redefine o socialismo democrático como economia mista sem base marxista.",
+              "paragraphs": [
+                "No Congresso de Bad Godesberg, o partido alemão substituiu a referência à luta de classes pela defesa da democracia pluralista, da economia social de mercado e da rede universal de proteção."
+              ],
+              "sourceIds": ["src-wiki-topic-social-democracia", "src-wiki-topic-social-democracy"],
+              "entityIds": ["wiki-topic-social-democracia", "wiki-topic-willy-brandt"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ep-sd-1988",
+              "title": "1988 · Pacto constitucional brasileiro",
+              "kicker": "Caso brasileiro",
+              "summary": "Constituição Federal de 1988 amplia direitos sociais em contexto periférico.",
+              "paragraphs": [
+                "No Brasil, a Constituição de 1988 constitucionalizou saúde universal, previdência e seguridade social, dialogando com tradições trabalhistas anteriores e com programas social-democratas contemporâneos."
+              ],
+              "sourceIds": ["source-sd-cf88", "source-sd-gomes-trabalhismo"],
+              "entityIds": ["wiki-topic-constituicao-brasileira-de-1988"],
+              "classification": "interpretação"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "ep-sd-1875", "start": 1875, "end": 1875 },
+            { "itemId": "ep-sd-1878", "start": 1878, "end": 1890 },
+            { "itemId": "ep-sd-1899", "start": 1899, "end": 1899 },
+            { "itemId": "ep-sd-1959", "start": 1959, "end": 1959 },
+            { "itemId": "ep-sd-1988", "start": 1988, "end": 1988 }
+          ],
+          "entityIds": ["wiki-topic-social-democracia"],
+          "markerIds": [],
+          "markerNotes": {}
+        }
+      ],
       "review": {
         "question": "Por que a periodização inclui a crise dos anos 1970 e a Terceira Via?",
         "answer": "Porque o Estado de bem-estar e o compromisso keynesiano são contestados, e a Terceira Via reajusta a relação entre Estado, mercado e responsabilidade individual.",
         "rationale": "Relacione mudança histórica e reajuste programático.",
-        "sourceIds": [
-          "src-wiki-topic-social-democracy"
-        ]
+        "sourceIds": ["src-wiki-topic-social-democracy"]
       }
     },
     {
@@ -335,9 +435,7 @@
         "question": "Compare Bernstein, Kautsky e Jaurès: o que cada um defende sobre reforma e revolução?",
         "answer": "Bernstein revisa o marxismo em direção à reforma; Kautsky representa a ortodoxia da Segunda Internacional; Jaurès articula socialismo e República na França. As respostas variam dentro da mesma tradição.",
         "rationale": "Compare posições dentro da mesma tradição.",
-        "sourceIds": [
-          "src-wiki-topic-jean-jaures"
-        ]
+        "sourceIds": ["src-wiki-topic-jean-jaures"]
       }
     },
     {
@@ -347,9 +445,10 @@
       "kicker": "Correntes e vertentes",
       "minutes": 1,
       "narrative": [
-        "A social-democracia se divide entre reformistas, sindicalistas e correntes mais à esquerda; os modelos nórdicos combinam Estado de bem-estar, sindicatos fortes e economia aberta; a Terceira Via se aproxima do liberalismo social.",
-        "A rede mostra diferenças documentadas; os rótulos não descrevem blocos homogêneos.",
-        "No Brasil, a social-democracia não se organizou como partido único. O trabalhismo do PTB e do PDT reivindicou reformas sociais e democracia em uma linguagem própria; a comparação com a social-democracia europeia exige distinguir origem, programa e prática de governo."
+        "A social-democracia clássica do pós-guerra defende reformas graduais, negociação coletiva, pleno emprego e Estado de bem-estar social dentro da economia mista. O mercado é regulado, não abolido.",
+        "A Terceira Via, nos anos 1990, aceita maior abertura aos mercados e propõe conciliar justiça social com competitividade, privatizações parciais e responsabilidade fiscal.",
+        "Críticos à esquerda veem a Terceira Via como recuo neoliberal; defensores afirmam tratar-se de adaptação às restrições econômicas da globalização financeira.",
+        "Fora da Europa, a tradição cruza partidos que combinam agenda distributiva, políticas sociais focalizadas e compromissos fiscais distintos, variando conforme a estrutura produtiva, a força sindical e o espaço fiscal de cada país."
       ],
       "question": "Todos os social-democratas concordam entre si?",
       "bridge": "Essas correntes se testaram em governos e reformas concretos.",
@@ -382,9 +481,7 @@
                 "src-wiki-topic-social-democracia",
                 "src-wiki-topic-internacional-socialista"
               ],
-              "entityIds": [
-                "wiki-topic-internacional-socialista"
-              ],
+              "entityIds": ["wiki-topic-internacional-socialista"],
               "classification": "interpretação"
             },
             {
@@ -395,12 +492,8 @@
               "paragraphs": [
                 "A Terceira Via, associada ao New Labour de Blair, propõe conciliar mercado e política social, com ênfase em investimento, responsabilidade e reforma das instituições. É uma releitura da social-democracia, não uma doutrina única."
               ],
-              "sourceIds": [
-                "src-wiki-topic-terceira-via"
-              ],
-              "entityIds": [
-                "wiki-topic-terceira-via"
-              ],
+              "sourceIds": ["src-wiki-topic-terceira-via"],
+              "entityIds": ["wiki-topic-terceira-via"],
               "classification": "interpretação"
             },
             {
@@ -411,9 +504,7 @@
               "paragraphs": [
                 "Parte dos analistas caracteriza a Terceira Via como neoliberal, por sua aceitação do mercado e da disciplina fiscal. A classificação é controversa e não é consenso entre estudiosos."
               ],
-              "sourceIds": [
-                "src-wiki-topic-social-democracy"
-              ],
+              "sourceIds": ["src-wiki-topic-social-democracy"],
               "entityIds": [],
               "classification": "tese atribuída"
             }
@@ -424,9 +515,7 @@
         "question": "O que diferencia a social-democracia reformista da Terceira Via?",
         "answer": "A reformista defende reformas graduais e Estado de bem-estar dentro da democracia representativa; a Terceira Via aproxima-se do liberalismo social e enfatiza responsabilidade individual e mercado.",
         "rationale": "Compare as duas correntes que recebem cartão neste recorte.",
-        "sourceIds": [
-          "src-wiki-topic-terceira-via"
-        ]
+        "sourceIds": ["src-wiki-topic-terceira-via"]
       }
     },
     {
@@ -469,12 +558,8 @@
               "paragraphs": [
                 "Olof Palme governou a Suécia de 1969 a 1976 e de 1982 a 1986, à frente do Partido Operário Social-Democrata."
               ],
-              "sourceIds": [
-                "src-wiki-topic-olof-palme"
-              ],
-              "entityIds": [
-                "wiki-topic-olof-palme"
-              ],
+              "sourceIds": ["src-wiki-topic-olof-palme"],
+              "entityIds": ["wiki-topic-olof-palme"],
               "classification": "alegação empírica"
             },
             {
@@ -485,12 +570,8 @@
               "paragraphs": [
                 "Willy Brandt foi chanceler da Alemanha Ocidental entre 1969 e 1974, conduziu a Ostpolitik e recebeu o Nobel da Paz em 1971."
               ],
-              "sourceIds": [
-                "src-wiki-topic-willy-brandt"
-              ],
-              "entityIds": [
-                "wiki-topic-willy-brandt"
-              ],
+              "sourceIds": ["src-wiki-topic-willy-brandt"],
+              "entityIds": ["wiki-topic-willy-brandt"],
               "classification": "alegação empírica"
             },
             {
@@ -501,12 +582,8 @@
               "paragraphs": [
                 "Bruno Kreisky foi chanceler da Áustria entre 1970 e 1983. Seu mandato de 13 anos é o mais longo da Áustria republicana e ficou associado à expansão do Estado de bem-estar e à política externa ativa."
               ],
-              "sourceIds": [
-                "src-wiki-topic-bruno-kreisky"
-              ],
-              "entityIds": [
-                "wiki-topic-bruno-kreisky"
-              ],
+              "sourceIds": ["src-wiki-topic-bruno-kreisky"],
+              "entityIds": ["wiki-topic-bruno-kreisky"],
               "classification": "alegação empírica"
             },
             {
@@ -517,9 +594,7 @@
               "paragraphs": [
                 "Os indicadores de bem-estar nos países nórdicos vêm de relatórios que a fonte consultada marca como a melhorar. Eles não bastam, sozinhos, para atribuir esses resultados à social-democracia."
               ],
-              "sourceIds": [
-                "src-wiki-topic-social-democracy"
-              ],
+              "sourceIds": ["src-wiki-topic-social-democracy"],
               "entityIds": [],
               "classification": "limitação editorial"
             },
@@ -554,9 +629,7 @@
         "question": "Por que Alemanha, Suécia, Áustria e França não produzem o mesmo modelo social-democrata?",
         "answer": "Porque instituições, partidos, sindicatos e conjunturas nacionais diferentes produzem arranjos distintos, ainda que compartilhem reformismo e proteção social.",
         "rationale": "Relacione instituições nacionais e conjuntura.",
-        "sourceIds": [
-          "src-wiki-topic-olof-palme"
-        ],
+        "sourceIds": ["src-wiki-topic-olof-palme"],
         "revisit": [
           {
             "entityId": "wiki-topic-leis-antissocialistas",
@@ -572,9 +645,10 @@
       "kicker": "Argumentos, críticas e respostas",
       "minutes": 1,
       "narrative": [
-        "Bernstein e Luxemburgo disputam reforma e revolução: reformas sociais podem transformar o capitalismo ou apenas administrá-lo? A Terceira Via e a social-democracia tradicional disputam o papel do Estado e da responsabilidade individual.",
-        "Cada posição tem autor e alvo; a leitura não transforma a disputa em veredito.",
-        "A disputa brasileira entre trabalhismo e social-democracia é também uma disputa de memória: o trabalhismo de Vargas foi lido como concessão, cooptação ou invenção de uma cultura política. A leitura não resolve o debate; mostra como ele muda o diagnóstico sobre direitos sociais e democracia."
+        "Rosa Luxemburgo e Lenin acusam a via reformista de aceitar a ordem burguesa e trair o internacionalismo operário em 1914. Os social-democratas respondem que a ditadura bolchevique destruiu as liberdades políticas.",
+        "Comunistas ainda responsabilizam o SPD pela fragmentação da esquerda alemã durante a República de Weimar; historiadores discutem até que ponto a divisão impediu uma frente única contra o nazismo.",
+        "Pela direita liberal, Friedrich Hayek argumenta que a redistribuição e a direção estatal ameaçam as liberdades individuais; pela esquerda, críticos apontam que reformas sem ruptura apenas estabilizam o capitalismo.",
+        "Nas últimas décadas, o debate deslocou-se para a sustentabilidade demográfica dos sistemas previdenciários, a tributação progressiva em economias abertas e os limites nacionais da política redistributiva frente à mobilidade do capital."
       ],
       "question": "Quais são as objeções mais fortes, e o que os defensores respondem?",
       "bridge": "Essas objeções também definem as relações e as distâncias com outras tradições.",
@@ -601,9 +675,7 @@
               "paragraphs": [
                 "Lenin criticou o revisionismo social-democrata nas Teses de Abril, em 1917, por considerar que a reforma política não bastava para enfrentar o capitalismo e a guerra. A crítica é uma posição atribuída, não um veredito."
               ],
-              "sourceIds": [
-                "src-wiki-topic-social-democracia"
-              ],
+              "sourceIds": ["src-wiki-topic-social-democracia"],
               "entityIds": [],
               "classification": "tese atribuída"
             },
@@ -615,9 +687,7 @@
               "paragraphs": [
                 "Walter Benjamin atribuiu à social-democracia parte da responsabilidade pela ascensão do nazismo, ao aceitar a ordem política que facilitou a crise. A tese é uma interpretação controversa, não um fato estabelecido."
               ],
-              "sourceIds": [
-                "src-wiki-topic-social-democracy"
-              ],
+              "sourceIds": ["src-wiki-topic-social-democracy"],
               "entityIds": [],
               "classification": "tese atribuída"
             },
@@ -629,9 +699,7 @@
               "paragraphs": [
                 "Outros socialistas argumentam que administrar o capitalismo por reformas pode fortalecer o sistema que a social-democracia diz querer substituir. O conflito entre administração e transformação é o núcleo da crítica."
               ],
-              "sourceIds": [
-                "src-wiki-topic-social-democracy"
-              ],
+              "sourceIds": ["src-wiki-topic-social-democracy"],
               "entityIds": [],
               "classification": "tese atribuída"
             },
@@ -643,9 +711,7 @@
               "paragraphs": [
                 "As posições reunidas aqui vêm de fontes secundárias; não há resposta sistemática dos defensores nem leitura direta de todas as obras citadas. A seção organiza o debate, sem esgotá-lo."
               ],
-              "sourceIds": [
-                "src-wiki-topic-social-democracia"
-              ],
+              "sourceIds": ["src-wiki-topic-social-democracia"],
               "entityIds": [],
               "classification": "limitação editorial"
             }
@@ -656,9 +722,7 @@
         "question": "Qual é o núcleo da disputa entre Bernstein e Luxemburgo, e o que ela revela sobre os limites da reforma?",
         "answer": "A disputa é se reformas podem transformar as relações de produção ou apenas administrar o capitalismo; revela que a estratégia reformista depende de uma tese sobre o que o Estado e as instituições podem mudar.",
         "rationale": "Examine a objeção e o que ela exige da estratégia reformista.",
-        "sourceIds": [
-          "src-wiki-topic-social-democracy"
-        ],
+        "sourceIds": ["src-wiki-topic-social-democracy"],
         "revisit": [
           {
             "entityId": "wiki-topic-terceira-via",
@@ -689,19 +753,12 @@
       "gap": "Arestas tipadas de influência documentada ainda não foram registradas; o caso brasileiro foi incorporado como contexto, não como relação histórica fechada.",
       "coverage": "partial",
       "layout": "graph",
-      "blocks": [
-        {
-          "type": "atlas",
-          "rootEntityId": "wiki-topic-social-democracia"
-        }
-      ],
+      "blocks": [{ "type": "atlas", "rootEntityId": "wiki-topic-social-democracia" }],
       "review": {
         "question": "O que a social-democracia compartilha e o que rejeita no liberalismo e no comunismo?",
         "answer": "Do liberalismo, o Estado de direito e o mercado; do comunismo, a origem socialista; rejeita a ruptura revolucionária e a abolição do mercado, mas disputa proteção social e igualdade.",
         "rationale": "Compare tradições por suas respostas sobre mercado e ruptura.",
-        "sourceIds": [
-          "source-sd-cf88"
-        ]
+        "sourceIds": ["source-sd-cf88"]
       }
     },
     {
@@ -709,10 +766,11 @@
       "anchor": "leituras",
       "title": "Roteiro de leitura",
       "kicker": "Roteiro de leitura",
-      "minutes": 2,
+      "minutes": 1,
       "narrative": [
-        "O roteiro começa por textos curtos e manifestos, passa por obras de revisão e chega a estudos sobre o Estado de bem-estar. A ordem ajuda a construir o vocabulário antes de enfrentar a bibliografia acadêmica.",
-        "Textos primários permitem conferir o argumento; estudos situam as instituições e os países; críticas mostram os limites. As edições indicadas são as originais; traduções brasileiras podem ser procuradas."
+        "Traduzir e ler fontes sobre a social-democracia exige atenção ao contexto histórico de cada país: o termo significa coisas distintas na Alemanha de 1899, na Suécia de 1970 e nos debates partidários da América Latina.",
+        "As obras reunidas abaixo incluem textos programáticos clássicos, sínteses históricas comparativas sobre partidos europeus e análises das transformações contemporâneas dos regimes de bem-estar social.",
+        "A combinação de fontes primárias com estudos comparativos permite acompanhar por que o vocabulário reformista transitou da superação gradual do capitalismo para a gestão regulada da economia mista."
       ],
       "question": "O que ler depois desta introdução?",
       "bridge": "Para conferir cada argumento, volte às fontes desta leitura.",
@@ -801,8 +859,9 @@
       "kicker": "Fontes e metodologia",
       "minutes": 1,
       "narrative": [
-        "A leitura distingue textos primários, estudos acadêmicos e obras de divulgação. As afirmações são atribuídas a autores e acompanhadas de fontes; a bibliografia de cada capítulo indica onde conferir.",
-        "Para conferir uma afirmação, procure a fonte indicada no capítulo e compare o argumento com o texto original. Uma síntese não substitui a leitura da obra."
+        "Os parágrafos anteriores se apoiam em verbetes enciclopédicos, registros históricos sobre o movimento operário alemão e referências bibliográficas sobre os modelos europeus e o caso brasileiro.",
+        "Cada capítulo especifica os documentos utilizados e as lacunas de pesquisa em aberto, mantendo visíveis as fronteiras entre dados históricos consensuais e interpretações em disputa.",
+        "A bibliografia consolidada abaixo lista todas as fontes citadas nos capítulos, permitindo conferir URLs, recortes temáticos e limites do material disponível."
       ],
       "question": "Como sei que o que está aqui é verdade?",
       "bridge": null,
@@ -824,7 +883,10 @@
         "source-sd-cpdoc-vargas",
         "source-sd-cf88",
         "source-sd-brizola-trabalhismo",
-        "source-sd-pdt"
+        "source-sd-pdt",
+        "src-wiki-topic-estado-de-bem-estar-social",
+        "src-wiki-topic-democracia-representativa",
+        "src-wiki-topic-bolsa-familia"
       ],
       "gap": "Faltam fontes primárias e acadêmicas. A revisão humana ainda não foi registrada.",
       "coverage": "partial",
@@ -850,7 +912,10 @@
             "source-sd-cpdoc-vargas",
             "source-sd-cf88",
             "source-sd-brizola-trabalhismo",
-            "source-sd-pdt"
+            "source-sd-pdt",
+            "src-wiki-topic-estado-de-bem-estar-social",
+            "src-wiki-topic-democracia-representativa",
+            "src-wiki-topic-bolsa-familia"
           ]
         }
       ]
