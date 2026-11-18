@@ -72,7 +72,8 @@
       "reason": "Análise do comunismo de conselhos como uma corrente que busca a autogestão através de conselhos de trabalhadores e a abolição do Estado.",
       "question": "Como o comunismo de conselhos se diferencia do socialismo libertário?",
       "destination": {
-        "type": "grafo"
+        "type": "grafo",
+        "nodeId": "wiki-topic-comunismo-de-conselhos"
       },
       "justification": "Apresenta uma corrente específica dentro do comunismo que busca a autogestão através de conselhos, aprofundando a discussão sobre diferentes modelos de organização social.",
       "contextEntityId": "wiki-topic-comunismo-de-conselhos",
@@ -100,7 +101,8 @@
       "reason": "Analisar exemplos históricos de movimentos e regimes inspirados no socialismo revolucionário, como a Revolução Russa e a China Maoista.",
       "question": "Quais foram os principais movimentos e regimes inspirados no socialismo revolucionário?",
       "destination": {
-        "type": "grafo"
+        "type": "grafo",
+        "nodeId": "wiki-topic-socialismo-revolucionario"
       },
       "justification": "Apresenta exemplos concretos da aplicação do socialismo revolucionário na história, mostrando seus impactos e desafios.",
       "exit": "Saída paralela para aprofundamento no verbete."

@@ -50,9 +50,12 @@ describe('readerProse', () => {
     expect(readerProse(text)).toBeNull();
   });
 
-  it('keeps editorial prose untouched', () => {
+  it('keeps editorial prose untouched and strips inline AI review tags', () => {
     const text = 'A Câmara registra a presidência. O Diário registra a sessão de 1988.';
     expect(readerProse(text)).toBe(text);
+    expect(readerProse('[conferência de IA] O liberalismo econômico surgiu no século XVIII.')).toBe(
+      'O liberalismo econômico surgiu no século XVIII.',
+    );
   });
 });
 

@@ -1,10 +1,22 @@
 import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  Injector,
+  signal,
+} from '@angular/core';
+import { pendingUntilEvent, takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { readerPredicate, readerProse } from '@core/content/editorial/reader-voice';
 import type { KnowledgeGraph } from '@core/content/models/content-schema';
 import type { ContextStop } from '@core/content/models/knowledge-context';
+import {
+  relationWeightDefinition,
+  relationWeightOf,
+} from '@core/content/queries/knowledge-network';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import {
   type Itinerary,
@@ -21,7 +33,7 @@ import {
   ContextPanelService,
 } from '@shared/ui/knowledge-context/context-panel.service';
 import { NotFoundMessageComponent } from '@shared/ui/not-found-message/not-found-message.component';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { catchError, from, map, of, switchMap } from 'rxjs';
 
 const KIND_PALETTES: Record<ItineraryKind, MosaicPalette> = {
   historico: 'tissi',
@@ -80,6 +92,7 @@ export class ItineraryPageComponent {
   private readonly contextPanel = inject(ContextPanelService);
   private readonly document = inject(DOCUMENT);
   private readonly title = inject(Title);
+  private readonly injector = inject(Injector);
 
   readonly kindLabels = itineraryKindLabels;
   readonly loading = signal(true);
@@ -134,9 +147,16 @@ export class ItineraryPageComponent {
       const entityRelations = relations.filter(
         (r) => r.fromEntityId === entity.id || r.toEntityId === entity.id,
       );
+      const sortedRelations = [...entityRelations].sort(
+        (a, b) =>
+          relationWeightDefinition(relationWeightOf(a)).rank -
+          relationWeightDefinition(relationWeightOf(b)).rank,
+      );
+      const nonDiscovery = sortedRelations.filter((r) => r.type !== 'encyclopedic-link');
+      const prioritizedRelations = nonDiscovery.length ? nonDiscovery : sortedRelations;
       const seenNeighbors = new Set<string>();
       const neighbors: StopNeighbor[] = [];
-      for (const rel of entityRelations) {
+      for (const rel of prioritizedRelations) {
         const isOutgoing = rel.fromEntityId === entity.id;
         const otherId = isOutgoing ? rel.toEntityId : rel.fromEntityId;
         if (seenNeighbors.has(otherId)) continue;
@@ -146,14 +166,14 @@ export class ItineraryPageComponent {
         neighbors.push({
           slug: other.slug,
           title: other.title,
-          label: isOutgoing ? rel.label : rel.reverseLabel,
+          label: readerPredicate((isOutgoing ? rel.label : rel.reverseLabel) || rel.type),
         });
         if (neighbors.length >= 4) break;
       }
       const entityClaims = claims
         .filter((c) => c.entityId === entity.id && c.text.trim().length > 0)
         .slice(0, 2)
-        .map((c) => c.text);
+        .map((c) => readerProse(c.text) ?? c.text.trim());
       result.set(stop.id, {
         entityId: entity.id,
         summary: entity.summary,
@@ -266,6 +286,7 @@ export class ItineraryPageComponent {
     this.content
       .loadKnowledgeGraph()
       .pipe(
+        pendingUntilEvent(this.injector),
         catchError(() => of(null)),
         takeUntilDestroyed(),
       )
@@ -276,7 +297,7 @@ export class ItineraryPageComponent {
         map((params) => params.get('slug') ?? ''),
         switchMap((slug) => {
           this.loading.set(true);
-          return this.repository.bySlug(slug);
+          return from(this.repository.bySlug(slug)).pipe(pendingUntilEvent(this.injector));
         }),
         takeUntilDestroyed(),
       )

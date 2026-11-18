@@ -828,7 +828,11 @@
                   } @else {
                     {{ media.attribution }}
                   }
-                  @if (media.license) {
+                  @if (
+                    media.license &&
+                    media.license.trim().toLowerCase() !==
+                      (media.attribution ?? '').trim().toLowerCase()
+                  ) {
                     <span> · {{ media.license }}</span>
                   }
                 </figcaption>

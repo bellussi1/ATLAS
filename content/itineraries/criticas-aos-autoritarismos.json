@@ -57,7 +57,7 @@
       "reason": "Abre o grafo para explorar visualmente os vínculos entre regimes autoritários, partidos, lideranças, exílios e pensadores críticos presentes no acervo.",
       "question": "Quais eventos e autores conectam as experiências autoritárias às suas críticas?",
       "justification": "Permite continuar a investigação seguindo relações verificadas no mapa.",
-      "destination": { "type": "grafo" }
+      "destination": { "type": "grafo", "nodeId": "wiki-topic-totalitarismo" }
     }
   ],
   "branches": [

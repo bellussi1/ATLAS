@@ -641,7 +641,10 @@ const hiddenCollections = new Set(['atlas-methodology']);
 
 /** Collection titles as the reader sees them, without notes on how the text was produced. */
 export function collectionLabel(title: string): string {
-  return title.replace(/\s*\([^)]*(wikip[eé]dia|rascunho)[^)]*\)/i, '').trim();
+  return title
+    .replace(/\s*\([^)]*(wikip[eé]dia|rascunho)[^)]*\)/i, '')
+    .replace(/:\s*registros em revis[aã]o$/i, '')
+    .trim();
 }
 
 function provenanceName(source: 'wikipedia' | 'wikidata'): string {

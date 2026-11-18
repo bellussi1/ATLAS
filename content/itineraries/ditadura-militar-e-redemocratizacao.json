@@ -21,10 +21,10 @@
       "question": "Quais foram as causas e as consequências imediatas do golpe de 1964?",
       "destination": {
         "type": "verbete",
-        "slug": "ditadura-militar-brasileira"
+        "slug": "golpe-de-estado-no-brasil-em-1964"
       },
       "justification": "Esta parada estabelece o ponto de partida da análise, contextualizando o início da ditadura.",
-      "contextEntityId": "wiki-topic-ditadura-militar-brasileira",
+      "contextEntityId": "wiki-topic-golpe-de-estado-no-brasil-em-1964",
       "sourceIds": ["src-1"]
     },
     {
@@ -34,23 +34,23 @@
       "question": "Quais foram as principais características e mecanismos de poder da ditadura militar no Brasil?",
       "destination": {
         "type": "verbete",
-        "slug": "humberto-castelo-branco"
+        "slug": "ditadura-militar-brasileira"
       },
       "justification": "Após contextualizar o golpe, esta parada aprofunda a compreensão do regime ditatorial.",
-      "contextEntityId": "wiki-topic-humberto-castelo-branco",
+      "contextEntityId": "wiki-topic-ditadura-militar-brasileira",
       "sourceIds": ["src-1"]
     },
     {
       "id": "wiki-topic-humberto-castelo-branco",
-      "title": "Humberto Castelo Branco e a Consolidacão da Ditadura",
+      "title": "Humberto Castelo Branco e a Consolidação da Ditadura",
       "reason": "A presidência de Castelo Branco (1964-1967) foi crucial para a consolidação da ditadura, com a implementação de medidas repressivas e a criação de uma estrutura autoritária.",
       "question": "Como a presidência de Castelo Branco contribuiu para a consolidação da ditadura militar?",
       "destination": {
         "type": "verbete",
-        "slug": "assembleia-nacional-constituinte-de-1987"
+        "slug": "humberto-castelo-branco"
       },
       "justification": "Esta parada destaca a importância de um líder específico na consolidação do regime.",
-      "contextEntityId": "wiki-topic-assembleia-nacional-constituinte-de-1987",
+      "contextEntityId": "wiki-topic-humberto-castelo-branco",
       "sourceIds": ["src-1"]
     },
     {
@@ -59,9 +59,11 @@
       "reason": "A Constituição de 1988, elaborada pela Assembleia Nacional Constituinte, consolidou a redemocratização do Brasil, restaurando direitos e liberdades civis.",
       "question": "Como a Constituição de 1988 contribuiu para a consolidação da democracia no Brasil?",
       "destination": {
-        "type": "grafo"
+        "type": "grafo",
+        "nodeId": "wiki-topic-assembleia-nacional-constituinte-de-1987"
       },
       "justification": "Esta parada marca o ponto de virada para a redemocratização.",
+      "contextEntityId": "wiki-topic-assembleia-nacional-constituinte-de-1987",
       "sourceIds": ["src-1"]
     }
   ],
@@ -90,7 +92,7 @@
         "slug": "comando-de-libertacao-nacional"
       },
       "justification": "Esta ramificação explora as forças que lutaram contra a ditadura.",
-      "exit": "true"
+      "exit": "Saída paralela para consulta ao verbete sobre os movimentos de oposição ao regime."
     }
   ],
   "connections": [

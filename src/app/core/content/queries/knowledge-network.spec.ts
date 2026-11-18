@@ -456,6 +456,9 @@ describe('knowledge network', () => {
 
   it('shows collection titles without production notes and omits site-internal collections', () => {
     expect(collectionLabel('Marxismo (rascunhos da Wikipédia)')).toBe('Marxismo');
+    expect(collectionLabel('Conceitos e correntes: registros em revisão')).toBe(
+      'Conceitos e correntes',
+    );
     expect(collectionLabel('Atlas do Liberalismo')).toBe('Atlas do Liberalismo');
     expect(network.collections.some((c) => c.id === 'atlas-methodology')).toBe(false);
     expect(network.collections.every((c) => !/wikip[eé]dia/i.test(c.title))).toBe(true);

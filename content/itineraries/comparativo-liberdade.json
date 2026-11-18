@@ -66,7 +66,7 @@
       "reason": "Reúne no mapa interativo as influências, rupturas e controvérsias documentadas entre pensadores, obras fundadoras e movimentos das quatro tradições.",
       "question": "Quais autores e acontecimentos conectam essas respostas em momentos de ruptura?",
       "justification": "Permite verificar empiricamente no acervo onde as tradições se cruzaram ou entraram em conflito.",
-      "destination": { "type": "grafo" }
+      "destination": { "type": "grafo", "nodeId": "ideology-liberalism" }
     }
   ],
   "branches": [
@@ -108,7 +108,7 @@
   "sources": [
     {
       "id": "src-verbete-liberalism",
-      "title": "ATLAS — Verbete Liberalism (conceito, registros e ligações)"
+      "title": "ATLAS — Verbete Liberalismo (conceito, registros e ligações)"
     },
     {
       "id": "src-leitura-liberalismo",

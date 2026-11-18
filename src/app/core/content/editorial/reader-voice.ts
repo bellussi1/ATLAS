@@ -30,9 +30,11 @@ const CATALOGUE_LOCATOR = /^Q\d+\b.*\bP\d+\b/;
 /** The reader's part of a text, or null when it only describes how the record was made. */
 export function readerProse(text: string | null | undefined): string | null {
   const prose = (text ?? '')
+    .replace(/\s*\[confer[eê]ncia de IA\]\s*/gi, ' ')
     .split(SENTENCE_BREAK)
     .filter((sentence) => !PROCESS_NOTE.some((note) => note.test(sentence)))
     .join(' ')
+    .replace(/\s+/g, ' ')
     .trim();
   return prose || null;
 }

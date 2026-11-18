@@ -220,6 +220,11 @@
   animation: roadmap-flow 1.4s linear infinite;
 }
 
+.diagram-branch {
+  cursor: pointer;
+  outline: none;
+}
+
 .diagram-branch__arc {
   fill: none;
   stroke: var(--color-orange-strong);

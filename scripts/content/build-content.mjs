@@ -46,6 +46,9 @@ const readingTaglines = {
   liberalismo: 'Liberdade, propriedade e mercado',
   'social-democracia': 'Reforma, Estado e bem-estar',
   anarquismo: 'Autoridade, autonomia e apoio mútuo',
+  nazismo: 'Racismo de Estado, totalitarismo e Segunda Guerra',
+  stalinismo: 'Partido único, industrialização forçada e expurgos',
+  trabalhismo: 'Estado social, sindicatos e legislação trabalhista no Brasil',
 };
 const readingSeeds = { marxismo: 11, liberalismo: 23, 'social-democracia': 41, anarquismo: 53 };
 const readingStatusLabels = {
@@ -90,7 +93,11 @@ function homeStats(graph, network, readings) {
     const publicEntry = publicReadings.find((reading) => reading.slug === slug);
     const status = page.review?.status ?? 'rascunho';
     const minutes = page.chapters.reduce((sum, ch) => sum + (ch.minutes ?? 0), 0);
-    const completeChapters = page.chapters.filter((ch) => ch.coverage === 'complete').length;
+    const completeChapters = page.chapters.filter(
+      (ch) =>
+        ch.coverage !== 'pending' &&
+        ((ch.narrative?.length ?? 0) > 0 || (ch.blocks?.length ?? 0) > 0),
+    ).length;
     return {
       slug,
       title: page.title,
@@ -391,7 +398,7 @@ export async function buildContent({
     await mkdir(join(projectRoot, 'generated/testing'), { recursive: true });
     await atomicFile(
       join(projectRoot, 'generated/testing/content-fixture.json'),
-      await formatJson({
+      `${JSON.stringify({
         graph,
         search,
         adjacency,
@@ -404,7 +411,7 @@ export async function buildContent({
             fixtureAssets.map((resource) => [artifactKey(resource.sha256), resource.body]),
           ),
         },
-      }),
+      })}\n`,
     );
   }
   return manifest;

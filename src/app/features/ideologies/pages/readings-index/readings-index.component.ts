@@ -53,14 +53,24 @@ export class ReadingsIndexComponent {
   readonly query = signal('');
   readonly statusFilter = signal<StatusFilter>('all');
 
+  readonly reviewedCount = computed(
+    () =>
+      this.readings.filter((item) => !item.statusLabel.toLowerCase().includes('rascunho')).length,
+  );
+  readonly draftCount = computed(
+    () =>
+      this.readings.filter((item) => item.statusLabel.toLowerCase().includes('rascunho')).length,
+  );
+
   readonly filtered = computed(() => {
     const q = this.query().trim().toLowerCase();
     const filter = this.statusFilter();
     return this.readings.filter((item) => {
-      if (filter === 'reviewed' && !item.statusLabel.toLowerCase().includes('revisad')) {
+      const isDraft = item.statusLabel.toLowerCase().includes('rascunho');
+      if (filter === 'reviewed' && isDraft) {
         return false;
       }
-      if (filter === 'draft' && item.statusLabel.toLowerCase().includes('revisad')) {
+      if (filter === 'draft' && !isDraft) {
         return false;
       }
       if (!q) return true;

@@ -65,7 +65,7 @@
       "reason": "Abre o grafo para explorar as conexões entre presidentes, partidos, constituições, movimentos sociais e acontecimentos do Brasil republicano.",
       "question": "Quais atores e eventos ligam os diferentes regimes republicanos brasileiros no acervo?",
       "justification": "Permite navegar pelas ligações cruzadas entre história política e instituições brasileiras.",
-      "destination": { "type": "grafo" }
+      "destination": { "type": "grafo", "nodeId": "wiki-topic-constituicao-brasileira-de-1988" }
     }
   ],
   "branches": [

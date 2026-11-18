@@ -38,7 +38,7 @@
         [attr.aria-pressed]="statusFilter() === 'reviewed'"
         (click)="setFilter('reviewed')"
       >
-        Revisadas
+        Com fontes ({{ reviewedCount() }})
       </button>
       <button
         type="button"
@@ -47,7 +47,7 @@
         [attr.aria-pressed]="statusFilter() === 'draft'"
         (click)="setFilter('draft')"
       >
-        Em rascunho
+        Em rascunho ({{ draftCount() }})
       </button>
     </div>
   </div>

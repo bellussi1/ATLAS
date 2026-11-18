@@ -70,7 +70,8 @@
       "reason": "Analisa a importância da separação de poderes como um mecanismo para garantir o equilíbrio e o controle no exercício do poder estatal.",
       "question": "Como a separação de poderes contribui para a estabilidade e a justiça no sistema político?",
       "destination": {
-        "type": "grafo"
+        "type": "grafo",
+        "nodeId": "wiki-topic-separacao-de-poderes"
       },
       "justification": "Aborda um elemento fundamental para a organização do estado moderno.",
       "contextEntityId": "wiki-topic-separacao-de-poderes",
@@ -102,7 +103,7 @@
         "path": "paises"
       },
       "justification": "Amplia a discussão sobre a democracia representativa para um contexto global.",
-      "exit": "true"
+      "exit": "Saída paralela para aprofundar o conceito antes de retomar o percurso."
     }
   ],
   "connections": [

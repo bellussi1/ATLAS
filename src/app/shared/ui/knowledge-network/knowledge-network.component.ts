@@ -15,6 +15,7 @@ import {
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { readerProse } from '@core/content/editorial/reader-voice';
 import { entityMedia } from '@core/content/media/asset-license';
 import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
 import type { KnowledgeGraph, Scope } from '@core/content/models/content-schema';
@@ -375,7 +376,10 @@ export class KnowledgeNetworkComponent {
   readonly expandedGroups = signal<ReadonlySet<RelationWeight>>(new Set());
   readonly selectedClaims = computed(() => {
     const node = this.selected();
-    return node ? positionClaims(node).slice(0, 3) : [];
+    if (!node) return [];
+    return positionClaims(node)
+      .slice(0, 3)
+      .map((claim) => ({ ...claim, text: readerProse(claim.text) ?? claim.text }));
   });
   readonly pathFromTitle = computed(() => {
     const id = this.pathFrom();
@@ -1198,6 +1202,7 @@ export class KnowledgeNetworkComponent {
       event.preventDefault();
     } else if (event.key === 'Escape') {
       this.query.set('');
+      this.shortcutsOpen.set(false);
     } else if (event.key === 'ArrowDown' && this.matches().length) {
       event.preventDefault();
       this.searchResult(event, 'first');
@@ -1306,7 +1311,10 @@ export class KnowledgeNetworkComponent {
   /** Why the link exists, in a sentence the reader can check against the source. */
   reasonOf(edge: NetworkEdge): string {
     const nature = relationNatureDefinition(edge.nature);
-    return edge.nature === 'stated' || edge.nature === 'editorial' ? edge.context : nature.note;
+    if (edge.nature === 'stated' || edge.nature === 'editorial') {
+      return readerProse(edge.context) ?? nature.note;
+    }
+    return nature.note;
   }
   weightOf(edge: NetworkEdge) {
     return relationWeightDefinition(edge.weight);

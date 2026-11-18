@@ -112,7 +112,7 @@
 .chip--icon {
   inline-size: 44px;
   padding: 0;
-  font-size: 1var (--text-body);
+  font-size: var(--text-body);
 }
 kbd {
   display: inline-block;
@@ -135,7 +135,7 @@ kbd {
 // ---- top bar ----
 .bar {
   grid-column: 1 / -1;
-  z-index: 5;
+  z-index: 12;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -273,7 +273,7 @@ kbd {
     &::after {
       content: '+';
       color: var(--color-ink-muted);
-      font: 600 1var (--text-body)/1 var(--font-mono);
+      font: 600 var(--text-body)/1 var(--font-mono);
     }
     h2 {
       margin: 0 auto 0 0;
@@ -1362,7 +1362,7 @@ kbd {
 }
 .links__go {
   color: var(--color-ink-muted);
-  font: 700 1var (--text-body)/1 var(--font-sans);
+  font: 700 var(--text-body)/1 var(--font-sans);
   transition:
     transform 140ms var(--ease-out, ease-out),
     color 140ms;
@@ -1486,28 +1486,12 @@ kbd {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .stage--animated .world,
-  .chip,
-  .legend__item,
-  .check,
-  .swatch,
-  .links button,
-  .links li,
-  .node__shape {
-    transition: none;
-  }
-  .bar,
-  .controls,
-  .detail,
-  .shortcuts,
-  .search__results,
-  .overlay,
-  .node.is-selected,
-  .node__pulse,
-  .label,
-  .tip,
-  .edges line {
+  * {
+    transition: none !important;
     animation: none !important;
+  }
+  .skeleton-node {
+    opacity: 0.25;
   }
 }
 

@@ -1,4 +1,5 @@
 import { type KnowledgeGraph, placeTypeOf } from '@core/content/models/content-schema';
+import { type NetworkKindId, networkKindOfEntity } from '@core/content/queries/knowledge-network';
 import type { KnowledgeTerm } from '@ideologies/models/knowledge-term';
 import { kindLabel } from '@ideologies/utils/desk-graph';
 
@@ -11,6 +12,19 @@ const vocabularyCache = new WeakMap<
   KnowledgeGraph,
   Map<readonly KnowledgeTerm[], KnowledgeTerm[]>
 >();
+
+const networkKindLabels: Record<NetworkKindId, string> = {
+  person: 'Pessoa',
+  work: 'Obra',
+  concept: 'Conceito',
+  event: 'Acontecimento',
+  ideology: 'Corrente',
+  organization: 'Instituição',
+  party: 'Partido',
+  country: 'País',
+  polity: 'Regime',
+  place: 'Lugar',
+};
 
 /** Cuts a summary at a word boundary so the hover explanation stays one short line. */
 export function shortDefinition(summary: string, max = MAX_DEFINITION): string {
@@ -36,6 +50,21 @@ export function graphVocabulary(
   }
   const cached = perGraph.get(manual);
   if (cached) return cached;
+  const entities = graph.atlases.flatMap((a) => a.entities);
+  const reservedOwners = new Map<string, string>();
+  for (const term of manual) {
+    const key = term.label.toLocaleLowerCase('pt-BR');
+    if (term.label.length >= MIN_LABEL && !reservedOwners.has(key)) {
+      reservedOwners.set(key, term.entityId);
+    }
+  }
+  for (const entity of entities) {
+    const key = entity.title.toLocaleLowerCase('pt-BR');
+    if (entity.title.length >= MIN_LABEL && !reservedOwners.has(key)) {
+      reservedOwners.set(key, entity.id);
+    }
+  }
+
   const byId = new Map<string, KnowledgeTerm>();
   const result: KnowledgeTerm[] = [];
   const seen = new Set<string>();
@@ -45,15 +74,26 @@ export function graphVocabulary(
     seen.add(key);
     result.push(term);
   };
-  for (const entity of graph.atlases.flatMap((a) => a.entities)) {
+  for (const entity of entities) {
     if (byId.has(entity.id)) continue;
+    const netKind = networkKindOfEntity({
+      id: entity.id,
+      kind: entity.kind,
+      placeType: placeTypeOf(entity),
+      placeCategory: entity.kind === 'place' ? entity.placeCategory : undefined,
+      description: entity.discoveryMetadata?.description ?? undefined,
+    });
     const base = {
       entityId: entity.id,
-      kind: kindLabel(entity.kind, placeTypeOf(entity)),
+      kind: networkKindLabels[netKind] ?? kindLabel(entity.kind, placeTypeOf(entity)),
       definition: shortDefinition(entity.summary),
     };
     byId.set(entity.id, { ...base, label: entity.title });
-    for (const label of [entity.title, ...entity.aliases]) add({ ...base, label });
+    for (const label of [entity.title, ...entity.aliases]) {
+      const owner = reservedOwners.get(label.toLocaleLowerCase('pt-BR'));
+      if (owner && owner !== entity.id) continue;
+      add({ ...base, label });
+    }
   }
   for (const term of manual) {
     const fromGraph = byId.get(term.entityId);

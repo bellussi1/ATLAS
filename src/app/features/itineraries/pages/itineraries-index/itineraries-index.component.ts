@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  Injector,
+  signal,
+} from '@angular/core';
+import { pendingUntilEvent, takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { rankByPopularity } from '@core/analytics/popularity';
 import {
@@ -13,6 +21,7 @@ import { resolveItineraryDestination } from '@itineraries/utils/itinerary-destin
 import popularity from '@metrics/popularity.json';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
+import { from } from 'rxjs';
 
 const KIND_PALETTES: Record<ItineraryKind, MosaicPalette> = {
   historico: 'tissi',
@@ -30,6 +39,7 @@ const KIND_PALETTES: Record<ItineraryKind, MosaicPalette> = {
 })
 export class ItinerariesIndexComponent {
   private readonly repository = inject(ItineraryRepository);
+  private readonly injector = inject(Injector);
   readonly kindLabels = itineraryKindLabels;
   readonly kinds = itineraryKinds;
   readonly loading = signal(true);
@@ -42,12 +52,17 @@ export class ItinerariesIndexComponent {
   });
 
   constructor() {
-    void this.repository
-      .list()
-      .then((items) =>
-        this.items.set(rankByPopularity(items, (item) => `/itinerario/${item.slug}`, popularity)),
-      )
-      .finally(() => this.loading.set(false));
+    from(this.repository.list())
+      .pipe(pendingUntilEvent(this.injector), takeUntilDestroyed())
+      .subscribe({
+        next: (items) => {
+          this.items.set(rankByPopularity(items, (item) => `/itinerario/${item.slug}`, popularity));
+          this.loading.set(false);
+        },
+        error: () => {
+          this.loading.set(false);
+        },
+      });
   }
 
   countForKind(kind: ItineraryKind): number {

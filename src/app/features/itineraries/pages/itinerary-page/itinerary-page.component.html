@@ -73,7 +73,15 @@
             }
 
             @for (branch of map.branches; track branch.id) {
-              <g class="diagram-branch">
+              <g
+                class="diagram-branch"
+                role="button"
+                tabindex="0"
+                [attr.aria-label]="'Ir para parada de origem: ' + branch.title"
+                (click)="selectStop(branch.fromStop, true)"
+                (keydown.enter)="selectStop(branch.fromStop, true)"
+                (keydown.space)="$event.preventDefault(); selectStop(branch.fromStop, true)"
+              >
                 <path class="diagram-branch__arc" [attr.d]="branch.pathD" />
                 <circle
                   class="diagram-branch__dot"
@@ -393,7 +401,7 @@
 
             @if (currentStop.justification) {
               <div class="roadmap-desk__note">
-                <strong>Conexão no roadmap</strong>
+                <strong>Conexão no percurso</strong>
                 <p>{{ currentStop.justification }}</p>
               </div>
             }

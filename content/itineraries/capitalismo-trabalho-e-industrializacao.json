@@ -56,7 +56,7 @@
       "reason": "Permite explorar no grafo as conexões entre economistas clássicos, críticos do capitalismo, sindicatos e marcos históricos da legislação trabalhista.",
       "question": "Quais pensadores e eventos conectam a crítica econômica europeia ao sindicalismo brasileiro?",
       "justification": "Abre o estudo para novas comparações entre tradições econômicas e movimentos sociais.",
-      "destination": { "type": "grafo" }
+      "destination": { "type": "grafo", "nodeId": "wiki-topic-capitalismo" }
     }
   ],
   "branches": [
