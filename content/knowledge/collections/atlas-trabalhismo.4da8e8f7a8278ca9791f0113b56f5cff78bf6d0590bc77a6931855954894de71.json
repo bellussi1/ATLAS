@@ -33,7 +33,7 @@
       "slug": "trabalhismo-brasileiro",
       "title": "Trabalhismo brasileiro",
       "summary": "O trabalhismo brasileiro é uma corrente política, ideologia e tradição política do Brasil que defende a integração da classe trabalhadora ao Estado nacional por meio da legislação social, do nacionalismo e do desenvolvimentismo. Suas origens remontam às primeiras décadas do século XX, e ele se consolidou durante a Era Vargas, com a fundação do Partido Trabalhista Brasileiro em 1945. Ao longo do século XX influenciou a política brasileira, sobretudo nos governos de Getúlio Vargas e João Goulart, e permanece objeto de múltiplas interpretações historiográficas sobre sua natureza ideológica.",
-      "aliases": ["trabalhismo", "nacional-trabalhismo", "Partido Trabalhista Brasileiro", "PTB"],
+      "aliases": ["nacional-trabalhismo", "Partido Trabalhista Brasileiro", "PTB"],
       "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
       "temporalExtent": null,
       "uncertainty": "unknown",
@@ -176,7 +176,7 @@
         "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
         "attribution": "Texto da Wikipédia (pt), revisão 73271559, CC BY-SA 4.0"
       },
-      "kind": "institution"
+      "kind": "ideology"
     },
     {
       "id": "wiki-topic-classe-trabalhadora",
@@ -287,7 +287,7 @@
       "slug": "era-vargas",
       "title": "Era Vargas",
       "summary": "A Era Vargas é o período da história do Brasil entre 1930 e 1945, em que Getúlio Vargas governou de forma contínua. Compreende o Governo Provisório, o Governo Constitucional e o Estado Novo. Começa com a Revolução de 1930, que pôs fim à República Velha, e termina com a renúncia de Vargas em 1945 e a redemocratização. O artigo a apresenta como um divisor de águas, em razão das alterações sociais e econômicas feitas no país. Trata também da Revolução Constitucionalista de 1932, da Constituição de 1934, da Constituição de 1937 e da forma como o período foi disputado por historiadores e políticos.",
-      "aliases": ["Getúlio Vargas", "Getúlio", "Estado Novo", "Governo Provisório"],
+      "aliases": ["Getúlio", "Estado Novo", "Governo Provisório"],
       "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
       "temporalExtent": null,
       "uncertainty": "unknown",
@@ -651,12 +651,7 @@
       "slug": "neomercantilismo",
       "title": "Neomercantilismo",
       "summary": "O neomercantilismo, também chamado de nacional-desenvolvimentismo, é um regime de política econômica que incentiva exportações, desencoraja importações e centraliza decisões monetárias. Segundo o artigo, surgiu no final do século XVIII, com Alexander Hamilton e Friedrich List entre seus principais nomes. Defensores o veem como meio de independência econômica; críticos questionam sua eficiência.",
-      "aliases": [
-        "nacional-desenvolvimentismo",
-        "Alexander Hamilton",
-        "Friedrich List",
-        "Adam Smith"
-      ],
+      "aliases": ["nacional-desenvolvimentismo", "Alexander Hamilton", "Friedrich List"],
       "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
       "temporalExtent": null,
       "uncertainty": "unknown",
@@ -989,7 +984,7 @@
       "slug": "solidarismo",
       "title": "Solidarismo",
       "summary": "O solidarismo é uma filosofia política apresentada por Leon Bourgeois em seu livro Solidariedade. Sustenta que os mais afortunados têm dívida social com os menos afortunados, cobrada pelo Estado por tributos. Pretendia sintetizar liberalismo e socialismo e recebeu influência da Doutrina Social da Igreja fora da França. Importa por ter embasado propostas de tributação de heranças e aposentadoria na França.",
-      "aliases": ["Leon Bourgeois", "Léon Bourgeois"],
+      "aliases": ["Leon Bourgeois"],
       "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
       "temporalExtent": null,
       "uncertainty": "unknown",
@@ -1082,7 +1077,7 @@
         "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
         "attribution": "Texto da Wikipédia (pt), revisão 73256069, CC BY-SA 4.0"
       },
-      "kind": "institution"
+      "kind": "ideology"
     }
   ],
   "sources": [

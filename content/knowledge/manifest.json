@@ -21,13 +21,13 @@
     },
     {
       "id": "atlas-liberalism",
-      "file": "collections/atlas-liberalism.d3aa5e4e0083a88b4f8191e40b63554a1bd0af35e3c51d0b2f15185e64946db9.json",
-      "sha256": "d3aa5e4e0083a88b4f8191e40b63554a1bd0af35e3c51d0b2f15185e64946db9"
+      "file": "collections/atlas-liberalism.b97bf357a86083d52600c6cbe75f840b93f05406b025ae283f284c3e487b4cf8.json",
+      "sha256": "b97bf357a86083d52600c6cbe75f840b93f05406b025ae283f284c3e487b4cf8"
     },
     {
       "id": "atlas-marx-valor",
-      "file": "collections/atlas-marx-valor.786d7c82b16124f5a3c462a10a8946bba84fd547391afc93abbf705faec36527.json",
-      "sha256": "786d7c82b16124f5a3c462a10a8946bba84fd547391afc93abbf705faec36527"
+      "file": "collections/atlas-marx-valor.cf52a5f835b6b5e88c12ed16ac9860195b590ebda114d54d6e04c3a27b2e29ed.json",
+      "sha256": "cf52a5f835b6b5e88c12ed16ac9860195b590ebda114d54d6e04c3a27b2e29ed"
     },
     {
       "id": "atlas-constitutional-contexts",
@@ -51,23 +51,23 @@
     },
     {
       "id": "atlas-social-democracia",
-      "file": "collections/atlas-social-democracia.308fb495712206725fd21b7621b752dcc12799239656e89952df5ffce457e15b.json",
-      "sha256": "308fb495712206725fd21b7621b752dcc12799239656e89952df5ffce457e15b"
+      "file": "collections/atlas-social-democracia.f13f719c7c616fe3a34ba3eb0fb9f5f6a0b53cf71d8ae1c20ec2ab263a169001.json",
+      "sha256": "f13f719c7c616fe3a34ba3eb0fb9f5f6a0b53cf71d8ae1c20ec2ab263a169001"
     },
     {
       "id": "atlas-anarquismo",
-      "file": "collections/atlas-anarquismo.9dbfcb46d4a5a00ea542e3a71bcbce0ea0f74db1f2433a7eff8abc1fab60e95f.json",
-      "sha256": "9dbfcb46d4a5a00ea542e3a71bcbce0ea0f74db1f2433a7eff8abc1fab60e95f"
+      "file": "collections/atlas-anarquismo.caa5dd15a832d433204e291f52cde9f788111e41e1864d3dbc8cb714680c8a44.json",
+      "sha256": "caa5dd15a832d433204e291f52cde9f788111e41e1864d3dbc8cb714680c8a44"
     },
     {
       "id": "atlas-ideologias-principais",
-      "file": "collections/atlas-ideologias-principais.fc68c17e31f2f5c53dbfe65c7cdb7049e79fcb8ea8f4992f382cd8fdde2f2ad6.json",
-      "sha256": "fc68c17e31f2f5c53dbfe65c7cdb7049e79fcb8ea8f4992f382cd8fdde2f2ad6"
+      "file": "collections/atlas-ideologias-principais.8ef886ccfe9992a933701f4404f88255c07bb2cda30742709d406214d12dda6e.json",
+      "sha256": "8ef886ccfe9992a933701f4404f88255c07bb2cda30742709d406214d12dda6e"
     },
     {
       "id": "atlas-verbetes-citados",
-      "file": "collections/atlas-verbetes-citados.06454115674bd1a493b57fbb42761359d2d5e8eefecd1697b2e3e749303fe364.json",
-      "sha256": "06454115674bd1a493b57fbb42761359d2d5e8eefecd1697b2e3e749303fe364"
+      "file": "collections/atlas-verbetes-citados.ffdbdfcccd78dde70dfebd867d1907e5b2e300a6064267aecb88c63bc54b28d5.json",
+      "sha256": "ffdbdfcccd78dde70dfebd867d1907e5b2e300a6064267aecb88c63bc54b28d5"
     },
     {
       "id": "atlas-nazismo",
@@ -81,8 +81,8 @@
     },
     {
       "id": "atlas-trabalhismo",
-      "file": "collections/atlas-trabalhismo.9ed686500420c38cc849080c042b8b38a8a496ca6474e6b109af6f0ce7607781.json",
-      "sha256": "9ed686500420c38cc849080c042b8b38a8a496ca6474e6b109af6f0ce7607781"
+      "file": "collections/atlas-trabalhismo.4da8e8f7a8278ca9791f0113b56f5cff78bf6d0590bc77a6931855954894de71.json",
+      "sha256": "4da8e8f7a8278ca9791f0113b56f5cff78bf6d0590bc77a6931855954894de71"
     },
     {
       "id": "atlas-era-vargas",
@@ -96,23 +96,23 @@
     },
     {
       "id": "atlas-revolucao",
-      "file": "collections/atlas-revolucao.a096d0deaed70860ad193d59968a481cc12b35465b212e48a6d206152b3573ec.json",
-      "sha256": "a096d0deaed70860ad193d59968a481cc12b35465b212e48a6d206152b3573ec"
+      "file": "collections/atlas-revolucao.c92603dbb581624e39a4829b8d0826ae4796e89d7bf22389c2d8a89604327a61.json",
+      "sha256": "c92603dbb581624e39a4829b8d0826ae4796e89d7bf22389c2d8a89604327a61"
     },
     {
       "id": "atlas-estado",
-      "file": "collections/atlas-estado.05741c33184b1ca582eaba4fe3484ea823d82fd461d2101a22206718316747e7.json",
-      "sha256": "05741c33184b1ca582eaba4fe3484ea823d82fd461d2101a22206718316747e7"
+      "file": "collections/atlas-estado.eabdc2e819c16774882431c07f6174ca5f97f35534b906f9e1474a97e22a3fbd.json",
+      "sha256": "eabdc2e819c16774882431c07f6174ca5f97f35534b906f9e1474a97e22a3fbd"
     },
     {
       "id": "atlas-karl-marx",
-      "file": "collections/atlas-karl-marx.7e8056c54be45310a71eaa3ce01f204beb9d5d2053f9c2d2eb8259c039efb8be.json",
-      "sha256": "7e8056c54be45310a71eaa3ce01f204beb9d5d2053f9c2d2eb8259c039efb8be"
+      "file": "collections/atlas-karl-marx.34695853485231822c60a4a57858e4b55f3c891ed47f6eda537b19083c68e406.json",
+      "sha256": "34695853485231822c60a4a57858e4b55f3c891ed47f6eda537b19083c68e406"
     },
     {
       "id": "atlas-adam-smith",
-      "file": "collections/atlas-adam-smith.6f8385f12fef81626b45ec53c79545977deef1c4e64cc7fbd72231376c2902d2.json",
-      "sha256": "6f8385f12fef81626b45ec53c79545977deef1c4e64cc7fbd72231376c2902d2"
+      "file": "collections/atlas-adam-smith.8e8319786dc3e237ee093f69fa9f7e8249ac8000fdfa64c859a775545117e17e.json",
+      "sha256": "8e8319786dc3e237ee093f69fa9f7e8249ac8000fdfa64c859a775545117e17e"
     },
     {
       "id": "atlas-segunda-guerra-mundial",

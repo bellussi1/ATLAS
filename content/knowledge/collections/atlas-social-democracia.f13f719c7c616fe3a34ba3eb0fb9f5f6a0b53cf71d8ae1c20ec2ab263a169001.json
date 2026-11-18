@@ -857,14 +857,7 @@
       "slug": "dilma-rousseff",
       "title": "Dilma Rousseff",
       "summary": "Dilma Rousseff é economista e política brasileira, filiada ao Partido dos Trabalhadores. Foi presidente do Brasil de 2011 até seu afastamento por processo de impeachment em 2016 e, desde 2023, preside o Novo Banco de Desenvolvimento, sediado em Xangai. O artigo descreve sua formação, a militância na luta armada contra a ditadura militar, a prisão entre 1970 e 1972, a atuação em governos estaduais e federais e a trajetória até as eleições de 2010 e 2014 e o processo de impeachment. Importa para o estudo da política brasileira recente.",
-      "aliases": [
-        "Dilma Vana Rousseff",
-        "Dilma",
-        "Partido dos Trabalhadores",
-        "PT",
-        "Comando de Libertação Nacional",
-        "COLINA"
-      ],
+      "aliases": ["Dilma Vana Rousseff", "Dilma", "PT", "COLINA"],
       "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
       "temporalExtent": {
         "startYear": 1947,
@@ -1333,7 +1326,6 @@
         "Socialist International",
         "IS",
         "SI",
-        "Partido Socialista Europeu",
         "Party of European Socialists"
       ],
       "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",

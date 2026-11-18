@@ -89,6 +89,12 @@ export class ContentRepository {
   manifestSnapshot(): Promise<ContentManifest> {
     return this.getManifest();
   }
+  async hasPublishedArtifacts(resources: readonly { sha256: string }[]): Promise<boolean> {
+    if (!resources.length) return false;
+    const pointer = await this.getPointer();
+    const available = new Set(pointer.artifacts.map((item) => item.sha256));
+    return resources.every((resource) => available.has(resource.sha256));
+  }
   verifiedResource(resource: { sha256: string; bytes: number }, label: string): Promise<unknown> {
     return this.resource(resource, label);
   }

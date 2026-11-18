@@ -23,21 +23,27 @@ export class ItineraryRepository {
           itinerarySchema.parse(item),
         );
       }
-      await firstValueFrom(this.content.loadKnowledgeGraph());
-      const bundled = this.content.bundledItineraries;
-      if (bundled) {
-        return Object.values(bundled).map((item) => itinerarySchema.parse(item));
+      if (this.content.bundledItineraries) {
+        return Object.values(this.content.bundledItineraries).map((item) =>
+          itinerarySchema.parse(item),
+        );
       }
       const manifest = await this.content.manifestSnapshot();
       const entries = manifest.itineraries ?? [];
       if (!entries.length) return [];
-      const loaded = await Promise.all(
-        entries.map(async (entry) => {
-          const raw = await this.content.verifiedResource(entry, `itinerary-${entry.slug}`);
-          return itinerarySchema.parse(raw);
-        }),
+      if (await this.content.hasPublishedArtifacts(entries)) {
+        const loaded = await Promise.all(
+          entries.map(async (entry) => {
+            const raw = await this.content.verifiedResource(entry, `itinerary-${entry.slug}`);
+            return itinerarySchema.parse(raw);
+          }),
+        );
+        return loaded;
+      }
+      await firstValueFrom(this.content.loadKnowledgeGraph());
+      return Object.values(this.content.bundledItineraries ?? {}).map((item) =>
+        itinerarySchema.parse(item),
       );
-      return loaded;
     })().catch((error: unknown) => {
       this.listCache = undefined;
       throw error;

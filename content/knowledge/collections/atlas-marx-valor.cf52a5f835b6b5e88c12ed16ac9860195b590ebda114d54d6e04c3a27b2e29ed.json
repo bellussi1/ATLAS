@@ -573,7 +573,6 @@
         "Gramsci",
         "Gramscismo",
         "António Gramsci",
-        "Antônio Gramsci",
         "Antonio Francesco Gramsci",
         "Antonio Sebastiano Francesco Gramsci"
       ],
@@ -632,13 +631,10 @@
         "Lev Trotski",
         "Leon Trostky",
         "Leão Trótski",
-        "León Trotsky",
         "Lev Davidovich Bronstein Trótski",
-        "Trotski",
         "Lev Bronstein",
         "Leon Trotski",
         "Trotsky",
-        "León Trótski",
         "Lev Davidovich Trotskiy",
         "Lev Davidovich Trotsky",
         "Lev Trotskiy",
@@ -781,8 +777,6 @@
         "Mouh Jaahk-dung",
         "Moo Tik-tang",
         "Mao Runzhi",
-        "Mao Tsê-tung",
-        "Máo Rùnzhī",
         "Chairman Mao Zedong",
         "Mao Ze Dong",
         "Mau Tzerdong",
@@ -795,16 +789,11 @@
         "Tse Toung Mao",
         "Lun-chi",
         "Rùnzhī",
-        "Mau Zeh-ton",
         "Mo Tek-tong",
         "Máo Zhǔxí",
         "Mau Zerdong",
-        "Mô͘ Te̍k-tong",
         "Mao² Tsê²-tung¹",
-        "Mô Chhe̍t-tûng",
-        "Môo Ti̍k-tang",
-        "Mao Jun-chih",
-        "Mao Zédong"
+        "Mao Jun-chih"
       ],
       "context": "A página “Mao Tsé-Tung” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
       "temporalExtent": { "startYear": 1893, "endYear": 1976, "precision": "range", "label": null },
@@ -860,7 +849,7 @@
       "slug": "caio-prado-junior",
       "title": "Caio Prado Júnior",
       "summary": "Economista e Intelectual Marxista Brasileiro",
-      "aliases": ["Caio da Silva Prado Júnior", "Caio Prado Junior", "Caio da Silva Prado Junior"],
+      "aliases": ["Caio da Silva Prado Júnior", "Caio Prado Junior"],
       "context": "A página “Caio Prado Júnior” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
       "temporalExtent": { "startYear": 1907, "endYear": 1990, "precision": "range", "label": null },
       "uncertainty": "unknown",
@@ -1022,12 +1011,7 @@
       "slug": "jose-carlos-mariategui",
       "title": "José Carlos Mariátegui",
       "summary": "Peruvian writer and academic (1894–1930)",
-      "aliases": [
-        "Mariátegui",
-        "Mariategui",
-        "José Carlos Mariátegui La Chira",
-        "Jose Carlos Mariategui"
-      ],
+      "aliases": ["Mariátegui", "José Carlos Mariátegui La Chira", "Jose Carlos Mariategui"],
       "context": "A página “José Carlos Mariátegui” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
       "temporalExtent": { "startYear": 1894, "endYear": 1930, "precision": "range", "label": null },
       "uncertainty": "unknown",
@@ -13191,24 +13175,6 @@
       }
     },
     {
-      "id": "rel-wiki-topic-karl-marx-002",
-      "fromEntityId": "person-karl-marx",
-      "toEntityId": "wiki-topic-pierre-joseph-proudhon",
-      "type": "reacted_against",
-      "label": "reagiu contra",
-      "reverseLabel": "recebeu reação de",
-      "context": "Marx criticou o pensamento do anarquista Proudhon na obra Miséria da Filosofia.",
-      "temporalExtent": null,
-      "uncertainty": "unknown",
-      "evidenceIds": ["ev-wiki-topic-karl-marx-rel-002"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Karl_Marx",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-wiki-topic-marxismo-002",
       "fromEntityId": "wiki-topic-mikhail-bakunin",
       "toEntityId": "ideology-marxism",
@@ -13955,19 +13921,6 @@
       "temporalExtent": null,
       "uncertainty": "low",
       "evidenceIds": ["ev-wiki-topic-friedrich-engels-002"],
-      "editorialStatus": "pending"
-    },
-    {
-      "id": "rel-ai-exp-person-karl-marx-wiki-topic-casamento-42324b",
-      "fromEntityId": "person-karl-marx",
-      "toEntityId": "wiki-topic-casamento",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] Casamento de Marx com Jenny von Westphalen. (1843-06-19).",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-karl-marx-006"],
       "editorialStatus": "pending"
     },
     {

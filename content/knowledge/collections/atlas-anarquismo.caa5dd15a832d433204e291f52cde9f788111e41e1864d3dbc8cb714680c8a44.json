@@ -1348,7 +1348,7 @@
       "slug": "lao-zi",
       "title": "Lao Zi",
       "summary": "Filósofo e escritor da Antiga China, situado por volta do século VI a.C. e tido tradicionalmente como autor do Tao Te Ching. É considerado fundador do taoismo filosófico e é também venerado como divindade no taoismo religioso. O artigo trata a figura como lendária e discute a historicidade, as versões das fontes antigas, a possível contemporaneidade com Confúcio e a influência de suas ideias em movimentos políticos, incluindo anarquistas e libertaristas.",
-      "aliases": ["Laozi", "Lao-Tzu", "Lao-Tze", "Li Er", "Tao Te Ching", "Dàodéjīng"],
+      "aliases": ["Laozi", "Lao-Tzu", "Lao-Tze", "Li Er", "Dàodéjīng"],
       "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
       "temporalExtent": null,
       "uncertainty": "unknown",
@@ -1496,7 +1496,7 @@
       "slug": "mikhail-bakunin",
       "title": "Mikhail Bakunin",
       "summary": "Mikhail Bakunin (1814–1876) foi um teórico político, sociólogo, filósofo e revolucionário russo, apontado no artigo como uma das figuras mais influentes do anarquismo e um dos principais fundadores da tradição social anarquista. Nasceu em Premukhimo, na província de Tver, e atuou entre a Rússia, a Europa Ocidental e a Sibéria. Participou da Primeira Internacional, onde se opôs a Karl Marx, e teve papel em levantes como o de Dresden em 1849 e o de Lyon em 1870. Sua importância, segundo o artigo, está na formulação do anarcocoletivismo, do federalismo e na crítica à ditadura do proletariado.",
-      "aliases": ["Mikhail Aleksandrovitch Bakunin", "Bakunine", "Bakúnine", "Michael Bakunin"],
+      "aliases": ["Mikhail Aleksandrovitch Bakunin", "Bakunine", "Michael Bakunin"],
       "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
       "temporalExtent": {
         "startYear": 1814,
@@ -1961,12 +1961,7 @@
       "slug": "rafael-correa",
       "title": "Rafael Correa",
       "summary": "Rafael Vicente Correa Delgado é um economista e político equatoriano que foi o 53.º presidente da República do Equador entre 2007 e 2017. Nascido em Guaiaquil, formou-se em Economia na Universidad Católica de Santiago de Guayaquil e fez pós-graduação na Universidade de Illinois. Foi ministro da Economia e Finanças em 2005, fundou o movimento Alianza PAIS para a campanha de 2006 e conduziu a chamada Revolução Cidadã, com reformas políticas, sociais e econômicas. Em 2010 e 2019 seu nome aparece associado a episódios e à fundação do Grupo de Puebla.",
-      "aliases": [
-        "Rafael Vicente Correa Delgado",
-        "Alianza PAIS",
-        "Alianza Patria Altiva y Soberana",
-        "PAIS"
-      ],
+      "aliases": ["Rafael Vicente Correa Delgado", "Alianza Patria Altiva y Soberana", "PAIS"],
       "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
       "temporalExtent": null,
       "uncertainty": "unknown",
@@ -20614,19 +20609,6 @@
       "temporalExtent": null,
       "uncertainty": "low",
       "evidenceIds": ["ev-wiki-topic-francois-rabelais-001"],
-      "editorialStatus": "pending"
-    },
-    {
-      "id": "rel-ai-exp-wiki-topic-getulio-v-wiki-topic-1945-a091da",
-      "fromEntityId": "wiki-topic-getulio-vargas",
-      "toEntityId": "wiki-topic-1945",
-      "type": "influenced",
-      "label": "influenciou",
-      "reverseLabel": "foi influenciado por",
-      "context": "[conferência de IA] Em 1937 instaurou o Estado Novo por meio de um autogolpe e presidiu o país como ditador até 1945.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-getulio-vargas-002"],
       "editorialStatus": "pending"
     },
     {
