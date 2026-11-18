@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "kind": "wikipedia-capture",
+  "tradition": "trabalhismo",
+  "capturedAt": "2026-11-09T23:38:31.170Z",
+  "requests": [
+    {
+      "url": "https://pt.wikipedia.org/api/rest_v1/page/html/Trabalhismo_brasileiro",
+      "kind": "html",
+      "contentType": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.8.0\"",
+      "etag": "W/\"73386437/eed72211-da41-11f1-91d8-6d93967a9b65/view\"",
+      "sha256": "29e522e942bf65d8be808a8dbb03262f97c0c179208355145904d3de474ac181",
+      "license": "Texto da Wikipedia (CC BY-SA 4.0); origem e atribuição preservadas; não publicado"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Direita+pol%C3%ADtica%7CElei%C3%A7%C3%B5es+gerais+no+Brasil+em+1958%7CJ%C3%A2nio+Quadros%7CReformas+de+Base%7CGuerra+Fria%7CGolpe+de+Estado+no+Brasil+em+1964%7CAto+Institucional+N%C3%BAmero+Dois%7CTribunal+Superior+Eleitoral%7CIvete+Vargas%7CPartido+Democr%C3%A1tico+Trabalhista%7CSolidarismo%7CSocial-democracia%7CNacional-desenvolvimentismo%7CPetr%C3%B3leo+Brasileiro+S.A.%7CBanco+Nacional+de+Desenvolvimento+Econ%C3%B4mico%7CComiss%C3%A3o+Econ%C3%B4mica+para+a+Am%C3%A9rica+Latina+e+o+Caribe%7CGetulismo%7CConstitui%C3%A7%C3%A3o+brasileira+de+1988%7CPartido+Trabalhista+Brasileiro%7CAvante%7CPDT%7CPartido+Renova%C3%A7%C3%A3o+Democr%C3%A1tica%7CPartido+Trabalhista+Brasileiro+%281979%29%7CPatriota+%28Brasil%29%7CSolidariedade+%28partido+pol%C3%ADtico%29%7CJos%C3%A9+Murilo+de+Carvalho%7CMovimento+oper%C3%A1rio%7CSocialismo+moreno%7CJanismo&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "f0f97ddd7beac0377aa09479cc1a8d7d8de05d286733edc3b898ee5281922450",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Ideologia%7CCultura+pol%C3%ADtica%7CBrasil%7CClasse+trabalhadora%7CEstado+nacional%7CNacionalismo%7CDesenvolvimentismo%7CCastilhismo%7CPositivismo%7CTenentismo%7CEra+Vargas%7CPartido+Trabalhista+Brasileiro+%281945%29%7CGet%C3%BAlio+Vargas%7CJo%C3%A3o+Goulart%7CAlberto+Pasqualini%7CSantiago+Dantas%7CLeonel+Brizola%7CImp%C3%A9rio+do+Brasil%7CPrimeira+Rep%C3%BAblica+Brasileira%7CRio+Grande+do+Sul%7CJ%C3%BAlio+de+Castilhos%7CBorges+de+Medeiros%7CAuguste+Comte%7CRevolu%C3%A7%C3%A3o+de+1930%7CPartido+Republicano+Rio-Grandense%7CAngela+de+Castro+Gomes%7CAlberto+Torres%7COliveira+Vianna%7CRicardo+V%C3%A9lez+Rodr%C3%ADguez%7CBol%C3%ADvar+Lamounier%7CWanderley+Guilherme+dos+Santos%7CGildo+Mar%C3%A7al+Brand%C3%A3o%7CJorge+Ferreira%7CDoutrina+Social+da+Igreja%7CAnarcossindicalismo%7CSocialismo%7CComunismo%7CGreve+Geral+de+1917%7CEx%C3%A9rcito+Brasileiro%7CMinist%C3%A9rio+do+Trabalho%2C+Ind%C3%BAstria+e+Com%C3%A9rcio%7CJusti%C3%A7a+do+Trabalho%7CConsolida%C3%A7%C3%A3o+das+Leis+do+Trabalho%7CPer%C3%ADodo+populista%7CEstado+Novo%7CPer%C3%ADodo+Populista%7CPartido+Social+Democr%C3%A1tico+%281945%29%7CD%C3%A9cada+de+1950%7CD%C3%A9cada+de+1960%7CEsquerda+pol%C3%ADtica%7CPol%C3%ADtica+do+Brasil&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "5137b5c1cd5f5c71453d9252af66e147abbe1b9b1414e21bd364e6ed34b43cf3",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Trabalhismo+brasileiro&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "ac1d60ba87d8b7b6c14fa66f58680ed62c998ea298091f3047143b0adcef24c0",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q151885%7CQ12558574%7CQ71966963%7CQ96251598%7CQ125598647%7CQ488383%7CQ141537802%7CQ2515887%7CQ183039%7CQ4835091%7CQ67518978%7CQ874405%7CQ21157127%7CQ111972893%7CQ33104129%7CQ141594779%7CQ7551287%7CQ24017414%7CQ104098715%7CQ10541491%7CQ117023459%7CQ2135465%7CQ931483%7CQ1269299%7CQ3778211%7CQ61964280%7CQ56061%7CQ1063239%7CQ110401282%7CQ1990987%7CQ7210356%7CQ16334295%7CQ3533467%7CQ2305441%7CQ2548752%7CQ1510761%7CQ24902509%7CQ17524420%7CQ186081%7CQ55983715%7CQ2250224%7CQ164509%7CQ154954%7CQ5891007%7CQ19953632%7CQ19832712%7CQ7269%7CQ1250464%7CQ10374536%7CQ10864048&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "ab84c3d6154f406a94cee395fbfbea2007a6d3efc723182ceaab2fe966c71813",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q192611%7CQ107390%7CQ1673271%7CQ180684%7CQ117850%7CQ2728698%7CQ3714546%7CQ216545%7CQ12765852%7CQ9357091%7CQ5891%7CQ29028649%7CQ2447690%7CQ96116695%7CQ1639378%7CQ1914636%7CQ20045456%7CQ49776%7CQ8473%7CQ781132%7CQ134602570%7CQ106559804%7CQ106668099%7CQ854457%7CQ131085629%7CQ327333%7CQ192350%7CQ15893266%7CQ1412224%7CQ895526%7CQ1756157%7CQ1567259%7CQ15633587%7CQ17442446%7CQ138717185%7CQ135268506%7CQ74817647%7CQ19360703%7CQ110402867%7CQ1047113%7CQ107359024%7CQ2618461%7CQ125092269%7CQ124867660%7CQ198%7CQ181648%7CQ100348214%7CQ17091170%7CQ5791104%7CQ3771738&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "8f10f92666ad080c1e57156383f844f44b06b09b1253829120eec74ca52f993a",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q2135536%7CQ4441297%7CQ421829&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "e5928081a901696b8edfe7deb68e348bc25e54d2ac4abcc490919071d64025cc",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q23958852%7CQ7048977%7CQ595523%7CQ2145290%7CQ21146257%7CQ141445193%7CQ141751599%7CQ141533852%7CQ2083958%7CQ137022846%7CQ82794%7CQ124711104%7CQ136433660%7CQ16887380%7CQ19478619%7CQ131362181%7CQ33104279%7CQ58778%7CQ56369191%7CQ141542650%7CQ141250146%7CQ24017465%7CQ115490628%7CQ23959932%7CQ125598210%7CQ141403457%7CQ137429456%7CQ1969448%7CQ141186854%7CQ141104744%7CQ362165%7CQ336%7CQ5389993%7CQ1377163%7CQ268592%7CQ141131708%7CQ134601727%7CQ134261520%7CQ769620%7CQ646293%7CQ116505632%7CQ3249551%7CQ483247%7CQ921513%7CQ5193493%7CQ125542526%7CQ21040055%7CQ135524362%7CQ21871294%7CQ215627&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "768bc13ae7756912224f6448114e3723bc360a11c62e87c97cd368805c21979c",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q25447221&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "7a3c03f5fe56a5908a767214763571a8aed93822aabd5b3eca47beaf84ac684d",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q2571972%7CQ948571%7CQ96251375%7CQ546113%7CQ17197366%7CQ134161%7CQ3409269%7CQ783794%7CQ507619%7CQ205495%7CQ270791%7CQ1553482%7CQ650241%7CQ104086571%7CQ484652%7CQ62079110%7CQ63718619%7CQ820655%7CQ846882%7CQ106706188%7CQ680655%7CQ7748&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "9c5df9b9279361887f59c2c7a89e0f81073e7e9cd81a3f33f13b1db390a57547",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q28108%7CQ12332021%7CQ11862829%7CQ22338585%7CQ4176199%7CQ1469686%7CQ864113%7CQ369799%7CQ11422542%7CQ3449092%7CQ2018524%7CQ2577005%7CQ895914%7CQ5333510%7CQ19978438%7CQ189280%7CQ582577%7CQ891723%7CQ4830453%7CQ6881511%7CQ64027599%7CQ6972269%7CQ5266746%7CQ730038%7CQ15285626%7CQ9261468%7CQ7755&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "955df311745ef320e3694b23687462286411b81802eda769722125fdbcbf4377",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q49447%7CQ141152439%7CQ11042%7CQ3624078%7CQ859563%7CQ6256%7CQ187588%7CQ106471130%7CQ211606%7CQ15617994%7CQ155076%7CQ1048835%7CQ1896989%7CQ96196009%7CQ2738074%7CQ12909644%7CQ1401304%7CQ1393724%7CQ1387659%7CQ49773%7CQ11514315%7CQ40482169%7CQ5%7CQ3024240%7CQ48349%7CQ485258%7CQ20617590%7CQ45382%7CQ7278%7CQ11499334%7CQ952521%7CQ1367940%7CQ1278791%7CQ6199%7CQ49780%7CQ2353993%7CQ273005%7CQ1641112%7CQ389647%7CQ49775%7CQ37726%7CQ43229%7CQ12813215%7CQ55097243%7CQ941725%7CQ41487%7CQ628967%7CQ4167410%7CQ39911%7CQ28819924&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "3cab7298262400e6170796871051187d3ce4e4fcc87e925246f89066310865c2",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q4958842%7CQ310123%7CQ10358504%7CQ8683%7CQ4571496%7CQ3600957%7CQ3656204%7CQ10304443%7CQ1414708%7CQ2483698%7CQ121254%7CQ4353881%7CQ210047%7CQ796822%7CQ32874%7CQ2386422%7CQ1576143%7CQ3366792%7CQ115156140%7CQ10345629%7CQ20061311%7CQ1709519%7CQ208701%7CQ111917414%7CQ85770812&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "0aae10d8e5d646796fe7b273b2fee7012001390e702cd633c1f04afb1ab9f53b",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q5968650&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "0a769d481fc6dc831e7dac7ece57e59c261ab1cbc16adc4c89ea771de45590be",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q7257%7CQ303132%7CQ155%7CQ191159%7CQ7275%7CQ6235%7CQ1143021%7CQ18482173%7CQ131015%7CQ1420526%7CQ4532311%7CQ15980784%7CQ156844%7CQ34982%7CQ9594423%7CQ1797481%7CQ1395356%7CQ217230%7CQ2414171%7CQ40030%7CQ10313495%7CQ4945046%7CQ12718%7CQ2634783%7CQ3366688%7CQ59693692%7CQ4712223%7CQ10340715%7CQ59123716%7CQ9660738%7CQ10393159%7CQ10289589%7CQ35679302%7CQ16334344%7CQ188993%7CQ7272%7CQ6186%7CQ10291547%7CQ2292358%7CQ10330434%7CQ3250652%7CQ5163323%7CQ210542%7CQ292964%7CQ2626216%7CQ36297%7CQ35724%7CQ164597%7CQ1153878%7CQ76074&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "6aa7b080094b07ec8fc6fa114e3a844bf60645cc12821da6bb0d818965961183",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q795052%7CQ141164427%7CQ72638%7CQ729%7CQ134601860%7CQ111360549%7CQ134264207%7CQ15978631%7CQ96088545%7CQ52551684%7CQ1620908%7CQ1307214%7CQ22676587%7CQ183366%7CQ3268571%7CQ1799794%7CQ22087155%7CQ1190554%7CQ23009439%7CQ123345464%7CQ839578%7CQ86923152%7CQ26256810%7CQ3962655%7CQ5410500%7CQ34394%7CQ130261297%7CQ34178%7CQ130804054%7CQ3239681%7CQ4671286%7CQ2465832%7CQ627436%7CQ483394%7CQ105948247%7CQ141187917%7CQ141222018%7CQ140451665%7CQ1048607%7CQ113644093%7CQ32602941%7CQ141277394%7CQ5782934%7CQ273120%7CQ628191%7CQ17562059%7CQ772547%7CQ176799%7CQ134602526%7CQ24229398&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "115d20614fb920623b3db8065881b70649ae78d5a5043617c6f3fc041e2b56f0",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q99527517%7CQ2659904%7CQ48783281%7CQ86098365%7CQ35120%7CQ15474042%7CQ17379835%7CQ111279923%7CQ2360980%7CQ135268423%7CQ24571886%7CQ56042075%7CQ121344523%7CQ5962346%7CQ110403031%7CQ16889133%7CQ1076105%7CQ350604%7CQ1920219%7CQ15835236%7CQ29091078%7CQ28640%7CQ44554%7CQ127606978%7CQ3002772%7CQ49848%7CQ3750478%7CQ49371%7CQ216200%7CQ16513426%7CQ2324993%7CQ1156854%7CQ33685%7CQ2198779%7CQ726870%7CQ65553774%7CQ99536263%7CQ655686%7CQ126793%7CQ64513524%7CQ122898840%7CQ17990971%7CQ22687%7CQ4897819%7CQ109542218%7CQ47461344%7CQ1151067%7CQ141248195%7CQ112234259%7CQ3523102&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "5b6d9234e36b63d2f76191d7131d66a829f4cd56abd83bf92f01725b9574d2e2",
+      "license": "CC0 1.0"
+    }
+  ]
+}
