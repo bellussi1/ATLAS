@@ -340,8 +340,8 @@
                 </summary>
                 @for (backlink of entry.backlinks; track backlink.id) {
                   <p class="source-use">
-                    <a [routerLink]="backlink.path">{{ backlink.title }}</a
-                    >: {{ backlink.label }}. {{ backlink.context }}
+                    <a [routerLink]="backlink.path">{{ backlink.title }}</a>: {{ backlink.label }}.
+                    {{ backlink.context }}
                   </p>
                 } @empty {
                   <p>Sem citação em afirmação registrada neste recorte.</p>
