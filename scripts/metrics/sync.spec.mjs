@@ -13,6 +13,8 @@ test('merges visitors, views and clicks per canonical route', () => {
     hits: [
       { path: '/leitura/marxismo/', count: 120 },
       { path: 'click:/leitura/marxismo/', count: 26 },
+      { path: '/acervo', count: 300 },
+      { path: '/acervo/pessoas', count: 45 },
       { path: '/', count: 900 },
       { path: 'click:github.com', count: 4 },
     ],
@@ -36,6 +38,8 @@ test('merges visitors, views and clicks per canonical route', () => {
   };
   const routes = mergeCloudflare(mergeGoatCounter({}, goat), cloudflare);
   assert.deepEqual(routes['/leitura/marxismo'], { visitors: 120, views: 240, clicks: 26 });
+  assert.deepEqual(routes['/acervo/pessoas'], { visitors: 45, views: 0, clicks: 0 });
+  assert.equal(routes['/acervo'], undefined);
   assert.equal(routes['/'], undefined);
   assert.equal(routes['click:github.com'], undefined);
 });

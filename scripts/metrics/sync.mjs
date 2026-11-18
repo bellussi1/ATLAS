@@ -1,12 +1,13 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { homedir } from 'node:os';
+import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, '../..');
 const POPULARITY = resolve(root, 'metrics/popularity.json');
 const HISTORY_DIR = resolve(root, 'metrics/history');
-const ROUTE = /^\/(leitura|itinerario|verbete|acervo)(\/|$)/;
+const ROUTE = /^\/(leitura|itinerario|verbete|acervo)\/[^/]+$/;
 
 export function normalizeRoute(path) {
   if (!path) return '/';
@@ -53,12 +54,17 @@ export function mergeCloudflare(routes, payload) {
   return routes;
 }
 
-export function buildPopularity(goat, cloudflare, date = new Date()) {
+export function buildPopularity(
+  goat,
+  cloudflare,
+  date = new Date(),
+  source = 'goatcounter+cloudflare',
+) {
   const routes = mergeCloudflare(mergeGoatCounter({}, goat), cloudflare);
   return {
     generatedAt: date.toISOString().slice(0, 10),
     windowDays: 30,
-    source: 'goatcounter+cloudflare',
+    source,
     routes,
   };
 }
@@ -81,6 +87,29 @@ export async function recordHistory(data, date = new Date()) {
   await writeFile(file, `${JSON.stringify({ days }, null, 2)}\n`);
 }
 
+async function loadEnvFallback() {
+  const file = process.env.ATLAS_R2_ENV_FILE ?? join(homedir(), '.atlas', 'r2.env');
+  let raw = '';
+  try {
+    raw = await readFile(file, 'utf8');
+  } catch (error) {
+    if (error.code === 'ENOENT') return {};
+    throw error;
+  }
+  const values = {};
+  for (const lineRaw of raw.replace(/^\uFEFF/, '').split(/\r?\n/)) {
+    const line = lineRaw.trim().replace(/^export\s+/, '');
+    if (!line || line.startsWith('#')) continue;
+    const eq = line.indexOf('=');
+    if (eq < 1) continue;
+    values[line.slice(0, eq).trim()] = line
+      .slice(eq + 1)
+      .trim()
+      .replace(/^(['"])(.*)\1$/, '$2');
+  }
+  return values;
+}
+
 async function readJson(path) {
   return JSON.parse(await readFile(path, 'utf8'));
 }
@@ -94,35 +123,47 @@ async function fetchJson(url, options) {
 async function main() {
   const dryRun = process.argv.includes('--dry-run');
   const date = new Date();
-  let goat;
-  let cloudflare;
+  let goat = {};
+  let cloudflare = {};
+  let source = 'goatcounter+cloudflare';
   if (dryRun) {
     goat = await readJson(resolve(here, 'fixtures/goatcounter-hits.json'));
     cloudflare = await readJson(resolve(here, 'fixtures/cloudflare-rum.json'));
   } else {
-    const site = process.env.GOATCOUNTER_SITE;
-    const goatKey = process.env.GOATCOUNTER_API_KEY;
-    const cfToken = process.env.CLOUDFLARE_API_TOKEN;
-    const cfAccount = process.env.CLOUDFLARE_ACCOUNT_ID;
-    if (!site || !goatKey)
-      throw new Error('GOATCOUNTER_SITE e GOATCOUNTER_API_KEY são obrigatórios.');
-    if (!cfToken || !cfAccount)
-      throw new Error('CLOUDFLARE_API_TOKEN e CLOUDFLARE_ACCOUNT_ID são obrigatórios.');
+    const fileEnv = await loadEnvFallback();
+    const pick = (...names) =>
+      names.map((name) => process.env[name]?.trim()).find(Boolean) ||
+      names.map((name) => fileEnv[name]?.trim()).find(Boolean) ||
+      '';
+    const site = pick('GOATCOUNTER_SITE');
+    const goatKey = pick('GOATCOUNTER_API_KEY');
+    const cfToken = pick('CLOUDFLARE_API_TOKEN', 'CLOUDFLARE_ANALYTICS_API_TOKEN');
+    const cfAccount = pick('CLOUDFLARE_ACCOUNT_ID', 'R2_ACCOUNT_ID');
+    const hasGoat = Boolean(site && goatKey);
+    const hasCf = Boolean(cfToken && cfAccount);
+    if (!hasGoat && !hasCf) {
+      throw new Error(
+        'Informe GoatCounter (GOATCOUNTER_SITE + GOATCOUNTER_API_KEY) ou Cloudflare (CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID).',
+      );
+    }
     const start = new Date(date);
     start.setUTCDate(start.getUTCDate() - 30);
     const from = start.toISOString().slice(0, 10);
     const to = date.toISOString().slice(0, 10);
-    const base = /^https?:\/\//.test(site)
-      ? site.replace(/\/$/, '')
-      : `https://${site}.goatcounter.com`;
-    goat = await fetchJson(`${base}/api/v0/stats/hits?start=${from}&end=${to}&limit=1000`, {
-      headers: { Authorization: `Bearer ${goatKey}`, 'Content-Type': 'application/json' },
-    });
-    cloudflare = await fetchJson('https://api.cloudflare.com/client/v4/graphql', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${cfToken}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        query: `query($account: String!, $start: Date!, $end: Date!) {
+    if (hasGoat) {
+      const base = /^https?:\/\//.test(site)
+        ? site.replace(/\/$/, '')
+        : `https://${site}.goatcounter.com`;
+      goat = await fetchJson(`${base}/api/v0/stats/hits?start=${from}&end=${to}&limit=1000`, {
+        headers: { Authorization: `Bearer ${goatKey}`, 'Content-Type': 'application/json' },
+      });
+    }
+    if (hasCf) {
+      cloudflare = await fetchJson('https://api.cloudflare.com/client/v4/graphql', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${cfToken}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          query: `query($account: String!, $start: Date!, $end: Date!) {
           viewer { accounts(filter: { accountTag: $account }) {
             rumPageloadEventsAdaptiveGroups(limit: 1000, filter: { date_geq: $start, date_leq: $end }, orderBy: [count_DESC]) {
               count
@@ -131,11 +172,16 @@ async function main() {
             }
           } }
         }`,
-        variables: { account: cfAccount, start: from, end: to },
-      }),
-    });
+          variables: { account: cfAccount, start: from, end: to },
+        }),
+      });
+      if (cloudflare?.errors?.length) {
+        throw new Error(cloudflare.errors.map((err) => err.message).join('; '));
+      }
+    }
+    source = [hasGoat && 'goatcounter', hasCf && 'cloudflare'].filter(Boolean).join('+');
   }
-  const data = buildPopularity(goat, cloudflare, date);
+  const data = buildPopularity(goat, cloudflare, date, source);
   const target = dryRun ? resolve(root, 'generated/metrics/popularity.json') : POPULARITY;
   await mkdir(dirname(target), { recursive: true });
   await writeFile(target, `${JSON.stringify(data, null, 2)}\n`);

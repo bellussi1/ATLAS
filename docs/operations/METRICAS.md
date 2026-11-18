@@ -1,7 +1,7 @@
 # Métricas e popularidade
 
 Status: operação inicial
-Última verificação: 17/11/2026
+Última verificação: 18/11/2026
 
 O site mede audiência sem backend e sem cookies. A ordem de leituras e itinerários vem de um snapshot de 30 dias versionado em `metrics/popularity.json`.
 
@@ -14,23 +14,24 @@ O site mede audiência sem backend e sem cookies. A ordem de leituras e itinerá
 | GitHub Actions           | coleta diária e PR semanal                      | gratuito em repositório público |
 | `uptime.yml`             | site, 404 real, `health.json` e `pointer.json`  | gratuito                        |
 
-## Configuração manual
+## Configuração
 
-Site criado em `https://bellussi.goatcounter.com` (código `bellussi`). O restante continua manual:
+Já configurados no código, na Cloudflare, no GitHub e em `~/.atlas/r2.env`:
 
-1. Gere uma API key em `Usuário → API`.
-2. Ative o Cloudflare Web Analytics para o site.
-3. Crie um token Cloudflare com `Account Analytics Read`.
-4. Cadastre no GitHub:
-   - variável `GOATCOUNTER_SITE` = `bellussi` (já cadastrada);
-   - segredo `GOATCOUNTER_API_KEY`;
-   - segredo `CLOUDFLARE_API_TOKEN`;
-   - variável `CLOUDFLARE_ACCOUNT_ID`.
-5. No deploy dos Pages, a variável `GOATCOUNTER_SITE` já entra pelo workflow; `CLOUDFLARE_ANALYTICS_TOKEN` é opcional. Sem elas, nada é carregado.
+- **GoatCounter (`bellussi`):** site criado em `https://bellussi.goatcounter.com` e variável `GOATCOUNTER_SITE` cadastrada no GitHub e em `~/.atlas/r2.env`.
+- **Cloudflare Web Analytics:** site `atlas-bellussi.pages.dev` ativo (`site_tag` `94fa753bc9574661ac5d72a80e654732`), vinculado ao projeto Pages `atlas-bellussi`, com `CLOUDFLARE_ANALYTICS_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` cadastrados como variáveis no GitHub e em `~/.atlas/r2.env`.
+- **Cloudflare GraphQL Analytics:** token de conta `atlas-analytics-read` (`Account Analytics Read`) criado e cadastrado no segredo `CLOUDFLARE_ANALYTICS_API_TOKEN` do GitHub e em `~/.atlas/r2.env`.
+
+Resta apenas uma etapa manual no painel do GoatCounter:
+
+1. Em `https://bellussi.goatcounter.com`, abra `Usuário → API` e gere uma API key.
+2. Cadastre o segredo no GitHub: `gh secret set GOATCOUNTER_API_KEY --repo bellussi1/ATLAS` (e, opcionalmente, adicione `GOATCOUNTER_API_KEY` em `~/.atlas/r2.env` para rodar `node scripts/metrics/sync.mjs` localmente).
+
+Enquanto `GOATCOUNTER_API_KEY` não estiver cadastrada, `scripts/metrics/sync.mjs` coleta apenas a Cloudflare (`source: "cloudflare"`). No build do CI (`ci.yml`), `GOATCOUNTER_SITE` e `CLOUDFLARE_ANALYTICS_TOKEN` já são injetados em `analytics-config.js`; em desenvolvimento local sem essas variáveis, nada é carregado.
 
 ## Como funciona
 
-1. `scripts/metrics/sync.mjs` consulta os dois serviços e grava `metrics/popularity.json` e `metrics/history/AAAA-MM.json`.
+1. `scripts/metrics/sync.mjs` consulta os serviços com credenciais ativas (GoatCounter e/ou Cloudflare, aceitando `~/.atlas/r2.env` localmente) e grava `metrics/popularity.json` e `metrics/history/AAAA-MM.json`.
 2. O workflow diário salva um artefato. Na segunda-feira, abre um PR com o snapshot.
 3. O build lê o JSON e ordena antes do prerender. Sem dados, mantém a ordem editorial.
 4. O ranking usa 30 dias, mínimo de 20 visitantes, prior editorial e uma vaga de curadoria na home.
@@ -40,7 +41,7 @@ Site criado em `https://bellussi.goatcounter.com` (código `bellussi`). O restan
 - visitantes únicos por dia, não page views;
 - mínimo de 20 visitantes para entrar;
 - prior editorial para desempatar e evitar um clique isolado;
-- `/`, `/acervo`, bots, previews `unlisted` e tráfego de desenvolvimento ficam fora;
+- `/`, `/acervo` (raiz), bots, previews `unlisted` e tráfego de desenvolvimento ficam fora;
 - home: três populares + uma vaga editorial.
 
 ## Privacidade
