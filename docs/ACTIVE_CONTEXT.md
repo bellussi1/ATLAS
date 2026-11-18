@@ -18,6 +18,11 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- **Blindagem da cota gratuita Cloudflare Workers, CI e limpeza do working tree (18/11, `develop`):**
+  - `ATLAS_RAW_BASE_URL` alterado no GitHub para o domínio público nativo do R2 (`https://pub-8c938ef778c64292a6ac1a79b25a9233.r2.dev`, Classe B grátis sem gasto de Worker), com concorrência limitada a `4` em `scripts/ingestion/fetch-raw.mjs` para `*.r2.dev`.
+  - `.github/workflows/ci.yml` passa a rodar `push` apenas em `master`, `pull_request` em `[master, develop]` e só executa `ingest:fetch-raw` + `ingest:verify` quando há mudanças em `scripts/ingestion/`, `scripts/verify-ingestion.mjs` ou `ci.yml` (ou fora de PR).
+  - Desabilitado `delete_branch_on_merge` (`false`) no repositório para manter `origin/develop` após merges na `master`; as 11 pastas locais de rascunhos em `scripts/ingestion/wiki-extract/raw/` foram adicionadas ao `.gitignore`.
+
 - **Auditoria e melhorias de Leituras, Itinerários, Grafo, Malha, RAG e Payload (18/11, `develop`, commits `4c3caa0`, `90850a1` + rodada 3):**
   - **Rodada 1 (`4c3caa0`):** filtros de `/leituras` (`Com fontes` vs `Em rascunho`), taglines de `nazismo`/`stalinismo`/`trabalhismo`, contagem de capítulos em `home-stats.json`, desambiguação de aliases em `graph-vocabulary.ts`, limpeza de `[conferência de IA]` na prosa via `readerProse()`, SSR de `/itinerarios` e `/itinerario/:slug` com `pendingUntilEvent`, ordenação/rotulagem de conexões no percurso, correção de destinos nos itinerários e limpeza de rótulos/z-index/CSS no grafo.
   - **Rodada 2 (`90850a1`):** malha bidirecional em `cross-links.ts` conectando `/grafos`, `/leitura/:slug`, `/verbete/:slug` e `/itinerario/:slug`, com `readingsForEntity`, `itinerariesForReading`, `itinerariesForEntity` e priorização de conexões diretas em `/verbete/:slug`; fallback lexical BM25 (`lexicalFallbackMatches`) na busca de `/acervo` quando `named` zera.
