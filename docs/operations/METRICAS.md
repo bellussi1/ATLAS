@@ -16,18 +16,13 @@ O site mede audiência sem backend e sem cookies. A ordem de leituras e itinerá
 
 ## Configuração
 
-Já configurados no código, na Cloudflare, no GitHub e em `~/.atlas/r2.env`:
+Credenciais configuradas no código, na Cloudflare e no GitHub (`bellussi1/ATLAS`):
 
-- **GoatCounter (`bellussi`):** site criado em `https://bellussi.goatcounter.com` e variável `GOATCOUNTER_SITE` cadastrada no GitHub e em `~/.atlas/r2.env`.
+- **GoatCounter (`bellussi`):** site criado em `https://bellussi.goatcounter.com`, variável `GOATCOUNTER_SITE` cadastrada no GitHub e em `~/.atlas/r2.env`, e segredo `GOATCOUNTER_API_KEY` cadastrado no GitHub Actions. (Para rodar `node scripts/metrics/sync.mjs` localmente incluindo o GoatCounter, adicione opcionalmente `GOATCOUNTER_API_KEY` em `~/.atlas/r2.env`.)
 - **Cloudflare Web Analytics:** site `atlas-bellussi.pages.dev` ativo (`site_tag` `94fa753bc9574661ac5d72a80e654732`), vinculado ao projeto Pages `atlas-bellussi`, com `CLOUDFLARE_ANALYTICS_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` cadastrados como variáveis no GitHub e em `~/.atlas/r2.env`.
 - **Cloudflare GraphQL Analytics:** token de conta `atlas-analytics-read` (`Account Analytics Read`) criado e cadastrado no segredo `CLOUDFLARE_ANALYTICS_API_TOKEN` do GitHub e em `~/.atlas/r2.env`.
 
-Resta apenas uma etapa manual no painel do GoatCounter:
-
-1. Em `https://bellussi.goatcounter.com`, abra `Usuário → API` e gere uma API key.
-2. Cadastre o segredo no GitHub: `gh secret set GOATCOUNTER_API_KEY --repo bellussi1/ATLAS` (e, opcionalmente, adicione `GOATCOUNTER_API_KEY` em `~/.atlas/r2.env` para rodar `node scripts/metrics/sync.mjs` localmente).
-
-Enquanto `GOATCOUNTER_API_KEY` não estiver cadastrada, `scripts/metrics/sync.mjs` coleta apenas a Cloudflare (`source: "cloudflare"`). No build do CI (`ci.yml`), `GOATCOUNTER_SITE` e `CLOUDFLARE_ANALYTICS_TOKEN` já são injetados em `analytics-config.js`; em desenvolvimento local sem essas variáveis, nada é carregado.
+Não há pendências manuais de credenciais. No build do CI (`ci.yml`), `GOATCOUNTER_SITE` e `CLOUDFLARE_ANALYTICS_TOKEN` já entram em `analytics-config.js`; a coleta em produção começa assim que `develop` for publicado na `master`. Em desenvolvimento local sem essas variáveis, nada é carregado.
 
 ## Como funciona
 
