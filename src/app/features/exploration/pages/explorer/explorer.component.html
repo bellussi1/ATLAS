@@ -212,9 +212,19 @@
             verificado.
           }
         </p>
-        <a class="search-clear-all" [routerLink]="catalogueUrl(catalogue.path)"
-          >Limpar busca e filtros</a
-        >
+        <div class="search-band__actions">
+          <a class="search-clear-all" [routerLink]="catalogueUrl(catalogue.path)"
+            >Limpar busca e filtros</a
+          >
+          <button
+            type="button"
+            class="search-surprise atlas-press"
+            [disabled]="results().length === 0"
+            (click)="openRandomEntry()"
+          >
+            Surpreenda-me
+          </button>
+        </div>
       </form>
 
       @if (activeFilters().length) {

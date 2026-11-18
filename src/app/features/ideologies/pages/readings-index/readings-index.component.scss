@@ -73,6 +73,22 @@
   color: var(--color-surface);
 }
 
+.filter-chip--surprise {
+  border-color: var(--color-accent);
+  color: var(--color-accent-hover);
+}
+
+.filter-chip--surprise:hover:not(:disabled),
+.filter-chip--surprise:focus-visible:not(:disabled) {
+  background: var(--color-accent);
+  color: var(--color-on-strong-surface);
+}
+
+.filter-chip--surprise:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .readings-index__count {
   margin: 1rem 0 1.25rem;
   color: var(--color-ink-muted);

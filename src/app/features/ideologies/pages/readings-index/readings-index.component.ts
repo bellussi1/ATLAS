@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { rankByPopularity } from '@core/analytics/popularity';
 import { readingPath } from '@core/routing/reading-routes';
 import popularity from '@metrics/popularity.json';
@@ -44,6 +44,7 @@ const compiledStats = homeStats as { readings: ReadingCard[] };
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReadingsIndexComponent {
+  private readonly router = inject(Router);
   readonly readings = rankByPopularity(
     compiledStats.readings,
     (item) => `/leitura/${item.slug}`,
@@ -91,5 +92,13 @@ export class ReadingsIndexComponent {
   clearFilters(): void {
     this.query.set('');
     this.statusFilter.set('all');
+  }
+
+  openRandomReading(): void {
+    const list = this.filtered();
+    const pool = list.length ? list : this.readings;
+    if (!pool.length) return;
+    const picked = pool[Math.floor(Math.random() * pool.length)];
+    void this.router.navigateByUrl(this.entryPath(picked.slug));
   }
 }

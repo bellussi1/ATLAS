@@ -24244,6 +24244,42 @@
         "url": "https://pt.wikipedia.org/wiki/Ra%C3%BAl_Castro",
         "retrievedAt": "2026-11-17"
       }
+    },
+    {
+      "id": "rel-br-temer-impeachment",
+      "fromEntityId": "wiki-topic-michel-temer",
+      "toEntityId": "wiki-topic-impeachment-de-dilma-rousseff",
+      "type": "documented-association",
+      "label": "assumiu a presidência em decorrência do",
+      "reverseLabel": "levou à posse presidencial de",
+      "context": "Assumiu definitivamente a presidência da República após a cassação do mandato de Dilma Rousseff em 31 de agosto de 2016.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-dilma-rousseff-007"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Dilma_Rousseff",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-lula-presidente",
+      "fromEntityId": "wiki-topic-luiz-inacio-lula-da-silva",
+      "toEntityId": "wiki-topic-presidente-do-brasil",
+      "type": "participated_in",
+      "label": "exerceu o cargo de",
+      "reverseLabel": "foi exercido por",
+      "context": "Tomou posse como 35.º presidente do Brasil em 1.º de janeiro de 2003 e voltou à presidência em 2023.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-luiz-inacio-lula-da-silva-011"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Luiz_In%C3%A1cio_Lula_da_Silva",
+        "retrievedAt": "2026-11-05"
+      }
     }
   ],
   "learningPaths": []

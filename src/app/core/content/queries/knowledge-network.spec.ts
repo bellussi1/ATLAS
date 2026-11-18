@@ -218,6 +218,9 @@ describe('knowledge network', () => {
     ]);
     const looks = relationFamilies.map((f) => `${f.color}|${f.dash}`);
     expect(new Set(looks).size).toBe(relationFamilies.length);
+    const dashes = relationFamilies.map((f) => f.dash);
+    expect(new Set(dashes).size).toBe(relationFamilies.length);
+    expect(relationFamilies.find((f) => f.id === 'creation')?.dash).toBe('8 3 2 3');
     expect(network.edges.find((edge) => edge.nature === 'navigation')?.family).toBe('connection');
   });
 

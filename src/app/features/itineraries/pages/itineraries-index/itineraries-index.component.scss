@@ -114,6 +114,20 @@
   }
 }
 
+.filter-chip--surprise {
+  border-color: var(--color-accent);
+  color: var(--color-accent-hover);
+  &:hover:not(:disabled),
+  &:focus-visible:not(:disabled) {
+    background: var(--color-accent);
+    color: var(--color-on-strong-surface);
+  }
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}
+
 .itineraries__grid {
   display: grid;
   gap: 2rem;

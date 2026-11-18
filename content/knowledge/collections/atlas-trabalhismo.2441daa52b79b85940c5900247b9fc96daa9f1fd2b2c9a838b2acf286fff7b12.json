@@ -8583,6 +8583,24 @@
         "ev-wiki-topic-justica-do-trabalho-002"
       ],
       "editorialStatus": "pending"
+    },
+    {
+      "id": "rel-br-washington-luis-vargas",
+      "fromEntityId": "wiki-topic-washington-luis",
+      "toEntityId": "wiki-topic-getulio-vargas",
+      "type": "reacted_against",
+      "label": "foi deposto pelo movimento liderado por",
+      "reverseLabel": "liderou o movimento que depôs",
+      "context": "Foi deposto em 24 de outubro de 1930 pelo movimento revolucionário que levou Getúlio Vargas ao poder.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-era-vargas-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Era_Vargas",
+        "retrievedAt": "2026-11-09"
+      }
     }
   ],
   "learningPaths": []

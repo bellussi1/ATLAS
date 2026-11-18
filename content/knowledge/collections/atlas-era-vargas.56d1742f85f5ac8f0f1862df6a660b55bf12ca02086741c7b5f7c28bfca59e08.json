@@ -4587,6 +4587,222 @@
       "uncertainty": "low",
       "evidenceIds": ["ev-wiki-topic-poder-legislativo-001", "ev-wiki-topic-poder-legislativo-002"],
       "editorialStatus": "pending"
+    },
+    {
+      "id": "rel-br-washington-luis-presidente",
+      "fromEntityId": "wiki-topic-washington-luis",
+      "toEntityId": "wiki-topic-presidente-do-brasil",
+      "type": "participated_in",
+      "label": "exerceu o cargo de",
+      "reverseLabel": "foi exercido por",
+      "context": "Assumiu a presidência da República em 15 de novembro de 1926.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-washington-luis-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Washington_Lu%C3%ADs",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-br-washington-luis-republica-velha",
+      "fromEntityId": "wiki-topic-washington-luis",
+      "toEntityId": "wiki-topic-primeira-republica-brasileira",
+      "type": "participated_in",
+      "label": "foi o último presidente da",
+      "reverseLabel": "teve como último presidente",
+      "context": "Presidiu o Brasil como o último mandatário da chamada República Velha.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-washington-luis-005"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Washington_Lu%C3%ADs",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-br-julio-prestes-republica-velha",
+      "fromEntityId": "wiki-topic-julio-prestes",
+      "toEntityId": "wiki-topic-primeira-republica-brasileira",
+      "type": "documented-association",
+      "label": "foi o último presidente eleito na",
+      "reverseLabel": "teve como último presidente eleito",
+      "context": "Foi o último presidente eleito durante a Primeira República, impedido de tomar posse pela Revolução de 1930.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-julio-prestes-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/J%C3%BAlio_Prestes",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-br-julio-prestes-washington-luis",
+      "fromEntityId": "wiki-topic-julio-prestes",
+      "toEntityId": "wiki-topic-washington-luis",
+      "type": "documented-association",
+      "label": "foi eleito para suceder",
+      "reverseLabel": "apoiou a eleição de",
+      "context": "Venceu as eleições de 1.º de março de 1930 com apoio do governo Washington Luís, sem chegar a assumir.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-julio-prestes-009"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/J%C3%BAlio_Prestes",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-br-julio-prestes-vargas",
+      "fromEntityId": "wiki-topic-julio-prestes",
+      "toEntityId": "wiki-topic-getulio-vargas",
+      "type": "reacted_against",
+      "label": "foi impedido de assumir pelo movimento de",
+      "reverseLabel": "liderou o movimento que impediu a posse de",
+      "context": "Impedido de assumir a presidência pela Revolução de 1930, que conduziu Getúlio Vargas ao Governo Provisório.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-julio-prestes-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/J%C3%BAlio_Prestes",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-br-deodoro-presidente",
+      "fromEntityId": "wiki-topic-deodoro-da-fonseca",
+      "toEntityId": "wiki-topic-presidente-do-brasil",
+      "type": "participated_in",
+      "label": "foi o primeiro",
+      "reverseLabel": "teve como primeiro titular",
+      "context": "Foi eleito pelo Congresso Constituinte como o primeiro presidente constitucional da República.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-deodoro-da-fonseca-013"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Deodoro_da_Fonseca",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-br-deodoro-republica-velha",
+      "fromEntityId": "wiki-topic-deodoro-da-fonseca",
+      "toEntityId": "wiki-topic-primeira-republica-brasileira",
+      "type": "participated_in",
+      "label": "proclamou e presidiu o início da",
+      "reverseLabel": "foi iniciada por",
+      "context": "Liderou a Proclamação da República em 15 de novembro de 1889, inaugurando a Primeira República Brasileira.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-deodoro-da-fonseca-007"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Deodoro_da_Fonseca",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-br-deodoro-exercito",
+      "fromEntityId": "wiki-topic-deodoro-da-fonseca",
+      "toEntityId": "wiki-topic-exercito-brasileiro",
+      "type": "participated_in",
+      "label": "foi marechal do",
+      "reverseLabel": "teve como marechal",
+      "context": "Seguiu carreira militar no Exército Brasileiro, alcançando o posto de marechal.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-deodoro-da-fonseca-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Deodoro_da_Fonseca",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-br-deodoro-pedro-ii",
+      "fromEntityId": "wiki-topic-deodoro-da-fonseca",
+      "toEntityId": "wiki-topic-pedro-ii-do-brasil",
+      "type": "reacted_against",
+      "label": "participou da deposição de",
+      "reverseLabel": "foi deposto no movimento liderado por",
+      "context": "Participou do movimento republicano de 15 de novembro de 1889 que pôs fim ao reinado de Pedro II.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-deodoro-da-fonseca-007"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Deodoro_da_Fonseca",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-br-temer-presidente",
+      "fromEntityId": "wiki-topic-michel-temer",
+      "toEntityId": "wiki-topic-presidente-do-brasil",
+      "type": "participated_in",
+      "label": "exerceu o cargo de",
+      "reverseLabel": "foi exercido por",
+      "context": "Assumiu a presidência da República em 2016, governando o Brasil até 1.º de janeiro de 2019.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-michel-temer-008"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Michel_Temer",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-br-temer-dilma",
+      "fromEntityId": "wiki-topic-michel-temer",
+      "toEntityId": "wiki-topic-dilma-rousseff",
+      "type": "documented-association",
+      "label": "foi vice-presidente e sucedeu",
+      "reverseLabel": "teve como vice-presidente e sucessor",
+      "context": "Exerceu a vice-presidência nos governos de Dilma Rousseff e assumiu o cargo após o impeachment de 2016.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-michel-temer-008"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Michel_Temer",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-br-temer-camara",
+      "fromEntityId": "wiki-topic-michel-temer",
+      "toEntityId": "wiki-topic-camara-dos-deputados-do-brasil",
+      "type": "participated_in",
+      "label": "atuou como deputado na",
+      "reverseLabel": "teve participação parlamentar de",
+      "context": "Construiu carreira parlamentar na Câmara dos Deputados e publicou obra de referência sobre direito constitucional.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-michel-temer-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Michel_Temer",
+        "retrievedAt": "2026-11-17"
+      }
     }
   ],
   "learningPaths": []

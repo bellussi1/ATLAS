@@ -49,6 +49,14 @@
       >
         Em rascunho ({{ draftCount() }})
       </button>
+      <button
+        type="button"
+        class="filter-chip filter-chip--surprise atlas-press"
+        [disabled]="filtered().length === 0"
+        (click)="openRandomReading()"
+      >
+        Surpreenda-me
+      </button>
     </div>
   </div>
 

@@ -11,8 +11,8 @@
     },
     {
       "id": "atlas-processo-constituinte",
-      "file": "collections/atlas-processo-constituinte.863b3843404f18bfe62e466896a23a2dcd49707db940925bb1a4ac4dd80d2d74.json",
-      "sha256": "863b3843404f18bfe62e466896a23a2dcd49707db940925bb1a4ac4dd80d2d74"
+      "file": "collections/atlas-processo-constituinte.2d0cf6dfa49bd141d13de4e91438a6d9517c011b51d6fa88996d62da74aa35e5.json",
+      "sha256": "2d0cf6dfa49bd141d13de4e91438a6d9517c011b51d6fa88996d62da74aa35e5"
     },
     {
       "id": "atlas-direitos-constitucionais",
@@ -51,13 +51,13 @@
     },
     {
       "id": "atlas-social-democracia",
-      "file": "collections/atlas-social-democracia.f13f719c7c616fe3a34ba3eb0fb9f5f6a0b53cf71d8ae1c20ec2ab263a169001.json",
-      "sha256": "f13f719c7c616fe3a34ba3eb0fb9f5f6a0b53cf71d8ae1c20ec2ab263a169001"
+      "file": "collections/atlas-social-democracia.99442d866ec0d3c44b3b5b8de654cc4e0e1206262734bb2c0b5fcdec84d8c3aa.json",
+      "sha256": "99442d866ec0d3c44b3b5b8de654cc4e0e1206262734bb2c0b5fcdec84d8c3aa"
     },
     {
       "id": "atlas-anarquismo",
-      "file": "collections/atlas-anarquismo.caa5dd15a832d433204e291f52cde9f788111e41e1864d3dbc8cb714680c8a44.json",
-      "sha256": "caa5dd15a832d433204e291f52cde9f788111e41e1864d3dbc8cb714680c8a44"
+      "file": "collections/atlas-anarquismo.4775da44bf714588717aca41b6fa545cfd90ee70d935da828b68a5e128e59aae.json",
+      "sha256": "4775da44bf714588717aca41b6fa545cfd90ee70d935da828b68a5e128e59aae"
     },
     {
       "id": "atlas-ideologias-principais",
@@ -66,8 +66,8 @@
     },
     {
       "id": "atlas-verbetes-citados",
-      "file": "collections/atlas-verbetes-citados.ffdbdfcccd78dde70dfebd867d1907e5b2e300a6064267aecb88c63bc54b28d5.json",
-      "sha256": "ffdbdfcccd78dde70dfebd867d1907e5b2e300a6064267aecb88c63bc54b28d5"
+      "file": "collections/atlas-verbetes-citados.8bd20f7c7b3f80cb22f11824b2d76fc99ce5e21472a7f3c37687d90f27d32150.json",
+      "sha256": "8bd20f7c7b3f80cb22f11824b2d76fc99ce5e21472a7f3c37687d90f27d32150"
     },
     {
       "id": "atlas-nazismo",
@@ -81,13 +81,13 @@
     },
     {
       "id": "atlas-trabalhismo",
-      "file": "collections/atlas-trabalhismo.4da8e8f7a8278ca9791f0113b56f5cff78bf6d0590bc77a6931855954894de71.json",
-      "sha256": "4da8e8f7a8278ca9791f0113b56f5cff78bf6d0590bc77a6931855954894de71"
+      "file": "collections/atlas-trabalhismo.2441daa52b79b85940c5900247b9fc96daa9f1fd2b2c9a838b2acf286fff7b12.json",
+      "sha256": "2441daa52b79b85940c5900247b9fc96daa9f1fd2b2c9a838b2acf286fff7b12"
     },
     {
       "id": "atlas-era-vargas",
-      "file": "collections/atlas-era-vargas.5071c13fce1278de2bb5e3d9bda092465c5a224c2bbed97389c819c75dcf44ef.json",
-      "sha256": "5071c13fce1278de2bb5e3d9bda092465c5a224c2bbed97389c819c75dcf44ef"
+      "file": "collections/atlas-era-vargas.56d1742f85f5ac8f0f1862df6a660b55bf12ca02086741c7b5f7c28bfca59e08.json",
+      "sha256": "56d1742f85f5ac8f0f1862df6a660b55bf12ca02086741c7b5f7c28bfca59e08"
     },
     {
       "id": "atlas-ditadura-militar-brasileira",

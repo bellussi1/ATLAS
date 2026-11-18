@@ -325,7 +325,7 @@ export const relationFamilies: readonly RelationFamilyDefinition[] = [
     label: 'Criação',
     note: 'Fundação de uma organização ou autoria de uma obra.',
     color: '--color-moss',
-    dash: '',
+    dash: '8 3 2 3',
     directed: true,
   },
   {

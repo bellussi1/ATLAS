@@ -121,6 +121,14 @@ describe('placeLabels', () => {
     const tiny = { left: 0, top: 0, right: 250, bottom: 110 };
     expect(placeLabels([candidate('a', 280, 100)], nodes, Infinity, tiny)).toEqual([]);
   });
+
+  it('omits forced candidates whose boxes remain outside visible bounds (e.g. behind legend)', () => {
+    const nodes = [{ id: 'a', x: 80, y: 120, radius: 8 }];
+    const freeArea = { left: 260, top: 64, right: 1200, bottom: 700 };
+    expect(
+      placeLabels([{ ...candidate('a', 80, 120), forced: true }], nodes, Infinity, freeArea),
+    ).toEqual([]);
+  });
 });
 
 describe('semantic zoom labels', () => {

@@ -248,6 +248,32 @@
       },
       "uncertainty": "low",
       "evidenceIds": ["evidence-plenary-location"]
+    },
+    {
+      "id": "rel-br-ulysses-camara",
+      "fromEntityId": "person-ulysses-guimaraes",
+      "toEntityId": "wiki-topic-camara-dos-deputados-do-brasil",
+      "type": "participated_in",
+      "label": "presidiu a",
+      "reverseLabel": "foi presidida por",
+      "context": "Presidiu a Câmara dos Deputados e, cumulativamente, a Assembleia Nacional Constituinte de 1987–1988.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["evidence-ulysses-presidency"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "rel-br-ulysses-redemocratizacao",
+      "fromEntityId": "person-ulysses-guimaraes",
+      "toEntityId": "wiki-topic-redemocratizacao-do-brasil",
+      "type": "participated_in",
+      "label": "liderou o processo constituinte na",
+      "reverseLabel": "teve na Constituinte a liderança de",
+      "context": "Conduziu a Assembleia Nacional Constituinte e promulgou a Constituição de 1988 durante a redemocratização.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["evidence-ulysses-presidency"],
+      "editorialStatus": "pending"
     }
   ],
   "learningPaths": []

@@ -21665,6 +21665,42 @@
         "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_H%C3%BAngara_de_1956",
         "retrievedAt": "2026-11-17"
       }
+    },
+    {
+      "id": "rel-br-ulysses-mdb-1980",
+      "fromEntityId": "person-ulysses-guimaraes",
+      "toEntityId": "wiki-topic-movimento-democratico-brasileiro-1980",
+      "type": "participated_in",
+      "label": "liderou o",
+      "reverseLabel": "teve como liderança histórica",
+      "context": "Presidiu o Movimento Democrático Brasileiro na oposição ao regime militar e na reorganização partidária.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-fernando-henrique-cardoso-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Fernando_Henrique_Cardoso",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-fhc-presidente",
+      "fromEntityId": "wiki-topic-fernando-henrique-cardoso",
+      "toEntityId": "wiki-topic-presidente-do-brasil",
+      "type": "participated_in",
+      "label": "exerceu o cargo de",
+      "reverseLabel": "foi exercido por",
+      "context": "Foi empossado presidente da República em 1.º de janeiro de 1995, exercendo dois mandatos até 2003.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-fernando-henrique-cardoso-008"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Fernando_Henrique_Cardoso",
+        "retrievedAt": "2026-11-05"
+      }
     }
   ],
   "learningPaths": []

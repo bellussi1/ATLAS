@@ -38238,7 +38238,7 @@
         "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
         "attribution": "Texto da Wikipédia (pt), revisão 73321390, CC BY-SA 4.0"
       },
-      "kind": "concept"
+      "kind": "institution"
     },
     {
       "id": "wiki-topic-presidente-dos-estados-unidos",
@@ -335901,24 +335901,6 @@
       }
     },
     {
-      "id": "rel-wiki-pessoa-jair-bolsonaro-001",
-      "fromEntityId": "wiki-topic-jair-bolsonaro",
-      "toEntityId": "wiki-topic-partido-liberal-2006",
-      "type": "documented-association",
-      "label": "foi membro de",
-      "reverseLabel": "teve como membro",
-      "context": "Jair Bolsonaro é filiado ao Partido Liberal (PL).",
-      "temporalExtent": null,
-      "uncertainty": "unknown",
-      "evidenceIds": ["ev-wiki-pessoa-jair-bolsonaro-rel-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Jair_Bolsonaro",
-        "retrievedAt": "2026-11-08"
-      }
-    },
-    {
       "id": "rel-wiki-pessoa-louis-blanc-005",
       "fromEntityId": "wiki-topic-louis-blanc",
       "toEntityId": "event-paris-commune",
@@ -352507,6 +352489,834 @@
       "uncertainty": "moderate",
       "evidenceIds": ["evidence-constitution-caput-5"],
       "editorialStatus": "pending"
+    },
+    {
+      "id": "rel-br-bolsonaro-presidente",
+      "fromEntityId": "wiki-topic-jair-bolsonaro",
+      "toEntityId": "wiki-topic-presidente-do-brasil",
+      "type": "participated_in",
+      "label": "exerceu o cargo de",
+      "reverseLabel": "foi exercido por",
+      "context": "Tomou posse como presidente da República do Brasil em 1.º de janeiro de 2019, exercendo o mandato até 1.º de janeiro de 2023.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-pessoa-jair-bolsonaro-004"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jair_Bolsonaro",
+        "retrievedAt": "2026-11-08"
+      }
+    },
+    {
+      "id": "rel-br-bolsonaro-camara",
+      "fromEntityId": "wiki-topic-jair-bolsonaro",
+      "toEntityId": "wiki-topic-camara-dos-deputados-do-brasil",
+      "type": "participated_in",
+      "label": "foi deputado federal em",
+      "reverseLabel": "teve como deputado federal",
+      "context": "Foi eleito deputado federal em 1990 e exerceu sete mandatos consecutivos pelo Rio de Janeiro na Câmara dos Deputados.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-pessoa-jair-bolsonaro-006"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jair_Bolsonaro",
+        "retrievedAt": "2026-11-08"
+      }
+    },
+    {
+      "id": "rel-br-bolsonaro-exercito",
+      "fromEntityId": "wiki-topic-jair-bolsonaro",
+      "toEntityId": "wiki-topic-exercito-brasileiro",
+      "type": "participated_in",
+      "label": "serviu como militar em",
+      "reverseLabel": "teve em seus quadros",
+      "context": "Ingressou na carreira militar após formar-se na Academia Militar das Agulhas Negras (AMAN) em 1977.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-jair-bolsonaro-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jair_Bolsonaro",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-bolsonaro-covid",
+      "fromEntityId": "wiki-topic-jair-bolsonaro",
+      "toEntityId": "wiki-topic-pandemia-de-covid-19-no-brasil",
+      "type": "participated_in",
+      "label": "governou durante",
+      "reverseLabel": "ocorreu durante o governo de",
+      "context": "Conduziu a gestão federal durante a pandemia de COVID-19 no Brasil, alvo de críticas pela postura apontada como negacionista.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-pessoa-jair-bolsonaro-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jair_Bolsonaro",
+        "retrievedAt": "2026-11-08"
+      }
+    },
+    {
+      "id": "rel-br-bolsonaro-temer",
+      "fromEntityId": "wiki-topic-jair-bolsonaro",
+      "toEntityId": "wiki-topic-michel-temer",
+      "type": "documented-association",
+      "label": "sucedeu na presidência",
+      "reverseLabel": "foi sucedido na presidência por",
+      "context": "Assumiu a presidência da República em 1.º de janeiro de 2019, sucedendo o governo de Michel Temer.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-pessoa-jair-bolsonaro-004"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jair_Bolsonaro",
+        "retrievedAt": "2026-11-08"
+      }
+    },
+    {
+      "id": "rel-br-bolsonaro-lula",
+      "fromEntityId": "wiki-topic-jair-bolsonaro",
+      "toEntityId": "wiki-topic-luiz-inacio-lula-da-silva",
+      "type": "reacted_against",
+      "label": "disputou a presidência e foi sucedido por",
+      "reverseLabel": "derrotou e sucedeu",
+      "context": "Disputou a reeleição presidencial em 2022 e foi sucedido na presidência por Luiz Inácio Lula da Silva.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-pessoa-jair-bolsonaro-008"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jair_Bolsonaro",
+        "retrievedAt": "2026-11-08"
+      }
+    },
+    {
+      "id": "rel-br-bolsonaro-haddad",
+      "fromEntityId": "wiki-topic-jair-bolsonaro",
+      "toEntityId": "wiki-topic-fernando-haddad",
+      "type": "reacted_against",
+      "label": "disputou a eleição presidencial de 2018 contra",
+      "reverseLabel": "enfrentou no segundo turno de 2018",
+      "context": "Enfrentou Fernando Haddad no segundo turno da eleição presidencial brasileira de 2018.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-rel-curation-haddad-lula"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Fernando_Haddad",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-br-bolsonaro-conservadorismo",
+      "fromEntityId": "wiki-topic-jair-bolsonaro",
+      "toEntityId": "wiki-topic-conservadorismo",
+      "type": "documented-association",
+      "label": "associou-se a pautas de",
+      "reverseLabel": "associado à trajetória de",
+      "context": "Apresentou-se na campanha presidencial de 2018 como defensor de valores familiares, pauta pró-mercado e discurso antissistema.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-jair-bolsonaro-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jair_Bolsonaro",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-bolsonaro-direita",
+      "fromEntityId": "wiki-topic-jair-bolsonaro",
+      "toEntityId": "wiki-topic-direita-politica",
+      "type": "documented-association",
+      "label": "situou-se no campo da",
+      "reverseLabel": "teve atuação de",
+      "context": "Campanha eleitoral e agenda governamental associadas ao campo da direita política no Brasil contemporâneo.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-jair-bolsonaro-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jair_Bolsonaro",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-bolsonaro-extrema-direita",
+      "fromEntityId": "wiki-topic-jair-bolsonaro",
+      "toEntityId": "wiki-topic-extrema-direita",
+      "type": "documented-association",
+      "label": "associou-se ao campo da",
+      "reverseLabel": "associado à atuação de",
+      "context": "Sua atuação política e o movimento bolsonarista são analisados pela literatura política em relação à extrema-direita contemporânea.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-jair-bolsonaro-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jair_Bolsonaro",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-oswaldo-aranha-washington-luis",
+      "fromEntityId": "wiki-topic-oswaldo-aranha",
+      "toEntityId": "wiki-topic-washington-luis",
+      "type": "reacted_against",
+      "label": "articulou o levante que depôs",
+      "reverseLabel": "foi deposto com articulação de",
+      "context": "Agiu nos bastidores para organizar o levante armado de 1930 que depôs Washington Luís.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-oswaldo-aranha-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Oswaldo_Aranha",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-oswaldo-aranha-vargas",
+      "fromEntityId": "wiki-topic-oswaldo-aranha",
+      "toEntityId": "wiki-topic-getulio-vargas",
+      "type": "participated_in",
+      "label": "foi ministro e aliado de",
+      "reverseLabel": "teve como ministro e aliado",
+      "context": "Ganhou destaque nacional a partir de 1930 como ministro e articulador político do governo Getúlio Vargas.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-oswaldo-aranha-004"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Oswaldo_Aranha",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-oswaldo-aranha-era-vargas",
+      "fromEntityId": "wiki-topic-oswaldo-aranha",
+      "toEntityId": "wiki-topic-era-vargas",
+      "type": "participated_in",
+      "label": "participou da",
+      "reverseLabel": "teve atuação de",
+      "context": "Exerceu papel central nos ministérios da Justiça, Fazenda e Relações Exteriores durante a Era Vargas.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-oswaldo-aranha-004"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Oswaldo_Aranha",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-janio-presidente",
+      "fromEntityId": "wiki-topic-janio-quadros",
+      "toEntityId": "wiki-topic-presidente-do-brasil",
+      "type": "participated_in",
+      "label": "exerceu o cargo de",
+      "reverseLabel": "foi exercido por",
+      "context": "Eleito presidente da República em outubro de 1960, governou entre 31 de janeiro e 25 de agosto de 1961.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-janio-quadros-008"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/J%C3%A2nio_Quadros",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-janio-goulart",
+      "fromEntityId": "wiki-topic-janio-quadros",
+      "toEntityId": "wiki-topic-joao-goulart",
+      "type": "documented-association",
+      "label": "renunciou e foi sucedido por",
+      "reverseLabel": "sucedeu após a renúncia de",
+      "context": "Renunciou ao mandato presidencial em 25 de agosto de 1961, abrindo a crise sucessória que levou João Goulart à presidência.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-janio-quadros-010"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/J%C3%A2nio_Quadros",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-janio-camara",
+      "fromEntityId": "wiki-topic-janio-quadros",
+      "toEntityId": "wiki-topic-camara-dos-deputados-do-brasil",
+      "type": "participated_in",
+      "label": "foi deputado federal na",
+      "reverseLabel": "teve como deputado federal",
+      "context": "Elegeu-se deputado federal pelo estado do Paraná em 1958.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-janio-quadros-007"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/J%C3%A2nio_Quadros",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-jk-presidente",
+      "fromEntityId": "wiki-topic-juscelino-kubitschek",
+      "toEntityId": "wiki-topic-presidente-do-brasil",
+      "type": "participated_in",
+      "label": "exerceu o cargo de",
+      "reverseLabel": "foi exercido por",
+      "context": "Foi o 21.º presidente do Brasil, governando entre 1956 e 1961.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-juscelino-kubitschek-008"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Juscelino_Kubitschek",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-br-jk-ditadura",
+      "fromEntityId": "wiki-topic-juscelino-kubitschek",
+      "toEntityId": "wiki-topic-ditadura-militar-brasileira",
+      "type": "reacted_against",
+      "label": "sofreu perseguição e teve morte apurada sob a",
+      "reverseLabel": "cassou direitos políticos de",
+      "context": "Cassado após 1964, teve as circunstâncias de sua morte investigadas posteriormente pela Comissão Nacional da Verdade.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-juscelino-kubitschek-009"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Juscelino_Kubitschek",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-br-figueiredo-presidente",
+      "fromEntityId": "wiki-topic-joao-figueiredo",
+      "toEntityId": "wiki-topic-presidente-do-brasil",
+      "type": "participated_in",
+      "label": "exerceu o cargo de",
+      "reverseLabel": "foi exercido por",
+      "context": "Foi o 30.º presidente do Brasil, exercendo o mandato de 1979 a 1985.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-joao-figueiredo-007"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jo%C3%A3o_Figueiredo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-figueiredo-ditadura",
+      "fromEntityId": "wiki-topic-joao-figueiredo",
+      "toEntityId": "wiki-topic-ditadura-militar-brasileira",
+      "type": "participated_in",
+      "label": "foi o último presidente da",
+      "reverseLabel": "teve como último presidente",
+      "context": "Presidiu a etapa final da ditadura militar brasileira, dando sequência à abertura política iniciada no governo Geisel.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-joao-figueiredo-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jo%C3%A3o_Figueiredo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-figueiredo-sarney",
+      "fromEntityId": "wiki-topic-joao-figueiredo",
+      "toEntityId": "wiki-topic-jose-sarney",
+      "type": "documented-association",
+      "label": "foi sucedido na presidência por",
+      "reverseLabel": "sucedeu na presidência",
+      "context": "Recusou-se a entregar a faixa presidencial a José Sarney na posse de 15 de março de 1985.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-joao-figueiredo-009"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jo%C3%A3o_Figueiredo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-figueiredo-redemocratizacao",
+      "fromEntityId": "wiki-topic-joao-figueiredo",
+      "toEntityId": "wiki-topic-redemocratizacao-do-brasil",
+      "type": "participated_in",
+      "label": "governou durante a transição para a",
+      "reverseLabel": "avançou ao fim do governo de",
+      "context": "Seu mandato acompanhou a transição que culminou na redemocratização do Brasil em 1985.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-joao-figueiredo-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jo%C3%A3o_Figueiredo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-geisel-presidente",
+      "fromEntityId": "wiki-topic-ernesto-geisel",
+      "toEntityId": "wiki-topic-presidente-do-brasil",
+      "type": "participated_in",
+      "label": "exerceu o cargo de",
+      "reverseLabel": "foi exercido por",
+      "context": "Foi o 29.º presidente do Brasil entre 15 de março de 1974 e 15 de março de 1979.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-ernesto-geisel-005"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Ernesto_Geisel",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-geisel-castelo-branco",
+      "fromEntityId": "wiki-topic-ernesto-geisel",
+      "toEntityId": "wiki-topic-humberto-castelo-branco",
+      "type": "participated_in",
+      "label": "chefiou a Casa Militar de",
+      "reverseLabel": "nomeou para a Casa Militar",
+      "context": "Ingressou na cúpula política ao ser nomeado chefe da Casa Militar do governo Castelo Branco em 1964.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-ernesto-geisel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Ernesto_Geisel",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-geisel-redemocratizacao",
+      "fromEntityId": "wiki-topic-ernesto-geisel",
+      "toEntityId": "wiki-topic-redemocratizacao-do-brasil",
+      "type": "participated_in",
+      "label": "conduziu a distensão rumo à",
+      "reverseLabel": "teve abertura iniciada no governo de",
+      "context": "Conduziu a política de distensão lenta, gradual e segura que antecedeu a redemocratização do Brasil.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-ernesto-geisel-010"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Ernesto_Geisel",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-costa-e-silva-presidente",
+      "fromEntityId": "wiki-topic-costa-e-silva",
+      "toEntityId": "wiki-topic-presidente-do-brasil",
+      "type": "participated_in",
+      "label": "exerceu o cargo de",
+      "reverseLabel": "foi exercido por",
+      "context": "Foi o segundo presidente do período da ditadura militar brasileira, sucedendo Humberto Castelo Branco.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-costa-e-silva-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Costa_e_Silva",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-costa-e-silva-ditadura",
+      "fromEntityId": "wiki-topic-costa-e-silva",
+      "toEntityId": "wiki-topic-ditadura-militar-brasileira",
+      "type": "participated_in",
+      "label": "foi o segundo presidente da",
+      "reverseLabel": "teve como segundo presidente",
+      "context": "Presidiu o país entre 1967 e 1969, durante o endurecimento institucional da ditadura militar brasileira.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-costa-e-silva-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Costa_e_Silva",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-castelo-branco-presidente",
+      "fromEntityId": "wiki-topic-humberto-castelo-branco",
+      "toEntityId": "wiki-topic-presidente-do-brasil",
+      "type": "participated_in",
+      "label": "exerceu o cargo de",
+      "reverseLabel": "foi exercido por",
+      "context": "Foi o 26.º presidente do Brasil e primeiro governante do regime instaurado pelo golpe militar de 1964.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-humberto-castelo-branco-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Humberto_Castelo_Branco",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-castelo-branco-ditadura",
+      "fromEntityId": "wiki-topic-humberto-castelo-branco",
+      "toEntityId": "wiki-topic-ditadura-militar-brasileira",
+      "type": "participated_in",
+      "label": "foi o primeiro presidente da",
+      "reverseLabel": "foi inaugurada por",
+      "context": "Primeiro presidente do período da ditadura militar brasileira, governando entre 1964 e 1967.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-humberto-castelo-branco-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Humberto_Castelo_Branco",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-tancredo-presidente",
+      "fromEntityId": "wiki-topic-tancredo-neves",
+      "toEntityId": "wiki-topic-presidente-do-brasil",
+      "type": "documented-association",
+      "label": "foi eleito",
+      "reverseLabel": "teve como titular eleito em 1985",
+      "context": "Em 15 de janeiro de 1985 foi eleito presidente do Brasil pelo voto indireto de um colégio eleitoral.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-tancredo-neves-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Tancredo_Neves",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-tancredo-redemocratizacao",
+      "fromEntityId": "wiki-topic-tancredo-neves",
+      "toEntityId": "wiki-topic-redemocratizacao-do-brasil",
+      "type": "participated_in",
+      "label": "liderou a transição civil na",
+      "reverseLabel": "teve como figura central",
+      "context": "Sua eleição em 1985 pelo Colégio Eleitoral marcou a transição civil na redemocratização do Brasil.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-tancredo-neves-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Tancredo_Neves",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-tancredo-sarney",
+      "fromEntityId": "wiki-topic-tancredo-neves",
+      "toEntityId": "wiki-topic-jose-sarney",
+      "type": "documented-association",
+      "label": "formou chapa presidencial com",
+      "reverseLabel": "assumiu a presidência após a morte de",
+      "context": "Eleito em 1985 tendo José Sarney como vice-presidente; com a morte de Tancredo, Sarney assumiu em definitivo.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-tancredo-neves-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Tancredo_Neves",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-alckmin-lula",
+      "fromEntityId": "wiki-topic-geraldo-alckmin",
+      "toEntityId": "wiki-topic-luiz-inacio-lula-da-silva",
+      "type": "participated_in",
+      "label": "elegeu-se vice-presidente na chapa de",
+      "reverseLabel": "teve como vice-presidente",
+      "context": "Filiou-se ao PSB em 2022 e elegeu-se vice-presidente da República na chapa de Luiz Inácio Lula da Silva.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-geraldo-alckmin-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Geraldo_Alckmin",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-alckmin-serra",
+      "fromEntityId": "wiki-topic-geraldo-alckmin",
+      "toEntityId": "wiki-topic-jose-serra",
+      "type": "participated_in",
+      "label": "cofundou o PSDB junto com",
+      "reverseLabel": "cofundou o PSDB junto com",
+      "context": "Participou em 1988 da fundação do PSDB ao lado de José Serra, Fernando Henrique Cardoso e Mário Covas.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-geraldo-alckmin-004"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Geraldo_Alckmin",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-alckmin-fhc",
+      "fromEntityId": "wiki-topic-geraldo-alckmin",
+      "toEntityId": "wiki-topic-fernando-henrique-cardoso",
+      "type": "participated_in",
+      "label": "cofundou o PSDB junto com",
+      "reverseLabel": "cofundou o PSDB junto com",
+      "context": "Participou da fundação do PSDB em 1988 junto a Fernando Henrique Cardoso e lideranças paulistas.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-geraldo-alckmin-004"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Geraldo_Alckmin",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-serra-fhc",
+      "fromEntityId": "wiki-topic-jose-serra",
+      "toEntityId": "wiki-topic-fernando-henrique-cardoso",
+      "type": "participated_in",
+      "label": "cofundou o PSDB junto com",
+      "reverseLabel": "cofundou o PSDB junto com",
+      "context": "Foi em junho de 1988 um dos fundadores do PSDB juntamente com Fernando Henrique Cardoso e Mário Covas.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-jose-serra-006"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jos%C3%A9_Serra",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-serra-dilma",
+      "fromEntityId": "wiki-topic-jose-serra",
+      "toEntityId": "wiki-topic-dilma-rousseff",
+      "type": "reacted_against",
+      "label": "disputou o segundo turno de 2010 contra",
+      "reverseLabel": "venceu no segundo turno de 2010",
+      "context": "Foi derrotado por Dilma Rousseff no segundo turno da eleição presidencial de 2010.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-jose-serra-008"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jos%C3%A9_Serra",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-ciro-plano-real",
+      "fromEntityId": "wiki-topic-ciro-gomes",
+      "toEntityId": "wiki-topic-plano-real",
+      "type": "participated_in",
+      "label": "foi ministro da Fazenda durante o",
+      "reverseLabel": "teve passagem ministerial de",
+      "context": "Assumiu o Ministério da Fazenda em setembro de 1994 durante a implantação do Plano Real.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-ciro-gomes-008"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Ciro_Gomes",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-ciro-lula",
+      "fromEntityId": "wiki-topic-ciro-gomes",
+      "toEntityId": "wiki-topic-luiz-inacio-lula-da-silva",
+      "type": "participated_in",
+      "label": "foi ministro no primeiro governo de",
+      "reverseLabel": "teve como ministro",
+      "context": "Integrou o governo Lula como ministro da Integração Nacional, conduzindo o projeto de transposição do rio São Francisco.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-ciro-gomes-012"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Ciro_Gomes",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-ciro-camara",
+      "fromEntityId": "wiki-topic-ciro-gomes",
+      "toEntityId": "wiki-topic-camara-dos-deputados-do-brasil",
+      "type": "participated_in",
+      "label": "foi deputado federal na",
+      "reverseLabel": "teve como deputado federal",
+      "context": "Foi eleito deputado federal pelo Ceará em 2006 com a maior votação proporcional do país.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-ciro-gomes-011"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Ciro_Gomes",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-brizola-ptb-1945",
+      "fromEntityId": "wiki-topic-leonel-brizola",
+      "toEntityId": "wiki-topic-partido-trabalhista-brasileiro-1945",
+      "type": "participated_in",
+      "label": "iniciou a carreira parlamentar pelo",
+      "reverseLabel": "teve nos quadros",
+      "context": "Elegeu-se deputado estadual pelo PTB em 1947, tornando-se liderança trabalhista no Rio Grande do Sul.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-leonel-brizola-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Leonel_Brizola",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-brizola-trabalhismo",
+      "fromEntityId": "wiki-topic-leonel-brizola",
+      "toEntityId": "wiki-ideologia-trabalhismo-brasileiro",
+      "type": "participated_in",
+      "label": "foi uma das principais lideranças do",
+      "reverseLabel": "teve como liderança central",
+      "context": "Liderou o trabalhismo brasileiro desde o PTB histórico até a fundação do Partido Democrático Trabalhista.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-leonel-brizola-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Leonel_Brizola",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-brizola-goulart",
+      "fromEntityId": "wiki-topic-leonel-brizola",
+      "toEntityId": "wiki-topic-joao-goulart",
+      "type": "documented-association",
+      "label": "foi aliado político de",
+      "reverseLabel": "teve apoio político de",
+      "context": "Atuou ao lado de João Goulart no PTB gaúcho e na defesa da posse presidencial de 1961.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-leonel-brizola-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Leonel_Brizola",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-plinio-extrema-direita",
+      "fromEntityId": "wiki-topic-plinio-salgado",
+      "toEntityId": "wiki-topic-extrema-direita",
+      "type": "documented-association",
+      "label": "liderou movimento associado à",
+      "reverseLabel": "teve como expressão no Brasil",
+      "context": "Fundou e liderou a Ação Integralista Brasileira, partido nacionalista católico de extrema-direita inspirado no fascismo italiano.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-plinio-salgado-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Pl%C3%ADnio_Salgado",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-plinio-vargas",
+      "fromEntityId": "wiki-topic-plinio-salgado",
+      "toEntityId": "wiki-topic-getulio-vargas",
+      "type": "reacted_against",
+      "label": "aliou-se e depois rompeu com",
+      "reverseLabel": "enfrentou o levante integralista liderado por",
+      "context": "Apoiou inicialmente Getúlio Vargas em contraposição à esquerda, rompendo após o Estado Novo com o levante integralista de 1938.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-plinio-salgado-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Pl%C3%ADnio_Salgado",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-br-plinio-camara",
+      "fromEntityId": "wiki-topic-plinio-salgado",
+      "toEntityId": "wiki-topic-camara-dos-deputados-do-brasil",
+      "type": "participated_in",
+      "label": "foi deputado federal na",
+      "reverseLabel": "teve como deputado federal",
+      "context": "Foi eleito deputado federal pelo Paraná em 1958, atuando na Câmara até se aposentar em 1974.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": ["ev-wiki-topic-plinio-salgado-008"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Pl%C3%ADnio_Salgado",
+        "retrievedAt": "2026-11-05"
+      }
     }
   ],
   "learningPaths": []

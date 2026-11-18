@@ -593,4 +593,86 @@ describe('KnowledgeNetworkComponent', () => {
     fixture.detectChanges();
     expect(root(fixture).querySelector('.stage')?.classList.contains('stage--busy')).toBe(false);
   });
+
+  it('selects a random visible node via Surpreenda-me', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const btn = root(fixture).querySelector<HTMLButtonElement>('button.chip--surprise');
+    expect(btn?.textContent).toContain('Surpreenda-me');
+    btn?.click();
+    fixture.detectChanges();
+    expect(component.selectedId()).toBeTruthy();
+    expect(component.visible().nodes.some((n) => n.id === component.selectedId())).toBe(true);
+  });
+
+  it('highlights matching relation families on legend hover/focus for colorblind clarity', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const edge = component.visible().edges.find((item) => item.source !== item.target)!;
+    expect(edge).toBeDefined();
+
+    component.hoverFamily(edge.family);
+    fixture.detectChanges();
+    expect(component.hoveredFamilyId()).toBe(edge.family);
+    expect(component.dimmed()).toBe(true);
+    expect(component.litEdges().some((item) => item.edge.id === edge.id)).toBe(true);
+    expect(component.litEdges().every((item) => item.family.id === edge.family)).toBe(true);
+    expect(root(fixture).querySelector('.nodes')?.classList.contains('is-dimmed')).toBe(true);
+    expect(root(fixture).querySelector('.edge-rest')?.classList.contains('is-dimmed')).toBe(true);
+
+    component.hoverFamily(null);
+    fixture.detectChanges();
+    expect(component.dimmed()).toBe(false);
+    expect(component.litEdges().length).toBe(0);
+  });
+
+  it('supports interactive path slot selection from search and from a selected node', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const edge = component.visible().edges.find((item) => item.source !== item.target)!;
+    expect(edge).toBeDefined();
+
+    component.startPathSlot('from');
+    fixture.detectChanges();
+    expect(component.pathMode()).toBe(true);
+    expect(component.pathTargetSlot()).toBe('from');
+
+    component.selectFromSearch(edge.source);
+    fixture.detectChanges();
+    expect(component.pathFrom()).toBe(edge.source);
+    expect(component.pathTargetSlot()).toBe('to');
+
+    component.selectFromSearch(edge.target);
+    fixture.detectChanges();
+    expect(component.pathTo()).toBe(edge.target);
+    expect(component.pathMode()).toBe(false);
+    expect(component.pathTargetSlot()).toBe('from');
+    expect(root(fixture).querySelector('#graph-path-summary')?.textContent).toContain('1 passo');
+
+    component.clearPath();
+    component.select(edge.target);
+    fixture.detectChanges();
+    component.startPathFromSelected();
+    fixture.detectChanges();
+    expect(component.pathMode()).toBe(true);
+    expect(component.pathFrom()).toBe(edge.target);
+    expect(component.pathTargetSlot()).toBe('to');
+  });
+
+  it('auto-opens at least one connection group for every connected node (including navigation-only nodes)', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const connectedNodes = component
+      .visible()
+      .nodes.filter((node) =>
+        component.visible().edges.some((e) => e.source === node.id || e.target === node.id),
+      );
+    expect(connectedNodes.length).toBeGreaterThan(0);
+
+    for (const node of connectedNodes) {
+      component.select(node.id);
+      fixture.detectChanges();
+      expect(component.openGroups().size).toBeGreaterThan(0);
+    }
+  });
 });
