@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { rankByPopularity } from '@core/analytics/popularity';
 import { readingPath } from '@core/routing/reading-routes';
+import popularity from '@metrics/popularity.json';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
 import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
@@ -42,7 +44,12 @@ const compiledStats = homeStats as { readings: ReadingCard[] };
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReadingsIndexComponent {
-  readonly readings = compiledStats.readings;
+  readonly readings = rankByPopularity(
+    compiledStats.readings,
+    (item) => `/leitura/${item.slug}`,
+    popularity,
+    { eligible: (item) => !item.statusLabel.toLowerCase().includes('rascunho') },
+  );
   readonly query = signal('');
   readonly statusFilter = signal<StatusFilter>('all');
 

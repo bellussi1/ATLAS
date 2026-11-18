@@ -11,6 +11,7 @@ import {
   RouterLink,
   RouterOutlet,
 } from '@angular/router';
+import { AnalyticsService } from '@core/analytics/analytics.service';
 import { absoluteSiteUrl } from '@core/routing/site-url';
 import { SiteFooterComponent } from '@layouts/site-footer/site-footer.component';
 import { SiteHeaderComponent } from '@layouts/site-header/site-header.component';
@@ -60,6 +61,7 @@ export class AppComponent {
   readonly pageTitle = signal('ATLAS — compreender o mundo');
 
   constructor() {
+    inject(AnalyticsService).start();
     this.destroyRef.onDestroy(() => {
       this.clearLoading();
     });

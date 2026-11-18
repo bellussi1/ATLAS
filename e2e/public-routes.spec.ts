@@ -26,6 +26,7 @@ const routes = [
   '/acervo/conceitos',
   '/acervo/lugares',
   '/verbete/brasil',
+  '/privacidade',
 ];
 
 for (const width of [390, 1440])

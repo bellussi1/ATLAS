@@ -23,6 +23,12 @@ export const routes: Routes = [
       import('./features/itineraries/routes/itineraries.routes').then((m) => m.itineraryRoutes),
   },
   {
+    path: 'privacidade',
+    loadComponent: () =>
+      import('./pages/privacy/privacy-page.component').then((m) => m.PrivacyPageComponent),
+    title: 'Privacidade — ATLAS',
+  },
+  {
     path: '**',
     loadComponent: () =>
       import('@shared/ui/not-found-message/not-found-message.component').then(

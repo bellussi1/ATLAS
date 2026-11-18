@@ -20,6 +20,7 @@
       "@ideologies/*": ["./src/app/features/ideologies/*"],
       "@exploration/*": ["./src/app/features/exploration/*"],
       "@itineraries/*": ["./src/app/features/itineraries/*"],
+      "@metrics/*": ["./metrics/*"],
       "@layouts/*": ["./src/app/layouts/*"],
       "@pages/*": ["./src/app/pages/*"],
       "@app/*": ["./src/app/*"]

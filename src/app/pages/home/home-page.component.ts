@@ -10,8 +10,10 @@ import {
   viewChild,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { featureWithEditorialSlot, rankByPopularity } from '@core/analytics/popularity';
 import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { readingPath } from '@core/routing/reading-routes';
+import popularity from '@metrics/popularity.json';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
@@ -134,9 +136,19 @@ export class HomePage {
   );
   readonly stats = compiledHome.counts;
   readonly catalogueUrl = catalogueUrl;
-  /** Published readings compiled into the home; capped to keep the landing page compact. */
-  readonly readings = compiledHome.readings.slice(0, 4);
-  readonly featuredItineraries = FEATURED_ITINERARIES;
+  /** Published readings compiled into the home, ranked by 30-day audiences with one editorial slot. */
+  readonly readings = featureWithEditorialSlot(
+    compiledHome.readings,
+    (item) => `/leitura/${item.slug}`,
+    popularity,
+    4,
+    { eligible: (item) => !item.statusLabel.toLowerCase().includes('rascunho') },
+  );
+  readonly featuredItineraries = rankByPopularity(
+    FEATURED_ITINERARIES,
+    (item) => `/itinerario/${item.slug}`,
+    popularity,
+  );
   readonly updatedLabel = (() => {
     const [year, month, day] = compiledHome.updatedAt.split('-');
     return `${day}/${month}/${year}`;

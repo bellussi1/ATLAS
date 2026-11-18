@@ -26,4 +26,6 @@ jobs:
           check "$SITE/marxismo" 301
           check "$SITE/liberalismo" 301
           check "$SITE/caminho-que-nao-existe-$(date +%s)" 404
+          check "$SITE/health.json" 200
+          curl -fsS "$SITE/health.json" | jq -e '.release and .builtAt' >/dev/null
           check "$CDN/pointer.json" 200

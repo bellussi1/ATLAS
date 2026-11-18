@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { rankByPopularity } from '@core/analytics/popularity';
 import {
   type Itinerary,
   type ItineraryDestination,
@@ -9,6 +10,7 @@ import {
 } from '@itineraries/models/itinerary.schema';
 import { ItineraryRepository } from '@itineraries/services/itinerary-repository.service';
 import { resolveItineraryDestination } from '@itineraries/utils/itinerary-destination';
+import popularity from '@metrics/popularity.json';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
 
@@ -42,7 +44,9 @@ export class ItinerariesIndexComponent {
   constructor() {
     void this.repository
       .list()
-      .then((items) => this.items.set(items))
+      .then((items) =>
+        this.items.set(rankByPopularity(items, (item) => `/itinerario/${item.slug}`, popularity)),
+      )
       .finally(() => this.loading.set(false));
   }
 
