@@ -23,13 +23,13 @@ test('trabalhismo roadmap renders connected stops, branches and overview without
   await expect(
     page.getByRole('heading', {
       level: 1,
-      name: /Trabalhismo, Estado social e reformas no século XX/i,
+      name: /Trabalhismo brasileiro e Estado social em perspectiva comparada/i,
     }),
   ).toBeVisible();
   await expect(page.locator('.roadmap-diagram')).toBeVisible();
   await expect(page.locator('.roadmap-desk')).toBeVisible();
   await expect(page.locator('.roadmap-track .stop')).toHaveCount(6);
-  await expect(page.locator('.roadmap-track .branch')).toHaveCount(2);
+  await expect(page.locator('.roadmap-track .branch')).toHaveCount(3);
   await expect(page.locator('.roadmap-connector')).toHaveCount(5);
 
   await page
@@ -52,7 +52,9 @@ test('branch convergence link stays on itinerary page and focuses target stop', 
   await page.goto('/itinerario/comparativo-liberdade');
   await expect(page.locator('.roadmap-track .stop')).toHaveCount(6);
   const convergeLink = page
-    .locator('.branch__target a', { hasText: /Marxismo: trabalho, valor e emancipação/i })
+    .locator('.branch__target a', {
+      hasText: /Marxismo: trabalho assalariado, valor e emancipação/i,
+    })
     .first();
   await convergeLink.click();
   await expect(page).toHaveURL(/\/itinerario\/comparativo-liberdade/);

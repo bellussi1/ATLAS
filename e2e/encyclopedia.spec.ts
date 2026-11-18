@@ -119,11 +119,12 @@ test('the chronology filters dense epochs and stays readable on a phone', async 
   expect(errors).toEqual([]);
 });
 
-test('a reading without structured dates says so instead of drawing an empty axis', async ({
+test('social-democracia renders structured epochs and omits an empty connections timeline', async ({
   page,
 }) => {
   await page.goto('/leitura/social-democracia/');
-  await expect(page.locator('#epocas .chronology-empty')).toBeVisible();
+  await expect(page.locator('#epocas .era-chart')).toBeVisible();
+  await expect(page.locator('#epocas .chronology-empty')).toHaveCount(0);
   await expect(page.locator('#conexoes app-timeline-axis')).toHaveCount(0);
   await expect(page.locator('#conexoes')).not.toContainText('Pessoas e acontecimentos no tempo');
 });
