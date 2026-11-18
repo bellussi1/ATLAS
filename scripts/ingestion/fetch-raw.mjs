@@ -71,5 +71,6 @@ const pending = responses.entries();
 async function worker() {
   for (const entry of pending) await fetchResponse(entry);
 }
-await Promise.all(Array.from({ length: process.env.ATLAS_RAW_BASE_URL ? 8 : 2 }, worker));
+const concurrency = base.hostname.endsWith('.r2.dev') ? 4 : process.env.ATLAS_RAW_BASE_URL ? 8 : 2;
+await Promise.all(Array.from({ length: concurrency }, worker));
 console.log(`Respostas brutas: ${downloaded} baixadas de ${responses.size}.`);

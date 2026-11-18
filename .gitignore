@@ -68,7 +68,18 @@ scripts/ingestion/wiki-extract/raw/**/blobs/
 
 # Capturas brutas do piloto de tradições: ficam locais até a publicação no worker de raw.
 # Os manifestos referenciam blobs que o verify baixa; sem os blobs publicados, o CI falha.
+scripts/ingestion/wiki-extract/raw/adam-smith/
+scripts/ingestion/wiki-extract/raw/ditadura-militar-brasileira/
+scripts/ingestion/wiki-extract/raw/era-vargas/
+scripts/ingestion/wiki-extract/raw/estado/
+scripts/ingestion/wiki-extract/raw/golpe-de-1964/
+scripts/ingestion/wiki-extract/raw/karl-marx/
+scripts/ingestion/wiki-extract/raw/luiz-inacio-lula-da-silva/
 scripts/ingestion/wiki-extract/raw/nazismo/
+scripts/ingestion/wiki-extract/raw/organizacao-das-nacoes-unidas/
+scripts/ingestion/wiki-extract/raw/revolucao/
+scripts/ingestion/wiki-extract/raw/segunda-guerra-mundial/
+scripts/ingestion/wiki-extract/raw/sindicato/
 scripts/ingestion/wiki-extract/raw/stalinismo/
 scripts/ingestion/wiki-extract/raw/trabalhismo/
 

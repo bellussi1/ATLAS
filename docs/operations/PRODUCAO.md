@@ -194,13 +194,18 @@ O ciclo de vida não toca `pointer.json`, `c/` nem `m/`. O `atlas-drafts` nunca 
 
 ## Capturas do CI
 
-O Worker `atlas-raw-delivery` entrega somente GET e HEAD de `raw/<sha256>.bin`,
-com binding para `atlas-public`. O código e os metadados estão em
-`scripts/infra/raw-delivery*`. O endpoint é
-`https://atlas-raw-delivery.atlas-bellussi.workers.dev` e a variável pública
-`ATLAS_RAW_BASE_URL` do GitHub seleciona esse espelho para os downloads do CI.
-O script continua verificando o hash por objeto e escrevendo o cache de forma atômica.
-A URL usada pela aplicação continua definida no ponteiro do conteúdo.
+No CI, a variável pública `ATLAS_RAW_BASE_URL` do GitHub aponta para o domínio público nativo do
+bucket `atlas-public` (`https://pub-8c938ef778c64292a6ac1a79b25a9233.r2.dev`). Como o download dos
+16 mil objetos `raw/<sha256>.bin` usa operações Classe B do R2 (10 milhões grátis/mês) com
+concorrência limitada a `4` em `scripts/ingestion/fetch-raw.mjs`, as execuções de CI não consomem
+a cota diária de 100 mil invocações/dia do plano gratuito de Workers, preservada exclusivamente para
+o tráfego de leitores em `atlas-content-delivery`.
 
-Acompanhar o uso de Workers no painel Cloudflare e os limites do plano ativo.
-Os downloads parciais verificados ficam no cache do Actions para a próxima tentativa.
+O Worker `atlas-raw-delivery` (`scripts/infra/raw-delivery*`,
+`https://atlas-raw-delivery.atlas-bellussi.workers.dev`) permanece como espelho opcional caso seja
+necessário rotear via Worker. O script `fetch-raw.mjs` segue conferindo o SHA-256 por objeto e
+gravando o cache de forma atômica, e a aplicação continua usando a URL de conteúdo definida no
+ponteiro `content/content-pointer.json`.
+
+Os downloads parciais verificados ficam no cache do Actions (`actions/cache`) condicionados às
+mudanças em `scripts/ingestion/`, `scripts/verify-ingestion.mjs` ou `.github/workflows/ci.yml`.
