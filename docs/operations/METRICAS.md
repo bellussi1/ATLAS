@@ -26,25 +26,19 @@ Não há pendências manuais de credenciais. No build do CI (`ci.yml`), `GOATCOU
 
 ## Como funciona
 
-1. `scripts/metrics/sync.mjs` consulta os serviços com credenciais ativas (GoatCounter e/ou Cloudflare, aceitando `~/.atlas/r2.env` localmente) e grava `metrics/popularity.json` e `metrics/history/AAAA-MM.json`.
-2. O workflow diário salva um artefato. Na segunda-feira, abre um PR com o snapshot.
-3. O build lê o JSON e ordena antes do prerender. Sem dados, mantém a ordem editorial.
-4. O ranking usa 30 dias, mínimo de 20 visitantes, prior editorial e uma vaga de curadoria na home.
+1. `AnalyticsService` envia apenas o caminho canônico em `p` (sem query string nem hash) para que parâmetros de filtro (`/grafos?no=...`, `/acervo?q=...`) não fragmentem rotas nem inflem pageviews; o `count.js` envia `q = location.search` separado para atribuir UTMs e campanhas, com fallback de `<img>` liberado na CSP.
+2. `scripts/metrics/sync.mjs` consulta os serviços com credenciais ativas (GoatCounter paginado com `limit=100` e `exclude_paths`, respeitando o limite da API v0, e/ou Cloudflare, aceitando `~/.atlas/r2.env` localmente) e grava `metrics/popularity.json` e `metrics/history/AAAA-MM.json`.
+3. O workflow diário (`.github/workflows/metrics.yml`) salva um artefato. Toda segunda-feira (`0 6 * * 1`), abre um PR com o snapshot para `develop`.
+4. O build lê o JSON e ordena antes do prerender. Sem dados, mantém a ordem editorial.
+5. O ranking usa 30 dias, mínimo de 20 visitantes, prior editorial e uma vaga de curadoria na home.
 
-## Regras de ranking
-
-- visitantes únicos por dia, não page views;
-- mínimo de 20 visitantes para entrar;
-- prior editorial para desempatar e evitar um clique isolado;
-- `/`, `/acervo` (raiz), bots, previews `unlisted` e tráfego de desenvolvimento ficam fora;
-- home: três populares + uma vaga editorial.
-
-## Privacidade
+## Privacidade e testes próprios
 
 - sem cookies, sem perfil entre sites e sem texto de página nos eventos;
 - GoatCounter e Cloudflare processam o IP para contar; o ATLAS não guarda IP;
 - retenção agregada de até 12 meses;
-- a página `/privacidade` explica a medição e como bloquear.
+- a página `/privacidade` explica a medição e como bloquear;
+- para ignorar as próprias visitas nos navegadores pessoais, abra `https://atlas-bellussi.pages.dev/#toggle-goatcounter` uma vez por navegador/aparelho.
 
 ## Limites conhecidos
 

@@ -120,6 +120,46 @@ async function fetchJson(url, options) {
   return response.json();
 }
 
+const sleep = (ms) => new Promise((resolvePromise) => setTimeout(resolvePromise, ms));
+
+/**
+ * GoatCounter API v0 caps `limit` at 100 in `/api/v0/stats/hits` and paginates via `exclude_paths`.
+ */
+export async function fetchGoatCounterHits(
+  base,
+  goatKey,
+  from,
+  to,
+  { fetchImpl = fetchJson, maxPages = 5, delayMs = 300 } = {},
+) {
+  const cleanBase = /^https?:\/\//.test(base)
+    ? base.replace(/\/$/, '')
+    : `https://${base}.goatcounter.com`;
+  const headers = { Authorization: `Bearer ${goatKey}`, 'Content-Type': 'application/json' };
+  const allHits = [];
+  const seenIds = [];
+
+  for (let pageIndex = 0; pageIndex < maxPages; pageIndex += 1) {
+    if (pageIndex > 0 && delayMs > 0) await sleep(delayMs);
+    const params = new URLSearchParams({ start: from, end: to, limit: '100' });
+    for (const id of seenIds) params.append('exclude_paths', String(id));
+    const page = await fetchImpl(`${cleanBase}/api/v0/stats/hits?${params.toString()}`, {
+      headers,
+    });
+    const hits = Array.isArray(page?.hits) ? page.hits : [];
+    if (hits.length === 0) break;
+    allHits.push(...hits);
+    for (const hit of hits) {
+      if (Number.isInteger(hit?.path_id) && !seenIds.includes(hit.path_id)) {
+        seenIds.push(hit.path_id);
+      }
+    }
+    if (!page?.more) break;
+  }
+
+  return { hits: allHits };
+}
+
 async function main() {
   const dryRun = process.argv.includes('--dry-run');
   const date = new Date();
@@ -151,12 +191,7 @@ async function main() {
     const from = start.toISOString().slice(0, 10);
     const to = date.toISOString().slice(0, 10);
     if (hasGoat) {
-      const base = /^https?:\/\//.test(site)
-        ? site.replace(/\/$/, '')
-        : `https://${site}.goatcounter.com`;
-      goat = await fetchJson(`${base}/api/v0/stats/hits?start=${from}&end=${to}&limit=1000`, {
-        headers: { Authorization: `Bearer ${goatKey}`, 'Content-Type': 'application/json' },
-      });
+      goat = await fetchGoatCounterHits(site, goatKey, from, to);
     }
     if (hasCf) {
       cloudflare = await fetchJson('https://api.cloudflare.com/client/v4/graphql', {

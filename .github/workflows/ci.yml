@@ -30,7 +30,7 @@ jobs:
       - run: npm run typecheck
       - run: npm test
         env:
-          NODE_OPTIONS: --max-old-space-size=6144
+          NODE_OPTIONS: --max-old-space-size=4096
       - run: npm run test:ingestion
       - run: npm run test:content
       - run: npm run itinerary:check

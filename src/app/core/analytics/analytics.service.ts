@@ -61,7 +61,9 @@ export class AnalyticsService {
   }
 
   private trackPageview(): void {
-    const path = trackedPath(location.pathname, location.search);
+    // Send only the canonical path in `p`: count.js already sends `q: location.search` for
+    // UTM/campaign attribution without fragmenting routes or recounting filter/graph node params.
+    const path = trackedPath(location.pathname);
     if (!path || path === this.lastTracked) return;
     this.lastTracked = path;
     if (!this.goatReady) {

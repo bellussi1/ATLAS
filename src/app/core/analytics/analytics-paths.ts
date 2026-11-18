@@ -1,8 +1,9 @@
-/** Canonical path for analytics: no trailing slash, query string preserved. */
-export function trackedPath(pathname: string, search = ''): string {
+/** Canonical path for analytics: no query string, no hash, no trailing slash. */
+export function trackedPath(pathname: string): string {
   if (!pathname) return '';
-  const path = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
-  return `${path}${search}`;
+  const clean = pathname.split(/[?#]/)[0] || '';
+  if (!clean) return '';
+  return clean.length > 1 ? clean.replace(/\/+$/, '') : clean;
 }
 
 /** Click event path. Same-origin links become `click:/route`; external links use the host. */

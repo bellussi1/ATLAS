@@ -3,9 +3,12 @@ import { describe, expect, it } from 'vitest';
 import { clickPath, trackedPath } from './analytics-paths';
 
 describe('analytics paths', () => {
-  it('normalizes trailing slashes and keeps the query string', () => {
+  it('normalizes trailing slashes and strips query strings and hashes', () => {
     expect(trackedPath('/leitura/marxismo/')).toBe('/leitura/marxismo');
-    expect(trackedPath('/leitura/marxismo/', '?x=1')).toBe('/leitura/marxismo?x=1');
+    expect(trackedPath('/leitura/marxismo/?utm_source=linkedin&utm_campaign=leituras')).toBe(
+      '/leitura/marxismo',
+    );
+    expect(trackedPath('/grafos?no=karl-marx#topo')).toBe('/grafos');
     expect(trackedPath('/')).toBe('/');
   });
 

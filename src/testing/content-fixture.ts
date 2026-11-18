@@ -1,6 +1,5 @@
 import { type Provider } from '@angular/core';
 import { type ContentPackage } from '@core/content/models/content-artifacts';
-import { knowledgeGraphSchema } from '@core/content/models/content-schema';
 import {
   CONTENT_ASSET_READER,
   CONTENT_INITIAL_PACKAGE,
@@ -9,10 +8,7 @@ import {
 
 import data from '../../generated/testing/content-fixture.json';
 
-export const contentFixture: ContentPackage = {
-  ...data,
-  graph: knowledgeGraphSchema.parse(data.graph),
-} as ContentPackage;
+export const contentFixture: ContentPackage = data as unknown as ContentPackage;
 export const methodologyKnowledgeGraph = contentFixture.graph;
 export const methodologyAtlas = methodologyKnowledgeGraph.atlases[0];
 export const contentAssetFixture: Record<string, string> = data.assets;
