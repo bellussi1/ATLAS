@@ -92,18 +92,18 @@
           </li>
           <li>
             <a
-              [routerLink]="catalogueUrl('fontes')"
-              [queryParams]="navQuery()"
-              [attr.aria-current]="isFontes() ? 'page' : null"
-              >Fontes</a
-            >
-          </li>
-          <li>
-            <a
               [routerLink]="catalogueUrl('acervo')"
               [queryParams]="navQuery({ camada: 'editorial' })"
               [attr.aria-current]="isLeituras() ? 'page' : null"
               >Leituras</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="catalogueUrl('fontes')"
+              [queryParams]="navQuery()"
+              [attr.aria-current]="isFontes() ? 'page' : null"
+              >Fontes</a
             >
           </li>
         </ul>
@@ -205,8 +205,12 @@
           <button type="submit" class="search-field__submit">Pesquisar</button>
         </div>
         <p class="search-hint">
-          Busque em registros, fontes e leituras. Um registro cadastrado não equivale a conteúdo
-          verificado.
+          @if (isFontes()) {
+            Busque nas fontes e referências catalogadas no acervo.
+          } @else {
+            Busque em registros e leituras. Um registro cadastrado não equivale a conteúdo
+            verificado.
+          }
         </p>
         <a class="search-clear-all" [routerLink]="catalogueUrl(catalogue.path)"
           >Limpar busca e filtros</a
@@ -233,7 +237,7 @@
 
       @if (unknownLayer()) {
         <p class="notice">
-          Camada indisponível neste acervo. Escolha “Tudo”, “Registros”, “Fontes” ou “Leituras”.
+          Camada indisponível neste acervo. Escolha “Tudo”, “Registros” ou “Leituras”.
         </p>
       }
       @if (unknownKind()) {

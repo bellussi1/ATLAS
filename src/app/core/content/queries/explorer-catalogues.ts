@@ -37,7 +37,7 @@ export const explorerCatalogues = [
     group: 'acervo',
     path: 'acervo',
     title: 'Acervo',
-    description: 'Busque em todo o acervo: registros, fontes e leituras contínuas.',
+    description: 'Busque em todo o acervo: registros e leituras contínuas.',
   },
   {
     group: 'ideias',
@@ -62,12 +62,6 @@ export const explorerCatalogues = [
     path: 'obras',
     title: 'Obras',
     description: 'Documentos e obras para investigar argumentos e contextos.',
-  },
-  {
-    group: 'fontes',
-    path: 'fontes',
-    title: 'Fontes',
-    description: 'Referências cadastradas e os registros que as citam.',
   },
   {
     group: 'contexto',
@@ -128,5 +122,11 @@ export const explorerCatalogues = [
     path: 'lugares',
     title: 'Lugares',
     description: 'Regiões, continentes e termos geográficos.',
+  },
+  {
+    group: 'fontes',
+    path: 'fontes',
+    title: 'Fontes',
+    description: 'Referências cadastradas e os registros que as citam.',
   },
 ] as const;

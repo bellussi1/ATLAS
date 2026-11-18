@@ -107,11 +107,7 @@ export class ExplorerComponent {
   readonly isRegistros = computed(
     () => this.catalogue.path === 'acervo' && this.layer() === 'registros',
   );
-  readonly isFontes = computed(
-    () =>
-      this.catalogue.path === 'fontes' ||
-      (this.catalogue.path === 'acervo' && this.layer() === 'fontes'),
-  );
+  readonly isFontes = computed(() => this.catalogue.path === 'fontes');
   readonly isLeituras = computed(
     () => this.catalogue.path === 'acervo' && this.layer() === 'editorial',
   );
@@ -223,10 +219,8 @@ export class ExplorerComponent {
       !!this.params().get('estado') &&
       !this.facets().states.some((f) => f.value === this.params().get('estado')),
   );
-  /** Sources keep the compact list layout, also when the universal archive is cut to that layer. */
-  readonly sourceList = computed(
-    () => this.catalogue.path === 'fontes' || this.layer() === 'fontes',
-  );
+  /** Sources keep the compact list layout inside their dedicated catalogue. */
+  readonly sourceList = computed(() => this.catalogue.path === 'fontes');
   readonly editorialList = computed(() => this.layer() === 'editorial');
   /** Only a record catalogue promises records; the universal archive also holds sources and readings. */
   readonly emptyTitle = computed(() =>

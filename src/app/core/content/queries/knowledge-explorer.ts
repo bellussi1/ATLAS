@@ -18,7 +18,6 @@ const editorialKinds: readonly string[] = ['leitura'];
 export const explorerLayers = [
   { id: '', title: 'Tudo' },
   { id: 'registros', title: 'Registros' },
-  { id: 'fontes', title: 'Fontes' },
   { id: 'editorial', title: 'Leituras' },
 ] as const;
 
@@ -127,7 +126,9 @@ function explorerBase(
     !kind || (Array.isArray(kind) ? kind.includes(entryKind) : entryKind === kind);
   return index.filter(
     (entry) =>
-      (catalogue === 'acervo' || catalogue === 'fontes' || entry.path.startsWith('/verbete/')) &&
+      (entry.kind === 'fonte'
+        ? catalogue === 'fontes'
+        : catalogue === 'acervo' || entry.path.startsWith('/verbete/')) &&
       kindMatches(entry.kind) &&
       (!filter.kind || entry.kind === filter.kind) &&
       (!filter.state || entry.state === filter.state) &&

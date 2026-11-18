@@ -18,6 +18,10 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- **Acervo — fontes isoladas em `/acervo/fontes` e por último (18/11, `develop`):**
+  - No `/acervo`, entradas `kind === 'fonte'` foram removidas da busca e da listagem universal (`catalogue: 'acervo'`), ficando restritas exclusivamente à categoria `/acervo/fontes` (`catalogue: 'fontes'`), posicionada como última categoria na navegação lateral (`ExplorerComponent`) e em `explorerCatalogues`.
+  - `explorerLayers` agora mantém `''` (*Tudo*), `'registros'` e `'editorial'` (*Leituras*).
+
 - **Métricas, ranking e privacidade (18/11, `develop`):**
   - `scripts/analytics.mjs` injeta `analytics-config.js` em todas as páginas e carrega GoatCounter/Cloudflare só quando `GOATCOUNTER_SITE`/`CLOUDFLARE_ANALYTICS_TOKEN` existem; sem credencial, nada é carregado.
   - `AnalyticsService` envia page view em `NavigationEnd` e cliques por rota (`click:/...`), sem texto de página nem cookie. CSP libera `gc.zgo.at`, `static.cloudflareinsights.com`, `*.goatcounter.com` e `cloudflareinsights.com`.
