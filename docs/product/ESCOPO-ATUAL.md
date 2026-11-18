@@ -1,13 +1,13 @@
 Status: atual
-Última verificação: 08/11/2026
+Última verificação: 18/11/2026
 
-# Escopo atual: exploração, ampliação editorial e idiomas
+# Escopo atual: exploração, leituras contínuas, itinerários e mapa-múndi
 
-Pedido posterior de 01/11/2026 ampliou o escopo para busca universal, catálogos e páginas permanentes. As leituras `/marxismo` e `/liberalismo` e a mesa da Home seguem disponíveis.
+Pedido posterior de 01/11/2026 ampliou o escopo para busca universal, catálogos, páginas permanentes, leituras contínuas, itinerários editoriais e mapa-múndi geopolítico. As leituras e a mesa da Home seguem disponíveis.
 
-**Rotas:** `/acervo`, `/acervo/entidades`, `/acervo/ideologias`, `/acervo/pessoas`, `/acervo/obras`, `/acervo/fontes`, `/acervo/paises`, `/acervo/estados`, `/acervo/cidades`, `/acervo/locais`, `/acervo/regimes`, `/acervo/partidos`, `/acervo/instituicoes`, `/acervo/acontecimentos`, `/acervo/conceitos`, `/acervo/lugares`, `/verbete/:slug` e `/grafos`. As antigas rotas de catálogo respondem 301 para `/acervo/<catálogo>`. São 1.213 páginas no sitemap do build atual; `/acervo/fontes#source-<id>` mantém o destino das referências.
+**Rotas:** `/`, `/leituras`, `/leitura/:slug`, `/itinerarios`, `/itinerario/:slug`, `/acervo`, `/acervo/entidades`, `/acervo/ideologias`, `/acervo/pessoas`, `/acervo/obras`, `/acervo/fontes`, `/acervo/paises`, `/acervo/estados`, `/acervo/cidades`, `/acervo/locais`, `/acervo/regimes`, `/acervo/partidos`, `/acervo/instituicoes`, `/acervo/acontecimentos`, `/acervo/conceitos`, `/acervo/lugares`, `/verbete/:slug`, `/grafos`, `/mapa` e `/privacidade`. As antigas rotas top-level e de catálogo respondem 301 para os destinos atuais em `public/_redirects`. `/acervo/fontes#source-<id>` mantém o destino das referências.
 
-**Planejado, não implementado:** `/itinerarios` e `/itinerario/:slug` são o próximo produto editorial, ainda sem rota, schema ou conteúdo. O contrato, os pilotos comparativo e histórico e as fases estão em [Itinerários editoriais](../design/ITINERARIOS.md).
+**Leituras, itinerários e mapa-múndi:** estão publicados `/leituras` e os pacotes em `/leitura/:slug`, os percursos em `/itinerarios` e `/itinerario/:slug` (ver [Itinerários editoriais](../design/ITINERARIOS.md)) e o mapa-múndi em `/mapa` (ver [Mapa-múndi histórico e geopolítico](../design/MAPA-MUNDI.md)). Leituras marcadas com `unlisted: true` em `public-readings.ts` permanecem acessíveis por URL direta com `robots: noindex, follow`, fora do sitemap, da home e dos links automáticos.
 
 - Busca e filtros usam `q`, `tipo` e `estado`; a página de detalhe permite voltar ao recorte anterior. Permalink e canonical não dependem desses parâmetros. IDs e slugs existentes preservados.
 - `/conhecimento` e `/comparar` redirecionam para `/acervo`; `/grafo` e `/rede` redirecionam para `/grafos`.

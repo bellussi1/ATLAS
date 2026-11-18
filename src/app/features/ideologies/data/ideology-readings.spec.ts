@@ -1,3 +1,4 @@
+import { isUnlistedReading } from '@core/content/editorial/public-readings';
 import {
   companionOf,
   connectionsOf,
@@ -59,7 +60,10 @@ describe('ideology readings', () => {
           connection.relation,
         );
       }
-      expect(connectionsOf(reading.slug)).toHaveLength(reading.connections.length);
+      const listedCount = reading.connections.filter(
+        (connection) => !isUnlistedReading(connection.slug),
+      ).length;
+      expect(connectionsOf(reading.slug)).toHaveLength(listedCount);
     }
   });
 

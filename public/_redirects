@@ -6,6 +6,12 @@
 /social-democracia/ /leitura/social-democracia 301
 /anarquismo /leitura/anarquismo 301
 /anarquismo/ /leitura/anarquismo 301
+/nazismo /leitura/nazismo 301
+/nazismo/ /leitura/nazismo 301
+/stalinismo /leitura/stalinismo 301
+/stalinismo/ /leitura/stalinismo 301
+/trabalhismo /leitura/trabalhismo 301
+/trabalhismo/ /leitura/trabalhismo 301
 /ideologias/marxismo /leitura/marxismo 301
 /ideologias/marxismo/ /leitura/marxismo 301
 /atlas/marxismo /leitura/marxismo 301
@@ -22,6 +28,8 @@
 /rede/ /grafos 301
 /grafo /grafos 301
 /grafo/ /grafos 301
+/mapa-mundi /mapa 301
+/mapa-mundi/ /mapa 301
 # Catalogues now live under the archive; old addresses keep permanent redirects.
 /entidades /acervo/entidades 301
 /entidades/ /acervo/entidades 301

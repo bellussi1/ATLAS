@@ -41,6 +41,7 @@ Este documento é o mapa das instruções que orientam agentes no repositório. 
 | `atlas-wiki-discovery` | Descobrir/ingerir entidades de Wikidata, Wikipedia e Commons |
 | `atlas-wiki-extracao` | Extrair rascunhos sourced para `atlas-drafts` |
 | `atlas-editorial-geometrico` | Identidade visual, composição e interação do ATLAS |
+| `unslop-ui` | Revisar e enxugar copy de interface, chrome decorativo e rótulos de gráficos/mapas sem violar `atlas-editorial-geometrico` nem `GUIA-DE-VOZ.md` |
 
 ## Comandos
 

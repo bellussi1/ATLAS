@@ -675,4 +675,31 @@ describe('KnowledgeNetworkComponent', () => {
       expect(component.openGroups().size).toBeGreaterThan(0);
     }
   });
+
+  it('keeps the selected node and its neighbours labelled while hovering another node', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit(false);
+
+    const nodes = component.drawnNodes().filter((n) => n.node.degree > 0);
+    expect(nodes.length).toBeGreaterThanOrEqual(2);
+    const selected = nodes[0];
+    const other = nodes.find((n) => n.node.id !== selected.node.id)!;
+
+    component.select(selected.node.id);
+    fixture.detectChanges();
+    const selectedLabelsBefore = component.labels().map((l) => l.id);
+    expect(selectedLabelsBefore).toContain(selected.node.id);
+
+    component.hoverNode(other.node.id);
+    fixture.detectChanges();
+
+    const labelsWhileHovering = new Set(component.labels().map((l) => l.id));
+    expect(labelsWhileHovering.has(selected.node.id)).toBe(true);
+    expect(labelsWhileHovering.has(other.node.id)).toBe(true);
+    expect(component.highlightedNodes().some((item) => item.node.id === selected.node.id)).toBe(
+      true,
+    );
+  });
 });

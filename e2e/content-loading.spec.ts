@@ -169,3 +169,30 @@ test('a missing content object keeps the current page and retries after recovery
   await expect(page.locator('h1')).toHaveText('Liberalismo', { timeout: 20000 });
   await expect(page.getByRole('alert')).toHaveCount(0);
 });
+
+test('unknown record URL renders Registro não encontrado without redirecting', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => {
+    history.pushState(null, '', '/verbete/registro-inexistente-atlas-e2e');
+    dispatchEvent(new PopStateEvent('popstate'));
+  });
+  await expect(page).toHaveURL(/\/verbete\/registro-inexistente-atlas-e2e$/);
+  await expect(page.getByRole('heading', { name: 'Registro não encontrado' })).toBeVisible({
+    timeout: 15000,
+  });
+  await expect(page.locator('.not-found__lead')).toContainText(
+    'Este endereço não corresponde a um registro do acervo.',
+  );
+});
+
+test('archive catalogue search with zero matches displays dedicated empty state', async ({
+  page,
+}) => {
+  await page.goto('/acervo?q=zzzzinexistenteatlas9999');
+  const empty = page.locator('.empty');
+  await expect(empty).toBeVisible();
+  await expect(empty).toContainText(
+    'Nada corresponde a “zzzzinexistenteatlas9999” com os filtros atuais.',
+  );
+  await expect(empty.getByRole('link', { name: 'Limpar busca e filtros' })).toBeVisible();
+});

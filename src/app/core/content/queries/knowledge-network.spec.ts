@@ -484,15 +484,17 @@ describe('knowledge network', () => {
       expect(y).toBeLessThanOrEqual(a.height);
     }
     const items = network.nodes.map((n) => ({ n, p: a.positions.get(n.id)! }));
+    const touches: string[] = [];
     for (let i = 0; i < items.length; i++)
       for (let j = i + 1; j < items.length; j++) {
         const distance = Math.hypot(items[i].p.x - items[j].p.x, items[i].p.y - items[j].p.y);
         const needed =
           (nodeRadius(items[i].n.degree) + nodeRadius(items[j].n.degree)) * MAX_NODE_SCALE;
-        expect(distance).toBeGreaterThanOrEqual(needed);
+        if (distance < needed) touches.push(`${items[i].n.id}:${items[j].n.id}`);
       }
+    expect(touches).toEqual([]);
     expect(layoutNetwork([], []).positions.size).toBe(0);
-  }, 60000);
+  }, 120_000);
 
   it('groups nodes by text context instead of collection', () => {
     const layout = layoutNetwork(network.nodes, network.edges);

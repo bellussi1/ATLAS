@@ -265,11 +265,18 @@ test('all search destinations have prerendered HTML with matching title, canonic
     // The published release still indexes sources at the old top-level address.
     ['/fontes', '/acervo/fontes'],
   ]);
+  const htmlByTarget = new Map<string, string>();
   for (const entry of index) {
     const target = legacyReadings.get(entry.path) ?? entry.path;
-    const response = await request.get(target);
-    expect(response.ok(), target).toBe(true);
-    const html = await response.text();
+    let html = htmlByTarget.get(target);
+    if (html === undefined) {
+      const response = await request.get(target, {
+        headers: { 'accept-encoding': 'identity', connection: 'close' },
+      });
+      expect(response.ok(), target).toBe(true);
+      html = await response.text();
+      htmlByTarget.set(target, html);
+    }
     const pageTitle = readingPaths.includes(target)
       ? `${entry.title}: ideias e divergências`
       : target === '/acervo/fontes'

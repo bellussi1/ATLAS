@@ -1,11 +1,10 @@
 <section class="readings-index" aria-labelledby="readings-index-title">
   <header class="readings-index__head">
     <div>
-      <p class="readings-index__kicker">Enciclopédia contínua</p>
       <h1 appHeading="page" id="readings-index-title">Leituras contínuas</h1>
       <p class="readings-index__deck">
-        Cada leitura organiza um tema em 12 capítulos — conceitos, pessoas, obras, cronologia,
-        divergências e fontes — com conexões diretas para o acervo e o grafo.
+        Cada leitura organiza um tema em 12 capítulos de conceitos, pessoas, obras, cronologia,
+        divergências e fontes, com conexões diretas para o acervo e o grafo.
         <a routerLink="/itinerarios">Explorar itinerários temáticos</a>.
       </p>
     </div>
@@ -47,7 +46,7 @@
         [attr.aria-pressed]="statusFilter() === 'draft'"
         (click)="setFilter('draft')"
       >
-        Em rascunho ({{ draftCount() }})
+        Versão preliminar ({{ draftCount() }})
       </button>
       <button
         type="button"
@@ -101,7 +100,7 @@
     </ol>
   } @else {
     <div class="readings-index__empty" role="status">
-      <p>Nenhuma leitura corresponde aos filtros aplicados.</p>
+      <p>Não há leituras neste recorte.</p>
       <button type="button" class="filter-chip is-active" (click)="clearFilters()">
         Limpar filtros
       </button>

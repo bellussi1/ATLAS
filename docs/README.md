@@ -1,15 +1,15 @@
 Status: atual
-Última verificação: 08/11/2026
+Última verificação: 18/11/2026
 
 # Documentação do ATLAS
 
-Mapa da documentação. Comece pelo [contexto vivo](archive/2026-11/active-context-history.md); ele diz o que está acontecendo agora. Este índice separa **estado atual**, **planos** e **histórico** para que um documento antigo não seja lido como fonte do presente.
+Mapa da documentação. Comece pelo [contexto vivo](ACTIVE_CONTEXT.md); ele registra o estado presente. Este índice separa **estado atual**, **planos** e **histórico** para que um documento antigo não seja lido como fonte do presente.
 
 ## Comece aqui
 
 | Documento | Para que serve |
 |---|---|
-| [Contexto vivo](archive/2026-11/active-context-history.md) | Handoff curto: estado, verificações, trabalho ativo, pendências e próxima ação |
+| [Contexto vivo](ACTIVE_CONTEXT.md) | Handoff curto: estado, verificações, pendências e próxima ação |
 | [Contrato do projeto](../AGENTS.md) | Regras obrigatórias de arquitetura, conteúdo, testes e integração |
 | [Sistema de prompt](agents/PROMPT-SYSTEM.md) | Que camada carregar, quando e em que ordem |
 
@@ -31,37 +31,32 @@ Mapa da documentação. Comece pelo [contexto vivo](archive/2026-11/active-conte
 | [Imagens de abertura](design/IMAGENS-DE-ABERTURA.md) | Curadoria, licença e fallback visual | atual |
 | [Revisão de capítulos](design/REVISAO-DE-CAPITULOS.md) | Perguntas editoriais e fichas por capítulo | atual |
 | [Retenção de leitura](design/READING_RETENTION.md) | Como o ponto de leitura e o retorno são preservados | atual |
+| [Itinerários editoriais](design/ITINERARIOS.md) | Produto, contrato, paradas, ramos e mesa de estudo | atual |
+| [Mapa-múndi histórico e geopolítico](design/MAPA-MUNDI.md) | Rota `/mapa`, conexões geográficas por período e mesa de estudo | atual |
 | [Produção](operations/PRODUCAO.md) | Deploy, Cloudflare Pages, R2, segredos e CI | atual |
-| [Dependências](reference/DEPENDENCIES.md) | Biblioteca, versões e decisões técnicas | referência |
-| [Auditoria de dependências](reference/AUDITORIA-DEPENDENCIAS.md) | Alerta e tratamento de vulnerabilidades | referência |
-| [Fluxo Codex](reference/CODEX-WORKFLOW.md) | Papéis e operação do agente Codex | referência |
+| [Dependências](reference/DEPENDENCIES.md) | Bibliotecas, versões e decisões técnicas | referência |
 | [Conferência editorial](reference/CONFERENCIA-EDITORIAL.md) | Checklist de conferência | referência |
 
 ## Planos e pesquisas
 
-Nada aqui é estado publicado. São hipóteses, cronogramas ou decisões que ainda dependem de aprovação.
+Nada aqui é estado publicado por padrão; são especificações em aberto, medições e pesquisas.
 
 | Documento | Assunto | Status |
 |---|---|---|
-| [Itinerários editoriais](design/ITINERARIOS.md) | Produto, contrato, pilotos e fases 0–5 | plano |
-| [Mapa-múndi histórico e geopolítico](design/MAPA-MUNDI.md) | Rota `/mapa`, conexões geográficas por período e mesa de estudo | plano |
 | [Expansão com Haiku e Sonnet](research/PLANO-EXPANSAO-HAIKU-SONNET-2026-11.md) | Diagnóstico, ondas, custos e orçamento | plano |
 | [Linha de base da expansão](research/EXPANSAO-BASELINE-2026-11.md) | Inventário, órfãs e o peso dos links de navegação | atual |
 | [Onda 1 — calibração Haiku](research/ONDA1-CALIBRACAO-2026-11.md) | Amostra de 20 artigos, custo e fila humana de 100 itens | plano |
 | [Expansão de relações](research/EXPANSAO-RELACOES-2026-11.md) | +62 relações documentadas, 33 alvos e auditoria Sonnet | resultado |
 | [Auditoria dos verbetes](research/AUDITORIA-VERBETES-2026-11.md) | 928 verbetes: tipos, escopo e peso das relações | resultado |
 | [Gold set](research/gold-set-2026-11/README.md) | 87 relações documentadas, 40 afirmações e 20 pares para conferência humana | plano |
-| [Mapa de leituras](research/readings-map.md) | Próximas leituras: Trabalhismo, Vargas, 1964, ditadura | plano |
-| [Baseline das ideologias](research/ideologies-baseline.md) | Medição inicial de cobertura | histórico |
-| [Proposta de contrato das seções](research/ideologies-section-contract-proposal.md) | Desenho da página V4 | histórico |
-| [Auditoria do 12axes](research/12axes-audit.md) | Estudo externo de referência | histórico |
+| [Mapa de leituras](research/readings-map.md) | Próximas leituras: Vargas, 1964, ditadura | plano |
 
 ## Histórico
 
 | Documento | Conteúdo |
 |---|---|
 | [Arquivo de novembro/2026](archive/2026-11/README.md) | Índice do arquivo |
-| [Contexto vivo — histórico](archive/2026-11/active-context-history.md) | As 58 entradas anteriores, com decisões e verificações |
+| [Contexto vivo — histórico](archive/2026-11/active-context-history.md) | Entradas anteriores com decisões e verificações |
 | [Auditoria de UX/UI](archive/2026-11/audits/AUDITORIA-UX-UI-2026-11-02.md) | Auditoria de 02/11/2026 |
 | [Validações](archive/2026-11/quality/) | Relatórios de exploração, dados, ingestão, rede, posições e idiomas |
 | [Planos executados](archive/2026-11/superpowers/plans/) | Planos de implementação de 01/11/2026 |
@@ -86,8 +81,8 @@ Nada aqui é estado publicado. São hipóteses, cronogramas ou decisões que ain
 ## Como atualizar
 
 1. **Decisão que vale hoje** → documento canônico do assunto, com data e motivo.
-2. **Trabalho da sessão** → uma entrada no arquivo do mês, não no `ACTIVE_CONTEXT`.
-3. **Estado atual** → `ACTIVE_CONTEXT.md`, em no máximo ~150 linhas.
+2. **Trabalho da sessão** → entrada no arquivo do mês, não no `ACTIVE_CONTEXT.md`.
+3. **Estado atual** → `ACTIVE_CONTEXT.md`, enxuto (~60–100 linhas).
 4. **Plano** → `research/` ou `design/` com `Status: plano` e critério de saída.
 5. **Registro histórico** → `archive/<ano-mês>/`, com data e sem reescrever evidência.
 6. **Regra nova** → `AGENTS.md`; não criar uma segunda fonte de regras.
@@ -95,7 +90,6 @@ Nada aqui é estado publicado. São hipóteses, cronogramas ou decisões que ain
 ## Convenções
 
 - Todo documento começa com `Status: atual | plano | histórico | referência` e `Última verificação`.
-- Links internos devem ser relativos e verificados.
+- Links internos devem ser relativos e verificados (`npm run check:links`).
 - Datas usam `dd/mm/aaaa`.
 - Medições antigas permanecem no arquivo; não são promovidas a métricas atuais.
-- O `ACTIVE_CONTEXT` não é um diário: o diário é o arquivo do mês.

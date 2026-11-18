@@ -33,7 +33,7 @@ describe('ItinerariesIndexComponent', () => {
     await vi.waitFor(() => {
       fixture.detectChanges();
       expect(root.querySelector('.itineraries__empty')?.textContent).toContain(
-        'Nenhum itinerário verificado foi publicado ainda',
+        'Não há itinerários publicados neste recorte.',
       );
       expect(root.querySelector('button.filter-chip--surprise')).toBeNull();
     });

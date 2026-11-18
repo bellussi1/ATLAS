@@ -166,3 +166,22 @@ test('a new edition changes only affected hashes and a failed rebuild preserves 
   assert.deepEqual(await readFile(join(outputDirectory, 'manifest.json')), before);
   assert.ok((await readFile(join(outputDirectory, first.collections[0].file))).length > 0);
 });
+
+test('content fixture ships an asset entry for every collection, reading and itinerary in its manifest', async () => {
+  const fixtureRaw = await readFile(
+    new URL('../../generated/testing/content-fixture.json', import.meta.url),
+    'utf8',
+  );
+  const fixture = JSON.parse(fixtureRaw);
+  for (const item of [
+    ...fixture.manifest.collections,
+    ...fixture.manifest.ideologies,
+    ...(fixture.manifest.itineraries ?? []),
+  ]) {
+    assert.ok(
+      typeof fixture.assets[`c/${item.sha256}.json`] === 'string' &&
+        fixture.assets[`c/${item.sha256}.json`].length > 0,
+      `fixture sem asset para ${item.file}`,
+    );
+  }
+});

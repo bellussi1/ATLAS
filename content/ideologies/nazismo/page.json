@@ -523,6 +523,64 @@
               "classification": "interpretação"
             }
           ]
+        },
+        {
+          "type": "debate",
+          "topics": [
+            {
+              "id": "debate-nazismo-intencionalismo",
+              "title": "Intencionalismo e funcionalismo na explicação do Terceiro Reich",
+              "scope": "Debate historiográfico sobre como decisões ideológicas de cúpula e rivalidades institucionais operaram na radicalização do regime entre 1933 e 1945.",
+              "defence": {
+                "id": "debate-nazismo-tese-intencionalista",
+                "title": "Tese intencionalista",
+                "kicker": "Interpretação historiográfica",
+                "summary": "A escalada persecutória e a solução final derivam de um programa ideológico formulado antes de 1933.",
+                "paragraphs": [
+                  "Historiadores da linha intencionalista destacam a continuidade entre os objetivos formulados nos primeiros escritos partidários — expansão territorial e antissemitismo eliminacionista — e as decisões tomadas no vértice do Estado após a tomada do poder."
+                ],
+                "sourceIds": ["src-wiki-topic-nazismo"],
+                "entityIds": ["wiki-topic-nazismo", "wiki-topic-adolf-hitler"],
+                "classification": "interpretação"
+              },
+              "criticism": {
+                "id": "debate-nazismo-critica-funcionalista",
+                "title": "Tese funcionalista",
+                "kicker": "Contraponto historiográfico",
+                "summary": "A radicalização resultou da competição entre aparelhos burocráticos e das contingências da guerra.",
+                "paragraphs": [
+                  "Pesquisadores funcionalistas observam que a policracia de agências rivais do regime improvisou medidas sucessivamente mais extremas após 1939, tornando o processo de extermínio cumulativo sem um cronograma fixo desde o início."
+                ],
+                "sourceIds": ["src-wiki-topic-nazismo"],
+                "entityIds": ["wiki-topic-alemanha-nazista", "wiki-topic-holocausto"],
+                "classification": "interpretação"
+              },
+              "response": {
+                "id": "debate-nazismo-sintese-historiografica",
+                "title": "Convergência empírica recente",
+                "kicker": "Balanço historiográfico",
+                "summary": "Pesquisas contemporâneas combinam a direção ideológica de cúpula com iniciativas administrativas periféricas.",
+                "paragraphs": [
+                  "Estudos mais recentes integram ambos os eixos, mostrando como diretrizes ideológicas gerais da liderança legitimavam e premiavam propostas mais radicais vindas de escalões militares, policiais e civis em territórios ocupados."
+                ],
+                "sourceIds": ["src-wiki-topic-nazismo"],
+                "entityIds": ["wiki-topic-nazismo", "wiki-topic-holocausto"],
+                "classification": "interpretação"
+              },
+              "limits": {
+                "id": "debate-nazismo-limites",
+                "title": "Escopo e fontes do debate",
+                "kicker": "Limites do recorte",
+                "summary": "A síntese acompanha posições consolidadas na historiografia, sem esgotar estudos locais de ocupação.",
+                "paragraphs": [
+                  "Os argumentos resumem enquadramentos historiográficos amplos e não substituem a consulta direta a acervos judiciais, diplomáticos e memoriais produzidos após 1945."
+                ],
+                "sourceIds": ["src-wiki-topic-nazismo"],
+                "entityIds": [],
+                "classification": "limitação editorial"
+              }
+            }
+          ]
         }
       ]
     },
@@ -562,6 +620,7 @@
       "coverage": "complete",
       "layout": "graph",
       "blocks": [
+        { "type": "atlas", "rootEntityId": "wiki-topic-nazismo" },
         {
           "type": "entities",
           "entityIds": [

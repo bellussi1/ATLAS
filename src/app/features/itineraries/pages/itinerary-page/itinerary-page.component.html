@@ -44,11 +44,7 @@
     @if (diagram(); as map) {
       <section class="roadmap-diagram" aria-label="Mapa visual interativo do itinerário">
         <div class="roadmap-diagram__bar">
-          <div>
-            <p class="roadmap-diagram__kicker">
-              Mapa do percurso · clique numa parada para inspecionar
-            </p>
-          </div>
+          <p class="roadmap-diagram__kicker">Mapa do percurso</p>
           <ul class="roadmap-legend" aria-label="Legenda dos tipos de parada">
             <li><span class="legend-dot" data-type="leitura" aria-hidden="true"></span>Leitura</li>
             <li><span class="legend-dot" data-type="verbete" aria-hidden="true"></span>Verbete</li>
@@ -389,7 +385,7 @@
         <aside class="roadmap-desk" aria-label="Mesa de estudo da parada selecionada">
           <div class="roadmap-desk__head" [attr.data-type]="currentStop.destination.type">
             <p class="roadmap-desk__kicker">
-              Mesa do percurso · Parada {{ activeStopIndex() + 1 }} / {{ item.stops.length }}
+              Parada {{ activeStopIndex() + 1 }} de {{ item.stops.length }}
             </p>
             <h2>{{ currentStop.title }}</h2>
             <p class="roadmap-desk__type">{{ activeDest.kindLabel }}</p>

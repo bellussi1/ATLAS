@@ -1,7 +1,7 @@
 # Selo de revisão por IA
 
 Status: atual
-Última verificação: 09/11/2026
+Última verificação: 18/11/2026
 
 ## Regra
 
@@ -19,13 +19,14 @@ registro de revisor e data, e nenhum selo de IA aparece sem um registro `assista
 A verificação está em `scripts/content/review-seals.mjs`, chamada por
 `scripts/content/build-content.mjs` e coberta por `scripts/content/review-seals.spec.mjs`.
 
-## Cobertura em 09/11/2026
+## Cobertura em 18/11/2026
 
 | Item | Quantidade | Selo |
 | --- | ---: | --- |
 | Traduções aprovadas com `method: assistant` | 4 | "assistida por IA" no verbete, com revisor e data |
-| Páginas de leitura publicadas | 4 | `rascunho`/`com-fontes`, sem revisão registrada |
-| Páginas de leitura em rascunho fora do catálogo | 56 | sem publicação e sem selo |
+| Leituras contínuas listadas | 6 | `com-fontes` (4 curadas) ou `rascunho` / síntese assistida (2); nenhuma alegando revisão humana |
+| Prévia não listada (`noindex`) | 1 | `rascunho`, fora do sitemap, sem alegar revisão humana (`stalinismo`) |
+| Páginas de leitura legadas em rascunho fora do catálogo | 56 | sem publicação e sem selo |
 | Revisões de afirmação `verified` | 0 | — |
 | Revisões humanas sem revisor/data | 0 | — |
 

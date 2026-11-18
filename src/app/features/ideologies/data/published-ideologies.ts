@@ -1,3 +1,5 @@
+import { isUnlistedReading } from '@core/content/editorial/public-readings';
+
 /**
  * Source files of the published readings. Build-time only: `content:build` compiles them into the
  * R2 release, and the app reads them from there, never from its bundle.
@@ -9,34 +11,18 @@ export interface PublishedIdeologySource {
   unlisted?: boolean;
 }
 
+const readingSource = (slug: string): PublishedIdeologySource => ({
+  page: `content/ideologies/${slug}/page.json`,
+  supplement: `content/graph/${slug}.json`,
+  ...(isUnlistedReading(slug) ? { unlisted: true } : {}),
+});
+
 export const publishedIdeologies: Readonly<Record<string, PublishedIdeologySource | undefined>> = {
-  marxismo: {
-    page: 'content/ideologies/marxismo/page.json',
-    supplement: 'content/graph/marxismo.json',
-  },
-  liberalismo: {
-    page: 'content/ideologies/liberalismo/page.json',
-    supplement: 'content/graph/liberalismo.json',
-  },
-  'social-democracia': {
-    page: 'content/ideologies/social-democracia/page.json',
-    supplement: 'content/graph/social-democracia.json',
-  },
-  anarquismo: {
-    page: 'content/ideologies/anarquismo/page.json',
-    supplement: 'content/graph/anarquismo.json',
-  },
-  nazismo: {
-    page: 'content/ideologies/nazismo/page.json',
-    supplement: 'content/graph/nazismo.json',
-  },
-  stalinismo: {
-    page: 'content/ideologies/stalinismo/page.json',
-    supplement: 'content/graph/stalinismo.json',
-    unlisted: true,
-  },
-  trabalhismo: {
-    page: 'content/ideologies/trabalhismo/page.json',
-    supplement: 'content/graph/trabalhismo.json',
-  },
+  marxismo: readingSource('marxismo'),
+  liberalismo: readingSource('liberalismo'),
+  'social-democracia': readingSource('social-democracia'),
+  anarquismo: readingSource('anarquismo'),
+  nazismo: readingSource('nazismo'),
+  stalinismo: readingSource('stalinismo'),
+  trabalhismo: readingSource('trabalhismo'),
 };

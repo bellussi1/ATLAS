@@ -46,6 +46,43 @@ export const entityBuckets = [
 
 const readJson = async (path) => JSON.parse(await readFile(path, 'utf8'));
 
+const NON_PROSE_KEYS = new Set([
+  'id',
+  'slug',
+  'anchor',
+  'kicker',
+  'sourceIds',
+  'entityIds',
+  'itemId',
+  'rootEntityId',
+  'type',
+  'mode',
+  'classification',
+  'level',
+  'kind',
+  'year',
+  'url',
+  'assetPath',
+  'layout',
+  'coverage',
+]);
+
+/** Counts whitespace-delimited words across chapter prose strings, skipping structural keys. */
+export function countChapterProseWords(value) {
+  if (typeof value === 'string') return value.match(/\S+/g)?.length ?? 0;
+  if (Array.isArray(value))
+    return value.reduce((sum, item) => sum + countChapterProseWords(item), 0);
+  if (value && typeof value === 'object') {
+    let total = 0;
+    for (const [key, child] of Object.entries(value)) {
+      if (NON_PROSE_KEYS.has(key)) continue;
+      total += countChapterProseWords(child);
+    }
+    return total;
+  }
+  return 0;
+}
+
 /** Every collection of the source graph, without validating (validation is `content:build`). */
 async function readAtlases(root) {
   const directory = join(root, 'content/knowledge');
@@ -213,6 +250,9 @@ export function measure({ page, supplement, atlases, qids = [] }) {
       tipos: Object.keys(blockTypes).length,
       porTipo: blockTypes,
     },
+    prose: {
+      palavras: countChapterProseWords(page.chapters),
+    },
     images: {
       licenciadas: usable.length,
       entidadesComImagem: new Set(usable.map((asset) => asset.entityId)).size,
@@ -287,7 +327,7 @@ export function formatReport(metrics, gaps) {
     `  relações: ${metrics.relations.grafo} no grafo (${metrics.relations.documentadas} documentadas), ${metrics.relations.tese} no dossiê`,
     `  fontes: ${metrics.sources.total} (${metrics.sources.citadas} citadas)`,
     `  capítulos: ${metrics.chapters.comBlocos}/${metrics.chapters.total} com blocos, ${metrics.chapters.completos} completos, ${metrics.chapters.pendentes} pendentes`,
-    `  blocos: ${metrics.blocks.total} em ${metrics.blocks.tipos} tipos`,
+    `  blocos: ${metrics.blocks.total} em ${metrics.blocks.tipos} tipos · prosa: ${metrics.prose.palavras} palavras`,
     `  imagens: ${metrics.images.licenciadas} licenciadas em ${metrics.images.entidadesComImagem} entidades${metrics.images.retrato ? ', com retrato' : ''}`,
   );
   if (gaps) {

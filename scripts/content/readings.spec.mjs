@@ -1,6 +1,10 @@
+import './register-source-modules.mjs';
 import assert from 'node:assert/strict';
 import { readdir, readFile } from 'node:fs/promises';
 import test from 'node:test';
+
+const { readingRegistry } = await import('../../src/app/core/content/editorial/public-readings.ts');
+const registeredSlugs = new Set(readingRegistry.map((entry) => entry.slug));
 
 const root = new URL('../../content/ideologies/', import.meta.url);
 const situational = ['epocas', 'pensadores', 'vertentes', 'experiencias', 'debates'];
@@ -68,8 +72,10 @@ function collectSourceIds(value, found = new Set()) {
   return found;
 }
 
-test('the bibliography lists every source cited by the reading', async () => {
-  for (const page of (await pages()).filter((item) => item.published)) {
+test('the bibliography lists every source cited by the reading and keeps no pending chapters', async () => {
+  for (const page of (await pages()).filter(
+    (entry) => entry.published || registeredSlugs.has(entry.slug),
+  )) {
     const cited = collectSourceIds(page);
     const bibliography = page.chapters
       .find((chapter) => chapter.id === 'fontes')
@@ -80,6 +86,13 @@ test('the bibliography lists every source cited by the reading', async () => {
         `${page.slug}: ${id} é citada, mas não aparece na bibliografia`,
       );
     }
+    assert.deepEqual(
+      page.chapters
+        .filter((chapter) => chapter.coverage === 'pending')
+        .map((chapter) => chapter.id),
+      [],
+      `${page.slug} ainda tem capítulos pending`,
+    );
     assert.equal(
       page.chapters.find((chapter) => chapter.id === 'fontes').kicker,
       'Fontes e metodologia',

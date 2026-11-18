@@ -36,7 +36,7 @@ test('trabalhismo roadmap renders connected stops, branches and overview without
     .locator('.roadmap-desk')
     .getByRole('button', { name: /Próxima/i })
     .click();
-  await expect(page.locator('.roadmap-desk')).toContainText('Parada 2 / 6');
+  await expect(page.locator('.roadmap-desk')).toContainText('Parada 2 de 6');
 
   await page.setViewportSize({ width: 320, height: 640 });
   const overflow = await page.evaluate(
@@ -59,7 +59,7 @@ test('branch convergence link stays on itinerary page and focuses target stop', 
   await convergeLink.click();
   await expect(page).toHaveURL(/\/itinerario\/comparativo-liberdade/);
   await expect(page.locator('#parada-critica-marxista')).toHaveClass(/is-active/);
-  await expect(page.locator('.roadmap-desk')).toContainText('Parada 3 / 6');
+  await expect(page.locator('.roadmap-desk')).toContainText('Parada 3 de 6');
 });
 
 test('home exposes itinerarios band and footer/header links', async ({ page }) => {
