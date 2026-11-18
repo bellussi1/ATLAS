@@ -140,3 +140,15 @@ leitura listada depende dos gates abaixo.
 3. Promover as prévias para leitura listada depois de fechar a bibliografia (#78), os capítulos do
    stalinismo (#79) e o piso de relações/tipos (#80). Antes, corrigir #75 (noindex), #76 (301 com
    barra final), #77 (fixture) e #82 (rotas públicas).
+
+## Fechamento de cobertura e estrutura (18/11/2026)
+
+Medição atual via `npm run tradicao:coverage -- nazismo stalinismo trabalhismo` após consolidação da bibliografia (#78), capítulos do stalinismo (#79), ampliação relacional e inclusão dos blocos `atlas` e `debate` (#80, #87):
+
+| Tradição | Relações (antes → depois) | Tipos de bloco (antes → depois) | Capítulos c/ blocos | Pendentes | Fontes citadas | Prosa | Status no piso |
+| --- | --- | --- | --- | ---: | ---: | ---: | --- |
+| Nazismo | 22 → 46 (45 doc.) | 4 → 7 (`15` blocos) | 11/12 | 0 | 39/47 | 3.044 palavras | `atingido` |
+| Stalinismo | 80 → 92 (73 doc.) | 4 → 7 (`15` blocos) | 11/12 | 0 | 31/52 | 2.906 palavras | `atingido` |
+| Trabalhismo | 19 → 82 (80 doc.) | 4 → 7 (`15` blocos) | 11/12 | 0 | 47/58 | 3.092 palavras | `atingido` |
+
+A revisão humana permanece pendente (`review.status = "rascunho"` nas três traduções/leituras; `stalinismo` mantida `unlisted: true` com `noindex, follow`).
