@@ -59,6 +59,7 @@ import {
   spreadCandidates,
   stableLabelTier,
 } from '@core/content/queries/network-labels';
+import { mapQueryParamsForEntity } from '@core/content/queries/world-map';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
@@ -393,6 +394,15 @@ export class KnowledgeNetworkComponent {
     const node = this.selected();
     return node ? itinerariesForEntity(node.id, node.slug, this.repository.bundledItineraries) : [];
   });
+  readonly selectedMapParams = computed(() => {
+    const node = this.selected();
+    if (!node) return null;
+    for (const atlas of this.repository.knowledgeGraph.atlases) {
+      const entity = atlas.entities.find((item) => item.id === node.id);
+      if (entity) return mapQueryParamsForEntity(entity, this.repository.knowledgeGraph);
+    }
+    return null;
+  });
   readonly pathFromTitle = computed(() => {
     const id = this.pathFrom();
     return id ? (this.nodeIndex.get(id)?.title ?? id) : null;
@@ -429,7 +439,11 @@ export class KnowledgeNetworkComponent {
     return id ? this.fastLinksOf(id) : [];
   });
   readonly neighbours = computed(() => new Set(this.activeLinks().map((link) => link.other.id)));
-  /** Nodes that stay lit: the path, a hovered legend family/kind, the hovered node with its neighbours, or all. */
+  private readonly selectedNeighbours = computed(() => {
+    const id = this.selectedId();
+    return id ? new Set(this.fastLinksOf(id).map((link) => link.other.id)) : new Set<string>();
+  });
+  /** Nodes that stay lit: the path, a hovered legend family/kind, the hovered/selected node with its neighbours, or all. */
   private readonly litNodes = computed<ReadonlySet<string> | null>(() => {
     const path = this.visible().path;
     if (path?.found) return new Set(path.nodes);
@@ -454,7 +468,13 @@ export class KnowledgeNetworkComponent {
     }
     const active = this.activeId();
     if (!active) return null;
-    return new Set([active, ...this.neighbours()]);
+    const ids = new Set([active, ...this.neighbours()]);
+    const selected = this.selectedId();
+    if (selected && selected !== active) {
+      ids.add(selected);
+      for (const id of this.selectedNeighbours()) ids.add(id);
+    }
+    return ids;
   });
   /** Free part of the stage, in pixels, between the floating panels. */
   readonly insets = computed(() => {
@@ -789,11 +809,16 @@ export class KnowledgeNetworkComponent {
     const pool = visible.filter((item) => !lit || lit.has(item.node.id));
     const poolIds = new Set(pool.map((item) => item.node.id));
     for (const item of forcedItems) if (!poolIds.has(item.node.id)) pool.push(item);
+    const selectedNeighbours = this.selectedNeighbours();
     const scored = pool
-      .map((item) => ({
-        item,
-        score: labelRelevance(item.node) + (previous.has(item.node.id) ? 0.6 : 0),
-      }))
+      .map((item) => {
+        const id = item.node.id;
+        const keepSelectedContext = id === selectedId ? 1000 : selectedNeighbours.has(id) ? 100 : 0;
+        return {
+          item,
+          score: labelRelevance(item.node) + keepSelectedContext + (previous.has(id) ? 0.6 : 0),
+        };
+      })
       .sort(
         (a, b) =>
           b.score - a.score ||
@@ -844,7 +869,7 @@ export class KnowledgeNetworkComponent {
                 ...label,
                 worldX: item.x,
                 worldY: item.y,
-                neighbour: neighbours.has(label.id),
+                neighbour: neighbours.has(label.id) || selectedNeighbours.has(label.id),
                 delay: Math.min(order, 14) * 24,
               },
             ]
@@ -1395,7 +1420,13 @@ export class KnowledgeNetworkComponent {
   }
   edgeDimmed(edge: NetworkEdge): boolean {
     const active = this.activeId();
-    return !!active && edge.source !== active && edge.target !== active;
+    const selected = this.selectedId();
+    return (
+      !!active &&
+      edge.source !== active &&
+      edge.target !== active &&
+      (!selected || (edge.source !== selected && edge.target !== selected))
+    );
   }
   /**
    * Colour, dash and arrowhead tell the kind of link. Far away every link is the same plain line;

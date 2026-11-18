@@ -10,6 +10,7 @@ const aliases = {
   '@ideologies/': 'features/ideologies/',
   '@exploration/': 'features/exploration/',
   '@itineraries/': 'features/itineraries/',
+  '@world-map/': 'features/world-map/',
   '@study/': 'features/study/',
   '@layouts/': 'layouts/',
   '@pages/': 'pages/',

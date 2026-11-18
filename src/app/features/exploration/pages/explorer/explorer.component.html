@@ -1,7 +1,6 @@
 <section class="explorer" aria-labelledby="explorer-title">
   <header class="explorer-heading">
     <div class="explorer-heading__copy">
-      <p class="explorer-kicker atlas-label">Catálogo · busca e filtros</p>
       <h1 id="explorer-title">{{ catalogue.title }}</h1>
       <p>{{ catalogue.description }}</p>
       <a class="graph-entry atlas-press" routerLink="/grafos">
@@ -9,6 +8,13 @@
         Ver o acervo como rede, em tela cheia
         <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
       </a>
+      @if (showMapEntry) {
+        <a class="graph-entry atlas-press" routerLink="/mapa">
+          <span class="graph-entry__glyph" aria-hidden="true"></span>
+          Explorar territórios e regimes no mapa-múndi
+          <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+        </a>
+      }
     </div>
     <app-geometric-mosaic
       class="explorer-heading__mosaic"
@@ -204,14 +210,9 @@
           }
           <button type="submit" class="search-field__submit">Pesquisar</button>
         </div>
-        <p class="search-hint">
-          @if (isFontes()) {
-            Busque nas fontes e referências catalogadas no acervo.
-          } @else {
-            Busque em registros e leituras. Um registro cadastrado não equivale a conteúdo
-            verificado.
-          }
-        </p>
+        @if (!isFontes()) {
+          <p class="search-hint">Um registro cadastrado não equivale a conteúdo verificado.</p>
+        }
         <div class="search-band__actions">
           <a class="search-clear-all" [routerLink]="catalogueUrl(catalogue.path)"
             >Limpar busca e filtros</a

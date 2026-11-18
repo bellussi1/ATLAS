@@ -14,6 +14,7 @@ describe('SiteHeaderComponent', () => {
           { path: 'leitura/marxismo', children: [] },
           { path: 'acervo', children: [] },
           { path: 'grafos', children: [] },
+          { path: 'mapa', children: [] },
         ]),
       ],
     }),
@@ -30,7 +31,14 @@ describe('SiteHeaderComponent', () => {
     const root = fixture.nativeElement as HTMLElement;
     expect(root.querySelector('a.brand')?.getAttribute('href')).toBe('/');
     expect(root.querySelector('a.brand img')?.getAttribute('src')).toBe('/brand/atlas-logo.svg');
-    expect(links(root)).toEqual(['Leituras', 'Itinerários', 'Acervo', 'Grafo', 'Como usar']);
+    expect(links(root)).toEqual([
+      'Leituras',
+      'Itinerários',
+      'Acervo',
+      'Grafo',
+      'Mapa',
+      'Como usar',
+    ]);
     expect(root.querySelector('a[href="/grafos"]')).not.toBeNull();
     expect(root.querySelector('a[href="/acervo?camada=registros"]')).not.toBeNull();
   });

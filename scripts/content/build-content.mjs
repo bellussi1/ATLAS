@@ -187,6 +187,32 @@ export async function buildContent({
         discoveryMetadata: entity.discoveryMetadata
           ? { description: entity.discoveryMetadata.description }
           : undefined,
+        ...(entity.kind === 'place'
+          ? {
+              coordinates: entity.coordinates,
+              isoAlpha2: entity.isoAlpha2,
+              isoNumeric: entity.isoNumeric,
+              countryProfile: entity.countryProfile
+                ? {
+                    officialName: entity.countryProfile.officialName,
+                    territorialScope: entity.countryProfile.territorialScope,
+                    identityNote: entity.countryProfile.identityNote,
+                  }
+                : undefined,
+              regimeProfile: entity.regimeProfile
+                ? {
+                    countryIds: entity.regimeProfile.countryIds,
+                    periodNote: entity.regimeProfile.periodNote,
+                    classifications: entity.regimeProfile.classifications.map((c) => ({
+                      label: c.label,
+                      attribution: c.attribution,
+                      edition: c.edition,
+                      limits: c.limits,
+                    })),
+                  }
+                : undefined,
+            }
+          : {}),
       })),
       claims: [...new Set(atlas.claims.map((claim) => claim.entityId))]
         .map((entityId) =>
@@ -369,17 +395,10 @@ export async function buildContent({
     await atomicFile(join(outputDirectory, resource.file), resource.body);
   await atomicFile(join(outputDirectory, 'manifest.json'), await formatJson(manifest));
   if (fixture) {
-    // The fixture keeps the pre-bundle path on purpose: it stays small for tests, while the
-    // published release and the e2e cache exercise the packaged artifacts.
+    // The fixture keeps the pre-bundle path small for unit/e2e tests while including all compiled
+    // collections, readings (even unlisted ones) and itineraries referenced in the manifest.
     const fixtureAssets = assets.filter(
-      ({ file }) =>
-        !file.startsWith('bundle.') &&
-        !file.startsWith('network-bundle.') &&
-        !new Set(
-          manifest.ideologies
-            .filter((item) => publishedIdeologies[item.id]?.unlisted)
-            .map((item) => item.file),
-        ).has(file),
+      ({ file }) => !file.startsWith('bundle.') && !file.startsWith('network-bundle.'),
     );
     const manifestBody = `${JSON.stringify(manifest)}\n`;
     const pointer = buildPointer({

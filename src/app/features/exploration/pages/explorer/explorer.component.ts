@@ -78,6 +78,15 @@ export class ExplorerComponent {
   readonly catalogue =
     explorerCatalogues.find((c) => c.path === this.route.snapshot.data['catalogue']) ??
     explorerCatalogues[0];
+  readonly showMapEntry = [
+    'acervo',
+    'paises',
+    'regimes',
+    'cidades',
+    'estados',
+    'locais',
+    'lugares',
+  ].includes(this.catalogue.path);
   readonly recordCatalogues = explorerRecordCatalogueOrder.map((path) =>
     explorerCatalogues.find((catalogue) => catalogue.path === path)!,
   );

@@ -1,0 +1,783 @@
+<section class="world-map-page" aria-labelledby="world-map-title">
+  <header class="map-header">
+    <div class="map-header__intro">
+      <h1 id="world-map-title">Mapa-múndi <em>histórico</em></h1>
+      <p class="map-lead">
+        Países atuais, entidades históricas dissolvidas, classificações de regime político e
+        conexões internacionais ancorados por período e evidência documental.
+      </p>
+      <a class="map-skip-link" href="#lista-acessivel">
+        Ir para a tabela acessível de territórios e conexões
+      </a>
+    </div>
+
+    <div class="map-toolbar">
+      <div class="map-search">
+        <label class="visually-hidden" for="map-search">
+          Buscar país, entidade histórica ou acontecimento
+        </label>
+        <input
+          id="map-search"
+          type="search"
+          autocomplete="off"
+          placeholder="Buscar país, império, evento ou pessoa…"
+          [value]="searchQuery()"
+          (input)="onSearchInput($any($event.target).value)"
+          (focus)="searchOpen.set(searchQuery().trim().length >= 2)"
+          (keydown)="onSearchKeyDown($event)"
+        />
+        @if (searchOpen() && searchHits().length > 0) {
+          <div class="map-search__results" role="listbox" aria-label="Resultados no mapa">
+            @for (hit of searchHits(); track hit.key) {
+              <button
+                type="button"
+                class="map-search__hit"
+                role="option"
+                [attr.aria-selected]="false"
+                (click)="chooseSearchHit(hit)"
+              >
+                <strong>{{ hit.title }}</strong>
+                <span>{{ hit.subtitle }}</span>
+              </button>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="map-presets" role="group" aria-label="Recortes históricos">
+        @for (preset of eraPresets; track preset.id) {
+          <button
+            type="button"
+            class="map-preset-btn"
+            [class.is-active]="activePresetId() === preset.id"
+            [attr.aria-pressed]="activePresetId() === preset.id"
+            [title]="preset.note"
+            (click)="applyPreset(preset.yearFrom, preset.yearTo)"
+          >
+            {{ preset.label }}
+          </button>
+        }
+      </div>
+
+      <button
+        type="button"
+        class="map-surprise-btn"
+        aria-label="Surpreenda-me: abrir um território e recorte histórico ao acaso"
+        (click)="pickSurprise()"
+      >
+        Surpreenda-me
+      </button>
+    </div>
+  </header>
+
+  <div class="map-workbench">
+    <aside id="map-legend" class="map-legend" aria-label="Legenda cartográfica e camadas">
+      <section class="legend-block">
+        <div class="legend-block__head">
+          <h2>Famílias de conexão</h2>
+          @if (familiesOn().size < families.length) {
+            <button type="button" class="legend-reset" (click)="showAllFamilies()">
+              Mostrar todas
+            </button>
+          }
+        </div>
+        <ul class="legend-list">
+          @for (family of families; track family.id) {
+            <li
+              class="legend-row"
+              [class.is-hovered]="hoveredFamilyId() === family.id"
+              [class.is-muted]="!familiesOn().has(family.id)"
+              (pointerenter)="hoveredFamilyId.set(family.id)"
+              (pointerleave)="hoveredFamilyId.set(null)"
+            >
+              <button
+                type="button"
+                class="legend-item"
+                [attr.aria-pressed]="familiesOn().has(family.id)"
+                (focus)="hoveredFamilyId.set(family.id)"
+                (blur)="hoveredFamilyId.set(null)"
+                (click)="toggleFamily(family.id)"
+                (dblclick)="soloFamily(family.id)"
+              >
+                <span class="legend-swatch" aria-hidden="true">
+                  <svg viewBox="0 0 32 12" width="32" height="12">
+                    <line
+                      x1="1"
+                      y1="6"
+                      [attr.x2]="family.directed ? 24 : 31"
+                      y2="6"
+                      stroke-width="2.2"
+                      [attr.stroke-dasharray]="family.dash || null"
+                      [style.stroke]="'var(' + family.color + ')'"
+                    />
+                    @if (family.directed) {
+                      <path d="M23 2.5L31 6L23 9.5z" [style.fill]="'var(' + family.color + ')'" />
+                    }
+                  </svg>
+                </span>
+                <span class="legend-label">{{ family.label }}</span>
+                <span class="legend-count">{{ filtered().familyCounts[family.id] }}</span>
+              </button>
+              <p class="legend-note">{{ family.note }}</p>
+            </li>
+          }
+        </ul>
+      </section>
+
+      <section class="legend-block">
+        <h2>Camadas territoriais</h2>
+        <ul class="layer-list">
+          @for (layer of layers; track layer.id) {
+            <li>
+              <button
+                type="button"
+                class="layer-item"
+                [attr.aria-pressed]="layersOn().has(layer.id)"
+                (click)="toggleLayer(layer.id)"
+              >
+                <span class="layer-glyph" aria-hidden="true">
+                  @if (layer.id === 'country') {
+                    <svg viewBox="0 0 14 14" width="14" height="14">
+                      <rect
+                        x="2"
+                        y="2"
+                        width="10"
+                        height="10"
+                        fill="currentColor"
+                        fill-opacity="0.2"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                    </svg>
+                  } @else if (layer.id === 'polity') {
+                    <svg viewBox="0 0 14 14" width="14" height="14">
+                      <polygon
+                        points="7,1 13,7 7,13 1,7"
+                        fill="var(--color-accent)"
+                        fill-opacity="0.22"
+                        stroke="var(--color-accent)"
+                        stroke-width="1.4"
+                      />
+                    </svg>
+                  } @else {
+                    <svg viewBox="0 0 14 14" width="14" height="14">
+                      <circle
+                        cx="7"
+                        cy="7"
+                        r="4.5"
+                        fill="var(--color-info)"
+                        fill-opacity="0.22"
+                        stroke="var(--color-info)"
+                        stroke-width="1.4"
+                      />
+                      <circle cx="7" cy="7" r="1.6" fill="var(--color-info)" />
+                    </svg>
+                  }
+                </span>
+                <span class="layer-name">{{ layer.label }}</span>
+                <span class="legend-count">{{ filtered().layerCounts[layer.id] }}</span>
+              </button>
+            </li>
+          }
+        </ul>
+      </section>
+    </aside>
+
+    <div class="map-center">
+      @if (hasTemporalFilter()) {
+        <p class="map-border-notice" role="note">
+          As divisas de fundo seguem contornos contemporâneos de referência (Natural Earth);
+          entidades históricas dissolvidas e regimes são posicionados por coordenadas documentadas e
+          vigência temporal.
+        </p>
+      }
+
+      <div class="map-stage" [class.is-dragging]="dragging()" [class.is-instant]="reducedMotion()">
+        <svg
+          #mapSvg
+          class="map-svg"
+          [attr.viewBox]="'0 0 ' + width + ' ' + height"
+          tabindex="0"
+          role="region"
+          aria-label="Mapa-múndi histórico interativo. Use mais, menos, zero e as setas para navegar."
+          (pointerdown)="onPointerDown($event)"
+          (pointermove)="onPointerMove($event)"
+          (pointerup)="onPointerUp($event)"
+          (pointercancel)="onPointerUp($event)"
+          (wheel)="onWheel($event)"
+          (keydown)="onSvgKeyDown($event)"
+          (click)="onSvgClick($event)"
+        >
+          <defs>
+            @for (family of families; track family.id) {
+              @if (family.directed) {
+                <marker
+                  [attr.id]="'map-arrow-' + family.id"
+                  viewBox="0 0 8 8"
+                  refX="6.5"
+                  refY="4"
+                  markerWidth="5.5"
+                  markerHeight="5.5"
+                  orient="auto-start-reverse"
+                >
+                  <path d="M0 1L7 4L0 7z" [style.fill]="'var(' + family.color + ')'" />
+                </marker>
+              }
+            }
+          </defs>
+
+          <g
+            [attr.transform]="
+              'translate(' + view().x + ' ' + view().y + ') scale(' + view().k + ')'
+            "
+          >
+            <path class="map-sphere" [attr.d]="baseMap.spherePath" />
+            <path class="map-graticule" [attr.d]="baseMap.graticulePath" />
+            <path class="map-equator" [attr.d]="baseMap.equatorPath" />
+
+            <g class="map-countries">
+              @for (geo of baseMap.countries; track geo.isoNumeric + '-' + geo.name) {
+                @if (countryIsInteractable(geo.isoNumeric)) {
+                  <path
+                    class="map-country is-interactable"
+                    [class.is-active]="countryIsActive(geo.isoNumeric)"
+                    [class.is-selected]="countryIsSelected(geo.isoNumeric)"
+                    [class.is-hovered]="countryIsHovered(geo.isoNumeric)"
+                    [style.opacity]="countryOpacity(geo.isoNumeric)"
+                    [attr.d]="geo.path"
+                    role="button"
+                    tabindex="0"
+                    [attr.aria-label]="countryAriaLabel(geo)"
+                    [attr.aria-pressed]="countryIsSelected(geo.isoNumeric)"
+                    (pointerenter)="hoverCountryFeature(geo.isoNumeric)"
+                    (pointerleave)="hoverCountryFeature(null)"
+                    (click)="selectCountryFeature(geo.isoNumeric)"
+                    (keydown)="onCountryKeyDown($event, geo.isoNumeric)"
+                  />
+                } @else {
+                  <path class="map-country" [attr.d]="geo.path" />
+                }
+              }
+            </g>
+
+            <g class="map-country-dots" aria-hidden="true">
+              @for (entry of matchedCountryOverlays(); track entry.territory.id) {
+                <circle
+                  class="map-country-dot"
+                  [class.is-selected]="entry.territory.id === selectedTerritoryId()"
+                  [attr.cx]="entry.territory.point.x"
+                  [attr.cy]="entry.territory.point.y"
+                  [attr.r]="entry.territory.id === selectedTerritoryId() ? 4.2 : 2.8"
+                  [style.opacity]="markerOpacity(entry.territory.id)"
+                />
+              }
+            </g>
+
+            <g class="map-arcs">
+              @for (conn of filtered().activeConnections; track conn.id) {
+                <g
+                  class="map-arc-group"
+                  [style.opacity]="connectionOpacity(conn)"
+                  (pointerenter)="hoveredConnectionId.set(conn.id)"
+                  (pointerleave)="hoveredConnectionId.set(null)"
+                >
+                  <path
+                    class="map-arc"
+                    [class.is-selected]="selectedConnectionId() === conn.id"
+                    [attr.d]="conn.path"
+                    [style.stroke]="familyStrokeColor(conn.family)"
+                    [attr.stroke-dasharray]="familyDash(conn.family)"
+                    [attr.marker-end]="conn.directed ? 'url(#map-arrow-' + conn.family + ')' : null"
+                  />
+                  <path class="map-arc-hit" [attr.data-conn-id]="conn.id" [attr.d]="conn.path" />
+                </g>
+              }
+            </g>
+
+            <g class="map-markers">
+              @for (entry of markerTerritories(); track entry.territory.id) {
+                <g
+                  class="map-marker"
+                  [class.map-marker--country]="entry.territory.layer === 'country'"
+                  [class.map-marker--polity]="entry.territory.layer === 'polity'"
+                  [class.map-marker--locality]="entry.territory.layer === 'locality'"
+                  [class.is-selected]="entry.territory.id === selectedTerritoryId()"
+                  [class.is-hovered]="entry.territory.id === hoveredTerritoryId()"
+                  [style.opacity]="markerOpacity(entry.territory.id)"
+                  [attr.transform]="
+                    'translate(' + entry.territory.point.x + ' ' + entry.territory.point.y + ')'
+                  "
+                  role="button"
+                  tabindex="0"
+                  [attr.aria-label]="
+                    entry.territory.title +
+                    ', ' +
+                    layerLabel(entry.territory.layer) +
+                    ', ' +
+                    entry.activityCount +
+                    ' registros no recorte'
+                  "
+                  [attr.aria-pressed]="entry.territory.id === selectedTerritoryId()"
+                  (pointerenter)="hoveredTerritoryId.set(entry.territory.id)"
+                  (pointerleave)="hoveredTerritoryId.set(null)"
+                  (click)="selectTerritory(entry.territory.id)"
+                  (keydown)="onMarkerKeyDown($event, entry.territory.id)"
+                >
+                  @if (entry.territory.layer === 'polity') {
+                    <polygon points="0,-6 6,0 0,6 -6,0" />
+                  } @else if (entry.territory.layer === 'locality') {
+                    <circle cx="0" cy="0" r="3.6" />
+                  } @else {
+                    <rect x="-3.5" y="-3.5" width="7" height="7" />
+                  }
+                </g>
+              }
+            </g>
+          </g>
+
+          <g class="map-labels" aria-hidden="true">
+            @for (label of placedLabels(); track label.territoryId) {
+              <g
+                class="map-label"
+                [class.is-selected]="label.priority === 'selected'"
+                [class.is-hovered]="label.priority === 'hovered'"
+              >
+                <rect
+                  [attr.x]="label.x"
+                  [attr.y]="label.y"
+                  [attr.width]="label.width"
+                  [attr.height]="label.height"
+                  rx="2"
+                />
+                <text
+                  [attr.x]="label.x + label.width / 2"
+                  [attr.y]="label.y + label.height / 2 + 3.2"
+                  text-anchor="middle"
+                >
+                  {{ label.title }}
+                </text>
+              </g>
+            }
+          </g>
+        </svg>
+
+        <div class="map-zoom-controls" role="group" aria-label="Controle de ampliação do mapa">
+          <button type="button" aria-label="Aproximar mapa" (click)="zoomStep(1.35)">
+            <span aria-hidden="true">+</span>
+          </button>
+          <button type="button" aria-label="Afastar mapa" (click)="zoomStep(1 / 1.35)">
+            <span aria-hidden="true">−</span>
+          </button>
+          <button type="button" aria-label="Reenquadrar mapa completo" (click)="resetZoom()">
+            <span aria-hidden="true">⤢</span>
+          </button>
+          <span class="map-zoom-readout" aria-hidden="true">{{ zoomPercent() }}%</span>
+        </div>
+
+        <p class="map-stage-status" role="status">
+          {{ filtered().activeTerritories.length }} territórios ·
+          {{ filtered().activeConnections.length }} conexões visíveis
+          @if (yearFrom() !== null || yearTo() !== null) {
+            · recorte {{ yearFrom() ?? 'início' }}–{{ yearTo() ?? 'atual' }}
+          }
+        </p>
+      </div>
+
+      <section class="map-timeline" aria-label="Linha do tempo histórica">
+        <div class="timeline-head">
+          <h2>Linha do tempo documental</h2>
+          <div class="timeline-inputs">
+            <label>
+              <span>Ano inicial</span>
+              <input
+                type="number"
+                min="1500"
+                max="2026"
+                placeholder="Ex.: 1914"
+                [value]="yearFrom() ?? ''"
+                (input)="onYearFromInput($any($event.target).value)"
+              />
+            </label>
+            <label>
+              <span>Ano final</span>
+              <input
+                type="number"
+                min="1500"
+                max="2026"
+                placeholder="Ex.: 1945"
+                [value]="yearTo() ?? ''"
+                (input)="onYearToInput($any($event.target).value)"
+              />
+            </label>
+            @if (hasTemporalFilter()) {
+              <button type="button" class="timeline-clear" (click)="clearTemporalFilter()">
+                Limpar período
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="timeline-bars" role="group" aria-label="Distribuição por década">
+          @for (bin of model.decadeBins; track bin.start) {
+            <button
+              type="button"
+              class="timeline-bar"
+              [class.is-selected]="decadeIsSelected(bin.start, bin.end)"
+              [attr.aria-pressed]="decadeIsSelected(bin.start, bin.end)"
+              [attr.aria-label]="bin.start + ' a ' + bin.end + ': ' + bin.count + ' marcos datados'"
+              [title]="bin.start + '–' + bin.end + ' (' + bin.count + ')'"
+              (click)="selectDecade(bin.start, bin.end)"
+            >
+              <span
+                class="timeline-bar__fill"
+                [style.height.%]="(bin.count / maxDecadeCount()) * 100"
+              ></span>
+              <span class="timeline-bar__year">{{ bin.start % 50 === 0 ? bin.start : '' }}</span>
+            </button>
+          }
+        </div>
+
+        @if (hasTemporalFilter()) {
+          <div class="timeline-undated">
+            <label class="timeline-undated__toggle">
+              <input
+                type="checkbox"
+                [checked]="includeUndated()"
+                (change)="toggleIncludeUndated()"
+              />
+              <span>Incluir registros sem datação estrita</span>
+            </label>
+            @if (!includeUndated()) {
+              <p class="timeline-undated__count">
+                {{ filtered().excludedUndatedRecords }} registros e
+                {{ filtered().excludedUndatedConnections }} conexões sem datação estrita estão
+                ocultos neste recorte.
+              </p>
+            }
+          </div>
+        }
+      </section>
+    </div>
+
+    <aside
+      id="map-study-desk"
+      class="map-study-desk"
+      aria-label="Mesa de estudo cartográfica"
+      aria-live="polite"
+    >
+      @if (selectedConnection(); as conn) {
+        <header class="desk-head">
+          <div>
+            <p class="desk-kicker">{{ familyLabel(conn.family) }}</p>
+            <h2>{{ conn.fromTitle }} → {{ conn.toTitle }}</h2>
+          </div>
+          <button
+            type="button"
+            class="desk-close"
+            aria-label="Voltar à ficha do território"
+            (click)="selectedConnectionId.set(null)"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+        <p class="desk-meta">{{ formatExtent(conn.temporalExtent) }}</p>
+        <p class="desk-summary">{{ conn.label }}</p>
+        @if (readableText(conn.context); as ctx) {
+          <p class="desk-note">{{ ctx }}</p>
+        }
+        @if (conn.viaEntity; as via) {
+          <div class="desk-block">
+            <h3>Mediação histórica</h3>
+            <a class="desk-link-btn" [routerLink]="['/verbete', via.slug]">
+              Abrir {{ via.title }} →
+            </a>
+          </div>
+        }
+        <div class="desk-actions">
+          <button type="button" class="desk-btn" (click)="selectTerritory(conn.fromTerritoryId)">
+            Focar {{ conn.fromTitle }}
+          </button>
+          <button type="button" class="desk-btn" (click)="selectTerritory(conn.toTerritoryId)">
+            Focar {{ conn.toTitle }}
+          </button>
+        </div>
+      } @else if (selectedFilteredTerritory(); as entry) {
+        @let t = entry.territory;
+        <header class="desk-head">
+          <div>
+            <p class="desk-kicker">
+              {{ layerLabel(t.layer) }}
+              @if (t.isoAlpha2) {
+                · ISO {{ t.isoAlpha2 }}
+              }
+              @if (t.coordinates; as c) {
+                · {{ c.lat }}°, {{ c.lon }}°
+              }
+            </p>
+            <h2>{{ t.title }}</h2>
+            @if (t.officialName && t.officialName !== t.title) {
+              <p class="desk-official">{{ t.officialName }}</p>
+            }
+          </div>
+          <button
+            type="button"
+            class="desk-close"
+            aria-label="Limpar seleção do mapa"
+            (click)="clearSelection()"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+
+        <p class="desk-summary">{{ t.summary }}</p>
+
+        @if (t.territorialScope || t.identityNote) {
+          <div class="desk-notes">
+            @if (t.territorialScope) {
+              <p><strong>Escopo territorial:</strong> {{ t.territorialScope }}</p>
+            }
+            @if (t.identityNote) {
+              <p><strong>Nota de identidade:</strong> {{ t.identityNote }}</p>
+            }
+          </div>
+        }
+
+        <div class="desk-actions">
+          <a class="desk-btn desk-btn--primary" [routerLink]="['/verbete', t.slug]">
+            Abrir verbete <app-chevron />
+          </a>
+          <a class="desk-btn" [routerLink]="['/grafos']" [queryParams]="{ no: t.id }">
+            Abrir rede no grafo
+          </a>
+        </div>
+
+        @if (entry.activeRegimes.length > 0) {
+          <section class="desk-block" aria-label="Regimes políticos no recorte">
+            <h3>Regimes políticos ({{ entry.activeRegimes.length }})</h3>
+            <ul class="desk-list">
+              @for (regime of entry.activeRegimes; track regime.id) {
+                <li class="regime-card">
+                  <div class="regime-card__head">
+                    <a [routerLink]="['/verbete', regime.slug]">{{ regime.title }}</a>
+                    <span>{{ formatExtent(regime.temporalExtent) }}</span>
+                  </div>
+                  <p class="regime-card__period">{{ regime.periodNote }}</p>
+                  @for (cls of regime.classifications; track cls.label + cls.edition) {
+                    <div class="regime-cls">
+                      <strong>{{ cls.label }}</strong>
+                      <small>{{ cls.attribution }} ({{ cls.edition }}) — {{ cls.limits }}</small>
+                    </div>
+                  }
+                </li>
+              }
+            </ul>
+          </section>
+        }
+
+        @if (selectedTerritoryConnections().length > 0) {
+          <section class="desk-block" aria-label="Conexões internacionais">
+            <h3>Conexões no recorte ({{ selectedTerritoryConnections().length }})</h3>
+            <ul class="desk-list">
+              @for (conn of selectedTerritoryConnections().slice(0, 10); track conn.id) {
+                <li>
+                  <button type="button" class="desk-conn-btn" (click)="selectConnection(conn.id)">
+                    <span class="desk-conn-family">{{ familyLabel(conn.family) }}</span>
+                    <strong>
+                      {{
+                        conn.fromTerritoryId === t.id ? '→ ' + conn.toTitle : '← ' + conn.fromTitle
+                      }}
+                    </strong>
+                    <small>{{ conn.label }}</small>
+                  </button>
+                </li>
+              }
+            </ul>
+          </section>
+        }
+
+        @if (entry.activeRecords.length > 0) {
+          <section class="desk-block" aria-label="Registros ancorados neste território">
+            <h3>Registros ancorados ({{ entry.activeRecords.length }})</h3>
+            <ul class="desk-list">
+              @for (rec of visibleRecords(); track rec.id) {
+                <li
+                  class="desk-record"
+                  [class.is-highlighted]="highlightedRecordSlug() === rec.slug"
+                >
+                  <a [routerLink]="['/verbete', rec.slug]">{{ rec.title }}</a>
+                  <span class="desk-record__meta">
+                    {{ rec.relationLabel }} · {{ formatExtent(rec.temporalExtent) }}
+                  </span>
+                </li>
+              }
+            </ul>
+            @if (entry.activeRecords.length > 12) {
+              <button
+                type="button"
+                class="desk-more-btn"
+                (click)="showAllRecords.set(!showAllRecords())"
+              >
+                {{
+                  showAllRecords()
+                    ? 'Mostrar menos'
+                    : 'Ver todos os ' + entry.activeRecords.length + ' registros'
+                }}
+              </button>
+            }
+          </section>
+        }
+
+        @if (selectedReadings().length > 0 || selectedItineraries().length > 0) {
+          <section class="desk-block" aria-label="Leituras e itinerários relacionados">
+            <h3>Leituras e itinerários</h3>
+            <ul class="desk-path-list">
+              @for (reading of selectedReadings(); track reading.slug) {
+                <li>
+                  <a [routerLink]="reading.path">Leitura: {{ reading.title }} →</a>
+                </li>
+              }
+              @for (it of selectedItineraries(); track it.slug) {
+                <li>
+                  <a [routerLink]="it.path">{{ it.kindLabel }}: {{ it.title }} →</a>
+                </li>
+              }
+            </ul>
+          </section>
+        }
+      } @else {
+        <header class="desk-head">
+          <h2>Visão do recorte</h2>
+        </header>
+        <p class="desk-summary">
+          Selecione um território ou arco para examinar regimes, fontes e conexões no período.
+        </p>
+        <section class="desk-block">
+          <h3>Territórios mais ativos neste recorte</h3>
+          <ul class="desk-list">
+            @for (item of topActiveTerritories(); track item.territory.id) {
+              <li>
+                <button
+                  type="button"
+                  class="desk-territory-btn"
+                  (click)="selectTerritory(item.territory.id)"
+                >
+                  <strong>{{ item.territory.title }}</strong>
+                  <span>
+                    {{ layerLabel(item.territory.layer) }} · {{ item.activeRecords.length }}
+                    {{ item.activeRecords.length === 1 ? 'registro' : 'registros' }}
+                  </span>
+                </button>
+              </li>
+            }
+          </ul>
+        </section>
+      }
+    </aside>
+  </div>
+
+  <section
+    id="lista-acessivel"
+    class="map-accessible-section"
+    aria-label="Lista textual e acessível"
+  >
+    <details class="map-table-details">
+      <summary>
+        Tabela acessível de territórios e conexões no recorte ({{
+          filtered().activeTerritories.length
+        }}
+        territórios · {{ filtered().activeConnections.length }} conexões)
+      </summary>
+      <div class="map-tables-wrap">
+        <div class="map-table-scroll">
+          <table>
+            <caption>
+              Territórios e localidades no recorte atual
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Território</th>
+                <th scope="col">Camada</th>
+                <th scope="col">Regimes</th>
+                <th scope="col">Registros</th>
+                <th scope="col">Conexões</th>
+                <th scope="col">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of filtered().activeTerritories; track item.territory.id) {
+                <tr>
+                  <td>
+                    <a [routerLink]="['/verbete', item.territory.slug]">
+                      {{ item.territory.title }}
+                    </a>
+                  </td>
+                  <td>{{ layerLabel(item.territory.layer) }}</td>
+                  <td>{{ item.activeRegimes.length }}</td>
+                  <td>{{ item.activeRecords.length }}</td>
+                  <td>{{ item.connectionCount }}</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="table-action-btn"
+                      (click)="focusTerritoryFromTable(item.territory.id)"
+                    >
+                      Focar no mapa
+                    </button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+
+        @if (filtered().activeConnections.length > 0) {
+          <div class="map-table-scroll">
+            <table>
+              <caption>
+                Conexões entre territórios no recorte atual
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Origem</th>
+                  <th scope="col">Família</th>
+                  <th scope="col">Destino</th>
+                  <th scope="col">Período</th>
+                  <th scope="col">Ação</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (conn of filtered().activeConnections; track conn.id) {
+                  <tr>
+                    <td>{{ conn.fromTitle }}</td>
+                    <td>{{ familyLabel(conn.family) }}</td>
+                    <td>{{ conn.toTitle }}</td>
+                    <td>{{ formatExtent(conn.temporalExtent) }}</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="table-action-btn"
+                        (click)="inspectConnectionFromTable(conn.id)"
+                      >
+                        Inspecionar
+                      </button>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        }
+      </div>
+    </details>
+  </section>
+
+  <footer class="map-attribution">
+    <p>
+      Base cartográfica:
+      <a [href]="baseMap.attribution.url" target="_blank" rel="noopener noreferrer">
+        {{ baseMap.attribution.source }} ({{ baseMap.attribution.license }})
+        <span class="visually-hidden"> (abre em nova aba)</span> </a
+      >. Coordenadas geográficas e códigos territoriais derivados do Wikidata (CC0).
+    </p>
+  </footer>
+</section>

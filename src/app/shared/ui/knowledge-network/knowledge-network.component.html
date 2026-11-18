@@ -96,14 +96,13 @@
             {{ kindsOn().size }}/{{ kinds.length }}
           </span>
         </summary>
-        <div class="panel__bar">
-          <p class="hint">Clique para mostrar ou ocultar; duplo clique isola um tipo.</p>
-          @if (kindsOn().size < kinds.length) {
+        @if (kindsOn().size < kinds.length) {
+          <div class="panel__bar">
             <button type="button" class="panel__reset" (click)="showAllKinds()">
               Mostrar todos
             </button>
-          }
-        </div>
+          </div>
+        }
         @for (group of kindGroups; track group.id) {
           <section class="legend__group" [attr.aria-labelledby]="'legend-group-' + group.id">
             <h3 class="legend__group-title" [id]="'legend-group-' + group.id">
@@ -153,9 +152,6 @@
             </span>
           }
         </summary>
-        <p class="hint">
-          Clique num campo abaixo para buscar pelo nome ou selecionar direto no mapa.
-        </p>
         <ol class="path-slots">
           <li
             class="path-slot"
@@ -312,14 +308,13 @@
             {{ familiesOn().size }}/{{ families.length }}
           </span>
         </summary>
-        <div class="panel__bar">
-          <p class="hint">Passe o mouse para destacar no mapa; duplo clique isola.</p>
-          @if (familiesOn().size < families.length) {
+        @if (familiesOn().size < families.length) {
+          <div class="panel__bar">
             <button type="button" class="panel__reset" (click)="showAllFamilies()">
               Mostrar todas
             </button>
-          }
-        </div>
+          </div>
+        }
         <ul class="legend legend--families">
           @for (family of families; track family.id) {
             <li
@@ -375,14 +370,13 @@
               {{ activeCollections().size }}/{{ collections.length }}
             </span>
           </summary>
-          <div class="panel__bar">
-            <p class="hint">Filtre por conjunto temático.</p>
-            @if (!scopeIds() && collectionsOn().size < collections.length) {
+          @if (!scopeIds() && collectionsOn().size < collections.length) {
+            <div class="panel__bar">
               <button type="button" class="panel__reset" (click)="showAllCollections()">
                 Mostrar todas
               </button>
-            }
-          </div>
+            </div>
+          }
           <label class="check check--solo">
             <input
               type="checkbox"
@@ -640,8 +634,7 @@
         </div>
       } @else if (total === 0) {
         <div class="overlay">
-          <h2>Nada para mostrar ainda</h2>
-          <p>O acervo não tem verbetes publicados. Volte em breve.</p>
+          <h2>Não há verbetes publicados neste recorte.</h2>
           <a class="chip chip--solid" routerLink="/acervo">Ver o acervo</a>
         </div>
       } @else if (visible().nodes.length === 0) {
@@ -933,6 +926,9 @@
                     : 'Traçar caminho daqui'
                 }}
               </button>
+              @if (selectedMapParams(); as mp) {
+                <a class="chip" [routerLink]="['/mapa']" [queryParams]="mp">Ver no mapa</a>
+              }
             </div>
             @if (selectedReadings().length || selectedItineraries().length) {
               <section class="detail__paths" aria-label="Leituras e itinerários relacionados">

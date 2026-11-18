@@ -389,6 +389,14 @@ export function relationFamilyDefinition(id: RelationFamilyId): RelationFamilyDe
   return relationFamilies.find((family) => family.id === id) ?? relationFamilies.at(-1)!;
 }
 
+/** Classifies a raw relation type into one of the seven visual relation families. */
+export function relationFamilyOf(type: string): { family: RelationFamilyId; reverse: boolean } {
+  const entry = familyByType[type];
+  return entry
+    ? { family: entry.family, reverse: Boolean(entry.reverse) }
+    : { family: 'connection', reverse: false };
+}
+
 export interface NetworkNode {
   id: string;
   slug: string;

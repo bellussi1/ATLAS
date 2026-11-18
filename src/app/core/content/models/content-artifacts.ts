@@ -6,6 +6,7 @@ z.config({ jitless: true });
 import {
   assetLicenseSchema,
   claimClassificationSchema,
+  coordinatesSchema,
   editorialStatusSchema,
   type KnowledgeGraph,
   knowledgeGraphSchema,
@@ -63,6 +64,38 @@ export const networkEntitySchema = z.object({
   temporalExtent: temporalExtentSchema.nullable(),
   editorialStatus: editorialStatusSchema.optional(),
   discoveryMetadata: z.object({ description: z.string().trim().nullable() }).optional(),
+  coordinates: coordinatesSchema.optional(),
+  isoAlpha2: z
+    .string()
+    .regex(/^[A-Z]{2}$/)
+    .optional(),
+  isoNumeric: z
+    .string()
+    .regex(/^\d{3}$/)
+    .optional(),
+  countryProfile: z
+    .object({
+      officialName: z.string().trim().min(1),
+      territorialScope: z.string().trim().min(1),
+      identityNote: z.string().trim().min(1),
+    })
+    .optional(),
+  regimeProfile: z
+    .object({
+      countryIds: z.array(networkIdentifier).min(1),
+      periodNote: z.string().trim().min(1),
+      classifications: z
+        .array(
+          z.object({
+            label: z.string().trim().min(1),
+            attribution: z.string().trim().min(1),
+            edition: z.string().trim().min(1),
+            limits: z.string().trim().min(1),
+          }),
+        )
+        .min(1),
+    })
+    .optional(),
 });
 export const networkAtlasSchema = z.object({
   id: networkIdentifier,

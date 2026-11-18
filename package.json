@@ -15,7 +15,7 @@
     "publish:check": "npm run content:build && node scripts/publish-r2.mjs --dry-run && node scripts/infra/pages-deploy.mjs --dry-run",
     "ideology:new": "node scripts/content/new-ideology.mjs",
     "editorial:apply": "node scripts/content/apply-editorial-edition.mjs",
-    "test:content": "node --test scripts/content/*.spec.mjs scripts/tradicao/*.spec.mjs scripts/metrics/*.spec.mjs scripts/security-headers.spec.mjs scripts/infra/*.spec.mjs",
+    "test:content": "node --test scripts/content/*.spec.mjs scripts/tradicao/*.spec.mjs scripts/metrics/*.spec.mjs scripts/security-headers.spec.mjs scripts/seo.spec.mjs scripts/infra/*.spec.mjs",
     "tradicao": "node scripts/tradicao/pipeline.mjs",
     "tradicao:coverage": "node scripts/tradicao/coverage.mjs",
     "tradicao:reading": "node scripts/tradicao/reading.mjs",
@@ -117,8 +117,10 @@
     "postcss": "^8.5.33",
     "prettier": "^3.10.1",
     "tailwindcss": "^3.4.19",
+    "topojson-client": "^3.1.0",
     "typescript": "~5.9.2",
     "typescript-eslint": "8.72.2",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.8",
+    "world-atlas": "^2.0.2"
   }
 }

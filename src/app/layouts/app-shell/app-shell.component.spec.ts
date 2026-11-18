@@ -34,6 +34,7 @@ describe('ATLAS navigation', () => {
       '/leitura/social-democracia',
       '/leitura/anarquismo',
       '/grafos',
+      '/mapa',
       '/privacidade',
       ...explorerCatalogues.map((catalogue) => catalogueUrl(catalogue.path)),
     ];

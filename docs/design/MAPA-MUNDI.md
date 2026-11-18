@@ -1,8 +1,8 @@
 # Mapa-múndi histórico e geopolítico (`/mapa`)
 
-- **Status:** plano (especificação de produto, dados e interface)
+- **Status:** atual (implementado em `/mapa` — Issue #101)
 - **Última verificação:** 18/11/2026
-- **Escopo:** proposta documentada para abertura de issue e validação de arquitetura antes de implementação
+- **Escopo:** implementação entregue e verificada em `/mapa` (projeção Natural Earth 1:110m, enriquecimento Wikidata, linha do tempo, Mesa de Estudo, legenda acessível e lista tabular)
 
 ## 1. Objetivo e pergunta editorial
 
@@ -96,10 +96,10 @@ As conexões entre territórios no mapa devem seguir as mesmas garantias visuais
 
 ## 7. Critérios de aceite
 
-- [ ] A rota `/mapa` é estática/prerenderizada e carrega sem dependências externas em runtime.
-- [ ] Todos os países/lugares plotados têm coordenadas e códigos derivados de fontes verificadas e atribuição cartográfica visível (Natural Earth, domínio público).
-- [ ] A linha do tempo filtra acontecimentos, regimes e conexões usando apenas `temporalExtent` documentadas, indicando explicitamente o que não possui datação estrita.
-- [ ] Cada família de conexão possui padrão de traço exclusivo e efeito de destaque ao passar o mouse / focar a legenda esquerda.
-- [ ] Rótulos e seleções no mapa nunca ficam cobertos pela legenda esquerda, linha do tempo ou painel de detalhes.
-- [ ] A página integra botão **"Surpreenda-me"** coerente com `/leituras`, `/itinerarios`, `/acervo` e `/grafos`.
-- [ ] Navegação completa por teclado (linha do tempo, busca, seleção de país e lista alternativa acessível) e compatibilidade com `prefers-reduced-motion`.
+- [x] A rota `/mapa` é estática/prerenderizada e carrega sem dependências externas em runtime.
+- [x] Todos os países/lugares plotados têm coordenadas e códigos derivados de fontes verificadas e atribuição cartográfica visível (Natural Earth, domínio público).
+- [x] A linha do tempo filtra acontecimentos, regimes e conexões usando apenas `temporalExtent` documentadas, indicando explicitamente o que não possui datação estrita.
+- [x] Cada família de conexão possui padrão de traço exclusivo e efeito de destaque ao passar o mouse / focar a legenda esquerda.
+- [x] Rótulos e seleções no mapa nunca ficam cobertos pela legenda esquerda, linha do tempo ou painel de detalhes.
+- [x] A página integra botão **"Surpreenda-me"** coerente com `/leituras`, `/itinerarios`, `/acervo` e `/grafos`.
+- [x] Navegação completa por teclado (linha do tempo, busca, seleção de país e lista alternativa acessível) e compatibilidade com `prefers-reduced-motion`.
