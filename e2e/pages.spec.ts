@@ -15,6 +15,7 @@ const declaredDestinations = [
   '/leitura/anarquismo',
   '/itinerarios',
   '/grafos',
+  '/privacidade',
   ...explorerCatalogues.map((catalogue) => catalogueUrl(catalogue.path)),
 ];
 
