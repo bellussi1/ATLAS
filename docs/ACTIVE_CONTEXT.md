@@ -1,5 +1,5 @@
 Status: atual
-Última verificação: 16/11/2026
+Última verificação: 18/11/2026
 
 # Contexto vivo do ATLAS
 
@@ -17,6 +17,15 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 - Publicado e verificado em 10/11: app no merge **`9501f7a`**; as três prévias respondem 200 em `/leitura/nazismo/`, `/leitura/stalinismo/` e `/leitura/trabalhismo/`, com selo de rascunho e fora da home. As quatro leituras curadas continuam sendo a navegação pública. Sitemap com **1.250 URLs**, só canônicas para as leituras; o ponteiro de conteúdo aponta para **`5923d2e`** (16 coleções, 7 leituras). `/grafos` baixa só o `networkBundle`, e verbete/acervo baixam só o `bundle` na carga direta.
 
 ## Verificações recentes
+
+- **Métricas, ranking e privacidade (18/11, `develop`):**
+  - `scripts/analytics.mjs` injeta `analytics-config.js` em todas as páginas e carrega GoatCounter/Cloudflare só quando `GOATCOUNTER_SITE`/`CLOUDFLARE_ANALYTICS_TOKEN` existem; sem credencial, nada é carregado.
+  - `AnalyticsService` envia page view em `NavigationEnd` e cliques por rota (`click:/...`), sem texto de página nem cookie. CSP libera `gc.zgo.at`, `static.cloudflareinsights.com`, `*.goatcounter.com` e `cloudflareinsights.com`.
+  - Nova rota `/privacidade` (prerenderizada) e link no rodapé; `scripts/health.mjs` gera `health.json`, e `uptime.yml` confere o arquivo.
+  - `scripts/metrics/sync.mjs` (GoatCounter + Cloudflare, `--dry-run`, fixtures e testes) grava `metrics/popularity.json` e histórico mensal; `.github/workflows/metrics.yml` roda diário e abre PR semanal.
+  - `rankByPopularity` e `featureWithEditorialSlot` ordenam `/leituras`, `/itinerarios` e a home com janela de 30 dias, mínimo de 20 visitantes e fallback editorial.
+  - Verificações: `npm test` (**386/386**), `npm run typecheck`, `npm run lint`, `npm run build` (**1.287** rotas, **1.263** no sitemap) e `npx playwright test e2e/public-routes.spec.ts` (**47/47**). `test:content` teve **1 falha alheia** (`golpe-de-1964` sem atlas no WIP local).
+  - Pendente manual: criar conta/site no GoatCounter, ativar Cloudflare Web Analytics e cadastrar `GOATCOUNTER_SITE`, `GOATCOUNTER_API_KEY`, `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID`.
 
 - **Gerador automático de itinerários em fila (`generate-itinerary-llm.mjs`) — 9 percursos publicados (17/11, `develop`):**
   - Criado `scripts/content/generate-itinerary-llm.mjs` usando `gemma2:9b-instruct-q4_K_M` + `source-graph.mjs` + `validateItinerary` (aterrado em entidades reais, leituras listadas e catálogos válidos, com normalização determinística de `convergesAt`, `leitura` vs `verbete` e `sourceIds`).
