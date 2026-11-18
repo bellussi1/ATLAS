@@ -5,7 +5,7 @@
  * Cada par candidato passa por verificação profunda com LLM local (Ollama) antes da promoção.
  */
 import { createHash } from 'node:crypto';
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 
 import { readSourceGraph, writeSourceGraph } from './source-graph.mjs';
@@ -42,6 +42,11 @@ function parseLimit() {
 function parseFocus() {
   const idx = process.argv.indexOf('--focus');
   return idx >= 0 && process.argv[idx + 1] ? process.argv[idx + 1].toLowerCase() : null;
+}
+
+function parseCandidatesPath() {
+  const idx = process.argv.indexOf('--candidates');
+  return idx >= 0 && process.argv[idx + 1] ? resolve(process.argv[idx + 1]) : null;
 }
 
 const BRAZIL_RE =
@@ -95,13 +100,16 @@ async function main() {
   const dryRun = process.argv.includes('--dry-run');
   const limit = parseLimit();
   const focus = parseFocus();
+  const candidatesPath = parseCandidatesPath();
   const brazilOnly = focus === 'brazil' || focus === 'brasil';
   const graph = await readSourceGraph(resolve('content/knowledge'));
 
+  const atlasById = new Map(graph.atlases.map((a) => [a.id, a]));
   const entityById = new Map();
   const degree = new Map();
   const existingPairs = new Set();
   const citationById = new Map();
+  const claimsByEntity = new Map();
 
   for (const atlas of graph.atlases) {
     for (const entity of atlas.entities) {
@@ -109,6 +117,12 @@ async function main() {
       degree.set(entity.id, 0);
     }
     for (const citation of atlas.citations) citationById.set(citation.id, citation);
+    for (const claim of atlas.claims) {
+      if (!claim.citationIds?.length) continue;
+      const list = claimsByEntity.get(claim.entityId) ?? [];
+      list.push(claim);
+      claimsByEntity.set(claim.entityId, list);
+    }
     for (const rel of atlas.relations) {
       degree.set(rel.fromEntityId, (degree.get(rel.fromEntityId) ?? 0) + 1);
       degree.set(rel.toEntityId, (degree.get(rel.toEntityId) ?? 0) + 1);
@@ -117,66 +131,106 @@ async function main() {
     }
   }
 
-  const targets = [...entityById.values()]
-    .filter((e) => e.title.length >= (brazilOnly ? 4 : 6) && (brazilOnly || e.kind !== 'place'))
-    .map((e) => ({
-      entity: e,
-      regex: new RegExp(`(?<![\\p{L}\\p{N}])${escapeRegex(e.title)}(?![\\p{L}\\p{N}])`, 'iu'),
-    }));
-
-  const priorityAtlases = new Set([
-    'atlas-nazismo',
-    'atlas-trabalhismo',
-    'atlas-stalinismo',
-    'atlas-social-democracia',
-    'atlas-anarquismo',
-    'atlas-marxismo',
-    'atlas-liberalism',
-  ]);
-
   const candidates = [];
   const seenPair = new Set();
 
-  for (const atlas of graph.atlases) {
-    if (atlas.id === 'atlas-methodology') continue;
-    for (const claim of atlas.claims) {
-      const from = entityById.get(claim.entityId);
-      if (!from || !claim.citationIds?.length) continue;
+  if (candidatesPath) {
+    const raw = JSON.parse(await readFile(candidatesPath, 'utf8'));
+    for (const item of raw.candidates ?? []) {
+      const from = entityById.get(item.from?.id);
+      const to = entityById.get(item.to?.id);
+      const atlas = atlasById.get(item.atlasId);
+      if (!from || !to || !atlas || from.id === to.id) continue;
+      const key = from.id < to.id ? `${from.id}|${to.id}` : `${to.id}|${from.id}`;
+      if (existingPairs.has(`${from.id}|${to.id}`) || seenPair.has(key)) continue;
+
+      const fromClaims = claimsByEntity.get(from.id) ?? [];
+      const toClaims = claimsByEntity.get(to.id) ?? [];
+      const primaryClaim = fromClaims[0] ?? toClaims[0];
+      if (!primaryClaim) continue;
       const evidenceIds = [
         ...new Set(
-          claim.citationIds.map((cid) => citationById.get(cid)?.evidenceId).filter(Boolean),
+          [...fromClaims.slice(0, 2), ...toClaims.slice(0, 2)]
+            .flatMap((c) => c.citationIds ?? [])
+            .map((cid) => citationById.get(cid)?.evidenceId)
+            .filter(Boolean),
         ),
       ];
       if (!evidenceIds.length) continue;
 
-      for (const { entity: to, regex } of targets) {
-        if (to.id === from.id) continue;
-        if (
-          brazilOnly &&
-          !(
-            atlas.id === 'atlas-trabalhismo' ||
-            isBrazilEntity(from) ||
-            isBrazilEntity(to) ||
-            BRAZIL_RE.test(claim.text)
-          )
-        ) {
-          continue;
-        }
-        const key = from.id < to.id ? `${from.id}|${to.id}` : `${to.id}|${from.id}`;
-        if (existingPairs.has(`${from.id}|${to.id}`) || seenPair.has(key)) continue;
-        if (!regex.test(claim.text)) continue;
+      seenPair.add(key);
+      const excerpt = [
+        ...fromClaims.slice(0, 2).map((c) => `[${from.title}] ${c.text}`),
+        ...toClaims.slice(0, 2).map((c) => `[${to.title}] ${c.text}`),
+      ].join(' | ');
+      candidates.push({
+        score: -(item.priority ?? item.similarity ?? 0),
+        atlas,
+        from,
+        to,
+        claim: { id: primaryClaim.id, text: excerpt.slice(0, 900) },
+        evidenceIds: evidenceIds.slice(0, 2),
+      });
+    }
+  } else {
+    const targets = [...entityById.values()]
+      .filter((e) => e.title.length >= (brazilOnly ? 4 : 6) && (brazilOnly || e.kind !== 'place'))
+      .map((e) => ({
+        entity: e,
+        regex: new RegExp(`(?<![\\p{L}\\p{N}])${escapeRegex(e.title)}(?![\\p{L}\\p{N}])`, 'iu'),
+      }));
 
-        seenPair.add(key);
-        const minDeg = Math.min(degree.get(from.id) ?? 0, degree.get(to.id) ?? 0);
-        const boost = priorityAtlases.has(atlas.id) ? -10 : 0;
-        candidates.push({
-          score: minDeg + boost,
-          atlas,
-          from,
-          to,
-          claim,
-          evidenceIds: evidenceIds.slice(0, 2),
-        });
+    const priorityAtlases = new Set([
+      'atlas-nazismo',
+      'atlas-trabalhismo',
+      'atlas-stalinismo',
+      'atlas-social-democracia',
+      'atlas-anarquismo',
+      'atlas-marxismo',
+      'atlas-liberalism',
+    ]);
+
+    for (const atlas of graph.atlases) {
+      if (atlas.id === 'atlas-methodology') continue;
+      for (const claim of atlas.claims) {
+        const from = entityById.get(claim.entityId);
+        if (!from || !claim.citationIds?.length) continue;
+        const evidenceIds = [
+          ...new Set(
+            claim.citationIds.map((cid) => citationById.get(cid)?.evidenceId).filter(Boolean),
+          ),
+        ];
+        if (!evidenceIds.length) continue;
+
+        for (const { entity: to, regex } of targets) {
+          if (to.id === from.id) continue;
+          if (
+            brazilOnly &&
+            !(
+              atlas.id === 'atlas-trabalhismo' ||
+              isBrazilEntity(from) ||
+              isBrazilEntity(to) ||
+              BRAZIL_RE.test(claim.text)
+            )
+          ) {
+            continue;
+          }
+          const key = from.id < to.id ? `${from.id}|${to.id}` : `${to.id}|${from.id}`;
+          if (existingPairs.has(`${from.id}|${to.id}`) || seenPair.has(key)) continue;
+          if (!regex.test(claim.text)) continue;
+
+          seenPair.add(key);
+          const minDeg = Math.min(degree.get(from.id) ?? 0, degree.get(to.id) ?? 0);
+          const boost = priorityAtlases.has(atlas.id) ? -10 : 0;
+          candidates.push({
+            score: minDeg + boost,
+            atlas,
+            from,
+            to,
+            claim,
+            evidenceIds: evidenceIds.slice(0, 2),
+          });
+        }
       }
     }
   }
