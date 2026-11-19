@@ -24,9 +24,7 @@
         "slug": "sociedade-das-nacoes"
       },
       "justification": "Introduz o tema da busca por paz e segurança internacional após a Primeira Guerra Mundial.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "wiki-topic-segunda-guerra-mundial",
@@ -38,9 +36,7 @@
         "slug": "segunda-guerra-mundial"
       },
       "justification": "Apresenta o contexto histórico que levou à criação da ONU.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "wiki-topic-organizacao-das-nacoes-unidas",
@@ -52,9 +48,7 @@
         "slug": "organizacao-das-nacoes-unidas"
       },
       "justification": "Explora a criação e o papel da ONU na manutenção da paz.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "wiki-topic-conselho-de-seguranca-das-nacoes-unidas",
@@ -66,9 +60,7 @@
         "slug": "conselho-de-seguranca-das-nacoes-unidas"
       },
       "justification": "Aborda a complexidade da manutenção da paz e a influência dos grandes poderes.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "wiki-topic-guerra-fria",
@@ -79,9 +71,7 @@
         "type": "grafo"
       },
       "justification": "Conclui o percurso analisando o legado da Guerra Fria e o surgimento de novos desafios para a ordem internacional.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     }
   ],
   "branches": [

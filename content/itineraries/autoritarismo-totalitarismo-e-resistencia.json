@@ -24,9 +24,7 @@
         "slug": "autoritarismo"
       },
       "justification": "Esta parada serve como introdução ao tema, estabelecendo o contexto para as discussões posteriores.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "nazismo-e-o-holocausto",
@@ -38,9 +36,7 @@
         "slug": "nazismo"
       },
       "justification": "Esta parada aprofunda a compreensão do totalitarismo através de um caso histórico emblemático.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "fascismo-e-a-italia-fascista",
@@ -52,9 +48,7 @@
         "slug": "italia-fascista"
       },
       "justification": "Esta parada oferece uma análise de outro regime autoritário, comparando-o com o nazismo.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "ditaduras-militares-e-a-resistencia",
@@ -66,9 +60,7 @@
         "slug": "ditadura-militar-brasileira"
       },
       "justification": "Esta parada contextualiza o tema dentro da história brasileira, mostrando como a resistência se manifestou em diferentes formas.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "ideologias-e-movimentos-de-resistencia",
@@ -79,9 +71,7 @@
         "type": "grafo"
       },
       "justification": "Esta parada amplia a discussão para um panorama global, mostrando a diversidade de formas de resistência.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     }
   ],
   "branches": [

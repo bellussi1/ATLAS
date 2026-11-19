@@ -24,9 +24,7 @@
         "slug": "revolucao-industrial"
       },
       "justification": "Ponto de partida para entender as transformações sociais e econômicas que levaram à necessidade de regulamentação do trabalho.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "proletariado-e-capitalismo",
@@ -38,9 +36,7 @@
         "slug": "capitalismo"
       },
       "justification": "Esta parada contextualiza o surgimento dos movimentos trabalhistas e a busca por regulamentação do trabalho.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "sindicatos-e-luta-por-direitos",
@@ -52,9 +48,7 @@
         "slug": "sindicato"
       },
       "justification": "Esta parada explora a importância dos sindicatos na construção de um modelo de Estado social.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "estado-social-e-bem-estar",
@@ -66,9 +60,7 @@
         "slug": "estado-de-bem-estar-social"
       },
       "justification": "Esta parada analisa a evolução dos modelos de Estado social e sua influência na distribuição de renda e na proteção social.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "desigualdade-e-capitalismo-atual",
@@ -79,9 +71,7 @@
         "type": "grafo"
       },
       "justification": "Esta parada convida à reflexão sobre os desafios contemporâneos e as perspectivas para o futuro da relação entre capital e trabalho.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     }
   ],
   "branches": [

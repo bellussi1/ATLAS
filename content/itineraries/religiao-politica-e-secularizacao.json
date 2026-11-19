@@ -24,9 +24,7 @@
         "type": "verbete",
         "slug": "igreja-catolica"
       },
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "doutrina-social-da-igreja",
@@ -38,9 +36,7 @@
         "type": "verbete",
         "slug": "doutrina-social-da-igreja"
       },
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "democracia-crista",
@@ -52,9 +48,7 @@
         "type": "verbete",
         "slug": "democracia-crista"
       },
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "islamismo",
@@ -66,9 +60,7 @@
         "type": "verbete",
         "slug": "islamismo"
       },
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "grafo-secularizacao",
@@ -79,9 +71,7 @@
       "destination": {
         "type": "grafo"
       },
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     }
   ],
   "branches": [

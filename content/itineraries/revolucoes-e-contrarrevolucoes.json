@@ -24,9 +24,7 @@
         "slug": "french-revolution"
       },
       "justification": "Começamos com a Revolução Francesa como ponto de partida para entender as dinâmicas de revoluções e suas consequências.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "revolucao-russa",
@@ -38,9 +36,7 @@
         "slug": "russian-revolution"
       },
       "justification": "A Revolução Russa, como uma revolução socialista, é analisada em contraste com a Revolução Francesa, explorando suas diferenças e impactos.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "china-1949",
@@ -52,9 +48,7 @@
         "slug": "revolucao-comunista-chinesa"
       },
       "justification": "A Revolução Chinesa é analisada como um caso de sucesso do comunismo em um contexto diferente da União Soviética.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "cuba-1959",
@@ -66,9 +60,7 @@
         "slug": "revolucao-cubana"
       },
       "justification": "A Revolução Cubana é analisada como um caso de revolução comunista em um contexto geopolítico específico.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "contra-revol",
@@ -79,9 +71,7 @@
         "type": "grafo"
       },
       "justification": "Este ponto sintetiza as respostas conservadoras às revoluções, mostrando a complexidade das reações à mudança social.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     }
   ],
   "branches": [

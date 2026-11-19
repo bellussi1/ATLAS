@@ -24,9 +24,7 @@
         "slug": "estado-nacao"
       },
       "justification": "Esta parada introduz o conceito fundamental que permeia o tema.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "wiki-topic-imperialismo",
@@ -38,9 +36,7 @@
         "slug": "imperialismo"
       },
       "justification": "Esta parada conecta o conceito de Estado-nação com o fenômeno do imperialismo.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "wiki-topic-colonialismo",
@@ -52,9 +48,7 @@
         "slug": "colonialismo"
       },
       "justification": "Esta parada explora as consequências do imperialismo na formação de nações.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "wiki-topic-dissolucao-da-uniao-sovietica",
@@ -66,9 +60,7 @@
         "slug": "dissolucao-da-uniao-sovietica"
       },
       "justification": "Esta parada conecta o tema com eventos contemporâneos e a complexidade da formação de nações no mundo pós-colonial.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "descolonizacao",
@@ -80,9 +72,7 @@
         "slug": "descolonizacao"
       },
       "justification": "Liga império, nacionalismo e autodeterminação sem tratar a Guerra Fria como causa única.",
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     },
     {
       "id": "grafo-nacao",
@@ -93,9 +83,7 @@
       "destination": {
         "type": "grafo"
       },
-      "sourceIds": [
-        "src-acervo"
-      ]
+      "sourceIds": ["src-acervo"]
     }
   ],
   "branches": [
