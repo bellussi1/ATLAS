@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-primeira-republica-e-cidadania",
+  "slug": "primeira-republica-e-cidadania",
+  "kind": "institucional",
+  "title": "Primeira República e a Cidadania Limitada",
+  "question": "Como a Constituição de 1891 moldou a cidadania no Brasil durante a Primeira República?",
+  "deck": "Este itinerário explora a Constituição de 1891 e seus impactos na construção da cidadania no Brasil durante a Primeira República, destacando as limitações impostas por um sistema político marcado pelo coronelismo.",
+  "summary": "Este percurso analisa a Constituição de 1891 e seus limites na construção da cidadania brasileira durante a Primeira República, evidenciando a influência do coronelismo e as desigualdades sociais.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "constituicao-1891",
+      "title": "A Constituição de 1891",
+      "reason": "A Constituição de 1891 foi a primeira carta magna republicana do Brasil, estabelecendo os princípios básicos do Estado e definindo os direitos e deveres dos cidadãos.",
+      "question": "Quais os principais pilares da Constituição de 1891?",
+      "destination": {
+        "type": "verbete",
+        "slug": "primeira-republica-brasileira"
+      },
+      "justification": "Ponto de partida para entender o contexto político e social da época.",
+      "contextEntityId": "wiki-topic-primeira-republica-brasileira",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "cidadania-limitada",
+      "title": "Cidadania Limitada",
+      "reason": "A Constituição de 1891 restringiu o acesso à cidadania, excluindo grande parte da população, especialmente mulheres e negros, de direitos políticos e sociais.",
+      "question": "Quais as principais limitações à cidadania estabelecidas pela Constituição de 1891?",
+      "destination": {
+        "type": "verbete",
+        "slug": "cidadania"
+      },
+      "justification": "Explora as desigualdades sociais e raciais presentes na época.",
+      "contextEntityId": "wiki-topic-primeira-republica-brasileira",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "coronelismo",
+      "title": "O Coronelismo e o federalismo oligárquico",
+      "reason": "O coronelismo, sistema político baseado na influência de coronéis locais, exerceu grande poder durante a Primeira República, moldando a política e a vida social em muitos estados.",
+      "question": "Como o coronelismo influenciou a política e a vida social no Brasil durante a Primeira República?",
+      "destination": {
+        "type": "verbete",
+        "slug": "federalismo"
+      },
+      "justification": "Aborda a influência do coronelismo na limitação da cidadania.",
+      "contextEntityId": "wiki-topic-primeira-republica-brasileira",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "influencia-internacional",
+      "title": "Influências Internacionais",
+      "reason": "A Primeira República brasileira foi influenciada por movimentos políticos e sociais internacionais, como o liberalismo, o socialismo e o anarquismo.",
+      "question": "Quais as principais influências internacionais que marcaram a Primeira República?",
+      "destination": {
+        "type": "catalogo",
+        "path": "ideologias"
+      },
+      "justification": "Conecta o contexto brasileiro com as tendências globais da época.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "repercussoes-sociais",
+      "title": "Repercussões Sociais",
+      "reason": "A Constituição de 1891 e o coronelismo tiveram impactos profundos na vida social brasileira, gerando desigualdades, conflitos e movimentos sociais.",
+      "question": "Quais foram as principais repercussões sociais da Constituição de 1891 e do coronelismo?",
+      "destination": {
+        "type": "grafo"
+      },
+      "justification": "Analisa os impactos da política na sociedade brasileira.",
+      "sourceIds": ["src-acervo"]
+    }
+  ],
+  "branches": [
+    {
+      "id": "coronelismo-e-a-constituicao",
+      "fromStop": "coronelismo",
+      "title": "Coronelismo e a Constituição",
+      "reason": "Explorar a relação entre o coronelismo e a Constituição de 1891, analisando como o poder dos coronéis se consolidou no contexto político da época.",
+      "question": "Como o coronelismo se relacionou com a Constituição de 1891?",
+      "destination": {
+        "type": "verbete",
+        "slug": "primeira-republica-brasileira"
+      },
+      "justification": "Aprofunda a análise da influência do coronelismo na política brasileira.",
+      "convergesAt": "influencia-internacional"
+    },
+    {
+      "id": "movimentos-sociais",
+      "fromStop": "repercussoes-sociais",
+      "title": "Movimentos Sociais",
+      "reason": "Investigar os movimentos sociais que surgiram como resposta às desigualdades e limitações impostas pela Constituição de 1891 e pelo coronelismo.",
+      "question": "Quais movimentos sociais se desenvolveram em resposta à Constituição de 1891 e ao coronelismo?",
+      "destination": {
+        "type": "verbete",
+        "slug": "primeira-republica-brasileira"
+      },
+      "justification": "Expõe a reação da sociedade às condições sociais da época.",
+      "exit": "true"
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "reason": "A Constituição de 1891 e o coronelismo marcaram um período de grandes acontecimentos históricos no Brasil."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-acervo",
+      "title": "ATLAS — Registros e verbetes compilados no acervo"
+    }
+  ],
+  "updatedAt": "2026-11-19",
+  "version": "1.0.0"
+}

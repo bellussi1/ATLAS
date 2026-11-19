@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-esquerda-direita-e-populismos",
+  "slug": "esquerda-direita-e-populismos",
+  "kind": "comparativo",
+  "title": "Esquerda, Direita e Populismos: Um Panorama Histórico",
+  "question": "Como as ideologias de esquerda, direita e populismo se desenvolveram e se manifestaram no Brasil?",
+  "deck": "Este itinerário explora a história das ideologias de esquerda, direita e populismo no Brasil, desde suas raízes até suas manifestações contemporâneas.",
+  "summary": "O percurso analisa a evolução das ideologias políticas no Brasil, destacando suas principais correntes, líderes e movimentos, e como se relacionam com a mobilização de massas.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "stop-esquerda-direita-origens",
+      "title": "Origens do Espectro Esquerda-Direita",
+      "reason": "Esta parada introduz o conceito de espectro político esquerda-direita, contextualizando suas raízes históricas e filosóficas.",
+      "question": "Quais são as principais características e origens do espectro político esquerda-direita?",
+      "destination": {
+        "type": "verbete",
+        "slug": "esquerda-politica"
+      },
+      "justification": "Esta parada serve como ponto de partida para a compreensão das ideologias políticas que serão exploradas posteriormente.",
+      "contextEntityId": "wiki-topic-esquerda-politica",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "stop-trabalhismo-brasileiro",
+      "title": "O Trabalhismo Brasileiro",
+      "reason": "Esta parada analisa o trabalhismo brasileiro como uma corrente política e social que se desenvolveu no contexto da história do Brasil.",
+      "question": "Como o trabalhismo se configurou no Brasil e quais foram seus principais objetivos?",
+      "destination": {
+        "type": "verbete",
+        "slug": "trabalhismo-brasileiro"
+      },
+      "justification": "Compreender o trabalhismo brasileiro é crucial para entender a história da esquerda no país.",
+      "contextEntityId": "wiki-ideologia-trabalhismo-brasileiro",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "stop-populismo-brasileiro",
+      "title": "Populismo no Brasil",
+      "reason": "Esta parada explora as manifestações do populismo no Brasil, desde o período Vargas até os dias atuais.",
+      "question": "Quais são as características do populismo e como ele se manifestou no Brasil?",
+      "destination": {
+        "type": "verbete",
+        "slug": "era-vargas"
+      },
+      "justification": "O populismo é um fenômeno político complexo que tem se tornado cada vez mais relevante no Brasil.",
+      "contextEntityId": "wiki-topic-era-vargas",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "stop-partidos-e-movimentos",
+      "title": "Partidos e Movimentos Políticos",
+      "reason": "Esta parada analisa a atuação de partidos e movimentos políticos que representam as diferentes correntes ideológicas no Brasil.",
+      "question": "Como os partidos e movimentos políticos se organizaram e se mobilizaram ao longo da história do Brasil?",
+      "destination": {
+        "type": "catalogo",
+        "path": "partidos"
+      },
+      "justification": "A compreensão da atuação de partidos e movimentos políticos é fundamental para entender a dinâmica política brasileira.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "stop-contexto-internacional",
+      "title": "Contexto Internacional",
+      "reason": "Esta parada contextualiza as ideologias políticas brasileiras em relação aos movimentos e tendências globais.",
+      "question": "Como as ideologias políticas brasileiras se relacionam com os movimentos e tendências globais?",
+      "destination": {
+        "type": "grafo"
+      },
+      "justification": "A compreensão do contexto internacional é crucial para uma análise mais completa das ideologias políticas brasileiras.",
+      "sourceIds": ["src-acervo"]
+    }
+  ],
+  "branches": [
+    {
+      "id": "branch-direita-brasileira",
+      "fromStop": "stop-esquerda-direita-origens",
+      "title": "A Direita no Brasil",
+      "reason": "Esta ramificação explora as diferentes correntes da direita política no Brasil.",
+      "question": "Quais são as principais correntes da direita política no Brasil?",
+      "destination": {
+        "type": "verbete",
+        "slug": "direita-politica"
+      },
+      "justification": "A direita política tem uma presença significativa na história e na política brasileira.",
+      "convergesAt": "stop-partidos-e-movimentos"
+    },
+    {
+      "id": "branch-populismo-comparativo",
+      "fromStop": "stop-populismo-brasileiro",
+      "title": "Populismo Global",
+      "reason": "Esta ramificação explora o populismo como um fenômeno global, comparando suas manifestações no Brasil com outras partes do mundo.",
+      "question": "Como o populismo se manifesta em diferentes países?",
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "justification": "Comparar o populismo em diferentes contextos permite uma análise mais aprofundada do fenômeno.",
+      "exit": "true"
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "ideologias"
+      },
+      "reason": "Para aprofundar o conhecimento sobre as ideologias exploradas."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-acervo",
+      "title": "ATLAS — Registros e verbetes compilados no acervo"
+    }
+  ],
+  "updatedAt": "2026-11-19",
+  "version": "1.0.0"
+}

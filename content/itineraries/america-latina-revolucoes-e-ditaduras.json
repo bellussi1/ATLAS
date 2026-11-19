@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-america-latina-revolucoes-e-ditaduras",
+  "slug": "america-latina-revolucoes-e-ditaduras",
+  "kind": "comparativo",
+  "title": "Revoluções, Reformas e Ditaduras na América Latina no Século XX",
+  "question": "Como as revoluções, reformas e ditaduras moldaram a América Latina no século XX?",
+  "deck": "Este itinerário explora as complexas dinâmicas políticas e sociais que marcaram a América Latina no século XX, desde revoluções até ditaduras.",
+  "summary": "Este percurso analisa as causas e consequências de revoluções, reformas e ditaduras na América Latina, destacando seus impactos na região.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "uruguai-1973",
+      "title": "A Ditadura no Uruguai (1973-1985)",
+      "reason": "A ditadura militar no Uruguai (1973-1985) foi um período de repressão e violações de direitos humanos. Este ponto de partida explora o contexto histórico e as consequências desse regime.",
+      "question": "Quais foram as causas e os impactos da ditadura militar no Uruguai?",
+      "destination": {
+        "type": "verbete",
+        "slug": "uruguai"
+      },
+      "justification": "Introduz o tema das ditaduras na América Latina.",
+      "contextEntityId": "wiki-topic-uruguai",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "chile-1973",
+      "title": "A Revolução e a Ditadura no Chile (1973-1990)",
+      "reason": "A queda de Salvador Allende e a ascensão da ditadura de Pinochet no Chile (1973-1990) são exemplos emblemáticos da instabilidade política da época.",
+      "question": "Como a Revolução Cubana influenciou a política chilena?",
+      "destination": {
+        "type": "verbete",
+        "slug": "chile"
+      },
+      "justification": "Expõe a influência da Revolução Cubana e as tensões ideológicas da época.",
+      "contextEntityId": "wiki-topic-chile",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "cuba-1959",
+      "title": "A Revolução Cubana e o Socialismo",
+      "reason": "A Revolução Cubana (1959) marcou um ponto de virada na história da América Latina, estabelecendo um regime socialista e influenciando movimentos revolucionários na região.",
+      "question": "Quais foram as causas e as consequências da Revolução Cubana?",
+      "destination": {
+        "type": "verbete",
+        "slug": "revolucao-cubana"
+      },
+      "justification": "Aborda a Revolução Cubana como um marco importante na história da América Latina.",
+      "contextEntityId": "wiki-topic-revolucao-cubana",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "venezuela-1999",
+      "title": "Hugo Chávez e a Bolivarianismo",
+      "reason": "A ascensão de Hugo Chávez à presidência da Venezuela (1999) inaugurou uma nova era de populismo de esquerda na América Latina, com foco na redistribuição de renda e na integração regional.",
+      "question": "Como o Bolivarianismo influenciou a política venezuelana e a América Latina?",
+      "destination": {
+        "type": "verbete",
+        "slug": "hugo-chavez"
+      },
+      "justification": "Expõe a influência do Bolivarianismo na política latino-americana.",
+      "contextEntityId": "wiki-topic-hugo-chavez",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "ditadura-militar",
+      "title": "Ditaduras Militares na América Latina",
+      "reason": "Diversos países latino-americanos foram governados por ditaduras militares durante o século XX, com impactos duradouros na sociedade e na política.",
+      "question": "Quais foram as características comuns das ditaduras militares na América Latina?",
+      "destination": {
+        "type": "grafo"
+      },
+      "justification": "Aborda o tema das ditaduras militares como um fenômeno recorrente na região.",
+      "contextEntityId": "wiki-topic-ditadura-militar",
+      "sourceIds": ["src-acervo"]
+    }
+  ],
+  "branches": [
+    {
+      "id": "revolucoes-socialistas",
+      "fromStop": "cuba-1959",
+      "title": "Revoluções Socialistas na América Latina",
+      "reason": "Explorar a influência da Revolução Cubana em outros movimentos revolucionários socialistas na América Latina.",
+      "question": "Quais foram os outros movimentos revolucionários socialistas inspirados pela Revolução Cubana?",
+      "destination": {
+        "type": "verbete",
+        "slug": "internacional-socialista"
+      },
+      "justification": "Expande o tema para outros movimentos revolucionários socialistas na América Latina.",
+      "convergesAt": "venezuela-1999"
+    },
+    {
+      "id": "ditaduras-e-golpes",
+      "fromStop": "chile-1973",
+      "title": "Ditaduras e Golpes de Estado na América Latina",
+      "reason": "Investigar a relação entre a instabilidade política e os golpes de estado na América Latina durante o século XX.",
+      "question": "Quais foram os fatores que contribuíram para a instabilidade política e os golpes de estado na América Latina?",
+      "destination": {
+        "type": "verbete",
+        "slug": "ditadura"
+      },
+      "justification": "Explora a relação entre ditaduras e golpes de estado na América Latina.",
+      "exit": "true"
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "reason": "Para aprofundar o estudo dos eventos históricos mencionados."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-acervo",
+      "title": "ATLAS — Registros e verbetes compilados no acervo"
+    }
+  ],
+  "updatedAt": "2026-11-19",
+  "version": "1.0.0"
+}

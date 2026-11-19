@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-direitos-humanos-e-efetividade",
+  "slug": "direitos-humanos-e-efetividade",
+  "kind": "conceitual",
+  "title": "Direitos Humanos: Da Declaração à Realidade",
+  "question": "Como a efetividade dos direitos humanos se concretiza em nível global e nacional?",
+  "deck": "Este itinerário explora a evolução dos direitos humanos, desde suas raízes filosóficas até a implementação em constituições e a atuação de organizações internacionais.",
+  "summary": "O percurso analisa a trajetória dos direitos humanos, desde a Declaração Universal até os desafios contemporâneos, com foco na efetividade e nas instituições que os garantem.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "wiki-topic-direitos-humanos",
+      "title": "Direitos Humanos: Conceito e História",
+      "reason": "Esta parada introduz o conceito de direitos humanos, sua evolução histórica e as principais declarações que os consagraram.",
+      "question": "Quais são as raízes históricas e filosóficas dos direitos humanos?",
+      "destination": {
+        "type": "verbete",
+        "slug": "direitos-humanos"
+      },
+      "justification": "Ponto de partida para entender o contexto e a evolução dos direitos humanos.",
+      "contextEntityId": "wiki-topic-direitos-humanos",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "wiki-topic-constituicao",
+      "title": "Constituições e Direitos Humanos",
+      "reason": "Esta parada explora como os direitos humanos são incorporados em documentos constitucionais nacionais e internacionais.",
+      "question": "Como os direitos humanos são garantidos e protegidos por constituições?",
+      "destination": {
+        "type": "verbete",
+        "slug": "constituicao"
+      },
+      "justification": "A partir do conceito, analisamos a concretização dos direitos em documentos legais.",
+      "contextEntityId": "wiki-topic-constituicao",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "wiki-topic-organizacao-das-nacoes-unidas",
+      "title": "Organizações Internacionais e Direitos Humanos",
+      "reason": "Esta parada investiga o papel das organizações internacionais na promoção e proteção dos direitos humanos.",
+      "question": "Quais são as principais organizações internacionais que trabalham pela defesa dos direitos humanos?",
+      "destination": {
+        "type": "verbete",
+        "slug": "organizacao-das-nacoes-unidas"
+      },
+      "justification": "Amplia a visão para além das esferas nacionais, mostrando a atuação global.",
+      "contextEntityId": "wiki-topic-organizacao-das-nacoes-unidas",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "wiki-topic-direitos-politicos",
+      "title": "Direitos Políticos e Participação",
+      "reason": "Esta parada foca nos direitos políticos como pilares da democracia e da participação cidadã.",
+      "question": "Como os direitos políticos garantem a participação cidadã e a democracia?",
+      "destination": {
+        "type": "verbete",
+        "slug": "direitos-politicos"
+      },
+      "justification": "Aborda um aspecto crucial dos direitos humanos, a participação política.",
+      "contextEntityId": "wiki-topic-direitos-politicos",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "wiki-topic-constituicao-brasileira-de-1988",
+      "title": "A Constituição Brasileira de 1988 e os Direitos Humanos",
+      "reason": "Esta parada analisa a Constituição Brasileira de 1988 e sua importância na garantia dos direitos humanos no Brasil.",
+      "question": "Como a Constituição Brasileira de 1988 garante e protege os direitos humanos?",
+      "destination": {
+        "type": "verbete",
+        "slug": "constituicao-brasileira-de-1988"
+      },
+      "justification": "Conecta o conceito global à realidade brasileira, mostrando a aplicação prática.",
+      "contextEntityId": "wiki-topic-constituicao-brasileira-de-1988",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "grafo-direitos-humanos",
+      "title": "Rede de Atores e Instituições",
+      "reason": "Esta parada apresenta um gráfico interativo que ilustra a complexa rede de atores e instituições envolvidas na promoção e proteção dos direitos humanos.",
+      "question": "Quais são os principais atores e instituições que atuam na defesa dos direitos humanos?",
+      "destination": {
+        "type": "grafo"
+      },
+      "justification": "Finaliza o percurso com uma visualização abrangente da rede de atuação.",
+      "sourceIds": ["src-acervo"]
+    }
+  ],
+  "branches": [
+    {
+      "id": "ramo-descolonizacao",
+      "fromStop": "wiki-topic-direitos-humanos",
+      "title": "Descolonização e Direitos Humanos",
+      "reason": "A descolonização teve um impacto significativo na luta pelos direitos humanos.",
+      "question": "Como a descolonização influenciou a luta pelos direitos humanos?",
+      "destination": {
+        "type": "verbete",
+        "slug": "descolonizacao"
+      },
+      "justification": "Explora um contexto histórico crucial para a evolução dos direitos humanos.",
+      "convergesAt": "wiki-topic-direitos-politicos"
+    },
+    {
+      "id": "ramo-direito-internacional",
+      "fromStop": "wiki-topic-organizacao-das-nacoes-unidas",
+      "title": "Direito Internacional e Direitos Humanos",
+      "reason": "O direito internacional desempenha um papel fundamental na proteção dos direitos humanos.",
+      "question": "Como o direito internacional contribui para a proteção dos direitos humanos?",
+      "destination": {
+        "type": "verbete",
+        "slug": "direito-internacional"
+      },
+      "justification": "Aborda a dimensão jurídica da proteção dos direitos humanos.",
+      "exit": "true"
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "reason": "Eventos históricos importantes para a história dos direitos humanos."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-acervo",
+      "title": "ATLAS — Registros e verbetes compilados no acervo"
+    }
+  ],
+  "updatedAt": "2026-11-19",
+  "version": "1.0.0"
+}
