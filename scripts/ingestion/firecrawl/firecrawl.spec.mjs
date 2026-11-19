@@ -9,6 +9,7 @@ import {
   candidateSchema,
   candidateToSeed,
   dedupeCandidates,
+  discoverFromGraphGaps,
   discoverFromMarxists,
   isDisqualifiedTitle,
   loadTopics,
@@ -286,6 +287,107 @@ describe('firecrawl discovery', () => {
     const written = JSON.parse(await readFile(seedsPath, 'utf8'));
     assert.equal(written.seeds.length, 3);
     assert.equal(written.seeds.at(-1).review, 'pending');
+  });
+
+  it('turns graph gaps into candidates and prefers the exact title', async () => {
+    const queue = {
+      items: [
+        {
+          id: 'gap-graph-person-sergio-buarque',
+          entityId: 'person-sergio-buarque',
+          topic: 'Sérgio Buarque de Holanda',
+          domain: 'historia-brasil',
+          query: 'Sérgio Buarque de Holanda historiador',
+          queueMode: 'fonte',
+        },
+        {
+          id: 'gap-graph-concept-mais-valia',
+          entityId: 'concept-mais-valia',
+          topic: 'Mais-valia',
+          domain: 'filosofia-politica',
+          query: 'Mais-valia',
+          queueMode: 'relacao',
+        },
+      ],
+    };
+    const { candidates, requests } = await discoverFromGraphGaps(queue, {
+      limit: 5,
+      mode: 'fonte',
+      discoveredAt: '2026-11-19T00:00:00.000Z',
+      searchImpl: async (lang) =>
+        lang === 'pt' ? ['Sérgio Buarque de Holanda', 'Sérgio Buarque'] : [],
+      fetchPageInfoImpl: async (lang, titles) =>
+        titles.map((title, index) => ({
+          title,
+          url: wikipediaUrl(lang, title),
+          length: index === 0 ? 6000 : 900,
+        })),
+    });
+    assert.equal(candidates.length, 1);
+    assert.equal(candidates[0].title, 'Sérgio Buarque de Holanda');
+    assert.equal(candidates[0].score, 95);
+    assert.equal(candidates[0].discoveredFrom, 'graph-gap:person-sergio-buarque');
+    assert.equal(candidates[0].language, 'pt-BR');
+    assert.equal(requests.length, 1);
+  });
+
+  it('runs discovery from a graph queue without repeating the topic catalog', async () => {
+    const dir = await mkdtemp(join(tmpdir(), 'atlas-graph-discovery-'));
+    const topicsPath = join(dir, 'topics.json');
+    const outputPath = join(dir, 'candidates.json');
+    await writeFile(
+      topicsPath,
+      JSON.stringify({
+        schemaVersion: 1,
+        description: 'teste',
+        topics: [
+          {
+            id: 'marxismo',
+            domain: 'filosofia-politica',
+            atlasGap: 'Marxismo',
+            wikipedia: {},
+            categories: {},
+            marxists: [],
+          },
+        ],
+      }),
+      'utf8',
+    );
+
+    const { payload } = await runDiscovery({
+      topicsPath,
+      outputPath,
+      topics: false,
+      graph: true,
+      graphMode: 'fonte',
+      graphLimit: 3,
+      discoverFromGraphGapsImpl: async () => ({
+        candidates: [
+          {
+            slug: 'wiki-pt-mais-valia',
+            title: 'Mais-valia',
+            domain: 'filosofia-politica',
+            language: 'pt-BR',
+            sourceName: 'Wikipédia (pt)',
+            url: 'https://pt.wikipedia.org/wiki/Mais-valia',
+            license: 'CC BY-SA 4.0',
+            usagePolicy: 'open-reuse',
+            atlasGap: 'Mais-valia',
+            topicId: 'concept-mais-valia',
+            origin: 'discovery',
+            discoveredFrom: 'graph-gap:concept-mais-valia',
+            discoveredAt: '2026-11-19T00:00:00.000Z',
+            score: 90,
+          },
+        ],
+        requests: [{ source: 'graph-gap-search', found: 1 }],
+      }),
+    });
+
+    assert.equal(payload.summary.topics, 0);
+    assert.equal(payload.summary.graph.candidates, 1);
+    assert.equal(payload.items.length, 1);
+    assert.equal(payload.items[0].discoveredFrom, 'graph-gap:concept-mais-valia');
   });
 
   it('refuses non-Marxists hosts in the Marxists adapter', async () => {

@@ -27,6 +27,14 @@ const here = dirname(fileURLToPath(import.meta.url));
 export const projectRoot = resolve(here, '../../..');
 export const defaultTopicsPath = join(here, 'topics.json');
 export const defaultSeedsPath = join(here, 'seeds.json');
+export const defaultGraphQueuePath = join(
+  projectRoot,
+  'experiments',
+  'rag',
+  'eval',
+  'queues',
+  'lacunas-do-grafo.json',
+);
 export const defaultOutputPath = join(
   projectRoot,
   'generated',
@@ -267,7 +275,107 @@ export async function discoverLinkedArticles(lang, title, limit = 200) {
     .filter((linkTitle) => !isDisqualifiedTitle(linkTitle));
 }
 
-/** Consulta o Wikidata por rótulos (P1142/P921/P279) e converte em artigos da Wikipédia. */
+/** Busca artigos por texto na Wikipédia (usado para lacunas do grafo). */
+export async function searchWikipediaArticles(lang, query, limit = 3) {
+  const host = WIKIPEDIA_LANGUAGES[lang]?.host;
+  if (!host) throw new Error(`Idioma de Wikipédia não suportado: ${lang}`);
+  const data = await queryWikipedia(host, {
+    action: 'query',
+    list: 'search',
+    srsearch: query,
+    srlimit: String(Math.min(Math.max(limit, 1), 20)),
+    srnamespace: '0',
+  });
+  return (data.query?.search ?? [])
+    .map((hit) => hit.title)
+    .filter((title) => !isDisqualifiedTitle(title));
+}
+
+function normalizeTitle(title) {
+  return String(title)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\p{L}\p{N}]+/gu, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+/**
+ * Converte lacunas do grafo em candidatos: busca o artigo pelo título/query,
+ * prefere o título exato e aceita só artigo com corpo mínimo.
+ */
+export async function discoverFromGraphGaps(
+  queue,
+  {
+    limit = 20,
+    mode = 'fonte',
+    discoveredAt = new Date().toISOString(),
+    searchImpl = searchWikipediaArticles,
+    fetchPageInfoImpl = fetchPageInfo,
+    minLength = 1200,
+  } = {},
+) {
+  const modes = String(mode)
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean);
+  const items = (queue.items ?? [])
+    .filter(
+      (item) =>
+        modes.includes('all') ||
+        modes.includes(item.queueMode) ||
+        (modes.includes('conteudo') &&
+          0 < Number(item.claims ?? 0) &&
+          Number(item.claims ?? 0) <= 2),
+    )
+    .slice(0, limit);
+  const results = [];
+  const requests = [];
+
+  for (const item of items) {
+    let lang = 'pt';
+    let titles = await searchImpl('pt', item.query ?? item.topic, 3);
+    if (titles.length === 0) {
+      lang = 'en';
+      titles = await searchImpl('en', item.query ?? item.topic, 3);
+    }
+    requests.push({
+      source: 'graph-gap-search',
+      topicId: item.entityId,
+      lang,
+      query: item.query ?? item.topic,
+      found: titles.length,
+    });
+    if (titles.length === 0) continue;
+
+    const infos = await fetchPageInfoImpl(lang, titles);
+    const wanted = normalizeTitle(item.topic);
+    const exact = infos.find((info) => normalizeTitle(info.title) === wanted);
+    const best = exact ?? infos.find((info) => info.length >= minLength) ?? null;
+    if (!best || best.length < minLength) continue;
+
+    results.push({
+      slug: `wiki-${lang}-${slugifyTitle(best.title)}`,
+      title: best.title,
+      domain: item.domain ?? 'historia-mundial',
+      language: WIKIPEDIA_LANGUAGES[lang].language,
+      sourceName: WIKIPEDIA_LANGUAGES[lang].sourceName,
+      url: best.url,
+      license: 'CC BY-SA 4.0',
+      usagePolicy: 'open-reuse',
+      atlasGap: item.topic,
+      topicId: item.entityId,
+      origin: 'discovery',
+      discoveredFrom: `graph-gap:${item.entityId}`,
+      discoveredAt,
+      score: Math.min(100, 80 + (exact ? 10 : 0) + (best.length >= 4000 ? 5 : 0)),
+      pageLength: best.length,
+    });
+  }
+
+  return { candidates: results, requests };
+}
+
 export async function discoverFromWikidata(topic, limit = 200) {
   const roots = topic.wikidata ?? [];
   if (roots.length === 0) return [];
@@ -362,22 +470,30 @@ export async function runDiscovery({
   outputPath = defaultOutputPath,
   topicIds = null,
   limit = 120,
+  topics = true,
   wikipedia = true,
   wikidata = true,
   marxists = true,
+  graph = false,
+  graphQueuePath = defaultGraphQueuePath,
+  graphLimit = 20,
+  graphMode = 'fonte',
   now = () => new Date().toISOString(),
   fetchPageInfoImpl = fetchPageInfo,
   discoverCategoryMembersImpl = discoverCategoryMembers,
   discoverLinkedArticlesImpl = discoverLinkedArticles,
   discoverFromWikidataImpl = discoverFromWikidata,
   discoverFromMarxistsImpl = discoverFromMarxists,
+  discoverFromGraphGapsImpl = discoverFromGraphGaps,
 } = {}) {
   const catalog = await loadTopics(topicsPath);
-  const selected = topicIds?.length
-    ? catalog.topics.filter((topic) => topicIds.includes(topic.id))
-    : catalog.topics;
-  if (selected.length === 0) {
-    throw new Error(`Nenhum tema corresponde a: ${topicIds?.join(', ')}`);
+  const selected = topics
+    ? topicIds?.length
+      ? catalog.topics.filter((topic) => topicIds.includes(topic.id))
+      : catalog.topics
+    : [];
+  if (selected.length === 0 && !graph) {
+    throw new Error(`Nenhum tema corresponde a: ${topicIds?.join(', ') ?? '(catálogo vazio)'}`);
   }
 
   const discoveredAt = now();
@@ -517,6 +633,18 @@ export async function runDiscovery({
     }
   }
 
+  if (graph) {
+    const queue = await readJson(graphQueuePath);
+    const graphResult = await discoverFromGraphGapsImpl(queue, {
+      limit: graphLimit,
+      mode: graphMode,
+      discoveredAt,
+      fetchPageInfoImpl,
+    });
+    requests.push(...graphResult.requests);
+    candidates.push(...graphResult.candidates);
+  }
+
   const items = dedupeCandidates(candidates.map((candidate) => candidateSchema.parse(candidate)));
   const payload = {
     schemaVersion: 1,
@@ -541,6 +669,13 @@ export async function runDiscovery({
         acc[source] = (acc[source] ?? 0) + 1;
         return acc;
       }, {}),
+      graph: graph
+        ? {
+            mode: graphMode,
+            limit: graphLimit,
+            candidates: items.filter((item) => item.discoveredFrom.startsWith('graph-gap:')).length,
+          }
+        : null,
     },
     requests,
     items,
@@ -600,6 +735,11 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
       'no-wikidata': { type: 'boolean', default: false },
       'no-wikipedia': { type: 'boolean', default: false },
       'no-marxists': { type: 'boolean', default: false },
+      'no-topics': { type: 'boolean', default: false },
+      graph: { type: 'boolean', default: false },
+      'graph-queue': { type: 'string' },
+      'graph-limit': { type: 'string', default: '20' },
+      'graph-mode': { type: 'string', default: 'fonte' },
       output: { type: 'string' },
     },
   });
@@ -609,9 +749,16 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     const { outputPath, payload } = await runDiscovery({
       topicIds: values.topic.length > 0 ? values.topic : null,
       limit,
+      topics: !values['no-topics'],
       wikipedia: !values['no-wikipedia'],
       wikidata: !values['no-wikidata'],
       marxists: !values['no-marxists'],
+      graph: values.graph,
+      graphQueuePath: values['graph-queue']
+        ? resolve(values['graph-queue'])
+        : defaultGraphQueuePath,
+      graphLimit: Number.parseInt(values['graph-limit'], 10) || 20,
+      graphMode: values['graph-mode'],
       outputPath: values.output ? resolve(values.output) : defaultOutputPath,
     });
 

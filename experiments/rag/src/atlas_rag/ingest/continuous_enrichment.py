@@ -15,19 +15,27 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-import httpx
-
 from atlas_rag.embed.bge_m3 import unload_ollama_gpu
+from atlas_rag.ingest.claim_expansion import expand_claims_with_ollama
 from atlas_rag.ingest.firecrawl_corpus import (
     FIRECRAWL_INDEX_NAME,
     build_gap_evidence_queue,
     index_firecrawl_corpus,
 )
+from atlas_rag.ingest.relation_drafts import draft_relations_with_ollama
+from atlas_rag.llm import (
+    DEFAULT_DRAFT_MODEL,
+    call_ollama_json,
+    strip_think_and_fences,
+)
+from atlas_rag.mining.graph_gaps import build_graph_gap_queue
+from atlas_rag.mining.relation_candidates import (
+    build_cooccurrence_relation_queue,
+    build_relation_pattern_queue,
+)
 from atlas_rag.paths import eval_dir, index_dir, repo_root
 from atlas_rag.index.vector_store import LocalVectorIndex
 
-DEFAULT_OLLAMA_URL = "http://localhost:11434"
-DEFAULT_DRAFT_MODEL = "qwen3:8b-q4_K_M"
 ALLOWED_KINDS = frozenset(
     {"person", "concept", "event", "work", "ideology", "institution", "party", "place", "regime"}
 )
@@ -39,16 +47,8 @@ ALLOWED_CLASSIFICATIONS = frozenset(
 )
 
 
-def _strip_think_and_fences(raw: str) -> str:
-    text = re.sub(r"<think>[\s\S]*?</think>", "", raw or "", flags=re.IGNORECASE).strip()
-    fence = re.search(r"```(?:json)?\s*([\s\S]*?)```", text, flags=re.IGNORECASE)
-    if fence:
-        text = fence.group(1).strip()
-    start = text.find("{")
-    end = text.rfind("}")
-    if start >= 0 and end > start:
-        return text[start : end + 1]
-    return text
+_strip_think_and_fences = strip_think_and_fences
+_call_ollama_json = call_ollama_json
 
 
 def build_draft_prompt(gap_item: dict[str, Any], passages: list[dict[str, Any]]) -> str:
@@ -168,30 +168,6 @@ def validate_and_ground_draft(
             "dropped_ungrounded_relations": dropped_relations,
         },
     }
-
-
-def _call_ollama_json(
-    prompt: str,
-    *,
-    model: str = DEFAULT_DRAFT_MODEL,
-    base_url: str = DEFAULT_OLLAMA_URL,
-    timeout: float = 180.0,
-) -> dict[str, Any]:
-    with httpx.Client(timeout=timeout) as client:
-        resp = client.post(
-            f"{base_url}/api/generate",
-            json={
-                "model": model,
-                "prompt": prompt,
-                "stream": False,
-                "format": "json",
-                "options": {"temperature": 0.2, "num_ctx": 8192},
-            },
-        )
-        resp.raise_for_status()
-        raw = resp.json().get("response", "")
-    cleaned = _strip_think_and_fences(raw)
-    return json.loads(cleaned)
 
 
 def draft_gaps_with_ollama(
@@ -364,19 +340,37 @@ def run_enrichment_cycle(
     max_new_seeds: int = 12,
     min_score: int = 70,
     incremental_embed: bool = True,
+    graph_gaps: bool = True,
+    graph_limit: int = 400,
+    relations: bool = True,
+    max_relations: int = 3,
+    expand_claims: bool = True,
+    max_expansions: int = 2,
 ) -> dict[str, Any]:
-    """Executa 1 ciclo: descoberta -> Firecrawl Local -> bge-m3 GPU -> lacunas -> rascunhos Ollama."""
+    """Ciclo completo: lacunas do grafo -> descoberta -> corpus -> embeddings -> relações -> rascunhos."""
     root = repo_root()
     report: dict[str, Any] = {
         "started_at": datetime.now(timezone.utc).isoformat(),
         "steps": {},
     }
 
+    if graph_gaps:
+        try:
+            report["steps"]["graph_gaps"] = build_graph_gap_queue(limit=graph_limit)
+        except Exception as exc:  # noqa: BLE001
+            report["steps"]["graph_gaps"] = {"ok": False, "error": str(exc)}
+
     if discover:
         proc = subprocess.run(
             [
                 "node",
                 "scripts/ingestion/firecrawl/discover.mjs",
+                "--graph",
+                "--no-topics",
+                "--graph-mode",
+                "fonte,conteudo",
+                "--graph-limit",
+                str(max(max_new_seeds * 2, 10)),
                 "--apply",
                 "--apply-limit",
                 str(max_new_seeds),
@@ -393,6 +387,7 @@ def run_enrichment_cycle(
         tail = [line for line in proc.stdout.splitlines() if line.strip()][-3:]
         report["steps"]["discovery"] = {
             "ok": proc.returncode == 0,
+            "mode": "graph-gap",
             "max_new_seeds": max_new_seeds,
             "min_score": min_score,
             "tail": tail,
@@ -434,12 +429,48 @@ def run_enrichment_cycle(
             "elapsed_seconds": embed_res["telemetry"]["elapsed_seconds"],
         }
 
-    gap_res = build_gap_evidence_queue()
-    report["steps"]["gap_mining"] = gap_res
+    try:
+        report["steps"]["gap_mining"] = build_gap_evidence_queue()
+    except Exception as exc:  # noqa: BLE001
+        report["steps"]["gap_mining"] = {"ok": False, "error": str(exc)}
+
+    if relations:
+        try:
+            report["steps"]["relation_mining"] = build_cooccurrence_relation_queue(
+                max_pairs=250,
+            )
+        except Exception as exc:  # noqa: BLE001
+            report["steps"]["relation_mining"] = {"ok": False, "error": str(exc)}
+        try:
+            report["steps"]["relation_patterns"] = build_relation_pattern_queue(
+                max_pairs=200,
+            )
+        except Exception as exc:  # noqa: BLE001
+            report["steps"]["relation_patterns"] = {"ok": False, "error": str(exc)}
 
     if max_drafts > 0:
-        draft_res = draft_gaps_with_ollama(max_drafts=max_drafts, model=model)
-        report["steps"]["ollama_drafts"] = draft_res
+        try:
+            report["steps"]["ollama_drafts"] = draft_gaps_with_ollama(
+                max_drafts=max_drafts, model=model
+            )
+        except Exception as exc:  # noqa: BLE001
+            report["steps"]["ollama_drafts"] = {"ok": False, "error": str(exc)}
+
+    if relations and max_relations > 0:
+        try:
+            report["steps"]["relation_drafts"] = draft_relations_with_ollama(
+                max_drafts=max_relations, model=model
+            )
+        except Exception as exc:  # noqa: BLE001
+            report["steps"]["relation_drafts"] = {"ok": False, "error": str(exc)}
+
+    if expand_claims and max_expansions > 0:
+        try:
+            report["steps"]["claim_expansion"] = expand_claims_with_ollama(
+                max_entities=max_expansions, model=model
+            )
+        except Exception as exc:  # noqa: BLE001
+            report["steps"]["claim_expansion"] = {"ok": False, "error": str(exc)}
 
     report["finished_at"] = datetime.now(timezone.utc).isoformat()
     return report
@@ -455,6 +486,12 @@ def run_enrichment_loop(
     max_new_seeds: int = 12,
     min_score: int = 70,
     incremental_embed: bool = True,
+    graph_gaps: bool = True,
+    graph_limit: int = 400,
+    relations: bool = True,
+    max_relations: int = 3,
+    expand_claims: bool = True,
+    max_expansions: int = 2,
 ) -> list[dict[str, Any]]:
     """Roda ciclos contínuos de enriquecimento local com pausa controlada entre rodadas."""
     history: list[dict[str, Any]] = []
@@ -469,6 +506,12 @@ def run_enrichment_loop(
                 max_new_seeds=max_new_seeds,
                 min_score=min_score,
                 incremental_embed=incremental_embed,
+                graph_gaps=graph_gaps,
+                graph_limit=graph_limit,
+                relations=relations,
+                max_relations=max_relations,
+                expand_claims=expand_claims,
+                max_expansions=max_expansions,
             )
             history.append(res)
             _write_cycle_state(res, cycle=cycle)
