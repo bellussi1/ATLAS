@@ -354,9 +354,14 @@ describe('firecrawl discovery', () => {
       'utf8',
     );
 
+    // A queue fixture keeps the test independent of the local, unversioned gap queue.
+    const graphQueuePath = join(dir, 'lacunas-do-grafo.json');
+    await writeFile(graphQueuePath, JSON.stringify({ schemaVersion: 1, items: [] }), 'utf8');
+
     const { payload } = await runDiscovery({
       topicsPath,
       outputPath,
+      graphQueuePath,
       topics: false,
       graph: true,
       graphMode: 'fonte',
