@@ -50,6 +50,11 @@ test('parsePointer rejects a malformed digest and an insecure base URL', () => {
   assert.throws(() =>
     parsePointer(JSON.stringify({ ...pointer, baseUrl: 'http://pub.example.test' })),
   );
+  // The local release serves itself over loopback.
+  assert.equal(
+    parsePointer(JSON.stringify({ ...pointer, baseUrl: 'http://127.0.0.1:4305/content' })).baseUrl,
+    'http://127.0.0.1:4305/content',
+  );
 });
 
 test('parseEnvFile ignores comments, strips BOM and quotes, and accepts export', () => {
