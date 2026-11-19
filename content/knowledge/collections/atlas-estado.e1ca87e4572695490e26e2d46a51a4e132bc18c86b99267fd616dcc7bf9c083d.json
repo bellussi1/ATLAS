@@ -4323,6 +4323,24 @@
       "uncertainty": "low",
       "evidenceIds": ["ev-wiki-topic-governador-001", "ev-wiki-topic-governador-002"],
       "editorialStatus": "pending"
+    },
+    {
+      "id": "rel-exp-wiki-topic-luis-xiv-de-franca-wiki-topic-absolutismo",
+      "fromEntityId": "wiki-topic-luis-xiv-de-franca",
+      "toEntityId": "wiki-topic-absolutismo",
+      "type": "influenced",
+      "label": "foi um exemplo de",
+      "reverseLabel": "foi exemplificado por",
+      "context": "[conferência de IA] O artigo afirma que Luís XIV foi um dos líderes da crescente concentração de poder na era do absolutismo na Europa.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-luis-xiv-de-franca-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Lu%C3%ADs_XIV_de_Fran%C3%A7a",
+        "retrievedAt": "2026-11-17"
+      }
     }
   ],
   "learningPaths": []

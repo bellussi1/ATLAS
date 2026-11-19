@@ -15808,6 +15808,222 @@
         "ev-wiki-topic-anarcossindicalismo-002"
       ],
       "editorialStatus": "pending"
+    },
+    {
+      "id": "rel-exp-wiki-topic-eurasianismo-wiki-topic-dissolucao-da-uniao-sovietica",
+      "fromEntityId": "wiki-topic-eurasianismo",
+      "toEntityId": "wiki-topic-dissolucao-da-uniao-sovietica",
+      "type": "developed_into",
+      "label": "foi incorporada a",
+      "reverseLabel": "incorporou",
+      "context": "[conferência de IA] Após a dissolução da União Soviética, parte da ideologia do movimento foi incorporada a um novo movimento com o mesmo nome.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-eurasianismo-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Eurasianismo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-nacional-bolchevismo-wiki-topic-movimento-politico",
+      "fromEntityId": "wiki-topic-nacional-bolchevismo",
+      "toEntityId": "wiki-topic-movimento-politico",
+      "type": "documented-association",
+      "label": "originou",
+      "reverseLabel": "foi originado por",
+      "context": "[conferência de IA] O nacional-bolchevismo é um movimento político sincrético surgido na Alemanha durante a Década de 1920.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-nacional-bolchevismo-008"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Nacional-bolchevismo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-integralismo-brasileiro-wiki-topic-politica-do-brasil",
+      "fromEntityId": "wiki-topic-integralismo-brasileiro",
+      "toEntityId": "wiki-topic-politica-do-brasil",
+      "type": "reacted_against",
+      "label": "foi palco de",
+      "reverseLabel": "teve um episódio em",
+      "context": "[conferência de IA] A Batalha da Praça da Sé é considerada um dos episódios mais violentos da história política do Brasil.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-integralismo-brasileiro-004"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Integralismo_brasileiro",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-desenvolvimentismo-wiki-topic-dilma-rousseff",
+      "fromEntityId": "wiki-topic-desenvolvimentismo",
+      "toEntityId": "wiki-topic-dilma-rousseff",
+      "type": "influenced",
+      "label": "foi influenciada por",
+      "reverseLabel": "influenciou",
+      "context": "[conferência de IA] A nova matriz econômica do governo Dilma Rousseff foi apontada como uma das causas da crise econômica brasileira de 2014.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-desenvolvimentismo-010"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Desenvolvimentismo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-integralismo-brasileiro-wiki-topic-nacionalismo",
+      "fromEntityId": "wiki-topic-integralismo-brasileiro",
+      "toEntityId": "wiki-topic-nacionalismo",
+      "type": "documented-association",
+      "label": "defendia",
+      "reverseLabel": "foi defendido por",
+      "context": "[conferência de IA] O movimento defendia nacionalismo, patriotismo, espiritualismo, democracia orgânica corporativista e Estado confessional católico.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-integralismo-brasileiro-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Integralismo_brasileiro",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-bonapartismo-wiki-topic-guerra-franco-prussiana",
+      "fromEntityId": "wiki-topic-bonapartismo",
+      "toEntityId": "wiki-topic-guerra-franco-prussiana",
+      "type": "reacted_against",
+      "label": "conduziu a",
+      "reverseLabel": "foi causa de",
+      "context": "[conferência de IA] Napoleão III levou a França a uma derrota desastrosa diante da Prússia na Guerra Franco-Prussiana. (1870).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-bonapartismo-006"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Bonapartismo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-democracia-crista-ideology-socialism",
+      "fromEntityId": "wiki-topic-democracia-crista",
+      "toEntityId": "ideology-socialism",
+      "type": "influenced",
+      "label": "foi resposta a",
+      "reverseLabel": "originou",
+      "context": "[conferência de IA] A origem do movimento é situada no século XIX, na Europa, como resposta à urbanização crescente e à emergência do socialismo.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-democracia-crista-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Democracia_crist%C3%A3",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-nacional-bolchevismo-ideology-liberalism",
+      "fromEntityId": "wiki-topic-nacional-bolchevismo",
+      "toEntityId": "ideology-liberalism",
+      "type": "reacted_against",
+      "label": "opôs-se a",
+      "reverseLabel": "foi opositor de",
+      "context": "[conferência de IA] O movimento ressurgiu após o fim da Guerra Fria, principalmente na Rússia, com o objetivo de unir radicais de esquerda e direita contra o liberalismo ocidental.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-nacional-bolchevismo-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Nacional-bolchevismo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-progressismo-wiki-topic-humano",
+      "fromEntityId": "wiki-topic-progressismo",
+      "toEntityId": "wiki-topic-humano",
+      "type": "influenced",
+      "label": "foi influenciado por",
+      "reverseLabel": "influenciou",
+      "context": "[conferência de IA] A ideia de progresso ganha grande avanço na Europa com o Iluminismo, quando alguns filósofos passaram a entender que o próprio ser humano, e não os deuses, poderia mudar a sociedade e seu modo de vida.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-progressismo-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Progressismo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-coreia-do-norte-wiki-topic-juche",
+      "fromEntityId": "wiki-topic-coreia-do-norte",
+      "toEntityId": "wiki-topic-juche",
+      "type": "documented-association",
+      "label": "foi substituído por",
+      "reverseLabel": "substituiu",
+      "context": "[conferência de IA] O Juche substituiu o marxismo-leninismo na constituição da Coreia do Norte. (1977).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-juche-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Juche",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-nacional-bolchevismo-wiki-topic-nacionalismo",
+      "fromEntityId": "wiki-topic-nacional-bolchevismo",
+      "toEntityId": "wiki-topic-nacionalismo",
+      "type": "documented-association",
+      "label": "defendia",
+      "reverseLabel": "foi rejeitado por",
+      "context": "[conferência de IA] Thiriart rejeitava os nacionalismos particulares de cada país europeu e defendia um grande nacionalismo europeu.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-nacional-bolchevismo-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Nacional-bolchevismo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-titoismo-ideology-trotskyism",
+      "fromEntityId": "wiki-topic-titoismo",
+      "toEntityId": "ideology-trotskyism",
+      "type": "reacted_against",
+      "label": "acusou",
+      "reverseLabel": "foi acusado por",
+      "context": "[conferência de IA] A União Soviética e seus estados satélites acusaram a Iugoslávia de trotskismo e social-democracia.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-titoismo-005"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Tito%C3%ADsmo",
+        "retrievedAt": "2026-11-05"
+      }
     }
   ],
   "learningPaths": []

@@ -24281,6 +24281,78 @@
         "url": "https://pt.wikipedia.org/wiki/Luiz_In%C3%A1cio_Lula_da_Silva",
         "retrievedAt": "2026-11-05"
       }
+    },
+    {
+      "id": "rel-exp-wiki-topic-august-bebel-wiki-topic-suica",
+      "fromEntityId": "wiki-topic-august-bebel",
+      "toEntityId": "wiki-topic-suica",
+      "type": "documented-association",
+      "label": "morreu",
+      "reverseLabel": "foi o local de morte",
+      "context": "[conferência de IA] Social-democrata alemão, nascido em Deutz em 1840 e falecido na Suíça, apontado como um dos fundadores do SPD.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-august-bebel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/August_Bebel",
+        "retrievedAt": "2026-11-04"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-partido-dos-trabalhadores-wiki-topic-brasil",
+      "fromEntityId": "wiki-topic-partido-dos-trabalhadores",
+      "toEntityId": "wiki-topic-brasil",
+      "type": "documented-association",
+      "label": "fundou",
+      "reverseLabel": "foi fundada por",
+      "context": "[conferência de IA] Anúncio da criação da Federação Brasil da Esperança pelas Executivas Nacionais do PT, PV e PCdoB. (2022-04-18).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-partido-dos-trabalhadores-008"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Partido_dos_Trabalhadores",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-crise-de-suez-wiki-topic-reino-unido",
+      "fromEntityId": "wiki-topic-crise-de-suez",
+      "toEntityId": "wiki-topic-reino-unido",
+      "type": "participated_in",
+      "label": "apoiou",
+      "reverseLabel": "foi apoiado por",
+      "context": "[conferência de IA] O conflito começou em 29 de outubro de 1956, quando Israel, com apoio da França e do Reino Unido, declarou guerra ao Egito.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-crise-de-suez-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Crise_de_Suez",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-socialismo-democratico-wiki-topic-sociedade-fabiana",
+      "fromEntityId": "wiki-topic-socialismo-democratico",
+      "toEntityId": "wiki-topic-sociedade-fabiana",
+      "type": "influenced",
+      "label": "foi influenciado por",
+      "reverseLabel": "influenciou",
+      "context": "[conferência de IA] Do final do século XIX ao início do século XX, o socialismo democrático foi fortemente influenciado pela forma gradualista de socialismo promovida pela Sociedade Fabiana e pelo socialismo crítico de Eduard Bernstein na Alemanha.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-socialismo-democratico-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Socialismo_democr%C3%A1tico",
+        "retrievedAt": "2026-11-05"
+      }
     }
   ],
   "learningPaths": []

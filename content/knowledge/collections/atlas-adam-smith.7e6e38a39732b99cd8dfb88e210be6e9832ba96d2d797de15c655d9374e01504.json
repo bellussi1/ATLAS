@@ -4136,6 +4136,24 @@
       "uncertainty": "low",
       "evidenceIds": ["ev-wiki-topic-oxford-001", "ev-wiki-topic-oxford-002"],
       "editorialStatus": "pending"
+    },
+    {
+      "id": "rel-exp-wiki-topic-igreja-da-inglaterra-wiki-topic-cristianismo",
+      "fromEntityId": "wiki-topic-igreja-da-inglaterra",
+      "toEntityId": "wiki-topic-cristianismo",
+      "type": "developed_into",
+      "label": "desdobramento",
+      "reverseLabel": "originou",
+      "context": "[conferência de IA] A Igreja traça sua história ao cristianismo da Grã-Bretanha romana e marca a missão gregoriana de 597 como início de sua história formal.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-igreja-da-inglaterra-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Igreja_da_Inglaterra",
+        "retrievedAt": "2026-11-17"
+      }
     }
   ],
   "learningPaths": []

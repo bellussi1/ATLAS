@@ -632,6 +632,43 @@
       "retrievedAt": "2026-11-18"
     }
   ],
-  "relations": [],
+  "relations": [
+    {
+      "id": "rel-exp-wiki-topic-oscar-niemeyer-wiki-topic-partido-comunista-do-brasil",
+      "fromEntityId": "wiki-topic-oscar-niemeyer",
+      "toEntityId": "wiki-topic-partido-comunista-do-brasil",
+      "type": "documented-association",
+      "label": "ingressou",
+      "reverseLabel": "recebeu",
+      "context": "[conferência de IA] Niemeyer ingressou no Partido Comunista do Brasil. (1945).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-oscar-niemeyer-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Oscar_Niemeyer",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-oscar-niemeyer-wiki-topic-partido-comunista",
+      "fromEntityId": "wiki-topic-oscar-niemeyer",
+      "toEntityId": "wiki-topic-partido-comunista",
+      "type": "documented-association",
+      "label": "ingressou",
+      "reverseLabel": "recebeu",
+      "context": "[conferência de IA] Niemeyer ingressou no Partido Comunista do Brasil. (1945).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-oscar-niemeyer-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Oscar_Niemeyer",
+        "retrievedAt": "2026-11-17"
+      }
+    }
+  ],
   "learningPaths": []
 }
