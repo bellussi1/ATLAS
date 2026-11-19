@@ -46,8 +46,8 @@ Execute as verificações relevantes ao escopo alterado e reporte o resultado ob
 
 ## Design e conteúdo
 
-- Ao trabalhar no design da plataforma, inspecione as três imagens em `referencias`: modernismo suíço, atlas histórico editorial e arquivo digital experimental. Use-as como inspiração, sem replicar um dashboard genérico, tema escuro uniforme ou sequência repetitiva de cards.
-- A direção artística aprovada em `atlas-editorial-geometrico`, com a mesa de pesquisa como referência, é **critério de aceite, não sugestão**: nenhuma tela, componente, página gerada ou conteúdo pode divergir dela. Antes de concluir uma mudança de UI, compare a composição com a referência aprovada; dashboards de números, cards iguais, símbolos genéricos e rótulos decorativos são rejeitados. Automação de dados herda o renderer e a composição aprovados; gerar mais páginas não autoriza um novo padrão visual.
+- Ao trabalhar no design da plataforma, inspecione as três imagens em `referencias` (modernismo suíço, atlas histórico editorial e arquivo digital experimental) e a análise das referências de gráfica popular brasileira em `.agents/skills/atlas-editorial-geometrico/references/referencias-2026-11.md`. Use-as como inspiração, sem replicar um dashboard genérico, tema escuro uniforme ou sequência repetitiva de cards.
+- A direção artística aprovada em `atlas-editorial-geometrico` (v2, 19/11/2026: três registros leitura/mesa/cartaz, paleta de pigmentos, selo perfurado, retícula e geometria), com a mesa de pesquisa como referência, é **critério de aceite, não sugestão**: nenhuma tela, componente, página gerada ou conteúdo pode divergir dela. Antes de concluir uma mudança de UI, compare a composição com a referência aprovada; dashboards de números, cards iguais, símbolos genéricos e rótulos decorativos são rejeitados. Automação de dados herda o renderer e a composição aprovados; gerar mais páginas não autoriza um novo padrão visual.
 - Afirmações históricas devem ter fontes confiáveis e contexto suficiente para o leitor conferir a evidência. Diferencie fato documentado, interpretação, hipótese e alegação controversa; não invente fonte, data, citação ou validação humana.
 - Reproduza imagens, mapas e textos apenas quando os direitos permitirem o uso. Os arquivos em `referencias` são inspiração visual e não ativos autorizados para publicação.
 - Registre fontes e licenças perto do conteúdo ou no mecanismo editorial definido pelo projeto.
@@ -74,7 +74,7 @@ Execute as verificações relevantes ao escopo alterado e reporte o resultado ob
 
 As skills são ferramentas especializadas, não um pacote obrigatório. Antes de começar, confira o catálogo disponível nesta sessão e carregue apenas as skills pertinentes ao escopo. A presença de um `SKILL.md` no computador não garante que a skill possa ser invocada nesta sessão; se não estiver no catálogo, trate-a como referência local, não como skill ativa. Não copie instruções globais para este arquivo nem crie versões duplicadas.
 
-- **Identidade e decisões visuais do ATLAS:** `atlas-editorial-geometrico` é a referência artística primária. Consulte-a ao criar ou revisar UI do projeto; preserve a combinação de enciclopédia hipertextual, modernismo suíço, atlas histórico editorial e museografia digital experimental.
+- **Identidade e decisões visuais do ATLAS:** `atlas-editorial-geometrico` é a referência artística primária. Consulte-a ao criar ou revisar UI do projeto; preserve a combinação de enciclopédia hipertextual, modernismo suíço, atlas histórico editorial, museografia digital experimental e gráfica popular brasileira. Tokens-alvo, matriz de substituição e ordem de migração do design system estão em `references/tokens.md` da skill.
 - **Composição ou direção visual de telas/componentes:** use `frontend-design` quando a tarefa exigir decisões de composição, hierarquia e apresentação. Combine com a identidade ATLAS; não substitua nem redesenhe o design system existente sem necessidade concreta.
 - **Exploração interativa ou prototipagem:** use `interaction-design` para definir e implementar interações; use `prototype` apenas quando estiver disponível no catálogo da sessão e a tarefa pedir exploração/prova de conceito. Para componentes de produto, preserve caminhos reais de conteúdo e navegação.
 - **Oportunidades e implementação de motion:** use `find-animation-opportunities` para escolher momentos que ajudam orientação, seleção ou continuidade; use `animate` ao projetar/implementar movimento funcional. Selecione uma ou ambas conforme o trabalho, sem carregá-las por padrão em tarefas estáticas.
@@ -84,9 +84,9 @@ As skills são ferramentas especializadas, não um pacote obrigatório. Antes de
 
 Ao desenvolver componentes, priorize interatividade real, continuidade entre conteúdos, motion contextual, navegação por teclado, suporte mobile e respeito a `prefers-reduced-motion`. Escolha a combinação mínima de skills que cubra a tarefa; não é necessário carregá-las simultaneamente.
 
-Partir do briefing deste projeto e de suas referências visuais. Não transportar composições, paletas ou padrões de outros projetos do usuário. Preservar funcionalidades, arquitetura, acessibilidade e integridade editorial ao reconstruir a apresentação. Não alegar remoção de memória do modelo ou de histórico de chats.
+Partir do briefing deste projeto e de suas referências visuais. Não transportar composições, paletas ou padrões de outros projetos do usuário nem copiar peças de terceiros usadas como referência. Preservar funcionalidades, arquitetura, acessibilidade e integridade editorial ao reconstruir a apresentação. Não alegar remoção de memória do modelo ou de histórico de chats.
 
-A skill própria `atlas-editorial-geometrico`, versionada em `.agents/skills/atlas-editorial-geometrico`, orienta a identidade aprovada do ATLAS. Ela complementa as skills gerais, preserva a mesa de pesquisa e organiza cores secundárias, palavras navegáveis e motivos geométricos.
+A skill própria `atlas-editorial-geometrico`, versionada em `.agents/skills/atlas-editorial-geometrico`, orienta a identidade aprovada do ATLAS. Ela complementa as skills gerais, preserva a mesa de pesquisa e define registros, paleta, tipografia, materiais, motivos geométricos e o checklist de aceite de UI. A versão anterior está em `docs/archive/2026-11/skill-editorial-geometrico-v1.md`.
 
 ## Padrão V4 de páginas
 

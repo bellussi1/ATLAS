@@ -12,6 +12,13 @@ Atualizado em 19/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 - **Verificação final (19/11):** `lint`, `typecheck`, `npm test` (`417/417`), `test:content` (`220/220`), `test:ingestion` (`71/71`), `build` (`1.357` URLs no sitemap), `check:links` (`1.387` páginas) e Playwright E2E (`209/209`). Responsividade: 15 rotas sem estouro em 375/768/1366 px.
 - **Verificação desta rodada (19/11, local):** `typecheck`, `npm test` (`418/418`), `test:content` (`220/220`), `content:build`, `build:local` (`1.395` rotas), `check:links` (`1.397` páginas) e `publish:check` em dry-run. `lint` sem erros, com 9 avisos preexistentes. `content:prune` liberou 4.677 MB e `clean --deep` liberou 30.882 MB.
 
+## Direção artística v2 (19/11, só documentação)
+
+- **Skill `atlas-editorial-geometrico` v2:** três registros (leitura, mesa, cartaz), paleta de pigmentos brasileiros (pau-brasil, urucum, ocre, mata no lugar do teal, jenipapo no lugar do índigo, terra, cal) com contraste medido, Zilla Slab + Archivo sem fonte nova, selo perfurado, carimbo editorial, retícula, grão e fio. Sem ilustração figurativa nem símbolos culturais como ornamento; duotone só em licenças que permitem adaptação. Header e footer entram no registro cartaz; a marca não muda.
+- **Referências:** análise da identidade da Feira Afro (Coletivo B / Sesc Bauru) em `references/referencias-2026-11.md`; imagens não versionadas. v1 arquivada em `archive/2026-11/skill-editorial-geometrico-v1.md`. AGENTS.md e `design/SISTEMA-DE-DESIGN.md` atualizados (corrigida a divergência de fontes).
+- **Achado:** o rodapé credita Archivo, IBM Plex Mono e Source Serif 4, mas o site carrega Zilla Slab + Archivo; falta `public/fonts/OFL-Zilla-Slab.txt`. Corrigir na etapa 1.
+- **Próxima ação:** etapa 1 da migração em `references/tokens.md` (tokens em camadas sem mudança visual). Nenhum código alterado ainda.
+
 ## Publicação v0.2.0 (19/11)
 
 - **Header:** cartão flutuante sticky, altura fixa (3,5rem, menu compacto abaixo de 75rem), no mesmo container do conteúdo (`--grid-max` com gutter); grafo e mapa seguem sem ele. Altura publicada em `--header-offset` para `scroll-padding` e painéis sticky. Logo do header e do rodapé rolam suave ao topo na home (`layouts/home-link.directive.ts`).
