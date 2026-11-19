@@ -5,6 +5,7 @@
         <img src="/brand/atlas-logo.svg" alt="" width="105" height="30" />
       </a>
       <h1 id="world-map-title" class="bar__title">Mapa-múndi</h1>
+      <app-section-switcher current="/mapa" />
 
       <form class="search" role="search" (submit)="$event.preventDefault()">
         <label for="map-search" class="visually-hidden">
@@ -723,89 +724,168 @@
           </button>
         </header>
         <p class="table-drawer__lead">
-          O mesmo recorte do globo em lista: filtros de período, conexões e camadas valem aqui. Use
-          “Focar no globo” ou “Inspecionar” para voltar ao mapa naquele ponto.
+          Mesmo recorte do globo: período, conexões e camadas filtram a lista.
         </p>
 
-        <div class="map-tables-wrap">
-          <div class="map-table-scroll">
+        <div class="list-tools">
+          <div class="list-tabs" role="tablist" aria-label="Tipo de lista">
+            <button
+              type="button"
+              role="tab"
+              class="list-tab"
+              id="list-tab-territories"
+              aria-controls="list-panel"
+              [attr.aria-selected]="tableTab() === 'territories'"
+              (click)="tableTab.set('territories')"
+            >
+              Territórios <span class="list-tab__count">{{ tableTerritories().length }}</span>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              class="list-tab"
+              id="list-tab-connections"
+              aria-controls="list-panel"
+              [attr.aria-selected]="tableTab() === 'connections'"
+              (click)="tableTab.set('connections')"
+            >
+              Conexões <span class="list-tab__count">{{ tableConnections().length }}</span>
+            </button>
+          </div>
+          <label class="list-filter">
+            <span class="visually-hidden">Filtrar a lista</span>
+            <input
+              type="search"
+              placeholder="Filtrar por nome"
+              [value]="tableQuery()"
+              (input)="tableQuery.set($any($event.target).value)"
+            />
+          </label>
+        </div>
+
+        <div
+          id="list-panel"
+          class="map-table-scroll"
+          role="tabpanel"
+          [attr.aria-labelledby]="
+            tableTab() === 'territories' ? 'list-tab-territories' : 'list-tab-connections'
+          "
+        >
+          @if (tableTab() === 'territories') {
             <table>
-              <caption>
+              <caption class="visually-hidden">
                 Territórios e localidades no recorte atual
               </caption>
               <thead>
                 <tr>
-                  <th scope="col">Território</th>
+                  <th scope="col" [attr.aria-sort]="sortState('title')">
+                    <button type="button" class="sort-btn" (click)="sortTable('title')">
+                      Território
+                    </button>
+                  </th>
                   <th scope="col">Camada</th>
-                  <th scope="col">Regimes</th>
-                  <th scope="col">Registros</th>
-                  <th scope="col">Conexões</th>
-                  <th scope="col">Ação</th>
+                  <th scope="col" class="num" [attr.aria-sort]="sortState('regimes')">
+                    <button type="button" class="sort-btn" (click)="sortTable('regimes')">
+                      Regimes
+                    </button>
+                  </th>
+                  <th scope="col" class="num" [attr.aria-sort]="sortState('records')">
+                    <button type="button" class="sort-btn" (click)="sortTable('records')">
+                      Registros
+                    </button>
+                  </th>
+                  <th scope="col" class="num" [attr.aria-sort]="sortState('connections')">
+                    <button type="button" class="sort-btn" (click)="sortTable('connections')">
+                      Conexões
+                    </button>
+                  </th>
+                  <th scope="col"><span class="visually-hidden">Ação</span></th>
                 </tr>
               </thead>
               <tbody>
-                @for (item of filtered().activeTerritories; track item.territory.id) {
+                @for (item of tableTerritories(); track item.territory.id) {
                   <tr>
-                    <td>
+                    <th scope="row">
                       <a [routerLink]="['/verbete', item.territory.slug]">
                         {{ item.territory.title }}
                       </a>
-                    </td>
-                    <td>{{ layerLabel(item.territory.layer) }}</td>
-                    <td>{{ item.activeRegimes.length }}</td>
-                    <td>{{ item.activeRecords.length }}</td>
-                    <td>{{ item.connectionCount }}</td>
+                    </th>
                     <td>
+                      <span class="layer-tag" [attr.data-layer]="item.territory.layer">
+                        {{ layerLabel(item.territory.layer) }}
+                      </span>
+                    </td>
+                    <td class="num">{{ item.activeRegimes.length }}</td>
+                    <td class="num">{{ item.activeRecords.length }}</td>
+                    <td class="num">{{ item.connectionCount }}</td>
+                    <td class="act">
                       <button
                         type="button"
                         class="table-action-btn"
                         (click)="focusTerritoryFromTable(item.territory.id)"
                       >
-                        Focar no globo
+                        Ver no globo
                       </button>
+                    </td>
+                  </tr>
+                } @empty {
+                  <tr>
+                    <td colspan="6" class="list-empty">
+                      Nenhum território com esse nome no recorte.
                     </td>
                   </tr>
                 }
               </tbody>
             </table>
-          </div>
-
-          @if (filtered().activeConnections.length > 0) {
-            <div class="map-table-scroll">
-              <table>
-                <caption>
-                  Conexões entre territórios no recorte atual
-                </caption>
-                <thead>
+          } @else {
+            <table>
+              <caption class="visually-hidden">
+                Conexões entre territórios no recorte atual
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Origem</th>
+                  <th scope="col">Relação</th>
+                  <th scope="col">Destino</th>
+                  <th scope="col">Período</th>
+                  <th scope="col"><span class="visually-hidden">Ação</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (conn of tableConnections(); track conn.id) {
                   <tr>
-                    <th scope="col">Origem</th>
-                    <th scope="col">Família</th>
-                    <th scope="col">Destino</th>
-                    <th scope="col">Período</th>
-                    <th scope="col">Ação</th>
+                    <th scope="row">{{ conn.fromTitle }}</th>
+                    <td>
+                      <span class="family-tag">
+                        <span
+                          class="family-tag__swatch"
+                          aria-hidden="true"
+                          [style.background]="familyColor(conn.family)"
+                        ></span>
+                        {{ familyLabel(conn.family) }}
+                      </span>
+                    </td>
+                    <td>{{ conn.toTitle }}</td>
+                    <td class="period">{{ formatExtent(conn.temporalExtent) }}</td>
+                    <td class="act">
+                      <button
+                        type="button"
+                        class="table-action-btn"
+                        (click)="inspectConnectionFromTable(conn.id)"
+                      >
+                        Ver no globo
+                      </button>
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  @for (conn of filtered().activeConnections; track conn.id) {
-                    <tr>
-                      <td>{{ conn.fromTitle }}</td>
-                      <td>{{ familyLabel(conn.family) }}</td>
-                      <td>{{ conn.toTitle }}</td>
-                      <td>{{ formatExtent(conn.temporalExtent) }}</td>
-                      <td>
-                        <button
-                          type="button"
-                          class="table-action-btn"
-                          (click)="inspectConnectionFromTable(conn.id)"
-                        >
-                          Inspecionar
-                        </button>
-                      </td>
-                    </tr>
-                  }
-                </tbody>
-              </table>
-            </div>
+                } @empty {
+                  <tr>
+                    <td colspan="5" class="list-empty">
+                      Nenhuma conexão com esse nome no recorte.
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
           }
         </div>
       </section>

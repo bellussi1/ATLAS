@@ -1,0 +1,25 @@
+<button
+  type="button"
+  class="switcher__toggle"
+  [attr.popovertarget]="menuId()"
+  aria-label="Ir para outra seção"
+>
+  <span class="switcher__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+  <span class="switcher__label">Seções</span>
+</button>
+<nav class="switcher__menu" popover [id]="menuId()" aria-label="Seções do acervo">
+  <ul>
+    @for (section of sections; track section.path) {
+      <li>
+        <a
+          class="switcher__link"
+          [routerLink]="section.path"
+          [attr.aria-current]="section.path === current() ? 'page' : null"
+        >
+          <span class="switcher__glyph" [attr.data-glyph]="section.glyph" aria-hidden="true"></span>
+          {{ section.label }}
+        </a>
+      </li>
+    }
+  </ul>
+</nav>

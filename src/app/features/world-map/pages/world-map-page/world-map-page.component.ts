@@ -38,6 +38,7 @@ import {
   type WorldMapTerritory,
 } from '@core/content/queries/world-map';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { AtlasSectionSwitcherComponent } from '@shared/ui/section-switcher/section-switcher.component';
 import { MapStudyDeskComponent } from '@world-map/components/map-study-desk/map-study-desk.component';
 import globeMapData from '@world-map/data/natural-earth-globe.json';
 import {
@@ -141,7 +142,7 @@ function parseSvgDash(dash: string): readonly number[] {
 
 @Component({
   selector: 'app-world-map-page',
-  imports: [RouterLink, MapStudyDeskComponent],
+  imports: [AtlasSectionSwitcherComponent, RouterLink, MapStudyDeskComponent],
   templateUrl: './world-map-page.component.html',
   styleUrl: './world-map-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -255,6 +256,54 @@ export class WorldMapPageComponent {
   readonly detailsCollapsed = signal(false);
   readonly shortcutsOpen = signal(false);
   readonly tableOpen = signal(false);
+  readonly tableTab = signal<'territories' | 'connections'>('territories');
+  readonly tableQuery = signal('');
+  readonly tableSort = signal<{
+    key: 'title' | 'regimes' | 'records' | 'connections';
+    desc: boolean;
+  }>({
+    key: 'records',
+    desc: true,
+  });
+
+  readonly tableTerritories = computed(() => {
+    const query = this.tableQuery().trim().toLocaleLowerCase('pt-BR');
+    const { key, desc } = this.tableSort();
+    const value = (item: WorldMapFilteredTerritory): number | string =>
+      key === 'title'
+        ? item.territory.title
+        : key === 'regimes'
+          ? item.activeRegimes.length
+          : key === 'records'
+            ? item.activeRecords.length
+            : item.connectionCount;
+    return this.filtered()
+      .activeTerritories.filter(
+        (item) => !query || item.territory.title.toLocaleLowerCase('pt-BR').includes(query),
+      )
+      .slice()
+      .sort((a, b) => {
+        const av = value(a);
+        const bv = value(b);
+        const order =
+          typeof av === 'string'
+            ? av.localeCompare(String(bv), 'pt-BR')
+            : (av as number) - (bv as number);
+        return desc ? -order : order;
+      });
+  });
+
+  readonly tableConnections = computed(() => {
+    const query = this.tableQuery().trim().toLocaleLowerCase('pt-BR');
+    return this.filtered().activeConnections.filter(
+      (conn) =>
+        !query ||
+        `${conn.fromTitle} ${conn.toTitle} ${conn.label}`
+          .toLocaleLowerCase('pt-BR')
+          .includes(query),
+    );
+  });
+
   readonly timelinePlaying = signal(false);
 
   readonly centerLon = signal(-20);
@@ -1148,6 +1197,23 @@ export class WorldMapPageComponent {
       event.stopPropagation();
       this.selectTerritory(territoryId);
     }
+  }
+
+  sortTable(key: 'title' | 'regimes' | 'records' | 'connections'): void {
+    this.tableSort.update((current) =>
+      current.key === key ? { key, desc: !current.desc } : { key, desc: key !== 'title' },
+    );
+  }
+
+  sortState(
+    key: 'title' | 'regimes' | 'records' | 'connections',
+  ): 'ascending' | 'descending' | null {
+    const current = this.tableSort();
+    return current.key === key ? (current.desc ? 'descending' : 'ascending') : null;
+  }
+
+  familyColor(familyId: RelationFamilyId): string {
+    return `var(${this.familyById.get(familyId)?.color ?? '--color-border-strong'})`;
   }
 
   openAccessibleTable(): void {
