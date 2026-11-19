@@ -8,10 +8,10 @@ Atualizado em 18/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 ## Estado atual
 
 - **Branch / deploy:** `develop`, origem única `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload em push para `master`).
-- **Conteúdo publicado no R2:** **24 coleções**, release **`564a8fcd713c7d6510a5b1f1e71a1c51635624add25e33edb5928d4b32c9865d`** (`1.320` entidades, `2.842` relações, `7` leituras, `9` itinerários públicos, `32.101` respostas brutas em `raw/`). Ponteiro em [`content/content-pointer.json`](../content/content-pointer.json).
-- **Verificação final (18/11):** `npm run lint`, `npm run typecheck`, `npm test` (`65/65` arquivos, `408/408` testes), `test:content` (`219/219`), `test:ingestion` (`71/71`), `itinerary:check` (`10` arquivos), `npm run build` (`1.385` rotas prerenderizadas, `1.357` URLs no sitemap, zero avisos de orçamento), `check:links` (`1.387` páginas estáticas) e Playwright E2E completos (`209/209`).
+- **Conteúdo publicado no R2:** **24 coleções**, release **`b10ec6ffeb5c701065cf9dc331567ad4ea4b293924485d10f0d5847867b8fa0c`** (`1.320` entidades, `3.052` relações, `2.540` ligações visíveis no grafo). Ponteiro em [`content/content-pointer.json`](../content/content-pointer.json).
+- **Verificação final (19/11):** `lint`, `typecheck`, `npm test` (`417/417`), `test:content` (`220/220`), `test:ingestion` (`71/71`), `build` (`1.357` URLs no sitemap), `check:links` (`1.387` páginas) e Playwright E2E (`209/209`). Responsividade: 15 rotas sem estouro em 375/768/1366 px.
 
-## Mudanças recentes (19/11, `develop`, não publicado)
+## Mudanças recentes (19/11, publicado)
 
 - **Mapa (`/mapa`):** mesa de estudo extraída para `components/map-study-desk` (imagem licenciada, registros agrupados por tipo, recorte temporal em destaque, referência geográfica recolhida), destaques do recorte, vizinhos realçados no globo, régua de séculos e barra de marco com anterior/próximo; legenda de conexões sem nota no hover (igual ao grafo); estouro horizontal no celular corrigido.
 - **Grafo e mapa — relações:** "Relação documentada" e "Conexão" removidas. `core/content/queries/relation-category.ts` classifica por tipo, verbo do rótulo, P737 e decisões por relação em `core/content/editorial/relation-categories.ts` (modelo local `gemma2:9b` via `scripts/content/classify-relations.mjs`, travado por `scripts/content/relation-guard.mjs`). Novas famílias **Filiação** e **Lugar**; links de navegação e coocorrências sem peso são omitidos da rede e do mapa (registro preservado). Detalhes em [`design/GRAFO-TIPOS.md`](design/GRAFO-TIPOS.md).
@@ -20,9 +20,10 @@ Atualizado em 18/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 - **Interface (unslop-ui):** eyebrows redundantes e slogans removidos, travessões tirados de rótulos visíveis, pesos 800 → 700. Mantidos por precedência: letras A–E, assinatura 900 do display, `·` e títulos de documento "X — ATLAS".
 - **Cards:** em `/leituras` e `/itinerarios` o card inteiro é clicável, com hover/foco que desloca o card e realça a ação. Pôster da home sorteia composição a cada visita.
 - **Grafo — pares essenciais:** `expand-relations.mjs --pairs` ligou 10 pares curados com fonte (rótulos conferidos à mão); 19 pares e 28 temas sem verbete listados em `design/GRAFO-TIPOS.md`.
+- **Mobile:** mapa e grafo com cabeçalho de uma linha e ferramentas em faixa deslizável; home com portas em pares, itinerários deslizantes e tipos de ficha em grade.
 - **Responsividade:** 15 rotas em 375/768/1366 px sem estouro horizontal (corrigido o filtro de temas em `/leitura/trabalhismo` a 768 px).
 - **Home:** leituras compactadas (formato em quatro marcas + lista), seção **B — O mundo no tempo** com entradas por recorte (`/mapa?anoDe=&anoAte=`), porta do mapa no pôster, painel de números e pílulas duplicadas removidos, gestos de uso antes do método. Recortes do mapa em `core/content/queries/world-map-eras.ts`.
-- **Expansão de relações:** `scripts/content/expand-relations.mjs` gera candidatas de menções literais nas afirmações com fonte, prioriza Brasil > Europa > EUA > Ásia > mundo > África, classifica com modelo local e grava relações `pending` com `[conferência de IA]`. Cache de respostas em `generated/relation-expansion-cache.json`. Primeira rodada: **+199 relações** (3.041 no total; 2.529 visíveis em 7 famílias, 512 omitidas). Conteúdo novo **ainda não publicado no R2**: rodar `npm run content:publish` com autorização.
+- **Expansão de relações:** `scripts/content/expand-relations.mjs` gera candidatas de menções literais nas afirmações com fonte, prioriza Brasil > Europa > EUA > Ásia > mundo > África, classifica com modelo local e grava relações `pending` com `[conferência de IA]`. Cache de respostas em `generated/relation-expansion-cache.json`. Primeira rodada: **+199 relações** (3.041 no total; 2.529 visíveis em 7 famílias, 512 omitidas). Publicado no R2 em 19/11.
 
 ## Mudanças anteriores (18/11, `develop`)
 
@@ -40,7 +41,7 @@ Atualizado em 18/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 
 ## Próxima ação
 
-1. Publicar o conteúdo ampliado (`npm run content:publish`, ação externa — pedir autorização), abrir PR `develop` → `master` e validar o deploy.
+1. Gerar os carrosséis dos posts novos (`docs/social/linkedin/posts/10-mapa` e `11-lacunas`, pasta local ignorada pelo git) com capturas da produção.
 2. Revisar por amostra as decisões do modelo local em `relation-categories.ts` e as relações `rel-exp-*` (direção e categoria têm erros pontuais).
 3. Rodar nova expansão com `--limit` maior; candidatas brasileiras se esgotam rápido (107 de 3.799), então ampliar verbetes brasileiros antes.
 
