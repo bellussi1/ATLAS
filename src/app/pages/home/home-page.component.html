@@ -13,6 +13,10 @@
         class="poster-door poster-door--acervo atlas-press"
         routerLink="/acervo"
         [queryParams]="{ camada: 'registros' }"
+        (pointerenter)="doorMode.set('acervo')"
+        (pointerleave)="doorMode.set(null)"
+        (focus)="doorMode.set('acervo')"
+        (blur)="doorMode.set(null)"
       >
         <span class="poster-door__glyph poster-door__glyph--square" aria-hidden="true"></span>
         <span>
@@ -21,7 +25,14 @@
         </span>
         <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
       </a>
-      <a class="poster-door poster-door--grafo atlas-press" routerLink="/grafos">
+      <a
+        class="poster-door poster-door--grafo atlas-press"
+        routerLink="/grafos"
+        (pointerenter)="doorMode.set('grafo')"
+        (pointerleave)="doorMode.set(null)"
+        (focus)="doorMode.set('grafo')"
+        (blur)="doorMode.set(null)"
+      >
         <span class="poster-door__glyph poster-door__glyph--circle" aria-hidden="true"></span>
         <span>
           <strong>Abrir o grafo</strong>
@@ -29,7 +40,14 @@
         </span>
         <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
       </a>
-      <a class="poster-door poster-door--mapa atlas-press" routerLink="/mapa">
+      <a
+        class="poster-door poster-door--mapa atlas-press"
+        routerLink="/mapa"
+        (pointerenter)="doorMode.set('mapa')"
+        (pointerleave)="doorMode.set(null)"
+        (focus)="doorMode.set('mapa')"
+        (blur)="doorMode.set(null)"
+      >
         <span class="poster-door__glyph poster-door__glyph--ring" aria-hidden="true"></span>
         <span>
           <strong>Ver o mapa-múndi</strong>
@@ -37,7 +55,14 @@
         </span>
         <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
       </a>
-      <a class="poster-door atlas-press" routerLink="/itinerarios">
+      <a
+        class="poster-door atlas-press"
+        routerLink="/itinerarios"
+        (pointerenter)="doorMode.set('itinerarios')"
+        (pointerleave)="doorMode.set(null)"
+        (focus)="doorMode.set('itinerarios')"
+        (blur)="doorMode.set(null)"
+      >
         <span class="poster-door__glyph poster-door__glyph--half" aria-hidden="true"></span>
         <span>
           <strong>Seguir itinerários</strong>
@@ -47,18 +72,12 @@
       </a>
     </div>
   </div>
-  <div class="poster-art">
-    <app-geometric-mosaic
-      [columns]="4"
-      [rows]="5"
-      palette="atlas"
-      [seed]="seed()"
-      [interactive]="true"
-    />
-    <button class="recompose atlas-press" type="button" (click)="recompose()">
-      <span class="recompose-dot" aria-hidden="true"></span>Outra composição
-    </button>
-  </div>
+  <app-poster-loom
+    class="poster-art"
+    [seed]="seed()"
+    [mode]="doorMode()"
+    (recompose)="recompose()"
+  />
 </section>
 
 <section class="console" aria-label="Busca e ferramentas" data-tone-section>

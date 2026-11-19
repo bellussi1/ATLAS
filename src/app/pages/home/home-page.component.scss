@@ -37,6 +37,86 @@ h1 .line {
 h1 .line + .line {
   padding-left: 0.4em;
 }
+
+/* Hero entrance: title lines rise out of a mask, then the copy and doors follow once. */
+@media (prefers-reduced-motion: no-preference) {
+  h1 .line {
+    clip-path: inset(0 0 0 0);
+    animation: poster-rise 720ms var(--ease-out) both;
+  }
+  h1 .line + .line {
+    animation-delay: 110ms;
+  }
+  h1 em {
+    display: inline-block;
+    margin-bottom: -0.14em;
+    padding-bottom: 0.14em;
+    background: linear-gradient(var(--color-accent), var(--color-accent)) left 100% / 0 0.08em
+      no-repeat;
+    animation: poster-underline 520ms var(--ease-out) 640ms forwards;
+  }
+  .poster-lead {
+    animation: poster-fade 560ms var(--ease-out) 260ms both;
+  }
+  .poster-door {
+    animation: poster-fade 480ms var(--ease-out) calc(380ms + var(--door, 0) * 70ms) both;
+  }
+  .poster-art {
+    animation: poster-stage 760ms var(--ease-out) 160ms both;
+  }
+  @supports (animation-timeline: view()) {
+    .poster-art {
+      animation:
+        poster-stage 760ms var(--ease-out) 160ms both,
+        poster-drift linear both;
+      animation-timeline: auto, view();
+      animation-range:
+        normal,
+        exit 0% exit 100%;
+    }
+    .poster-copy h1 {
+      animation: poster-title-drift linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+@keyframes poster-rise {
+  from {
+    clip-path: inset(0 0 100% 0);
+    translate: 0 0.35em;
+  }
+}
+@keyframes poster-underline {
+  to {
+    background-size: 100% 0.08em;
+  }
+}
+@keyframes poster-fade {
+  from {
+    opacity: 0;
+    translate: 0 14px;
+  }
+}
+@keyframes poster-stage {
+  from {
+    opacity: 0;
+    translate: 24px 18px;
+    rotate: 2deg;
+  }
+}
+@keyframes poster-drift {
+  to {
+    translate: 0 -12%;
+    rotate: -3deg;
+  }
+}
+@keyframes poster-title-drift {
+  to {
+    translate: -4% 0;
+    opacity: 0.35;
+  }
+}
 .poster-lead {
   max-width: 36ch;
   margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
@@ -45,10 +125,19 @@ h1 .line + .line {
   font: 400 clamp(1.15rem, 1.8vw, 1.45rem) / 1.5 var(--font-serif);
 }
 .poster-actions {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
   gap: 0.75rem 1rem;
   margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  > :nth-child(2) {
+    --door: 1;
+  }
+  > :nth-child(3) {
+    --door: 2;
+  }
+  > :nth-child(4) {
+    --door: 3;
+  }
 }
 .poster-door {
   display: inline-flex;
@@ -107,53 +196,6 @@ h1 .line + .line {
 .poster-door:hover .poster-door__glyph--half {
   background: currentcolor;
 }
-.poster-art {
-  position: relative;
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
-  min-height: 22em;
-}
-.poster-art app-geometric-mosaic {
-  aspect-ratio: 4 / 5;
-  width: 100%;
-  max-height: 34rem;
-  justify-self: end;
-  border: 3px solid var(--color-ink);
-  box-shadow: 10px 10px 0 var(--color-ink);
-}
-.recompose {
-  display: inline-flex;
-  align-items: center;
-  justify-self: end;
-  gap: 0.5rem;
-  min-height: var(--control-min-size);
-  margin-top: 0.5rem;
-  padding: 0.5rem 0;
-  border: 0;
-  background: none;
-  color: var(--color-ink);
-  font: var(--text-small) var(--font-mono);
-  cursor: pointer;
-}
-.recompose {
-  transition: translate var(--motion-standard) var(--ease-out);
-}
-.recompose:hover {
-  translate: -4px 0;
-}
-.recompose:active .recompose-dot {
-  scale: 1.6;
-}
-.recompose-dot {
-  transition:
-    scale var(--motion-fast) var(--ease-out),
-    rotate var(--motion-slow) var(--ease-out);
-  width: 0.9rem;
-  height: 0.9rem;
-  border-radius: 50%;
-  background: var(--color-accent);
-}
-
 .console {
   display: grid;
   grid-template-columns: minmax(0, 48rem);
@@ -906,14 +948,11 @@ form {
   .poster {
     grid-template-columns: 1fr;
   }
-  .poster-art {
-    min-height: 0;
-  }
-  .poster-art app-geometric-mosaic {
-    aspect-ratio: 5 / 2;
-  }
 }
 @media (max-width: 30rem) {
+  .poster-actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .search-button {
     min-height: var(--control-min-size);
   }
@@ -1041,9 +1080,83 @@ form {
   .method-card,
   .method-shape,
   .search-button,
-  .recompose,
-  .recompose-dot,
   .console ::ng-deep .atlas-field input {
     transition: none;
+  }
+}
+
+/*
+ * Scroll-linked motion: each band answers the scroll with its own gesture, tied to the
+ * element's position (never a loop). Browsers without view timelines keep the static page.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .atlas-band-number {
+      animation: band-mark-in linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 35%;
+    }
+    .reading-line,
+    .era-stop {
+      animation: line-slide-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 90%;
+    }
+    .era-rail::before {
+      transform-origin: top;
+      animation: rail-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 55%;
+    }
+    .map-band__globe svg {
+      animation: globe-turn linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+    .door-glyph {
+      animation: glyph-turn linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 60%;
+    }
+    .anatomy-mark {
+      animation: mark-pop linear both;
+      animation-timeline: view();
+      animation-range: entry 20% entry 100%;
+    }
+  }
+}
+@keyframes band-mark-in {
+  from {
+    transform: rotate(-120deg) scale(0.35);
+    opacity: 0;
+  }
+}
+@keyframes line-slide-in {
+  from {
+    transform: translateX(2.5rem);
+    opacity: 0;
+  }
+}
+@keyframes rail-draw {
+  from {
+    transform: scaleY(0);
+  }
+}
+@keyframes globe-turn {
+  from {
+    transform: rotate(-18deg) scale(0.92);
+  }
+  to {
+    transform: rotate(12deg) scale(1);
+  }
+}
+@keyframes glyph-turn {
+  from {
+    transform: rotate(-90deg) scale(0.6);
+  }
+}
+@keyframes mark-pop {
+  from {
+    transform: scale(0.4) rotate(-45deg);
   }
 }

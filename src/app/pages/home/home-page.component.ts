@@ -23,6 +23,7 @@ import { AtlasTextFieldComponent } from '@shared/ui/text-field/text-field.compon
 
 import homeStats from '../../../../generated/home-stats.json';
 import { HomeHowtoComponent } from './howto/howto.component';
+import { PosterLoomComponent, type PosterLoomMode } from './poster-loom/poster-loom.component';
 
 interface HomeReading {
   slug: string;
@@ -106,6 +107,7 @@ const compiledHome = homeStats as HomeData;
     AtlasGeometricMosaicComponent,
     AtlasRevealDirective,
     HomeHowtoComponent,
+    PosterLoomComponent,
     RouterLink,
   ],
   templateUrl: './home-page.component.html',
@@ -128,6 +130,8 @@ export class HomePage {
   );
   readonly query = signal('');
   readonly seed = signal(7);
+  /** Door under the pointer or focus; the poster previews that destination. */
+  readonly doorMode = signal<PosterLoomMode | null>(null);
   /** Catalogues offered on the home page; the search page lists the rest. */
   readonly catalogues = explorerCatalogues.filter((catalogue) =>
     ['pessoas', 'obras', 'paises', 'acontecimentos', 'conceitos', 'fontes'].includes(
