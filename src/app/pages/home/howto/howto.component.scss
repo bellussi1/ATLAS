@@ -6,45 +6,59 @@
   padding: clamp(3rem, 7vw, 6rem) var(--home-inline);
 }
 
-.guide-doors {
+.howto-purpose {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 1.25rem;
-  margin: clamp(2rem, 5vw, 4rem) 0 0;
-  padding: 0;
-  list-style: none;
-  a {
-    display: grid;
-    gap: 0.5rem;
-    block-size: 100%;
-    padding: 1.25rem;
-    border: 3px solid var(--color-ink);
-    border-radius: var(--radius-tight);
-    background: var(--color-surface-raised);
-    color: var(--color-ink);
-    box-shadow: 5px 5px 0 var(--color-ink);
-    text-decoration: none;
-    transition:
-      transform var(--motion-standard) var(--ease-out),
-      box-shadow var(--motion-standard) var(--ease-out);
-    &:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 7px 7px 0 var(--color-ink);
-    }
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+}
+.howto-purpose__item {
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-tight);
+  background: var(--color-surface-raised);
+  color: var(--color-ink);
+  box-shadow: 4px 4px 0 var(--color-ink);
+}
+.howto-purpose dt {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font: 700 1.2rem / 1.1 var(--font-sans);
+}
+.howto-purpose dd {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font: var(--text-body) / 1.5 var(--font-serif);
+}
+.howto-purpose__mark {
+  flex: none;
+  inline-size: 0.9rem;
+  block-size: 0.9rem;
+  background: var(--color-accent);
+  &[data-shape='quarter'] {
+    border-start-end-radius: 100%;
   }
-  strong {
-    font: 800 1.35rem/1.1 var(--font-sans);
+  &[data-shape='circle'] {
+    border-radius: 50%;
+    background: var(--color-indigo);
   }
-  span:last-child {
-    color: var(--color-ink-muted);
-    font: var(--text-body)/1.5 var(--font-serif);
+  &[data-shape='square'] {
+    background: transparent;
+    border: 2.5px solid var(--color-ink);
   }
 }
-.guide-verb {
-  color: var(--color-accent-hover);
-  font: 700 var(--text-small)/1 var(--font-sans);
-  font-stretch: var(--stretch-label);
-  letter-spacing: 0.02em;
+.howto-subtitle {
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  font: 700 var(--text-lead) / 1.2 var(--font-sans);
+}
+@media (max-width: 48rem) {
+  .howto-purpose {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .howto-table {

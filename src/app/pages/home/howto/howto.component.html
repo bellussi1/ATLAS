@@ -11,9 +11,29 @@
 >
   <header class="atlas-band-heading" appReveal data-reveal="wipe">
     <p class="atlas-band-number" aria-hidden="true">?</p>
-    <h2 id="howto-title">Quatro gestos, <em>uma descoberta.</em></h2>
-    <p>Quatro movimentos para procurar, abrir fichas, seguir ligações e conferir fontes.</p>
+    <h2 id="howto-title">Entender o mundo <em>pelas ligações.</em></h2>
+    <p>
+      História, política, economia e sociedade, do Brasil ao mundo, num acervo público e gratuito.
+      Cada pessoa, obra, conceito e acontecimento tem ficha própria, ligações com o que veio antes e
+      depois, e a fonte ao lado de cada afirmação.
+    </p>
   </header>
+  <dl class="howto-purpose" appReveal>
+    @for (item of purpose; track item.term; let index = $index) {
+      <div class="howto-purpose__item" data-stagger [style.--stagger]="index">
+        <dt>
+          <span
+            class="howto-purpose__mark"
+            [attr.data-shape]="item.shape"
+            aria-hidden="true"
+          ></span>
+          {{ item.term }}
+        </dt>
+        <dd>{{ item.text }}</dd>
+      </div>
+    }
+  </dl>
+  <h3 class="howto-subtitle" appReveal>Quatro gestos para começar</h3>
   <div class="howto-table" appReveal>
     <fieldset class="howto-steps">
       <legend class="sr-only">Escolha um gesto</legend>
@@ -146,36 +166,4 @@
     </article>
   </div>
   <p class="sr-only" role="status">Gesto selecionado: {{ step().verb }}.</p>
-
-  <!-- <ul class="guide-doors" id="como-navegar" appReveal>
-    <li data-stagger style="--stagger: 0">
-      <a routerLink="/" fragment="leituras">
-        <span class="guide-verb">Ler</span>
-        <strong>Leituras contínuas</strong>
-        <span
-          >Um texto longo por tradição, em 12 capítulos, com fontes ao lado de cada afirmação.</span
-        >
-      </a>
-    </li>
-    <li data-stagger style="--stagger: 1">
-      <a routerLink="/acervo">
-        <span class="guide-verb">Consultar</span>
-        <strong>Acervo de verbetes</strong>
-        <span>
-          Fichas curtas sobre pessoas, obras, conceitos e acontecimentos, cada uma com endereço
-          próprio.
-        </span>
-      </a>
-    </li>
-    <li data-stagger style="--stagger: 2">
-      <a routerLink="/grafos">
-        <span class="guide-verb">Conectar</span>
-        <strong>Rede em tela cheia</strong>
-        <span
-          >O acervo inteiro como mapa: busque um nome, filtre por tipo e isole a vizinhança em 1 ou
-          2 saltos.</span
-        >
-      </a>
-    </li>
-  </ul> -->
 </section>
