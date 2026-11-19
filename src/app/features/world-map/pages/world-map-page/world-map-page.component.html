@@ -125,6 +125,7 @@
                 type="button"
                 class="legend-item"
                 [attr.aria-pressed]="familiesOn().has(family.id)"
+                [attr.aria-describedby]="'map-family-note-' + family.id"
                 (focus)="hoveredFamilyId.set(family.id)"
                 (blur)="hoveredFamilyId.set(null)"
                 (click)="toggleFamily(family.id)"
@@ -149,7 +150,7 @@
                 <span class="legend__name">{{ family.label }}</span>
                 <span class="legend__count">{{ filtered().familyCounts[family.id] }}</span>
               </button>
-              <p class="legend__note">{{ family.note }}</p>
+              <p class="legend__note" [id]="'map-family-note-' + family.id">{{ family.note }}</p>
             </li>
           }
         </ul>

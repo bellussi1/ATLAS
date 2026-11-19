@@ -383,16 +383,6 @@ summary::-webkit-details-marker {
     background: var(--paper-shade);
   }
 }
-.legend-row.is-hovered .legend__note,
-.legend-row:focus-within .legend__note {
-  position: static;
-  width: auto;
-  height: auto;
-  clip-path: none;
-  margin: 2px 8px 6px;
-  font-size: var(--text-caption);
-  color: var(--ink-muted);
-}
 .legend__name {
   flex: 1;
   min-width: 0;
