@@ -1254,6 +1254,16 @@ export class WorldMapPageComponent {
       this.toggleLegend();
       return;
     }
+    if ((event.key === '[' || event.key === ']') && !typing && !this.tableOpen()) {
+      event.preventDefault();
+      this.stepHotpoint(event.key === ']' ? 1 : -1);
+      return;
+    }
+    if ((event.key === 'p' || event.key === 'P') && !typing && !this.tableOpen()) {
+      event.preventDefault();
+      this.toggleTimelinePlay();
+      return;
+    }
     if (event.key === 'Escape') {
       if (this.shortcutsOpen()) {
         this.shortcutsOpen.set(false);

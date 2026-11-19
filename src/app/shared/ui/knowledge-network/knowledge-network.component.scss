@@ -839,6 +839,13 @@ summary::-webkit-details-marker {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
+.tip__family {
+  display: inline-block;
+  width: 14px;
+  height: 4px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
 .tip__title {
   font: 700 var(--text-body)/1.25 var(--serif);
 }

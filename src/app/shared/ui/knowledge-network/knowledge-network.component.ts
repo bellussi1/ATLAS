@@ -39,6 +39,7 @@ import {
   nodeScaleFor,
   positionClaims,
   relationFamilies,
+  relationFamilyDefinition,
   type RelationFamilyId,
   relationNatureDefinition,
   type RelationWeight,
@@ -1861,6 +1862,7 @@ export class KnowledgeNetworkComponent {
   private describeEdge(edge: NetworkEdge, source: NetworkNode, target: NetworkNode) {
     return {
       sentence: `${source.title} ${edge.phrase} ${target.title}`,
+      family: relationFamilyDefinition(edge.family),
       nature: relationNatureDefinition(edge.nature),
       weight: relationWeightDefinition(edge.weight),
       reason: this.reasonOf(edge),
