@@ -518,6 +518,14 @@ test('builds and reverses a path from selected entries and restores it from the 
   await expect(controls.locator('.path-steps .path-step').first()).toContainText('Karl Marx');
   await expect(controls.getByRole('button', { name: 'Limpar caminho' })).toBeVisible();
   await expect(controls.getByRole('button', { name: 'Traçar caminho' })).toHaveCount(0);
+  // Opening the shared link again restores the whole route, not only the selected entry.
+  const shared = new URL(page.url());
+  await page.goto(`${shared.pathname}${shared.search}`);
+  await expect(page).toHaveURL(/de=person-karl-marx/);
+  await expect(page).toHaveURL(/para=person-friedrich-engels/);
+  await expect(page.locator('#graph-path-summary')).toContainText('Karl Marx');
+  await expect(page.locator('#graph-path-summary')).toContainText('Friedrich Engels');
+  await expect(page.locator('.edges line.is-active')).not.toHaveCount(0);
 });
 
 test('the path mode picks two nodes and clears the route', async ({ page }) => {

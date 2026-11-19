@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { provideRouter, Router } from '@angular/router';
+import { RouterTestingHarness } from '@angular/router/testing';
 import { entityMedia } from '@core/content/media/asset-license';
 import { labelRelevance } from '@core/content/queries/knowledge-network';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
@@ -12,7 +13,7 @@ describe('KnowledgeNetworkComponent', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       providers: [
-        provideRouter([]),
+        provideRouter([{ path: 'grafos', component: KnowledgeNetworkComponent }]),
         {
           provide: ContentRepository,
           useValue: {
@@ -121,6 +122,52 @@ describe('KnowledgeNetworkComponent', () => {
     expect(component.selectedId()).toBe(other.id);
     expect(component.pathFrom()).toBeNull();
     expect(component.pathTo()).toBeNull();
+  });
+
+  it('restores a shared path from de/para and keeps it in the address', async () => {
+    const graph = {
+      ...methodologyKnowledgeGraph,
+      atlases: methodologyKnowledgeGraph.atlases.filter((atlas) => atlas.id === 'atlas-liberalism'),
+    };
+    const positions = Object.fromEntries(
+      graph.atlases[0].entities.map((entity, index) => [entity.id, { x: index * 80, y: 100 }]),
+    );
+    TestBed.overrideProvider(ContentRepository, {
+      useValue: {
+        knowledgeGraph: graph,
+        layouts: { network: { width: 4000, height: 1000, positions, regions: [] } },
+        mediaUrl: (path: string) => path,
+        atlasForEntity: () => graph.atlases[0],
+      },
+    });
+    const atlas = graph.atlases[0];
+    const entityIds = new Set(atlas.entities.map((entity) => entity.id));
+    const relation = atlas.relations.find(
+      (item) =>
+        entityIds.has(item.fromEntityId) &&
+        entityIds.has(item.toEntityId) &&
+        item.fromEntityId !== item.toEntityId,
+    )!;
+    const url =
+      `/grafos?no=${encodeURIComponent(relation.toEntityId)}` +
+      `&de=${encodeURIComponent(relation.fromEntityId)}` +
+      `&para=${encodeURIComponent(relation.toEntityId)}`;
+    const harness = await RouterTestingHarness.create();
+    const component = await harness.navigateByUrl(url, KnowledgeNetworkComponent);
+
+    await vi.waitFor(() => expect(component.selectedId()).toBe(relation.toEntityId));
+    await vi.waitFor(() => expect(component.pathFrom()).toBe(relation.fromEntityId));
+    // Let the router settle any navigation the map might schedule while restoring the link.
+    await new Promise((resolve) => setTimeout(resolve, 20));
+    harness.detectChanges();
+    expect(component.pathTo()).toBe(relation.toEntityId);
+    expect(component.visible().path?.found).toBe(true);
+    expect(harness.routeNativeElement?.querySelector('#graph-path-summary')?.textContent).toContain(
+      'passo',
+    );
+    // Restoring the link must not rewrite it: the endpoints stay shareable.
+    expect(TestBed.inject(Router).url).toContain(`de=${relation.fromEntityId}`);
+    expect(TestBed.inject(Router).url).toContain(`para=${relation.toEntityId}`);
   });
 
   it('shows a loading state until the layout is ready, then draws nodes', async () => {
