@@ -118,8 +118,8 @@ const FAMILY_COLOR_FALLBACKS: Readonly<Record<RelationFamilyId, string>> = {
   participation: '#164f60',
   creation: '#24563b',
   continuity: '#363a5f',
-  documented: '#57544d',
-  connection: '#777268',
+  affiliation: '#363a5f',
+  location: '#777268',
 };
 
 const ALL_FAMILY_IDS = relationFamilies.map((family) => family.id);
@@ -222,8 +222,8 @@ export class WorldMapPageComponent {
     participation: parseSvgDash(this.familyById.get('participation')?.dash ?? ''),
     creation: parseSvgDash(this.familyById.get('creation')?.dash ?? ''),
     continuity: parseSvgDash(this.familyById.get('continuity')?.dash ?? ''),
-    documented: parseSvgDash(this.familyById.get('documented')?.dash ?? ''),
-    connection: parseSvgDash(this.familyById.get('connection')?.dash ?? ''),
+    affiliation: parseSvgDash(this.familyById.get('affiliation')?.dash ?? ''),
+    location: parseSvgDash(this.familyById.get('location')?.dash ?? ''),
   };
 
   readonly familyColorMap =
@@ -1223,8 +1223,8 @@ export class WorldMapPageComponent {
       participation: resolve('--color-info', FAMILY_COLOR_FALLBACKS.participation),
       creation: resolve('--color-success', FAMILY_COLOR_FALLBACKS.creation),
       continuity: resolve('--color-indigo', FAMILY_COLOR_FALLBACKS.continuity),
-      documented: resolve('--color-ink-muted', FAMILY_COLOR_FALLBACKS.documented),
-      connection: resolve('--color-border-strong', FAMILY_COLOR_FALLBACKS.connection),
+      affiliation: resolve('--color-indigo', FAMILY_COLOR_FALLBACKS.affiliation),
+      location: resolve('--color-border-strong', FAMILY_COLOR_FALLBACKS.location),
     });
   }
 

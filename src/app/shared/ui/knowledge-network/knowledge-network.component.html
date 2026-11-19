@@ -491,11 +491,7 @@
                     [attr.marker-end]="family.directed ? 'url(#arrow-' + family.id + ')' : null"
                     [style.stroke]="'var(' + family.color + ')'"
                     [style.stroke-opacity]="
-                      family.id === 'connection'
-                        ? batch.opacity * 0.55
-                        : family.id === 'documented'
-                          ? batch.opacity * 0.78
-                          : batch.opacity
+                      family.id === 'location' ? batch.opacity * 0.65 : batch.opacity
                     "
                   />
                 }

@@ -157,8 +157,8 @@ describe('KnowledgeNetworkComponent', () => {
       'Atuação',
       'Criação',
       'Continuidade',
-      'Relação documentada',
-      'Conexão',
+      'Filiação',
+      'Lugar',
     ])
       expect(legend).toContain(label);
   });

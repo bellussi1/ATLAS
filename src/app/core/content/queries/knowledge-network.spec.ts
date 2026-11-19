@@ -213,15 +213,15 @@ describe('knowledge network', () => {
       'Atuação',
       'Criação',
       'Continuidade',
-      'Relação documentada',
-      'Conexão',
+      'Filiação',
+      'Lugar',
     ]);
     const looks = relationFamilies.map((f) => `${f.color}|${f.dash}`);
     expect(new Set(looks).size).toBe(relationFamilies.length);
     const dashes = relationFamilies.map((f) => f.dash);
     expect(new Set(dashes).size).toBe(relationFamilies.length);
     expect(relationFamilies.find((f) => f.id === 'creation')?.dash).toBe('8 3 2 3');
-    expect(network.edges.find((edge) => edge.nature === 'navigation')?.family).toBe('connection');
+    expect(network.edges.some((edge) => edge.nature === 'navigation')).toBe(false);
   });
 
   it('filters by kind, collection and connection, dropping edges of hidden nodes', () => {
@@ -278,7 +278,7 @@ describe('knowledge network', () => {
       id: 'link',
       source: 'root',
       target: 'person',
-      family: 'connection',
+      family: 'affiliation',
       collection: 'atlas-a',
     } as unknown as NetworkEdge;
     const cut = filterNetwork(

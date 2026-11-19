@@ -10,8 +10,8 @@ import {
   networkKindOfEntity,
   relationFamilies,
   type RelationFamilyId,
-  relationFamilyOf,
 } from './knowledge-network';
+import { classifyRelation } from './relation-category';
 
 export type WorldMapLayerId = 'country' | 'polity' | 'locality';
 
@@ -511,10 +511,14 @@ export function buildWorldMapModel(
     const toEntity = entityById.get(relation.toEntityId);
     if (!fromEntity || !toEntity) continue;
 
-    const { family, reverse } = relationFamilyOf(relation.type);
-    const effectiveFromId = reverse ? relation.toEntityId : relation.fromEntityId;
-    const effectiveToId = reverse ? relation.fromEntityId : relation.toEntityId;
-    semanticRelations.push({ relation, family, fromId: effectiveFromId, toId: effectiveToId });
+    const category = classifyRelation(relation);
+    // Records stay anchored to their territory even when the edge itself is omitted.
+    const family: RelationFamilyId = category?.family ?? 'location';
+    if (category) {
+      const effectiveFromId = category.reverse ? relation.toEntityId : relation.fromEntityId;
+      const effectiveToId = category.reverse ? relation.fromEntityId : relation.toEntityId;
+      semanticRelations.push({ relation, family, fromId: effectiveFromId, toId: effectiveToId });
+    }
 
     const fromTerritoryId = territoryIdByEntityId.get(relation.fromEntityId);
     const toTerritoryId = territoryIdByEntityId.get(relation.toEntityId);
@@ -950,8 +954,8 @@ export function filterWorldMap(
     participation: 0,
     creation: 0,
     continuity: 0,
-    documented: 0,
-    connection: 0,
+    affiliation: 0,
+    location: 0,
   };
   const layerCounts: Record<WorldMapLayerId, number> = {
     country: 0,
