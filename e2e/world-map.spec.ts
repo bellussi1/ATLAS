@@ -5,7 +5,16 @@ test('renders static world map with zero external map tile requests and no overf
 }) => {
   const externalMapRequests: string[] = [];
   const consoleErrors: string[] = [];
+  const pageErrors: string[] = [];
 
+  await page.route(
+    (url) =>
+      url.hostname === 'cloudflareinsights.com' ||
+      url.hostname.endsWith('.cloudflareinsights.com') ||
+      url.hostname === 'gc.zgo.at' ||
+      url.hostname.endsWith('.gc.zgo.at'),
+    (route) => route.fulfill({ status: 204, body: '' }),
+  );
   page.on('request', (req) => {
     const url = req.url();
     if (/tile\.|openstreetmap|mapbox|arcgis|leaflet|carto|wikimedia\.org.*tile/i.test(url)) {
@@ -15,6 +24,7 @@ test('renders static world map with zero external map tile requests and no overf
   page.on('console', (msg) => {
     if (msg.type() === 'error') consoleErrors.push(msg.text());
   });
+  page.on('pageerror', (err) => pageErrors.push(err.message));
 
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -31,6 +41,7 @@ test('renders static world map with zero external map tile requests and no overf
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(externalMapRequests).toEqual([]);
   expect(consoleErrors).toEqual([]);
+  expect(pageErrors).toEqual([]);
 });
 
 test('shows 7 legend relation families with dash patterns, hover highlight, and era filter with undated disclosure', async ({

@@ -44,15 +44,22 @@ test('applySeo emits Open Graph/Twitter cards, excludes /index.csr and unlisted 
     ]);
 
     const sitemap = await readFile(join(dir, 'sitemap.xml'), 'utf8');
-    assert.ok(!sitemap.includes('index.csr'));
-    assert.ok(!sitemap.includes('/404'));
-    assert.ok(!sitemap.includes('/leitura/stalinismo'));
-    assert.ok(!sitemap.includes('pages.dev/marxismo/'));
-    assert.ok(!sitemap.includes('pages.dev/nazismo/'));
-    assert.ok(!sitemap.includes('pages.dev/stalinismo/'));
-    assert.ok(!sitemap.includes('pages.dev/trabalhismo/'));
-    assert.ok(!sitemap.includes('pages.dev/mapa-mundi/'));
-    assert.ok(sitemap.includes('https://atlas-bellussi.pages.dev/mapa/'));
+    const sitemapLocs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+    assert.deepEqual(sitemapLocs, result.pages);
+    const sitemapPaths = new Set(sitemapLocs.map((loc) => new URL(loc).pathname));
+    for (const excluded of [
+      '/index.csr',
+      '/404',
+      '/leitura/stalinismo/',
+      '/marxismo/',
+      '/nazismo/',
+      '/stalinismo/',
+      '/trabalhismo/',
+      '/mapa-mundi/',
+    ]) {
+      assert.ok(!sitemapPaths.has(excluded), `Sitemap não deve incluir ${excluded}`);
+    }
+    assert.ok(sitemapPaths.has('/mapa/'));
 
     const preview = await readFile(join(dir, 'leitura/stalinismo/index.html'), 'utf8');
     assert.match(preview, /<meta name="robots" content="noindex, follow">/);
