@@ -26,10 +26,20 @@ const allowedHosts = [
   'www2.camara.leg.br',
 ];
 
+/** True when the URL's host is `domain` or one of its subdomains. */
+const onDomain = (url, domain) => {
+  try {
+    const host = new URL(url).hostname;
+    return host === domain || host.endsWith(`.${domain}`);
+  } catch {
+    return false;
+  }
+};
+
 const expectedPolicy = (seed) => {
-  if (seed.url.includes('wikipedia.org')) return 'open-reuse';
-  if (seed.url.includes('marxists.org')) return 'reference-only';
-  if (seed.url.includes('planalto.gov.br') || seed.url.includes('camara.leg.br'))
+  if (onDomain(seed.url, 'wikipedia.org')) return 'open-reuse';
+  if (onDomain(seed.url, 'marxists.org')) return 'reference-only';
+  if (onDomain(seed.url, 'planalto.gov.br') || onDomain(seed.url, 'camara.leg.br'))
     return 'open-reuse';
   return seed.usagePolicy;
 };

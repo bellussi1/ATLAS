@@ -90,9 +90,15 @@ export function parsePostFile(markdown) {
 /** URL de sub-rota precisa de barra final antes da query string. */
 export function hasTrailingSlashBeforeUtm(url) {
   if (!url.includes('?utm_')) return false;
-  const [path] = url.split('?');
-  if (!path.startsWith('https://atlas-bellussi.pages.dev')) return false;
-  return path === 'https://atlas-bellussi.pages.dev/' || path.endsWith('/');
+  let parsed;
+  try {
+    parsed = new URL(url);
+  } catch {
+    return false;
+  }
+  // Compare the origin, not a prefix: "https://atlas-bellussi.pages.dev.evil" must not pass.
+  if (parsed.origin !== 'https://atlas-bellussi.pages.dev') return false;
+  return parsed.pathname.endsWith('/');
 }
 
 /** Confere o texto público de um post sem alterá-lo. */

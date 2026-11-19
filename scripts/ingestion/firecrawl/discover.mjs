@@ -443,11 +443,12 @@ export async function discoverFromMarxists(indexUrl, { limit = 120, timeoutMs = 
     seen.add(url.href);
     const label = rawLabel
       .replace(/<[^>]+>/g, ' ')
-      .replace(/&amp;/g, '&')
       .replace(/&quot;/g, '"')
       .replace(/&#0?39;/g, "'")
       .replace(/&lt;/g, '<')
       .replace(/&gt;/g, '>')
+      // Last, so "&amp;lt;" becomes "&lt;" and is not unescaped twice.
+      .replace(/&amp;/g, '&')
       .replace(/\s+/g, ' ')
       .trim();
     if (label.length < 2 || label.length > 140) continue;
