@@ -133,6 +133,18 @@ npm run enrich:watch -- --interval-minutes 180 --max-new-seeds 12 --max-drafts 3
 
 `open-reuse` permite guardar trecho literal para citação; `reference-only` guarda referência, seção e um lead curto. A licença e a política ficam no metadado de cada chunk e são exibidas nas buscas (`rag:search`).
 
+## Revisão e espaço em disco
+
+```bash
+npm run content:review-firecrawl
+npm run content:prune
+npm run clean -- --deep --yes
+```
+
+`content:review-firecrawl` audita os seeds descobertos e os rascunhos: confere host, licença, política, duplicidade, URL de cada afirmação/relação e família. O relatório fica em `generated/firecrawl-review/`; nada é aprovado automaticamente.
+
+`content:prune` remove releases antigos de `generated/content-cache` e artefatos órfãos de `generated/content`, preservando o ponteiro pinado, o release local e o manifesto atual. `clean --deep` remove o cache bruto da Wikipédia e outros diretórios regeneráveis.
+
 ## Limites conhecidos
 
 - A qualidade de um candidato é uma pista, não revisão editorial. Rótulos do Wikidata e categorias da Wikipédia não provam pertencimento nem influência.

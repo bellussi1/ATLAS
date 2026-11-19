@@ -51,6 +51,19 @@ Os scripts `start`, `watch`, `test`, `typecheck`, `lint` e `build` têm hooks qu
 
 `generated/testing/content-fixture.json` é projeção para testes, não asset público. `src/testing/content-fixture.ts` fornece dados e providers aos testes. A regra arquitetural impede imports de `@testing/*` no código de produção. Snapshots canônicos e fixtures geradas não entram no bundle cliente.
 
+## Modo local
+
+O build normal chama `content:fetch` e lê o release pinado no R2. Para trabalhar sem rede e ver o release local antes de publicar:
+
+```bash
+npm run content:build
+npm run content:local   # monta pointer e cache a partir de generated/content
+npm run build:local     # prerender com o cache local
+npm run preview:local   # serve dist + /content na porta 4305
+```
+
+`content:local` grava `generated/content-cache/pointer.json` com `baseUrl` local e os artefatos por hash. O `preview:local` define `window.__ATLAS_CONTENT_BASE__` apenas na porta 4305; a produção continua lendo o R2. `content:prune` remove releases antigos do cache e artefatos órfãos do build, preservando o ponteiro pinado e o release local. `npm run clean -- --deep --yes` remove o cache bruto da Wikipédia e outros diretórios regeneráveis.
+
 ## Carregamento, cache e hidratação
 
 - `knowledgeContentResolver` prepara o conteúdo antes de ativar cada leitura; o componente mantém acesso síncrono ao grafo validado. Home não solicita o acervo. `loadCollection(id)` busca uma coleção; `loadKnowledgeGraph()` lê o `bundle.<hash>.json` (grafo, busca, adjacência, layouts e leituras). `loadNetworkGraph()` lê o `network-bundle.<hash>.json`; releases sem os pacotes caem no manifesto e nas coleções.

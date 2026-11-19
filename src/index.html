@@ -50,6 +50,12 @@
     <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png" />
+    <script>
+      // Local preview only: the static server exposes the local release at /content.
+      try {
+        if (location.port === '4305') window.__ATLAS_CONTENT_BASE__ = '/content';
+      } catch {}
+    </script>
   </head>
   <body>
     <app-root></app-root>

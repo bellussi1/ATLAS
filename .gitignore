@@ -47,8 +47,12 @@ testem.log
 /typings
 __screenshots__/
 
-# Conteúdo de trabalho social (posts, imagens e pauta): fica local, fora do repositório público
-docs/social/
+# Conteúdo de trabalho social (posts, imagens e pauta): fica local, fora do repositório público.
+# Os scripts de automação são versionados; posts, imagens e calendário continuam locais.
+docs/social/**
+!docs/social/
+!docs/social/linkedin/
+!docs/social/linkedin/*.mjs
 
 # System files
 .DS_Store

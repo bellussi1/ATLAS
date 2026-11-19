@@ -26,7 +26,8 @@ export const mediaLicenseSchema = z.object({
  */
 export const contentPointerSchema = z.object({
   schemaVersion: z.literal(1),
-  baseUrl: z.url({ protocol: /^https$/ }),
+  /** `http` is allowed only for the local release; production uses `https`. */
+  baseUrl: z.url({ protocol: /^https?$/ }),
   release: digest,
   manifest: artifact,
   /**

@@ -4,10 +4,14 @@ import { type ContentPackage } from '@core/content/models/content-artifacts';
 import { DEFAULT_CONTENT_BASE_URL } from '@core/content/models/content-pointer';
 import { firstValueFrom } from 'rxjs';
 
-/** Public R2 base URL; the only address the content layer knows. */
+/** Public R2 base URL; the browser can override it on the local preview port. */
 export const CONTENT_BASE_URL = new InjectionToken<string>('content base url', {
   providedIn: 'root',
-  factory: () => DEFAULT_CONTENT_BASE_URL,
+  factory: () => {
+    const override = (globalThis as typeof globalThis & { __ATLAS_CONTENT_BASE__?: string })
+      .__ATLAS_CONTENT_BASE__;
+    return override ?? DEFAULT_CONTENT_BASE_URL;
+  },
 });
 
 /** Reads an object key relative to the base URL (for example `pointer.json` or `c/<sha256>.json`). */
