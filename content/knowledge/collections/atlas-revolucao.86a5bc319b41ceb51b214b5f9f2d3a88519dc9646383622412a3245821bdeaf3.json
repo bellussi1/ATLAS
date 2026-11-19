@@ -5867,6 +5867,24 @@
         "url": "https://pt.wikipedia.org/wiki/Samuel_P._Huntington",
         "retrievedAt": "2026-11-17"
       }
+    },
+    {
+      "id": "rel-exp-wiki-topic-guerras-civis-afegas-wiki-topic-afeganistao",
+      "fromEntityId": "wiki-topic-guerras-civis-afegas",
+      "toEntityId": "wiki-topic-afeganistao",
+      "type": "participated_in",
+      "label": "retirou tropas de",
+      "reverseLabel": "recebeu tropas",
+      "context": "[conferência de IA] A União Soviética retirou suas tropas do Afeganistão. (1989).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-guerras-civis-afegas-007"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Guerras_Civis_Afeg%C3%A3s",
+        "retrievedAt": "2026-11-17"
+      }
     }
   ],
   "learningPaths": []

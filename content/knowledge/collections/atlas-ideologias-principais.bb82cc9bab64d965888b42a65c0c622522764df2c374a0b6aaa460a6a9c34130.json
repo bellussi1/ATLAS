@@ -15828,24 +15828,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-nacional-bolchevismo-wiki-topic-movimento-politico",
-      "fromEntityId": "wiki-topic-nacional-bolchevismo",
-      "toEntityId": "wiki-topic-movimento-politico",
-      "type": "documented-association",
-      "label": "originou",
-      "reverseLabel": "foi originado por",
-      "context": "[conferência de IA] O nacional-bolchevismo é um movimento político sincrético surgido na Alemanha durante a Década de 1920.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-nacional-bolchevismo-008"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Nacional-bolchevismo",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-integralismo-brasileiro-wiki-topic-politica-do-brasil",
       "fromEntityId": "wiki-topic-integralismo-brasileiro",
       "toEntityId": "wiki-topic-politica-do-brasil",
@@ -15860,24 +15842,6 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Integralismo_brasileiro",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-desenvolvimentismo-wiki-topic-dilma-rousseff",
-      "fromEntityId": "wiki-topic-desenvolvimentismo",
-      "toEntityId": "wiki-topic-dilma-rousseff",
-      "type": "influenced",
-      "label": "foi influenciada por",
-      "reverseLabel": "influenciou",
-      "context": "[conferência de IA] A nova matriz econômica do governo Dilma Rousseff foi apontada como uma das causas da crise econômica brasileira de 2014.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-desenvolvimentismo-010"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Desenvolvimentismo",
         "retrievedAt": "2026-11-05"
       }
     },
@@ -15954,24 +15918,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-progressismo-wiki-topic-humano",
-      "fromEntityId": "wiki-topic-progressismo",
-      "toEntityId": "wiki-topic-humano",
-      "type": "influenced",
-      "label": "foi influenciado por",
-      "reverseLabel": "influenciou",
-      "context": "[conferência de IA] A ideia de progresso ganha grande avanço na Europa com o Iluminismo, quando alguns filósofos passaram a entender que o próprio ser humano, e não os deuses, poderia mudar a sociedade e seu modo de vida.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-progressismo-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Progressismo",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-coreia-do-norte-wiki-topic-juche",
       "fromEntityId": "wiki-topic-coreia-do-norte",
       "toEntityId": "wiki-topic-juche",
@@ -16040,6 +15986,42 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Integralismo_brasileiro",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-espanha-wiki-topic-carlismo",
+      "fromEntityId": "wiki-topic-espanha",
+      "toEntityId": "wiki-topic-carlismo",
+      "type": "documented-association",
+      "label": "foi palco",
+      "reverseLabel": "surgiu",
+      "context": "[conferência de IA] Surgimento do movimento carlista na Espanha. (1836).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-carlismo-005"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Carlismo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-country-portugal-wiki-topic-carlismo",
+      "fromEntityId": "country-portugal",
+      "toEntityId": "wiki-topic-carlismo",
+      "type": "documented-association",
+      "label": "foi palco",
+      "reverseLabel": "envolveram",
+      "context": "[conferência de IA] III Guerra Carlista, com envolvimento de carlo-miguelistas em Portugal. (1872).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-carlismo-009"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Carlismo",
         "retrievedAt": "2026-11-05"
       }
     }

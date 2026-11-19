@@ -16,9 +16,11 @@ import './register-source-modules.mjs';
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
-import { guardDecision } from './relation-guard.mjs';
+import { guardDecision, isWeakLabel } from './relation-guard.mjs';
 import { readSourceGraph, writeSourceGraph } from './source-graph.mjs';
 
+const { classifyRelation } =
+  await import('../../src/app/core/content/queries/relation-category.ts');
 const { relationCategoryDecisions } =
   await import('../../src/app/core/content/editorial/relation-categories.ts');
 
@@ -104,6 +106,8 @@ for (const atlas of graph.atlases) {
   for (const relation of atlas.relations) {
     pairs.add(`${relation.fromEntityId}|${relation.toEntityId}`);
     pairs.add(`${relation.toEntityId}|${relation.fromEntityId}`);
+    // Degree counts only edges the network actually draws.
+    if (!classifyRelation(relation)) continue;
     degree.set(relation.fromEntityId, (degree.get(relation.fromEntityId) ?? 0) + 1);
     degree.set(relation.toEntityId, (degree.get(relation.toEntityId) ?? 0) + 1);
   }
@@ -221,6 +225,14 @@ if (pairsPath) {
   }
 }
 
+// `--isolated` keeps only candidates that give a first edge to a record drawn alone.
+if (flag('--isolated')) {
+  for (const [key, candidate] of candidates) {
+    const alone = !degree.get(candidate.from.id) || !degree.get(candidate.to.id);
+    if (!alone) candidates.delete(key);
+  }
+}
+
 const ranked = [...candidates.values()].sort((a, b) => b.score - a.score);
 const perEntityCount = new Map();
 const selected = [];
@@ -321,7 +333,14 @@ for (const candidate of selected) {
   const family = FAMILY[String(answer.categoria ?? '').toLowerCase()];
   const label = String(answer.rotulo ?? '').trim();
   const reverseLabel = String(answer.rotulo_inverso ?? '').trim();
-  if (!family || !label || !reverseLabel || label.length > 60 || reverseLabel.length > 60) {
+  if (
+    !family ||
+    !label ||
+    !reverseLabel ||
+    label.length > 60 ||
+    reverseLabel.length > 60 ||
+    isWeakLabel(label)
+  ) {
     tally.omit = (tally.omit ?? 0) + 1;
     continue;
   }

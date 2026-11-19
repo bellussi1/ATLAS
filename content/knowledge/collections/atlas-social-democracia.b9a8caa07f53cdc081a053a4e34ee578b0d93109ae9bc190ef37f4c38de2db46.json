@@ -24335,24 +24335,6 @@
         "url": "https://pt.wikipedia.org/wiki/Crise_de_Suez",
         "retrievedAt": "2026-11-05"
       }
-    },
-    {
-      "id": "rel-exp-wiki-topic-socialismo-democratico-wiki-topic-sociedade-fabiana",
-      "fromEntityId": "wiki-topic-socialismo-democratico",
-      "toEntityId": "wiki-topic-sociedade-fabiana",
-      "type": "influenced",
-      "label": "foi influenciado por",
-      "reverseLabel": "influenciou",
-      "context": "[conferência de IA] Do final do século XIX ao início do século XX, o socialismo democrático foi fortemente influenciado pela forma gradualista de socialismo promovida pela Sociedade Fabiana e pelo socialismo crítico de Eduard Bernstein na Alemanha.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-socialismo-democratico-002"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Socialismo_democr%C3%A1tico",
-        "retrievedAt": "2026-11-05"
-      }
     }
   ],
   "learningPaths": []

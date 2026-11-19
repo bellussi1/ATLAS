@@ -705,19 +705,6 @@
       "uncertainty": "low",
       "evidenceIds": ["evidence-foundation-br1", "evidence-foundation-pt2"],
       "editorialStatus": "pending"
-    },
-    {
-      "id": "rel-exp-event-portugal-constitution-approval-1976-wiki-topic-assembleia-constituinte",
-      "fromEntityId": "event-portugal-constitution-approval-1976",
-      "toEntityId": "wiki-topic-assembleia-constituinte",
-      "type": "participated_in",
-      "label": "aprova",
-      "reverseLabel": "foi aprovada por",
-      "context": "[conferência de IA] A Constituição portuguesa registra sua aprovação pela Assembleia Constituinte em 2 de abril de 1976.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["evidence-foundation-pt-date"],
-      "editorialStatus": "pending"
     }
   ],
   "learningPaths": []

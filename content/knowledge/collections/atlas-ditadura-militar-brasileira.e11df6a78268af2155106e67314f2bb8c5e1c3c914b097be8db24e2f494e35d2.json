@@ -4170,6 +4170,78 @@
         "url": "https://pt.wikipedia.org/wiki/Mar%C3%ADa_Estela_Mart%C3%ADnez_de_Per%C3%B3n",
         "retrievedAt": "2026-11-17"
       }
+    },
+    {
+      "id": "rel-exp-wiki-topic-primeira-guerra-da-indochina-wiki-topic-vietna",
+      "fromEntityId": "wiki-topic-primeira-guerra-da-indochina",
+      "toEntityId": "wiki-topic-vietna",
+      "type": "participated_in",
+      "label": "foi palco de",
+      "reverseLabel": "abrigou",
+      "context": "[conferência de IA] Chegada de chineses comunistas à fronteira norte com o Vietnã (1949).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-primeira-guerra-da-indochina-007"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Primeira_Guerra_da_Indochina",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-segunda-guerra-sino-japonesa-wiki-topic-universidade-harvard",
+      "fromEntityId": "wiki-topic-segunda-guerra-sino-japonesa",
+      "toEntityId": "wiki-topic-universidade-harvard",
+      "type": "participated_in",
+      "label": "incluiu",
+      "reverseLabel": "foi incluída",
+      "context": "[conferência de IA] A bibliografia do artigo inclui o estudo plurianual Joint Study of the Sino-Japanese War, da Universidade Harvard.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-segunda-guerra-sino-japonesa-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Segunda_Guerra_Sino-Japonesa",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-gabriel-garcia-marquez-wiki-topic-mexico",
+      "fromEntityId": "wiki-topic-gabriel-garcia-marquez",
+      "toEntityId": "wiki-topic-mexico",
+      "type": "documented-association",
+      "label": "morreu",
+      "reverseLabel": "foi local de morte",
+      "context": "[conferência de IA] Nasceu em Aracataca, na Colômbia, em 1927, e morreu na Cidade do México em 2014. Foi escritor, jornalista, editor, ativista e político colombiano.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-gabriel-garcia-marquez-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Gabriel_Garc%C3%ADa_M%C3%A1rquez",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-gabriel-garcia-marquez-wiki-topic-america-latina",
+      "fromEntityId": "wiki-topic-gabriel-garcia-marquez",
+      "toEntityId": "wiki-topic-america-latina",
+      "type": "participated_in",
+      "label": "tratou",
+      "reverseLabel": "foi tema",
+      "context": "[conferência de IA] Seus livros tratavam dos rumos políticos e sociais da América Latina e, de forma mais ampla, da condição humana, sobretudo da solidão.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-gabriel-garcia-marquez-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Gabriel_Garc%C3%ADa_M%C3%A1rquez",
+        "retrievedAt": "2026-11-17"
+      }
     }
   ],
   "learningPaths": []
