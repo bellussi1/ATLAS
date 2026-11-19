@@ -676,7 +676,14 @@
               <p class="tip__more">Sem ligações no recorte atual.</p>
             }
           } @else if (card.relation; as relation) {
-            <p class="tip__kind">{{ relation.weight.label }} · {{ relation.nature.label }}</p>
+            <p class="tip__kind">
+              <span
+                class="tip__family"
+                aria-hidden="true"
+                [style.background]="'var(' + relation.family.color + ')'"
+              ></span>
+              {{ relation.family.label }} · {{ relation.nature.label }}
+            </p>
             <p class="tip__title">{{ relation.sentence }}</p>
             <p class="tip__reason">{{ relation.reason }}</p>
             @if (relation.source) {

@@ -4805,24 +4805,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-bolsa-de-valores-wiki-topic-belgica",
-      "fromEntityId": "wiki-topic-bolsa-de-valores",
-      "toEntityId": "wiki-topic-belgica",
-      "type": "documented-association",
-      "label": "originou",
-      "reverseLabel": "foi o local de origem",
-      "context": "[conferência de IA] A palavra 'bolsa' ganhou sentido comercial e financeiro em Bruges, na Bélgica. (1487).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-bolsa-de-valores-002"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Bolsa_de_valores",
-        "retrievedAt": "2026-11-17"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-pedro-ii-do-brasil-wiki-topic-monarquia-constitucional",
       "fromEntityId": "wiki-topic-pedro-ii-do-brasil",
       "toEntityId": "wiki-topic-monarquia-constitucional",
@@ -4851,24 +4833,6 @@
       "temporalExtent": null,
       "uncertainty": "moderate",
       "evidenceIds": ["ev-wiki-topic-selecao-brasileira-de-futebol-009"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Sele%C3%A7%C3%A3o_Brasileira_de_Futebol",
-        "retrievedAt": "2026-11-17"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-selecao-brasileira-de-futebol-wiki-topic-argentina",
-      "fromEntityId": "wiki-topic-selecao-brasileira-de-futebol",
-      "toEntityId": "wiki-topic-argentina",
-      "type": "documented-association",
-      "label": "foi derrotada por",
-      "reverseLabel": "houve uma derrota contra",
-      "context": "[conferência de IA] Pior derrota da seleção nas Eliminatórias, por 4 a 1 para a Argentina (2025-03-25).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-selecao-brasileira-de-futebol-010"],
       "editorialStatus": "pending",
       "provenance": {
         "source": "wikipedia",

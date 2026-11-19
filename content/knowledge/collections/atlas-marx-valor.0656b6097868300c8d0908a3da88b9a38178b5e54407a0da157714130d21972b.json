@@ -14207,42 +14207,6 @@
       }
     },
     {
-      "id": "rel-exp-ideology-marxism-person-friedrich-engels",
-      "fromEntityId": "ideology-marxism",
-      "toEntityId": "person-friedrich-engels",
-      "type": "documented-association",
-      "label": "originou",
-      "reverseLabel": "foi origem",
-      "context": "[conferência de IA] O marxismo tem origem nas obras dos filósofos alemães Karl Marx e Friedrich Engels, no século XIX.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-marxismo-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Marxismo",
-        "retrievedAt": "2026-11-06"
-      }
-    },
-    {
-      "id": "rel-exp-ideology-marxism-person-karl-marx",
-      "fromEntityId": "ideology-marxism",
-      "toEntityId": "person-karl-marx",
-      "type": "documented-association",
-      "label": "originou",
-      "reverseLabel": "foi origem",
-      "context": "[conferência de IA] O marxismo tem origem nas obras dos filósofos alemães Karl Marx e Friedrich Engels, no século XIX.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-marxismo-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Marxismo",
-        "retrievedAt": "2026-11-06"
-      }
-    },
-    {
       "id": "rel-exp-ideology-marxism-wiki-topic-governo-provisorio-russo",
       "fromEntityId": "ideology-marxism",
       "toEntityId": "wiki-topic-governo-provisorio-russo",

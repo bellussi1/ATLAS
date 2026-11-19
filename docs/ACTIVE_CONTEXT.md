@@ -41,6 +41,8 @@ Atualizado em 18/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 
 ## Próxima ação
 
+0. **Era Vargas e Golpe de 1964** passaram na etapa 13 (piso atingido: 7 tipos de bloco, 2.131 e 2.055 palavras) e esperam revisão humana (etapa 14) para entrar em `published-ideologies.ts`. Golpe ainda tem pendências nas etapas 3 (1 manifesto inválido) e 6 (0 arestas na consolidação).
+
 1. Gerar os carrosséis dos posts novos (`docs/social/linkedin/posts/10-mapa` e `11-lacunas`, pasta local ignorada pelo git) com capturas da produção.
 2. Revisar por amostra as decisões do modelo local em `relation-categories.ts` e as relações `rel-exp-*` (direção e categoria têm erros pontuais).
 3. Rodar nova expansão com `--limit` maior; candidatas brasileiras se esgotam rápido (107 de 3.799), então ampliar verbetes brasileiros antes.

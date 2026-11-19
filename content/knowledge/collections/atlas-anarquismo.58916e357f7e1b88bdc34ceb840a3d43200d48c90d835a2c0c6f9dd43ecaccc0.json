@@ -21749,42 +21749,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-imperialismo-wiki-topic-bonapartismo",
-      "fromEntityId": "wiki-topic-imperialismo",
-      "toEntityId": "wiki-topic-bonapartismo",
-      "type": "documented-association",
-      "label": "foi associado a",
-      "reverseLabel": "associou",
-      "context": "[conferência de IA] Os primeiros usos modernos documentados ocorreram no contexto político francês ligado ao bonapartismo, associados ao regime napoleônico.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-imperialismo-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Imperialismo",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-racismo-wiki-topic-apartheid",
-      "fromEntityId": "wiki-topic-racismo",
-      "toEntityId": "wiki-topic-apartheid",
-      "type": "influenced",
-      "label": "originou",
-      "reverseLabel": "foi originado por",
-      "context": "[conferência de IA] Na África do Sul, o apartheid passou a manter a população africana sob o domínio de um povo de origem europeia. (1948).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-racismo-004"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Racismo",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-social-democracia-wiki-topic-walter-benjamin",
       "fromEntityId": "wiki-topic-social-democracia",
       "toEntityId": "wiki-topic-walter-benjamin",
@@ -21854,24 +21818,6 @@
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Piotr_Kropotkin",
         "retrievedAt": "2026-11-04"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-segunda-guerra-mundial-wiki-topic-organizacao-das-nacoes-unidas",
-      "fromEntityId": "wiki-topic-segunda-guerra-mundial",
-      "toEntityId": "wiki-topic-organizacao-das-nacoes-unidas",
-      "type": "documented-association",
-      "label": "originou",
-      "reverseLabel": "foi criada",
-      "context": "[conferência de IA] A organização foi estabelecida em 24 de outubro de 1945, após o término da Segunda Guerra Mundial, com a intenção de impedir outro conflito como aquele.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-organizacao-das-nacoes-unidas-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Organiza%C3%A7%C3%A3o_das_Na%C3%A7%C3%B5es_Unidas",
-        "retrievedAt": "2026-11-05"
       }
     }
   ],

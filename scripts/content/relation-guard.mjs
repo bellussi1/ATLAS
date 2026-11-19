@@ -81,3 +81,17 @@ export function guardDecision(decision, fromKind, toKind, from = null, to = null
   }
   return reverse ? `${family}:reverse` : family;
 }
+
+const WEAK_LABELS = [
+  /^(foi|é|era|está|tem|teve|surgiu|antecedeu|originou|causou|ratificou|homologou|aprova|se aproxima|se baseava|é associado a|foi associado a|está associado a)$/i,
+  /^foi \p{L}+(ad|id)[oa]s? (por|pelo|pela)\b/iu,
+  /^foi apoiad[oa]$/i,
+];
+
+/**
+ * Labels that say nothing ("foi", "é associado a") or read in the passive voice from the
+ * wrong end ("foi fundado por" on an A→B edge) are rejected: the edge would mislead.
+ */
+export function isWeakLabel(label) {
+  return WEAK_LABELS.some((pattern) => pattern.test(label.trim()));
+}

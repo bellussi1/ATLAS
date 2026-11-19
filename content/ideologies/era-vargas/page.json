@@ -9,7 +9,11 @@
   "summary": "A Era Vargas é o período da história do Brasil entre 1930 e 1945, em que Getúlio Vargas governou de forma contínua. Compreende o Governo Provisório, o Governo Constitucional e o Estado Novo. Começa com a Revolução de 1930, que pôs fim à República Velha, e termina com a renúncia de Vargas em 1945 e a redemocratização. O verbete a apresenta como um divisor de águas, em razão das alterações sociais e econômicas feitas no país. Trata também da Revolução Constitucionalista de 1932, da Constituição de 1934, da Constituição de 1937 e da forma como o período foi disputado por historiadores e políticos.",
   "published": false,
   "atlasId": "atlas-era-vargas",
-  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-17" },
+  "review": {
+    "status": "rascunho",
+    "reviewer": null,
+    "updatedAt": "2026-11-19"
+  },
   "identity": {
     "accent": "teal",
     "palette": "nacionalismo",
@@ -17,7 +21,9 @@
     "keyVisualization": "timeline"
   },
   "portrait": null,
-  "poster": { "figures": [] },
+  "poster": {
+    "figures": []
+  },
   "chapters": [
     {
       "id": "introducao",
@@ -30,7 +36,9 @@
       ],
       "question": "O que define Era Vargas?",
       "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
-      "sourceIds": ["src-wiki-topic-era-vargas"],
+      "sourceIds": [
+        "src-wiki-topic-era-vargas"
+      ],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -48,7 +56,9 @@
       ],
       "question": "Como e em que contexto Era Vargas surgiu?",
       "bridge": "Visto o contexto de formação, seguem os eixos e processos centrais.",
-      "sourceIds": ["src-wiki-topic-era-vargas"],
+      "sourceIds": [
+        "src-wiki-topic-era-vargas"
+      ],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -66,8 +76,12 @@
               "paragraphs": [
                 "A Revolução de 1930 foi um movimento armado que depôs o presidente Washington Luís e impediu a posse de Júlio Prestes, marcando o fim da República Velha."
               ],
-              "sourceIds": ["src-wiki-topic-era-vargas"],
-              "entityIds": ["wiki-topic-era-vargas"],
+              "sourceIds": [
+                "src-wiki-topic-era-vargas"
+              ],
+              "entityIds": [
+                "wiki-topic-era-vargas"
+              ],
               "classification": "alegação empírica"
             }
           ]
@@ -85,7 +99,9 @@
       ],
       "question": "Quais ideias e práticas estruturam Era Vargas?",
       "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
-      "sourceIds": ["src-wiki-topic-era-vargas"],
+      "sourceIds": [
+        "src-wiki-topic-era-vargas"
+      ],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -103,8 +119,12 @@
               "paragraphs": [
                 "No Governo Provisório, Vargas governava por meio de decretos que tinham força de lei."
               ],
-              "sourceIds": ["src-wiki-topic-era-vargas"],
-              "entityIds": ["wiki-topic-era-vargas"],
+              "sourceIds": [
+                "src-wiki-topic-era-vargas"
+              ],
+              "entityIds": [
+                "wiki-topic-era-vargas"
+              ],
               "classification": "tese atribuída"
             }
           ]
@@ -137,7 +157,9 @@
       "blocks": [
         {
           "type": "entities",
-          "entityIds": ["wiki-topic-era-vargas"],
+          "entityIds": [
+            "wiki-topic-era-vargas"
+          ],
           "mode": "concepts",
           "notes": {
             "wiki-topic-era-vargas": "Nomes alternativos: Getúlio Vargas, Getúlio, Estado Novo, Governo Provisório."
@@ -162,15 +184,193 @@
       "title": "Periodização e marcos",
       "kicker": "Periodização e marcos",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
+      "narrative": [
+        "A Era Vargas costuma ser dividida em três momentos dentro dos quinze anos contínuos de governo: o Governo Provisório (1930–1934), o Governo Constitucional (1934–1937) e o Estado Novo (1937–1945). O segundo governo, de 1951 a 1954, veio pelo voto e pertence à república democrática de 1946, mas retoma muitos temas do primeiro ciclo.",
+        "A periodização importa porque cada fase teve regras diferentes. Entre 1930 e 1934 Vargas governou por decretos, com o Congresso fechado e interventores nomeados nos estados. A Constituição de 1934 restabeleceu eleições e direitos, e a de 1937, outorgada depois do golpe de 10 de novembro, fechou o Legislativo e suspendeu partidos.",
+        "Há continuidades que atravessam as três fases: a centralização do poder federal sobre as oligarquias estaduais, a construção de uma legislação trabalhista e sindical tutelada pelo Ministério do Trabalho e a aposta do Estado na industrialização de base, que culmina na siderurgia de Volta Redonda e, no segundo governo, na Petrobras."
+      ],
+      "question": "Quais marcos separam as fases da Era Vargas e o que muda de uma para a outra?",
+      "bridge": "Os intérpretes reunidos a seguir leram essas fases de modos muito diferentes.",
+      "sourceIds": [
+        "src-wiki-topic-era-vargas",
+        "src-wiki-topic-revolucao-de-1930"
+      ],
       "review": null,
-      "gap": "Nenhuma passagem do grafo traz datas ou contexto histórico.",
-      "coverage": "pending",
+      "gap": null,
+      "coverage": "complete",
       "layout": "timeline",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1930",
+              "title": "Revolução de 1930",
+              "kicker": "1930",
+              "summary": "Um movimento armado depôs Washington Luís e impediu a posse de Júlio Prestes; Vargas assumiu o Governo Provisório em novembro.",
+              "paragraphs": [
+                "A coalizão que levou Vargas ao poder reunia a Aliança Liberal, oligarquias dissidentes de Minas Gerais, Rio Grande do Sul e Paraíba e militares ligados ao tenentismo. O fim da política do café com leite abriu espaço para um governo central mais forte."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-era-vargas",
+                "src-wiki-topic-revolucao-de-1930"
+              ],
+              "entityIds": [
+                "wiki-topic-revolucao-de-1930",
+                "wiki-topic-washington-luis",
+                "wiki-topic-julio-prestes"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-1932",
+              "title": "Revolução Constitucionalista",
+              "kicker": "1932",
+              "summary": "São Paulo pegou em armas contra o Governo Provisório e exigiu uma Constituição.",
+              "paragraphs": [
+                "A revolta paulista foi derrotada militarmente em poucos meses, mas pressionou o governo a convocar a Assembleia Constituinte eleita em 1933."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-era-vargas"
+              ],
+              "entityIds": [
+                "wiki-topic-era-vargas"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-1934",
+              "title": "Constituição de 1934",
+              "kicker": "1934",
+              "summary": "A nova Carta incorporou o voto secreto e o voto feminino e direitos trabalhistas; Vargas foi eleito presidente pela Constituinte.",
+              "paragraphs": [
+                "O texto combinava instituições liberais com representação classista e capítulos sobre ordem econômica e social, sinal do peso que a questão do trabalho ganhara."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-era-vargas"
+              ],
+              "entityIds": [
+                "wiki-topic-getulio-vargas"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-1937",
+              "title": "Golpe do Estado Novo",
+              "kicker": "1937",
+              "summary": "Em 10 de novembro, com apoio militar, Vargas fechou o Congresso e outorgou uma Constituição autoritária.",
+              "paragraphs": [
+                "O pretexto foi o Plano Cohen, um documento forjado que atribuía aos comunistas um plano de insurreição. Partidos foram extintos, a imprensa passou a ser controlada e os estados perderam autonomia."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-era-vargas"
+              ],
+              "entityIds": [
+                "wiki-topic-era-vargas",
+                "wiki-topic-integralismo-brasileiro"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-1943",
+              "title": "Consolidação das Leis do Trabalho",
+              "kicker": "1943",
+              "summary": "A CLT reuniu em um só código a legislação trabalhista e sindical produzida desde 1930.",
+              "paragraphs": [
+                "Salário mínimo, jornada, férias, carteira de trabalho e Justiça do Trabalho passaram a compor um mesmo sistema, ao lado da unicidade sindical e do imposto sindical."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-era-vargas",
+                "src-wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "entityIds": [
+                "wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-1945",
+              "title": "Deposição de Vargas",
+              "kicker": "1945",
+              "summary": "Com o fim da Segunda Guerra e a pressão pela redemocratização, os militares depuseram Vargas em 29 de outubro.",
+              "paragraphs": [
+                "No mesmo ano surgiram os partidos que organizariam a república de 1946: PSD e PTB, ligados a Vargas, e a UDN, na oposição."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-era-vargas"
+              ],
+              "entityIds": [
+                "wiki-topic-partido-trabalhista-brasileiro-1945",
+                "wiki-topic-segunda-guerra-mundial"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-1954",
+              "title": "Segundo governo e suicídio",
+              "kicker": "1951–1954",
+              "summary": "Eleito em 1950, Vargas criou a Petrobras em 1953 e se matou no Palácio do Catete em agosto de 1954.",
+              "paragraphs": [
+                "A carta-testamento transformou a crise política em comoção popular e adiou por uma década a chegada da oposição ao poder."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-era-vargas"
+              ],
+              "entityIds": [
+                "wiki-topic-getulio-vargas",
+                "wiki-topic-petrobras"
+              ],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            {
+              "itemId": "marco-1930",
+              "start": 1930,
+              "end": 1930
+            },
+            {
+              "itemId": "marco-1932",
+              "start": 1932,
+              "end": 1932
+            },
+            {
+              "itemId": "marco-1934",
+              "start": 1934,
+              "end": 1934
+            },
+            {
+              "itemId": "marco-1937",
+              "start": 1937,
+              "end": 1937
+            },
+            {
+              "itemId": "marco-1943",
+              "start": 1943,
+              "end": 1943
+            },
+            {
+              "itemId": "marco-1945",
+              "start": 1945,
+              "end": 1945
+            },
+            {
+              "itemId": "marco-1954",
+              "start": 1951,
+              "end": 1954
+            }
+          ],
+          "entityIds": [
+            "wiki-topic-era-vargas"
+          ],
+          "markerIds": [],
+          "markerNotes": {}
+        }
+      ]
     },
     {
       "id": "pensadores",
@@ -245,10 +445,14 @@
       "title": "Forças políticas no período",
       "kicker": "Forças políticas no período",
       "minutes": 1,
-      "narrative": ["Correntes relacionadas: Trabalhismo brasileiro."],
+      "narrative": [
+        "Correntes relacionadas: Trabalhismo brasileiro."
+      ],
       "question": "Que correntes dialogam ou disputam espaço com Era Vargas?",
       "bridge": "Vistos os desdobramentos, o capítulo seguinte examina experiências, partidos e instituições.",
-      "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
+      "sourceIds": [
+        "src-wiki-ideologia-trabalhismo-brasileiro"
+      ],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -256,7 +460,9 @@
       "blocks": [
         {
           "type": "entities",
-          "entityIds": ["wiki-ideologia-trabalhismo-brasileiro"],
+          "entityIds": [
+            "wiki-ideologia-trabalhismo-brasileiro"
+          ],
           "mode": "concepts",
           "notes": {
             "wiki-ideologia-trabalhismo-brasileiro": "[conferência de IA] O trabalhismo consolidou-se durante a Era Vargas, período em que a legislação trabalhista passou a ocupar posição central nas relações entre Estado, capital e trabalho."
@@ -354,14 +560,16 @@
       "kicker": "Argumentos, críticas e respostas",
       "minutes": 1,
       "narrative": [
-        "O populismo atribuído a Vargas é descrito pelo verbete como tema de divergências entre estudiosos."
+        "Dois debates organizam boa parte da historiografia sobre o período. O primeiro pergunta o que foi 1930: uma revolução que mudou a classe no poder ou um arranjo entre grupos que nenhum deles dominava sozinho. O segundo pergunta como classificar o Estado Novo, que reprimiu comunistas e integralistas e ainda assim montou um aparato de propaganda, censura e corporativismo comparável aos regimes autoritários europeus."
       ],
       "question": "Quais críticas e controvérsias cercam Era Vargas?",
       "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
-      "sourceIds": ["src-wiki-topic-era-vargas"],
+      "sourceIds": [
+        "src-wiki-topic-era-vargas"
+      ],
       "review": null,
-      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
-      "coverage": "partial",
+      "gap": null,
+      "coverage": "complete",
       "layout": "debate",
       "blocks": [
         {
@@ -376,9 +584,154 @@
               "paragraphs": [
                 "O populismo atribuído a Vargas é descrito pelo verbete como tema de divergências entre estudiosos."
               ],
-              "sourceIds": ["src-wiki-topic-era-vargas"],
-              "entityIds": ["wiki-topic-era-vargas"],
+              "sourceIds": [
+                "src-wiki-topic-era-vargas"
+              ],
+              "entityIds": [
+                "wiki-topic-era-vargas"
+              ],
               "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "debate",
+          "topics": [
+            {
+              "id": "debate-vargas-1930",
+              "title": "1930: revolução burguesa ou Estado de compromisso?",
+              "scope": "Controvérsia historiográfica sobre o caráter social do movimento de 1930 e do governo que dele nasceu.",
+              "defence": {
+                "id": "debate-vargas-1930-tese",
+                "title": "Ascensão da burguesia industrial",
+                "kicker": "Interpretação clássica",
+                "summary": "Leituras marxistas das décadas de 1950 e 1960 viram em 1930 a vitória de setores urbanos e industriais sobre a oligarquia cafeeira.",
+                "paragraphs": [
+                  "Nessa chave, a centralização do Estado e a política de industrialização expressariam a chegada de uma nova classe dominante ao comando do país."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-era-vargas",
+                  "src-wiki-topic-revolucao-de-1930"
+                ],
+                "entityIds": [
+                  "wiki-topic-revolucao-de-1930"
+                ],
+                "classification": "interpretação"
+              },
+              "criticism": {
+                "id": "debate-vargas-1930-critica",
+                "title": "Nenhuma classe hegemônica",
+                "kicker": "Crítica historiográfica",
+                "summary": "Boris Fausto argumentou em 1970 que a burguesia industrial não liderou o movimento e que nenhum grupo tinha força para impor sozinho seu projeto.",
+                "paragraphs": [
+                  "Daí a ideia de um Estado de compromisso, em que o governo central arbitra entre oligarquias dissidentes, militares e setores urbanos, ganhando autonomia própria."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-era-vargas",
+                  "src-wiki-topic-revolucao-de-1930"
+                ],
+                "entityIds": [
+                  "wiki-topic-era-vargas"
+                ],
+                "classification": "tese atribuída"
+              },
+              "response": {
+                "id": "debate-vargas-1930-resposta",
+                "title": "O Estado como ator",
+                "kicker": "Desdobramento",
+                "summary": "Estudos posteriores deslocaram a pergunta da classe vitoriosa para a construção do próprio Estado, com burocracia, ministérios e conselhos técnicos.",
+                "paragraphs": [
+                  "A ênfase passa a ser como o governo criou instrumentos para negociar com trabalhadores e empresários, sem que isso signifique neutralidade."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-era-vargas"
+                ],
+                "entityIds": [
+                  "wiki-topic-getulio-vargas"
+                ],
+                "classification": "interpretação"
+              },
+              "limits": {
+                "id": "debate-vargas-1930-limites",
+                "title": "Diferenças regionais",
+                "kicker": "Limites do recorte",
+                "summary": "O debate costuma partir do eixo Rio–São Paulo–Minas e do Rio Grande do Sul.",
+                "paragraphs": [
+                  "A experiência de estados do Norte e do Nordeste, onde as oligarquias foram recompostas sob interventores, pede documentação local que esta leitura ainda não reúne."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-era-vargas"
+                ],
+                "entityIds": [],
+                "classification": "limitação editorial"
+              }
+            },
+            {
+              "id": "debate-vargas-estado-novo",
+              "title": "O Estado Novo foi um fascismo brasileiro?",
+              "scope": "Classificação do regime de 1937–1945 entre fascismo, autoritarismo e ditadura modernizadora.",
+              "defence": {
+                "id": "debate-estado-novo-tese",
+                "title": "Semelhanças com o fascismo",
+                "kicker": "Comparação",
+                "summary": "Censura pelo DIP, polícia política, corporativismo sindical e uma Constituição outorgada aproximam o regime dos modelos europeus da época.",
+                "paragraphs": [
+                  "A Carta de 1937 ficou conhecida como Polaca pela inspiração atribuída à Constituição polonesa de 1935, e o culto à figura do chefe foi cultivado pela propaganda oficial."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-era-vargas"
+                ],
+                "entityIds": [
+                  "wiki-topic-era-vargas"
+                ],
+                "classification": "interpretação"
+              },
+              "criticism": {
+                "id": "debate-estado-novo-critica",
+                "title": "Autoritarismo sem partido de massas",
+                "kicker": "Crítica",
+                "summary": "O regime não teve partido único nem mobilização de massas, e reprimiu o integralismo, o movimento brasileiro mais próximo do fascismo.",
+                "paragraphs": [
+                  "Por isso muitos autores preferem descrevê-lo como regime autoritário, apoiado na burocracia e nas Forças Armadas, e não como fascismo."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-era-vargas"
+                ],
+                "entityIds": [
+                  "wiki-topic-integralismo-brasileiro"
+                ],
+                "classification": "interpretação"
+              },
+              "response": {
+                "id": "debate-estado-novo-resposta",
+                "title": "Um regime híbrido",
+                "kicker": "Síntese",
+                "summary": "A entrada do Brasil na Segunda Guerra ao lado dos Aliados, em 1942, expôs a contradição de uma ditadura que combatia o nazifascismo no exterior.",
+                "paragraphs": [
+                  "Essa tensão ajudou a acelerar a abertura de 1945 e explica por que o legado do Estado Novo foi disputado tanto pela esquerda trabalhista quanto pelos críticos liberais."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-era-vargas"
+                ],
+                "entityIds": [
+                  "wiki-topic-segunda-guerra-mundial"
+                ],
+                "classification": "interpretação"
+              },
+              "limits": {
+                "id": "debate-estado-novo-limites",
+                "title": "Rótulos e comparação",
+                "kicker": "Limites",
+                "summary": "Classificar regimes depende do critério escolhido, e nenhum rótulo resume sozinho oito anos de governo.",
+                "paragraphs": [
+                  "A leitura apresenta as posições sem decidir entre elas."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-era-vargas"
+                ],
+                "entityIds": [],
+                "classification": "limitação editorial"
+              }
             }
           ]
         }
@@ -431,6 +784,10 @@
             "wiki-topic-populismo": "[conferência de IA] O populismo atribuído a Vargas é descrito pelo verbete como tema de divergências entre estudiosos.",
             "wiki-topic-estado": "[conferência de IA] Vargas instituiu o Estado Novo por meio de um golpe de Estado. (1937-11-10)."
           }
+        },
+        {
+          "type": "atlas",
+          "rootEntityId": "wiki-topic-era-vargas"
         }
       ]
     },
@@ -446,10 +803,13 @@
       ],
       "question": "Que obras e documentos aprofundam o estudo de Era Vargas?",
       "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
-      "sourceIds": ["src-wiki-topic-obelisco", "src-wiki-topic-ciencia-politica"],
+      "sourceIds": [
+        "src-wiki-topic-obelisco",
+        "src-wiki-topic-ciencia-politica"
+      ],
       "review": null,
-      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
-      "coverage": "partial",
+      "gap": null,
+      "coverage": "complete",
       "layout": "documents",
       "blocks": [
         {
@@ -464,17 +824,95 @@
               "paragraphs": [
                 "O verbete indica a obra A Memória Coletiva, de Maurice Halbwachs, como auxílio para entender a construção patriótica do período."
               ],
-              "sourceIds": ["src-wiki-topic-era-vargas"],
-              "entityIds": ["wiki-topic-era-vargas"],
+              "sourceIds": [
+                "src-wiki-topic-era-vargas"
+              ],
+              "entityIds": [
+                "wiki-topic-era-vargas"
+              ],
               "classification": "alegação empírica"
             }
           ]
         },
         {
           "type": "entities",
-          "entityIds": ["wiki-topic-obelisco", "wiki-topic-ciencia-politica"],
+          "entityIds": [
+            "wiki-topic-obelisco",
+            "wiki-topic-ciencia-politica"
+          ],
           "mode": "documents",
           "notes": {}
+        },
+        {
+          "type": "reading-path",
+          "works": [
+            {
+              "title": "A Revolução de 1930: historiografia e história",
+              "author": "Boris Fausto",
+              "year": "1970",
+              "edition": "São Paulo: Brasiliense",
+              "level": "intermediário",
+              "theme": "Caráter social do movimento de 1930",
+              "why": "Texto que formulou a tese do Estado de compromisso e mudou o debate sobre 1930.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "A invenção do trabalhismo",
+              "author": "Angela de Castro Gomes",
+              "year": "1988",
+              "edition": "Rio de Janeiro: IUPERJ / Vértice",
+              "level": "intermediário",
+              "theme": "Construção do pacto trabalhista entre Estado e trabalhadores",
+              "why": "Mostra como o governo transformou a legislação social em base de legitimidade política.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "O Estado Novo",
+              "author": "Maria Celina D’Araujo",
+              "year": "2000",
+              "edition": "Rio de Janeiro: Jorge Zahar",
+              "level": "introdutório",
+              "theme": "Instituições e funcionamento da ditadura de 1937–1945",
+              "why": "Síntese curta e clara para quem começa pelo período autoritário.",
+              "kind": "introdução",
+              "entityId": null
+            },
+            {
+              "title": "Getúlio",
+              "author": "Lira Neto",
+              "year": "2012–2014",
+              "edition": "São Paulo: Companhia das Letras, 3 volumes",
+              "level": "introdutório",
+              "theme": "Biografia política de Vargas",
+              "why": "Narrativa documentada da trajetória pessoal que atravessa todas as fases do período.",
+              "kind": "estudo",
+              "entityId": "wiki-topic-getulio-vargas"
+            },
+            {
+              "title": "O Brasil Republicano, vol. 2: o tempo do nacional-estatismo",
+              "author": "Jorge Ferreira e Lucilia de Almeida Neves Delgado (orgs.)",
+              "year": "2003",
+              "edition": "Rio de Janeiro: Civilização Brasileira",
+              "level": "avançado",
+              "theme": "Estado, trabalho e cultura entre 1930 e 1945",
+              "why": "Coletânea acadêmica que reúne as principais linhas de pesquisa sobre o período.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "Brasil: de Getúlio a Castelo",
+              "author": "Thomas Skidmore",
+              "year": "1969",
+              "edition": "Rio de Janeiro: Saga (orig. Politics in Brazil, 1967)",
+              "level": "intermediário",
+              "theme": "Política brasileira de 1930 a 1964",
+              "why": "Liga a Era Vargas à república de 1946 e à crise que levou ao golpe de 1964.",
+              "kind": "estudo",
+              "entityId": null
+            }
+          ]
         }
       ]
     },

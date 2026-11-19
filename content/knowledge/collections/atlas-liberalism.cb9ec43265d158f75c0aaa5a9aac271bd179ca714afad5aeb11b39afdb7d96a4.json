@@ -12376,24 +12376,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-exp-ideology-classical-liberalism-wiki-topic-revolucao-industrial",
-      "fromEntityId": "ideology-classical-liberalism",
-      "toEntityId": "wiki-topic-revolucao-industrial",
-      "type": "influenced",
-      "label": "foi influenciado por",
-      "reverseLabel": "influenciou",
-      "context": "[conferência de IA] O texto situa o surgimento do liberalismo clássico como filosofia no século XIX, na Europa e nos Estados Unidos, no contexto da Revolução Industrial e do incremento da urbanização.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-liberalismo-classico-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Liberalismo_cl%C3%A1ssico",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-ideology-classical-liberalism-wiki-topic-europa",
       "fromEntityId": "ideology-classical-liberalism",
       "toEntityId": "wiki-topic-europa",
@@ -12409,24 +12391,6 @@
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Liberalismo_cl%C3%A1ssico",
         "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-ideology-national-liberalism-event-french-revolution",
-      "fromEntityId": "ideology-national-liberalism",
-      "toEntityId": "event-french-revolution",
-      "type": "influenced",
-      "label": "foi influenciado por",
-      "reverseLabel": "influenciou",
-      "context": "[conferência de IA] O liberalismo nacional emergiu da filosofia continental após a Revolução Francesa, combinando políticas liberais com elementos nacionalistas.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-ideology-national-liberalism-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Nacional-liberalismo",
-        "retrievedAt": "2026-11-06"
       }
     },
     {

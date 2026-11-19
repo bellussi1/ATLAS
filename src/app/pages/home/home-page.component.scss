@@ -41,7 +41,7 @@ h1 .line + .line {
 /* Hero entrance: title lines rise out of a mask, then the copy and doors follow once. */
 @media (prefers-reduced-motion: no-preference) {
   h1 .line {
-    clip-path: inset(0 0 0 0);
+    clip-path: inset(-0.2em -0.3em -0.45em -0.3em);
     animation: poster-rise 720ms var(--ease-out) both;
   }
   h1 .line + .line {
@@ -49,9 +49,9 @@ h1 .line + .line {
   }
   h1 em {
     display: inline-block;
-    margin-bottom: -0.14em;
-    padding-bottom: 0.14em;
-    background: linear-gradient(var(--color-accent), var(--color-accent)) left 100% / 0 0.08em
+    margin-bottom: -0.22em;
+    padding-bottom: 0.22em;
+    background: linear-gradient(var(--color-accent), var(--color-accent)) left 100% / 0 0.06em
       no-repeat;
     animation: poster-underline 520ms var(--ease-out) 640ms forwards;
   }
@@ -83,13 +83,13 @@ h1 .line + .line {
 }
 @keyframes poster-rise {
   from {
-    clip-path: inset(0 0 100% 0);
+    clip-path: inset(-0.2em -0.3em 100% -0.3em);
     translate: 0 0.35em;
   }
 }
 @keyframes poster-underline {
   to {
-    background-size: 100% 0.08em;
+    background-size: 100% 0.06em;
   }
 }
 @keyframes poster-fade {
@@ -119,7 +119,7 @@ h1 .line + .line {
 }
 .poster-lead {
   max-width: 36ch;
-  margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+  margin: clamp(2rem, 3.5vw, 3rem) 0 0;
   padding-left: 1rem;
   border-left: 0.5rem solid var(--color-accent);
   font: 400 clamp(1.15rem, 1.8vw, 1.45rem) / 1.5 var(--font-serif);

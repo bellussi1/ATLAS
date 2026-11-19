@@ -4154,6 +4154,24 @@
         "url": "https://pt.wikipedia.org/wiki/Igreja_da_Inglaterra",
         "retrievedAt": "2026-11-17"
       }
+    },
+    {
+      "id": "rel-exp-wiki-topic-universidade-de-glasgow-wiki-topic-europa",
+      "fromEntityId": "wiki-topic-universidade-de-glasgow",
+      "toEntityId": "wiki-topic-europa",
+      "type": "documented-association",
+      "label": "está sediada em",
+      "reverseLabel": "abriga",
+      "context": "[conferência de IA] A biblioteca da universidade é descrita como uma das maiores e mais antigas bibliotecas da Europa.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-universidade-de-glasgow-006"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Universidade_de_Glasgow",
+        "retrievedAt": "2026-11-17"
+      }
     }
   ],
   "learningPaths": []

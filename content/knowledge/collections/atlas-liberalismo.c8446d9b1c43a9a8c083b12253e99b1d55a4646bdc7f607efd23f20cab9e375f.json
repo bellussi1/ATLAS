@@ -2930,6 +2930,24 @@
       "uncertainty": "low",
       "evidenceIds": ["ev-wiki-topic-libertarianismo-001", "ev-wiki-topic-libertarianismo-002"],
       "editorialStatus": "pending"
+    },
+    {
+      "id": "rel-exp-wiki-topic-jose-ortega-y-gasset-wiki-topic-alemanha",
+      "fromEntityId": "wiki-topic-jose-ortega-y-gasset",
+      "toEntityId": "wiki-topic-alemanha",
+      "type": "participated_in",
+      "label": "estudou",
+      "reverseLabel": "hospedou",
+      "context": "[conferência de IA] Venceu a Cátedra de Metafísica na Universidade de Madri, após retornar da Alemanha (1910).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-jose-ortega-y-gasset-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jos%C3%A9_Ortega_y_Gasset",
+        "retrievedAt": "2026-11-06"
+      }
     }
   ],
   "learningPaths": []

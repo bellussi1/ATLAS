@@ -396,6 +396,10 @@
                 <dd>Aproximar, afastar, reenquadrar</dd>
                 <dt><kbd>L</kbd></dt>
                 <dd>Mostrar ou ocultar legenda</dd>
+                <dt><kbd>[</kbd><kbd>]</kbd></dt>
+                <dd>Marco anterior ou seguinte na linha do tempo</dd>
+                <dt><kbd>P</kbd></dt>
+                <dd>Reproduzir ou pausar o avanço cronológico</dd>
                 <dt><kbd>Esc</kbd></dt>
                 <dd>Fechar painel ou limpar seleção</dd>
               </dl>
@@ -607,6 +611,7 @@
             type="button"
             class="timeline-marker__step"
             aria-label="Marco anterior"
+            aria-keyshortcuts="["
             (click)="stepHotpoint(-1)"
           >
             <span aria-hidden="true">‹</span>
@@ -626,6 +631,7 @@
             type="button"
             class="timeline-marker__step"
             aria-label="Próximo marco"
+            aria-keyshortcuts="]"
             (click)="stepHotpoint(1)"
           >
             <span aria-hidden="true">›</span>

@@ -353581,24 +353581,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-democratas-brasil-wiki-topic-dissidencia",
-      "fromEntityId": "wiki-topic-democratas-brasil",
-      "toEntityId": "wiki-topic-dissidencia",
-      "type": "documented-association",
-      "label": "originou",
-      "reverseLabel": "foi originado por",
-      "context": "[conferência de IA] O partido foi fundado em 1985 como Partido da Frente Liberal (PFL), de ala à direita, resultado de dissidência do PDS.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-democratas-brasil-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Democratas_(Brasil)",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-eleicao-presidencial-no-brasil-em-1994-wiki-topic-plano-real",
       "fromEntityId": "wiki-topic-eleicao-presidencial-no-brasil-em-1994",
       "toEntityId": "wiki-topic-plano-real",
@@ -353635,42 +353617,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-partido-comunista-do-brasil-wiki-topic-dissidencia",
-      "fromEntityId": "wiki-topic-partido-comunista-do-brasil",
-      "toEntityId": "wiki-topic-dissidencia",
-      "type": "documented-association",
-      "label": "originou",
-      "reverseLabel": "foi originada",
-      "context": "[conferência de IA] Criação do partido como dissidência alinhada ao stalinismo dentro do PCB, segundo o primeiro parágrafo do artigo (1958).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-partido-comunista-do-brasil-005"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Partido_Comunista_do_Brasil",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-partido-popular-brasil-wiki-topic-tribunal-superior-eleitoral",
-      "fromEntityId": "wiki-topic-partido-popular-brasil",
-      "toEntityId": "wiki-topic-tribunal-superior-eleitoral",
-      "type": "participated_in",
-      "label": "ratificou",
-      "reverseLabel": "foi ratificado por",
-      "context": "[conferência de IA] Em 1981 os membros decidiram pela incorporação ao PMDB, em convenção nacional, o que foi ratificado pelo Tribunal Superior Eleitoral em 1982.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-partido-popular-brasil-005"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Partido_Popular_(Brasil)",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-partido-popular-brasil-wiki-topic-fundacao-getulio-vargas",
       "fromEntityId": "wiki-topic-partido-popular-brasil",
       "toEntityId": "wiki-topic-fundacao-getulio-vargas",
@@ -353685,24 +353631,6 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Partido_Popular_(Brasil)",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-revolucao-de-25-de-abril-de-1974-wiki-topic-movimento-politico",
-      "fromEntityId": "wiki-topic-revolucao-de-25-de-abril-de-1974",
-      "toEntityId": "wiki-topic-movimento-politico",
-      "type": "participated_in",
-      "label": "causou",
-      "reverseLabel": "foi causa",
-      "context": "[conferência de IA] Ocorre o movimento político e militar que depôs o regime do Estado Novo. (1974-04-25).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-revolucao-de-25-de-abril-de-1974-004"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_de_25_de_Abril_de_1974",
         "retrievedAt": "2026-11-05"
       }
     },
@@ -353959,24 +353887,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-imperio-russo-wiki-topic-monarquia-absoluta",
-      "fromEntityId": "wiki-topic-imperio-russo",
-      "toEntityId": "wiki-topic-monarquia-absoluta",
-      "type": "documented-association",
-      "label": "foi caracterizado por",
-      "reverseLabel": "caracterizou",
-      "context": "[conferência de IA] Por ser a última monarquia absoluta remanescente na Europa, o império viveu rápida radicalização política e a popularidade crescente de ideias revolucionárias.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-imperio-russo-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Imp%C3%A9rio_Russo",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-indice-de-desenvolvimento-humano-wiki-topic-irlanda",
       "fromEntityId": "wiki-topic-indice-de-desenvolvimento-humano",
       "toEntityId": "wiki-topic-irlanda",
@@ -354009,24 +353919,6 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Kurt_Schumacher",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-revolucao-espanhola-wiki-topic-crescimento-economico",
-      "fromEntityId": "wiki-topic-revolucao-espanhola",
-      "toEntityId": "wiki-topic-crescimento-economico",
-      "type": "influenced",
-      "label": "foi influenciado por",
-      "reverseLabel": "influenciou",
-      "context": "[conferência de IA] Segundo o artigo, o crescimento econômico e o crescimento do movimento operário formaram o contexto que antecedeu a Revolução.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-revolucao-espanhola-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Espanhola",
         "retrievedAt": "2026-11-05"
       }
     },
@@ -354073,24 +353965,6 @@
       "type": "documented-association",
       "label": "casou-se",
       "reverseLabel": "foi casada com",
-      "context": "[conferência de IA] Godwin foi atacado pela reação conservadora posterior ao radicalismo britânico, em parte por causa de seu casamento com Mary Wollstonecraft.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-william-godwin-007"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/William_Godwin",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-william-godwin-wiki-topic-radicalismo",
-      "fromEntityId": "wiki-topic-william-godwin",
-      "toEntityId": "wiki-topic-radicalismo",
-      "type": "reacted_against",
-      "label": "foi atacado por",
-      "reverseLabel": "ataca",
       "context": "[conferência de IA] Godwin foi atacado pela reação conservadora posterior ao radicalismo britânico, em parte por causa de seu casamento com Mary Wollstonecraft.",
       "temporalExtent": null,
       "uncertainty": "moderate",
@@ -354207,24 +354081,6 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Agir_(Brasil)",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-aloizio-mercadante-wiki-topic-geraldo-alckmin",
-      "fromEntityId": "wiki-topic-aloizio-mercadante",
-      "toEntityId": "wiki-topic-geraldo-alckmin",
-      "type": "reacted_against",
-      "label": "foi derrotado por",
-      "reverseLabel": "derrotou",
-      "context": "[conferência de IA] Mercadante foi derrotado no primeiro turno da eleição para o governo de São Paulo em 2010 por Geraldo Alckmin.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-aloizio-mercadante-009"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Aloizio_Mercadante",
         "retrievedAt": "2026-11-05"
       }
     },
@@ -354355,24 +354211,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-golpe-de-estado-wiki-topic-ditadura-militar-brasileira",
-      "fromEntityId": "wiki-topic-golpe-de-estado",
-      "toEntityId": "wiki-topic-ditadura-militar-brasileira",
-      "type": "documented-association",
-      "label": "foi instaurado por",
-      "reverseLabel": "instaurou",
-      "context": "[conferência de IA] O regime foi instaurado pelo golpe de Estado de 1964, que depôs o governo João Goulart, eleito democraticamente.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-ditadura-militar-brasileira-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Ditadura_militar_brasileira",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-ditadura-militar-brasileira-wiki-topic-joao-goulart",
       "fromEntityId": "wiki-topic-ditadura-militar-brasileira",
       "toEntityId": "wiki-topic-joao-goulart",
@@ -354391,24 +354229,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-fernando-henrique-cardoso-wiki-topic-eleicao-presidencial-no-brasil-em-1994",
-      "fromEntityId": "wiki-topic-fernando-henrique-cardoso",
-      "toEntityId": "wiki-topic-eleicao-presidencial-no-brasil-em-1994",
-      "type": "participated_in",
-      "label": "foi vencido por",
-      "reverseLabel": "venceu",
-      "context": "[conferência de IA] Realização da eleição presidencial no Brasil, vencida no primeiro turno por Fernando Henrique Cardoso. (1994-10-03).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-eleicao-presidencial-no-brasil-em-1994-002"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Elei%C3%A7%C3%A3o_presidencial_no_Brasil_em_1994",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-engelbert-dollfuss-wiki-topic-austrofascismo",
       "fromEntityId": "wiki-topic-engelbert-dollfuss",
       "toEntityId": "wiki-topic-austrofascismo",
@@ -354423,24 +354243,6 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Engelbert_Dollfuss",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-eurico-gaspar-dutra-wiki-topic-presidente-do-brasil",
-      "fromEntityId": "wiki-topic-eurico-gaspar-dutra",
-      "toEntityId": "wiki-topic-presidente-do-brasil",
-      "type": "participated_in",
-      "label": "foi",
-      "reverseLabel": "elegeu",
-      "context": "[conferência de IA] Dutra foi o 16.º presidente do Brasil entre 1946 e 1951.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-eurico-gaspar-dutra-012"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Eurico_Gaspar_Dutra",
         "retrievedAt": "2026-11-05"
       }
     },
@@ -354527,24 +354329,6 @@
       "temporalExtent": null,
       "uncertainty": "moderate",
       "evidenceIds": ["ev-wiki-topic-golpe-de-estado-no-brasil-em-1964-003"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Golpe_de_Estado_no_Brasil_em_1964",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-golpe-de-estado-no-brasil-em-1964-wiki-topic-golpe-militar",
-      "fromEntityId": "wiki-topic-golpe-de-estado-no-brasil-em-1964",
-      "toEntityId": "wiki-topic-golpe-militar",
-      "type": "documented-association",
-      "label": "causou",
-      "reverseLabel": "foi causa de",
-      "context": "[conferência de IA] O golpe depôs o presidente João Goulart por meio de um golpe militar.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-golpe-de-estado-no-brasil-em-1964-004"],
       "editorialStatus": "pending",
       "provenance": {
         "source": "wikipedia",
@@ -354661,24 +354445,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-stalinismo-wiki-topic-partido-comunista-do-brasil",
-      "fromEntityId": "wiki-topic-stalinismo",
-      "toEntityId": "wiki-topic-partido-comunista-do-brasil",
-      "type": "documented-association",
-      "label": "foi fundado por",
-      "reverseLabel": "fundou",
-      "context": "[conferência de IA] Criação do partido como dissidência alinhada ao stalinismo dentro do PCB, segundo o primeiro parágrafo do artigo (1958).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-partido-comunista-do-brasil-005"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Partido_Comunista_do_Brasil",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-partido-da-social-democracia-brasileira-wiki-topic-dissidencia",
       "fromEntityId": "wiki-topic-partido-da-social-democracia-brasileira",
       "toEntityId": "wiki-topic-dissidencia",
@@ -354693,24 +354459,6 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Partido_da_Social_Democracia_Brasileira",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-partido-trabalhista-brasileiro-1979-wiki-topic-tribunal-superior-eleitoral",
-      "fromEntityId": "wiki-topic-partido-trabalhista-brasileiro-1979",
-      "toEntityId": "wiki-topic-tribunal-superior-eleitoral",
-      "type": "participated_in",
-      "label": "homologou",
-      "reverseLabel": "foi homologado por",
-      "context": "[conferência de IA] Homologação da fusão pelo Tribunal Superior Eleitoral. (2023-11-09).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-partido-trabalhista-brasileiro-1979-006"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Partido_Trabalhista_Brasileiro_(1979)",
         "retrievedAt": "2026-11-05"
       }
     },
@@ -354787,24 +354535,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-acao-integralista-brasileira-wiki-topic-doutrina-social-da-igreja",
-      "fromEntityId": "wiki-topic-acao-integralista-brasileira",
-      "toEntityId": "wiki-topic-doutrina-social-da-igreja",
-      "type": "documented-association",
-      "label": "se baseava",
-      "reverseLabel": "foi base para",
-      "context": "[conferência de IA] O movimento declarava inspiração no fascismo italiano e no integralismo lusitano e se baseava na Doutrina Social da Igreja Católica.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-acao-integralista-brasileira-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/A%C3%A7%C3%A3o_Integralista_Brasileira",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-igreja-catolica-wiki-topic-acao-integralista-brasileira",
       "fromEntityId": "wiki-topic-igreja-catolica",
       "toEntityId": "wiki-topic-acao-integralista-brasileira",
@@ -354837,24 +354567,6 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Banco_Mundial",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-barack-obama-wiki-topic-presidente-dos-estados-unidos",
-      "fromEntityId": "wiki-topic-barack-obama",
-      "toEntityId": "wiki-topic-presidente-dos-estados-unidos",
-      "type": "participated_in",
-      "label": "foi",
-      "reverseLabel": "elegeu",
-      "context": "[conferência de IA] Obama foi empossado como o 44.º presidente dos Estados Unidos. (2009-01-20).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-barack-obama-003"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Barack_Obama",
         "retrievedAt": "2026-11-05"
       }
     },
@@ -354967,24 +354679,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-franklin-d-roosevelt-wiki-topic-presidente-dos-estados-unidos",
-      "fromEntityId": "wiki-topic-franklin-d-roosevelt",
-      "toEntityId": "wiki-topic-presidente-dos-estados-unidos",
-      "type": "participated_in",
-      "label": "foi",
-      "reverseLabel": "é",
-      "context": "[conferência de IA] Empossado como presidente dos Estados Unidos. (1933-03-04).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-franklin-d-roosevelt-006"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Franklin_D._Roosevelt",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-fundacao-fernando-henrique-cardoso-wiki-topic-democracia",
       "fromEntityId": "wiki-topic-fundacao-fernando-henrique-cardoso",
       "toEntityId": "wiki-topic-democracia",
@@ -355021,42 +354715,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-grande-recessao-wiki-topic-crise-financeira-de-2007-2008",
-      "fromEntityId": "wiki-topic-grande-recessao",
-      "toEntityId": "wiki-topic-crise-financeira-de-2007-2008",
-      "type": "influenced",
-      "label": "causou",
-      "reverseLabel": "foi causa de",
-      "context": "[conferência de IA] A recessão decorreu do colapso do mercado imobiliário dos Estados Unidos, relacionado à crise financeira de 2007–2008 e à crise das hipotecas subprime.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-grande-recessao-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Grande_Recess%C3%A3o",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-imperialismo-americano-wiki-topic-guerra-hispano-americana",
-      "fromEntityId": "wiki-topic-imperialismo-americano",
-      "toEntityId": "wiki-topic-guerra-hispano-americana",
-      "type": "influenced",
-      "label": "foi influenciado por",
-      "reverseLabel": "influenciou",
-      "context": "[conferência de IA] O conceito se popularizou após o fim da Guerra Hispano-Americana de 1898.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-imperialismo-americano-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Imperialismo_americano",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-james-wilson-wiki-topic-george-washington",
       "fromEntityId": "wiki-topic-james-wilson",
       "toEntityId": "wiki-topic-george-washington",
@@ -355089,60 +354747,6 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Partido_Comunista_Brasileiro",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-democracia-wiki-topic-partido-da-social-democracia-brasileira",
-      "fromEntityId": "wiki-topic-democracia",
-      "toEntityId": "wiki-topic-partido-da-social-democracia-brasileira",
-      "type": "documented-association",
-      "label": "foi representado por",
-      "reverseLabel": "representou",
-      "context": "[conferência de IA] O partido foi criado com o objetivo de representar a social democracia no Brasil.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-partido-da-social-democracia-brasileira-002"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Partido_da_Social_Democracia_Brasileira",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-partido-da-social-democracia-brasileira-wiki-topic-centro-direita",
-      "fromEntityId": "wiki-topic-partido-da-social-democracia-brasileira",
-      "toEntityId": "wiki-topic-centro-direita",
-      "type": "documented-association",
-      "label": "é associado a",
-      "reverseLabel": "é visto como",
-      "context": "[conferência de IA] Críticos de esquerda citam o partido como centrista ou de centro-direita, por considerarem que adota posturas liberais em determinados pontos.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-partido-da-social-democracia-brasileira-004"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Partido_da_Social_Democracia_Brasileira",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-dilma-rousseff-wiki-topic-partido-socialista-brasileiro-1985",
-      "fromEntityId": "wiki-topic-dilma-rousseff",
-      "toEntityId": "wiki-topic-partido-socialista-brasileiro-1985",
-      "type": "participated_in",
-      "label": "foi apoiada",
-      "reverseLabel": "apoiou",
-      "context": "[conferência de IA] A estratégia de 2010 em apoio a Dilma Rousseff é descrita no artigo como vantajosa ao partido.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-partido-socialista-brasileiro-1985-017"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Partido_Socialista_Brasileiro_(1985)",
         "retrievedAt": "2026-11-05"
       }
     },
@@ -355201,42 +354805,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-the-world-factbook-wiki-topic-governo-dos-estados-unidos",
-      "fromEntityId": "wiki-topic-the-world-factbook",
-      "toEntityId": "wiki-topic-governo-dos-estados-unidos",
-      "type": "documented-association",
-      "label": "é",
-      "reverseLabel": "criou",
-      "context": "[conferência de IA] Como publicação do governo dos Estados Unidos, o conteúdo da obra é de domínio público.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-the-world-factbook-003"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/The_World_Factbook",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-paul-von-hindenburg-wiki-topic-alemanha-nazista",
-      "fromEntityId": "wiki-topic-paul-von-hindenburg",
-      "toEntityId": "wiki-topic-alemanha-nazista",
-      "type": "participated_in",
-      "label": "foi nomeado por",
-      "reverseLabel": "nomeou",
-      "context": "[conferência de IA] Hitler nomeado Chanceler da Alemanha por Paul von Hindenburg. (1933-01-30).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-alemanha-nazista-007"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Alemanha_Nazista",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-anticomunismo-wiki-topic-revolucao-de-outubro",
       "fromEntityId": "wiki-topic-anticomunismo",
       "toEntityId": "wiki-topic-revolucao-de-outubro",
@@ -355273,24 +354841,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-associacao-geral-dos-trabalhadores-alemaes-wiki-topic-imperio-alemao",
-      "fromEntityId": "wiki-topic-associacao-geral-dos-trabalhadores-alemaes",
-      "toEntityId": "wiki-topic-imperio-alemao",
-      "type": "documented-association",
-      "label": "antecedeu",
-      "reverseLabel": "foi antecedido por",
-      "context": "[conferência de IA] A ADAV foi o primeiro partido alemão do Trabalho formado na Prússia antes do estabelecimento do Império Alemão.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-associacao-geral-dos-trabalhadores-alemaes-002"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Associa%C3%A7%C3%A3o_Geral_dos_Trabalhadores_Alem%C3%A3es",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-benjamin-tucker-wiki-topic-anarquismo-individualista",
       "fromEntityId": "wiki-topic-benjamin-tucker",
       "toEntityId": "wiki-topic-anarquismo-individualista",
@@ -355323,24 +354873,6 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Blanquismo",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-emma-goldman-wiki-topic-capitalismo-de-estado",
-      "fromEntityId": "wiki-topic-emma-goldman",
-      "toEntityId": "wiki-topic-capitalismo-de-estado",
-      "type": "documented-association",
-      "label": "foi criticada por",
-      "reverseLabel": "criticou",
-      "context": "[conferência de IA] Emma Goldman publicou o artigo Não há nenhum comunismo na Rússia. (1935).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-capitalismo-de-estado-005"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Capitalismo_de_Estado",
         "retrievedAt": "2026-11-05"
       }
     },
@@ -355471,24 +355003,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-desenvolvimento-economico-person-adam-smith",
-      "fromEntityId": "wiki-topic-desenvolvimento-economico",
-      "toEntityId": "person-adam-smith",
-      "type": "influenced",
-      "label": "foi influenciado por",
-      "reverseLabel": "influenciou",
-      "context": "[conferência de IA] O desenvolvimento comercial e industrial europeu motivou o estudo clássico de Adam Smith sobre a riqueza das nações, tema presente desde então no pensamento econômico.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-desenvolvimento-economico-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Desenvolvimento_econ%C3%B4mico",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-economia-mista-wiki-topic-revolucao-industrial",
       "fromEntityId": "wiki-topic-economia-mista",
       "toEntityId": "wiki-topic-revolucao-industrial",
@@ -355503,24 +355017,6 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Economia_mista",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-escola-austriaca-wiki-topic-viena",
-      "fromEntityId": "wiki-topic-escola-austriaca",
-      "toEntityId": "wiki-topic-viena",
-      "type": "documented-association",
-      "label": "originou",
-      "reverseLabel": "foi local de origem",
-      "context": "[conferência de IA] A escola se originou em Viena entre o final do século XIX e o início do século XX, com contribuições de Carl Menger, Eugen Böhm von Bawerk e Friedrich von Wieser.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-escola-austriaca-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Escola_Austr%C3%ADaca",
         "retrievedAt": "2026-11-05"
       }
     },
@@ -355633,24 +355129,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-guerra-civil-espanhola-wiki-topic-golpe-de-estado",
-      "fromEntityId": "wiki-topic-guerra-civil-espanhola",
-      "toEntityId": "wiki-topic-golpe-de-estado",
-      "type": "influenced",
-      "label": "causou",
-      "reverseLabel": "foi causa de",
-      "context": "[conferência de IA] O conflito começou após o fracasso parcial do golpe de Estado de 17 de julho de 1936, perpetrado por parte das forças armadas contra o Governo eleito da Segunda República.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-guerra-civil-espanhola-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Guerra_Civil_Espanhola",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-guerra-civil-espanhola-wiki-topic-forcas-armadas",
       "fromEntityId": "wiki-topic-guerra-civil-espanhola",
       "toEntityId": "wiki-topic-forcas-armadas",
@@ -355759,60 +355237,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-libertarianismo-de-direita-wiki-topic-ludwig-von-mises",
-      "fromEntityId": "wiki-topic-libertarianismo-de-direita",
-      "toEntityId": "wiki-topic-ludwig-von-mises",
-      "type": "influenced",
-      "label": "foi influenciado por",
-      "reverseLabel": "influenciou",
-      "context": "[conferência de IA] O libertarianismo de direita desenvolveu-se nos Estados Unidos em meados do século XX a partir de obras de escritores liberais europeus, como John Locke, Friedrich Hayek e Ludwig von Mises.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-libertarianismo-de-direita-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Libertarianismo_de_direita",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-libertarianismo-de-direita-person-friedrich-hayek",
-      "fromEntityId": "wiki-topic-libertarianismo-de-direita",
-      "toEntityId": "person-friedrich-hayek",
-      "type": "influenced",
-      "label": "foi influenciado por",
-      "reverseLabel": "influenciou",
-      "context": "[conferência de IA] O libertarianismo de direita desenvolveu-se nos Estados Unidos em meados do século XX a partir de obras de escritores liberais europeus, como John Locke, Friedrich Hayek e Ludwig von Mises.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-libertarianismo-de-direita-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Libertarianismo_de_direita",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-libertarianismo-de-direita-person-john-locke",
-      "fromEntityId": "wiki-topic-libertarianismo-de-direita",
-      "toEntityId": "person-john-locke",
-      "type": "influenced",
-      "label": "foi influenciado por",
-      "reverseLabel": "influenciou",
-      "context": "[conferência de IA] O libertarianismo de direita desenvolveu-se nos Estados Unidos em meados do século XX a partir de obras de escritores liberais europeus, como John Locke, Friedrich Hayek e Ludwig von Mises.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-libertarianismo-de-direita-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Libertarianismo_de_direita",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-liga-espartaquista-wiki-topic-social-democracia",
       "fromEntityId": "wiki-topic-liga-espartaquista",
       "toEntityId": "wiki-topic-social-democracia",
@@ -355885,24 +355309,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-partido-comunista-da-china-wiki-topic-partido-comunista-da-uniao-sovietica",
-      "fromEntityId": "wiki-topic-partido-comunista-da-china",
-      "toEntityId": "wiki-topic-partido-comunista-da-uniao-sovietica",
-      "type": "influenced",
-      "label": "foi influenciado por",
-      "reverseLabel": "influenciou",
-      "context": "[conferência de IA] O partido foi fundado em 1921, com ajuda do Gabinete do Extremo Oriente do Partido Comunista da União Soviética e do Secretariado do Extremo Oriente da Internacional Comunista.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-partido-comunista-da-china-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Partido_Comunista_da_China",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-partido-comunista-da-uniao-sovietica-wiki-topic-de-facto",
       "fromEntityId": "wiki-topic-partido-comunista-da-uniao-sovietica",
       "toEntityId": "wiki-topic-de-facto",
@@ -355957,24 +355363,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-oscar-niemeyer-wiki-topic-partido-comunista-frances",
-      "fromEntityId": "wiki-topic-oscar-niemeyer",
-      "toEntityId": "wiki-topic-partido-comunista-frances",
-      "type": "documented-association",
-      "label": "foi projetado por",
-      "reverseLabel": "projetou",
-      "context": "[conferência de IA] Projeto do edifício-sede do partido feito pelo arquiteto Oscar Niemeyer. (1966).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-partido-comunista-frances-007"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Partido_Comunista_Franc%C3%AAs",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-partido-social-democrata-independente-da-alemanha-wiki-topic-primeira-guerra-mundial",
       "fromEntityId": "wiki-topic-partido-social-democrata-independente-da-alemanha",
       "toEntityId": "wiki-topic-primeira-guerra-mundial",
@@ -355989,24 +355377,6 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Partido_Social-Democrata_Independente_da_Alemanha",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-partido-socialista-italiano-wiki-topic-primeira-guerra-mundial",
-      "fromEntityId": "wiki-topic-partido-socialista-italiano",
-      "toEntityId": "wiki-topic-primeira-guerra-mundial",
-      "type": "reacted_against",
-      "label": "foi afetada por",
-      "reverseLabel": "causou",
-      "context": "[conferência de IA] Primeira cisão interna, no início da Primeira Guerra Mundial. (1914).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-partido-socialista-italiano-006"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Partido_Socialista_Italiano",
         "retrievedAt": "2026-11-05"
       }
     },
@@ -356083,24 +355453,6 @@
       }
     },
     {
-      "id": "rel-exp-wiki-topic-quinta-republica-francesa-wiki-topic-referendo",
-      "fromEntityId": "wiki-topic-quinta-republica-francesa",
-      "toEntityId": "wiki-topic-referendo",
-      "type": "documented-association",
-      "label": "foi aprovada por",
-      "reverseLabel": "aprova",
-      "context": "[conferência de IA] A constituição foi aprovada por referendo. (1958-09-22).",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-quinta-republica-francesa-004"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Quinta_Rep%C3%BAblica_Francesa",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
       "id": "rel-exp-wiki-topic-revolucao-alema-de-1918-1919-wiki-topic-friedrich-ebert",
       "fromEntityId": "wiki-topic-revolucao-alema-de-1918-1919",
       "toEntityId": "wiki-topic-friedrich-ebert",
@@ -356115,42 +355467,6 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Alem%C3%A3_de_1918-1919",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-ruptura-sino-sovietica-ideology-marxism-leninism",
-      "fromEntityId": "wiki-topic-ruptura-sino-sovietica",
-      "toEntityId": "ideology-marxism-leninism",
-      "type": "influenced",
-      "label": "foi influenciado por",
-      "reverseLabel": "influenciou",
-      "context": "[conferência de IA] A ruptura é descrita como causada principalmente por divergências na interpretação e aplicação do marxismo-leninismo pelos dois países, influenciadas por suas geopolíticas.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-ruptura-sino-sovietica-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Ruptura_sino-sovi%C3%A9tica",
-        "retrievedAt": "2026-11-05"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-topic-otto-von-bismarck-wiki-topic-seguridade-social",
-      "fromEntityId": "wiki-topic-otto-von-bismarck",
-      "toEntityId": "wiki-topic-seguridade-social",
-      "type": "documented-association",
-      "label": "foi introduzido por",
-      "reverseLabel": "introduziu",
-      "context": "[conferência de IA] O primeiro país a adotar um sistema amplo de Estado de bem-estar social foi o Império Alemão, introduzido por Otto von Bismarck em 1889.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-topic-seguridade-social-001"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Seguridade_social",
         "retrievedAt": "2026-11-05"
       }
     },
@@ -356187,24 +355503,6 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Nikita_Khrushchov",
-        "retrievedAt": "2026-11-08"
-      }
-    },
-    {
-      "id": "rel-exp-wiki-obra-que-fazer-lenin-wiki-topic-partido-operario-social-democrata-russo",
-      "fromEntityId": "wiki-obra-que-fazer-lenin",
-      "toEntityId": "wiki-topic-partido-operario-social-democrata-russo",
-      "type": "participated_in",
-      "label": "surgiu",
-      "reverseLabel": "abrigou",
-      "context": "[conferência de IA] A obra surgiu num contexto em que as diferenças no interior do Partido Operário Social-Democrata Russo se ampliavam.",
-      "temporalExtent": null,
-      "uncertainty": "moderate",
-      "evidenceIds": ["ev-wiki-obra-que-fazer-lenin-002"],
-      "editorialStatus": "pending",
-      "provenance": {
-        "source": "wikipedia",
-        "url": "https://pt.wikipedia.org/wiki/Que_Fazer%3F_(L%C3%AAnin)",
         "retrievedAt": "2026-11-08"
       }
     },
@@ -356295,6 +355593,294 @@
       "provenance": {
         "source": "wikipedia",
         "url": "https://pt.wikipedia.org/wiki/Guerra_Fria",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-imperio-britanico-wiki-topic-gra-bretanha",
+      "fromEntityId": "wiki-topic-imperio-britanico",
+      "toEntityId": "wiki-topic-gra-bretanha",
+      "type": "developed_into",
+      "label": "compreendeu",
+      "reverseLabel": "foi compreendida por",
+      "context": "[conferência de IA] A Grã-Bretanha adotou uma política de retirada pacífica de suas colônias, em contraste com França e Portugal.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-imperio-britanico-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Imp%C3%A9rio_Brit%C3%A2nico",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-alemanha-wiki-topic-intervencionismo-economia",
+      "fromEntityId": "wiki-topic-alemanha",
+      "toEntityId": "wiki-topic-intervencionismo-economia",
+      "type": "documented-association",
+      "label": "foi palco",
+      "reverseLabel": "participou",
+      "context": "[conferência de IA] Acordo de ajuda governamental às indústrias carboníferas em crise, firmado por Alemanha, Espanha, França e Reino Unido. (1997).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-intervencionismo-economia-004"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Intervencionismo_(economia)",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-empresa-estatal-wiki-topic-brasilia",
+      "fromEntityId": "wiki-topic-empresa-estatal",
+      "toEntityId": "wiki-topic-brasilia",
+      "type": "documented-association",
+      "label": "sede",
+      "reverseLabel": "foi publicado em",
+      "context": "[conferência de IA] Obra listada no bloco de bibliografia do artigo: Perfil das empresas estatais federais 2015, com ano-base 2014, publicado em Brasília em 2016 pelo MP/SE/DEST.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-empresa-estatal-005"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Empresa_estatal",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-liberdade-de-expressao-wiki-topic-getulio-vargas",
+      "fromEntityId": "wiki-topic-liberdade-de-expressao",
+      "toEntityId": "wiki-topic-getulio-vargas",
+      "type": "influenced",
+      "label": "regulou",
+      "reverseLabel": "foi regulamentado por",
+      "context": "[conferência de IA] Getúlio Vargas editou a lei da imprensa, Lei 2083, com regulamentação dos crimes de imprensa. (1953).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-liberdade-de-expressao-007"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberdade_de_express%C3%A3o",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-meios-de-comunicacao-social-wiki-topic-sao-paulo",
+      "fromEntityId": "wiki-topic-meios-de-comunicacao-social",
+      "toEntityId": "wiki-topic-sao-paulo",
+      "type": "documented-association",
+      "label": "publicou",
+      "reverseLabel": "foi publicado em",
+      "context": "[conferência de IA] A obra de McLuhan listada na bibliografia tem título Os Meios de Comunicação como Extensões do Homem, publicada em São Paulo pela Cultrix em 1969.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-meios-de-comunicacao-social-006"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Meios_de_comunica%C3%A7%C3%A3o_social",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-getulio-vargas-wiki-topic-salario-minimo",
+      "fromEntityId": "wiki-topic-getulio-vargas",
+      "toEntityId": "wiki-topic-salario-minimo",
+      "type": "documented-association",
+      "label": "foi instituído por",
+      "reverseLabel": "instituiu",
+      "context": "[conferência de IA] No Brasil, Getúlio Vargas foi apontado como responsável pela instituição do salário-mínimo em 1930.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-salario-minimo-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Sal%C3%A1rio_m%C3%ADnimo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-desigualdade-social-wiki-topic-portugal",
+      "fromEntityId": "wiki-topic-desigualdade-social",
+      "toEntityId": "wiki-topic-portugal",
+      "type": "documented-association",
+      "label": "ocorre em",
+      "reverseLabel": "é o local de",
+      "context": "[conferência de IA] Em Portugal, uma em cada 20 crianças não come a todas as refeições por falta de recursos financeiros (2024).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-desigualdade-social-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Desigualdade_social",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-esperanca-de-vida-wiki-topic-portugal",
+      "fromEntityId": "wiki-topic-esperanca-de-vida",
+      "toEntityId": "wiki-topic-portugal",
+      "type": "documented-association",
+      "label": "ocorreu em",
+      "reverseLabel": "abrange",
+      "context": "[conferência de IA] Estimativa da esperança de vida à nascença em Portugal para o período 2015-2017, de 80,8 anos. (2017).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-esperanca-de-vida-005"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Esperan%C3%A7a_de_vida",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-reino-unido-wiki-topic-intervencionismo-economia",
+      "fromEntityId": "wiki-topic-reino-unido",
+      "toEntityId": "wiki-topic-intervencionismo-economia",
+      "type": "documented-association",
+      "label": "foi parte",
+      "reverseLabel": "participou",
+      "context": "[conferência de IA] Acordo de ajuda governamental às indústrias carboníferas em crise, firmado por Alemanha, Espanha, França e Reino Unido. (1997).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-intervencionismo-economia-004"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Intervencionismo_(economia)",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-revolucao-de-outubro-wiki-topic-moscovo",
+      "fromEntityId": "wiki-topic-revolucao-de-outubro",
+      "toEntityId": "wiki-topic-moscovo",
+      "type": "documented-association",
+      "label": "ocorreu em",
+      "reverseLabel": "foi sede de",
+      "context": "[conferência de IA] Após a Revolução de Outubro, a capital foi transferida de volta para Moscou, que passou a ser centro político da RSFS da Rússia e depois da União Soviética.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-moscovo-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Moscovo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-moscovo-wiki-topic-uniao-sovietica",
+      "fromEntityId": "wiki-topic-moscovo",
+      "toEntityId": "wiki-topic-uniao-sovietica",
+      "type": "documented-association",
+      "label": "foi sede de",
+      "reverseLabel": "abrigou",
+      "context": "[conferência de IA] Após a Revolução de Outubro, a capital foi transferida de volta para Moscou, que passou a ser centro político da RSFS da Rússia e depois da União Soviética.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-moscovo-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Moscovo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-wilhelm-weitling-ideology-communism",
+      "fromEntityId": "wiki-topic-wilhelm-weitling",
+      "toEntityId": "ideology-communism",
+      "type": "influenced",
+      "label": "fundou",
+      "reverseLabel": "foi fundado por",
+      "context": "[conferência de IA] Engels considerou Weitling o fundador do comunismo alemão.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-wilhelm-weitling-015"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Wilhelm_Weitling",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-comercio-internacional-wiki-topic-historia-da-humanidade",
+      "fromEntityId": "wiki-topic-comercio-internacional",
+      "toEntityId": "wiki-topic-historia-da-humanidade",
+      "type": "influenced",
+      "label": "acompanhou",
+      "reverseLabel": "foi acompanhado por",
+      "context": "[conferência de IA] O comércio entre países acompanha grande parte da história da humanidade, mas sua importância cresceu nos últimos séculos.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-comercio-internacional-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Com%C3%A9rcio_internacional",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-siria-wiki-topic-golpe-de-estado",
+      "fromEntityId": "wiki-topic-siria",
+      "toEntityId": "wiki-topic-golpe-de-estado",
+      "type": "participated_in",
+      "label": "assumiu",
+      "reverseLabel": "ocorreu em",
+      "context": "[conferência de IA] Golpe de Estado após o qual o Partido Baath assumiu o poder. (1963).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-siria-005"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/S%C3%ADria",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-etiopia-wiki-topic-africa",
+      "fromEntityId": "wiki-topic-etiopia",
+      "toEntityId": "wiki-topic-africa",
+      "type": "documented-association",
+      "label": "sede",
+      "reverseLabel": "localiza",
+      "context": "[conferência de IA] Adis Abeba é sede da União Africana e da Comissão Econômica das Nações Unidas para a África.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-etiopia-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Eti%C3%B3pia",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-etiopia-wiki-topic-berlim",
+      "fromEntityId": "wiki-topic-etiopia",
+      "toEntityId": "wiki-topic-berlim",
+      "type": "documented-association",
+      "label": "foi palco de",
+      "reverseLabel": "houve",
+      "context": "[conferência de IA] A Etiópia foi um dos dois únicos países africanos que mantiveram sua independência na Conferência de Berlim.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-etiopia-007"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Eti%C3%B3pia",
         "retrievedAt": "2026-11-05"
       }
     }

@@ -9,7 +9,11 @@
   "summary": "Entre 31 de março e 1.º de abril de 1964, uma rebelião militar depôs o presidente João Goulart, que se exilou no Uruguai em 4 de abril. O Congresso declarou vaga a Presidência e Ranieri Mazzilli assumiu provisoriamente, até a eleição de Castelo Branco pelo Congresso. O evento encerrou a Quarta República e iniciou a ditadura militar (1964–1985). Historiadores divergem sobre sua natureza, inclusive sobre se foi golpe ou revolução, e sobre o peso de militares, civis e do governo dos Estados Unidos.",
   "published": false,
   "atlasId": "atlas-golpe-de-1964",
-  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-18" },
+  "review": {
+    "status": "rascunho",
+    "reviewer": null,
+    "updatedAt": "2026-11-19"
+  },
   "identity": {
     "accent": "teal",
     "palette": "conservadorismo",
@@ -17,7 +21,9 @@
     "keyVisualization": "timeline"
   },
   "portrait": null,
-  "poster": { "figures": [] },
+  "poster": {
+    "figures": []
+  },
   "chapters": [
     {
       "id": "introducao",
@@ -30,7 +36,9 @@
       ],
       "question": "O que define Golpe de 1964?",
       "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
-      "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+      "sourceIds": [
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964"
+      ],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -48,7 +56,9 @@
       ],
       "question": "Como e em que contexto Golpe de 1964 surgiu?",
       "bridge": "Visto o contexto de formação, seguem os eixos e processos centrais.",
-      "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+      "sourceIds": [
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964"
+      ],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -66,8 +76,12 @@
               "paragraphs": [
                 "A deposição começou como rebelião militar e foi seguida pela declaração de vacância da Presidência pelo Congresso Nacional."
               ],
-              "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
-              "entityIds": ["wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "sourceIds": [
+                "src-wiki-topic-golpe-de-estado-no-brasil-em-1964"
+              ],
+              "entityIds": [
+                "wiki-topic-golpe-de-estado-no-brasil-em-1964"
+              ],
               "classification": "alegação empírica"
             }
           ]
@@ -85,7 +99,9 @@
       ],
       "question": "Quais causas imediatas e rupturas estruturais desencadearam Golpe de 1964?",
       "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
-      "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+      "sourceIds": [
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964"
+      ],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -103,8 +119,12 @@
               "paragraphs": [
                 "Há diversas interpretações acadêmicas: o evento foi tanto a implantação da ditadura quanto a última de várias crises da República Populista."
               ],
-              "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
-              "entityIds": ["wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "sourceIds": [
+                "src-wiki-topic-golpe-de-estado-no-brasil-em-1964"
+              ],
+              "entityIds": [
+                "wiki-topic-golpe-de-estado-no-brasil-em-1964"
+              ],
               "classification": "tese atribuída"
             }
           ]
@@ -136,7 +156,9 @@
       "blocks": [
         {
           "type": "entities",
-          "entityIds": ["wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+          "entityIds": [
+            "wiki-topic-golpe-de-estado-no-brasil-em-1964"
+          ],
           "mode": "concepts",
           "notes": {
             "wiki-topic-golpe-de-estado-no-brasil-em-1964": "Nomes alternativos: golpe de 1964."
@@ -144,7 +166,11 @@
         },
         {
           "type": "entities",
-          "entityIds": ["wiki-topic-era-vargas", "wiki-topic-estado", "wiki-topic-tortura"],
+          "entityIds": [
+            "wiki-topic-era-vargas",
+            "wiki-topic-estado",
+            "wiki-topic-tortura"
+          ],
           "mode": "concepts",
           "notes": {}
         }
@@ -157,14 +183,19 @@
       "kicker": "Cronologia do acontecimento",
       "minutes": 1,
       "narrative": [
-        "No contexto da Guerra Fria, o evento ocorreu no mesmo período de outros golpes militares na região."
+        "O golpe de 1964 é o desfecho de uma crise que começou em agosto de 1961, quando Jânio Quadros renunciou e os ministros militares tentaram impedir a posse do vice, João Goulart. A Campanha da Legalidade, liderada por Leonel Brizola no Rio Grande do Sul, garantiu a posse, mas sob um parlamentarismo improvisado que reduzia os poderes do presidente.",
+        "Entre 1963 e março de 1964 a disputa se acirrou: o plebiscito de janeiro de 1963 devolveu o presidencialismo a Goulart, as reformas de base ganharam as ruas e a oposição civil e militar passou a conspirar abertamente. O comício da Central do Brasil, em 13 de março, e a Marcha da Família com Deus pela Liberdade, seis dias depois, mostraram um país dividido.",
+        "O levante começou em 31 de março em Minas Gerais e terminou em menos de três dias, sem resistência armada relevante. Em 2 de abril o Congresso declarou vaga a presidência com Goulart ainda no país, e em 9 de abril o primeiro Ato Institucional inaugurou a ditadura que duraria até 1985."
       ],
-      "question": "Em que períodos históricos Golpe de 1964 se formou e mudou?",
-      "bridge": "Da cronologia, passamos aos atores, protagonistas e obras ligadas ao recorte.",
-      "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+      "question": "Que sequência de crises levou da renúncia de Jânio Quadros ao primeiro Ato Institucional?",
+      "bridge": "Os protagonistas e os relatos do período ajudam a entender quem agiu em cada etapa.",
+      "sourceIds": [
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+        "src-wiki-topic-joao-goulart"
+      ],
       "review": null,
-      "gap": "Há contexto histórico, mas nenhuma data verificada para montar a cronologia.",
-      "coverage": "partial",
+      "gap": null,
+      "coverage": "complete",
       "layout": "timeline",
       "blocks": [
         {
@@ -172,18 +203,147 @@
           "mode": "principles",
           "items": [
             {
-              "id": "contexto-1",
-              "title": "Contexto",
-              "kicker": "Situação histórica",
-              "summary": "No contexto da Guerra Fria, o evento ocorreu no mesmo período de outros golpes militares na região.",
+              "id": "marco-1961-renuncia",
+              "title": "Renúncia e Legalidade",
+              "kicker": "agosto de 1961",
+              "summary": "Jânio Quadros renunciou em 25 de agosto; ministros militares vetaram a posse de Goulart.",
               "paragraphs": [
-                "No contexto da Guerra Fria, o evento ocorreu no mesmo período de outros golpes militares na região."
+                "A Campanha da Legalidade, transmitida por uma rede de rádios a partir de Porto Alegre, mobilizou apoio à posse e dividiu as Forças Armadas."
               ],
-              "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
-              "entityIds": ["wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "sourceIds": [
+                "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+                "src-wiki-topic-joao-goulart"
+              ],
+              "entityIds": [
+                "wiki-topic-janio-quadros",
+                "wiki-topic-leonel-brizola"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-1961-parlamentarismo",
+              "title": "Posse sob parlamentarismo",
+              "kicker": "setembro de 1961",
+              "summary": "O acordo que permitiu a posse de Goulart, em 7 de setembro, instituiu o parlamentarismo.",
+              "paragraphs": [
+                "O arranjo reduziu os poderes do presidente e foi visto pelos trabalhistas como uma posse condicionada."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-joao-goulart"
+              ],
+              "entityIds": [
+                "wiki-topic-joao-goulart"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-1963-plebiscito",
+              "title": "Plebiscito",
+              "kicker": "janeiro de 1963",
+              "summary": "Uma ampla maioria votou pela volta do presidencialismo.",
+              "paragraphs": [
+                "Com os poderes restaurados, Goulart passou a defender as reformas de base, entre elas a agrária, a urbana e a bancária."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-joao-goulart"
+              ],
+              "entityIds": [
+                "wiki-topic-joao-goulart"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-1964-comicio",
+              "title": "Comício e Marcha",
+              "kicker": "março de 1964",
+              "summary": "O comício da Central do Brasil, em 13 de março, e a Marcha da Família, em 19 de março, polarizaram as ruas.",
+              "paragraphs": [
+                "No comício Goulart assinou decretos de desapropriação de terras e de encampação de refinarias; a marcha, em São Paulo, reuniu setores conservadores, católicos e empresariais contra o governo."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-golpe-de-estado-no-brasil-em-1964"
+              ],
+              "entityIds": [
+                "wiki-topic-joao-goulart"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-1964-golpe",
+              "title": "Levante e deposição",
+              "kicker": "31 de março – 2 de abril de 1964",
+              "summary": "Tropas saíram de Juiz de Fora rumo ao Rio; o Congresso declarou a presidência vaga.",
+              "paragraphs": [
+                "Goulart deixou Brasília e seguiu para o Rio Grande do Sul e depois para o exílio no Uruguai. Os Estados Unidos reconheceram rapidamente o novo governo."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+                "src-wiki-topic-guerra-fria"
+              ],
+              "entityIds": [
+                "wiki-topic-golpe-de-estado-no-brasil-em-1964",
+                "wiki-topic-estados-unidos"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-1964-ai1",
+              "title": "Ato Institucional",
+              "kicker": "abril de 1964",
+              "summary": "O primeiro Ato Institucional, em 9 de abril, permitiu cassações e preparou a eleição indireta de Castelo Branco.",
+              "paragraphs": [
+                "A medida inaugurou a sucessão de atos de exceção que marcaria a ditadura militar até 1985."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+                "src-wiki-topic-ditadura-militar-brasileira"
+              ],
+              "entityIds": [
+                "wiki-topic-ditadura-militar"
+              ],
               "classification": "alegação empírica"
             }
           ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            {
+              "itemId": "marco-1961-renuncia",
+              "start": 1961,
+              "end": 1961
+            },
+            {
+              "itemId": "marco-1961-parlamentarismo",
+              "start": 1961,
+              "end": 1963
+            },
+            {
+              "itemId": "marco-1963-plebiscito",
+              "start": 1963,
+              "end": 1963
+            },
+            {
+              "itemId": "marco-1964-comicio",
+              "start": 1964,
+              "end": 1964
+            },
+            {
+              "itemId": "marco-1964-golpe",
+              "start": 1964,
+              "end": 1964
+            },
+            {
+              "itemId": "marco-1964-ai1",
+              "start": 1964,
+              "end": 1964
+            }
+          ],
+          "entityIds": [
+            "wiki-topic-golpe-de-estado-no-brasil-em-1964"
+          ],
+          "markerIds": [],
+          "markerNotes": {}
         }
       ]
     },
@@ -260,18 +420,83 @@
     {
       "id": "vertentes",
       "anchor": "vertentes",
-      "title": "Desdobramentos e correntes",
-      "kicker": "Desdobramentos e correntes",
+      "title": "Forças em disputa",
+      "kicker": "Forças em disputa",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
+      "narrative": [
+        "Em um acontecimento, as vertentes são as forças que disputaram o desfecho. Em 1964 elas não formavam dois blocos coesos: havia divisões dentro da base do governo, entre os opositores civis e dentro das próprias Forças Armadas, e parte dos atores mudou de lado nos últimos meses."
+      ],
+      "question": "Quem apoiava e quem combatia o governo Goulart às vésperas do golpe?",
+      "bridge": "Essas forças se enfrentaram em experiências concretas, reunidas no capítulo seguinte.",
+      "sourceIds": [
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+        "src-wiki-topic-joao-goulart"
+      ],
       "review": null,
-      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
-      "coverage": "pending",
+      "gap": null,
+      "coverage": "complete",
       "layout": "documents",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "schools",
+          "items": [
+            {
+              "id": "forca-base-governo",
+              "title": "Base do governo",
+              "kicker": "Trabalhistas, sindicatos e esquerda",
+              "summary": "O PTB, o movimento sindical reunido no CGT, a Frente de Mobilização Popular de Leonel Brizola e o PCB defendiam as reformas de base, com divergências sobre ritmo e método.",
+              "paragraphs": [
+                "Brizola e a ala mais radical cobravam reformas imediatas, inclusive fora do Congresso; setores moderados do PTB e do PSD buscavam acordos parlamentares. Essa divisão enfraqueceu a capacidade do governo de negociar."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+                "src-wiki-topic-joao-goulart"
+              ],
+              "entityIds": [
+                "wiki-topic-joao-goulart",
+                "wiki-topic-leonel-brizola",
+                "wiki-topic-partido-trabalhista-brasileiro-1945"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "forca-oposicao-civil",
+              "title": "Oposição civil",
+              "kicker": "UDN, governadores e empresariado",
+              "summary": "A UDN, governadores como Carlos Lacerda, Magalhães Pinto e Ademar de Barros, entidades empresariais e setores da Igreja e da imprensa se opunham às reformas e ao que chamavam de ameaça comunista.",
+              "paragraphs": [
+                "Parte dessa oposição esperava ganhar a eleição presidencial de 1965 e via a intervenção militar como passageira; muitos desses aliados acabaram afastados ou cassados pelo regime nos anos seguintes."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-golpe-de-estado-no-brasil-em-1964"
+              ],
+              "entityIds": [
+                "wiki-topic-golpe-de-estado-no-brasil-em-1964"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "forca-militares",
+              "title": "Forças Armadas divididas",
+              "kicker": "Legalistas e conspiradores",
+              "summary": "Oficiais formados na doutrina de segurança nacional da Escola Superior de Guerra conspiraram contra o governo; outros defendiam a legalidade, como em 1961.",
+              "paragraphs": [
+                "A revolta dos marinheiros e o discurso de Goulart aos sargentos no Automóvel Clube, no fim de março, foram lidos pela cúpula militar como quebra da hierarquia e ajudaram a unir oficiais antes hesitantes. No contexto da Guerra Fria, a disputa interna ganhou leitura de alinhamento internacional."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+                "src-wiki-topic-guerra-fria"
+              ],
+              "entityIds": [
+                "wiki-topic-ditadura-militar",
+                "wiki-topic-guerra-fria"
+              ],
+              "classification": "interpretação"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "experiencias",
@@ -367,15 +592,16 @@
       "kicker": "Argumentos, críticas e respostas",
       "minutes": 1,
       "narrative": [
-        "A natureza do evento, se golpe ou revolução, é disputada.",
-        "A historiografia atual usa o termo golpe para esse processo."
+        "Duas perguntas dividem os estudos sobre 1964. A primeira é quem fez o golpe: só os militares ou uma aliança com empresários, políticos e entidades civis. A segunda é se a ruptura era inevitável ou resultou de escolhas que fecharam saídas negociadas. As respostas mudam a forma de nomear o regime que veio depois."
       ],
       "question": "Quais críticas e controvérsias cercam Golpe de 1964?",
       "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
-      "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+      "sourceIds": [
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964"
+      ],
       "review": null,
-      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
-      "coverage": "partial",
+      "gap": null,
+      "coverage": "complete",
       "layout": "debate",
       "blocks": [
         {
@@ -387,9 +613,15 @@
               "title": "Crítica ou controvérsia 1",
               "kicker": "Argumentos e críticas",
               "summary": "A natureza do evento, se golpe ou revolução, é disputada.",
-              "paragraphs": ["A natureza do evento, se golpe ou revolução, é disputada."],
-              "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
-              "entityIds": ["wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "paragraphs": [
+                "A natureza do evento, se golpe ou revolução, é disputada."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-golpe-de-estado-no-brasil-em-1964"
+              ],
+              "entityIds": [
+                "wiki-topic-golpe-de-estado-no-brasil-em-1964"
+              ],
               "classification": "alegação empírica"
             },
             {
@@ -397,10 +629,159 @@
               "title": "Crítica ou controvérsia 2",
               "kicker": "Argumentos e críticas",
               "summary": "A historiografia atual usa o termo golpe para esse processo.",
-              "paragraphs": ["A historiografia atual usa o termo golpe para esse processo."],
-              "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
-              "entityIds": ["wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "paragraphs": [
+                "A historiografia atual usa o termo golpe para esse processo."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-golpe-de-estado-no-brasil-em-1964"
+              ],
+              "entityIds": [
+                "wiki-topic-golpe-de-estado-no-brasil-em-1964"
+              ],
               "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "debate",
+          "topics": [
+            {
+              "id": "debate-64-civil-militar",
+              "title": "Golpe militar ou civil-militar?",
+              "scope": "Debate sobre os atores do golpe e sobre o nome que se dá à ditadura que ele inaugurou.",
+              "defence": {
+                "id": "debate-64-civil-tese",
+                "title": "Aliança civil e empresarial",
+                "kicker": "Tese atribuída",
+                "summary": "René Dreifuss mostrou em 1981 a atuação de entidades empresariais como o IPES e o IBAD na preparação do golpe.",
+                "paragraphs": [
+                  "Para essa linha, falar em golpe civil-militar evidencia que governadores, parlamentares, imprensa e empresários participaram da conspiração e do novo governo."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-golpe-de-estado-no-brasil-em-1964"
+                ],
+                "entityIds": [
+                  "wiki-topic-golpe-de-estado-no-brasil-em-1964"
+                ],
+                "classification": "tese atribuída"
+              },
+              "criticism": {
+                "id": "debate-64-civil-critica",
+                "title": "Um regime dos militares",
+                "kicker": "Crítica",
+                "summary": "Outros historiadores aceitam o apoio civil ao golpe, mas lembram que o poder ficou com as Forças Armadas e que muitos aliados civis foram cassados depois.",
+                "paragraphs": [
+                  "Por isso preferem chamar o regime de ditadura militar, mantendo o adjetivo civil para a conspiração e não para o exercício do poder."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+                  "src-wiki-topic-ditadura-militar-brasileira"
+                ],
+                "entityIds": [
+                  "wiki-topic-ditadura-militar"
+                ],
+                "classification": "interpretação"
+              },
+              "response": {
+                "id": "debate-64-civil-resposta",
+                "title": "Nomes e responsabilidades",
+                "kicker": "Desdobramento",
+                "summary": "O debate sobre o nome envolve responsabilidade histórica: quem apoiou, quem se beneficiou e quem rompeu com o regime.",
+                "paragraphs": [
+                  "A Comissão Nacional da Verdade, em 2014, registrou a colaboração de empresas e civis com a repressão sem deixar de atribuir o comando aos militares."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-ditadura-militar-brasileira"
+                ],
+                "entityIds": [
+                  "wiki-topic-ditadura-militar"
+                ],
+                "classification": "interpretação"
+              },
+              "limits": {
+                "id": "debate-64-civil-limites",
+                "title": "Fontes ainda abertas",
+                "kicker": "Limites",
+                "summary": "Parte da documentação militar e diplomática foi aberta só nas últimas décadas.",
+                "paragraphs": [
+                  "A leitura apresenta as posições sem fixar um nome único para o regime."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-golpe-de-estado-no-brasil-em-1964"
+                ],
+                "entityIds": [],
+                "classification": "limitação editorial"
+              }
+            },
+            {
+              "id": "debate-64-inevitavel",
+              "title": "Uma ruptura inevitável?",
+              "scope": "Controvérsia sobre as causas do golpe entre estrutura econômica, Guerra Fria e escolhas dos atores políticos.",
+              "defence": {
+                "id": "debate-64-inevitavel-tese",
+                "title": "Reação às reformas",
+                "kicker": "Interpretação",
+                "summary": "Caio Navarro de Toledo e outros autores leram o golpe como reação de classes proprietárias e militares às reformas de base e à mobilização popular.",
+                "paragraphs": [
+                  "Nessa chave, o avanço das reformas ameaçava interesses que preferiram romper a ordem constitucional a negociar."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+                  "src-wiki-topic-joao-goulart"
+                ],
+                "entityIds": [
+                  "wiki-topic-joao-goulart"
+                ],
+                "classification": "tese atribuída"
+              },
+              "criticism": {
+                "id": "debate-64-inevitavel-critica",
+                "title": "Escolhas que fecharam saídas",
+                "kicker": "Crítica",
+                "summary": "Argelina Figueiredo argumentou em 1993 que a radicalização dos dois lados, e não uma necessidade estrutural, inviabilizou uma reforma negociada no Congresso.",
+                "paragraphs": [
+                  "A ênfase recai sobre a decisão de esquerda e direita de abandonar as regras democráticas quando elas deixaram de favorecer seus projetos."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-golpe-de-estado-no-brasil-em-1964"
+                ],
+                "entityIds": [
+                  "wiki-topic-golpe-de-estado-no-brasil-em-1964"
+                ],
+                "classification": "tese atribuída"
+              },
+              "response": {
+                "id": "debate-64-inevitavel-resposta",
+                "title": "O peso da Guerra Fria",
+                "kicker": "Contexto internacional",
+                "summary": "Documentos liberados nos Estados Unidos mostram que o governo norte-americano acompanhou a conspiração e preparou apoio logístico, a Operação Brother Sam.",
+                "paragraphs": [
+                  "O apoio externo não explica sozinho o golpe, mas ajuda a entender a confiança dos conspiradores e o reconhecimento imediato do novo governo."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+                  "src-wiki-topic-guerra-fria"
+                ],
+                "entityIds": [
+                  "wiki-topic-estados-unidos",
+                  "wiki-topic-guerra-fria"
+                ],
+                "classification": "interpretação"
+              },
+              "limits": {
+                "id": "debate-64-inevitavel-limites",
+                "title": "Causas combinadas",
+                "kicker": "Limites",
+                "summary": "As explicações não se excluem, e a historiografia recente tende a combiná-las.",
+                "paragraphs": [
+                  "A leitura indica as obras de cada linha para quem quiser comparar."
+                ],
+                "sourceIds": [
+                  "src-wiki-topic-golpe-de-estado-no-brasil-em-1964"
+                ],
+                "entityIds": [],
+                "classification": "limitação editorial"
+              }
             }
           ]
         }
@@ -449,6 +830,10 @@
           ],
           "mode": "concepts",
           "notes": {}
+        },
+        {
+          "type": "atlas",
+          "rootEntityId": "wiki-topic-golpe-de-estado-no-brasil-em-1964"
         }
       ]
     },
@@ -458,20 +843,98 @@
       "title": "Roteiro de leitura",
       "kicker": "Roteiro de leitura",
       "minutes": 1,
-      "narrative": ["Obras ligadas à tradição: Los Angeles Times, Manifesto Comunista."],
+      "narrative": [
+        "Obras ligadas à tradição: Los Angeles Times, Manifesto Comunista."
+      ],
       "question": "Que obras e documentos aprofundam o estudo de Golpe de 1964?",
       "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
-      "sourceIds": ["src-wiki-topic-los-angeles-times"],
+      "sourceIds": [
+        "src-wiki-topic-los-angeles-times"
+      ],
       "review": null,
-      "gap": "Obras ligadas à tradição; edição e nível de leitura ainda pendentes.",
-      "coverage": "partial",
+      "gap": null,
+      "coverage": "complete",
       "layout": "documents",
       "blocks": [
         {
           "type": "entities",
-          "entityIds": ["wiki-topic-los-angeles-times", "work-communist-manifesto"],
+          "entityIds": [
+            "wiki-topic-los-angeles-times",
+            "work-communist-manifesto"
+          ],
           "mode": "documents",
           "notes": {}
+        },
+        {
+          "type": "reading-path",
+          "works": [
+            {
+              "title": "1964: a conquista do Estado",
+              "author": "René Armand Dreifuss",
+              "year": "1981",
+              "edition": "Petrópolis: Vozes",
+              "level": "avançado",
+              "theme": "Ação política do empresariado e do complexo IPES/IBAD",
+              "why": "Base documental da leitura do golpe como empreendimento civil-militar.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "O governo Goulart e o golpe de 64",
+              "author": "Caio Navarro de Toledo",
+              "year": "1982",
+              "edition": "São Paulo: Brasiliense",
+              "level": "introdutório",
+              "theme": "Reformas de base e reação ao governo Goulart",
+              "why": "Introdução curta que lê o golpe como reação às reformas.",
+              "kind": "introdução",
+              "entityId": null
+            },
+            {
+              "title": "Democracia ou reformas? Alternativas democráticas à crise política: 1961–1964",
+              "author": "Argelina Cheibub Figueiredo",
+              "year": "1993",
+              "edition": "São Paulo: Paz e Terra",
+              "level": "avançado",
+              "theme": "Radicalização e paralisia decisória no Congresso",
+              "why": "Contraponto às explicações estruturais, centrado nas escolhas dos atores.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "1964: o golpe que derrubou um presidente, pôs fim ao regime democrático e instituiu a ditadura no Brasil",
+              "author": "Jorge Ferreira e Angela de Castro Gomes",
+              "year": "2014",
+              "edition": "Rio de Janeiro: Civilização Brasileira",
+              "level": "intermediário",
+              "theme": "Governo Goulart e polarização política",
+              "why": "Narrativa detalhada dos meses que antecederam o golpe.",
+              "kind": "estudo",
+              "entityId": "wiki-topic-joao-goulart"
+            },
+            {
+              "title": "O golpe de 1964: momentos decisivos",
+              "author": "Carlos Fico",
+              "year": "2014",
+              "edition": "Rio de Janeiro: FGV Editora",
+              "level": "introdutório",
+              "theme": "Conspiração, levante e primeiros atos do regime",
+              "why": "Síntese recente que discute o caráter civil e militar do golpe.",
+              "kind": "introdução",
+              "entityId": null
+            },
+            {
+              "title": "1964: história do regime militar brasileiro",
+              "author": "Marcos Napolitano",
+              "year": "2014",
+              "edition": "São Paulo: Contexto",
+              "level": "intermediário",
+              "theme": "Do golpe ao fim da ditadura",
+              "why": "Liga o golpe ao regime que ele inaugurou.",
+              "kind": "estudo",
+              "entityId": null
+            }
+          ]
         }
       ]
     },
