@@ -1,7 +1,7 @@
 /*
  * Semantic tokens: intent, not value. Components read only this layer.
- * Values without a primitive (teal, ochre, states) keep their current hex until
- * step 2 of the migration remaps the palette.
+ * Support colours point at pigments (step 2). Neutrals, states and map colours keep
+ * their own values until their components are redesigned.
  */
 :root {
   --font-primary: 'Zilla Slab', Georgia, serif;
@@ -32,9 +32,10 @@
   --color-warning-surface: #f2e8c8;
   --color-danger: #82251f;
   --color-danger-surface: #f5e4e1;
-  --color-teal-paper: #7fbdb5;
-  --color-ochre-paper: #eec35a;
-  --color-ochre-strong: #9a6b00;
+  /* Name kept for compatibility: the support green is now mata, not teal. */
+  --color-teal-paper: var(--pig-mata-300);
+  --color-ochre-paper: var(--pig-ocre-500);
+  --color-ochre-strong: var(--pig-ocre-800);
   --color-rose-paper: var(--pig-rosa-300);
   --color-indigo: var(--pig-jenipapo-700);
   --color-moss: #3f6b4a;
@@ -49,10 +50,10 @@
   --color-desk-line: #5f5e59;
   --color-map-land: #efe9da;
   /* Per-tradition reading accents (ideology page). */
-  --color-tradition-rose: #a8324f;
+  --color-tradition-rose: var(--pig-rosa-700);
   --color-tradition-stone: #4a4640;
-  --color-tradition-ochre: #8a5a00;
-  --color-tradition-moss: #2f6b4a;
+  --color-tradition-ochre: var(--pig-ocre-800);
+  --color-tradition-moss: var(--pig-mata-700);
 
   /* Section tints for scroll-driven pages (home and readings share the same steps). */
   --tint-1: color-mix(in srgb, var(--color-ochre-paper) 22%, var(--color-canvas));

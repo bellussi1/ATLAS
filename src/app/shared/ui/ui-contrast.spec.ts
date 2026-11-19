@@ -69,6 +69,26 @@ describe('semantic design token contrast', () => {
     ['color-on-strong-surface', 'color-accent-hover', 4.5],
     ['color-on-strong-surface', 'color-cartographic', 4.5],
     ['color-on-strong-surface', 'color-archive', 4.5],
+    ['color-ink', 'color-orange-paper', 4.5],
+    ['color-ochre-strong', 'color-canvas', 3],
+    ['color-tradition-rose', 'color-canvas', 4.5],
+    ['color-tradition-stone', 'color-canvas', 4.5],
+    ['color-tradition-ochre', 'color-canvas', 4.5],
+    ['color-tradition-moss', 'color-canvas', 4.5],
+    ['color-violet', 'color-canvas', 4.5],
+    ['color-indigo', 'color-canvas', 4.5],
+    ['color-info', 'color-canvas', 4.5],
+    // Poster register pairs, guarded before the first poster component ships.
+    ['pig-cal-50', 'pig-terra-900', 4.5],
+    ['pig-ocre-300', 'pig-terra-900', 4.5],
+    ['pig-urucum-300', 'pig-terra-900', 4.5],
+    ['pig-mata-300', 'pig-terra-900', 4.5],
+    ['pig-rosa-300', 'pig-terra-900', 4.5],
+    ['pig-cal-50', 'pig-pau-brasil-500', 4.5],
+    ['pig-cal-50', 'pig-mata-700', 4.5],
+    ['pig-cal-50', 'pig-jenipapo-700', 4.5],
+    ['pig-tinta-900', 'pig-ocre-500', 4.5],
+    ['pig-tinta-900', 'pig-mata-300', 4.5],
   ])('%s on %s meets its documented contrast minimum', (foreground, background, minimum) => {
     expect(tokens[foreground]).toBeDefined();
     expect(tokens[background]).toBeDefined();

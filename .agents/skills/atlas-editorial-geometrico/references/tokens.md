@@ -1,6 +1,6 @@
 # Tokens do design system · alvo v2
 
-Estado: **etapa 1 implementada** (19/11/2026). `src/styles/tokens/_primitives.scss` e `_semantic.scss` existem; os semânticos ainda apontam para os valores atuais, e a troca de paleta é a etapa 2. `_registers.scss` entra com os primeiros componentes de cartaz.
+Estado: **etapas 1 e 2 implementadas** (19/11/2026). `src/styles/tokens/_primitives.scss` e `_semantic.scss` existem e as cores de suporte já apontam para os pigmentos; neutros, estados e cores do mapa seguem com valores próprios. `_registers.scss` entra com os primeiros componentes de cartaz.
 
 ## Camadas
 
