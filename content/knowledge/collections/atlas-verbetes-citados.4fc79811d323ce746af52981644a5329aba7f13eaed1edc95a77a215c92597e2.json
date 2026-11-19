@@ -356225,6 +356225,78 @@
         "url": "https://pt.wikipedia.org/wiki/Annie_Besant",
         "retrievedAt": "2026-11-05"
       }
+    },
+    {
+      "id": "rel-exp-wiki-topic-getulio-vargas-wiki-topic-revolucao-de-1930",
+      "fromEntityId": "wiki-topic-getulio-vargas",
+      "toEntityId": "wiki-topic-revolucao-de-1930",
+      "type": "participated_in",
+      "label": "chefiou o governo provisório da",
+      "reverseLabel": "levou ao poder",
+      "context": "[conferência de IA] O movimento armado começou em 3 de outubro de 1930 e levou à formação do Governo Provisório chefiado por Getúlio Vargas em 3 de novembro do mesmo ano.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-revolucao-de-1930-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_de_1930",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-golpe-de-estado-no-brasil-em-1964-wiki-topic-joao-goulart",
+      "fromEntityId": "wiki-topic-golpe-de-estado-no-brasil-em-1964",
+      "toEntityId": "wiki-topic-joao-goulart",
+      "type": "reacted_against",
+      "label": "depôs",
+      "reverseLabel": "foi deposto pelo",
+      "context": "[conferência de IA] O golpe depôs o presidente João Goulart por meio de um golpe militar.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-golpe-de-estado-no-brasil-em-1964-004"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Golpe_de_Estado_no_Brasil_em_1964",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-emile-durkheim-wiki-topic-sociologia",
+      "fromEntityId": "wiki-topic-emile-durkheim",
+      "toEntityId": "wiki-topic-sociologia",
+      "type": "documented-association",
+      "label": "é considerado um dos fundadores da",
+      "reverseLabel": "tem entre seus fundadores",
+      "context": "[conferência de IA] Durkheim é considerado o pai da sociologia.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-emile-durkheim-010"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/%C3%89mile_Durkheim",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-guerra-fria-wiki-topic-estados-unidos",
+      "fromEntityId": "wiki-topic-estados-unidos",
+      "toEntityId": "wiki-topic-guerra-fria",
+      "type": "participated_in",
+      "label": "foi protagonista da",
+      "reverseLabel": "teve como protagonista",
+      "context": "[conferência de IA] Os Estados Unidos criaram a aliança militar da OTAN. (1949).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-guerra-fria-007"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Guerra_Fria",
+        "retrievedAt": "2026-11-05"
+      }
     }
   ],
   "learningPaths": []

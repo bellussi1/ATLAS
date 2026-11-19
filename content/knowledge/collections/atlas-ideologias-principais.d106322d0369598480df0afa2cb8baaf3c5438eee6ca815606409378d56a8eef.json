@@ -16024,6 +16024,24 @@
         "url": "https://pt.wikipedia.org/wiki/Tito%C3%ADsmo",
         "retrievedAt": "2026-11-05"
       }
+    },
+    {
+      "id": "rel-exp-wiki-topic-integralismo-brasileiro-wiki-topic-fascismo",
+      "fromEntityId": "wiki-topic-integralismo-brasileiro",
+      "toEntityId": "wiki-topic-fascismo",
+      "type": "documented-association",
+      "label": "é comparado por historiadores ao",
+      "reverseLabel": "é comparado ao",
+      "context": "[conferência de IA] Há ampla discussão entre autores sobre as proximidades do integralismo com o fascismo de Benito Mussolini.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-integralismo-brasileiro-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Integralismo_brasileiro",
+        "retrievedAt": "2026-11-05"
+      }
     }
   ],
   "learningPaths": []

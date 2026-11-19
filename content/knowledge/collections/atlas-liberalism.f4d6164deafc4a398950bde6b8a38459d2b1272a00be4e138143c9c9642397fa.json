@@ -12464,6 +12464,24 @@
         "url": "https://pt.wikipedia.org/wiki/Liberalismo_cl%C3%A1ssico",
         "retrievedAt": "2026-11-05"
       }
+    },
+    {
+      "id": "rel-exp-event-american-revolution-ideology-liberalism",
+      "fromEntityId": "ideology-liberalism",
+      "toEntityId": "event-american-revolution",
+      "type": "influenced",
+      "label": "inspirou a",
+      "reverseLabel": "incorporou princípios do",
+      "context": "[conferência de IA] A Declaração de Independência, adotada em 4 de julho de 1776, incorporou direitos universais expressos pelo liberalismo e pelo republicanismo.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-revolucao-americana-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Americana",
+        "retrievedAt": "2026-11-17"
+      }
     }
   ],
   "learningPaths": []

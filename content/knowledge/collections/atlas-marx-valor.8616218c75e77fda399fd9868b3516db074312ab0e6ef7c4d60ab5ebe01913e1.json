@@ -14331,6 +14331,42 @@
         "url": "https://pt.wikipedia.org/wiki/Leon_Tr%C3%B3tski",
         "retrievedAt": "2026-11-09"
       }
+    },
+    {
+      "id": "rel-exp-person-leon-trotsky-ideology-trotskyism",
+      "fromEntityId": "person-leon-trotsky",
+      "toEntityId": "ideology-trotskyism",
+      "type": "documented-association",
+      "label": "formulou as ideias do",
+      "reverseLabel": "segue as ideias de",
+      "context": "[conferência de IA] Trótski descrevia-se como marxista ortodoxo, marxista revolucionário e bolchevique-leninista, seguidor de Marx, Engels, Lenin, Liebknecht e Luxemburgo.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-trotskismo-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Trotskismo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-person-mao-zedong-wiki-topic-maoismo",
+      "fromEntityId": "person-mao-zedong",
+      "toEntityId": "wiki-topic-maoismo",
+      "type": "documented-association",
+      "label": "formulou as bases do",
+      "reverseLabel": "tem como referência",
+      "context": "[conferência de IA] As contribuições teóricas de Mao ao marxismo-leninismo, às estratégias militares e às suas políticas comunistas são chamadas coletivamente de maoísmo.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-mao-tse-tung-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Mao_Ts%C3%A9-Tung",
+        "retrievedAt": "2026-11-06"
+      }
     }
   ],
   "learningPaths": []

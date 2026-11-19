@@ -21819,6 +21819,60 @@
         "url": "https://pt.wikipedia.org/wiki/Social-democracia",
         "retrievedAt": "2026-11-05"
       }
+    },
+    {
+      "id": "rel-exp-wiki-topic-mikhail-bakunin-wiki-topic-anarquismo",
+      "fromEntityId": "wiki-topic-mikhail-bakunin",
+      "toEntityId": "wiki-topic-anarquismo",
+      "type": "influenced",
+      "label": "influenciou o",
+      "reverseLabel": "foi influenciado por",
+      "context": "[conferência de IA] Bakunin é considerado uma das figuras mais influentes do anarquismo.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-mikhail-bakunin-008"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Mikhail_Bakunin",
+        "retrievedAt": "2026-11-04"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-piotr-kropotkin-wiki-topic-anarquismo",
+      "fromEntityId": "wiki-topic-piotr-kropotkin",
+      "toEntityId": "wiki-topic-anarquismo",
+      "type": "influenced",
+      "label": "fundou a vertente anarcocomunista do",
+      "reverseLabel": "tem em Kropotkin o fundador da vertente anarcocomunista",
+      "context": "[conferência de IA] Kropotkin é considerado o fundador da vertente anarcocomunista do anarquismo.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-piotr-kropotkin-007"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Piotr_Kropotkin",
+        "retrievedAt": "2026-11-04"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-segunda-guerra-mundial-wiki-topic-organizacao-das-nacoes-unidas",
+      "fromEntityId": "wiki-topic-segunda-guerra-mundial",
+      "toEntityId": "wiki-topic-organizacao-das-nacoes-unidas",
+      "type": "documented-association",
+      "label": "originou",
+      "reverseLabel": "foi criada",
+      "context": "[conferência de IA] A organização foi estabelecida em 24 de outubro de 1945, após o término da Segunda Guerra Mundial, com a intenção de impedir outro conflito como aquele.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-organizacao-das-nacoes-unidas-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Organiza%C3%A7%C3%A3o_das_Na%C3%A7%C3%B5es_Unidas",
+        "retrievedAt": "2026-11-05"
+      }
     }
   ],
   "learningPaths": []

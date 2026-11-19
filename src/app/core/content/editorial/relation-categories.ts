@@ -1,4 +1,4 @@
-// Gerado por scripts/content/classify-relations.mjs. Não editar à mão.
+// Gerado por scripts/content/classify-relations.mjs e expand-relations.mjs. Não editar à mão.
 // Revisão: conferência de IA (modelo local gemma2:9b-instruct-q4_K_M, 2026-11-19), sem revisão humana.
 
 /** Decisão por relação: família (`creation`, `participation`…, `:reverse` inverte a seta) ou `omit`. */
@@ -485,6 +485,7 @@ export const relationCategoryDecisions: Readonly<Record<string, string>> = {
   'rel-br-janio-goulart': 'continuity:reverse',
   'rel-br-plinio-extrema-direita': 'affiliation',
   'rel-br-tancredo-sarney': 'participation',
+  'rel-exp-event-american-revolution-ideology-liberalism': 'influenced',
   'rel-exp-event-portugal-constitution-approval-1976-wiki-topic-assembleia-constituinte':
     'participation',
   'rel-exp-ideology-classical-liberalism-wiki-topic-europa': 'location',
@@ -500,6 +501,8 @@ export const relationCategoryDecisions: Readonly<Record<string, string>> = {
   'rel-exp-person-friedrich-hayek-wiki-topic-escola-austriaca': 'affiliation',
   'rel-exp-person-isaiah-berlin-person-karl-marx': 'creation',
   'rel-exp-person-leon-trotsky-ideology-socialism': 'affiliation',
+  'rel-exp-person-leon-trotsky-ideology-trotskyism': 'creation',
+  'rel-exp-person-mao-zedong-wiki-topic-maoismo': 'creation',
   'rel-exp-person-ulysses-guimaraes-wiki-topic-movimento-democratico-brasileiro-1966':
     'affiliation',
   'rel-exp-wiki-obra-que-fazer-lenin-wiki-topic-partido-operario-social-democrata-russo':
@@ -567,6 +570,7 @@ export const relationCategoryDecisions: Readonly<Record<string, string>> = {
   'rel-exp-wiki-topic-economia-mista-wiki-topic-revolucao-industrial': 'continuity',
   'rel-exp-wiki-topic-eleicao-presidencial-no-brasil-em-1994-wiki-topic-plano-real':
     'participation',
+  'rel-exp-wiki-topic-emile-durkheim-wiki-topic-sociologia': 'creation',
   'rel-exp-wiki-topic-emma-goldman-wiki-topic-capitalismo-de-estado': 'affiliation',
   'rel-exp-wiki-topic-engelbert-dollfuss-wiki-topic-austrofascismo': 'influenced',
   'rel-exp-wiki-topic-era-vargas-wiki-topic-julio-prestes': 'rupture',
@@ -594,13 +598,16 @@ export const relationCategoryDecisions: Readonly<Record<string, string>> = {
   'rel-exp-wiki-topic-fundacao-fernando-henrique-cardoso-wiki-topic-democracia': 'affiliation',
   'rel-exp-wiki-topic-fundo-monetario-internacional-wiki-topic-washington-d-c': 'location',
   'rel-exp-wiki-topic-geraldo-alckmin-wiki-topic-democracia': 'creation',
+  'rel-exp-wiki-topic-getulio-vargas-wiki-topic-revolucao-de-1930': 'participation',
   'rel-exp-wiki-topic-golpe-de-estado-no-brasil-em-1964-wiki-topic-golpe-militar': 'affiliation',
   'rel-exp-wiki-topic-golpe-de-estado-no-brasil-em-1964-wiki-topic-guerra-fria': 'continuity',
+  'rel-exp-wiki-topic-golpe-de-estado-no-brasil-em-1964-wiki-topic-joao-goulart': 'rupture',
   'rel-exp-wiki-topic-golpe-de-estado-wiki-topic-ditadura-militar-brasileira': 'creation',
   'rel-exp-wiki-topic-grande-recessao-wiki-topic-crise-financeira-de-2007-2008': 'influenced',
   'rel-exp-wiki-topic-guatemala-wiki-topic-imperio-espanhol': 'location',
   'rel-exp-wiki-topic-guerra-civil-espanhola-wiki-topic-forcas-armadas': 'rupture',
   'rel-exp-wiki-topic-guerra-civil-espanhola-wiki-topic-golpe-de-estado': 'influenced',
+  'rel-exp-wiki-topic-guerra-fria-wiki-topic-estados-unidos': 'participation',
   'rel-exp-wiki-topic-guerras-civis-afegas-wiki-topic-forcas-armadas': 'participation',
   'rel-exp-wiki-topic-guilherme-ii-da-alemanha-wiki-topic-paises-baixos': 'location',
   'rel-exp-wiki-topic-guilherme-iii-de-inglaterra-wiki-lugar-westminster': 'location',
@@ -610,6 +617,7 @@ export const relationCategoryDecisions: Readonly<Record<string, string>> = {
   'rel-exp-wiki-topic-imperialismo-wiki-topic-bonapartismo': 'affiliation',
   'rel-exp-wiki-topic-imperio-russo-wiki-topic-monarquia-absoluta': 'affiliation',
   'rel-exp-wiki-topic-indice-de-desenvolvimento-humano-wiki-topic-irlanda': 'location',
+  'rel-exp-wiki-topic-integralismo-brasileiro-wiki-topic-fascismo': 'affiliation',
   'rel-exp-wiki-topic-integralismo-brasileiro-wiki-topic-nacionalismo': 'affiliation',
   'rel-exp-wiki-topic-integralismo-brasileiro-wiki-topic-politica-do-brasil': 'rupture',
   'rel-exp-wiki-topic-internacional-comunista-wiki-topic-partido-comunista-da-uniao-sovietica':
@@ -628,6 +636,7 @@ export const relationCategoryDecisions: Readonly<Record<string, string>> = {
   'rel-exp-wiki-topic-libertarianismo-de-direita-wiki-topic-ludwig-von-mises': 'influenced',
   'rel-exp-wiki-topic-liga-espartaquista-wiki-topic-social-democracia': 'influenced',
   'rel-exp-wiki-topic-luis-xiv-de-franca-wiki-topic-absolutismo': 'influenced',
+  'rel-exp-wiki-topic-mikhail-bakunin-wiki-topic-anarquismo': 'influenced',
   'rel-exp-wiki-topic-monarquia-constitucional-event-glorious-revolution': 'influenced',
   'rel-exp-wiki-topic-movimento-democratico-brasileiro-1980-wiki-topic-ditadura-militar':
     'continuity',
@@ -671,6 +680,7 @@ export const relationCategoryDecisions: Readonly<Record<string, string>> = {
   'rel-exp-wiki-topic-partido-whig-reino-unido-wiki-topic-primeira-guerra-mundial': 'participation',
   'rel-exp-wiki-topic-paul-von-hindenburg-wiki-topic-alemanha-nazista': 'participation',
   'rel-exp-wiki-topic-pedro-ii-do-brasil-wiki-topic-monarquia-constitucional': 'participation',
+  'rel-exp-wiki-topic-piotr-kropotkin-wiki-topic-anarquismo': 'influenced',
   'rel-exp-wiki-topic-plinio-salgado-wiki-topic-fascismo': 'affiliation',
   'rel-exp-wiki-topic-presidente-dos-estados-unidos-wiki-topic-casa-branca': 'location',
   'rel-exp-wiki-topic-progressismo-wiki-topic-humano': 'influenced',
@@ -687,6 +697,7 @@ export const relationCategoryDecisions: Readonly<Record<string, string>> = {
   'rel-exp-wiki-topic-ruptura-sino-sovietica-ideology-marxism-leninism': 'influenced',
   'rel-exp-wiki-topic-samuel-p-huntington-wiki-topic-nova-iorque': 'location',
   'rel-exp-wiki-topic-secularismo-wiki-topic-religiao': 'influenced',
+  'rel-exp-wiki-topic-segunda-guerra-mundial-wiki-topic-organizacao-das-nacoes-unidas': 'creation',
   'rel-exp-wiki-topic-segunda-guerra-mundial-wiki-topic-polonia': 'location',
   'rel-exp-wiki-topic-selecao-brasileira-de-futebol-wiki-topic-america': 'location',
   'rel-exp-wiki-topic-selecao-brasileira-de-futebol-wiki-topic-argentina': 'location',

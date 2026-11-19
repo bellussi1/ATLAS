@@ -21,13 +21,13 @@
     },
     {
       "id": "atlas-liberalism",
-      "file": "collections/atlas-liberalism.fe220e050d779fd329569a8177be6aea17f919eb25029ae4a463a51715b1a009.json",
-      "sha256": "fe220e050d779fd329569a8177be6aea17f919eb25029ae4a463a51715b1a009"
+      "file": "collections/atlas-liberalism.f4d6164deafc4a398950bde6b8a38459d2b1272a00be4e138143c9c9642397fa.json",
+      "sha256": "f4d6164deafc4a398950bde6b8a38459d2b1272a00be4e138143c9c9642397fa"
     },
     {
       "id": "atlas-marx-valor",
-      "file": "collections/atlas-marx-valor.d2a7cb5049af2fa75c84fe11f5cd0e100ddd7ed9762b4a86107d4e2a481562b4.json",
-      "sha256": "d2a7cb5049af2fa75c84fe11f5cd0e100ddd7ed9762b4a86107d4e2a481562b4"
+      "file": "collections/atlas-marx-valor.8616218c75e77fda399fd9868b3516db074312ab0e6ef7c4d60ab5ebe01913e1.json",
+      "sha256": "8616218c75e77fda399fd9868b3516db074312ab0e6ef7c4d60ab5ebe01913e1"
     },
     {
       "id": "atlas-constitutional-contexts",
@@ -56,18 +56,18 @@
     },
     {
       "id": "atlas-anarquismo",
-      "file": "collections/atlas-anarquismo.f5e3fa5594515b318492818a0e5e8e93c0e14dae8dfb58b503e94c7b5ca72909.json",
-      "sha256": "f5e3fa5594515b318492818a0e5e8e93c0e14dae8dfb58b503e94c7b5ca72909"
+      "file": "collections/atlas-anarquismo.1e7287a71a63b5be003dba81f73e94e587d6160520bf7859b76a4698e9c95e3f.json",
+      "sha256": "1e7287a71a63b5be003dba81f73e94e587d6160520bf7859b76a4698e9c95e3f"
     },
     {
       "id": "atlas-ideologias-principais",
-      "file": "collections/atlas-ideologias-principais.67d0995a8e2d5de63f3329577062e183310df89c832260d7e837d73cf70e6e85.json",
-      "sha256": "67d0995a8e2d5de63f3329577062e183310df89c832260d7e837d73cf70e6e85"
+      "file": "collections/atlas-ideologias-principais.d106322d0369598480df0afa2cb8baaf3c5438eee6ca815606409378d56a8eef.json",
+      "sha256": "d106322d0369598480df0afa2cb8baaf3c5438eee6ca815606409378d56a8eef"
     },
     {
       "id": "atlas-verbetes-citados",
-      "file": "collections/atlas-verbetes-citados.2ac7bbaa70b3d5353bbe9f99640730eb6beb4329a77cc9a17d219d44860cb08a.json",
-      "sha256": "2ac7bbaa70b3d5353bbe9f99640730eb6beb4329a77cc9a17d219d44860cb08a"
+      "file": "collections/atlas-verbetes-citados.4fc79811d323ce746af52981644a5329aba7f13eaed1edc95a77a215c92597e2.json",
+      "sha256": "4fc79811d323ce746af52981644a5329aba7f13eaed1edc95a77a215c92597e2"
     },
     {
       "id": "atlas-nazismo",

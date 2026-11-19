@@ -176,6 +176,51 @@ for (const atlas of graph.atlases) {
   }
 }
 
+// `--pairs file.json` ([[fromId, toId], ...]) targets essential links: any claim of one end
+// that names the other (title or alias) becomes the candidate, whatever its region score.
+const pairsPath = option('--pairs', null);
+if (pairsPath) {
+  candidates.clear();
+  const wanted = JSON.parse(await readFile(pairsPath, 'utf8'));
+  const claimsByEntity = new Map();
+  for (const atlas of graph.atlases)
+    for (const claim of atlas.claims) {
+      const list = claimsByEntity.get(claim.entityId) ?? [];
+      list.push({ claim, atlas });
+      claimsByEntity.set(claim.entityId, list);
+    }
+  const namesOf = (entity) =>
+    [entity.title, ...(entity.aliases ?? [])]
+      .map((name) => normalize(name.replace(/\s*\(.*\)$/, '').trim()))
+      .filter((name) => name.length >= 4);
+  for (const [aId, bId] of wanted) {
+    const a = entityById.get(aId);
+    const b = entityById.get(bId);
+    if (!a || !b || pairs.has(`${aId}|${bId}`)) continue;
+    let hit = null;
+    for (const [from, to] of [
+      [a, b],
+      [b, a],
+    ]) {
+      for (const { claim, atlas } of claimsByEntity.get(from.id) ?? []) {
+        const text = normalize(claim.text);
+        if (!namesOf(to).some((name) => text.includes(name))) continue;
+        const evidenceIds = [
+          ...new Set(
+            claim.citationIds.map((id) => citationById.get(id)?.evidenceId).filter(Boolean),
+          ),
+        ].filter((id) => evidenceAtlas.get(id)?.id === atlas.id);
+        if (!evidenceIds.length) continue;
+        hit = { from, to, claim, atlas, evidenceIds, region: 'essencial', score: 10 };
+        break;
+      }
+      if (hit) break;
+    }
+    if (hit) candidates.set(`${aId}|${bId}`, hit);
+    else console.log(`Sem afirmação com fonte: ${a.title} — ${b.title}`);
+  }
+}
+
 const ranked = [...candidates.values()].sort((a, b) => b.score - a.score);
 const perEntityCount = new Map();
 const selected = [];
@@ -281,12 +326,14 @@ for (const candidate of selected) {
     continue;
   }
   // The label reads "A label B", so the arrow already points from A to B.
+  // Essential pairs were chosen by hand, so the generic-term filter does not apply to them.
+  const essential = candidate.region === 'essencial';
   const decision = guardDecision(
     family,
     candidate.from.kind,
     candidate.to.kind,
-    candidate.from,
-    candidate.to,
+    essential ? null : candidate.from,
+    essential ? null : candidate.to,
   );
   if (decision === 'omit') {
     tally.omit = (tally.omit ?? 0) + 1;
