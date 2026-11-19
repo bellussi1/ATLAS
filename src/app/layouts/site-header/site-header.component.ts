@@ -11,6 +11,7 @@ import {
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { readingPath } from '@core/routing/reading-routes';
+import { HomeLinkDirective } from '@layouts/home-link.directive';
 import { filter, map } from 'rxjs';
 
 type Section = 'leituras' | 'itinerarios' | 'acervo' | 'grafos' | 'mapa' | null;
@@ -59,7 +60,7 @@ const sectionOf = (url: string): Section => {
 
 @Component({
   selector: 'app-site-header',
-  imports: [RouterLink],
+  imports: [HomeLinkDirective, RouterLink],
   templateUrl: './site-header.component.html',
   styleUrl: './site-header.component.scss',
   host: {
