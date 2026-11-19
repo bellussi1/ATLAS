@@ -43,16 +43,14 @@ const genericSeeds = new Set([
 
 const editorialNotes = {
   'gap-constituicao-1988': [
-    'As relações com EC 19/1998, Lei 13.105/2015 e Lei 9.296/1996 usam a URL da Constituição; a fonte não necessariamente nomeia essas normas. Validar cada alvo antes de criar aresta.',
+    'Corrigido em 19/11: as 4 relações com normas posteriores (EC 19/1998, Lei 13.105/2015, Lei 9.296/1996, EC 45/2004) foram removidas; a URL da Constituição não as nomeia.',
   ],
   'gap-estado-novo-1937': [
-    'A relação com a Constituição de 1946 é posterior à fonte de 1937; a relação com o Governo Provisório de 1930 não é sustentada pelo texto constitucional. Tratar como hipótese, não como fato documentado.',
+    'Corrigido em 19/11: as 3 relações foram removidas; alvos de 1930 e 1946 não têm passagem na Constituição de 1937 e o rótulo "estabeleceu" não se sustentava.',
   ],
-  'gap-ai5-1968': [
-    'A relação "Ruptura revisou AI-2" usa o AI-5 como fonte. O AI-5 não revisou o AI-2; no máximo o sucedeu no endurecimento. Revisar família, rótulo e direção.',
-  ],
+  'gap-ai5-1968': ['Corrigido em 19/11: "Ruptura revisou AI-2" passou a Continuidade/endureceu.'],
   'gap-ai1-golpe-1964': [
-    'Quatro relações usam a família "Influência" para verbos de instituição e continuidade. Reclassificar família/rótulo antes de promover.',
+    'Corrigido em 19/11: famílias reclassificadas (Atuação, Continuidade e Criação com rótulo passivo para o Comando Supremo).',
   ],
 };
 

@@ -9,7 +9,11 @@
   "summary": "Estado é uma entidade política que regula a sociedade e a população dentro de um território definido, tendo o governo como aparelho fundamental. O verbete descreve sua origem, há cerca de 5,5 mil anos, em contextos de estratificação e competição territorial, e mostra que não há consenso acadêmico sobre sua definição. A definição mais usada é a de Max Weber, que o caracteriza pelo monopólio do uso legítimo da violência. Também trata de sua distinção em relação à nação, ao governo e à sociedade civil, e das disputas teóricas entre liberais, marxistas, anarquistas e pluralistas sobre sua função.",
   "published": false,
   "atlasId": "atlas-estado",
-  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-17" },
+  "review": {
+    "status": "rascunho",
+    "reviewer": null,
+    "updatedAt": "2026-11-17"
+  },
   "identity": {
     "accent": "teal",
     "palette": "atlas",
@@ -17,7 +21,9 @@
     "keyVisualization": "timeline"
   },
   "portrait": null,
-  "poster": { "figures": [] },
+  "poster": {
+    "figures": []
+  },
   "chapters": [
     {
       "id": "introducao",
@@ -30,7 +36,9 @@
       ],
       "question": "O que define Estado?",
       "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
-      "sourceIds": ["src-wiki-topic-estado"],
+      "sourceIds": [
+        "src-wiki-topic-estado"
+      ],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -48,7 +56,9 @@
       ],
       "question": "Como e em que contexto Estado surgiu?",
       "bridge": "Visto o contexto de formação, seguem os eixos e processos centrais.",
-      "sourceIds": ["src-wiki-topic-estado"],
+      "sourceIds": [
+        "src-wiki-topic-estado"
+      ],
       "review": null,
       "gap": "Usa passagens de contexto histórico porque a fonte principal não separa uma seção de origens.",
       "coverage": "partial",
@@ -66,8 +76,12 @@
               "paragraphs": [
                 "Segundo a Convenção de Montevidéu de 1933, o Estado como pessoa de direito internacional deve ter população permanente, território definido, governo e capacidade de relações com outros Estados."
               ],
-              "sourceIds": ["src-wiki-topic-estado"],
-              "entityIds": ["wiki-topic-estado"],
+              "sourceIds": [
+                "src-wiki-topic-estado"
+              ],
+              "entityIds": [
+                "wiki-topic-estado"
+              ],
               "classification": "alegação empírica"
             }
           ]
@@ -85,7 +99,9 @@
       ],
       "question": "Quais ideias e práticas estruturam Estado?",
       "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
-      "sourceIds": ["src-wiki-topic-estado"],
+      "sourceIds": [
+        "src-wiki-topic-estado"
+      ],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -103,8 +119,12 @@
               "paragraphs": [
                 "Segundo Max Weber, Estado é uma forma de governo que mantém o monopólio do uso legítimo da violência, embora outras definições sejam comuns."
               ],
-              "sourceIds": ["src-wiki-topic-estado"],
-              "entityIds": ["wiki-topic-estado"],
+              "sourceIds": [
+                "src-wiki-topic-estado"
+              ],
+              "entityIds": [
+                "wiki-topic-estado"
+              ],
               "classification": "tese atribuída"
             }
           ]
@@ -136,9 +156,13 @@
       "blocks": [
         {
           "type": "entities",
-          "entityIds": ["wiki-topic-estado"],
+          "entityIds": [
+            "wiki-topic-estado"
+          ],
           "mode": "concepts",
-          "notes": { "wiki-topic-estado": "Nomes alternativos: State." }
+          "notes": {
+            "wiki-topic-estado": "Nomes alternativos: State."
+          }
         },
         {
           "type": "entities",
@@ -164,7 +188,9 @@
       ],
       "question": "Em que períodos históricos Estado se formou e mudou?",
       "bridge": "Da cronologia, passamos aos atores, protagonistas e obras ligadas ao recorte.",
-      "sourceIds": ["src-wiki-topic-estado"],
+      "sourceIds": [
+        "src-wiki-topic-estado"
+      ],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -182,8 +208,12 @@
               "paragraphs": [
                 "Convenção de Montevidéu sobre os Direitos e Deveres dos Estados, que estabelece qualificações do Estado como pessoa de direito internacional."
               ],
-              "sourceIds": ["src-wiki-topic-estado"],
-              "entityIds": ["wiki-topic-estado"],
+              "sourceIds": [
+                "src-wiki-topic-estado"
+              ],
+              "entityIds": [
+                "wiki-topic-estado"
+              ],
               "classification": "alegação empírica"
             },
             {
@@ -194,8 +224,12 @@
               "paragraphs": [
                 "Declaração sobre a Concessão da Independência aos Países e Povos Coloniais, que instituiu o contexto jurídico para a soberania popular segundo Adom Getachew."
               ],
-              "sourceIds": ["src-wiki-topic-estado"],
-              "entityIds": ["wiki-topic-estado"],
+              "sourceIds": [
+                "src-wiki-topic-estado"
+              ],
+              "entityIds": [
+                "wiki-topic-estado"
+              ],
               "classification": "alegação empírica"
             }
           ]
@@ -203,12 +237,33 @@
         {
           "type": "chronology",
           "epochs": [
-            { "itemId": "marco-1", "start": 1933, "end": 1933 },
-            { "itemId": "marco-2", "start": 1960, "end": 1960 }
+            {
+              "itemId": "marco-1",
+              "start": 1933,
+              "end": 1933
+            },
+            {
+              "itemId": "marco-2",
+              "start": 1960,
+              "end": 1960
+            }
           ],
-          "entityIds": ["wiki-topic-estado"],
+          "entityIds": [
+            "wiki-topic-estado"
+          ],
           "markerIds": [],
           "markerNotes": {}
+        },
+        {
+          "type": "timeline",
+          "entityIds": [
+            "person-john-locke",
+            "person-adam-smith",
+            "person-karl-marx",
+            "wiki-topic-max-weber",
+            "wiki-topic-getulio-vargas",
+            "wiki-topic-olof-palme"
+          ]
         }
       ]
     },
@@ -307,7 +362,9 @@
         },
         {
           "type": "entities",
-          "entityIds": ["wiki-topic-ciencia-politica"],
+          "entityIds": [
+            "wiki-topic-ciencia-politica"
+          ],
           "mode": "documents",
           "notes": {
             "wiki-topic-ciencia-politica": "[conferência de IA] Há debate interno sobre o objeto de estudo: para alguns, o Estado; para outros, o poder."
@@ -482,7 +539,9 @@
       ],
       "question": "Quais críticas e controvérsias cercam Estado?",
       "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
-      "sourceIds": ["src-wiki-topic-estado"],
+      "sourceIds": [
+        "src-wiki-topic-estado"
+      ],
       "review": null,
       "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
       "coverage": "partial",
@@ -500,8 +559,12 @@
               "paragraphs": [
                 "A visão predatória, defendida por Charles Tilly, compara o Estado a uma forma de crime organizado."
               ],
-              "sourceIds": ["src-wiki-topic-estado"],
-              "entityIds": ["wiki-topic-estado"],
+              "sourceIds": [
+                "src-wiki-topic-estado"
+              ],
+              "entityIds": [
+                "wiki-topic-estado"
+              ],
               "classification": "alegação empírica"
             },
             {
@@ -512,8 +575,12 @@
               "paragraphs": [
                 "A frase 'L'État, c'est moi' é atribuída a Luís XIV, mas provavelmente é apócrifa."
               ],
-              "sourceIds": ["src-wiki-topic-estado"],
-              "entityIds": ["wiki-topic-estado"],
+              "sourceIds": [
+                "src-wiki-topic-estado"
+              ],
+              "entityIds": [
+                "wiki-topic-estado"
+              ],
               "classification": "alegação empírica"
             }
           ]
@@ -589,6 +656,10 @@
             "wiki-topic-greve-geral-de-1917": "[conferência de IA] O presidente do Estado de São Paulo, Altino Arantes, atribuiu a greve a uma infiltração de anarquistas e comunistas.",
             "wiki-topic-soberania": "[conferência de IA] Declaração sobre a Concessão da Independência aos Países e Povos Coloniais, que instituiu o contexto jurídico para a soberania popular segundo Adom Getachew. (1960)."
           }
+        },
+        {
+          "type": "atlas",
+          "rootEntityId": "wiki-topic-estado"
         }
       ]
     },
@@ -598,10 +669,15 @@
       "title": "Roteiro de leitura",
       "kicker": "Roteiro de leitura",
       "minutes": 1,
-      "narrative": ["Obras ligadas à tradição: O Príncipe, Bíblia."],
+      "narrative": [
+        "Obras ligadas à tradição: O Príncipe, Bíblia."
+      ],
       "question": "Que obras e documentos aprofundam o estudo de Estado?",
       "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
-      "sourceIds": ["src-wiki-topic-o-principe", "src-wiki-topic-biblia"],
+      "sourceIds": [
+        "src-wiki-topic-o-principe",
+        "src-wiki-topic-biblia"
+      ],
       "review": null,
       "gap": "Obras ligadas à tradição; edição e nível de leitura ainda pendentes.",
       "coverage": "partial",
@@ -609,7 +685,10 @@
       "blocks": [
         {
           "type": "entities",
-          "entityIds": ["wiki-topic-o-principe", "wiki-topic-biblia"],
+          "entityIds": [
+            "wiki-topic-o-principe",
+            "wiki-topic-biblia"
+          ],
           "mode": "documents",
           "notes": {}
         }
