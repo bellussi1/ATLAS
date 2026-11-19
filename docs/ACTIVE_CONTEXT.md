@@ -10,6 +10,7 @@ Atualizado em 19/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 - **Branch / deploy:** `develop`, origem única `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload em push para `master`).
 - **Conteúdo publicado no R2:** **24 coleções**, release **`b10ec6ffeb5c701065cf9dc331567ad4ea4b293924485d10f0d5847867b8fa0c`** (`1.320` entidades, `3.052` relações, `2.540` ligações visíveis no grafo). Ponteiro em [`content/content-pointer.json`](../content/content-pointer.json).
 - **Verificação final (19/11):** `lint`, `typecheck`, `npm test` (`417/417`), `test:content` (`220/220`), `test:ingestion` (`71/71`), `build` (`1.357` URLs no sitemap), `check:links` (`1.387` páginas) e Playwright E2E (`209/209`). Responsividade: 15 rotas sem estouro em 375/768/1366 px.
+- **Verificação desta rodada (19/11, local):** `typecheck`, `npm test` (`418/418`), `test:content` (`220/220`), `content:build`, `build:local` (`1.395` rotas), `check:links` (`1.397` páginas) e `publish:check` em dry-run. `lint` sem erros, com 9 avisos preexistentes. `content:prune` liberou 4.677 MB e `clean --deep` liberou 30.882 MB.
 
 ## Mudanças recentes (19/11, publicado)
 
