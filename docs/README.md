@@ -21,6 +21,7 @@ Mapa da documentação. Comece pelo [contexto vivo](ACTIVE_CONTEXT.md); ele regi
 | [Arquitetura](architecture/ARCHITECTURE.md) | Camadas, dependências, rotas e governança | atual |
 | [Dados e carregamento](architecture/DADOS-E-CARREGAMENTO.md) | Manifesto, hashes, cache, partição e projeção `network` | atual |
 | [Fluxo de população](architecture/FLUXO-DE-POPULACAO.md) | Pipeline editorial de uma tradição, da descoberta à publicação | atual |
+| [Fluxo Firecrawl + RAG](architecture/FLUXO-FIRECRAWL.md) | Descoberta, corpus local, indexação incremental e rascunhos Ollama | atual |
 | [Diagnóstico da exploração](architecture/EXPLORACAO-CONTEXTUAL.md) | Contratos e decisões da exploração contextual | atual |
 | [Ingestão reproduzível](architecture/INGESTAO-REPRODUZIVEL.md) | Capturas, hashes e replay | atual |
 | [Padrão de páginas](design/PAGE_STANDARD.md) | Contrato editorial e visual das leituras | atual |

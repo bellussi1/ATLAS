@@ -24,6 +24,15 @@ Atualizado em 18/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 - **Responsividade:** 15 rotas em 375/768/1366 px sem estouro horizontal (corrigido o filtro de temas em `/leitura/trabalhismo` a 768 px).
 - **Home:** leituras compactadas (formato em quatro marcas + lista), seção **B — O mundo no tempo** com entradas por recorte (`/mapa?anoDe=&anoAte=`), porta do mapa no pôster, painel de números e pílulas duplicadas removidos, gestos de uso antes do método. Recortes do mapa em `core/content/queries/world-map-eras.ts`.
 - **Expansão de relações:** `scripts/content/expand-relations.mjs` gera candidatas de menções literais nas afirmações com fonte, prioriza Brasil > Europa > EUA > Ásia > mundo > África, classifica com modelo local e grava relações `pending` com `[conferência de IA]`. Cache de respostas em `generated/relation-expansion-cache.json`. Primeira rodada: **+199 relações** (3.041 no total; 2.529 visíveis em 7 famílias, 512 omitidas). Publicado no R2 em 19/11.
+- **Firecrawl Local + RAG / Embeddings + Enriquecimento contínuo (`19/11`, local):** binário Rust `firecrawl-local v0.1.0` instalado localmente (`FIRECRAWL_CLOUD=off`) e registrado em `.vscode/mcp.json` (`--public-only`). Pipeline `scripts/ingestion/firecrawl/` (`npm run firecrawl:extract`) extraiu **90/90 fontes** curadas (`1.192.295` palavras em `generated/firecrawl-corpus/`): Constituições brasileiras 1824–1988, AI-1/2/5, Lei Áurea, Lei do Ventre Livre, Lei Eusébio de Queirós, Lei da Anistia, documentos primários (`Avalon`, `Marxists.org`), Wikipédia PT (`CC BY-SA 4.0`) e artigos SEP/IEP, com `license` e `usagePolicy`. Integrado ao `experiments/rag` (`firecrawl_corpus.py`, `continuous_enrichment.py`, `npm run rag:ingest-firecrawl`, `rag:search`, `rag:mine-firecrawl-gaps`, `enrich:once`, `enrich:loop`): **5.030 chunks** embeddados com `BAAI/bge-m3` FP16 na GPU (`59,61 s`), fila de **18 lacunas** (`firecrawl-lacunas-evidencias.json`, score médio `0.6847` vs. acervo `0.6367`) e primeiros **3 rascunhos** estruturados gerados localmente via Ollama (`qwen3:8b-q4_K_M`) em `experiments/rag/eval/queues/enrichment-drafts/` (`ok: null`, `[conferência de IA]`, sem publicação automática).
+
+## Mudanças locais (19/11, sem publicação)
+
+- **Descoberta contínua de fontes (`firecrawl:discover`):** `scripts/ingestion/firecrawl/topics.json` declara 10 temas (marxismo, liberalismo, social-democracia, anarquismo, nazismo, stalinismo, trabalhismo, Era Vargas, Golpe de 1964 e ditadura militar) com QIDs, artigos e categorias. `discover.mjs` consulta Wikipédia pt/en, Wikidata (`P1142`/`P921`/`P279`) e índices do Marxists Internet Archive pelo cliente Wikimedia compartilhado, pontua candidatos e grava `generated/firecrawl-discovery/candidates.json`. `--apply` acrescenta seeds com `origin: "discovery"`, `review: "pending"` e `discoveredFrom`, sem tocar nos curados. Duas rodadas acrescentaram 16 seeds (102 → 106 fontes após extração).
+- **Extração em lote parcial:** `firecrawl:extract --slug ...` permite atualizar só seeds novos, e o manifesto é mesclado com o corpus existente em vez de ser sobrescrito.
+- **Indexação incremental:** `index_firecrawl_corpus(incremental=True)` reaproveita vetores por `unit_id` + `sha256` do documento. Medição: `106` documentos, `5.330` chunks, `5.187` reaproveitados e `143` embeddados em `2,37 s` na GPU; sem mudança, o `BAAI/bge-m3` não é carregado.
+- **Ciclo local com descoberta:** `enrich` agora executa descoberta → extração → indexação → lacunas → rascunhos Ollama, com `--no-discover`, `--max-new-seeds`, `--min-score`, `--full-embed`, `enrich:watch` e estado em `generated/firecrawl-loop/{state.json,history.jsonl}`. Rascunhos continuam `ok: null` e `[conferência de IA]`.
+- **LinkedIn:** `capture-assets.mjs` refaz capturas da produção; `schedule.mjs` lê o calendário e checa links/UTM, texto, PDF e imagens, gravando `pauta.md`/`pauta.json`; `publish.mjs` publica pela API oficial (Posts + Documents) com `--dry-run` por padrão e credenciais fora do repositório. Posts `10-mapa` e `11-lacunas` ganharam carrossel com capturas reais e a pauta os marca como prontos (21/11 e 24/11).
 
 ## Mudanças anteriores (18/11, `develop`)
 
@@ -43,9 +52,10 @@ Atualizado em 18/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 
 0. **Era Vargas e Golpe de 1964** passaram na etapa 13 (piso atingido: 7 tipos de bloco, 2.131 e 2.055 palavras) e esperam revisão humana (etapa 14) para entrar em `published-ideologies.ts`. Golpe ainda tem pendências nas etapas 3 (1 manifesto inválido) e 6 (0 arestas na consolidação).
 
-1. Gerar os carrosséis dos posts novos (`docs/social/linkedin/posts/10-mapa` e `11-lacunas`, pasta local ignorada pelo git) com capturas da produção.
-2. Revisar por amostra as decisões do modelo local em `relation-categories.ts` e as relações `rel-exp-*` (direção e categoria têm erros pontuais).
-3. Rodar nova expansão com `--limit` maior; candidatas brasileiras se esgotam rápido (107 de 3.799), então ampliar verbetes brasileiros antes.
+1. Revisar os 16 seeds `review: "pending"` da descoberta e os rascunhos em `experiments/rag/eval/queues/enrichment-drafts/` antes de qualquer promoção para `content/graph/`.
+2. Publicar os posts `10-mapa` (21/11) e `11-lacunas` (24/11): `publish.mjs --dry-run`, revisão do PDF e envio manual ou `--publish` com app aprovado (`w_member_social`).
+3. Revisar por amostra as decisões do modelo local em `relation-categories.ts` e as relações `rel-exp-*` (direção e categoria têm erros pontuais).
+4. Rodar nova expansão com `--limit` maior; candidatas brasileiras se esgotam rápido (107 de 3.799), então ampliar verbetes brasileiros antes.
 
 ## Mapa rápido
 
