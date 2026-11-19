@@ -37,14 +37,6 @@
   min-inline-size: 0;
 }
 
-.failure-kicker {
-  margin: 0;
-  color: var(--color-danger);
-  font: 700 var(--text-caption)/1.2 var(--font-mono);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
 h2 {
   margin: 0;
   font: 800 clamp(1.65rem, 3.6vw, 2.7rem) / 1 var(--font-sans);

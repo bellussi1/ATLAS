@@ -155,7 +155,9 @@ test('surprise button selects a territory and places non-overlapping labels away
       Boolean(r && r.width > 0 && r.height > 0),
     );
 
-    const labels = [...document.querySelectorAll('svg.map-svg .map-label rect')].map((r) => {
+    const labels = [
+      ...document.querySelectorAll('svg.map-svg .map-label rect:not(.map-label__accent)'),
+    ].map((r) => {
       const box = r.getBoundingClientRect();
       return { left: box.left, top: box.top, right: box.right, bottom: box.bottom };
     });

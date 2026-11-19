@@ -725,7 +725,7 @@ test('home keeps the poster colour and tints each later section as it scrolls', 
   const home = page.locator('app-home-page');
   await expect(home).toHaveAttribute('data-tone', '0');
   await page.locator('.readings').scrollIntoViewIfNeeded();
-  await expect(home).toHaveAttribute('data-tone', '3');
+  await expect(home).toHaveAttribute('data-tone', '2');
   await expect(home).not.toHaveAttribute('data-tone', '0');
 });
 

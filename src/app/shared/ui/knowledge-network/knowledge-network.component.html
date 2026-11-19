@@ -187,7 +187,7 @@
               class="path-slot__pick"
               [attr.aria-label]="
                 pathFromTitle()
-                  ? pathFromTitle() + ' — trocar origem no mapa ou pela busca'
+                  ? pathFromTitle() + '. Troque a origem no mapa ou pela busca'
                   : 'Buscar ou clicar no mapa para escolher origem'
               "
               (click)="startPathSlot('from')"
@@ -229,7 +229,7 @@
               class="path-slot__pick"
               [attr.aria-label]="
                 pathToTitle()
-                  ? pathToTitle() + ' — trocar destino no mapa ou pela busca'
+                  ? pathToTitle() + '. Troque o destino no mapa ou pela busca'
                   : 'Buscar ou clicar no mapa para escolher destino'
               "
               (click)="startPathSlot('to')"

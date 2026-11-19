@@ -793,7 +793,7 @@ summary::-webkit-details-marker {
   stroke-linejoin: round;
   &.is-selected {
     fill: var(--signal);
-    font-weight: 800;
+    font-weight: 700;
   }
   &.is-neighbour {
     fill: var(--ink);

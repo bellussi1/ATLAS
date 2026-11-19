@@ -493,9 +493,7 @@ form {
 .map-band__kicker {
   margin: 0 0 0.75rem;
   color: var(--color-ink-muted);
-  font: 650 var(--text-caption) / 1.2 var(--font-mono);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font: var(--text-small) / 1.4 var(--font-serif);
 }
 .era-rail {
   position: relative;
