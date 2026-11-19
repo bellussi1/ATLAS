@@ -12,7 +12,8 @@
   :host {
     display: flex;
     flex-direction: column;
-    height: calc(100dvh - 2rem);
+    /* Fits below the sticky header (--header-offset) and its own top gap, so the last row stays in view. */
+    height: calc(100dvh - var(--header-offset, 0px) - 1rem - 1rem);
     overflow: hidden;
   }
 }
@@ -91,7 +92,11 @@ progress::-moz-progress-bar {
   flex: 1 1 auto;
   align-content: start;
   min-height: 0;
-  overflow: hidden;
+  /* The chapter list gives way to the controls below it: it scrolls instead of pushing them out. */
+  overflow-y: auto;
+}
+.index-controls {
+  flex: none;
 }
 
 .desktop-nav a.index-act {
