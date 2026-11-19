@@ -211,7 +211,7 @@ test('supports deep link ?pais=brasil, cross-link from /verbete/brasil, and keyb
   await expect(desk).toContainText('Brasil');
   await expect(desk).toContainText('Regimes políticos');
 
-  const tabelaBtn = page.getByRole('button', { name: 'Tabela', exact: true });
+  const tabelaBtn = page.getByRole('button', { name: 'Ver como lista', exact: true });
   await tabelaBtn.focus();
   await page.keyboard.press('Enter');
   const modal = page.locator('#lista-acessivel');

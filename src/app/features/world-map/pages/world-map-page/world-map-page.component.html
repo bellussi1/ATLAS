@@ -69,9 +69,10 @@
           class="chip"
           [attr.aria-expanded]="tableOpen()"
           aria-controls="lista-acessivel"
+          title="Os territórios e conexões do recorte atual, em lista"
           (click)="tableOpen() ? tableOpen.set(false) : openAccessibleTable()"
         >
-          Tabela
+          Ver como lista
         </button>
         <button
           type="button"
@@ -715,12 +716,16 @@
           <button
             type="button"
             class="detail__close"
-            aria-label="Fechar tabela acessível"
+            aria-label="Fechar lista"
             (click)="tableOpen.set(false)"
           >
             <span aria-hidden="true">×</span>
           </button>
         </header>
+        <p class="table-drawer__lead">
+          O mesmo recorte do globo em lista: filtros de período, conexões e camadas valem aqui. Use
+          “Focar no globo” ou “Inspecionar” para voltar ao mapa naquele ponto.
+        </p>
 
         <div class="map-tables-wrap">
           <div class="map-table-scroll">

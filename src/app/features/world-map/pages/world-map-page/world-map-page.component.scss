@@ -1024,6 +1024,11 @@ summary::-webkit-details-marker {
   grid-template-rows: auto minmax(0, 1fr);
   gap: 12px;
 }
+.table-drawer__lead {
+  margin: 0 0 8px;
+  color: var(--ink-muted);
+  font: var(--text-small)/1.45 var(--serif);
+}
 .table-drawer__head {
   display: flex;
   justify-content: space-between;
