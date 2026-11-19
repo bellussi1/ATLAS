@@ -105,11 +105,47 @@
 }
 
 .reading-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   border: 2px solid var(--color-ink);
   background: var(--color-surface-raised);
   box-shadow: 4px 4px 0 var(--color-ink);
+  cursor: pointer;
+  transition:
+    transform var(--motion-fast) var(--ease-out),
+    box-shadow var(--motion-fast) var(--ease-out);
+}
+/* The title link covers the whole card, so any point of it opens the reading. */
+.reading-card__title a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+.reading-card:hover,
+.reading-card:focus-within {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--color-accent);
+}
+.reading-card:focus-within {
+  outline: 3px solid var(--color-focus, var(--color-accent));
+  outline-offset: 3px;
+}
+.reading-card__title a:focus-visible {
+  outline: none;
+}
+.reading-card:hover .reading-card__cta,
+.reading-card:focus-within .reading-card__cta {
+  color: var(--color-accent-hover);
+}
+.reading-card:hover .reading-card__cta app-chevron,
+.reading-card:focus-within .reading-card__cta app-chevron {
+  translate: 4px 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reading-card {
+    transition: none;
+  }
 }
 
 .reading-card__stripe {
@@ -178,6 +214,9 @@
   color: var(--color-ink);
   font: 650 var(--text-small) / 1.2 var(--font-mono);
   text-decoration: none;
+  app-chevron {
+    transition: translate var(--motion-fast) var(--ease-out);
+  }
 }
 
 .readings-index__empty {

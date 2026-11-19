@@ -158,6 +158,9 @@ export class HomePage {
   private readonly numberFormat = new Intl.NumberFormat('pt-BR');
 
   constructor() {
+    // The prerendered page ships one composition; each visit then draws its own, before the
+    // poster's entrance finishes, so the swap reads as part of the entrance.
+    afterNextRender(() => this.seed.set(Math.floor(Math.random() * 9973)));
     afterNextRender(() => {
       const win = this.document.defaultView;
       if (!win || typeof win.requestAnimationFrame !== 'function') return;
