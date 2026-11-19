@@ -117,6 +117,7 @@
               class="legend-row"
               [class.is-hovered]="hoveredFamilyId() === family.id"
               [class.is-muted]="!familiesOn().has(family.id)"
+              [class.is-zero]="filtered().familyCounts[family.id] === 0"
               (pointerenter)="hoveredFamilyId.set(family.id)"
               (pointerleave)="hoveredFamilyId.set(null)"
             >
@@ -216,6 +217,37 @@
           }
         </ul>
       </details>
+
+      <details class="panel" open>
+        <summary>
+          <h2>Destaques no recorte</h2>
+          <span class="panel__badge">{{ topActiveTerritories().length }}</span>
+        </summary>
+        @if (topActiveTerritories().length > 0) {
+          <ul class="highlight-list">
+            @for (item of topActiveTerritories(); track item.territory.id) {
+              <li>
+                <button
+                  type="button"
+                  class="highlight-item"
+                  [class.is-selected]="selectedTerritoryId() === item.territory.id"
+                  (pointerenter)="hoveredTerritoryId.set(item.territory.id)"
+                  (pointerleave)="hoveredTerritoryId.set(null)"
+                  (focus)="hoveredTerritoryId.set(item.territory.id)"
+                  (blur)="hoveredTerritoryId.set(null)"
+                  (click)="selectTerritory(item.territory.id)"
+                >
+                  <span class="highlight-item__name">{{ item.territory.title }}</span>
+                  <span class="highlight-item__meta">{{ layerLabel(item.territory.layer) }}</span>
+                  <span class="legend__count">{{ item.activityCount }}</span>
+                </button>
+              </li>
+            }
+          </ul>
+        } @else {
+          <p class="highlight-empty">Nenhum território ativo com o filtro atual.</p>
+        }
+      </details>
     </aside>
 
     <div
@@ -290,6 +322,8 @@
               class="map-label"
               [class.is-selected]="label.priority === 'selected'"
               [class.is-hovered]="label.priority === 'hovered'"
+              [class.is-neighbour]="label.neighbour"
+              [class.map-label--polity]="label.layer === 'polity'"
             >
               <rect
                 [attr.x]="label.x"
@@ -298,6 +332,15 @@
                 [attr.height]="label.height"
                 rx="2"
               />
+              @if (label.priority === 'selected') {
+                <rect
+                  class="map-label__accent"
+                  [attr.x]="label.x"
+                  [attr.y]="label.y + label.height - 2"
+                  [attr.width]="label.width"
+                  height="2"
+                />
+              }
               <text
                 [attr.x]="label.x + label.width / 2"
                 [attr.y]="label.y + label.height / 2 + 3.2"
@@ -533,8 +576,6 @@
                   type="button"
                   class="timeline-hotpoint"
                   [class.is-active]="activeHotpointId() === hp.id"
-                  [class.is-left-edge]="pct < 16"
-                  [class.is-right-edge]="pct > 84"
                   [style.left.%]="pct"
                   [attr.aria-pressed]="activeHotpointId() === hp.id"
                   [attr.aria-label]="hp.year + ': ' + hp.title + ' (' + hp.territoryTitle + ')'"
@@ -546,22 +587,46 @@
                 >
                   <span class="timeline-hotpoint__pin" aria-hidden="true"></span>
                   <span class="timeline-hotpoint__year" aria-hidden="true">{{ hp.year }}</span>
-                  @if (hoveredHotpointId() === hp.id || activeHotpointId() === hp.id) {
-                    <span class="timeline-hotpoint__tip" aria-hidden="true">
-                      <strong>{{ hp.label }}</strong> {{ hp.title }}
-                    </span>
-                  }
                 </button>
               }
             </div>
           </div>
 
-          <div class="timeline-bounds" aria-hidden="true">
-            <span>{{ model.minYear }}</span>
-            <span>Início {{ sliderFrom() }}</span>
-            <span>Fim {{ sliderTo() }}</span>
-            <span>{{ model.maxYear }}</span>
+          <div class="timeline-ticks" aria-hidden="true">
+            @for (tick of centuryTicks; track tick) {
+              <span class="timeline-tick" [style.left.%]="yearPercent(tick)">{{ tick }}</span>
+            }
           </div>
+        </div>
+
+        <div class="timeline-marker" aria-live="polite">
+          <button
+            type="button"
+            class="timeline-marker__step"
+            aria-label="Marco anterior"
+            (click)="stepHotpoint(-1)"
+          >
+            <span aria-hidden="true">‹</span>
+          </button>
+          @if (previewHotpoint(); as hp) {
+            <p class="timeline-marker__text">
+              <span class="timeline-marker__year">{{ hp.year }}</span>
+              <strong>{{ hp.title }}</strong>
+              <span class="timeline-marker__place">{{ hp.territoryTitle }}</span>
+            </p>
+          } @else {
+            <p class="timeline-marker__text timeline-marker__text--idle">
+              {{ model.hotpoints.length }} marcos na régua. Escolha um ou percorra com as setas.
+            </p>
+          }
+          <button
+            type="button"
+            class="timeline-marker__step"
+            aria-label="Próximo marco"
+            (click)="stepHotpoint(1)"
+          >
+            <span aria-hidden="true">›</span>
+          </button>
         </div>
 
         <div class="timeline-foot">
@@ -611,206 +676,25 @@
       aria-label="Mesa de estudo cartográfica"
       aria-live="polite"
     >
-      @if (selectedConnection(); as conn) {
-        <header class="detail__head">
-          <div>
-            <p class="desk-kicker">{{ familyLabel(conn.family) }}</p>
-            <h2>{{ conn.fromTitle }} → {{ conn.toTitle }}</h2>
-          </div>
-          <div class="detail__head-btns">
-            <button
-              type="button"
-              class="detail__collapse"
-              aria-label="Recolher detalhes"
-              (click)="detailsCollapsed.set(true)"
-            >
-              <span aria-hidden="true">−</span>
-            </button>
-            <button
-              type="button"
-              class="detail__close"
-              aria-label="Voltar à ficha do território"
-              (click)="selectedConnectionId.set(null)"
-            >
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-        </header>
-        <p class="desk-meta">{{ formatExtent(conn.temporalExtent) }}</p>
-        <p class="desk-summary">{{ conn.label }}</p>
-        @if (readableText(conn.context); as ctx) {
-          <p class="desk-note">{{ ctx }}</p>
-        }
-        @if (conn.viaEntity; as via) {
-          <div class="desk-block">
-            <h3>Mediação histórica</h3>
-            <a class="desk-link-btn" [routerLink]="['/verbete', via.slug]">
-              Abrir {{ via.title }} →
-            </a>
-          </div>
-        }
-        <div class="desk-actions">
-          <button type="button" class="desk-btn" (click)="selectTerritory(conn.fromTerritoryId)">
-            Focar {{ conn.fromTitle }}
-          </button>
-          <button type="button" class="desk-btn" (click)="selectTerritory(conn.toTerritoryId)">
-            Focar {{ conn.toTitle }}
-          </button>
-        </div>
-      } @else if (selectedFilteredTerritory(); as entry) {
-        @let t = entry.territory;
-        <header class="detail__head">
-          <div>
-            <p class="desk-kicker">
-              {{ layerLabel(t.layer) }}
-              @if (t.isoAlpha2) {
-                · ISO {{ t.isoAlpha2 }}
-              }
-            </p>
-            <h2>{{ t.title }}</h2>
-            @if (t.officialName && t.officialName !== t.title) {
-              <p class="desk-official">{{ t.officialName }}</p>
-            }
-          </div>
-          <div class="detail__head-btns">
-            <button
-              type="button"
-              class="detail__collapse"
-              aria-label="Recolher detalhes"
-              (click)="detailsCollapsed.set(true)"
-            >
-              <span aria-hidden="true">−</span>
-            </button>
-            <button
-              type="button"
-              class="detail__close"
-              aria-label="Limpar seleção do mapa"
-              (click)="clearSelection()"
-            >
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-        </header>
-
-        @if (t.coordinates; as c) {
-          <p class="desk-meta">Coordenadas {{ c.lat }}°, {{ c.lon }}°</p>
-        }
-        <p class="desk-summary">{{ t.summary }}</p>
-
-        @if (t.territorialScope || t.identityNote) {
-          <div class="desk-notes">
-            @if (t.territorialScope) {
-              <p><strong>Escopo territorial:</strong> {{ t.territorialScope }}</p>
-            }
-            @if (t.identityNote) {
-              <p><strong>Nota de identidade:</strong> {{ t.identityNote }}</p>
-            }
-          </div>
-        }
-
-        <div class="desk-actions">
-          <a class="desk-btn desk-btn--primary" [routerLink]="['/verbete', t.slug]">
-            Abrir verbete <app-chevron />
-          </a>
-          <a class="desk-btn" [routerLink]="['/grafos']" [queryParams]="{ no: t.id }">
-            Abrir rede no grafo
-          </a>
-        </div>
-
-        @if (entry.activeRegimes.length > 0) {
-          <section class="desk-block" aria-label="Regimes políticos no recorte">
-            <h3>Regimes políticos ({{ entry.activeRegimes.length }})</h3>
-            <ul class="desk-list">
-              @for (regime of entry.activeRegimes; track regime.id) {
-                <li class="regime-card">
-                  <div class="regime-card__head">
-                    <a [routerLink]="['/verbete', regime.slug]">{{ regime.title }}</a>
-                    <span>{{ formatExtent(regime.temporalExtent) }}</span>
-                  </div>
-                  <p class="regime-card__period">{{ regime.periodNote }}</p>
-                  @for (cls of regime.classifications; track cls.label + cls.edition) {
-                    <div class="regime-cls">
-                      <strong>{{ cls.label }}</strong>
-                      <small>{{ cls.attribution }} ({{ cls.edition }}): {{ cls.limits }}</small>
-                    </div>
-                  }
-                </li>
-              }
-            </ul>
-          </section>
-        }
-
-        @if (selectedTerritoryConnections().length > 0) {
-          <section class="desk-block" aria-label="Conexões internacionais">
-            <h3>Conexões no recorte ({{ selectedTerritoryConnections().length }})</h3>
-            <ul class="desk-list">
-              @for (conn of selectedTerritoryConnections().slice(0, 10); track conn.id) {
-                <li>
-                  <button type="button" class="desk-conn-btn" (click)="selectConnection(conn.id)">
-                    <span class="desk-conn-family">{{ familyLabel(conn.family) }}</span>
-                    <strong>
-                      {{
-                        conn.fromTerritoryId === t.id ? '→ ' + conn.toTitle : '← ' + conn.fromTitle
-                      }}
-                    </strong>
-                    <small>{{ conn.label }}</small>
-                  </button>
-                </li>
-              }
-            </ul>
-          </section>
-        }
-
-        @if (entry.activeRecords.length > 0) {
-          <section class="desk-block" aria-label="Registros ancorados neste território">
-            <h3>Registros ancorados ({{ entry.activeRecords.length }})</h3>
-            <ul class="desk-list">
-              @for (rec of visibleRecords(); track rec.id) {
-                <li
-                  class="desk-record"
-                  [class.is-highlighted]="highlightedRecordSlug() === rec.slug"
-                >
-                  <a [routerLink]="['/verbete', rec.slug]">{{ rec.title }}</a>
-                  <span class="desk-record__meta">
-                    {{ rec.relationLabel }} ({{ formatExtent(rec.temporalExtent) }})
-                  </span>
-                </li>
-              }
-            </ul>
-            @if (entry.activeRecords.length > 12) {
-              <button
-                type="button"
-                class="desk-more-btn"
-                (click)="showAllRecords.set(!showAllRecords())"
-              >
-                {{
-                  showAllRecords()
-                    ? 'Mostrar menos'
-                    : 'Ver todos os ' + entry.activeRecords.length + ' registros'
-                }}
-              </button>
-            }
-          </section>
-        }
-
-        @if (selectedReadings().length > 0 || selectedItineraries().length > 0) {
-          <section class="desk-block" aria-label="Leituras e itinerários relacionados">
-            <h3>Leituras e itinerários</h3>
-            <ul class="desk-path-list">
-              @for (reading of selectedReadings(); track reading.slug) {
-                <li>
-                  <a [routerLink]="reading.path">Leitura: {{ reading.title }} →</a>
-                </li>
-              }
-              @for (it of selectedItineraries(); track it.slug) {
-                <li>
-                  <a [routerLink]="it.path">{{ it.kindLabel }}: {{ it.title }} →</a>
-                </li>
-              }
-            </ul>
-          </section>
-        }
-      }
+      <app-map-study-desk
+        [territoryEntry]="selectedFilteredTerritory()"
+        [connection]="selectedConnection()"
+        [territoryConnections]="selectedTerritoryConnections()"
+        [readings]="selectedReadings()"
+        [itineraries]="selectedItineraries()"
+        [highlightedRecordSlug]="highlightedRecordSlug()"
+        [activePeriodLabel]="periodLabel()"
+        [activeHotpoint]="activeHotpoint()"
+        [hasTemporalFilter]="hasTemporalFilter()"
+        [media]="selectedMedia()"
+        [atlasId]="selectedAtlasId()"
+        (closeDesk)="clearSelection()"
+        (collapseDesk)="detailsCollapsed.set(true)"
+        (closeConnection)="selectedConnectionId.set(null)"
+        (selectTerritory)="selectTerritory($event)"
+        (selectConnection)="selectConnection($event)"
+        (hoverConnection)="hoveredConnectionId.set($event)"
+      />
     </aside>
 
     @if (tableOpen()) {

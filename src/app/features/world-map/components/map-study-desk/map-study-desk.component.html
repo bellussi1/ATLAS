@@ -1,0 +1,305 @@
+@if (connection(); as conn) {
+  <header class="detail__head">
+    <div class="detail__id">
+      <p class="desk-kicker">
+        <span
+          class="desk-family-bar"
+          [style.background]="'var(' + familyColorVar(conn.family) + ')'"
+        ></span>
+        <span>{{ familyLabel(conn.family) }}</span>
+      </p>
+      <h2>{{ conn.fromTitle }} → {{ conn.toTitle }}</h2>
+    </div>
+    <div class="detail__head-btns">
+      <button
+        type="button"
+        class="detail__collapse"
+        aria-label="Recolher detalhes"
+        (click)="collapseDesk.emit()"
+      >
+        <span aria-hidden="true">−</span>
+      </button>
+      <button
+        type="button"
+        class="detail__close"
+        aria-label="Voltar à ficha do território"
+        (click)="closeConnection.emit()"
+      >
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+  </header>
+
+  <p class="desk-period-pill">{{ formatExtent(conn.temporalExtent) }}</p>
+  <p class="desk-prose">{{ conn.label }}</p>
+
+  @if (readableText(conn.context); as ctx) {
+    <p class="desk-note">{{ ctx }}</p>
+  }
+
+  @if (conn.viaEntity; as via) {
+    <section class="desk-block" aria-label="Mediação histórica">
+      <h3>Mediação histórica</h3>
+      <a class="desk-link-btn" [routerLink]="['/verbete', via.slug]">
+        Abrir {{ via.title }} <span aria-hidden="true">→</span>
+      </a>
+    </section>
+  }
+
+  <div class="desk-actions">
+    <button type="button" class="desk-btn" (click)="selectTerritory.emit(conn.fromTerritoryId)">
+      Focar {{ conn.fromTitle }}
+    </button>
+    <button type="button" class="desk-btn" (click)="selectTerritory.emit(conn.toTerritoryId)">
+      Focar {{ conn.toTitle }}
+    </button>
+  </div>
+} @else if (territoryEntry(); as entry) {
+  @let t = entry.territory;
+  <header class="detail__head">
+    <div class="detail__id">
+      <p class="desk-kicker">
+        <app-kind-icon [kind]="territoryIcon(t.layer)" />
+        <span>{{ layerLabel(t.layer) }}</span>
+        @if (t.temporalExtent; as ext) {
+          <span class="desk-period-tag">{{ formatExtent(ext) }}</span>
+        }
+      </p>
+      <h2>{{ t.title }}</h2>
+      @if (t.officialName && t.officialName !== t.title) {
+        <p class="desk-official">{{ t.officialName }}</p>
+      }
+    </div>
+    <div class="detail__head-btns">
+      <button
+        type="button"
+        class="detail__collapse"
+        aria-label="Recolher detalhes"
+        (click)="collapseDesk.emit()"
+      >
+        <span aria-hidden="true">−</span>
+      </button>
+      <button
+        type="button"
+        class="detail__close"
+        aria-label="Limpar seleção do mapa"
+        (click)="closeDesk.emit()"
+      >
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+  </header>
+
+  @if (media(); as asset) {
+    <figure class="desk-media">
+      <img
+        [src]="asset.assetPath | contentMedia"
+        [alt]="'Imagem de ' + t.title"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>
+        @if (asset.filePageUrl) {
+          <a [href]="asset.filePageUrl" target="_blank" rel="noopener noreferrer">
+            {{ asset.attribution }}
+            <span class="visually-hidden"> (abre em nova aba)</span>
+          </a>
+        } @else {
+          {{ asset.attribution }}
+        }
+        @if (
+          asset.license &&
+          asset.license.trim().toLowerCase() !== (asset.attribution ?? '').trim().toLowerCase()
+        ) {
+          <span> ({{ asset.license }})</span>
+        }
+      </figcaption>
+    </figure>
+  } @else {
+    <div class="desk-mosaic-strip">
+      <app-geometric-illustration
+        [entityId]="t.id"
+        [kind]="territoryIcon(t.layer)"
+        [palette]="palette()"
+        [title]="t.title"
+        [decorative]="true"
+      />
+      <div class="desk-counts-line">
+        <span>{{ entry.activeRegimes.length }} regimes</span>
+        <span>{{ entry.connectionCount }} conexões</span>
+        <span>{{ entry.activeRecords.length }} registros</span>
+      </div>
+    </div>
+  }
+
+  <p class="desk-prose">{{ summaryLead().lead }}</p>
+
+  @if (summaryLead().truncated) {
+    <details class="desk-more">
+      <summary>
+        <span>Ler resumo completo</span>
+        <span class="desk-more__icon" aria-hidden="true">+</span>
+      </summary>
+      <p>{{ cleanSummary() }}</p>
+    </details>
+  }
+
+  @if (hasTemporalFilter() || activeHotpoint()) {
+    <section class="desk-callout" aria-label="Contexto no recorte temporal ativo">
+      <h3>Neste recorte ({{ activePeriodLabel() }})</h3>
+      @if (activeHotpoint(); as hp) {
+        <p class="desk-callout__lead">
+          Marco em foco: <a [routerLink]="['/verbete', hp.slug]">{{ hp.title }}</a> ({{ hp.label }})
+        </p>
+      }
+      <p class="desk-callout__meta">
+        {{ entry.activeRegimes.length }} regimes vigentes,
+        {{ territoryConnections().length }} conexões e {{ entry.activeRecords.length }} registros no
+        intervalo.
+      </p>
+    </section>
+  }
+
+  <div class="desk-actions">
+    <a class="desk-btn desk-btn--primary" [routerLink]="['/verbete', t.slug]">
+      Abrir verbete <app-chevron />
+    </a>
+    <a class="desk-btn" [routerLink]="['/grafos']" [queryParams]="{ no: t.id }">
+      Abrir rede no grafo
+    </a>
+  </div>
+
+  @if (entry.activeRegimes.length > 0) {
+    <section class="desk-block" aria-label="Regimes políticos no recorte">
+      <h3>Regimes políticos ({{ entry.activeRegimes.length }})</h3>
+      <ul class="desk-list">
+        @for (regime of entry.activeRegimes; track regime.id) {
+          <li class="regime-card">
+            <div class="regime-card__head">
+              <a [routerLink]="['/verbete', regime.slug]">{{ regime.title }}</a>
+              <span class="regime-card__dates">{{ formatExtent(regime.temporalExtent) }}</span>
+            </div>
+            <p class="regime-card__period">{{ readableText(regime.periodNote) }}</p>
+            @for (cls of regime.classifications; track cls.label + cls.edition) {
+              <div class="regime-cls">
+                <strong>{{ cls.label }}</strong>
+                <small>{{ cls.attribution }} ({{ cls.edition }}): {{ cls.limits }}</small>
+              </div>
+            }
+          </li>
+        }
+      </ul>
+    </section>
+  }
+
+  @if (territoryConnections().length > 0) {
+    <section class="desk-block" aria-label="Conexões internacionais">
+      <h3>Conexões no recorte ({{ territoryConnections().length }})</h3>
+      <ul class="desk-list">
+        @for (conn of territoryConnections().slice(0, 10); track conn.id) {
+          <li>
+            <button
+              type="button"
+              class="desk-conn-btn"
+              [style.border-left-color]="'var(' + familyColorVar(conn.family) + ')'"
+              (pointerenter)="hoverConnection.emit(conn.id)"
+              (pointerleave)="hoverConnection.emit(null)"
+              (focusin)="hoverConnection.emit(conn.id)"
+              (focusout)="hoverConnection.emit(null)"
+              (click)="selectConnection.emit(conn.id)"
+            >
+              <span class="desk-conn-head">
+                <span class="desk-conn-family">{{ familyLabel(conn.family) }}</span>
+                @if (conn.temporalExtent) {
+                  <span class="desk-conn-year">{{ formatExtent(conn.temporalExtent) }}</span>
+                }
+              </span>
+              <strong>
+                {{ conn.fromTerritoryId === t.id ? '→ ' + conn.toTitle : '← ' + conn.fromTitle }}
+              </strong>
+              <small>{{ conn.label }}</small>
+            </button>
+          </li>
+        }
+      </ul>
+    </section>
+  }
+
+  @if (groupedRecords().length > 0) {
+    <section class="desk-block" aria-label="Registros ancorados neste território">
+      <h3>Registros ancorados ({{ entry.activeRecords.length }})</h3>
+      @for (group of groupedRecords(); track group.id) {
+        <div class="desk-rec-group">
+          <h4 class="desk-rec-group__title">{{ group.label }}</h4>
+          <ul class="desk-list">
+            @for (rec of group.items; track rec.id) {
+              <li class="desk-record" [class.is-highlighted]="highlightedRecordSlug() === rec.slug">
+                <a class="desk-record__link" [routerLink]="['/verbete', rec.slug]">
+                  <app-kind-icon [kind]="recordIcon(rec.kind)" />
+                  <span>{{ rec.title }}</span>
+                </a>
+                <span class="desk-record__meta">
+                  {{ rec.relationLabel }} ({{ formatExtent(rec.temporalExtent) }})
+                </span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+      @if (entry.activeRecords.length > 8) {
+        <button type="button" class="desk-more-btn" (click)="showAllRecords.set(!showAllRecords())">
+          {{
+            showAllRecords()
+              ? 'Mostrar menos'
+              : 'Ver todos os ' + entry.activeRecords.length + ' registros'
+          }}
+        </button>
+      }
+    </section>
+  }
+
+  @if (readings().length > 0 || itineraries().length > 0) {
+    <section class="desk-block" aria-label="Leituras e itinerários relacionados">
+      <h3>Leituras e itinerários</h3>
+      <ul class="desk-path-list">
+        @for (reading of readings(); track reading.slug) {
+          <li>
+            <a [routerLink]="reading.path">Leitura: {{ reading.title }} →</a>
+          </li>
+        }
+        @for (it of itineraries(); track it.slug) {
+          <li>
+            <a [routerLink]="it.path">{{ it.kindLabel }}: {{ it.title }} →</a>
+          </li>
+        }
+      </ul>
+    </section>
+  }
+
+  @if (hasGeoReference()) {
+    <details class="desk-ref">
+      <summary>
+        <span>Referência geográfica</span>
+        <span class="desk-more__icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="desk-ref__body">
+        @if (t.territorialScope) {
+          <p><strong>Escopo territorial:</strong> {{ t.territorialScope }}</p>
+        }
+        @if (t.identityNote) {
+          <p><strong>Nota de identidade:</strong> {{ t.identityNote }}</p>
+        }
+        @if (t.isoAlpha2 || t.coordinates) {
+          <p class="desk-ref__tech">
+            @if (t.isoAlpha2) {
+              <span>ISO {{ t.isoAlpha2 }}</span>
+            }
+            @if (t.coordinates; as c) {
+              <span>{{ c.lat }}°, {{ c.lon }}°</span>
+            }
+          </p>
+        }
+      </div>
+    </details>
+  }
+}
