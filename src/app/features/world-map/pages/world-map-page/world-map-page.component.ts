@@ -16,6 +16,7 @@ import {
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, type ParamMap, Router, RouterLink } from '@angular/router';
 import { readerProse } from '@core/content/editorial/reader-voice';
+import { entityMedia } from '@core/content/media/asset-license';
 import type { NetworkGraph } from '@core/content/models/content-artifacts';
 import type { KnowledgeGraph, TemporalExtent } from '@core/content/models/content-schema';
 import { itinerariesForEntity, readingsForEntity } from '@core/content/queries/cross-links';
@@ -37,7 +38,8 @@ import {
   type WorldMapTerritory,
 } from '@core/content/queries/world-map';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
-import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
+import { AtlasSectionSwitcherComponent } from '@shared/ui/section-switcher/section-switcher.component';
+import { MapStudyDeskComponent } from '@world-map/components/map-study-desk/map-study-desk.component';
 import globeMapData from '@world-map/data/natural-earth-globe.json';
 import {
   type GlobeHitConnection,
@@ -117,8 +119,8 @@ const FAMILY_COLOR_FALLBACKS: Readonly<Record<RelationFamilyId, string>> = {
   participation: '#164f60',
   creation: '#24563b',
   continuity: '#363a5f',
-  documented: '#57544d',
-  connection: '#777268',
+  affiliation: '#363a5f',
+  location: '#777268',
 };
 
 const ALL_FAMILY_IDS = relationFamilies.map((family) => family.id);
@@ -140,7 +142,7 @@ function parseSvgDash(dash: string): readonly number[] {
 
 @Component({
   selector: 'app-world-map-page',
-  imports: [RouterLink, AtlasChevronComponent],
+  imports: [AtlasSectionSwitcherComponent, RouterLink, MapStudyDeskComponent],
   templateUrl: './world-map-page.component.html',
   styleUrl: './world-map-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -173,6 +175,7 @@ export class WorldMapPageComponent {
   readonly eraPresets = WORLD_MAP_ERA_PRESETS;
   readonly families: readonly RelationFamilyDefinition[] = relationFamilies;
   readonly layers = ALL_LAYERS;
+  readonly centuryTicks = [1750, 1800, 1850, 1900, 1950, 2000, 2026] as const;
 
   private readonly resolvedGraph: KnowledgeGraph | NetworkGraph =
     (this.route.snapshot.data['knowledge'] as KnowledgeGraph | NetworkGraph | undefined) ??
@@ -220,8 +223,8 @@ export class WorldMapPageComponent {
     participation: parseSvgDash(this.familyById.get('participation')?.dash ?? ''),
     creation: parseSvgDash(this.familyById.get('creation')?.dash ?? ''),
     continuity: parseSvgDash(this.familyById.get('continuity')?.dash ?? ''),
-    documented: parseSvgDash(this.familyById.get('documented')?.dash ?? ''),
-    connection: parseSvgDash(this.familyById.get('connection')?.dash ?? ''),
+    affiliation: parseSvgDash(this.familyById.get('affiliation')?.dash ?? ''),
+    location: parseSvgDash(this.familyById.get('location')?.dash ?? ''),
   };
 
   readonly familyColorMap =
@@ -246,7 +249,6 @@ export class WorldMapPageComponent {
 
   readonly searchQuery = signal('');
   readonly searchOpen = signal(false);
-  readonly showAllRecords = signal(false);
 
   readonly wide = signal(true);
   readonly legendOpen = signal<boolean | null>(null);
@@ -254,6 +256,54 @@ export class WorldMapPageComponent {
   readonly detailsCollapsed = signal(false);
   readonly shortcutsOpen = signal(false);
   readonly tableOpen = signal(false);
+  readonly tableTab = signal<'territories' | 'connections'>('territories');
+  readonly tableQuery = signal('');
+  readonly tableSort = signal<{
+    key: 'title' | 'regimes' | 'records' | 'connections';
+    desc: boolean;
+  }>({
+    key: 'records',
+    desc: true,
+  });
+
+  readonly tableTerritories = computed(() => {
+    const query = this.tableQuery().trim().toLocaleLowerCase('pt-BR');
+    const { key, desc } = this.tableSort();
+    const value = (item: WorldMapFilteredTerritory): number | string =>
+      key === 'title'
+        ? item.territory.title
+        : key === 'regimes'
+          ? item.activeRegimes.length
+          : key === 'records'
+            ? item.activeRecords.length
+            : item.connectionCount;
+    return this.filtered()
+      .activeTerritories.filter(
+        (item) => !query || item.territory.title.toLocaleLowerCase('pt-BR').includes(query),
+      )
+      .slice()
+      .sort((a, b) => {
+        const av = value(a);
+        const bv = value(b);
+        const order =
+          typeof av === 'string'
+            ? av.localeCompare(String(bv), 'pt-BR')
+            : (av as number) - (bv as number);
+        return desc ? -order : order;
+      });
+  });
+
+  readonly tableConnections = computed(() => {
+    const query = this.tableQuery().trim().toLocaleLowerCase('pt-BR');
+    return this.filtered().activeConnections.filter(
+      (conn) =>
+        !query ||
+        `${conn.fromTitle} ${conn.toTitle} ${conn.label}`
+          .toLocaleLowerCase('pt-BR')
+          .includes(query),
+    );
+  });
+
   readonly timelinePlaying = signal(false);
 
   readonly centerLon = signal(-20);
@@ -343,6 +393,59 @@ export class WorldMapPageComponent {
     return ids;
   });
 
+  readonly focusTerritoryId = computed(
+    () => this.hoveredTerritoryId() ?? this.selectedTerritoryId(),
+  );
+
+  readonly neighborTerritoryIds = computed<ReadonlySet<string> | null>(() => {
+    const focus = this.focusTerritoryId();
+    if (!focus) return null;
+    const ids = new Set<string>();
+    for (const conn of this.filtered().activeConnections) {
+      if (conn.fromTerritoryId === focus) ids.add(conn.toTerritoryId);
+      else if (conn.toTerritoryId === focus) ids.add(conn.fromTerritoryId);
+    }
+    return ids.size > 0 ? ids : null;
+  });
+
+  readonly neighborIsos = computed<ReadonlySet<string> | null>(() => {
+    const ids = this.neighborTerritoryIds();
+    if (!ids) return null;
+    const isos = new Set<string>();
+    for (const tid of ids) {
+      const iso = this.territoryById.get(tid)?.isoNumeric;
+      if (iso && iso !== '000') isos.add(iso);
+    }
+    return isos.size > 0 ? isos : null;
+  });
+
+  readonly topActiveTerritories = computed(() => {
+    const seen = new Set<string>();
+    const items: WorldMapFilteredTerritory[] = [];
+    for (const item of this.filtered().activeTerritories) {
+      if (item.activityCount === 0) continue;
+      const key = item.territory.title.trim().toLocaleLowerCase('pt-BR');
+      if (seen.has(key)) continue;
+      seen.add(key);
+      items.push(item);
+      if (items.length === 5) break;
+    }
+    return items;
+  });
+
+  readonly activeHotpoint = computed(() => {
+    const id = this.activeHotpointId();
+    return id ? (this.model.hotpoints.find((hp) => hp.id === id) ?? null) : null;
+  });
+
+  readonly previewHotpoint = computed(() => {
+    const hoveredId = this.hoveredHotpointId();
+    if (hoveredId) {
+      return this.model.hotpoints.find((hp) => hp.id === hoveredId) ?? null;
+    }
+    return this.activeHotpoint();
+  });
+
   readonly visibleMarkers = computed<readonly VisibleMarkerItem[]>(() => {
     const cam = this.camera();
     const items: VisibleMarkerItem[] = [];
@@ -375,6 +478,7 @@ export class WorldMapPageComponent {
     const cam = this.camera();
     const layout = this.stageLayout();
     const highlighted = this.activeFamilyHighlightSet();
+    const neighbors = this.neighborTerritoryIds();
     const selectedId = this.selectedTerritoryId();
     const hoveredId = this.hoveredTerritoryId();
 
@@ -387,8 +491,11 @@ export class WorldMapPageComponent {
 
       const isSelected = entry.territory.id === selectedId;
       const isHovered = entry.territory.id === hoveredId;
+      const isNeighbor = neighbors?.has(entry.territory.id) ?? false;
       const isHighlighted = highlighted?.has(entry.territory.id) ?? false;
-      if (!isSelected && !isHovered && !isHighlighted && entry.activityCount === 0) continue;
+      if (!isSelected && !isHovered && !isNeighbor && !isHighlighted && entry.activityCount === 0) {
+        continue;
+      }
 
       const priority: 'selected' | 'hovered' | 'active' = isSelected
         ? 'selected'
@@ -399,6 +506,7 @@ export class WorldMapPageComponent {
         (isSelected ? 100000 : 0) +
         (isHovered ? 50000 : 0) +
         (isHighlighted ? 5000 : 0) +
+        (isNeighbor ? 2500 : 0) +
         entry.activityCount * 10 +
         (entry.territory.layer === 'country' ? 5 : 0);
 
@@ -410,6 +518,8 @@ export class WorldMapPageComponent {
         z: pt.z,
         priority,
         score,
+        layer: entry.territory.layer,
+        neighbour: isNeighbor && !isSelected && !isHovered,
       });
     }
 
@@ -463,9 +573,16 @@ export class WorldMapPageComponent {
       : [];
   });
 
-  readonly visibleRecords = computed(() => {
-    const records = this.selectedFilteredTerritory()?.activeRecords ?? [];
-    return this.showAllRecords() ? records : records.slice(0, 12);
+  readonly selectedMedia = computed(() => {
+    const territory = this.selectedFilteredTerritory()?.territory;
+    return territory
+      ? entityMedia(this.repository.knowledgeGraph, { id: territory.id })
+      : undefined;
+  });
+
+  readonly selectedAtlasId = computed(() => {
+    const territory = this.selectedFilteredTerritory()?.territory;
+    return territory ? (this.repository.atlasForEntity(territory.id)?.id ?? null) : null;
   });
 
   readonly hoverCard = computed(() => {
@@ -496,13 +613,14 @@ export class WorldMapPageComponent {
     if (territoryId) {
       const entry = this.filtered().territoryMap.get(territoryId);
       if (entry) {
+        const cleanSummary = readerProse(entry.territory.summary) ?? entry.territory.summary;
         return {
           left,
           top,
           kind: LAYER_LABELS[entry.territory.layer],
           meta: `${entry.activeRecords.length} registros`,
           title: entry.territory.title,
-          note: entry.activeRegimes[0]?.title ?? entry.territory.summary,
+          note: entry.activeRegimes[0]?.title ?? cleanSummary,
         };
       }
     }
@@ -784,9 +902,22 @@ export class WorldMapPageComponent {
     this.selectedTerritoryId.set(hp.territoryId);
     this.highlightedRecordSlug.set(hp.slug);
     this.detailsCollapsed.set(false);
-    this.showAllRecords.set(false);
     this.flyTo(hp.focusLon, hp.focusLat, Math.max(this.zoomFactor(), 1.55));
     this.syncQueryParams();
+  }
+
+  stepHotpoint(delta: -1 | 1): void {
+    const hotpoints = this.model.hotpoints;
+    if (hotpoints.length === 0) return;
+    const currentId = this.activeHotpointId();
+    const currentIndex = currentId ? hotpoints.findIndex((hp) => hp.id === currentId) : -1;
+    let nextIndex: number;
+    if (currentIndex < 0) {
+      nextIndex = delta > 0 ? 0 : hotpoints.length - 1;
+    } else {
+      nextIndex = (currentIndex + delta + hotpoints.length) % hotpoints.length;
+    }
+    this.activateHotpoint(hotpoints[nextIndex]);
   }
 
   toggleTimelinePlay(): void {
@@ -1068,6 +1199,23 @@ export class WorldMapPageComponent {
     }
   }
 
+  sortTable(key: 'title' | 'regimes' | 'records' | 'connections'): void {
+    this.tableSort.update((current) =>
+      current.key === key ? { key, desc: !current.desc } : { key, desc: key !== 'title' },
+    );
+  }
+
+  sortState(
+    key: 'title' | 'regimes' | 'records' | 'connections',
+  ): 'ascending' | 'descending' | null {
+    const current = this.tableSort();
+    return current.key === key ? (current.desc ? 'descending' : 'ascending') : null;
+  }
+
+  familyColor(familyId: RelationFamilyId): string {
+    return `var(${this.familyById.get(familyId)?.color ?? '--color-border-strong'})`;
+  }
+
   openAccessibleTable(): void {
     this.tableOpen.set(true);
     if (this.isBrowser) {
@@ -1141,8 +1289,8 @@ export class WorldMapPageComponent {
       participation: resolve('--color-info', FAMILY_COLOR_FALLBACKS.participation),
       creation: resolve('--color-success', FAMILY_COLOR_FALLBACKS.creation),
       continuity: resolve('--color-indigo', FAMILY_COLOR_FALLBACKS.continuity),
-      documented: resolve('--color-ink-muted', FAMILY_COLOR_FALLBACKS.documented),
-      connection: resolve('--color-border-strong', FAMILY_COLOR_FALLBACKS.connection),
+      affiliation: resolve('--color-indigo', FAMILY_COLOR_FALLBACKS.affiliation),
+      location: resolve('--color-border-strong', FAMILY_COLOR_FALLBACKS.location),
     });
   }
 
@@ -1292,6 +1440,8 @@ export class WorldMapPageComponent {
       hoveredIso: hoveredTerritory?.isoNumeric ?? this.hoveredCountryIso,
       highlightedTerritoryIds: highlightedIds,
       highlightedIsos,
+      neighborTerritoryIds: this.neighborTerritoryIds(),
+      neighborIsos: this.neighborIsos(),
       connections: filteredState.activeConnections,
       territoryById: this.territoryById,
       territoryUnitVecs: this.territoryUnitVecs,
@@ -1525,7 +1675,6 @@ export class WorldMapPageComponent {
     this.selectedTerritoryId.set(territory.id);
     this.highlightedRecordSlug.set(recordSlug);
     this.detailsCollapsed.set(false);
-    this.showAllRecords.set(false);
     if (territory.coordinates) {
       this.flyTo(
         territory.coordinates.lon,

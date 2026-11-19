@@ -62,6 +62,8 @@ export interface GlobeLabelCandidate {
   readonly z: number;
   readonly priority: 'selected' | 'hovered' | 'active';
   readonly score: number;
+  readonly layer: 'country' | 'polity' | 'locality';
+  readonly neighbour?: boolean;
 }
 
 export interface GlobeLabelPlacement {
@@ -72,6 +74,8 @@ export interface GlobeLabelPlacement {
   readonly width: number;
   readonly height: number;
   readonly priority: 'selected' | 'hovered' | 'active';
+  readonly layer: 'country' | 'polity' | 'locality';
+  readonly neighbour: boolean;
 }
 
 const DEG_TO_RAD = Math.PI / 180;
@@ -572,6 +576,8 @@ export function placeGlobeLabels(
       width: round1(boxWidth),
       height: boxHeight,
       priority: cand.priority,
+      layer: cand.layer,
+      neighbour: Boolean(cand.neighbour),
     });
   }
 

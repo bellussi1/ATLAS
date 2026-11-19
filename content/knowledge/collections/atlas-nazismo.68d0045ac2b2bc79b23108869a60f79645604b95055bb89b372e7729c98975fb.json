@@ -3905,6 +3905,24 @@
       "uncertainty": "low",
       "evidenceIds": ["ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-003"],
       "editorialStatus": "pending"
+    },
+    {
+      "id": "rel-exp-wiki-topic-guilherme-ii-da-alemanha-wiki-topic-paises-baixos",
+      "fromEntityId": "wiki-topic-guilherme-ii-da-alemanha",
+      "toEntityId": "wiki-topic-paises-baixos",
+      "type": "documented-association",
+      "label": "morreu",
+      "reverseLabel": "hospedou",
+      "context": "[conferência de IA] Morre em Doorn, nos Países Baixos. (1941).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-guilherme-ii-da-alemanha-006"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Guilherme_II_da_Alemanha",
+        "retrievedAt": "2026-11-09"
+      }
     }
   ],
   "learningPaths": []

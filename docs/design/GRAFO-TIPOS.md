@@ -15,10 +15,10 @@ Registro da revisão das famílias do grafo, das correções de classificação 
 
 Agora são 10 famílias, agrupadas na legenda:
 
-| Grupo | Tipos |
-| --- | --- |
-| Pessoas e ideias | Ideologia, Pessoa, Conceito |
-| Obras e acontecimentos | Obra, Acontecimento |
+| Grupo                      | Tipos                                                |
+| -------------------------- | ---------------------------------------------------- |
+| Pessoas e ideias           | Ideologia, Pessoa, Conceito                          |
+| Obras e acontecimentos     | Obra, Acontecimento                                  |
 | Instituições e territórios | Organização, Partido, País, Formação política, Lugar |
 
 - `place` com `placeCategory: country` vira **País**; com `placeCategory: state`, **Formação política**; as demais categorias (`city`, `region`, `continent`, `site`, `other`) ficam em **Lugar**.
@@ -43,17 +43,21 @@ O override restante é uma dívida declarada: a classificação de origem deve s
 
 ## Tipos de ligação
 
-De 11 famílias para 7:
+Sete famílias concretas, sem baldes genéricos (atualizado em 19/11/2026):
 
-| Família | Tipos reunidos | Leitura |
-| --- | --- | --- |
-| Influência | `influenced`, `influenced_by`, `causal_claim`, `event_influenced_ideology` | Uma corrente, pessoa ou obra influenciou outra |
-| Ruptura | `reacted_against` | Uma posição se formou contra outra |
-| Atuação | `participated_in`, `member_of`, `governed` | Participação, militância, cargo ou governo |
-| Criação | `founded`, `founded_by`, `wrote`, `authored` | Fundação de organização ou autoria de obra |
-| Continuidade | `developed_into`, `succeeded`, `preceded_by` | Uma forma se desdobrou ou sucedeu outra |
-| Relação documentada | `documented_association` | Associação histórica registrada numa fonte, sem verbo mais específico |
-| Conexão | `associated_with`, `related_to`, `occurred_in`, `located_in`, links editoriais e de navegação | Vínculo de catálogo, localização ou navegação |
+| Família      | Tipos reunidos                                                                               | Leitura                                                       |
+| ------------ | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| Influência   | `influenced`, `influenced_by`, `causal_claim`, `event_influenced_ideology`, Wikidata P737    | Uma corrente, pessoa ou obra influenciou outra                |
+| Ruptura      | `reacted_against`                                                                            | Uma posição se formou contra outra                            |
+| Atuação      | `participated_in`, `member_of`, `governed`, rótulos "foi membro de", "governou", "presidiu"… | Participação, militância, cargo ou governo                    |
+| Criação      | `founded`, `founded_by`, `wrote`, `authored`, rótulos "fundou", "escreveu"…                  | Fundação de organização ou autoria de obra                    |
+| Continuidade | `developed_into`, `succeeded`, `preceded_by`, rótulos "sucedeu", subtipo Wikidata            | Uma forma se desdobrou, sucedeu ou é vertente de outra        |
+| Filiação     | rótulo "é classificado com a ideologia", "associado ao movimento"                            | Pertencimento a corrente ou movimento, ou defesa de uma ideia |
+| Lugar        | `occurred_in`, `located_in`, rótulos "ocorreu em", "está sediado em"                         | Onde algo ocorreu ou está sediado                             |
+
+"Relação documentada" e "Conexão" deixaram de existir. A classificação fica em `src/app/core/content/queries/relation-category.ts`: tipos específicos, depois o verbo do rótulo, depois decisões por relação em `src/app/core/content/editorial/relation-categories.ts`, geradas por `scripts/content/classify-relations.mjs` com modelo local (Ollama, `gemma2:9b`) e travadas por regras de tipo das pontas (`--guard-only` reaplica as travas). Links de navegação da Wikipedia e coocorrências sem peso histórico (termos genéricos, pares só de conceitos ou instituições) são **omitidos** da rede e do mapa; o registro original continua no grafo de conteúdo e na ficha.
+
+Distribuição em 19/11/2026 (2.842 relações): Influência 831, Atuação 653, Filiação 254, Criação 239, Ruptura 158, Continuidade 120, Lugar 108, omitidas 479 (141 de navegação e 338 sem impacto). As decisões do modelo são conferência de IA, sem revisão humana.
 
 O verbo exato continua no texto de cada ligação; a família serve para cor, traço e filtro. Navegação e catálogo não são apresentados como influência.
 
@@ -62,22 +66,48 @@ O verbo exato continua no texto de cada ligação; a família serve para cor, tr
 - Cada tipo tem um **tile** com moldura, a forma colorida e um índice de catálogo (`01`–`10`).
 - A legenda é dividida em três grupos com títulos em monoespaçada.
 - O estado desligado risca o nome e reduz o tile, sem depender só da cor.
-- Os rótulos de ligação agora são frases curtas (`Influência`, `Ruptura`, `Atuação`, `Criação`, `Continuidade`, `Relação documentada`, `Conexão`).
+- Os rótulos de ligação são frases curtas (`Influência`, `Ruptura`, `Atuação`, `Criação`, `Continuidade`, `Filiação`, `Lugar`).
 
 ## Contagens depois da revisão
 
-| Tipo | Antes | Depois |
-| --- | --- | --- |
-| Países | 0 (espalhados em Lugares/Organizações) | 69 |
-| Lugares | 127 | 79 |
-| Organizações | 199 | 153 |
-| Conceitos | 238 | 251 |
-| Formações políticas | 0 | 3 |
-
-As ligações ficaram: Influência 132, Ruptura 77, Atuação 47, Criação 53, Continuidade 7, Relação documentada 308, Conexão 212.
+| Tipo                | Antes                                  | Depois |
+| ------------------- | -------------------------------------- | ------ |
+| Países              | 0 (espalhados em Lugares/Organizações) | 69     |
+| Lugares             | 127                                    | 79     |
+| Organizações        | 199                                    | 153    |
+| Conceitos           | 238                                    | 251    |
+| Formações políticas | 0                                      | 3      |
 
 ## Limites
 
 - Os overrides são curados para os casos visíveis; não substituem a reclassificação na captura.
 - Movimentos políticos ambíguos (Movimento 26 de Julho, MFA) permanecem como organização.
-- A contagem de “Relação documentada” ainda é grande porque o tipo genérico é o mais frequente no Wikidata; a ficha mostra o contexto e a fonte de cada ligação.
+- A classificação por modelo local tem erros pontuais de direção e categoria; as travas por tipo reduzem, mas não eliminam. A ficha mostra o contexto e a fonte de cada ligação.
+
+## Lacunas essenciais (auditoria de 19/11/2026)
+
+Pares que o grafo deveria ligar e ainda não liga por falta de afirmação com fonte nos verbetes (ampliar o verbete antes de criar a relação):
+
+- Getúlio Vargas — Estado Novo
+- Getúlio Vargas — Trabalhismo
+- João Goulart — Partido Trabalhista Brasileiro
+- Leonel Brizola — Trabalhismo
+- Luís Carlos Prestes — Tenentismo
+- Ulysses Guimarães — Constituição brasileira de 1988
+- Tancredo Neves — Diretas Já
+- Juscelino Kubitschek — Brasília
+- Trabalhismo — Social-democracia
+- Caio Prado Júnior — Marxismo
+- Florestan Fernandes — Sociologia
+- Adolf Hitler — Nazismo
+- Revolução Francesa — Liberalismo
+- Montesquieu — Separação dos poderes
+- Segunda Guerra Mundial — Nazismo
+- Franklin D. Roosevelt — New Deal
+- Milton Friedman — Neoliberalismo
+- Ronald Reagan — Neoliberalismo
+- Deng Xiaoping — China
+
+Temas sem verbete próprio, que bloqueiam ligações essenciais: Abolição da escravatura no Brasil, Amílcar Cabral, Ato Institucional n.º 5, Bolchevismo, Casa-Grande & Senzala, Chavismo, Consolidação das Leis do Trabalho, Contrato social, Declaração de Independência dos Estados Unidos, Ditadura militar no Brasil, Escravidão no Brasil, Frantz Fanon, Gilberto Freyre, Golpe de Estado no Chile em 1973, Guiné-Bissau, Hegemonia cultural, Ho Chi Minh, Independência da Índia, Joseph Stalin, Juan Perón, Kwame Nkrumah, Nelson Mandela, Paulo Freire, Pedagogia do Oprimido, Proclamação da República do Brasil, Raízes do Brasil, Revolução Chinesa, Revolução Russa.
+
+As ligações essenciais com fonte foram adicionadas por `scripts/content/expand-relations.mjs --pairs` e tiveram rótulo, família e direção conferidos à mão.

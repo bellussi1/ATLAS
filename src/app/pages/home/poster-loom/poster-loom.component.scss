@@ -1,0 +1,190 @@
+:host {
+  position: relative;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  min-height: 22em;
+}
+
+.loom-stage {
+  position: relative;
+  justify-self: end;
+  width: 100%;
+  max-width: 28rem;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 3px solid var(--color-ink);
+  background: var(--color-ink);
+  box-shadow: 10px 10px 0 var(--color-ink);
+  transition: box-shadow var(--motion-standard) var(--ease-out);
+}
+:host([data-mode]) .loom-stage {
+  box-shadow: 14px 14px 0 var(--color-accent);
+}
+.loom-mosaic {
+  position: absolute;
+  inset: 0;
+}
+.loom-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Paper wash lets a figure read above the tiles without hiding them. */
+.loom-wash {
+  fill: var(--color-canvas);
+  opacity: 0;
+  transition: opacity var(--motion-standard) var(--ease-out);
+}
+:host([data-mode]) .loom-wash {
+  opacity: 0.72;
+}
+
+.loom-thread {
+  stroke: var(--color-ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.loom-knot {
+  fill: var(--color-canvas);
+  stroke: var(--color-ink);
+  stroke-width: 3;
+}
+.loom-hand {
+  fill: var(--color-accent);
+  stroke: var(--color-ink);
+  stroke-width: 3;
+}
+
+.loom-card {
+  fill: var(--color-surface-raised);
+  stroke: var(--color-ink);
+  stroke-width: 4;
+}
+.loom-ink,
+.loom-globe,
+.loom-edge,
+.loom-arc,
+.loom-route {
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-linecap: round;
+}
+.loom-ink {
+  stroke-width: 3;
+}
+.loom-globe {
+  fill: var(--color-teal-paper, #dcebe7);
+  stroke-width: 6;
+}
+.loom-edge {
+  stroke-width: 5;
+}
+.loom-arc {
+  stroke: var(--color-accent);
+  stroke-width: 7;
+}
+.loom-route {
+  stroke: var(--color-accent);
+  stroke-width: 8;
+  stroke-linejoin: round;
+}
+.loom-node {
+  fill: var(--color-accent);
+  stroke: var(--color-ink);
+  stroke-width: 4;
+}
+.loom-stop {
+  fill: var(--color-ochre-paper);
+  stroke: var(--color-ink);
+  stroke-width: 4;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .loom-card,
+  .loom-ink,
+  .loom-globe,
+  .loom-edge,
+  .loom-arc,
+  .loom-route {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: loom-draw 520ms var(--ease-out) var(--delay, 0ms) forwards;
+  }
+  .loom-node,
+  .loom-stop {
+    transform-box: fill-box;
+    transform-origin: center;
+    scale: 0;
+    animation: loom-pop 260ms var(--ease-out) var(--delay, 0ms) forwards;
+  }
+  .loom-stop {
+    transform-origin: center;
+  }
+  .loom-knot,
+  .loom-hand {
+    transition:
+      cx 90ms linear,
+      cy 90ms linear;
+  }
+}
+@keyframes loom-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes loom-pop {
+  to {
+    scale: 1;
+  }
+}
+
+.recompose {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  gap: 0.5rem;
+  min-height: var(--control-min-size);
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+  border: 0;
+  background: none;
+  color: var(--color-ink);
+  font: var(--text-small) var(--font-mono);
+  cursor: pointer;
+  transition: translate var(--motion-standard) var(--ease-out);
+}
+.recompose:hover {
+  translate: -4px 0;
+}
+.recompose:active .recompose-dot {
+  scale: 1.6;
+}
+.recompose-dot {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  transition: scale var(--motion-fast) var(--ease-out);
+}
+
+@media (max-width: 47.99rem) {
+  :host {
+    min-height: 0;
+  }
+  .loom-stage {
+    max-width: none;
+    aspect-ratio: 5 / 3;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loom-stage,
+  .loom-wash,
+  .recompose,
+  .recompose-dot {
+    transition: none;
+  }
+}

@@ -27,7 +27,7 @@ test('the graph page fills the window without page scroll and explains its legen
     'Formações políticas',
     'Influência',
     'Criação',
-    'Conexão',
+    'Filiação',
   ])
     await expect(legend.getByRole('button', { name: new RegExp(name) })).toBeVisible();
 });

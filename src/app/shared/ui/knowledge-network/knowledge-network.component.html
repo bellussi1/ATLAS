@@ -6,6 +6,7 @@
           <img src="/brand/atlas-logo.svg" alt="" width="105" height="30" />
         </a>
         <h1 class="bar__title">Grafo do acervo</h1>
+        <app-section-switcher current="/grafos" />
       }
       <form class="search" role="search" (submit)="$event.preventDefault()">
         <label for="graph-search" class="visually-hidden">Buscar por nome</label>
@@ -187,7 +188,7 @@
               class="path-slot__pick"
               [attr.aria-label]="
                 pathFromTitle()
-                  ? pathFromTitle() + ' — trocar origem no mapa ou pela busca'
+                  ? pathFromTitle() + '. Troque a origem no mapa ou pela busca'
                   : 'Buscar ou clicar no mapa para escolher origem'
               "
               (click)="startPathSlot('from')"
@@ -229,7 +230,7 @@
               class="path-slot__pick"
               [attr.aria-label]="
                 pathToTitle()
-                  ? pathToTitle() + ' — trocar destino no mapa ou pela busca'
+                  ? pathToTitle() + '. Troque o destino no mapa ou pela busca'
                   : 'Buscar ou clicar no mapa para escolher destino'
               "
               (click)="startPathSlot('to')"
@@ -491,11 +492,7 @@
                     [attr.marker-end]="family.directed ? 'url(#arrow-' + family.id + ')' : null"
                     [style.stroke]="'var(' + family.color + ')'"
                     [style.stroke-opacity]="
-                      family.id === 'connection'
-                        ? batch.opacity * 0.55
-                        : family.id === 'documented'
-                          ? batch.opacity * 0.78
-                          : batch.opacity
+                      family.id === 'location' ? batch.opacity * 0.65 : batch.opacity
                     "
                   />
                 }

@@ -1,0 +1,105 @@
+<div
+  #stage
+  class="loom-stage"
+  (pointermove)="onPointerMove($event, stage)"
+  (pointerleave)="onPointerLeave()"
+>
+  <app-geometric-mosaic
+    class="loom-mosaic"
+    [columns]="4"
+    [rows]="5"
+    palette="atlas"
+    [seed]="seed()"
+    [interactive]="true"
+  />
+  <svg
+    class="loom-layer"
+    [attr.viewBox]="viewBox"
+    preserveAspectRatio="xMidYMid slice"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <rect class="loom-wash" width="400" height="500" />
+    @for (point of threads(); track $index) {
+      <line
+        class="loom-thread"
+        [attr.x1]="pointer()!.x"
+        [attr.y1]="pointer()!.y"
+        [attr.x2]="point.x"
+        [attr.y2]="point.y"
+      />
+      <circle class="loom-knot" [attr.cx]="point.x" [attr.cy]="point.y" r="7" />
+    }
+    @if (threads().length) {
+      <circle class="loom-hand" [attr.cx]="pointer()!.x" [attr.cy]="pointer()!.y" r="9" />
+    }
+
+    @switch (mode()) {
+      @case ('acervo') {
+        <g class="loom-figure">
+          @for (card of cards; track card) {
+            <g [attr.transform]="'translate(' + (88 + card * 18) + ' ' + (96 + card * 34) + ')'">
+              <rect class="loom-card" width="190" height="240" pathLength="1" />
+              <path
+                class="loom-ink"
+                d="M22 40h120M22 70h146M22 100h96"
+                pathLength="1"
+                [style.--delay]="card * 70 + 'ms'"
+              />
+            </g>
+          }
+        </g>
+      }
+      @case ('grafo') {
+        <g class="loom-figure">
+          @for (edge of graphEdges; track $index) {
+            <line
+              class="loom-edge"
+              [attr.x1]="edge.a.x"
+              [attr.y1]="edge.a.y"
+              [attr.x2]="edge.b.x"
+              [attr.y2]="edge.b.y"
+              pathLength="1"
+              [style.--delay]="$index * 45 + 'ms'"
+            />
+          }
+          @for (node of graphNodes; track $index) {
+            <circle
+              class="loom-node"
+              [attr.cx]="node.x"
+              [attr.cy]="node.y"
+              [attr.r]="$index === 2 ? 22 : 13"
+              [style.--delay]="120 + $index * 40 + 'ms'"
+            />
+          }
+        </g>
+      }
+      @case ('mapa') {
+        <g class="loom-figure">
+          <circle class="loom-globe" cx="200" cy="250" r="160" pathLength="1" />
+          <ellipse class="loom-ink" cx="200" cy="250" rx="80" ry="160" pathLength="1" />
+          <ellipse class="loom-ink" cx="200" cy="250" rx="138" ry="160" pathLength="1" />
+          <path class="loom-ink" d="M40 250h320M62 170h276M62 330h276" pathLength="1" />
+          <path class="loom-arc" d="M128 320 Q170 170 262 150" pathLength="1" />
+          <circle class="loom-node" cx="128" cy="320" r="11" style="--delay: 380ms" />
+          <circle class="loom-node" cx="262" cy="150" r="11" style="--delay: 460ms" />
+        </g>
+      }
+      @case ('itinerarios') {
+        <g class="loom-figure">
+          <path class="loom-route" [attr.d]="routePath" pathLength="1" />
+          @for (stop of route; track $index) {
+            <path
+              class="loom-stop"
+              [attr.d]="'M' + stop.x + ' ' + (stop.y - 16) + 'l16 16-16 16-16-16z'"
+              [style.--delay]="$index * 90 + 'ms'"
+            />
+          }
+        </g>
+      }
+    }
+  </svg>
+</div>
+<button class="recompose atlas-press" type="button" (click)="recompose.emit()">
+  <span class="recompose-dot" aria-hidden="true"></span>Outra composição
+</button>

@@ -6,6 +6,7 @@ import type {
   Relation,
   Scope,
 } from '@core/content/models/content-schema';
+import { classifyRelation, type RelationFamilyId } from '@core/content/queries/relation-category';
 /** Node families of the graph page. Each one has a colour, a shape and an icon family. */
 export type NetworkKindId =
   | 'ideology'
@@ -275,14 +276,7 @@ export function networkKindDefinition(id: NetworkKindId): NetworkKindDefinition 
 }
 
 /** Relation families: one colour and one dash pattern each, so colour is never the only cue. */
-export type RelationFamilyId =
-  | 'influenced'
-  | 'rupture'
-  | 'participation'
-  | 'creation'
-  | 'continuity'
-  | 'documented'
-  | 'connection';
+export type { RelationFamilyId } from '@core/content/queries/relation-category';
 
 export interface RelationFamilyDefinition {
   id: RelationFamilyId;
@@ -337,64 +331,25 @@ export const relationFamilies: readonly RelationFamilyDefinition[] = [
     directed: true,
   },
   {
-    id: 'documented',
-    label: 'Relação documentada',
-    note: 'Associação histórica registrada numa fonte, sem um verbo mais específico.',
+    id: 'affiliation',
+    label: 'Filiação',
+    note: 'Pertencimento a uma corrente ou movimento, ou defesa de uma ideia ou programa.',
     color: '--color-indigo',
     dash: '1 4',
-    directed: false,
+    directed: true,
   },
   {
-    id: 'connection',
-    label: 'Conexão',
-    note: 'Vínculo de catálogo, localização, associação editorial ou link de navegação.',
+    id: 'location',
+    label: 'Lugar',
+    note: 'Onde algo ocorreu, está sediado ou se insere.',
     color: '--color-border-strong',
     dash: '1 3',
-    directed: false,
+    directed: true,
   },
 ];
 
-/** Relation `type` values (current and expected) per family. `reverse` flips the arrow. */
-const familyByType: Record<string, { family: RelationFamilyId; reverse?: boolean }> = {
-  influenced: { family: 'influenced' },
-  influence: { family: 'influenced' },
-  causal_claim: { family: 'influenced' },
-  'causal-claim': { family: 'influenced' },
-  event_influenced_ideology: { family: 'influenced' },
-  influenced_by: { family: 'influenced', reverse: true },
-  reacted_against: { family: 'rupture' },
-  participated_in: { family: 'participation' },
-  member_of: { family: 'participation' },
-  governed: { family: 'participation' },
-  founded: { family: 'creation' },
-  founded_by: { family: 'creation', reverse: true },
-  wrote: { family: 'creation' },
-  authored: { family: 'creation' },
-  developed_into: { family: 'continuity' },
-  succeeded: { family: 'continuity' },
-  preceded_by: { family: 'continuity' },
-  documented_association: { family: 'documented' },
-  'documented-association': { family: 'documented' },
-  associated_with: { family: 'connection' },
-  related_to: { family: 'connection' },
-  occurred_in: { family: 'connection' },
-  located_in: { family: 'connection' },
-  editorial_link: { family: 'connection' },
-  'editorial-link': { family: 'connection' },
-  encyclopedic_link: { family: 'connection' },
-  'encyclopedic-link': { family: 'connection' },
-};
-
 export function relationFamilyDefinition(id: RelationFamilyId): RelationFamilyDefinition {
   return relationFamilies.find((family) => family.id === id) ?? relationFamilies.at(-1)!;
-}
-
-/** Classifies a raw relation type into one of the seven visual relation families. */
-export function relationFamilyOf(type: string): { family: RelationFamilyId; reverse: boolean } {
-  const entry = familyByType[type];
-  return entry
-    ? { family: entry.family, reverse: Boolean(entry.reverse) }
-    : { family: 'connection', reverse: false };
 }
 
 export interface NetworkNode {
@@ -720,8 +675,9 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph | NetworkGraph): Kno
     for (const relation of atlas.relations) {
       if (edges.has(relation.id)) continue;
       if (!nodes.has(relation.fromEntityId) || !nodes.has(relation.toEntityId)) continue;
-      const mapped = familyByType[relation.type] ?? { family: 'connection' as const };
-      const reverse = !!mapped.reverse;
+      const mapped = classifyRelation(relation);
+      if (!mapped) continue;
+      const reverse = mapped.reverse;
       edges.set(relation.id, {
         id: relation.id,
         source: mapped.reverse ? relation.toEntityId : relation.fromEntityId,

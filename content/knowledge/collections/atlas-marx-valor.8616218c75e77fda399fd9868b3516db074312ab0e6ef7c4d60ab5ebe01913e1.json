@@ -14187,6 +14187,186 @@
       "uncertainty": "low",
       "evidenceIds": ["evidence-marx-smith", "evidence-marx-critique"],
       "editorialStatus": "pending"
+    },
+    {
+      "id": "rel-exp-work-communist-manifesto-wiki-topic-europa",
+      "fromEntityId": "work-communist-manifesto",
+      "toEntityId": "wiki-topic-europa",
+      "type": "documented-association",
+      "label": "foi publicado em",
+      "reverseLabel": "abrigou",
+      "context": "[conferência de IA] Foi publicado em meio às Revoluções de 1848 na Europa.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-manifesto-comunista-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Manifesto_Comunista",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-ideology-marxism-person-friedrich-engels",
+      "fromEntityId": "ideology-marxism",
+      "toEntityId": "person-friedrich-engels",
+      "type": "documented-association",
+      "label": "originou",
+      "reverseLabel": "foi origem",
+      "context": "[conferência de IA] O marxismo tem origem nas obras dos filósofos alemães Karl Marx e Friedrich Engels, no século XIX.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-marxismo-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Marxismo",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-exp-ideology-marxism-person-karl-marx",
+      "fromEntityId": "ideology-marxism",
+      "toEntityId": "person-karl-marx",
+      "type": "documented-association",
+      "label": "originou",
+      "reverseLabel": "foi origem",
+      "context": "[conferência de IA] O marxismo tem origem nas obras dos filósofos alemães Karl Marx e Friedrich Engels, no século XIX.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-marxismo-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Marxismo",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-exp-ideology-marxism-wiki-topic-governo-provisorio-russo",
+      "fromEntityId": "ideology-marxism",
+      "toEntityId": "wiki-topic-governo-provisorio-russo",
+      "type": "reacted_against",
+      "label": "tomou o poder de",
+      "reverseLabel": "foi tomado o poder por",
+      "context": "[conferência de IA] Com a Revolução de Outubro, os bolcheviques tomaram o poder do Governo Provisório Russo. (1917).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-marxismo-006"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Marxismo",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-exp-ideology-revisionism-wiki-topic-partido-comunista",
+      "fromEntityId": "ideology-revisionism",
+      "toEntityId": "wiki-topic-partido-comunista",
+      "type": "reacted_against",
+      "label": "atacou",
+      "reverseLabel": "foi atacado por",
+      "context": "[conferência de IA] Mao Zedong e o Partido Comunista da China reviveram o termo revisionismo para atacar a União Soviética. (1960).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-revisionismo-marxismo-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Revisionismo_(marxismo)",
+        "retrievedAt": "2026-11-04"
+      }
+    },
+    {
+      "id": "rel-exp-person-antonio-gramsci-wiki-topic-partido-comunista",
+      "fromEntityId": "person-antonio-gramsci",
+      "toEntityId": "wiki-topic-partido-comunista",
+      "type": "participated_in",
+      "label": "participou",
+      "reverseLabel": "foi participado por",
+      "context": "[conferência de IA] Organização do Partido Comunista Italiano. (1921-01-21).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-antonio-gramsci-007"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Antonio_Gramsci",
+        "retrievedAt": "2026-11-09"
+      }
+    },
+    {
+      "id": "rel-exp-ideology-leninism-wiki-topic-revolucao-de-outubro",
+      "fromEntityId": "ideology-leninism",
+      "toEntityId": "wiki-topic-revolucao-de-outubro",
+      "type": "developed_into",
+      "label": "tornou-se",
+      "reverseLabel": "originou",
+      "context": "[conferência de IA] Revolução de Outubro, após a qual o leninismo tornou-se a versão dominante do marxismo na Rússia. (1917).",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-leninismo-006"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Leninismo",
+        "retrievedAt": "2026-11-09"
+      }
+    },
+    {
+      "id": "rel-exp-person-leon-trotsky-ideology-socialism",
+      "fromEntityId": "person-leon-trotsky",
+      "toEntityId": "ideology-socialism",
+      "type": "documented-association",
+      "label": "defendeu",
+      "reverseLabel": "foi defendido por",
+      "context": "[conferência de IA] Trótski formulou a Teoria da Revolução Permanente, segundo a qual a revolução numa Rússia atrasada avançaria para o socialismo sem parar na república democrática.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-leon-trotski-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Leon_Tr%C3%B3tski",
+        "retrievedAt": "2026-11-09"
+      }
+    },
+    {
+      "id": "rel-exp-person-leon-trotsky-ideology-trotskyism",
+      "fromEntityId": "person-leon-trotsky",
+      "toEntityId": "ideology-trotskyism",
+      "type": "documented-association",
+      "label": "formulou as ideias do",
+      "reverseLabel": "segue as ideias de",
+      "context": "[conferência de IA] Trótski descrevia-se como marxista ortodoxo, marxista revolucionário e bolchevique-leninista, seguidor de Marx, Engels, Lenin, Liebknecht e Luxemburgo.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-trotskismo-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Trotskismo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-person-mao-zedong-wiki-topic-maoismo",
+      "fromEntityId": "person-mao-zedong",
+      "toEntityId": "wiki-topic-maoismo",
+      "type": "documented-association",
+      "label": "formulou as bases do",
+      "reverseLabel": "tem como referência",
+      "context": "[conferência de IA] As contribuições teóricas de Mao ao marxismo-leninismo, às estratégias militares e às suas políticas comunistas são chamadas coletivamente de maoísmo.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-mao-tse-tung-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Mao_Ts%C3%A9-Tung",
+        "retrievedAt": "2026-11-06"
+      }
     }
   ],
   "learningPaths": []

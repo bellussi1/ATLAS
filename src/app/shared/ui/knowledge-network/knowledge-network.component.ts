@@ -65,6 +65,7 @@ import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
 import { illustrationPalette } from '@shared/ui/geometric-illustration/illustration';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
+import { AtlasSectionSwitcherComponent } from '@shared/ui/section-switcher/section-switcher.component';
 import { map } from 'rxjs';
 
 import { batchEdgeSegments, type EdgeSegment } from './network-batching';
@@ -169,6 +170,7 @@ const classificationLabels: Record<string, string> = {
 @Component({
   selector: 'app-knowledge-network',
   imports: [
+    AtlasSectionSwitcherComponent,
     RouterLink,
     AtlasChevronComponent,
     AtlasKindIconComponent,

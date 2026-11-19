@@ -12374,6 +12374,114 @@
         "ev-wiki-topic-liberalismo-classico-002"
       ],
       "editorialStatus": "pending"
+    },
+    {
+      "id": "rel-exp-ideology-classical-liberalism-wiki-topic-revolucao-industrial",
+      "fromEntityId": "ideology-classical-liberalism",
+      "toEntityId": "wiki-topic-revolucao-industrial",
+      "type": "influenced",
+      "label": "foi influenciado por",
+      "reverseLabel": "influenciou",
+      "context": "[conferência de IA] O texto situa o surgimento do liberalismo clássico como filosofia no século XIX, na Europa e nos Estados Unidos, no contexto da Revolução Industrial e do incremento da urbanização.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-liberalismo-classico-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo_cl%C3%A1ssico",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-ideology-classical-liberalism-wiki-topic-europa",
+      "fromEntityId": "ideology-classical-liberalism",
+      "toEntityId": "wiki-topic-europa",
+      "type": "documented-association",
+      "label": "ocorreu",
+      "reverseLabel": "foi o local",
+      "context": "[conferência de IA] O texto situa o surgimento do liberalismo clássico como filosofia no século XIX, na Europa e nos Estados Unidos, no contexto da Revolução Industrial e do incremento da urbanização.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-liberalismo-classico-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo_cl%C3%A1ssico",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-ideology-national-liberalism-event-french-revolution",
+      "fromEntityId": "ideology-national-liberalism",
+      "toEntityId": "event-french-revolution",
+      "type": "influenced",
+      "label": "foi influenciado por",
+      "reverseLabel": "influenciou",
+      "context": "[conferência de IA] O liberalismo nacional emergiu da filosofia continental após a Revolução Francesa, combinando políticas liberais com elementos nacionalistas.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-ideology-national-liberalism-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Nacional-liberalismo",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-exp-person-isaiah-berlin-person-karl-marx",
+      "fromEntityId": "person-isaiah-berlin",
+      "toEntityId": "person-karl-marx",
+      "type": "documented-association",
+      "label": "publicou",
+      "reverseLabel": "foi publicado por",
+      "context": "[conferência de IA] A obra Karl Marx: His Life and Environment aparece na lista de publicações com edição britânica de 1939.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-isaiah-berlin-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Isaiah_Berlin",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-exp-person-friedrich-hayek-ideology-classical-liberalism",
+      "fromEntityId": "person-friedrich-hayek",
+      "toEntityId": "ideology-classical-liberalism",
+      "type": "documented-association",
+      "label": "identificou",
+      "reverseLabel": "pertence a",
+      "context": "[conferência de IA] Friedrich Hayek identificou uma tradição britânica e uma tradição francesa dentro do liberalismo clássico.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-liberalismo-classico-007"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo_cl%C3%A1ssico",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-exp-event-american-revolution-ideology-liberalism",
+      "fromEntityId": "ideology-liberalism",
+      "toEntityId": "event-american-revolution",
+      "type": "influenced",
+      "label": "inspirou a",
+      "reverseLabel": "incorporou princípios do",
+      "context": "[conferência de IA] A Declaração de Independência, adotada em 4 de julho de 1776, incorporou direitos universais expressos pelo liberalismo e pelo republicanismo.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-revolucao-americana-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Americana",
+        "retrievedAt": "2026-11-17"
+      }
     }
   ],
   "learningPaths": []

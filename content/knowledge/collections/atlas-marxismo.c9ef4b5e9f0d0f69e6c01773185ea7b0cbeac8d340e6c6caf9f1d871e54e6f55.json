@@ -2319,6 +2319,24 @@
       "uncertainty": "low",
       "evidenceIds": ["ev-wiki-topic-luta-de-classes-001", "ev-wiki-topic-luta-de-classes-002"],
       "editorialStatus": "pending"
+    },
+    {
+      "id": "rel-exp-wiki-topic-europa-ocidental-wiki-topic-eurocomunismo",
+      "fromEntityId": "wiki-topic-europa-ocidental",
+      "toEntityId": "wiki-topic-eurocomunismo",
+      "type": "documented-association",
+      "label": "abrigou",
+      "reverseLabel": "surgiu",
+      "context": "[conferência de IA] Surgiu entre partidos comunistas da Europa Ocidental, na década de 1970, com destaque para Itália, França e Espanha.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-eurocomunismo-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Eurocomunismo",
+        "retrievedAt": "2026-11-06"
+      }
     }
   ],
   "learningPaths": []

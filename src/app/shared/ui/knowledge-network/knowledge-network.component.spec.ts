@@ -157,8 +157,8 @@ describe('KnowledgeNetworkComponent', () => {
       'Atuação',
       'Criação',
       'Continuidade',
-      'Relação documentada',
-      'Conexão',
+      'Filiação',
+      'Lugar',
     ])
       expect(legend).toContain(label);
   });
@@ -682,15 +682,21 @@ describe('KnowledgeNetworkComponent', () => {
     component.size.set({ width: 1400, height: 900 });
     component.fit(false);
 
-    const nodes = component.drawnNodes().filter((n) => n.node.degree > 0);
+    // Pick records already named in the fitted view, so the check does not depend on the
+    // layout placing an arbitrary record outside the free area.
+    const named = new Set(component.labels().map((label) => label.id));
+    const nodes = component.drawnNodes().filter((n) => n.node.degree > 0 && named.has(n.node.id));
     expect(nodes.length).toBeGreaterThanOrEqual(2);
     const selected = nodes[0];
-    const other = nodes.find((n) => n.node.id !== selected.node.id)!;
 
     component.select(selected.node.id);
     fixture.detectChanges();
     const selectedLabelsBefore = component.labels().map((l) => l.id);
     expect(selectedLabelsBefore).toContain(selected.node.id);
+    // Hover a record that is still on screen after the selection recentres the view.
+    const other = component
+      .drawnNodes()
+      .find((n) => n.node.id !== selected.node.id && selectedLabelsBefore.includes(n.node.id))!;
 
     component.hoverNode(other.node.id);
     fixture.detectChanges();

@@ -13,6 +13,10 @@
         class="poster-door poster-door--acervo atlas-press"
         routerLink="/acervo"
         [queryParams]="{ camada: 'registros' }"
+        (pointerenter)="doorMode.set('acervo')"
+        (pointerleave)="doorMode.set(null)"
+        (focus)="doorMode.set('acervo')"
+        (blur)="doorMode.set(null)"
       >
         <span class="poster-door__glyph poster-door__glyph--square" aria-hidden="true"></span>
         <span>
@@ -21,7 +25,14 @@
         </span>
         <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
       </a>
-      <a class="poster-door poster-door--grafo atlas-press" routerLink="/grafos">
+      <a
+        class="poster-door poster-door--grafo atlas-press"
+        routerLink="/grafos"
+        (pointerenter)="doorMode.set('grafo')"
+        (pointerleave)="doorMode.set(null)"
+        (focus)="doorMode.set('grafo')"
+        (blur)="doorMode.set(null)"
+      >
         <span class="poster-door__glyph poster-door__glyph--circle" aria-hidden="true"></span>
         <span>
           <strong>Abrir o grafo</strong>
@@ -29,7 +40,29 @@
         </span>
         <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
       </a>
-      <a class="poster-door atlas-press" routerLink="/itinerarios">
+      <a
+        class="poster-door poster-door--mapa atlas-press"
+        routerLink="/mapa"
+        (pointerenter)="doorMode.set('mapa')"
+        (pointerleave)="doorMode.set(null)"
+        (focus)="doorMode.set('mapa')"
+        (blur)="doorMode.set(null)"
+      >
+        <span class="poster-door__glyph poster-door__glyph--ring" aria-hidden="true"></span>
+        <span>
+          <strong>Ver o mapa-múndi</strong>
+          <small>Países e impérios no tempo</small>
+        </span>
+        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+      </a>
+      <a
+        class="poster-door atlas-press"
+        routerLink="/itinerarios"
+        (pointerenter)="doorMode.set('itinerarios')"
+        (pointerleave)="doorMode.set(null)"
+        (focus)="doorMode.set('itinerarios')"
+        (blur)="doorMode.set(null)"
+      >
         <span class="poster-door__glyph poster-door__glyph--half" aria-hidden="true"></span>
         <span>
           <strong>Seguir itinerários</strong>
@@ -38,34 +71,13 @@
         <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
       </a>
     </div>
-    <nav class="poster-readings" aria-label="Leituras contínuas">
-      <span class="poster-readings__label">Leituras</span>
-      @for (entry of readings; track entry.slug) {
-        <a
-          class="poster-reading atlas-press"
-          [routerLink]="entryPath(entry.slug)"
-          [attr.data-reading]="entry.slug"
-        >
-          {{ entry.title }}
-        </a>
-      }
-      <a class="poster-reading atlas-press" routerLink="/leituras">
-        Todas ({{ stats.readings }})
-      </a>
-    </nav>
   </div>
-  <div class="poster-art">
-    <app-geometric-mosaic
-      [columns]="4"
-      [rows]="5"
-      palette="atlas"
-      [seed]="seed()"
-      [interactive]="true"
-    />
-    <button class="recompose atlas-press" type="button" (click)="recompose()">
-      <span class="recompose-dot" aria-hidden="true"></span>Outra composição
-    </button>
-  </div>
+  <app-poster-loom
+    class="poster-art"
+    [seed]="seed()"
+    [mode]="doorMode()"
+    (recompose)="recompose()"
+  />
 </section>
 
 <section class="console" aria-label="Busca e ferramentas" data-tone-section>
@@ -81,8 +93,6 @@
     <button class="search-button atlas-press" type="submit">Pesquisar</button>
   </form>
 </section>
-<app-home-howto />
-
 <section
   class="readings"
   id="leituras"
@@ -96,68 +106,115 @@
 >
   <header class="atlas-band-heading" appReveal data-reveal="wipe">
     <p class="atlas-band-number atlas-band-number--square" aria-hidden="true">A</p>
-    <h2 id="readings-title">Leituras contínuas, <em>uma enciclopédia.</em></h2>
+    <h2 id="readings-title">Leituras <em>contínuas.</em></h2>
+    <p>Um assunto lido de ponta a ponta, do começo ao debate atual, com a fonte junto ao texto.</p>
+  </header>
+  <div class="readings-brief" appReveal>
+    <ol class="readings-anatomy" aria-label="Como uma leitura se organiza">
+      <li data-stagger style="--stagger: 0">
+        <span class="anatomy-mark" aria-hidden="true">12</span>
+        <strong>Capítulos em ordem</strong>
+        <span>Perguntas, conceitos, pessoas, obras, cronologia e divergências.</span>
+      </li>
+      <li data-stagger style="--stagger: 1">
+        <span class="anatomy-mark anatomy-mark--br" aria-hidden="true">BR</span>
+        <strong>O caso brasileiro</strong>
+        <span>Partidos, governos e intelectuais que levaram a ideia ao país.</span>
+      </li>
+      <li data-stagger style="--stagger: 2">
+        <span class="anatomy-mark anatomy-mark--source" aria-hidden="true">§</span>
+        <strong>Fonte por perto</strong>
+        <span>Fato, interpretação e controvérsia marcados, com a referência ao lado.</span>
+      </li>
+      <li data-stagger style="--stagger: 3">
+        <span class="anatomy-mark anatomy-mark--link" aria-hidden="true"></span>
+        <strong>Uma leva à outra</strong>
+        <span>Termos abrem fichas; o fim de cada leitura aponta a próxima.</span>
+      </li>
+    </ol>
+    <ul class="readings-list" aria-label="Leituras em destaque">
+      @for (entry of readings; track entry.slug) {
+        <li>
+          <a
+            class="reading-line atlas-press"
+            [routerLink]="entryPath(entry.slug)"
+            [attr.data-reading]="entry.slug"
+          >
+            <strong>{{ entry.title }}</strong>
+            <span class="reading-line__note">{{ entry.tagline }}</span>
+            <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+          </a>
+        </li>
+      }
+      <li>
+        <a class="reading-line reading-line--all atlas-press" routerLink="/leituras">
+          <strong>Todas as leituras</strong>
+          <span class="reading-line__note">{{ stats.readings }} publicadas</span>
+          <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section
+  class="map-band"
+  id="mapa-mundi"
+  aria-labelledby="home-map-title"
+  data-tone-section
+  style="
+    --band-bg: var(--color-teal-paper);
+    --band-fg: var(--color-ink);
+    --band-em: var(--color-cartographic);
+  "
+>
+  <header class="atlas-band-heading" appReveal data-reveal="wipe">
+    <p class="atlas-band-number atlas-band-number--circle" aria-hidden="true">B</p>
+    <h2 id="home-map-title">O mundo <em>no tempo.</em></h2>
     <p>
-      {{ stats.readings }} leituras contínuas, 12 capítulos cada: conceitos, pessoas, obras,
-      cronologia, divergências e fontes. Veja os destaques abaixo ou
-      <a routerLink="/leituras">explore todas as leituras</a>.
+      Países, impérios e cidades num globo, ligados por influências, rupturas e alianças. Arraste a
+      linha do tempo e veja o que acontecia em cada lugar.
     </p>
   </header>
-  <div appReveal class="reading-table" [attr.data-reading]="selected().slug">
-    <div class="cover-index">
-      <div class="mobile-sheet-control">
-        <label for="sheet-select">Escolha uma leitura</label>
-        <select
-          id="sheet-select"
-          [value]="selected().slug"
-          (change)="selectSlug($any($event.target).value)"
-        >
-          @for (entry of readings; track entry.slug) {
-            <option [value]="entry.slug">{{ entry.title }}</option>
-          }
-        </select>
-      </div>
-      <fieldset class="sheet-selector">
-        <legend class="sr-only">Escolha uma leitura</legend>
-        @for (entry of readings; track entry.slug) {
-          <button
-            class="cover-choice atlas-press"
-            type="button"
-            [attr.data-reading]="entry.slug"
-            [attr.aria-pressed]="selected().slug === entry.slug"
-            (click)="select(entry, $event)"
-          >
-            <span class="choice-kind">Leitura</span>
-            <strong>{{ entry.title }}<span aria-hidden="true">.</span></strong>
-            <span class="choice-note">{{ entry.tagline }}</span>
-          </button>
+  <div class="map-band__body" appReveal>
+    <a class="map-band__globe atlas-press" routerLink="/mapa" aria-label="Abrir o mapa-múndi">
+      <svg viewBox="0 0 240 240" aria-hidden="true">
+        <circle class="globe-sea" cx="120" cy="120" r="104" />
+        <ellipse class="globe-line" cx="120" cy="120" rx="52" ry="104" />
+        <ellipse class="globe-line" cx="120" cy="120" rx="88" ry="104" />
+        <path class="globe-line" d="M16 120h208M30 70h180M30 170h180" />
+        <path class="globe-land" d="M74 150l14-8 10 10 4 20-10 18-14-6-6-18z" />
+        <path class="globe-land" d="M118 62l22-6 18 10-4 16-20 4-8 14-12-10z" />
+        <path class="globe-land" d="M150 112l20 4 8 18-10 16-16-6-6-16z" />
+        <path class="globe-arc" d="M90 160 Q110 96 132 76" />
+        <path class="globe-arc globe-arc--alt" d="M132 76 Q160 92 162 128" />
+        <circle class="globe-pin" cx="90" cy="160" r="5" />
+        <circle class="globe-pin" cx="132" cy="76" r="5" />
+        <circle class="globe-pin globe-pin--alt" cx="162" cy="128" r="5" />
+      </svg>
+      <span class="map-band__open">
+        Abrir o mapa-múndi
+        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+      </span>
+    </a>
+    <div class="map-band__eras">
+      <p class="map-band__kicker">Abrir o mapa num período:</p>
+      <ol class="era-rail">
+        @for (era of mapEras; track era.id; let i = $index) {
+          <li data-stagger [style.--stagger]="i">
+            <a
+              class="era-stop atlas-press"
+              routerLink="/mapa"
+              [queryParams]="{ anoDe: era.yearFrom, anoAte: era.yearTo }"
+            >
+              <span class="era-stop__years">{{ era.label }}</span>
+              <span class="era-stop__note">{{ era.note }}</span>
+            </a>
+          </li>
         }
-      </fieldset>
+      </ol>
     </div>
-    <article class="reading-sheet" #sheet aria-labelledby="sheet-title">
-      <app-geometric-mosaic
-        class="sheet-art"
-        [columns]="6"
-        [rows]="2"
-        [palette]="selected().palette"
-        [seed]="selected().seed"
-      />
-      <div class="sheet-content">
-        <p class="sheet-status">{{ selected().statusLabel }}</p>
-        <h2 id="sheet-title">{{ selected().title }}</h2>
-        <p class="sheet-summary">{{ selected().summary }}</p>
-        <div class="excerpt">
-          <h3>{{ selected().excerpt.heading }}</h3>
-          <p>{{ selected().excerpt.paragraph }}</p>
-        </div>
-        <a class="sheet-action atlas-press" [routerLink]="entryPath(selected().slug)"
-          >Ler o texto completo
-          <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span
-        ></a>
-      </div>
-    </article>
   </div>
-  <p class="sr-only" role="status">Leitura selecionada: {{ selected().title }}.</p>
 </section>
 
 <section
@@ -172,7 +229,7 @@
   "
 >
   <header class="atlas-band-heading" appReveal data-reveal="wipe">
-    <p class="atlas-band-number atlas-band-number--half" aria-hidden="true">B</p>
+    <p class="atlas-band-number atlas-band-number--half" aria-hidden="true">C</p>
     <h2 id="home-itineraries-title">Seguir <em>um itinerário.</em></h2>
     <p>
       Não sabe por onde começar? Cada itinerário organiza leituras, verbetes e o grafo em paradas
@@ -210,64 +267,6 @@
       <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
     </a>
   </p>
-</section>
-
-<section
-  class="balance"
-  id="acervo-hoje"
-  aria-labelledby="scale-title"
-  data-tone-section
-  style="
-    --band-bg: var(--color-teal-paper);
-    --band-fg: var(--color-ink);
-    --band-em: var(--color-cartographic);
-  "
->
-  <header class="atlas-band-heading" appReveal data-reveal="wipe">
-    <p class="atlas-band-number atlas-band-number--circle" aria-hidden="true">C</p>
-    <h2 id="scale-title">O acervo <em>hoje.</em></h2>
-    <p>Registros, relações documentadas e leituras publicados no acervo.</p>
-  </header>
-  <div class="balance-sheet" appReveal>
-    <div class="balance-lead" data-stagger style="--stagger: 0">
-      <p class="balance-kicker">Verbetes publicados</p>
-      <p class="balance-number">{{ format(stats.verbetes) }}</p>
-      <p class="balance-copy">
-        Fichas de pessoas, obras, conceitos, lugares e acontecimentos, cada uma com endereço próprio
-        e fonte.
-      </p>
-    </div>
-    <dl class="balance-ledger" data-stagger style="--stagger: 1">
-      <div>
-        <dt>Relações com fonte</dt>
-        <dd>{{ format(stats.documentedRelations) }}</dd>
-      </div>
-      <div>
-        <dt>Registros datados</dt>
-        <dd>{{ format(stats.dated) }}</dd>
-      </div>
-      <div>
-        <dt>Leituras contínuas</dt>
-        <dd>
-          {{ format(stats.readings) }}
-          <span>{{ format(stats.chapters) }} capítulos</span>
-        </dd>
-      </div>
-      <div>
-        <dt>Fontes catalogadas</dt>
-        <dd>{{ format(stats.sources) }}</dd>
-      </div>
-    </dl>
-    <aside class="balance-note" data-stagger style="--stagger: 2">
-      <p class="balance-note-kicker">Na rede</p>
-      <p class="balance-note-value">
-        {{ format(stats.nodes) }} registros<br />
-        {{ format(stats.links) }} ligações
-      </p>
-      <a routerLink="/grafos">Abrir o grafo <app-chevron /></a>
-      <p class="balance-date">Atualizado em {{ updatedLabel }}</p>
-    </aside>
-  </div>
 </section>
 
 <section
@@ -323,6 +322,8 @@
     }
   </ul>
 </section>
+
+<app-home-howto />
 
 <section
   class="method"

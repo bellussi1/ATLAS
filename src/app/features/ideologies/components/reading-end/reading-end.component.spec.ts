@@ -42,7 +42,7 @@ describe('Ideology reading end', () => {
     expect(card.textContent).toContain('O que separa a crítica da propriedade');
     expect(card.textContent).toContain('Compara a crítica da propriedade');
     expect(root.textContent).toContain('Voltar à página inicial');
-    expect(root.querySelector('.reading-end h2')?.textContent).toContain('As perguntas continuam');
+    expect(root.querySelector('.reading-end h2')?.textContent).toContain('Próximas leituras');
   });
 
   it('gives the curated lead the wide card and never duplicates it as a second path', () => {

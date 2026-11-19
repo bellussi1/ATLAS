@@ -152,6 +152,19 @@ describe('globe projection engine', () => {
           z: 0.9,
           priority: 'selected',
           score: 100000,
+          layer: 'country',
+          neighbour: false,
+        },
+        {
+          territoryId: 'polity-imperial',
+          title: 'Império do Brasil',
+          screenX: 540,
+          screenY: 380,
+          z: 0.88,
+          priority: 'active',
+          score: 800,
+          layer: 'polity',
+          neighbour: true,
         },
         {
           territoryId: 'country-blocked',
@@ -161,6 +174,8 @@ describe('globe projection engine', () => {
           z: 0.85,
           priority: 'active',
           score: 500,
+          layer: 'country',
+          neighbour: false,
         },
       ],
       { left: 0, top: 0, right: 1280, bottom: 800 },
@@ -168,7 +183,9 @@ describe('globe projection engine', () => {
       18,
     );
 
-    expect(placed.map((p) => p.territoryId)).toEqual(['country-brazil']);
+    expect(placed.map((p) => p.territoryId)).toEqual(['country-brazil', 'polity-imperial']);
+    expect(placed[0]).toMatchObject({ layer: 'country', neighbour: false });
+    expect(placed[1]).toMatchObject({ layer: 'polity', neighbour: true });
 
     const mid = slerpLonLat(-50, -15, 10, 50, 0.5);
     expect(mid.lon).toBeGreaterThan(-50);

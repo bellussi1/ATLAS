@@ -108,7 +108,7 @@ describe('WorldMapPageComponent', () => {
     const root = harness.routeNativeElement as HTMLElement;
 
     const tabelaBtn = [...root.querySelectorAll<HTMLButtonElement>('.bar__actions .chip')].find(
-      (btn) => btn.textContent?.trim() === 'Tabela',
+      (btn) => btn.textContent?.trim() === 'Ver como lista',
     );
     expect(tabelaBtn).toBeDefined();
     tabelaBtn!.click();

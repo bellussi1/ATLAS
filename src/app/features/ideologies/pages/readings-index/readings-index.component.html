@@ -91,9 +91,9 @@
             </h2>
             <p class="reading-card__tagline">{{ item.tagline }}</p>
             <p class="reading-card__summary">{{ item.summary }}</p>
-            <a class="reading-card__cta atlas-press" [routerLink]="entryPath(item.slug)">
-              Abrir leitura <span aria-hidden="true"><app-chevron /></span>
-            </a>
+            <span class="reading-card__cta" aria-hidden="true">
+              Abrir leitura <app-chevron />
+            </span>
           </div>
         </li>
       }

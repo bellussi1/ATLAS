@@ -5795,6 +5795,78 @@
         "url": "https://www.wikidata.org/wiki/Q619#P737",
         "retrievedAt": "2026-11-17"
       }
+    },
+    {
+      "id": "rel-exp-wiki-topic-guilherme-iii-de-inglaterra-wiki-lugar-westminster",
+      "fromEntityId": "wiki-topic-guilherme-iii-de-inglaterra",
+      "toEntityId": "wiki-lugar-westminster",
+      "type": "documented-association",
+      "label": "foi enterrado",
+      "reverseLabel": "hospedou",
+      "context": "[conferência de IA] Guilherme foi enterrado na Capela de Henrique VII na Abadia de Westminster ao lado de sua esposa.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-guilherme-iii-de-inglaterra-004"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Guilherme_III_de_Inglaterra",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-jaime-ii-de-inglaterra-wiki-topic-londres",
+      "fromEntityId": "wiki-topic-jaime-ii-de-inglaterra",
+      "toEntityId": "wiki-topic-londres",
+      "type": "documented-association",
+      "label": "nasceu",
+      "reverseLabel": "hospedou",
+      "context": "[conferência de IA] Jaime era o segundo filho do rei Carlos I e de Henriqueta Maria da França, nascido em Londres em 1633.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-jaime-ii-de-inglaterra-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jaime_II_de_Inglaterra",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-guerras-civis-afegas-wiki-topic-forcas-armadas",
+      "fromEntityId": "wiki-topic-guerras-civis-afegas",
+      "toEntityId": "wiki-topic-forcas-armadas",
+      "type": "participated_in",
+      "label": "interveio",
+      "reverseLabel": "foi intervido por",
+      "context": "[conferência de IA] A União Soviética interveio com suas forças armadas a pedido do governo comunista afegão.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-guerras-civis-afegas-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Guerras_Civis_Afeg%C3%A3s",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-exp-wiki-topic-samuel-p-huntington-wiki-topic-nova-iorque",
+      "fromEntityId": "wiki-topic-samuel-p-huntington",
+      "toEntityId": "wiki-topic-nova-iorque",
+      "type": "documented-association",
+      "label": "nasceu",
+      "reverseLabel": "é o local de nascimento",
+      "context": "[conferência de IA] Nasceu em Nova Iorque em 1927 e morreu em Martha’s Vineyard em 2008. Foi cientista político norte-americano.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["ev-wiki-topic-samuel-p-huntington-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Samuel_P._Huntington",
+        "retrievedAt": "2026-11-17"
+      }
     }
   ],
   "learningPaths": []

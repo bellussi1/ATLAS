@@ -62,6 +62,8 @@ export interface GlobeRenderState {
   readonly hoveredIso: string | null;
   readonly highlightedTerritoryIds: ReadonlySet<string> | null;
   readonly highlightedIsos: ReadonlySet<string> | null;
+  readonly neighborTerritoryIds: ReadonlySet<string> | null;
+  readonly neighborIsos: ReadonlySet<string> | null;
   readonly connections: readonly WorldMapConnection[];
   readonly territoryById: ReadonlyMap<string, WorldMapTerritory>;
   readonly territoryUnitVecs: ReadonlyMap<string, Vec3>;
@@ -206,20 +208,56 @@ function drawArrowHead(
   ctx.restore();
 }
 
-function resolveConnectionAlpha(conn: WorldMapConnection, state: GlobeRenderState): number {
-  if (state.selectedConnectionId === conn.id || state.hoveredConnectionId === conn.id) {
-    return 1;
+interface ConnectionVisualStyle {
+  readonly alpha: number;
+  readonly lineWidth: number;
+  readonly drawShadow: boolean;
+  readonly drawArrow: boolean;
+}
+
+function resolveConnectionStyle(
+  conn: WorldMapConnection,
+  state: GlobeRenderState,
+  denseAmbient: boolean,
+  focusTerritoryId: string | null,
+): ConnectionVisualStyle {
+  const emphasized =
+    state.selectedConnectionId === conn.id || state.hoveredConnectionId === conn.id;
+
+  if (state.hoveredConnectionId || state.selectedConnectionId) {
+    if (emphasized) {
+      return { alpha: 1, lineWidth: 3.0, drawShadow: true, drawArrow: conn.directed };
+    }
+    const siblingMatch =
+      focusTerritoryId !== null &&
+      (conn.fromTerritoryId === focusTerritoryId || conn.toTerritoryId === focusTerritoryId);
+    return {
+      alpha: siblingMatch ? 0.22 : 0.06,
+      lineWidth: 1.1,
+      drawShadow: false,
+      drawArrow: false,
+    };
   }
+
   if (state.hoveredFamilyId) {
-    return conn.family === state.hoveredFamilyId ? 1 : 0.14;
+    return conn.family === state.hoveredFamilyId
+      ? { alpha: 1, lineWidth: 2.4, drawShadow: true, drawArrow: conn.directed }
+      : { alpha: 0.06, lineWidth: 1.0, drawShadow: false, drawArrow: false };
   }
-  if (state.selectedTerritoryId) {
-    return conn.fromTerritoryId === state.selectedTerritoryId ||
-      conn.toTerritoryId === state.selectedTerritoryId
-      ? 0.96
-      : 0.18;
+
+  if (focusTerritoryId) {
+    const matchesFocus =
+      conn.fromTerritoryId === focusTerritoryId || conn.toTerritoryId === focusTerritoryId;
+    return matchesFocus
+      ? { alpha: 0.96, lineWidth: 2.2, drawShadow: true, drawArrow: conn.directed }
+      : { alpha: 0.06, lineWidth: 1.0, drawShadow: false, drawArrow: false };
   }
-  return 0.78;
+
+  if (denseAmbient) {
+    return { alpha: 0.14, lineWidth: 0.9, drawShadow: false, drawArrow: false };
+  }
+
+  return { alpha: 0.88, lineWidth: 2.0, drawShadow: true, drawArrow: conn.directed };
 }
 
 /**
@@ -277,7 +315,7 @@ export function renderGlobeFrame(
     ctx.stroke();
   }
 
-  // 3. Ocean sphere body with editorial mineral paper lighting (upper-left illumination).
+  // 3. Ocean sphere body in muted mineral celadon (washed teal-paper over ivory) for land separation.
   const oceanGrad = ctx.createRadialGradient(
     cx - radius * 0.34,
     cy - radius * 0.34,
@@ -286,10 +324,10 @@ export function renderGlobeFrame(
     cy,
     radius,
   );
-  oceanGrad.addColorStop(0, '#FAF7EE');
-  oceanGrad.addColorStop(0.55, '#EFE9DA');
-  oceanGrad.addColorStop(0.86, '#E2DAC5');
-  oceanGrad.addColorStop(1, '#CFC5AC');
+  oceanGrad.addColorStop(0, '#F2F5F1');
+  oceanGrad.addColorStop(0.55, '#E4ECE8');
+  oceanGrad.addColorStop(0.86, '#D2DFDA');
+  oceanGrad.addColorStop(1, '#BBCBC5');
 
   ctx.save();
   ctx.beginPath();
@@ -303,6 +341,7 @@ export function renderGlobeFrame(
 
   // 5. Country landmasses clipped seamlessly onto the orthographic horizon.
   const hasHighlight = Boolean(state.highlightedTerritoryIds);
+  const focusTerritoryId = state.hoveredTerritoryId ?? state.selectedTerritoryId;
   for (const country of atlas.countries) {
     if (country.spanDeg < 35) {
       const quick = projectPoint(country.centroidVec, camera);
@@ -312,36 +351,41 @@ export function renderGlobeFrame(
     const iso = country.isoNumeric;
     const isSelected = iso !== '000' && state.selectedIso === iso;
     const isHovered = iso !== '000' && state.hoveredIso === iso;
+    const isNeighbor = iso !== '000' && (state.neighborIsos?.has(iso) ?? false);
     const isHighlightedIso = iso !== '000' && (state.highlightedIsos?.has(iso) ?? false);
     const isActive = iso !== '000' && state.activeIsos.has(iso);
     const isInteractable = iso !== '000' && state.interactableIsos.has(iso);
     const activity = iso !== '000' ? (state.activityByIso.get(iso) ?? 0) : 0;
 
-    let fill = '#E4DCC7';
-    let stroke = '#B6AD97';
-    let strokeW = 0.65;
+    let fill = '#F7F2E4';
+    let stroke = '#B3AA96';
+    let strokeW = 0.75;
     let alpha = 1;
 
     if (isSelected) {
-      fill = '#F1CFCB';
+      fill = '#F3CFCB';
       stroke = '#B81D16';
-      strokeW = 1.9;
+      strokeW = 2.1;
     } else if (isHovered) {
-      fill = '#E9CB79';
+      fill = '#EAC66A';
       stroke = '#141211';
-      strokeW = 1.45;
+      strokeW = 1.6;
     } else if (hasHighlight && isHighlightedIso) {
-      fill = '#EBD69E';
+      fill = '#E9CE84';
+      stroke = '#141211';
+      strokeW = 1.25;
+    } else if (isNeighbor) {
+      fill = '#F1DFAC';
       stroke = '#141211';
       strokeW = 1.2;
     } else if (isActive) {
-      fill = activity >= 12 ? '#EBD69E' : '#EFE1BD';
-      stroke = '#7E7563';
-      strokeW = 0.85;
+      fill = activity >= 12 ? '#E9CE84' : '#EFE0B7';
+      stroke = '#756C5A';
+      strokeW = 0.95;
     } else if (isInteractable) {
-      fill = '#EAE3D0';
-      stroke = '#9F9682';
-      strokeW = 0.7;
+      fill = '#F5EEDB';
+      stroke = '#9E9581';
+      strokeW = 0.8;
     }
 
     if (hasHighlight && !isSelected && !isHovered && !isHighlightedIso) {
@@ -396,7 +440,15 @@ export function renderGlobeFrame(
   ctx.lineWidth = 1.6;
   ctx.stroke();
 
-  // 8. Elevated 3D great-circle connections with surface shadows.
+  // 8. Elevated 3D great-circle connections with progressive disclosure.
+  const denseAmbient =
+    state.connections.length > 28 &&
+    !state.selectedTerritoryId &&
+    !state.hoveredTerritoryId &&
+    !state.selectedConnectionId &&
+    !state.hoveredConnectionId &&
+    !state.hoveredFamilyId;
+
   const hitConnections: GlobeHitConnection[] = [];
   for (const conn of state.connections) {
     const fromVec = state.territoryUnitVecs.get(conn.fromTerritoryId);
@@ -406,22 +458,20 @@ export function renderGlobeFrame(
     const proj = projectGeodesicArc(fromVec, toVec, camera);
     if (proj.elevatedSegments.length === 0) continue;
 
-    const alpha = resolveConnectionAlpha(conn, state);
+    const style = resolveConnectionStyle(conn, state, denseAmbient, focusTerritoryId);
     const color = state.familyColors[conn.family] ?? '#777268';
     const dash = state.familyDash[conn.family] ?? [];
-    const emphasized =
-      state.selectedConnectionId === conn.id || state.hoveredConnectionId === conn.id;
 
-    // Ground trace shadow on visible hemisphere
-    if (proj.shadowSegments.length > 0 && alpha > 0.25) {
+    // Ground trace shadow on visible hemisphere when arc is active/focused
+    if (style.drawShadow && proj.shadowSegments.length > 0) {
       ctx.save();
       ctx.beginPath();
       for (const seg of proj.shadowSegments) {
         ctx.moveTo(seg[0].x, seg[0].y);
         for (let i = 1; i < seg.length; i++) ctx.lineTo(seg[i].x, seg[i].y);
       }
-      ctx.strokeStyle = 'rgba(20, 18, 17, 0.15)';
-      ctx.globalAlpha = alpha * 0.45;
+      ctx.strokeStyle = 'rgba(20, 18, 17, 0.16)';
+      ctx.globalAlpha = style.alpha * 0.45;
       ctx.lineWidth = 1;
       ctx.stroke();
       ctx.restore();
@@ -435,14 +485,14 @@ export function renderGlobeFrame(
       for (let i = 1; i < seg.length; i++) ctx.lineTo(seg[i].x, seg[i].y);
     }
     ctx.strokeStyle = color;
-    ctx.globalAlpha = alpha;
-    ctx.lineWidth = emphasized ? 2.8 : 1.75;
+    ctx.globalAlpha = style.alpha;
+    ctx.lineWidth = style.lineWidth;
     ctx.lineCap = 'round';
     ctx.setLineDash([...dash]);
     ctx.stroke();
     ctx.setLineDash([]);
 
-    if (conn.directed && proj.endArrow) {
+    if (style.drawArrow && proj.endArrow) {
       drawArrowHead(
         ctx,
         proj.endArrow.x1,
@@ -461,7 +511,12 @@ export function renderGlobeFrame(
   for (const item of state.matchedCountryDots) {
     const pt = projectPoint(item.unitVec, camera);
     if (!pt.visible) continue;
-    const dimmed = hasHighlight && !state.highlightedTerritoryIds!.has(item.territory.id) ? 0.2 : 1;
+    const isFocusedOrNeighbor =
+      focusTerritoryId === null ||
+      item.territory.id === focusTerritoryId ||
+      (state.neighborTerritoryIds?.has(item.territory.id) ?? false);
+    let dimmed = hasHighlight && !state.highlightedTerritoryIds!.has(item.territory.id) ? 0.2 : 1;
+    if (!hasHighlight && !isFocusedOrNeighbor) dimmed = 0.42;
     const selected = item.territory.id === state.selectedTerritoryId;
 
     ctx.save();
@@ -488,8 +543,12 @@ export function renderGlobeFrame(
   for (const item of state.markerTerritories) {
     const pt = projectPoint(item.unitVec, camera);
     if (!pt.visible) continue;
-    const dimmed =
-      hasHighlight && !state.highlightedTerritoryIds!.has(item.territory.id) ? 0.18 : 1;
+    const isFocusedOrNeighbor =
+      focusTerritoryId === null ||
+      item.territory.id === focusTerritoryId ||
+      (state.neighborTerritoryIds?.has(item.territory.id) ?? false);
+    let dimmed = hasHighlight && !state.highlightedTerritoryIds!.has(item.territory.id) ? 0.18 : 1;
+    if (!hasHighlight && !isFocusedOrNeighbor) dimmed = 0.42;
     const selected = item.territory.id === state.selectedTerritoryId;
     const hovered = item.territory.id === state.hoveredTerritoryId;
 
