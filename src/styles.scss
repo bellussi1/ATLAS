@@ -456,4 +456,12 @@ html.atlas-reveal .atlas-reveal-item:focus-within > [data-stagger] {
   :where(.atlas-press):hover .atlas-arrow--right {
     transform: translateX(0.3rem);
   }
+  :where(.atlas-press):hover .atlas-arrow--left {
+    transform: translateX(-0.3rem) scaleX(-1);
+  }
+}
+/* The chevron points right; the left variant mirrors it. */
+.atlas-arrow--left {
+  display: inline-block;
+  transform: scaleX(-1);
 }

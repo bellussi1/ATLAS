@@ -7,7 +7,8 @@ import { catalogueUrl, explorerCatalogues } from './explorer-catalogues';
 export { explorerCatalogues, explorerGroups } from './explorer-catalogues';
 
 // Fixed page: 6 columns × 4 rows of cards on desktop. The size is not a user choice.
-export const EXPLORER_PAGE_SIZE = 24;
+/** Six rows of the three-column record grid. */
+export const EXPLORER_PAGE_SIZE = 18;
 
 // Separates what the archive holds: records, sources and editorial pages are read differently.
 export const explorerContentGroups = [

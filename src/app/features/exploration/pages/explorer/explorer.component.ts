@@ -34,6 +34,7 @@ import {
   explorerFacets,
   explorerLayers,
   explorerMatchKind,
+  explorerPage,
   parseExplorerPage,
 } from '@core/content/queries/knowledge-explorer';
 import { contentLanguageLabels } from '@core/content/queries/localized-content';
@@ -42,6 +43,7 @@ import { readingPath } from '@core/routing/reading-routes';
 import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { AtlasKindIconComponent, iconKind } from '@shared/ui/kind-icon/kind-icon.component';
+import { AtlasPaginationComponent } from '@shared/ui/pagination/pagination.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 @Component({
@@ -51,6 +53,7 @@ import { RecordCardComponent } from '@shared/ui/record-card/record-card.componen
     AtlasChevronComponent,
     AtlasGeometricMosaicComponent,
     AtlasKindIconComponent,
+    AtlasPaginationComponent,
     RecordCardComponent,
   ],
   templateUrl: './explorer.component.html',
@@ -69,6 +72,8 @@ export class ExplorerComponent {
   private searchTimer?: ReturnType<typeof setTimeout>;
   // Pager links keep the reader's place: the router would otherwise scroll to the top of the page.
   private keptScrollY: number | null = null;
+  // A page change brings the first result of the new page into view instead.
+  private scrollToResults = false;
   // A #source-… link may point to another page; the scroll restoration must not undo it.
   private resolvingFragment = false;
   private resolvedFragment: string | null = null;
@@ -199,16 +204,15 @@ export class ExplorerComponent {
   );
   // Sources keep one list: records link to their anchors (#source-…), which must stay on the page.
   readonly icon = iconKind;
-  readonly page = computed(() => parseExplorerPage(this.params().get('pagina')));
-  readonly visibleResults = computed(() =>
-    this.results().slice(0, this.page() * EXPLORER_PAGE_SIZE),
+  readonly paged = computed(() =>
+    explorerPage(this.results(), parseExplorerPage(this.params().get('pagina'))),
   );
-  readonly hasMore = computed(() => this.visibleResults().length < this.results().length);
+  readonly page = computed(() => this.paged().page);
+  readonly visibleResults = computed(() => this.paged().items);
   readonly countLabel = computed(() => {
-    const total = this.results().length;
+    const { total, start, end } = this.paged();
     if (!total) return 'Nenhum resultado';
-    const shown = this.visibleResults().length;
-    const range = shown === total ? `${total}` : `1–${shown}`;
+    const range = end - start + 1 === total ? `${total}` : `${start}–${end}`;
     return `${range} de ${total} ${total === 1 ? 'resultado' : 'resultados'}`;
   });
   readonly origin = computed(() => catalogueUrl(this.catalogue.path) + this.queryString());
@@ -295,11 +299,12 @@ export class ExplorerComponent {
       // Filters, search and pager only change the query string: the reader stays where they are.
       if (event instanceof NavigationStart) {
         const samePage = event.url.split('?')[0] === this.router.url.split('?')[0];
-        this.keptScrollY = this.resolvingFragment
-          ? null
-          : samePage
-            ? this.viewport.getScrollPosition()[1]
-            : null;
+        this.keptScrollY =
+          this.resolvingFragment || this.scrollToResults
+            ? null
+            : samePage
+              ? this.viewport.getScrollPosition()[1]
+              : null;
         this.navigating.set(samePage);
       }
       if (event instanceof NavigationEnd) {
@@ -313,6 +318,15 @@ export class ExplorerComponent {
           this.ensureDefaultLayer();
           setTimeout(() => this.syncFromLocation(), 0);
         }
+      }
+      if (event instanceof Scroll && this.scrollToResults) {
+        this.scrollToResults = false;
+        // After the router's own scroll to the top and the new page's render.
+        requestAnimationFrame(() =>
+          this.document
+            .getElementById('explorer-results')
+            ?.scrollIntoView({ block: 'start', behavior: 'instant' }),
+        );
       }
       if (event instanceof Scroll && this.keptScrollY !== null) {
         const y = this.keptScrollY;
@@ -406,11 +420,11 @@ export class ExplorerComponent {
       queryParamsHandling: 'merge',
     });
   }
-  loadMore(): void {
-    if (!this.hasMore()) return;
+  goToPage(page: number): void {
+    this.scrollToResults = true;
     void this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { pagina: this.page() + 1 },
+      queryParams: { pagina: page === 1 ? null : page },
       queryParamsHandling: 'merge',
     });
   }

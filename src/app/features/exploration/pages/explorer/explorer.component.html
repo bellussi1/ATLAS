@@ -311,6 +311,7 @@
       }
 
       <section
+        id="explorer-results"
         aria-label="Resultados da busca"
         class="results"
         [class.results--cards]="recordGrid()"
@@ -444,14 +445,12 @@
         }
       </section>
 
-      @if (hasMore()) {
-        <div class="load-more">
-          <p>{{ results().length - visibleResults().length }} resultados restantes</p>
-          <button type="button" (click)="loadMore()">Carregar mais</button>
-        </div>
-      } @else if (visibleResults().length) {
-        <p class="results-end">Fim dos resultados.</p>
-      }
+      <app-pagination
+        label="Páginas de resultados"
+        [page]="paged().page"
+        [pageCount]="paged().pageCount"
+        (pageChange)="goToPage($event)"
+      />
     </div>
   </div>
 </section>

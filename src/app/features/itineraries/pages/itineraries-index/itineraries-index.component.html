@@ -52,8 +52,16 @@
       </button>
     </div>
 
+    <p class="itineraries__count" id="itineraries-results" role="status" aria-live="polite">
+      {{ filteredItems().length }}
+      {{ filteredItems().length === 1 ? 'itinerário' : 'itinerários' }}
+      @if (paged().pageCount > 1) {
+        <span>, página {{ paged().page }} de {{ paged().pageCount }}</span>
+      }
+      .
+    </p>
     <ul class="itineraries__grid">
-      @for (item of filteredItems(); track item.id) {
+      @for (item of paged().items; track item.id) {
         <li class="itinerary-card" [attr.data-kind]="item.kind">
           <div class="itinerary-card__rail">
             <app-geometric-mosaic
@@ -112,6 +120,12 @@
         </li>
       }
     </ul>
+    <app-pagination
+      label="Páginas de itinerários"
+      [page]="paged().page"
+      [pageCount]="paged().pageCount"
+      (pageChange)="goToPage($event)"
+    />
   } @else {
     <div class="itineraries__empty" role="status">
       <h2>Não há itinerários publicados neste recorte.</h2>

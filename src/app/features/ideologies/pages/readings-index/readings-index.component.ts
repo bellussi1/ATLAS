@@ -1,12 +1,23 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  signal,
+  untracked,
+} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { rankByPopularity } from '@core/analytics/popularity';
+import { explorerPage } from '@core/content/queries/knowledge-explorer';
 import { readingPath } from '@core/routing/reading-routes';
 import popularity from '@metrics/popularity.json';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
 import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
+import { AtlasPaginationComponent } from '@shared/ui/pagination/pagination.component';
 import { AtlasTextFieldComponent } from '@shared/ui/text-field/text-field.component';
 
 import homeStats from '../../../../../../generated/home-stats.json';
@@ -28,6 +39,9 @@ interface ReadingCard {
 
 type StatusFilter = 'all' | 'reviewed' | 'draft';
 
+/** Two rows of two cards. */
+const READINGS_PAGE_SIZE = 4;
+
 const compiledStats = homeStats as { readings: ReadingCard[] };
 
 @Component({
@@ -38,6 +52,7 @@ const compiledStats = homeStats as { readings: ReadingCard[] };
     AtlasGeometricMosaicComponent,
     AtlasTextFieldComponent,
     AtlasChevronComponent,
+    AtlasPaginationComponent,
   ],
   templateUrl: './readings-index.component.html',
   styleUrl: './readings-index.component.scss',
@@ -45,6 +60,7 @@ const compiledStats = homeStats as { readings: ReadingCard[] };
 })
 export class ReadingsIndexComponent {
   private readonly router = inject(Router);
+  private readonly document = inject(DOCUMENT);
   readonly readings = rankByPopularity(
     compiledStats.readings,
     (item) => `/leitura/${item.slug}`,
@@ -80,6 +96,25 @@ export class ReadingsIndexComponent {
       return haystack.includes(q);
     });
   });
+
+  readonly page = signal(1);
+  readonly paged = computed(() => explorerPage(this.filtered(), this.page(), READINGS_PAGE_SIZE));
+
+  constructor() {
+    // A new filter starts from the first page.
+    effect(() => {
+      this.query();
+      this.statusFilter();
+      untracked(() => this.page.set(1));
+    });
+  }
+
+  goToPage(page: number): void {
+    this.page.set(page);
+    this.document
+      .getElementById('readings-results')
+      ?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
 
   entryPath(slug: string): string {
     return readingPath(slug);

@@ -772,22 +772,26 @@ test('/acervo/fontes paginates and a source anchor opens the page that holds it'
 }) => {
   await page.goto('/acervo/fontes');
   const rows = page.locator('.source-row');
-  await expect(rows).toHaveCount(24);
-  const more = page.getByRole('button', { name: 'Carregar mais' });
-  await expect(more).toBeVisible();
-  await more.click();
+  await expect(rows).toHaveCount(18);
+  const pager = page.getByRole('navigation', { name: 'Páginas de resultados' });
+  await pager.getByRole('button', { name: /^Página 2 de/ }).click();
   await expect(page).toHaveURL(/pagina=2/);
-  await expect(rows).toHaveCount(48);
-  const id = await rows.nth(24).getAttribute('id');
+  await expect(rows).toHaveCount(18);
+  await expect(pager.getByRole('button', { name: /^Página 2 de/ })).toHaveAttribute(
+    'aria-current',
+    'page',
+  );
+  const id = await rows.nth(0).getAttribute('id');
+  await page.goto('/acervo/fontes');
   expect(id).toBeTruthy();
   await page.goto(`/acervo/fontes#${id}`);
   await expect(page).toHaveURL(/pagina=2/);
   await expect(page.locator(`#${id}`)).toBeInViewport();
 });
 
-test('paging and filtering keep the place without flashing the top', async ({ page }) => {
+test('paging brings the results into view and filtering keeps the place', async ({ page }) => {
   await page.goto('/acervo?camada=registros');
-  await expect(page.locator('.result-card')).toHaveCount(24);
+  await expect(page.locator('.result-card')).toHaveCount(18);
   await page.evaluate(() => window.scrollTo(0, 700));
   expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(600);
 
@@ -812,10 +816,15 @@ test('paging and filtering keep the place without flashing the top', async ({ pa
   };
 
   const afterPage = await recordFrames(() =>
-    page.evaluate(() => (document.querySelector('.load-more button') as HTMLButtonElement).click()),
+    page
+      .getByRole('navigation', { name: 'Páginas de resultados' })
+      .getByRole('button', { name: 'Próxima' })
+      .click(),
   );
   await expect(page).toHaveURL(/pagina=2/);
+  // The page does not flash to the top; it settles on the first result of the new page.
   expect(afterPage).toBeGreaterThan(200);
+  await expect(page.locator('.result-card').first()).toBeInViewport();
 
   const afterFilter = await recordFrames(() =>
     page.getByRole('navigation', { name: 'Estado' }).getByRole('link').nth(1).click(),

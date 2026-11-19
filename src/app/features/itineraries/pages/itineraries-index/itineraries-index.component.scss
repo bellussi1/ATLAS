@@ -128,10 +128,18 @@
   }
 }
 
+.itineraries__count {
+  margin: 1.5rem 0 0;
+  color: var(--color-ink-muted);
+  font: var(--text-small) / 1.4 var(--font-mono);
+}
+
+/* Two columns of two rows per page; each card stacks its rail above the text. */
 .itineraries__grid {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
-  margin: 2.25rem 0 0;
+  margin: 1rem 0 0;
   padding: 0;
   list-style: none;
 }
@@ -140,8 +148,9 @@
   position: relative;
   cursor: pointer;
   display: grid;
-  grid-template-columns: minmax(11rem, 14rem) minmax(0, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 1.25rem;
   padding: 1.5rem;
   border: 2.5px solid var(--color-ink);
   border-top-width: 7px;
@@ -196,12 +205,14 @@
 
 .itinerary-card__rail {
   display: grid;
-  align-content: start;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
   gap: 0.75rem;
 }
 
 .itinerary-card__mosaic {
   inline-size: 100%;
+  max-inline-size: 9rem;
   border: 2px solid var(--color-ink);
 }
 
@@ -426,17 +437,8 @@
     display: none;
   }
 
-  .itinerary-card {
+  .itineraries__grid {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .itinerary-card__rail {
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-  }
-
-  .itinerary-card__mosaic {
-    max-inline-size: 9rem;
   }
 }
 

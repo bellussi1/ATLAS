@@ -1,0 +1,42 @@
+@if (pageCount() > 1) {
+  <nav class="pager" [attr.aria-label]="label()">
+    <button
+      type="button"
+      class="pager__step atlas-press"
+      [disabled]="page() === 1"
+      (click)="go(page() - 1)"
+    >
+      <span class="atlas-arrow atlas-arrow--left" aria-hidden="true"><app-chevron /></span>
+      Anterior
+    </button>
+    <ol class="pager__pages">
+      @for (item of pages(); track $index) {
+        <li>
+          @if (item === null) {
+            <span class="pager__gap" aria-hidden="true">…</span>
+          } @else {
+            <button
+              type="button"
+              class="pager__page atlas-press"
+              [class.is-current]="item === page()"
+              [attr.aria-current]="item === page() ? 'page' : null"
+              [attr.aria-label]="'Página ' + item + ' de ' + pageCount()"
+              (click)="go(item)"
+            >
+              {{ item }}
+            </button>
+          }
+        </li>
+      }
+    </ol>
+    <button
+      type="button"
+      class="pager__step atlas-press"
+      [disabled]="page() === pageCount()"
+      (click)="go(page() + 1)"
+    >
+      Próxima
+      <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+    </button>
+  </nav>
+}

@@ -59,14 +59,18 @@
     </div>
   </div>
 
-  <p class="readings-index__count" role="status" aria-live="polite">
+  <p class="readings-index__count" id="readings-results" role="status" aria-live="polite">
     {{ filtered().length }}
-    {{ filtered().length === 1 ? 'leitura encontrada' : 'leituras encontradas' }}.
+    {{ filtered().length === 1 ? 'leitura encontrada' : 'leituras encontradas' }}
+    @if (paged().pageCount > 1) {
+      <span>, página {{ paged().page }} de {{ paged().pageCount }}</span>
+    }
+    .
   </p>
 
   @if (filtered().length) {
     <ol class="readings-index__grid">
-      @for (item of filtered(); track item.slug) {
+      @for (item of paged().items; track item.slug) {
         <li class="reading-card" [attr.data-palette]="item.palette">
           <div class="reading-card__stripe" aria-hidden="true">
             <app-geometric-mosaic
@@ -98,6 +102,12 @@
         </li>
       }
     </ol>
+    <app-pagination
+      label="Páginas de leituras"
+      [page]="paged().page"
+      [pageCount]="paged().pageCount"
+      (pageChange)="goToPage($event)"
+    />
   } @else {
     <div class="readings-index__empty" role="status">
       <p>Não há leituras neste recorte.</p>
