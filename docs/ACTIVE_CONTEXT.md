@@ -3,7 +3,7 @@ Status: atual
 
 # Contexto vivo do ATLAS
 
-Atualizado em 18/11/2026. Handoff curto entre sessões (regra em [`README.md`](README.md): manter enxuto). Histórico anterior completo em [`archive/2026-11/active-context-history.md`](archive/2026-11/active-context-history.md).
+Atualizado em 19/11/2026. Handoff curto entre sessões (regra em [`README.md`](README.md): manter enxuto). Histórico anterior completo em [`archive/2026-11/active-context-history.md`](archive/2026-11/active-context-history.md).
 
 ## Estado atual
 
@@ -12,6 +12,8 @@ Atualizado em 18/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 - **Verificação final (19/11):** `lint`, `typecheck`, `npm test` (`417/417`), `test:content` (`220/220`), `test:ingestion` (`71/71`), `build` (`1.357` URLs no sitemap), `check:links` (`1.387` páginas) e Playwright E2E (`209/209`). Responsividade: 15 rotas sem estouro em 375/768/1366 px.
 
 ## Mudanças recentes (19/11, publicado)
+
+- **Grafo — link compartilhado:** `?no=` com `?de=`/`?para=` restaura o caminho inteiro e o enquadra, em vez de abrir só no verbete selecionado; a restauração não reescreve mais a URL sem os extremos. Coberto por teste de unidade (`RouterTestingHarness`) e pelo E2E que recarrega o link.
 
 - **Mapa (`/mapa`):** mesa de estudo extraída para `components/map-study-desk` (imagem licenciada, registros agrupados por tipo, recorte temporal em destaque, referência geográfica recolhida), destaques do recorte, vizinhos realçados no globo, régua de séculos e barra de marco com anterior/próximo; legenda de conexões sem nota no hover (igual ao grafo); estouro horizontal no celular corrigido.
 - **Grafo e mapa — relações:** "Relação documentada" e "Conexão" removidas. `core/content/queries/relation-category.ts` classifica por tipo, verbo do rótulo, P737 e decisões por relação em `core/content/editorial/relation-categories.ts` (modelo local `gemma2:9b` via `scripts/content/classify-relations.mjs`, travado por `scripts/content/relation-guard.mjs`). Novas famílias **Filiação** e **Lugar**; links de navegação e coocorrências sem peso são omitidos da rede e do mapa (registro preservado). Detalhes em [`design/GRAFO-TIPOS.md`](design/GRAFO-TIPOS.md).
