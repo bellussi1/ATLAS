@@ -51,6 +51,7 @@ Nada aqui é estado publicado por padrão; são especificações em aberto, medi
 | [Auditoria dos verbetes](research/AUDITORIA-VERBETES-2026-11.md) | 928 verbetes: tipos, escopo e peso das relações | resultado |
 | [Gold set](research/gold-set-2026-11/README.md) | 87 relações documentadas, 40 afirmações e 20 pares para conferência humana | plano |
 | [Mapa de leituras](research/readings-map.md) | Próximas leituras: Vargas, 1964, ditadura | plano |
+| [Leituras e itinerários](research/LEITURAS-E-ITINERARIOS-2026-11.md) | Fila de leituras e roadmaps por demanda, base no grafo e lacunas | plano |
 
 ## Histórico
 

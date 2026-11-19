@@ -1,0 +1,87 @@
+[
+  {
+    "slug": "revolucoes-e-contrarrevolucoes",
+    "kind": "comparativo",
+    "topic": "Revoluções e contrarrevoluções: 1789, 1917, 1949, 1959 e as respostas conservadoras",
+    "keywords": [
+      "revolucao",
+      "revolucao francesa",
+      "revolucao russa",
+      "revolucao chinesa",
+      "revolucao cubana",
+      "contrarrevolucao",
+      "restauracao",
+      "conservadorismo"
+    ]
+  },
+  {
+    "slug": "autoritarismo-totalitarismo-e-resistencia",
+    "kind": "comparativo",
+    "topic": "Autoritarismo, totalitarismo e resistência no século XX",
+    "keywords": [
+      "autoritarismo",
+      "totalitarismo",
+      "nazismo",
+      "stalinismo",
+      "ditadura",
+      "resistencia",
+      "fascismo"
+    ]
+  },
+  {
+    "slug": "nacao-nacionalismo-e-imperio",
+    "kind": "conceitual",
+    "topic": "Nação, nacionalismo e império: identidades, fronteiras e descolonização",
+    "keywords": [
+      "nacao",
+      "nacionalismo",
+      "imperio",
+      "colonialismo",
+      "descolonizacao",
+      "soberania",
+      "estado-nacao"
+    ]
+  },
+  {
+    "slug": "religiao-politica-e-secularizacao",
+    "kind": "conceitual",
+    "topic": "Religião, política e secularização: igrejas, laicidade e movimentos religiosos",
+    "keywords": [
+      "religiao",
+      "igreja",
+      "secularizacao",
+      "laicidade",
+      "islamismo",
+      "democracia crista",
+      "fundamentalismo"
+    ]
+  },
+  {
+    "slug": "desigualdade-capital-e-trabalho",
+    "kind": "historico",
+    "topic": "Desigualdade, capital e trabalho: industrialização, sindicatos e Estado social",
+    "keywords": [
+      "capitalismo",
+      "trabalho",
+      "desigualdade",
+      "sindicato",
+      "industrializacao",
+      "salario",
+      "estado social"
+    ]
+  },
+  {
+    "slug": "guerras-mundiais-e-ordem-internacional",
+    "kind": "historico",
+    "topic": "Guerras mundiais e ordem internacional: da Sociedade das Nações à ONU e à Guerra Fria",
+    "keywords": [
+      "primeira guerra",
+      "segunda guerra",
+      "onu",
+      "guerra fria",
+      "otan",
+      "sociedade das nacoes",
+      "paz"
+    ]
+  }
+]

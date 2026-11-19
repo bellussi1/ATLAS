@@ -25,4 +25,6 @@ export const publishedIdeologies: Readonly<Record<string, PublishedIdeologySourc
   nazismo: readingSource('nazismo'),
   stalinismo: readingSource('stalinismo'),
   trabalhismo: readingSource('trabalhismo'),
+  'era-vargas': readingSource('era-vargas'),
+  'golpe-de-1964': readingSource('golpe-de-1964'),
 };

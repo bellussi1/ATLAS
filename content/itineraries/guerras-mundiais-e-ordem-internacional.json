@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-guerras-mundiais-e-ordem-internacional",
+  "slug": "guerras-mundiais-e-ordem-internacional",
+  "kind": "historico",
+  "title": "Guerras Mundiais e a Ordem Internacional: Da Sociedade das Nações à ONU e à Guerra Fria",
+  "question": "Como as guerras mundiais moldaram a evolução da ordem internacional, desde a Sociedade das Nações até a Guerra Fria?",
+  "deck": "Este itinerário explora a trajetória da busca por paz e segurança global, desde o fracasso da Sociedade das Nações até a criação da ONU e o surgimento da Guerra Fria.",
+  "summary": "Este percurso analisa a evolução da ordem internacional após as duas guerras mundiais, destacando as instituições, ideologias e eventos que marcaram esse período.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "wiki-topic-sociedade-das-nacoes",
+      "title": "A Sociedade das Nações: Uma Primeira Tentativa",
+      "reason": "A Sociedade das Nações foi a primeira organização internacional criada para evitar guerras. Este ponto de partida nos permite entender as aspirações e limitações da época.",
+      "question": "Quais foram os objetivos da Sociedade das Nações e por que ela falhou em prevenir a Segunda Guerra Mundial?",
+      "destination": {
+        "type": "verbete",
+        "slug": "sociedade-das-nacoes"
+      },
+      "justification": "Introduz o tema da busca por paz e segurança internacional após a Primeira Guerra Mundial.",
+      "sourceIds": [
+        "src-acervo"
+      ]
+    },
+    {
+      "id": "wiki-topic-segunda-guerra-mundial",
+      "title": "A Segunda Guerra Mundial: Um Desastre Global",
+      "reason": "A Segunda Guerra Mundial foi um evento catastrófico que expôs as falhas da ordem internacional e impulsionou a criação da ONU.",
+      "question": "Quais foram as causas e as consequências da Segunda Guerra Mundial para a ordem internacional?",
+      "destination": {
+        "type": "verbete",
+        "slug": "segunda-guerra-mundial"
+      },
+      "justification": "Apresenta o contexto histórico que levou à criação da ONU.",
+      "sourceIds": [
+        "src-acervo"
+      ]
+    },
+    {
+      "id": "wiki-topic-organizacao-das-nacoes-unidas",
+      "title": "A Organização das Nações Unidas: Uma Nova Esperança",
+      "reason": "A ONU foi criada após a Segunda Guerra Mundial com o objetivo de promover a paz e a segurança internacional. Este ponto analisa sua estrutura e funcionamento.",
+      "question": "Como a ONU se diferencia da Sociedade das Nações e quais são seus principais desafios?",
+      "destination": {
+        "type": "verbete",
+        "slug": "organizacao-das-nacoes-unidas"
+      },
+      "justification": "Explora a criação e o papel da ONU na manutenção da paz.",
+      "sourceIds": [
+        "src-acervo"
+      ]
+    },
+    {
+      "id": "wiki-topic-conselho-de-seguranca-das-nacoes-unidas",
+      "title": "O Conselho de Segurança: A Garantia da Paz?",
+      "reason": "O Conselho de Segurança é o órgão principal da ONU responsável pela manutenção da paz e segurança internacional. Este ponto analisa seu funcionamento e suas limitações.",
+      "question": "Como o Conselho de Segurança da ONU funciona e quais são os desafios para sua efetividade?",
+      "destination": {
+        "type": "verbete",
+        "slug": "conselho-de-seguranca-das-nacoes-unidas"
+      },
+      "justification": "Aborda a complexidade da manutenção da paz e a influência dos grandes poderes.",
+      "sourceIds": [
+        "src-acervo"
+      ]
+    },
+    {
+      "id": "wiki-topic-guerra-fria",
+      "title": "A Guerra Fria: Um Mundo Dividido",
+      "reason": "A Guerra Fria foi um período de tensão geopolítica entre os Estados Unidos e a União Soviética. Este ponto analisa suas causas, características e impacto na ordem internacional.",
+      "question": "Como a Guerra Fria moldou a ordem internacional e quais foram suas principais consequências?",
+      "destination": {
+        "type": "grafo"
+      },
+      "justification": "Conclui o percurso analisando o legado da Guerra Fria e o surgimento de novos desafios para a ordem internacional.",
+      "sourceIds": [
+        "src-acervo"
+      ]
+    }
+  ],
+  "branches": [
+    {
+      "id": "ideologias-e-movimentos",
+      "fromStop": "wiki-topic-sociedade-das-nacoes",
+      "title": "Ideologias e Movimentos Sociais",
+      "reason": "A ascensão de ideologias como o fascismo e o comunismo influenciou a ordem internacional. Este ramo explora esses movimentos e seus impactos.",
+      "question": "Como as ideologias e movimentos sociais influenciaram a ordem internacional após a Primeira Guerra Mundial?",
+      "destination": {
+        "type": "catalogo",
+        "path": "ideologias"
+      },
+      "justification": "Expõe a influência das ideologias no contexto histórico.",
+      "convergesAt": "wiki-topic-segunda-guerra-mundial"
+    },
+    {
+      "id": "o-papel-do-onu",
+      "fromStop": "wiki-topic-organizacao-das-nacoes-unidas",
+      "title": "O Papel da ONU na Guerra Fria",
+      "reason": "A ONU desempenhou um papel crucial na gestão da Guerra Fria, buscando evitar conflitos e promover a cooperação internacional. Este ramo explora esse papel.",
+      "question": "Como a ONU lidou com os desafios da Guerra Fria e quais foram seus sucessos e fracassos?",
+      "destination": {
+        "type": "verbete",
+        "slug": "guerra-fria"
+      },
+      "justification": "Analisa a atuação da ONU em um contexto de tensão geopolítica.",
+      "exit": "true"
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "reason": "Para aprofundar o estudo dos eventos históricos mencionados no itinerário."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-acervo",
+      "title": "ATLAS — Registros e verbetes compilados no acervo"
+    }
+  ],
+  "updatedAt": "2026-11-19",
+  "version": "1.0.0"
+}

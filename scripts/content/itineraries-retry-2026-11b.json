@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "revolucoes-e-contrarrevolucoes",
+    "kind": "comparativo",
+    "topic": "Revoluções e contrarrevoluções: 1789, 1917, 1949, 1959 e as respostas conservadoras",
+    "keywords": [
+      "french-revolution",
+      "russian-revolution",
+      "revolucao-comunista-chinesa",
+      "revolucao-cubana",
+      "contrarrevolucao",
+      "revolucao-de-outubro",
+      "revolucoes-de-1848"
+    ]
+  },
+  {
+    "slug": "religiao-politica-e-secularizacao",
+    "kind": "conceitual",
+    "topic": "Religião, política e secularização: igrejas, laicidade e movimentos religiosos",
+    "keywords": [
+      "religiao",
+      "secularizacao",
+      "laicidade",
+      "islamismo",
+      "democracia-crista",
+      "igreja",
+      "estado"
+    ]
+  }
+]

@@ -46,6 +46,18 @@ export const readingRegistry: readonly ReadingRegistryEntry[] = [
     title: 'Trabalhismo',
     summary: 'Tradição política brasileira: Vargas, PTB, legislação trabalhista e debates.',
   },
+  {
+    slug: 'era-vargas',
+    title: 'Era Vargas',
+    summary:
+      'Do Estado oligárquico ao Estado social: revolução de 1930, Estado Novo, CLT e legado.',
+  },
+  {
+    slug: 'golpe-de-1964',
+    title: 'Golpe de 1964',
+    summary:
+      'A ruptura democrática de 1964: crise política, atores, justificativas e consequências.',
+  },
 ];
 
 export const unlistedReadingSlugs: ReadonlySet<string> = new Set(

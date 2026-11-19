@@ -171,7 +171,7 @@ function buildPrompt({ topic, kind, grounding, readingsList, cataloguePaths, rep
   ].join('\n');
 }
 
-function normalizeCandidate(raw, { slug, kind, groundingBySlug, readingsSet }) {
+function normalizeCandidate(raw, { slug, kind, groundingBySlug, readingsSet, knownSourceIds }) {
   const today = new Date().toISOString().slice(0, 10);
   const cleanId = (val, fallback) => {
     const s = slugify(String(val || fallback));
@@ -184,13 +184,20 @@ function normalizeCandidate(raw, { slug, kind, groundingBySlug, readingsSet }) {
     return dest;
   };
 
+  const fallbackSource = {
+    id: 'src-acervo',
+    title: 'ATLAS — Registros e verbetes compilados no acervo',
+  };
   const sources =
     Array.isArray(raw.sources) && raw.sources.length
-      ? raw.sources.map((s, idx) => ({
-          id: cleanId(s.id, `src-${idx + 1}`),
-          title: String(s.title || `Fonte ${idx + 1}`).trim(),
-        }))
-      : [{ id: 'src-acervo', title: 'ATLAS — Registros e verbetes compilados no acervo' }];
+      ? raw.sources
+          .map((s, idx) => ({
+            id: cleanId(s.id, `src-${idx + 1}`),
+            title: String(s.title || `Fonte ${idx + 1}`).trim(),
+          }))
+          .filter((source) => knownSourceIds.has(source.id))
+      : [];
+  if (sources.length === 0) sources.push(fallbackSource);
   const validSourceIds = new Set(sources.map((s) => s.id));
 
   const stops = (Array.isArray(raw.stops) ? raw.stops : []).map((stop, idx) => {
@@ -290,6 +297,10 @@ async function generateOne(
 
   const grounding = selectGroundingEntities(graph, entry.topic, entry.keywords || []);
   const groundingBySlug = new Map(grounding.map((e) => [e.slug, e]));
+  const knownSourceIds = new Set([
+    'src-acervo',
+    ...graph.atlases.flatMap((atlas) => (atlas.sources ?? []).map((source) => source.id)),
+  ]);
 
   let repairErrors = [];
   for (let attempt = 1; attempt <= 2; attempt += 1) {
@@ -307,6 +318,7 @@ async function generateOne(
       kind: entry.kind,
       groundingBySlug,
       readingsSet: new Set(readingsList),
+      knownSourceIds,
     });
     const check = validateItinerary(candidate, { graph, readings });
     if (check.ok) {
