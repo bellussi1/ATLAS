@@ -1,8 +1,7 @@
 <footer class="site-footer">
   <div class="site-footer__inner">
     <div class="footer-invitation" appReveal>
-      <p class="footer-kicker">Um acervo, muitos caminhos.</p>
-      <h2>A próxima descoberta <em>é sua.</em></h2>
+      <h2>Consulte o <em>acervo completo.</em></h2>
       <a class="footer-cta atlas-press" routerLink="/acervo" [queryParams]="{ camada: 'registros' }"
         >Explorar o acervo</a
       >
@@ -42,6 +41,9 @@
           </li>
           <li>
             <a routerLink="/grafos">Grafo do acervo</a>
+          </li>
+          <li>
+            <a routerLink="/mapa">Mapa-múndi histórico</a>
           </li>
           <li>
             <a routerLink="/acervo" [queryParams]="{ camada: 'registros' }">Buscar no acervo</a>

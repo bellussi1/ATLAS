@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "knowledge-graph-atlas",
   "version": "1.1.0",
-  "updatedAt": "2026-11-17",
+  "updatedAt": "2026-11-18",
   "collections": [
     {
       "id": "atlas-methodology",
@@ -11,8 +11,8 @@
     },
     {
       "id": "atlas-processo-constituinte",
-      "file": "collections/atlas-processo-constituinte.863b3843404f18bfe62e466896a23a2dcd49707db940925bb1a4ac4dd80d2d74.json",
-      "sha256": "863b3843404f18bfe62e466896a23a2dcd49707db940925bb1a4ac4dd80d2d74"
+      "file": "collections/atlas-processo-constituinte.2d0cf6dfa49bd141d13de4e91438a6d9517c011b51d6fa88996d62da74aa35e5.json",
+      "sha256": "2d0cf6dfa49bd141d13de4e91438a6d9517c011b51d6fa88996d62da74aa35e5"
     },
     {
       "id": "atlas-direitos-constitucionais",
@@ -31,8 +31,8 @@
     },
     {
       "id": "atlas-constitutional-contexts",
-      "file": "collections/atlas-constitutional-contexts.a55291618e9b21465678932f4a53249d91fe7919bde07efb742b87c8a074278a.json",
-      "sha256": "a55291618e9b21465678932f4a53249d91fe7919bde07efb742b87c8a074278a"
+      "file": "collections/atlas-constitutional-contexts.656f11bb1e25814536c6e080117507c5745e708e282cea1f5dbec4589c1240a6.json",
+      "sha256": "656f11bb1e25814536c6e080117507c5745e708e282cea1f5dbec4589c1240a6"
     },
     {
       "id": "atlas-marxismo",
@@ -51,13 +51,13 @@
     },
     {
       "id": "atlas-social-democracia",
-      "file": "collections/atlas-social-democracia.f13f719c7c616fe3a34ba3eb0fb9f5f6a0b53cf71d8ae1c20ec2ab263a169001.json",
-      "sha256": "f13f719c7c616fe3a34ba3eb0fb9f5f6a0b53cf71d8ae1c20ec2ab263a169001"
+      "file": "collections/atlas-social-democracia.25a52a27c28060882ce4a990f8cf3cfa9b41af5cb4c20764c2f23face2b9f49f.json",
+      "sha256": "25a52a27c28060882ce4a990f8cf3cfa9b41af5cb4c20764c2f23face2b9f49f"
     },
     {
       "id": "atlas-anarquismo",
-      "file": "collections/atlas-anarquismo.caa5dd15a832d433204e291f52cde9f788111e41e1864d3dbc8cb714680c8a44.json",
-      "sha256": "caa5dd15a832d433204e291f52cde9f788111e41e1864d3dbc8cb714680c8a44"
+      "file": "collections/atlas-anarquismo.c3a8b4190d454dc983142a861035ef99c5e67a8338515ec948105b960c129297.json",
+      "sha256": "c3a8b4190d454dc983142a861035ef99c5e67a8338515ec948105b960c129297"
     },
     {
       "id": "atlas-ideologias-principais",
@@ -66,13 +66,13 @@
     },
     {
       "id": "atlas-verbetes-citados",
-      "file": "collections/atlas-verbetes-citados.ffdbdfcccd78dde70dfebd867d1907e5b2e300a6064267aecb88c63bc54b28d5.json",
-      "sha256": "ffdbdfcccd78dde70dfebd867d1907e5b2e300a6064267aecb88c63bc54b28d5"
+      "file": "collections/atlas-verbetes-citados.32ea092759b59ae3afc2eb3632112c02656c71ffac7988e1c267df281072d39b.json",
+      "sha256": "32ea092759b59ae3afc2eb3632112c02656c71ffac7988e1c267df281072d39b"
     },
     {
       "id": "atlas-nazismo",
-      "file": "collections/atlas-nazismo.af914511c39405affc4b317a54f4227bf5e6d153038f2d545cb11a6b8796c962.json",
-      "sha256": "af914511c39405affc4b317a54f4227bf5e6d153038f2d545cb11a6b8796c962"
+      "file": "collections/atlas-nazismo.cf172d72121203b5452e65de0a074d8ba4e9a072f6306c75062cf207e99516f8.json",
+      "sha256": "cf172d72121203b5452e65de0a074d8ba4e9a072f6306c75062cf207e99516f8"
     },
     {
       "id": "atlas-stalinismo",
@@ -81,13 +81,13 @@
     },
     {
       "id": "atlas-trabalhismo",
-      "file": "collections/atlas-trabalhismo.4da8e8f7a8278ca9791f0113b56f5cff78bf6d0590bc77a6931855954894de71.json",
-      "sha256": "4da8e8f7a8278ca9791f0113b56f5cff78bf6d0590bc77a6931855954894de71"
+      "file": "collections/atlas-trabalhismo.89d52a98aac7ba3c2b180bbf6dead5e2cd9faaba008a9f231ea1c7183ab350ae.json",
+      "sha256": "89d52a98aac7ba3c2b180bbf6dead5e2cd9faaba008a9f231ea1c7183ab350ae"
     },
     {
       "id": "atlas-era-vargas",
-      "file": "collections/atlas-era-vargas.5071c13fce1278de2bb5e3d9bda092465c5a224c2bbed97389c819c75dcf44ef.json",
-      "sha256": "5071c13fce1278de2bb5e3d9bda092465c5a224c2bbed97389c819c75dcf44ef"
+      "file": "collections/atlas-era-vargas.56d1742f85f5ac8f0f1862df6a660b55bf12ca02086741c7b5f7c28bfca59e08.json",
+      "sha256": "56d1742f85f5ac8f0f1862df6a660b55bf12ca02086741c7b5f7c28bfca59e08"
     },
     {
       "id": "atlas-ditadura-militar-brasileira",

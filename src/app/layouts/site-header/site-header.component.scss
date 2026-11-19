@@ -144,6 +144,11 @@
     block-size: 0.4rem;
     border-radius: 0.8rem 0.8rem 0 0;
   }
+  &--diamond {
+    inline-size: 0.65rem;
+    block-size: 0.65rem;
+    rotate: 45deg;
+  }
 }
 .nav__link:hover .nav__glyph,
 .nav__link.is-active .nav__glyph {

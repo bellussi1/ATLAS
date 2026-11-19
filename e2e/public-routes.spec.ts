@@ -5,6 +5,7 @@ import { expect, test } from './content-fixture';
 // findings and no horizontal page scroll. Route changes that drop focus are covered in route-focus.spec.ts.
 const routes = [
   '/',
+  '/leituras',
   '/leitura/marxismo',
   '/leitura/liberalismo',
   '/leitura/social-democracia',
@@ -12,6 +13,7 @@ const routes = [
   '/leitura/nazismo',
   '/leitura/stalinismo',
   '/leitura/trabalhismo',
+  '/itinerarios',
   '/acervo',
   '/acervo/entidades',
   '/acervo/ideologias',
@@ -19,12 +21,16 @@ const routes = [
   '/acervo/obras',
   '/acervo/fontes',
   '/acervo/paises',
+  '/acervo/estados',
+  '/acervo/cidades',
+  '/acervo/locais',
   '/acervo/regimes',
   '/acervo/partidos',
   '/acervo/instituicoes',
   '/acervo/acontecimentos',
   '/acervo/conceitos',
   '/acervo/lugares',
+  '/mapa',
   '/verbete/brasil',
   '/privacidade',
 ];

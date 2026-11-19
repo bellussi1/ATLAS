@@ -12,7 +12,7 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { readingPath } from '@core/routing/reading-routes';
 import { filter, map } from 'rxjs';
 
-type Section = 'leituras' | 'itinerarios' | 'acervo' | 'grafos' | null;
+type Section = 'leituras' | 'itinerarios' | 'acervo' | 'grafos' | 'mapa' | null;
 
 export const headerReadings = [
   {
@@ -50,6 +50,7 @@ const sectionOf = (url: string): Section => {
   const path = url.split(/[?#]/)[0];
   if (path === '/') return null;
   if (path.startsWith('/grafos')) return 'grafos';
+  if (path.startsWith('/mapa')) return 'mapa';
   if (path.startsWith('/itinerario')) return 'itinerarios';
   if (path === '/leituras' || path.startsWith('/leitura/')) return 'leituras';
   return 'acervo';

@@ -1,3 +1,4 @@
+import { isUnlistedReading } from '@core/content/editorial/public-readings';
 import { readingPath } from '@core/routing/reading-routes';
 
 export interface LinkedReading {
@@ -301,6 +302,7 @@ export function readingsForEntity(
   entityId: string,
   slug?: string,
   atlasId?: string | readonly string[],
+  isUnlisted: (readingSlug: string) => boolean = isUnlistedReading,
 ): readonly LinkedReading[] {
   const atlasIds = Array.isArray(atlasId) ? atlasId : atlasId ? [atlasId] : [];
   const readingSlugs = new Set<string>([
@@ -309,6 +311,7 @@ export function readingsForEntity(
     ...atlasIds.flatMap((id) => READINGS_BY_ATLAS_ID[id] ?? []),
   ]);
   return [...readingSlugs].flatMap((readingSlug) => {
+    if (isUnlisted(readingSlug)) return [];
     const reading = READINGS_BY_SLUG[readingSlug];
     return reading ? [reading] : [];
   });

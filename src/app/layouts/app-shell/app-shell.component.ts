@@ -56,7 +56,7 @@ export class AppComponent {
   readonly loadingLabel = signal('Carregando…');
   /** Routes with `data.fullscreen` own the whole window: no header, breadcrumbs or footer. */
   readonly fullscreen = signal(
-    /^\/(grafos|grafo|rede)(?:\/|$)/.test(this.router.url.split(/[?#]/)[0]),
+    /^\/(grafos|grafo|rede|mapa|mapa-mundi)(?:\/|$)/.test(this.router.url.split(/[?#]/)[0]),
   );
   readonly pageTitle = signal('ATLAS — compreender o mundo');
 
@@ -93,7 +93,7 @@ export class AppComponent {
       this.previousTitle.set(null);
       this.retrying.set(false);
       const path = event.urlAfterRedirects.split(/[?#]/)[0];
-      this.fullscreen.set(/^\/(grafos|grafo|rede)(?:\/|$)/.test(path));
+      this.fullscreen.set(/^\/(grafos|grafo|rede|mapa|mapa-mundi)(?:\/|$)/.test(path));
       // Moving to another page hands focus to its content; query and fragment changes keep it.
       if (this.currentPath !== null && path !== this.currentPath) this.focusMainContent();
       this.currentPath = path;
@@ -151,6 +151,7 @@ export class AppComponent {
 
   private loadingLabelFor(path: string): string {
     if (/^\/(grafos|grafo|rede)(?:\/|$)/.test(path)) return 'Preparando a rede de ligações…';
+    if (/^\/(mapa|mapa-mundi)(?:\/|$)/.test(path)) return 'Preparando o mapa-múndi histórico…';
     if (path.startsWith('/leitura')) return 'Abrindo a leitura contínua…';
     if (path.startsWith('/verbete')) return 'Carregando a ficha do verbete…';
     return 'Carregando o acervo…';

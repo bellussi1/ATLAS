@@ -539,6 +539,64 @@
               "classification": "interpretação"
             }
           ]
+        },
+        {
+          "type": "debate",
+          "topics": [
+            {
+              "id": "debate-trabalhismo-tutela-cidadania",
+              "title": "Tutela estatal ou pacto de cidadania social na Era Vargas",
+              "scope": "Controvérsia na ciência política e na história do Brasil sobre o alcance emancipatório ou corporativista da legislação trabalhista e da estrutura sindical varguista.",
+              "defence": {
+                "id": "debate-trabalhismo-tese-pacto",
+                "title": "Pacto político e reconhecimento social",
+                "kicker": "Interpretação historiográfica",
+                "summary": "A integração legal do trabalho conferiu estatuto de cidadania e poder de negociação antes ausentes da Primeira República.",
+                "paragraphs": [
+                  "Estudos como os de Angela de Castro Gomes e Jorge Ferreira enfatizam que o trabalhismo retirou a questão social da esfera estritamente policial, criando uma cultura de direitos que permitiu reivindicações operárias crescentes sobretudo após 1945."
+                ],
+                "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
+                "entityIds": ["wiki-ideologia-trabalhismo-brasileiro", "wiki-topic-getulio-vargas"],
+                "classification": "interpretação"
+              },
+              "criticism": {
+                "id": "debate-trabalhismo-critica-tutela",
+                "title": "Enquadramento corporativista e tutela sindical",
+                "kicker": "Crítica historiográfica",
+                "summary": "A unicidade sindical, a investidura ministerial e o imposto sindical subordinaram a organização operária ao Estado.",
+                "paragraphs": [
+                  "Correntes críticas inspiradas em análises sociológicas e de autonomia operária destacam que os mecanismos da CLT e do Ministério do Trabalho restringiram greves, limitaram o pluralismo sindical e dificultaram a auto-organização independente de base."
+                ],
+                "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
+                "entityIds": ["wiki-topic-era-vargas", "wiki-topic-justica-do-trabalho"],
+                "classification": "interpretação"
+              },
+              "response": {
+                "id": "debate-trabalhismo-reapropriacao",
+                "title": "Apropriação ativa das regras pelos sindicatos",
+                "kicker": "História social do trabalho",
+                "summary": "Pesquisas empíricas mostram que sindicatos utilizaram espaços legais sem aceitar passivamente a tutela governamental.",
+                "paragraphs": [
+                  "Trabalhos recentes apontam que trabalhadores e lideranças sindicais alternaram negociação institucional na Justiça do Trabalho e mobilização de massas — visível nas greves de 1953 e nas campanhas pelas reformas de base até 1964."
+                ],
+                "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
+                "entityIds": ["wiki-topic-trabalhismo", "wiki-topic-joao-goulart"],
+                "classification": "interpretação"
+              },
+              "limits": {
+                "id": "debate-trabalhismo-limites",
+                "title": "Limites do recorte regional e rural",
+                "kicker": "Limites do recorte",
+                "summary": "A consolidação inicial abrangeu assalariados urbanos regulamentados, deixando o campo fora da CLT por décadas.",
+                "paragraphs": [
+                  "As análises comparativas costumam concentrar-se no eixo urbano-industrial; a extensão de garantias aos trabalhadores rurais e as variações regionais demandam documentação estadual e sindical específica."
+                ],
+                "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
+                "entityIds": [],
+                "classification": "limitação editorial"
+              }
+            }
+          ]
         }
       ]
     },
@@ -577,6 +635,7 @@
       "coverage": "complete",
       "layout": "graph",
       "blocks": [
+        { "type": "atlas", "rootEntityId": "wiki-ideologia-trabalhismo-brasileiro" },
         {
           "type": "entities",
           "entityIds": [

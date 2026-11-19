@@ -14,6 +14,7 @@ import { entityContext } from '@core/content/queries/entity-context';
 import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { catalogueForKind, safeExplorerReturn } from '@core/content/queries/knowledge-explorer';
 import { contentLanguageLabels, localizedEntity } from '@core/content/queries/localized-content';
+import { mapQueryParamsForEntity } from '@core/content/queries/world-map';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EntityProfileComponent } from '@exploration/components/entity-profile/entity-profile.component';
 import { AtlasClaimReferencesComponent } from '@shared/ui/claim-references/claim-references.component';
@@ -131,6 +132,10 @@ export class RecordComponent {
     return entity
       ? itinerariesForEntity(entity.id, entity.slug, this.repository.bundledItineraries)
       : [];
+  });
+  readonly mapParams = computed(() => {
+    const entity = this.originalEntity();
+    return entity ? mapQueryParamsForEntity(entity, this.repository.knowledgeGraph) : null;
   });
   /** Purchase link only for records that are books with a known author. */
   readonly amazon = computed(() => {

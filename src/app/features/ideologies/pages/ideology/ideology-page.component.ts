@@ -2,6 +2,7 @@ import { Component, computed, inject, Injector, signal } from '@angular/core';
 import { pendingUntilEvent, takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { isUnlistedReading } from '@core/content/editorial/public-readings';
 import type { Source } from '@core/content/models/content-schema';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { readingPath } from '@core/routing/reading-routes';
@@ -153,10 +154,18 @@ export class IdeologyPageComponent {
               ? 'Página não encontrada — ATLAS'
               : 'Leitura de ideologia — ATLAS',
         );
-        if (state.dossier && publishedIdeologies[state.dossier.page.slug]?.unlisted) {
-          this.meta.updateTag({ name: 'robots', content: 'noindex' });
-        } else {
-          this.meta.removeTag("name='robots'");
+        if (
+          (state.dossier &&
+            (isUnlistedReading(state.dossier.page.slug) ||
+              publishedIdeologies[state.dossier.page.slug]?.unlisted)) ||
+          state.status === 'missing'
+        ) {
+          this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
+        } else if (state.dossier) {
+          this.meta.updateTag({
+            name: 'robots',
+            content: 'index, follow, max-image-preview:large',
+          });
         }
       });
   }

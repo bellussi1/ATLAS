@@ -1,6 +1,6 @@
 # Métricas e popularidade
 
-Status: operação inicial
+Status: ativo em produção
 Última verificação: 18/11/2026
 
 O site mede audiência sem backend e sem cookies. A ordem de leituras e itinerários vem de um snapshot de 30 dias versionado em `metrics/popularity.json`.
@@ -22,11 +22,11 @@ Credenciais configuradas no código, na Cloudflare e no GitHub (`bellussi1/ATLAS
 - **Cloudflare Web Analytics:** site `atlas-bellussi.pages.dev` ativo (`site_tag` `94fa753bc9574661ac5d72a80e654732`), vinculado ao projeto Pages `atlas-bellussi`, com `CLOUDFLARE_ANALYTICS_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` cadastrados como variáveis no GitHub e em `~/.atlas/r2.env`.
 - **Cloudflare GraphQL Analytics:** token de conta `atlas-analytics-read` (`Account Analytics Read`) criado e cadastrado no segredo `CLOUDFLARE_ANALYTICS_API_TOKEN` do GitHub e em `~/.atlas/r2.env`.
 
-Não há pendências manuais de credenciais. No build do CI (`ci.yml`), `GOATCOUNTER_SITE` e `CLOUDFLARE_ANALYTICS_TOKEN` já entram em `analytics-config.js`; a coleta em produção começa assim que `develop` for publicado na `master`. Em desenvolvimento local sem essas variáveis, nada é carregado.
+Não há pendências manuais de credenciais. No build do CI (`ci.yml`), `GOATCOUNTER_SITE` e `CLOUDFLARE_ANALYTICS_TOKEN` já entram em `analytics-config.js`; a coleta já está ativa em produção em `https://atlas-bellussi.pages.dev` (validada em `/analytics-config.js`, `/health.json` e nas rotas com UTM). Em desenvolvimento local sem essas variáveis, nada é carregado.
 
 ## Como funciona
 
-1. `AnalyticsService` envia apenas o caminho canônico em `p` (sem query string nem hash) para que parâmetros de filtro (`/grafos?no=...`, `/acervo?q=...`) não fragmentem rotas nem inflem pageviews; o `count.js` envia `q = location.search` separado para atribuir UTMs e campanhas, com fallback de `<img>` liberado na CSP.
+1. `AnalyticsService` envia apenas o caminho canônico em `p` (sem query string nem hash) para que parâmetros de filtro (`/grafos?no=...`, `/acervo?q=...`) não fragmentem rotas nem inflem pageviews; o `count.js` envia `q = location.search` separado para atribuir UTMs e campanhas, com fallback de `<img>` liberado na CSP. Em links divulgados para sub-rotas, use barra final antes da query (`/grafos/?utm_source=...`) para evitar redirect `308` do Cloudflare Pages.
 2. `scripts/metrics/sync.mjs` consulta os serviços com credenciais ativas (GoatCounter paginado com `limit=100` e `exclude_paths`, respeitando o limite da API v0, e/ou Cloudflare, aceitando `~/.atlas/r2.env` localmente) e grava `metrics/popularity.json` e `metrics/history/AAAA-MM.json`.
 3. O workflow diário (`.github/workflows/metrics.yml`) salva um artefato. Toda segunda-feira (`0 6 * * 1`), abre um PR com o snapshot para `develop`.
 4. O build lê o JSON e ordena antes do prerender. Sem dados, mantém a ordem editorial.

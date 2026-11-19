@@ -56,6 +56,9 @@
           <a class="graph-link" [routerLink]="['/grafos']" [queryParams]="{ no: entity.id }"
             >Ver no grafo</a
           >
+          @if (mapParams(); as mp) {
+            <a class="graph-link" [routerLink]="['/mapa']" [queryParams]="mp">Ver no mapa</a>
+          }
           @if (amazon(); as buy) {
             <a
               class="purchase-link"
@@ -132,18 +135,16 @@
       <div class="reading">
         @if (dossier(); as reading) {
           <aside class="continuous-reading" aria-labelledby="continuous-reading-title">
-            <p class="continuous-reading__kicker">Leitura contínua</p>
             <h2 id="continuous-reading-title">Este verbete tem contexto maior</h2>
             <p>
               A leitura de {{ reading.title }} situa o registro em uma narrativa de origens,
-              disputas e conexões. O verbete continua sendo a referência pontual.
+              disputas e conexões.
             </p>
             <a [routerLink]="reading.path">Continuar em {{ reading.title }}</a>
           </aside>
         }
         @if (itineraries().length) {
           <aside class="continuous-reading" aria-labelledby="record-itineraries-title">
-            <p class="continuous-reading__kicker">Itinerários temáticos</p>
             <h2 id="record-itineraries-title">Este verbete integra um percurso</h2>
             <ul class="record-itinerary-list">
               @for (it of itineraries(); track it.slug) {

@@ -35,7 +35,7 @@
               <li>
                 <button
                   type="button"
-                  (click)="select(match.id, true)"
+                  (click)="selectFromSearch(match.id)"
                   (keydown)="resultKey($event)"
                 >
                   <app-kind-icon [kind]="networkIcon(match)" />
@@ -58,6 +58,14 @@
           (click)="toggleControls()"
         >
           Legenda e filtros
+        </button>
+        <button
+          type="button"
+          class="chip chip--surprise"
+          [disabled]="visible().nodes.length === 0"
+          (click)="selectRandomNode()"
+        >
+          Surpreenda-me
         </button>
         <button
           type="button"
@@ -88,26 +96,29 @@
             {{ kindsOn().size }}/{{ kinds.length }}
           </span>
         </summary>
-        <div class="panel__bar">
-          <p class="hint">Clique para mostrar ou ocultar; duplo clique isola um tipo.</p>
-          @if (kindsOn().size < kinds.length) {
+        @if (kindsOn().size < kinds.length) {
+          <div class="panel__bar">
             <button type="button" class="panel__reset" (click)="showAllKinds()">
               Mostrar todos
             </button>
-          }
-        </div>
+          </div>
+        }
         @for (group of kindGroups; track group.id) {
           <section class="legend__group" [attr.aria-labelledby]="'legend-group-' + group.id">
             <h3 class="legend__group-title" [id]="'legend-group-' + group.id">
               {{ group.title }}
             </h3>
-            <ul class="legend">
+            <ul class="legend legend--kinds">
               @for (kind of group.kinds; track kind.id) {
                 <li>
                   <button
                     type="button"
                     class="legend__item"
                     [attr.aria-pressed]="kindsOn().has(kind.id)"
+                    (pointerenter)="hoverKind(kind.id)"
+                    (pointerleave)="hoverKind(null)"
+                    (focus)="hoverKind(kind.id)"
+                    (blur)="hoverKind(null)"
                     (click)="toggleKind(kind.id)"
                     (dblclick)="soloKind(kind.id)"
                   >
@@ -115,7 +126,6 @@
                       <svg class="swatch" viewBox="-14 -14 28 28" aria-hidden="true">
                         <path [attr.d]="shape(kind.shape, 8)" fill-rule="evenodd" />
                       </svg>
-                      <span class="legend__code" aria-hidden="true">{{ kind.code }}</span>
                     </span>
                     <span class="legend__name">{{ kind.plural }}</span>
                     <span class="legend__count">{{ counts.kinds.get(kind.id) ?? 0 }}</span>
@@ -142,9 +152,12 @@
             </span>
           }
         </summary>
-        <p class="hint">Trace o menor trajeto entre dois verbetes no recorte atual.</p>
         <ol class="path-slots">
-          <li class="path-slot" [class.is-filled]="!!pathFrom()">
+          <li
+            class="path-slot"
+            [class.is-filled]="!!pathFrom()"
+            [class.is-picking]="pathMode() && pathTargetSlot() === 'from'"
+          >
             <div class="path-slot__head">
               <span class="path-slot__label">1 · Origem</span>
               @if (selected(); as picked) {
@@ -169,11 +182,24 @@
                 </button>
               }
             </div>
-            <p class="path-slot__value">
-              {{ pathFromTitle() ?? 'Selecione no mapa ou clique Traçar' }}
-            </p>
+            <button
+              type="button"
+              class="path-slot__pick"
+              [attr.aria-label]="
+                pathFromTitle()
+                  ? pathFromTitle() + ' — trocar origem no mapa ou pela busca'
+                  : 'Buscar ou clicar no mapa para escolher origem'
+              "
+              (click)="startPathSlot('from')"
+            >
+              {{ pathFromTitle() ?? 'Buscar ou clicar no mapa' }}
+            </button>
           </li>
-          <li class="path-slot" [class.is-filled]="!!pathTo()">
+          <li
+            class="path-slot"
+            [class.is-filled]="!!pathTo()"
+            [class.is-picking]="pathMode() && pathTargetSlot() === 'to'"
+          >
             <div class="path-slot__head">
               <span class="path-slot__label">2 · Destino</span>
               @if (selected(); as picked) {
@@ -198,9 +224,18 @@
                 </button>
               }
             </div>
-            <p class="path-slot__value">
-              {{ pathToTitle() ?? 'Selecione no mapa ou clique Traçar' }}
-            </p>
+            <button
+              type="button"
+              class="path-slot__pick"
+              [attr.aria-label]="
+                pathToTitle()
+                  ? pathToTitle() + ' — trocar destino no mapa ou pela busca'
+                  : 'Buscar ou clicar no mapa para escolher destino'
+              "
+              (click)="startPathSlot('to')"
+            >
+              {{ pathToTitle() ?? 'Buscar ou clicar no mapa' }}
+            </button>
           </li>
         </ol>
         <div class="path-actions">
@@ -231,11 +266,11 @@
           }
         </div>
         @if (pathMode()) {
-          <p class="hint" role="status">
-            @if (!pathFrom()) {
-              Passo 1 de 2: clique no verbete de origem no mapa.
+          <p class="hint path-hint" role="status">
+            @if (pathTargetSlot() === 'from' || !pathFrom()) {
+              Passo 1 de 2: clique na origem no mapa ou busque pelo nome acima.
             } @else {
-              Passo 2 de 2: clique no verbete de destino no mapa.
+              Passo 2 de 2: clique no destino no mapa ou busque pelo nome acima.
             }
           </p>
         }
@@ -273,37 +308,46 @@
             {{ familiesOn().size }}/{{ families.length }}
           </span>
         </summary>
-        <div class="panel__bar">
-          <p class="hint">A seta aponta para quem recebe a ação.</p>
-          @if (familiesOn().size < families.length) {
+        @if (familiesOn().size < families.length) {
+          <div class="panel__bar">
             <button type="button" class="panel__reset" (click)="showAllFamilies()">
               Mostrar todas
             </button>
-          }
-        </div>
-        <ul class="legend">
+          </div>
+        }
+        <ul class="legend legend--families">
           @for (family of families; track family.id) {
-            <li class="legend__row">
+            <li
+              class="legend__row"
+              [class.is-hovered]="hoveredFamilyId() === family.id"
+              (pointerenter)="hoverFamily(family.id)"
+              (pointerleave)="hoverFamily(null)"
+            >
               <button
                 type="button"
                 class="legend__item"
                 [attr.aria-pressed]="familiesOn().has(family.id)"
                 [attr.aria-describedby]="'family-note-' + family.id"
+                (focus)="hoverFamily(family.id)"
+                (blur)="hoverFamily(null)"
                 (click)="toggleFamily(family.id)"
+                (dblclick)="soloFamily(family.id)"
               >
-                <svg class="swatch swatch--line" viewBox="0 0 32 12" aria-hidden="true">
-                  <line
-                    x1="1"
-                    y1="6"
-                    [attr.x2]="family.directed ? 25 : 31"
-                    y2="6"
-                    [attr.stroke-dasharray]="family.dash || null"
-                    [style.stroke]="'var(' + family.color + ')'"
-                  />
-                  @if (family.directed) {
-                    <path d="M24 2.5L31 6L24 9.5z" [style.fill]="'var(' + family.color + ')'" />
-                  }
-                </svg>
+                <span class="swatch-box" aria-hidden="true">
+                  <svg class="swatch swatch--line" viewBox="0 0 32 12">
+                    <line
+                      x1="1"
+                      y1="6"
+                      [attr.x2]="family.directed ? 25 : 31"
+                      y2="6"
+                      [attr.stroke-dasharray]="family.dash || null"
+                      [style.stroke]="'var(' + family.color + ')'"
+                    />
+                    @if (family.directed) {
+                      <path d="M24 2.5L31 6L24 9.5z" [style.fill]="'var(' + family.color + ')'" />
+                    }
+                  </svg>
+                </span>
                 <span class="legend__name">{{ family.label }}</span>
                 <span class="legend__count">{{ counts.families.get(family.id) ?? 0 }}</span>
               </button>
@@ -326,14 +370,13 @@
               {{ activeCollections().size }}/{{ collections.length }}
             </span>
           </summary>
-          <div class="panel__bar">
-            <p class="hint">Filtre por conjunto temático.</p>
-            @if (!scopeIds() && collectionsOn().size < collections.length) {
+          @if (!scopeIds() && collectionsOn().size < collections.length) {
+            <div class="panel__bar">
               <button type="button" class="panel__reset" (click)="showAllCollections()">
                 Mostrar todas
               </button>
-            }
-          </div>
+            </div>
+          }
           <label class="check check--solo">
             <input
               type="checkbox"
@@ -426,7 +469,12 @@
         <g class="world" [style.transform]="transform()">
           <g class="edges" [class.is-near]="near()">
             @let edges = edgeBatches();
-            <g class="edge-rest" [class.is-dimmed]="!!activeId()">
+            <g
+              class="edge-rest"
+              [class.is-dimmed]="
+                !!activeId() || !!hoveredFamilyId() || !!hoveredKindId() || !!visible().path?.found
+              "
+            >
               @for (batch of edges.plain; track batch.key) {
                 <path
                   class="edge-batch"
@@ -456,6 +504,7 @@
             @for (item of litEdges(); track item.edge.id) {
               <line
                 class="is-active"
+                [class.is-family-lit]="hoveredFamilyId() === item.edge.family"
                 [attr.x1]="item.x1"
                 [attr.y1]="item.y1"
                 [attr.x2]="item.x2"
@@ -585,8 +634,7 @@
         </div>
       } @else if (total === 0) {
         <div class="overlay">
-          <h2>Nada para mostrar ainda</h2>
-          <p>O acervo não tem verbetes publicados. Volte em breve.</p>
+          <h2>Não há verbetes publicados neste recorte.</h2>
           <a class="chip chip--solid" routerLink="/acervo">Ver o acervo</a>
         </div>
       } @else if (visible().nodes.length === 0) {
@@ -867,9 +915,21 @@
             @if (node.inReview) {
               <p class="detail__note">Texto ainda em revisão editorial.</p>
             }
-            <a class="chip chip--solid detail__open" [routerLink]="['/verbete', node.slug]"
-              >Abrir o verbete <app-chevron
-            /></a>
+            <div class="detail__cta-row">
+              <a class="chip chip--solid detail__open" [routerLink]="['/verbete', node.slug]"
+                >Abrir o verbete <app-chevron
+              /></a>
+              <button type="button" class="chip detail__path-btn" (click)="startPathFromSelected()">
+                {{
+                  pathFrom() && pathFrom() !== node.id && !pathTo()
+                    ? 'Definir como destino'
+                    : 'Traçar caminho daqui'
+                }}
+              </button>
+              @if (selectedMapParams(); as mp) {
+                <a class="chip" [routerLink]="['/mapa']" [queryParams]="mp">Ver no mapa</a>
+              }
+            </div>
             @if (selectedReadings().length || selectedItineraries().length) {
               <section class="detail__paths" aria-label="Leituras e itinerários relacionados">
                 @if (selectedReadings().length) {
@@ -900,13 +960,6 @@
               </h3>
               <p class="hint">Passe o mouse para destacar no mapa; clique para abrir o vizinho.</p>
               @if (selectedLinks().length) {
-                <div class="link-summary" aria-label="Peso das ligações">
-                  @for (group of linkGroups(); track group.id) {
-                    <span class="weight weight--{{ group.id }}"
-                      >{{ group.label }} {{ group.links.length }}</span
-                    >
-                  }
-                </div>
                 @for (group of linkGroups(); track group.id) {
                   <div class="link-group">
                     <button

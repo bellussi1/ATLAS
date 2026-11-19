@@ -23,6 +23,11 @@ export const routes: Routes = [
       import('./features/itineraries/routes/itineraries.routes').then((m) => m.itineraryRoutes),
   },
   {
+    path: '',
+    loadChildren: () =>
+      import('./features/world-map/routes/world-map.routes').then((m) => m.worldMapRoutes),
+  },
+  {
     path: 'privacidade',
     loadComponent: () =>
       import('./pages/privacy/privacy-page.component').then((m) => m.PrivacyPageComponent),

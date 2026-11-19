@@ -78,6 +78,15 @@ export class ExplorerComponent {
   readonly catalogue =
     explorerCatalogues.find((c) => c.path === this.route.snapshot.data['catalogue']) ??
     explorerCatalogues[0];
+  readonly showMapEntry = [
+    'acervo',
+    'paises',
+    'regimes',
+    'cidades',
+    'estados',
+    'locais',
+    'lugares',
+  ].includes(this.catalogue.path);
   readonly recordCatalogues = explorerRecordCatalogueOrder.map((path) =>
     explorerCatalogues.find((catalogue) => catalogue.path === path)!,
   );
@@ -407,6 +416,19 @@ export class ExplorerComponent {
   }
   toggleFilters(): void {
     this.filtersOpen.update((open) => !open);
+  }
+  openRandomEntry(): void {
+    const all = this.results();
+    if (!all.length) return;
+    const pool = all.filter((entry) => entry.scope === 'nucleo');
+    const list = pool.length ? pool : all;
+    const picked = list[Math.floor(Math.random() * list.length)];
+    void this.router.navigateByUrl(
+      this.router.createUrlTree([picked.path], {
+        queryParams: { origem: this.origin(), idioma: this.params().get('idioma') },
+        fragment: picked.fragment,
+      }),
+    );
   }
   /** Title and summary in the requested language when an approved translation exists. */
   shown(entry: DiscoveryIndexEntry): { title: string; summary: string; locale: string } {

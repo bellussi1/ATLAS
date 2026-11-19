@@ -72,6 +72,18 @@
             >
           </li>
           <li>
+            <a
+              class="nav__link"
+              routerLink="/mapa"
+              [class.is-active]="section() === 'mapa'"
+              [attr.aria-current]="section() === 'mapa' ? 'page' : null"
+              (pointerenter)="warmGraph()"
+              (focus)="warmGraph()"
+              (click)="close()"
+              ><span class="nav__glyph nav__glyph--diamond" aria-hidden="true"></span>Mapa</a
+            >
+          </li>
+          <li>
             <a class="nav__link" routerLink="/" fragment="como-usar" (click)="close()"
               ><span class="nav__glyph nav__glyph--half" aria-hidden="true"></span>Como usar</a
             >

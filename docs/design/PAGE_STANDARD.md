@@ -33,7 +33,7 @@ Toda página publicada tem os mesmos 12 capítulos, na mesma ordem, com `id` = �
 - Capítulo sem conteúdo verificado: `coverage: "pending"` com motivo em `gap`. Conteúdo incompleto: `"partial"`. Nunca preencher.
 - Âncoras antigas (`#historia`, `#correntes`, `#lugares`, `#criticas`, `#acervo`) redirecionam.
 - Leitura principal sem contêiner com scroll próprio; painéis reservam altura mínima.
-- Proposta e mapeamento: `docs/research/ideologies-section-contract-proposal.md`. Nova tradição: skill `atlas-create-ideology`.
+- Nova tradição: skill `atlas-create-ideology`.
 
 ## 1.2 Leituras contínuas de outros assuntos
 

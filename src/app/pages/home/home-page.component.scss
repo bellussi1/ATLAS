@@ -180,7 +180,8 @@ h1 .line + .line {
 
 .console {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 48rem);
+  justify-content: center;
   gap: 1rem clamp(1.5rem, 4vw, 4rem);
   align-items: end;
   padding: clamp(1.5rem, 3vw, 2.25rem) var(--home-inline);

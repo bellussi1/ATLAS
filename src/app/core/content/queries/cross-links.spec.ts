@@ -28,6 +28,12 @@ describe('cross-links', () => {
     expect(readingsForEntity('wiki-topic-outro', undefined, 'atlas-liberalismo')).toEqual([
       { slug: 'liberalismo', title: 'Liberalismo', path: '/leitura/liberalismo' },
     ]);
+    expect(readingsForEntity('wiki-topic-stalinismo', 'stalinismo', 'atlas-stalinismo')).toEqual(
+      [],
+    );
+    expect(
+      readingsForEntity('wiki-topic-stalinismo', 'stalinismo', 'atlas-stalinismo', () => false),
+    ).toEqual([{ slug: 'stalinismo', title: 'Stalinismo', path: '/leitura/stalinismo' }]);
   });
 
   it('resolves itineraries for entities statically and complements from bundled data', () => {

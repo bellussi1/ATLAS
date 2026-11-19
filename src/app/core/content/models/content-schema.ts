@@ -43,6 +43,7 @@ export const temporalExtentSchema = z
       });
     }
   });
+export type TemporalExtent = z.infer<typeof temporalExtentSchema>;
 
 const editorialSectionSchema = z.object({
   heading: z.string().trim().min(1),
@@ -103,6 +104,11 @@ export const placeCategorySchema = z.enum([
   'other',
 ]);
 export type PlaceCategory = z.infer<typeof placeCategorySchema>;
+export const coordinatesSchema = z.object({
+  lat: z.number().min(-90).max(90),
+  lon: z.number().min(-180).max(180),
+});
+export type Coordinates = z.infer<typeof coordinatesSchema>;
 const countryProfileSchema = z.object({
   officialName: z.string().trim().min(1),
   territorialScope: z.string().trim().min(1),
@@ -129,6 +135,15 @@ export const placeSchema = entityBaseSchema
     kind: z.literal('place'),
     placeType: placeTypeSchema.optional(),
     placeCategory: placeCategorySchema.optional(),
+    coordinates: coordinatesSchema.optional(),
+    isoAlpha2: z
+      .string()
+      .regex(/^[A-Z]{2}$/)
+      .optional(),
+    isoNumeric: z
+      .string()
+      .regex(/^\d{3}$/)
+      .optional(),
     countryProfile: countryProfileSchema.optional(),
     regimeProfile: regimeProfileSchema.optional(),
   })

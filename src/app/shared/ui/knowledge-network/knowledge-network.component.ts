@@ -59,6 +59,7 @@ import {
   spreadCandidates,
   stableLabelTier,
 } from '@core/content/queries/network-labels';
+import { mapQueryParamsForEntity } from '@core/content/queries/world-map';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
@@ -246,9 +247,12 @@ export class KnowledgeNetworkComponent {
   /** On a phone the detail sheet can step aside so the map keeps the screen. */
   readonly detailsCollapsed = signal(false);
   readonly hoveredId = signal<string | null>(null);
+  readonly hoveredFamilyId = signal<RelationFamilyId | null>(null);
+  readonly hoveredKindId = signal<NetworkKindId | null>(null);
   readonly focusId = signal<string | null>(null);
-  /** Path mode: the next two map clicks pick the endpoints. */
+  /** Path mode: the next map clicks or search choices pick the endpoints. */
   readonly pathMode = signal(false);
+  readonly pathTargetSlot = signal<'from' | 'to'>('from');
   readonly pathFrom = signal<string | null>(null);
   readonly pathTo = signal<string | null>(null);
   readonly pathVariant = signal(0);
@@ -390,6 +394,15 @@ export class KnowledgeNetworkComponent {
     const node = this.selected();
     return node ? itinerariesForEntity(node.id, node.slug, this.repository.bundledItineraries) : [];
   });
+  readonly selectedMapParams = computed(() => {
+    const node = this.selected();
+    if (!node) return null;
+    for (const atlas of this.repository.knowledgeGraph.atlases) {
+      const entity = atlas.entities.find((item) => item.id === node.id);
+      if (entity) return mapQueryParamsForEntity(entity, this.repository.knowledgeGraph);
+    }
+    return null;
+  });
   readonly pathFromTitle = computed(() => {
     const id = this.pathFrom();
     return id ? (this.nodeIndex.get(id)?.title ?? id) : null;
@@ -426,13 +439,42 @@ export class KnowledgeNetworkComponent {
     return id ? this.fastLinksOf(id) : [];
   });
   readonly neighbours = computed(() => new Set(this.activeLinks().map((link) => link.other.id)));
-  /** Nodes that stay lit: the path, the hovered node with its neighbours, or all. */
+  private readonly selectedNeighbours = computed(() => {
+    const id = this.selectedId();
+    return id ? new Set(this.fastLinksOf(id).map((link) => link.other.id)) : new Set<string>();
+  });
+  /** Nodes that stay lit: the path, a hovered legend family/kind, the hovered/selected node with its neighbours, or all. */
   private readonly litNodes = computed<ReadonlySet<string> | null>(() => {
     const path = this.visible().path;
     if (path?.found) return new Set(path.nodes);
+    const hoveredFamily = this.hoveredFamilyId();
+    if (hoveredFamily) {
+      const ids = new Set<string>();
+      for (const edge of this.visible().edges) {
+        if (edge.family === hoveredFamily) {
+          ids.add(edge.source);
+          ids.add(edge.target);
+        }
+      }
+      return ids;
+    }
+    const hoveredKind = this.hoveredKindId();
+    if (hoveredKind) {
+      return new Set(
+        this.visible()
+          .nodes.filter((node) => node.kind === hoveredKind)
+          .map((node) => node.id),
+      );
+    }
     const active = this.activeId();
     if (!active) return null;
-    return new Set([active, ...this.neighbours()]);
+    const ids = new Set([active, ...this.neighbours()]);
+    const selected = this.selectedId();
+    if (selected && selected !== active) {
+      ids.add(selected);
+      for (const id of this.selectedNeighbours()) ids.add(id);
+    }
+    return ids;
   });
   /** Free part of the stage, in pixels, between the floating panels. */
   readonly insets = computed(() => {
@@ -543,10 +585,12 @@ export class KnowledgeNetworkComponent {
         related: !!active && item.node.id !== active,
       }));
   });
-  /** The base map dims whenever a path, a neighbourhood or a search is in focus. */
+  /** The base map dims whenever a path, a legend highlight, a neighbourhood or a search is in focus. */
   readonly dimmed = computed(
     () =>
       !!this.visible().path?.found ||
+      !!this.hoveredFamilyId() ||
+      !!this.hoveredKindId() ||
       !!this.activeId() ||
       (this.query().trim() !== '' && this.matchIds().size > 0),
   );
@@ -690,8 +734,13 @@ export class KnowledgeNetworkComponent {
       ),
     };
   });
-  /** Links of the path or the active node stay individual so they animate above the dimmed base. */
+  /** Links of the path, the hovered relation family or the active node stay individual so they animate above the dimmed base. */
   readonly litEdges = computed(() => {
+    const hoveredFamily = this.hoveredFamilyId();
+    if (hoveredFamily) {
+      return this.drawnEdges().filter((item) => item.edge.family === hoveredFamily);
+    }
+    if (this.hoveredKindId()) return [];
     const path = this.visible().path;
     if (path?.found) {
       const ids = new Set(path.edges);
@@ -739,6 +788,7 @@ export class KnowledgeNetworkComponent {
     this.lastTier = tier;
     const { x: vx, y: vy } = this.view();
     const { width, height } = this.size();
+    if (!width || !height) return [];
     const inset = this.insets();
     const bounds = {
       left: inset.left - vx,
@@ -746,30 +796,29 @@ export class KnowledgeNetworkComponent {
       right: width - inset.right - vx,
       bottom: height - inset.bottom - vy,
     };
-    const margin = 40;
     const visible = nodes.filter((item) => {
       const x = item.x * k;
       const y = item.y * k;
-      return (
-        x >= bounds.left - margin &&
-        x <= bounds.right + margin &&
-        y >= bounds.top - margin &&
-        y <= bounds.bottom + margin
-      );
+      return x >= bounds.left && x <= bounds.right && y >= bounds.top && y <= bounds.bottom;
     });
     // A name that was already on the map keeps a small edge, so thresholds do not make it blink.
     const previous = new Set(this.lastLabels.items.map((item) => item.id));
-    const forcedItems = nodes.filter((item) => forced.has(item.node.id));
+    const forcedItems = visible.filter((item) => forced.has(item.node.id));
     // Hovering or selecting narrows the map to one neighbourhood: score and place only that
     // subset instead of sorting every visible record on each pointer settle.
     const pool = visible.filter((item) => !lit || lit.has(item.node.id));
     const poolIds = new Set(pool.map((item) => item.node.id));
     for (const item of forcedItems) if (!poolIds.has(item.node.id)) pool.push(item);
+    const selectedNeighbours = this.selectedNeighbours();
     const scored = pool
-      .map((item) => ({
-        item,
-        score: labelRelevance(item.node) + (previous.has(item.node.id) ? 0.6 : 0),
-      }))
+      .map((item) => {
+        const id = item.node.id;
+        const keepSelectedContext = id === selectedId ? 1000 : selectedNeighbours.has(id) ? 100 : 0;
+        return {
+          item,
+          score: labelRelevance(item.node) + keepSelectedContext + (previous.has(id) ? 0.6 : 0),
+        };
+      })
       .sort(
         (a, b) =>
           b.score - a.score ||
@@ -820,7 +869,7 @@ export class KnowledgeNetworkComponent {
                 ...label,
                 worldX: item.x,
                 worldY: item.y,
-                neighbour: neighbours.has(label.id),
+                neighbour: neighbours.has(label.id) || selectedNeighbours.has(label.id),
                 delay: Math.min(order, 14) * 24,
               },
             ]
@@ -914,9 +963,15 @@ export class KnowledgeNetworkComponent {
     if (this.loading()) return 'Organizando o mapa…';
     const { nodes, edges } = this.visible();
     const selected = this.selected();
+    const modeNote = this.pathMode()
+      ? this.pathTargetSlot() === 'from'
+        ? ' Modo caminho: escolha a origem.'
+        : ' Modo caminho: escolha o destino.'
+      : '';
     return (
       `${nodes.length} de ${this.total} registros e ${edges.length} ligações no recorte.` +
-      (selected ? ` Selecionado: ${selected.title}.` : '')
+      (selected ? ` Selecionado: ${selected.title}.` : '') +
+      modeNote
     );
   });
 
@@ -1100,6 +1155,29 @@ export class KnowledgeNetworkComponent {
   showAllFamilies(): void {
     this.familiesOn.set(new Set(relationFamilies.map((f) => f.id)));
   }
+  hoverFamily(id: RelationFamilyId | null): void {
+    if (id && this.busy()) return;
+    this.hoveredFamilyId.set(id);
+  }
+  soloFamily(id: RelationFamilyId): void {
+    this.familiesOn.set(new Set([id]));
+  }
+  hoverKind(id: NetworkKindId | null): void {
+    if (id && this.busy()) return;
+    this.hoveredKindId.set(id);
+  }
+  selectRandomNode(): void {
+    const nodes = this.visible().nodes;
+    if (!nodes.length) return;
+    const current = this.selectedId();
+    const others = nodes.filter((node) => node.id !== current);
+    const pool = others.length ? others : nodes;
+    const political = pool.filter((node) => node.politicalConnections > 0);
+    const connected = pool.filter((node) => node.degree > 0);
+    const candidates = political.length ? political : connected.length ? connected : pool;
+    const picked = candidates[Math.floor(Math.random() * candidates.length)];
+    this.select(picked.id, true);
+  }
   toggleCollection(id: string): void {
     if (this.scopeIds()) return;
     this.collectionsOn.update((set) => toggled(set, id));
@@ -1117,6 +1195,7 @@ export class KnowledgeNetworkComponent {
     if (!this.scopeIds()) this.collectionsOn.set(new Set(this.collections.map((c) => c.id)));
     this.onlyConnected.set(false);
     this.pathMode.set(false);
+    this.pathTargetSlot.set('from');
     this.pathFrom.set(null);
     this.pathTo.set(null);
     this.pathVariant.set(0);
@@ -1133,8 +1212,28 @@ export class KnowledgeNetworkComponent {
       if (valid && this.pathFrom() === valid) this.pathFrom.set(null);
     }
     this.pathVariant.set(0);
-    if (this.pathFrom() && this.pathTo()) this.pathMode.set(false);
+    if (this.pathFrom() && this.pathTo()) {
+      this.pathMode.set(false);
+      this.pathTargetSlot.set('from');
+      if (this.visible().path?.found) this.fitPath();
+    }
     this.syncUrl(this.selectedId(), true);
+  }
+  startPathSlot(slot: 'from' | 'to'): void {
+    this.pathTargetSlot.set(slot);
+    this.pathMode.set(true);
+    this.stage()?.nativeElement.ownerDocument.getElementById('graph-search')?.focus();
+  }
+  startPathFromSelected(): void {
+    const picked = this.selected();
+    if (!picked) return;
+    if (this.pathFrom() && this.pathFrom() !== picked.id && !this.pathTo()) {
+      this.setPathEndpoint('to', picked.id);
+      return;
+    }
+    this.setPathEndpoint('from', picked.id);
+    this.pathTargetSlot.set('to');
+    this.pathMode.set(true);
   }
   nextPathVariant(): void {
     const total = this.visible().path?.totalVariants ?? 1;
@@ -1144,16 +1243,19 @@ export class KnowledgeNetworkComponent {
   togglePathMode(): void {
     if (this.pathMode()) {
       this.pathMode.set(false);
+      this.pathTargetSlot.set('from');
       return;
     }
     this.pathFrom.set(null);
     this.pathTo.set(null);
     this.pathVariant.set(0);
+    this.pathTargetSlot.set('from');
     this.pathMode.set(true);
     this.syncUrl(this.selectedId(), true);
   }
   clearPath(): void {
     this.pathMode.set(false);
+    this.pathTargetSlot.set('from');
     this.pathFrom.set(null);
     this.pathTo.set(null);
     this.pathVariant.set(0);
@@ -1161,6 +1263,27 @@ export class KnowledgeNetworkComponent {
   }
   setQuery(value: string): void {
     this.query.set(value);
+    if (value.trim().length < 2 || this.busy()) return;
+    const topMatches = this.matches().slice(0, 5);
+    if (!topMatches.length) return;
+    const positions = this.positions();
+    const { width, height } = this.size();
+    if (!positions || !width || !height) return;
+    const { x: vx, y: vy, k } = this.view();
+    const inset = this.insets();
+    const anyInFreeArea = topMatches.some((node) => {
+      const point = positions.get(node.id);
+      if (!point) return false;
+      const sx = point.x * k + vx;
+      const sy = point.y * k + vy;
+      return (
+        sx >= inset.left &&
+        sx <= width - inset.right &&
+        sy >= inset.top &&
+        sy <= height - inset.bottom
+      );
+    });
+    if (!anyInFreeArea) this.reveal(topMatches[0].id);
   }
   toggleControls(): void {
     this.controlsOpen.set(!this.controlsShown());
@@ -1207,7 +1330,7 @@ export class KnowledgeNetworkComponent {
   searchKey(event: KeyboardEvent): void {
     if (event.key === 'Enter') {
       const first = this.matches()[0];
-      if (first) this.select(first.id, true);
+      if (first) this.selectFromSearch(first.id);
       event.preventDefault();
     } else if (event.key === 'Escape') {
       this.query.set('');
@@ -1216,6 +1339,18 @@ export class KnowledgeNetworkComponent {
       event.preventDefault();
       this.searchResult(event, 'first');
     }
+  }
+  /** Picks a node from the search results; during path mode it fills the active path slot. */
+  selectFromSearch(id: string): void {
+    this.query.set('');
+    if (this.pathMode()) {
+      this.pickNode(id, true);
+      if (this.pathMode()) {
+        this.stage()?.nativeElement.ownerDocument.getElementById('graph-search')?.focus();
+      }
+      return;
+    }
+    this.select(id, true);
   }
   /** Arrow keys walk through the search results; Escape returns to the field. */
   resultKey(event: KeyboardEvent): void {
@@ -1243,7 +1378,13 @@ export class KnowledgeNetworkComponent {
     }
     this.selectedId.set(id);
     this.detailsCollapsed.set(false);
-    this.openGroups.set(new Set(['historical', 'action']));
+    const groups = this.linkGroups();
+    const preferred = groups
+      .filter((group) => group.id === 'historical' || group.id === 'action')
+      .map((group) => group.id);
+    this.openGroups.set(
+      new Set<RelationWeight>(preferred.length ? preferred : groups[0] ? [groups[0].id] : []),
+    );
     this.expandedGroups.set(new Set());
     if (id) {
       this.focusId.set(id);
@@ -1252,6 +1393,9 @@ export class KnowledgeNetworkComponent {
         this.query.set('');
         if (this.embedded()) this.reveal(id);
         else this.center(id);
+      } else {
+        // Opening the right detail card can cover a node near the edge; nudge only if hidden.
+        this.reveal(id);
       }
     }
     this.picked.emit(id);
@@ -1276,7 +1420,13 @@ export class KnowledgeNetworkComponent {
   }
   edgeDimmed(edge: NetworkEdge): boolean {
     const active = this.activeId();
-    return !!active && edge.source !== active && edge.target !== active;
+    const selected = this.selectedId();
+    return (
+      !!active &&
+      edge.source !== active &&
+      edge.target !== active &&
+      (!selected || (edge.source !== selected && edge.target !== selected))
+    );
   }
   /**
    * Colour, dash and arrowhead tell the kind of link. Far away every link is the same plain line;
@@ -1284,6 +1434,9 @@ export class KnowledgeNetworkComponent {
    */
   edgeDetailed(edge: NetworkEdge): boolean {
     if (this.near()) return true;
+    if (this.hoveredFamilyId() === edge.family) return true;
+    const path = this.visible().path;
+    if (path?.found && path.edges.includes(edge.id)) return true;
     const selected = this.selectedId();
     return !!selected && (edge.source === selected || edge.target === selected);
   }
@@ -1721,6 +1874,8 @@ export class KnowledgeNetworkComponent {
     this.pointerAt.set(null);
     this.hoveredId.set(null);
     this.hoveredEdgeId.set(null);
+    this.hoveredFamilyId.set(null);
+    this.hoveredKindId.set(null);
   }
   /** Pointer sweeps settle before labels are recalculated; crossing nodes must not rebuild them. */
   private scheduleHover(id: string | null): void {
@@ -1880,22 +2035,33 @@ export class KnowledgeNetworkComponent {
     });
   }
 
-  /** In path mode the next two map clicks become the endpoints; otherwise clicking another node clears any active path and selects it. */
-  private pickNode(id: string): void {
+  /** In path mode the next clicks or search choices become the endpoints; otherwise clicking another node clears any active path and selects it. */
+  private pickNode(id: string, reveal = false): void {
     if (!this.pathMode()) {
-      this.select(id, false, true);
+      this.select(id, reveal, true);
       return;
     }
-    if (!this.pathFrom() || this.pathTo()) {
+    const slot = this.pathTargetSlot();
+    if (slot === 'from' || !this.pathFrom()) {
       this.pathFrom.set(id);
-      this.pathTo.set(null);
+      if (this.pathTo() === id) this.pathTo.set(null);
       this.pathVariant.set(0);
+      if (this.pathTo()) {
+        this.pathMode.set(false);
+        this.pathTargetSlot.set('from');
+      } else {
+        this.pathTargetSlot.set('to');
+      }
     } else if (id !== this.pathFrom()) {
       this.pathTo.set(id);
       this.pathVariant.set(0);
       this.pathMode.set(false);
+      this.pathTargetSlot.set('from');
     }
-    this.select(id, false, true);
+    this.select(id, reveal && !this.visible().path?.found, true);
+    if (this.pathFrom() && this.pathTo() && this.visible().path?.found) {
+      this.fitPath();
+    }
   }
 
   private fastLinksOf(id: string): NodeLink[] {
@@ -2004,6 +2170,49 @@ export class KnowledgeNetworkComponent {
     );
   }
 
+  private fitPath(animate = true): void {
+    const path = this.visible().path;
+    const positions = this.positions();
+    const { width, height } = this.size();
+    if (!path?.found || !path.nodes.length || !positions || !width || !height) return;
+    let minX = Infinity;
+    let maxX = -Infinity;
+    let minY = Infinity;
+    let maxY = -Infinity;
+    for (const id of path.nodes) {
+      const point = positions.get(id);
+      if (!point) continue;
+      minX = Math.min(minX, point.x);
+      maxX = Math.max(maxX, point.x);
+      minY = Math.min(minY, point.y);
+      maxY = Math.max(maxY, point.y);
+    }
+    if (!Number.isFinite(minX) || !Number.isFinite(minY)) return;
+    const inset = this.insets();
+    const freeW = Math.max(120, width - inset.left - inset.right);
+    const freeH = Math.max(120, height - inset.top - inset.bottom);
+    const spanX = Math.max(80, maxX - minX);
+    const spanY = Math.max(80, maxY - minY);
+    const padX = Math.max(72, spanX * 0.16);
+    const padY = Math.max(72, spanY * 0.16);
+    const k = Math.min(
+      this.fitK() * 4.5,
+      Math.max(
+        this.fitK(),
+        Math.min(freeW / (spanX + padX * 2), freeH / (spanY + padY * 2)) * 0.95,
+      ),
+    );
+    this.autoFit = false;
+    this.glideTo(
+      {
+        k,
+        x: inset.left + freeW / 2 - ((minX + maxX) / 2) * k,
+        y: inset.top + freeH / 2 - ((minY + maxY) / 2) * k,
+      },
+      animate,
+    );
+  }
+
   private reveal(id: string): void {
     const point = this.positions()?.get(id);
     const { width, height } = this.size();
@@ -2011,13 +2220,17 @@ export class KnowledgeNetworkComponent {
     const { x, y, k } = this.view();
     const sx = point.x * k + x;
     const sy = point.y * k + y;
-    const margin = 60;
+    const inset = this.insets();
+    const left = Math.min(width / 2, inset.left + 32);
+    const right = Math.max(width / 2, width - inset.right - 32);
+    const top = Math.min(height / 2, inset.top + 32);
+    const bottom = Math.max(height / 2, height - inset.bottom - 32);
     let dx = 0;
     let dy = 0;
-    if (sx < margin) dx = margin - sx;
-    else if (sx > width - margin) dx = width - margin - sx;
-    if (sy < margin) dy = margin - sy;
-    else if (sy > height - margin) dy = height - margin - sy;
+    if (sx < left) dx = left - sx;
+    else if (sx > right) dx = right - sx;
+    if (sy < top) dy = top - sy;
+    else if (sy > bottom) dy = bottom - sy;
     if (dx || dy) this.panBy(dx, dy);
   }
 }

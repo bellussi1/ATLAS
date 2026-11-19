@@ -11,7 +11,7 @@ Status: atual
 
 O diagnóstico e as restrições abaixo documentam a base histórica da migração.
 
-**Data:** 01/11/2026. Base ATLAS local e `origin/HEAD`: `5c5bfc707f0c425eab70a712260eb2f3b5ca95d9` (confirmado por `git ls-remote`). Este documento propõe a evolução; não autoriza rotas além de Home, Marxismo e Liberalismo. Auditoria independente do outro repositório: [12axes](../research/12axes-audit.md). Nenhuma memória externa foi usada.
+**Data:** 01/11/2026. Base ATLAS local e `origin/HEAD`: `5c5bfc707f0c425eab70a712260eb2f3b5ca95d9` (confirmado por `git ls-remote`). Registro histórico do diagnóstico inicial.
 
 ## Diagnóstico verificável do ATLAS
 

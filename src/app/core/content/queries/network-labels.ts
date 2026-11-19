@@ -333,7 +333,10 @@ export function placeLabels(
         if (node.id !== candidate.id && hitsCircle(option.box, node)) return false;
       return true;
     });
-    const choice = free ?? (candidate.forced ? options[0] : undefined);
+    const inBounds = bounds
+      ? options.find((option) => insideBounds(option.box, bounds))
+      : options[0];
+    const choice = free ?? (candidate.forced ? inBounds : undefined);
     if (!choice) continue;
     if (!candidate.forced && candidate.priority >= 0) optional++;
     taken.push(choice.box);

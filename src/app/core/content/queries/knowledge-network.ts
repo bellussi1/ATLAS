@@ -325,7 +325,7 @@ export const relationFamilies: readonly RelationFamilyDefinition[] = [
     label: 'Criação',
     note: 'Fundação de uma organização ou autoria de uma obra.',
     color: '--color-moss',
-    dash: '',
+    dash: '8 3 2 3',
     directed: true,
   },
   {
@@ -387,6 +387,14 @@ const familyByType: Record<string, { family: RelationFamilyId; reverse?: boolean
 
 export function relationFamilyDefinition(id: RelationFamilyId): RelationFamilyDefinition {
   return relationFamilies.find((family) => family.id === id) ?? relationFamilies.at(-1)!;
+}
+
+/** Classifies a raw relation type into one of the seven visual relation families. */
+export function relationFamilyOf(type: string): { family: RelationFamilyId; reverse: boolean } {
+  const entry = familyByType[type];
+  return entry
+    ? { family: entry.family, reverse: Boolean(entry.reverse) }
+    : { family: 'connection', reverse: false };
 }
 
 export interface NetworkNode {

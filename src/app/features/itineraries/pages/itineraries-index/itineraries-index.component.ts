@@ -7,7 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { pendingUntilEvent, takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { rankByPopularity } from '@core/analytics/popularity';
 import {
   type Itinerary,
@@ -39,6 +39,7 @@ const KIND_PALETTES: Record<ItineraryKind, MosaicPalette> = {
 })
 export class ItinerariesIndexComponent {
   private readonly repository = inject(ItineraryRepository);
+  private readonly router = inject(Router);
   private readonly injector = inject(Injector);
   readonly kindLabels = itineraryKindLabels;
   readonly kinds = itineraryKinds;
@@ -87,5 +88,12 @@ export class ItinerariesIndexComponent {
 
   destinationLabel(destination: ItineraryDestination): string {
     return resolveItineraryDestination(destination).kindLabel;
+  }
+
+  openRandomItinerary(): void {
+    const list = this.filteredItems();
+    if (!list.length) return;
+    const picked = list[Math.floor(Math.random() * list.length)];
+    void this.router.navigate(['/itinerario', picked.slug]);
   }
 }

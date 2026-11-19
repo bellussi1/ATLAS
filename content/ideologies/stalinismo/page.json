@@ -536,6 +536,64 @@
               "classification": "interpretação"
             }
           ]
+        },
+        {
+          "type": "debate",
+          "topics": [
+            {
+              "id": "debate-stalinismo-continuidade",
+              "title": "Continuidade ou ruptura entre o bolchevismo de 1917 e o stalinismo",
+              "scope": "Interpretações historiográficas sobre a relação entre a Revolução Russa, o partido único e a consolidação da autocracia stalinista nos anos 1930.",
+              "defence": {
+                "id": "debate-stalinismo-tese-continuidade",
+                "title": "Tese da continuidade institucional",
+                "kicker": "Interpretação historiográfica",
+                "summary": "O monopólio partidário, a censura e a polícia política iniciados entre 1917 e 1921 prepararam o regime stalinista.",
+                "paragraphs": [
+                  "Analistas dessa corrente argumentam que a supressão da oposição partidária após 1917, a proibição de frações em 1921 e a centralização administrativa concentraram poderes sem contrapesos institucionais, favorecendo o desfecho autocrático."
+                ],
+                "sourceIds": ["src-wiki-topic-stalinismo"],
+                "entityIds": ["wiki-topic-stalinismo", "wiki-topic-uniao-sovietica"],
+                "classification": "interpretação"
+              },
+              "criticism": {
+                "id": "debate-stalinismo-tese-ruptura",
+                "title": "Tese da descontinuidade e revolução de cima",
+                "kicker": "Contraponto historiográfico",
+                "summary": "A guinada de 1928–1929 e os grandes expurgos redefiniram estruturas sociais e dizimaram a velha guarda bolchevique.",
+                "paragraphs": [
+                  "Autores como Moshe Lewin e Stephen Cohen destacam que a coletivização forçada, a liquidação da NEP e o terror de 1936–1938 destruíram quadros fundadores e criaram um sistema policial e burocrático distinto da década de 1920."
+                ],
+                "sourceIds": ["src-wiki-topic-stalinismo"],
+                "entityIds": ["person-joseph-stalin", "wiki-topic-totalitarismo"],
+                "classification": "interpretação"
+              },
+              "response": {
+                "id": "debate-stalinismo-arquivos",
+                "title": "Leituras após a abertura parcial dos arquivos",
+                "kicker": "Balanço historiográfico",
+                "summary": "Pesquisas arquivísticas combinam mecanismos centralizados de comando com dinâmicas administrativas e sociais específicas.",
+                "paragraphs": [
+                  "Documentação divulgada desde a década de 1990 confirmou tanto o controle direto da cúpula sobre cotas de repressão quanto tensões regionais e reações sociais que tornam insuficiente uma explicação puramente linear."
+                ],
+                "sourceIds": ["src-wiki-topic-stalinismo"],
+                "entityIds": ["wiki-topic-stalinismo", "person-joseph-stalin"],
+                "classification": "interpretação"
+              },
+              "limits": {
+                "id": "debate-stalinismo-limites",
+                "title": "Limites de acesso documental",
+                "kicker": "Limites do recorte",
+                "summary": "O balanço resume vertentes acadêmicas conhecidas, mas parte dos acervos policiais soviéticos permanece fechada.",
+                "paragraphs": [
+                  "A síntese aponta os termos gerais do debate e não substitui estudos especializados nem considera a restrição contínua a determinados fundos arquivísticos contemporâneos."
+                ],
+                "sourceIds": ["src-wiki-topic-stalinismo"],
+                "entityIds": [],
+                "classification": "limitação editorial"
+              }
+            }
+          ]
         }
       ]
     },
@@ -566,6 +624,7 @@
       "coverage": "complete",
       "layout": "graph",
       "blocks": [
+        { "type": "atlas", "rootEntityId": "wiki-topic-stalinismo" },
         {
           "type": "entities",
           "entityIds": [

@@ -1,3 +1,4 @@
+import { isUnlistedReading } from '@core/content/editorial/public-readings';
 import type { IdeologyPage } from '@ideologies/models/ideology-page.schema';
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
 
@@ -271,12 +272,16 @@ export function readingPalette(slug: string): MosaicPalette {
   return readingBySlug.get(slug)?.palette ?? 'atlas';
 }
 
-/** Resolves only published targets, keeps the curated order and caps the list at five. */
-export function connectionsOf(slug: string): ResolvedReadingConnection[] {
+/** Resolves only listed published targets, keeps the curated order and caps the list at five. */
+export function connectionsOf(
+  slug: string,
+  isUnlisted: (targetSlug: string) => boolean = isUnlistedReading,
+): ResolvedReadingConnection[] {
   const reading = readingBySlug.get(slug);
   if (!reading) return [];
   return reading.connections
     .flatMap((connection) => {
+      if (isUnlisted(connection.slug)) return [];
       const target = readingBySlug.get(connection.slug);
       return target && target.slug !== slug ? [{ ...connection, label: target.label }] : [];
     })
