@@ -15,6 +15,16 @@ Site: `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). O CI
 
 `public/404.html` é servido pelo Pages com status 404 para endereços desconhecidos; `/verbete/*` continua na SPA para slugs não prerenderizados. O `uptime.yml` exige 404 no caminho inexistente.
 
+## Versão e tag em cada publicação
+
+Toda publicação em produção (release de conteúdo no R2 ou deploy do Pages) sobe a versão em `package.json` e `package-lock.json` (semver: `minor` para funcionalidade ou conteúdo novo, `patch` para correção) e cria a tag anotada `vX.Y.Z` no commit de merge da `master`, enviada ao GitHub. O rodapé mostra a versão (`v{{ version }}`), então a produção e a tag sempre conferem.
+
+```powershell
+npm version 0.2.0 --no-git-tag-version
+git tag -a v0.2.0 -m "v0.2.0"
+git push origin v0.2.0
+```
+
 ## O que fica a cargo de uma pessoa
 
 1. **Token da Cloudflare:** My Profile → API Tokens → Create Token, com a permissão **Account → Cloudflare Pages → Edit** no escopo da conta.

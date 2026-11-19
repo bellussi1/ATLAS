@@ -8,10 +8,23 @@ Atualizado em 19/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 ## Estado atual
 
 - **Branch / deploy:** `develop`, origem única `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload em push para `master`).
-- **Conteúdo publicado no R2:** **24 coleções**, release **`b10ec6ffeb5c701065cf9dc331567ad4ea4b293924485d10f0d5847867b8fa0c`** (`1.320` entidades, `3.052` relações, `2.540` ligações visíveis no grafo). Ponteiro em [`content/content-pointer.json`](../content/content-pointer.json).
+- **Versão / conteúdo publicado:** `v0.2.0`; release **`5974a46abb8c7fb8e755e03d55466ba8d03e35e742602e8ed593542078bf86da`** no R2 (24 coleções). Ponteiro em [`content/content-pointer.json`](../content/content-pointer.json). Toda publicação em produção sobe a versão e cria a tag `vX.Y.Z` ([`operations/PRODUCAO.md`](operations/PRODUCAO.md)).
 - **Verificação final (19/11):** `lint`, `typecheck`, `npm test` (`417/417`), `test:content` (`220/220`), `test:ingestion` (`71/71`), `build` (`1.357` URLs no sitemap), `check:links` (`1.387` páginas) e Playwright E2E (`209/209`). Responsividade: 15 rotas sem estouro em 375/768/1366 px.
 - **Verificação desta rodada (19/11, local):** `typecheck`, `npm test` (`418/418`), `test:content` (`220/220`), `content:build`, `build:local` (`1.395` rotas), `check:links` (`1.397` páginas) e `publish:check` em dry-run. `lint` sem erros, com 9 avisos preexistentes. `content:prune` liberou 4.677 MB e `clean --deep` liberou 30.882 MB.
-- **Preview local ativo:** `preview:local` rodando em `http://127.0.0.1:4305/` com o release local `cb9a660e` (54 artefatos, `/content/pointer.json` apontando para a própria origem). Home, `/leitura/era-vargas`, `/leitura/golpe-de-1964` e o itinerário `autoritarismo-totalitarismo-e-resistencia` responderam 200.
+
+## Publicação v0.2.0 (19/11)
+
+- **Header:** cartão flutuante sticky, altura fixa (3,5rem, menu compacto abaixo de 75rem), no mesmo container do conteúdo (`--grid-max` com gutter); grafo e mapa seguem sem ele. Altura publicada em `--header-offset` para `scroll-padding` e painéis sticky. Logo do header e do rodapé rolam suave ao topo na home (`layouts/home-link.directive.ts`).
+- **Home `#como-usar`:** abre com o objetivo (contexto, relações, evidência) antes dos quatro gestos.
+- **Paginação:** `shared/ui/pagination`; `/leituras` e `/itinerarios` com 2×2 cards por página, `/acervo` com 18 por página em `?pagina=` (substitui o "Carregar mais").
+
+## Correções desta rodada (19/11)
+
+- **Navegação quebrada (`O acervo não abriu`):** duas causas. (1) No preview local, `window.__ATLAS_CONTENT_BASE__ = '/content'` é relativo e `new URL(key, '/content/')` lançava `Invalid base URL`, derrubando toda rota que lê o release; `contentBaseHref()` em `core/content/repositories/content-assets.ts` resolve a base contra a origem da página. (2) Em produção, abas abertas antes do deploy pedem chunks que o Direct Upload novo devolve com 404; a casca (`app-shell`) agora faz uma carga completa uma vez por URL por minuto quando o erro é de chunk (e não se offline), e "Tentar novamente" também recarrega. Publicado na v0.2.0.
+- **Ponteiro:** `baseUrl` volta a exigir `https`, com `http` só em `localhost`/`127.0.0.1`/`[::1]` (o build local tinha liberado http em qualquer host).
+- **Leitura `revolucao`:** id inexistente `person-jean-jacques-rousseau` trocado por `wiki-topic-jean-jacques-rousseau` (quebrava `test:content`).
+- **Rascunhos → grafo (`npm run enrich:apply`):** `scripts/content/apply-enrichment-drafts.mjs` leva rascunhos de relação (`relacoes-por-embedding-drafts/`) e de afirmação (`enrichment-claims/`) ao grafo só depois de duas conferências: determinística (citação literal no documento do corpus Firecrawl, licença `open-reuse`, as duas pontas nomeadas pelo título completo, trava de tipos de `relation-guard.mjs`, par inédito) e um segundo modelo local (`gemma2`, diferente do `qwen3` que propôs) confirmando que a citação sozinha sustenta a afirmação. Entra `pending`, com `[conferência de IA]`, fonte/evidência/citação no atlas da entidade; o rascunho recebe `applied` ou `rejected` com motivo. Funções puras em `enrichment-grounding.mjs` (testadas). Ex.: "Bolchevique criou PCUS" foi recusado (a citação fala de Lenin e Trotsky).
+- **Ciclo contínuo:** o `enrich` que a sessão anterior deixou em background não estava rodando (sem `generated/firecrawl-loop/`).
 
 ## Mudanças recentes (19/11, publicado)
 
