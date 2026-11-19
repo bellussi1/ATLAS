@@ -14,6 +14,15 @@ export const CONTENT_BASE_URL = new InjectionToken<string>('content base url', {
   },
 });
 
+/**
+ * Absolute base with a trailing slash. A path-only base (the local preview uses `/content`)
+ * resolves against the page origin; `new URL(key, '/content/')` alone throws.
+ */
+export function contentBaseHref(base: string, origin = globalThis.location?.href): string {
+  const withSlash = `${base.replace(/\/+$/, '')}/`;
+  return new URL(withSlash, origin ?? 'https://atlas.invalid/').href;
+}
+
 /** Reads an object key relative to the base URL (for example `pointer.json` or `c/<sha256>.json`). */
 export const CONTENT_ASSET_READER = new InjectionToken<(key: string) => Promise<string>>(
   'content asset reader',
@@ -21,11 +30,8 @@ export const CONTENT_ASSET_READER = new InjectionToken<(key: string) => Promise<
     providedIn: 'root',
     factory: () => {
       const http = inject(HttpClient);
-      const base = inject(CONTENT_BASE_URL);
-      return (key) =>
-        firstValueFrom(
-          http.get(new URL(key, `${base.replace(/\/+$/, '')}/`).href, { responseType: 'text' }),
-        );
+      const base = contentBaseHref(inject(CONTENT_BASE_URL));
+      return (key) => firstValueFrom(http.get(new URL(key, base).href, { responseType: 'text' }));
     },
   },
 );

@@ -68,8 +68,12 @@ export class AppComponent {
     this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
       if (event instanceof NavigationError) {
         this.clearLoading();
+        const kind = this.failureKindFor(event.error);
+        // A tab opened before a deploy asks for chunks the new build no longer serves.
+        // One full load fetches the current build; the guard stops a reload loop.
+        if (kind === 'chunk' && this.reloadOnce(event.url)) return;
         this.failedNavigation.set(event.url);
-        this.failureKind.set(this.failureKindFor(event.error));
+        this.failureKind.set(kind);
         this.previousTitle.set(this.currentPath === null ? null : this.previousPageLabel());
         this.fullscreen.set(false);
         this.retrying.set(false);
@@ -105,6 +109,11 @@ export class AppComponent {
     const path = this.failedNavigation();
     if (!path || this.retrying()) return;
     this.retrying.set(true);
+    if (this.failureKind() === 'chunk') {
+      // Retrying inside the stale build would request the same missing chunk.
+      this.document.defaultView?.location.assign(path);
+      return;
+    }
     void this.router
       .navigateByUrl(path)
       .then((success) => {
@@ -164,6 +173,26 @@ export class AppComponent {
     )
       ? 'chunk'
       : 'route';
+  }
+
+  /** Full page load of `url`, at most once per URL per minute in this tab. */
+  private reloadOnce(url: string): boolean {
+    const view = this.document.defaultView;
+    // Offline, a full load would only swap the page for the browser's error screen.
+    if (!view || view.navigator.onLine === false) return false;
+    const key = 'atlas:chunk-reload';
+    try {
+      const previous = JSON.parse(view.sessionStorage.getItem(key) ?? 'null') as {
+        url: string;
+        at: number;
+      } | null;
+      if (previous?.url === url && Date.now() - previous.at < 60_000) return false;
+      view.sessionStorage.setItem(key, JSON.stringify({ url, at: Date.now() }));
+    } catch {
+      return false;
+    }
+    view.location.assign(url);
+    return true;
   }
 
   private previousPageLabel(): string {
