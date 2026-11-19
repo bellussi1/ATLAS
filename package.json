@@ -83,6 +83,7 @@
     "rag:relations": "node scripts/rag-runner.mjs mine-relations",
     "rag:relation-drafts": "node scripts/rag-runner.mjs draft-relations",
     "rag:expand-claims": "node scripts/rag-runner.mjs expand-claims",
+    "enrich:apply": "node scripts/content/apply-enrichment-drafts.mjs",
     "enrich:once": "node scripts/rag-runner.mjs enrich --max-drafts 3",
     "enrich:loop": "node scripts/rag-runner.mjs enrich --loop --interval-minutes 60 --max-drafts 3",
     "enrich:watch": "node scripts/rag-runner.mjs enrich --loop --interval-minutes 180 --max-drafts 3 --max-new-seeds 12",
