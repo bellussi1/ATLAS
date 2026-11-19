@@ -69,7 +69,7 @@ a {
   grid-row: 2 / span 12;
   align-self: start;
   position: sticky;
-  top: calc(var(--space-8) + var(--reading-bar-h, 0px));
+  top: calc(var(--space-8) + var(--header-offset, 0px) + var(--reading-bar-h, 0px));
   display: grid;
   justify-items: start;
 }

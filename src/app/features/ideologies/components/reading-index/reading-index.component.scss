@@ -1,7 +1,7 @@
 :host {
   /* Follows the reading while scrolling; the page is the only scroller on desktop. */
   position: sticky;
-  top: 1rem;
+  top: calc(var(--header-offset, 0px) + 1rem);
   display: block;
   min-width: 0;
   align-self: start;

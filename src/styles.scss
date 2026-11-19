@@ -267,6 +267,8 @@ html.atlas-reduced-motion * {
 /* Interaction primitives: visual feedback never changes the document geometry. */
 html {
   scrollbar-gutter: stable;
+  /* Fragments and focus land below the floating header. */
+  scroll-padding-top: calc(var(--header-offset, 0px) + 0.75rem);
 }
 /*
  * Reading panel (knowledge-context). From 64rem it sits at the right edge and pushes the page

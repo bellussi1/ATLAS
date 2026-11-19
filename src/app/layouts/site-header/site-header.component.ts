@@ -1,4 +1,5 @@
 import {
+  afterNextRender,
   Component,
   DestroyRef,
   ElementRef,
@@ -87,6 +88,21 @@ export class SiteHeaderComponent {
   constructor() {
     this.destroyRef.onDestroy(() => {
       this.destroyed = true;
+    });
+    // Sticky elements and fragment scrolling keep clear of the floating header.
+    afterNextRender(() => {
+      const host = this.element.nativeElement;
+      const root = host.ownerDocument.documentElement;
+      const publish = () =>
+        root.style.setProperty('--header-offset', `${host.offsetHeight + 12}px`);
+      publish();
+      if (typeof ResizeObserver === 'undefined') return;
+      const observer = new ResizeObserver(publish);
+      observer.observe(host);
+      this.destroyRef.onDestroy(() => {
+        observer.disconnect();
+        root.style.removeProperty('--header-offset');
+      });
     });
     this.router.events
       .pipe(

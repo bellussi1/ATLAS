@@ -110,7 +110,7 @@ header.hero {
 }
 .toc {
   position: sticky;
-  top: 1rem;
+  top: calc(var(--header-offset, 0px) + 1rem);
   align-self: start;
   h2 {
     font: var(--text-caption)/1.4 var(--font-sans);
