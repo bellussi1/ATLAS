@@ -1437,11 +1437,39 @@ summary::-webkit-details-marker {
     height: 1.6rem;
     width: calc(1.6rem * 3.5);
   }
-  .search {
-    flex-basis: 8rem;
+  app-section-switcher {
+    margin-left: auto;
   }
-  :is(.search__key, .zoom .zoom__tier) {
+  .search {
+    flex-basis: 100%;
+    order: 3;
+  }
+  .search__input {
+    min-height: 40px;
+  }
+  /* Tools sit in one swipeable row instead of wrapping into three lines. */
+  .bar__actions {
+    order: 4;
+    flex: 1 1 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-inline: -0.5rem;
+    padding-inline: 0.5rem;
+    gap: 0.35rem;
+  }
+  .bar__actions > * {
+    flex: 0 0 auto;
+    min-height: 40px;
+    font-size: var(--text-caption);
+  }
+  :is(.search__key, .zoom .zoom__tier, .zoom__slider) {
     display: none;
+  }
+  .status {
+    max-width: 55%;
+    padding: 0.35rem 0.5rem;
+    font-size: var(--text-micro);
   }
   // The pill and the zoom sit on two rows instead of fighting for one.
   .selection-pill {

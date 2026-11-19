@@ -1300,10 +1300,22 @@ th[aria-sort='descending'] .sort-btn::after {
   .timeline-hotpoint__year {
     display: none;
   }
+  /* One compact header row (logo, title, sections), then search, then a swipeable row of tools. */
+  app-section-switcher {
+    margin-left: auto;
+  }
+  .bar__actions {
+    order: 4;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-inline: -8px;
+    padding-inline: 8px;
+  }
   .chip {
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     min-height: 36px;
-    padding: 0 8px;
+    padding: 0 10px;
     font-size: var(--text-caption);
   }
   .chip--icon {
@@ -1311,8 +1323,30 @@ th[aria-sort='descending'] .sort-btn::after {
     width: 36px;
   }
   .timeline-dock {
+    gap: 6px;
     padding: 8px 10px;
   }
+  .timeline-top {
+    gap: 6px;
+  }
+  .timeline-presets {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-inline: -10px;
+    padding-inline: 10px;
+  }
+  .map-preset-btn {
+    flex: 0 0 auto;
+  }
+  .timeline-bars {
+    height: 18px;
+  }
+  .map-attribution {
+    font-size: var(--text-micro);
+    line-height: 1.3;
+  }
+  .zoom__level,
   .status {
     display: none;
   }
