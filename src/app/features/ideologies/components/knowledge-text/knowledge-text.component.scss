@@ -34,11 +34,11 @@
   width: min(17rem, 75vw);
   padding: 0.8rem;
   font: var(--text-small)/1.5 var(--font-sans);
-  color: var(--ink);
+  color: var(--color-ink);
   background: var(--color-canvas);
-  border: 2px solid var(--ink);
+  border: 2px solid var(--color-ink);
   border-top: 0.5rem solid var(--tone, var(--color-ochre-paper));
-  box-shadow: 0.35rem 0.35rem 0 var(--ink);
+  box-shadow: 0.35rem 0.35rem 0 var(--color-ink);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;

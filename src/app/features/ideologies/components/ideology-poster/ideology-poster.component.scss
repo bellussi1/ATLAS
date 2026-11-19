@@ -3,14 +3,14 @@
 }
 .poster {
   padding-block: var(--space-8) var(--space-12);
-  border-top: 3px solid var(--ink);
+  border-top: 3px solid var(--color-ink);
 }
 .poster-kicker,
 .poster-label {
   font: 500 var(--text-caption)/1.4 var(--font-mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
   margin: 0;
 }
 .poster-copy {
@@ -31,7 +31,7 @@ h1 {
   font: 1.125rem/1.5 var(--font-serif);
   margin: var(--space-6) 0 var(--space-8);
   padding-top: var(--space-6);
-  background: linear-gradient(var(--ink), var(--ink)) top left / 2.5rem 2px no-repeat;
+  background: linear-gradient(var(--color-ink), var(--color-ink)) top left / 2.5rem 2px no-repeat;
 }
 .poster-questions {
   list-style: none;
@@ -39,7 +39,7 @@ h1 {
   margin: var(--space-3) 0 0;
   counter-reset: q;
   li {
-    border-top: 1px solid var(--ink);
+    border-top: 1px solid var(--color-ink);
     counter-increment: q;
   }
   a {
@@ -47,7 +47,7 @@ h1 {
     grid-template-columns: 2rem 1fr auto;
     gap: var(--space-1) var(--space-2);
     padding: var(--space-3) 0;
-    color: var(--ink);
+    color: var(--color-ink);
     text-decoration: none;
     min-height: var(--control-min-size);
     &::before {
@@ -78,7 +78,7 @@ h1 {
   small {
     grid-column: 2;
     font: var(--text-caption)/1.4 var(--font-mono);
-    color: var(--ink-muted);
+    color: var(--color-ink-muted);
   }
 }
 /* Licensed portraits cut in alternating geometric frames; the whole frame opens the record. */
@@ -113,7 +113,7 @@ h1 {
   }
   .figure-link {
     display: block;
-    color: var(--ink);
+    color: var(--color-ink);
     text-decoration: none;
     border-radius: var(--radius-tight, 2px);
     outline: 3px solid transparent;
@@ -144,7 +144,7 @@ h1 {
     }
   }
   [data-frame='disc'] ::ng-deep figure {
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
   }
   [data-frame='arch'] ::ng-deep figure {
     border-radius: 999px 999px 0 0;
@@ -155,7 +155,7 @@ h1 {
     background: var(--color-rose-paper);
   }
   [data-frame='square'] ::ng-deep figure {
-    box-shadow: inset 0 0 0 3px var(--ink);
+    box-shadow: inset 0 0 0 3px var(--color-ink);
   }
   /* On hover the portrait returns to its square, uncut frame and its colour, with the same easing. */
   .figure-link:hover ::ng-deep figure,
@@ -184,7 +184,7 @@ h1 {
 .poster-credits {
   max-width: 52rem;
   margin: calc(-1 * var(--space-4)) 0 var(--space-8);
-  border-top: 1px solid var(--rule-strong);
+  border-top: 1px solid var(--color-border-strong);
   font: var(--text-caption)/1.5 var(--font-mono);
   summary {
     display: flex;

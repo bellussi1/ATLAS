@@ -1,6 +1,6 @@
 # Tokens do design system · alvo v2
 
-Estado: **aprovado, não implementado**. Até a migração, `src/styles.scss` é a fonte do que existe. Quando os tokens forem implementados, esta tabela deve ser regenerada a partir deles.
+Estado: **etapa 1 implementada** (19/11/2026). `src/styles/tokens/_primitives.scss` e `_semantic.scss` existem; os semânticos ainda apontam para os valores atuais, e a troca de paleta é a etapa 2. `_registers.scss` entra com os primeiros componentes de cartaz.
 
 ## Camadas
 
@@ -90,7 +90,7 @@ Mesa usa os valores de leitura; as famílias do grafo e do mapa mantêm tokens p
 | Forma | `--radius-none: 0`, `--radius-tight: .125rem`, `--radius-panel: .25rem`, `--radius-pill: 999px`, `--radius-circle: 50%` |
 | Perfuração | `--perforation-size`, `--perforation-gap` |
 | Elevação | `--shadow-offset-sm: 3px 3px 0`, `--shadow-offset-md: 5px 5px 0`, `--shadow-offset-lg: 8px 8px 0` (cor sempre tinta) |
-| Camada | `--z-base: 0`, `--z-raised: 10`, `--z-sticky: 30`, `--z-popover: 40`, `--z-overlay: 50`, `--z-toast: 60` |
+| Camada | `--z-base: 0`, `--z-raised: 10`, `--z-dropdown: 20`, `--z-sticky: 30`, `--z-overlay: 50`, `--z-top: 60`; valores de 0 a 15 dentro de um contexto de empilhamento local continuam literais |
 | Material | `--grain-opacity`, `--halftone-cell` |
 | Tipo | `--font-text` (Zilla Slab), `--font-display` e `--font-numeric` (Archivo), `--font-label` (Archivo `wdth` 75) |
 | Espaço | escala atual + `--space-24` |
@@ -104,8 +104,8 @@ Mesa usa os valores de leitura; as famílias do grafo e do mapa mantêm tokens p
 | `--color-indigo` | `--pig-jenipapo-700` |
 | `--color-orange-paper` / `-strong` | `--pig-urucum-500` / `-800` |
 | `--color-ochre-paper` / `-strong` | `--pig-ocre-500` / `-800` |
-| `--paper`, `--ink`, `--signal`, `--rule`, `--serif` etc. | removidos ao fim da migração |
-| `box-shadow: 2–8px … var(--color-ink)` (6 variações em 29 arquivos) | `--shadow-offset-{sm,md,lg}` |
+| `--paper`, `--ink`, `--signal`, `--rule`, `--serif` etc. | trocados na etapa 1, exceto em `knowledge-network` (orçamento de 25 kB); removidos na etapa 10 |
+| `box-shadow: 2–8px … var(--color-ink)` (6 variações em 29 arquivos) | `--shadow-offset-{sm,md,lg}`; na etapa 1 só os valores exatos de 3, 5 e 8 px foram trocados, os demais (2, 4, 6, 7, 10, 14 px e rem) são reconciliados quando cada componente for repaginado |
 | z-index literais (0–60) | `--z-*` |
 | `border-radius: 50%` / `999px` | `--radius-circle` / `--radius-pill` |
 | 15 hex literais em SCSS de componentes (8 em `ideology-page`) | semânticos |

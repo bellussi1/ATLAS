@@ -29,7 +29,7 @@
   padding: clamp(1.25rem, 3vw, 2rem);
   border: 3px solid var(--color-ink);
   background: var(--tint-1);
-  box-shadow: 8px 8px 0 var(--color-ink);
+  box-shadow: var(--shadow-offset-lg) var(--color-ink);
 }
 
 .itinerary[data-kind='comparativo'] .itinerary__head {
@@ -181,7 +181,7 @@
     background: var(--color-ochre-paper);
   }
   &[data-type='grafo'] {
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     background: var(--color-teal-paper);
   }
   &[data-type='catalogo'] {
@@ -189,7 +189,7 @@
     background: var(--color-rose-paper);
   }
   &--branch {
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     background: var(--color-orange-paper);
   }
 }
@@ -365,7 +365,7 @@
     color: var(--color-ink);
   }
   &[data-type='grafo'] {
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     background: var(--color-teal-paper);
     color: var(--color-ink);
   }
@@ -398,7 +398,7 @@
   border-top-width: 6px;
   border-top-color: var(--color-indigo);
   background: var(--color-surface-raised);
-  box-shadow: 5px 5px 0 var(--color-ink);
+  box-shadow: var(--shadow-offset-md) var(--color-ink);
   transition:
     transform var(--motion-fast) var(--ease-out),
     box-shadow var(--motion-fast) var(--ease-out),
@@ -414,7 +414,7 @@
   }
   &.is-active {
     background: var(--color-canvas);
-    box-shadow: 8px 8px 0 var(--color-accent);
+    box-shadow: var(--shadow-offset-lg) var(--color-accent);
     transform: translate(-2px, -2px);
   }
 }
@@ -466,7 +466,7 @@
   block-size: 0.65rem;
   background: currentcolor;
   &[data-shape='circle'] {
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
   }
   &[data-shape='half'] {
     block-size: 0.35rem;
@@ -1037,7 +1037,7 @@
 @media (max-width: 39.99rem) {
   .itinerary__head {
     padding: 1rem;
-    box-shadow: 5px 5px 0 var(--color-ink);
+    box-shadow: var(--shadow-offset-md) var(--color-ink);
   }
 
   .roadmap-diagram {

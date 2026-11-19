@@ -16,7 +16,7 @@
   padding: clamp(1.25rem, 3vw, 2rem);
   border: 3px solid var(--color-ink);
   background: var(--tint-1);
-  box-shadow: 8px 8px 0 var(--color-ink);
+  box-shadow: var(--shadow-offset-lg) var(--color-ink);
 }
 
 .itineraries__kicker {
@@ -67,7 +67,7 @@
 .itineraries__mosaic {
   inline-size: 100%;
   border: 3px solid var(--color-ink);
-  box-shadow: 8px 8px 0 var(--color-ink);
+  box-shadow: var(--shadow-offset-lg) var(--color-ink);
 }
 
 .itineraries__status {
@@ -324,7 +324,7 @@
   color: var(--color-on-strong-surface);
   font: 750 var(--text-caption) / 1 var(--font-mono);
   &[data-type='grafo'] {
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     background: var(--color-teal-paper);
     color: var(--color-ink);
   }

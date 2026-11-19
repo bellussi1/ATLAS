@@ -124,7 +124,7 @@ export class HomePage {
   private readonly destroyRef = inject(DestroyRef);
   /** The poster keeps the base colour; each later section tints the page, as in the readings. */
   readonly tone = signal(0);
-  /** Base colour for the poster, then one tint per section step (`--tint-n` in styles.scss). */
+  /** Base colour for the poster, then one tint per section step (`--tint-n` in styles/tokens/_semantic.scss). */
   readonly tint = computed(() =>
     this.tone() ? `var(--tint-${this.tone()})` : 'var(--color-canvas)',
   );

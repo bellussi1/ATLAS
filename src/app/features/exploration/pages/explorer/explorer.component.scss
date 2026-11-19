@@ -59,7 +59,7 @@ h1 {
   padding: 0.45rem 0.9rem;
   border: 2px solid var(--color-ink);
   background: var(--color-canvas);
-  box-shadow: 3px 3px 0 var(--color-ink);
+  box-shadow: var(--shadow-offset-sm) var(--color-ink);
   color: var(--color-ink);
   font: 650 var(--text-small) / 1.3 var(--font-sans);
   text-decoration: none;
@@ -75,7 +75,7 @@ h1 {
   flex: none;
   inline-size: 0.7rem;
   block-size: 0.7rem;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background: var(--color-accent);
 }
 

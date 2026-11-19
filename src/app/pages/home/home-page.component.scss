@@ -179,12 +179,12 @@ h1 .line + .line {
     border: 2px solid currentcolor;
   }
   &--circle {
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     background: var(--color-accent);
   }
   &--ring {
     border: 3px solid var(--color-cartographic);
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
   }
   &--half {
     height: 0.45rem;
@@ -267,7 +267,7 @@ form {
   border-radius: 3rem 3rem 0 0;
 }
 .atlas-band-number--circle {
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
 }
 .atlas-band-number--quarter {
   border-radius: 0 60% 0 0;
@@ -336,7 +336,7 @@ form {
   color: var(--color-on-strong-surface);
   font: 750 var(--text-small) / 1 var(--font-numeric);
   &--br {
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     background: var(--color-moss);
   }
   &--source {
@@ -655,7 +655,7 @@ form {
     border-radius: var(--door-radius);
     background: var(--door);
     color: var(--door-ink);
-    box-shadow: 5px 5px 0 var(--door-shadow);
+    box-shadow: var(--shadow-offset-md) var(--door-shadow);
     text-decoration: none;
     transition:
       transform var(--motion-standard) var(--ease-out),
@@ -736,7 +736,7 @@ form {
 }
 /* Each door gets its own shape; the wide ones keep a hollow outline. */
 .door:nth-child(6n + 1) .door-glyph {
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
 }
 .door:nth-child(6n + 2) .door-glyph {
   border-start-end-radius: 100%;
@@ -763,7 +763,7 @@ form {
   inline-size: 2.5rem;
   block-size: 2.5rem;
   border: 3px solid currentcolor;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   font: 700 1.25rem/1 var(--font-sans);
   transition:
     background-color var(--motion-fast),
@@ -798,7 +798,7 @@ form {
   padding: 1.25rem;
   border: 3px solid var(--color-ink);
   background: var(--color-surface-raised);
-  box-shadow: 5px 5px 0 var(--color-ink);
+  box-shadow: var(--shadow-offset-md) var(--color-ink);
   transition:
     transform var(--motion-standard) var(--ease-out),
     box-shadow var(--motion-standard) var(--ease-out),
@@ -830,7 +830,7 @@ form {
   background: var(--color-ink);
 }
 .method-shape--reading {
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background: var(--color-accent);
 }
 .method-shape--debate {
@@ -844,7 +844,7 @@ form {
 @media (hover: hover) and (pointer: fine) {
   .door a:hover {
     transform: translate(-3px, -4px);
-    box-shadow: 8px 8px 0 var(--door-shadow);
+    box-shadow: var(--shadow-offset-lg) var(--door-shadow);
   }
   .door a:hover .door-go {
     background: var(--door-ink);
@@ -856,7 +856,7 @@ form {
   }
   .method-card:hover {
     transform: translate(-3px, -3px);
-    box-shadow: 8px 8px 0 var(--color-ink);
+    box-shadow: var(--shadow-offset-lg) var(--color-ink);
     background: var(--color-canvas);
   }
   .method-card:hover .method-shape--fact {
@@ -869,7 +869,7 @@ form {
     rotate: 90deg;
   }
   .method-card:hover .method-shape--gap {
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
   }
 }
 @media (max-width: 80rem) {
@@ -977,7 +977,7 @@ form {
   padding: 1.15rem;
   border: 2px solid var(--color-ink);
   background: var(--color-surface-raised);
-  box-shadow: 5px 5px 0 var(--color-ink);
+  box-shadow: var(--shadow-offset-md) var(--color-ink);
   color: var(--color-ink);
   text-decoration: none;
   transition:

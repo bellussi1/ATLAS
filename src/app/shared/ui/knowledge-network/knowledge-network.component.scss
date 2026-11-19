@@ -94,7 +94,7 @@
     background-color 140ms;
   &:hover:not(:disabled) {
     transform: translate(-2px, -2px);
-    box-shadow: 3px 3px 0 var(--ink);
+    box-shadow: var(--shadow-offset-sm) var(--ink);
   }
   &:active:not(:disabled) {
     transform: translate(1px, 1px);
@@ -202,13 +202,13 @@ kbd {
   min-height: 44px;
   padding: 0 2.6rem;
   border: 2px solid var(--ink);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--paper);
   color: var(--ink);
   font: 400 var(--text-body)/1 var(--serif);
   transition: box-shadow 140ms;
   &:focus-visible {
-    box-shadow: 3px 3px 0 var(--color-focus);
+    box-shadow: var(--shadow-offset-sm) var(--color-focus);
   }
 }
 :is(.search__results button, .legend__item, .check) {
@@ -225,7 +225,7 @@ kbd {
   position: absolute;
   top: calc(100% + 0.5rem);
   inset-inline: 0;
-  z-index: 10;
+  z-index: var(--z-raised);
   margin: 0;
   padding: 0.25rem;
   list-style: none;
@@ -662,7 +662,7 @@ summary::-webkit-details-marker {
   position: absolute;
   width: 2.2rem;
   height: 2.2rem;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background: var(--rule-strong);
   opacity: 0.28;
   animation: skeleton-pulse 1.2s var(--ease-out) infinite alternate;
@@ -818,7 +818,7 @@ summary::-webkit-details-marker {
   max-width: calc(100% - 1rem);
   padding: 0.6rem 0.75rem;
   pointer-events: none;
-  box-shadow: 3px 3px 0 var(--ink);
+  box-shadow: var(--shadow-offset-sm) var(--ink);
   animation: fade 120ms ease-out both;
   p {
     margin: 0;
@@ -1138,7 +1138,7 @@ summary::-webkit-details-marker {
   min-width: 1.6rem;
   padding: 0.05rem 0.4rem;
   border: 1.5px solid var(--ink);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   font: 700 var(--text-caption)/1 var(--serif);
 }
 .detail__more {
@@ -1270,7 +1270,7 @@ summary::-webkit-details-marker {
     &:is(:hover, :focus-within) {
       border-color: var(--ink);
       background: var(--paper);
-      box-shadow: 3px 3px 0 var(--rule-strong);
+      box-shadow: var(--shadow-offset-sm) var(--rule-strong);
     }
   }
 }

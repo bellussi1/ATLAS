@@ -1,9 +1,29 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const source = readFileSync(resolve(process.cwd(), 'src/styles.scss'), 'utf8');
+const tokenFiles = ['src/styles/tokens/_primitives.scss', 'src/styles/tokens/_semantic.scss'];
+const declarations = new Map(
+  tokenFiles.flatMap((file) =>
+    [...readFileSync(resolve(process.cwd(), file), 'utf8').matchAll(/--([\w-]+):\s*([^;]+);/g)].map(
+      ([, name, value]) => [name, value.trim()] as const,
+    ),
+  ),
+);
+
+/** Follows `var(--x)` references until a six-digit hex colour, so semantic tokens resolve to primitives. */
+function resolveToken(name: string, seen = new Set<string>()): string | undefined {
+  const value = declarations.get(name);
+  if (!value || seen.has(name)) return undefined;
+  if (/^#[\da-fA-F]{6}$/.test(value)) return value;
+  const reference = value.match(/^var\(--([\w-]+)\)$/);
+  return reference ? resolveToken(reference[1], new Set(seen).add(name)) : undefined;
+}
+
 const tokens = Object.fromEntries(
-  [...source.matchAll(/--([\w-]+):\s*(#[\da-fA-F]{6});/g)].map(([, name, value]) => [name, value]),
+  [...declarations.keys()].flatMap((name) => {
+    const value = resolveToken(name);
+    return value ? [[name, value]] : [];
+  }),
 );
 
 function luminance(color: string): number {

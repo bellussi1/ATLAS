@@ -17,7 +17,7 @@
   border: 0;
   border-top: 6px solid var(--tab);
   padding: var(--space-3);
-  box-shadow: 0 6px 16px #0007;
+  box-shadow: var(--shadow-card-lift);
   transition: transform var(--motion-fast) var(--ease-out);
   small,
   strong {
@@ -93,7 +93,7 @@
     border-radius: 0;
     background: var(--color-canvas);
     filter: none;
-    box-shadow: 3px 3px 0 var(--color-border-strong);
+    box-shadow: var(--shadow-offset-sm) var(--color-border-strong);
   }
   &::after {
     content: '';
@@ -129,7 +129,7 @@
 }
 :host([aria-pressed='true']) {
   & {
-    outline: 3px solid #ffd400;
+    outline: 3px solid var(--color-focus-on-dark);
     outline-offset: 3px;
   }
 }

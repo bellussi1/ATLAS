@@ -40,7 +40,7 @@
     background-color var(--motion-fast);
   &:hover:not(:disabled, .is-current) {
     transform: translate(-1px, -1px);
-    box-shadow: 3px 3px 0 var(--color-ink);
+    box-shadow: var(--shadow-offset-sm) var(--color-ink);
   }
   &:disabled {
     border-color: var(--color-border-strong);
@@ -53,7 +53,7 @@
   &.is-current {
     background: var(--color-ink);
     color: var(--color-surface-raised);
-    box-shadow: 3px 3px 0 var(--color-accent);
+    box-shadow: var(--shadow-offset-sm) var(--color-accent);
     cursor: default;
   }
 }

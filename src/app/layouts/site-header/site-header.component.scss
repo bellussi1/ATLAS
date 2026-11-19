@@ -6,7 +6,7 @@
   --header-bar: 3.5rem;
   position: sticky;
   inset-block-start: 0;
-  z-index: 30;
+  z-index: var(--z-sticky);
   display: block;
   padding: calc(12px + env(safe-area-inset-top)) var(--grid-gutter) 0;
   pointer-events: none;
@@ -152,7 +152,7 @@
     border: 2px solid currentcolor;
   }
   &--circle {
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
   }
   &--half {
     block-size: 0.4rem;
@@ -206,7 +206,7 @@
   min-block-size: 44px;
   padding: 0 5.2rem 0 2.6rem;
   border: 1px solid var(--color-border-strong);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--color-canvas);
   color: var(--color-ink);
   font: 400 var(--text-body)/1 var(--font-sans);
@@ -224,7 +224,7 @@
   min-block-size: 2.15rem;
   padding: 0 0.85rem;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--color-ink);
   color: var(--color-canvas);
   font: 600 var(--text-meta)/1 var(--font-sans);

@@ -1,0 +1,137 @@
+/*
+ * Semantic tokens: intent, not value. Components read only this layer.
+ * Values without a primitive (teal, ochre, states) keep their current hex until
+ * step 2 of the migration remaps the palette.
+ */
+:root {
+  --font-primary: 'Zilla Slab', Georgia, serif;
+  --font-numeric: 'Archivo', 'Segoe UI', sans-serif;
+  --font-display-contrast: 'Archivo', 'Segoe UI', sans-serif;
+
+  --color-canvas: var(--pig-cal-50);
+  --color-surface: var(--pig-cal-50);
+  --color-surface-raised: #fffdfa;
+  --color-surface-subtle: #e9e4da;
+  --color-ink: var(--pig-tinta-900);
+  --color-ink-muted: #57544d;
+  --color-border: #d9d4ca;
+  --color-border-strong: #777268;
+  --color-accent: var(--pig-pau-brasil-700);
+  --color-accent-hover: var(--pig-pau-brasil-900);
+  /* Fixed red that ignores per-tradition accent overrides (map markers, brand moments). */
+  --color-signal: var(--pig-pau-brasil-700);
+  --color-on-strong-surface: #ffffff;
+  --color-accent-contrast: var(--color-on-strong-surface);
+  --color-focus: var(--pig-pau-brasil-700);
+  --color-focus-on-dark: #ffd400;
+  --color-info: #164f60;
+  --color-info-surface: #e1edf0;
+  --color-success: #24563b;
+  --color-success-surface: #e4eee5;
+  --color-warning: #614500;
+  --color-warning-surface: #f2e8c8;
+  --color-danger: #82251f;
+  --color-danger-surface: #f5e4e1;
+  --color-teal-paper: #7fbdb5;
+  --color-ochre-paper: #eec35a;
+  --color-ochre-strong: #9a6b00;
+  --color-rose-paper: var(--pig-rosa-300);
+  --color-indigo: var(--pig-jenipapo-700);
+  --color-moss: #3f6b4a;
+  --color-violet: #5d4a86;
+  --color-steel: #5b6770;
+  --color-orange-paper: var(--pig-urucum-500);
+  --color-orange-strong: var(--pig-urucum-800);
+  --color-cartographic: #315f54;
+  --color-archive: #176176;
+  /* Paper and line of the record desk, shared by cards and the context sheet. */
+  --color-desk-card: #efe8d6;
+  --color-desk-line: #5f5e59;
+  --color-map-land: #efe9da;
+  /* Per-tradition reading accents (ideology page). */
+  --color-tradition-rose: #a8324f;
+  --color-tradition-stone: #4a4640;
+  --color-tradition-ochre: #8a5a00;
+  --color-tradition-moss: #2f6b4a;
+
+  /* Section tints for scroll-driven pages (home and readings share the same steps). */
+  --tint-1: color-mix(in srgb, var(--color-ochre-paper) 22%, var(--color-canvas));
+  --tint-2: color-mix(in srgb, var(--color-teal-paper) 22%, var(--color-canvas));
+  --tint-3: color-mix(in srgb, var(--color-rose-paper) 26%, var(--color-canvas));
+  --tint-4: color-mix(in srgb, var(--color-indigo) 9%, var(--color-canvas));
+  --tint-5: color-mix(in srgb, var(--color-orange-paper) 16%, var(--color-canvas));
+
+  --font-sans: var(--font-primary);
+  --font-serif: var(--font-primary);
+  --font-mono: var(--font-primary);
+  --stretch-display: 100%;
+  --stretch-label: 100%;
+  --tracking-display: -0.02em;
+
+  --text-micro: 0.6875rem;
+  --text-caption: 0.75rem;
+  --text-meta: 0.8125rem;
+  --text-small: 0.875rem;
+  --text-compact: 0.9375rem;
+  --text-body: 1rem;
+  --text-subhead: 1.0625rem;
+  --text-lead: clamp(1.125rem, 1.6vw, 1.375rem);
+  --text-section: clamp(1.5rem, 3vw, 2.25rem);
+  --text-page: clamp(2rem, 6vw, 4.75rem);
+  --text-display: clamp(2.5rem, 8vw, 7rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --radius-none: 0;
+  --radius-tight: 0.125rem;
+  --radius-panel: 0.25rem;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* Solid offset shadows; the colour is always set at the call site. */
+  --shadow-offset-sm: 3px 3px 0;
+  --shadow-offset-md: 5px 5px 0;
+  --shadow-offset-lg: 8px 8px 0;
+  /* Legacy diffuse lift of the record card, removed when the card becomes a stamp. */
+  --shadow-card-lift: 0 6px 16px #0007;
+
+  --z-base: 0;
+  --z-raised: 10;
+  --z-dropdown: 20;
+  --z-sticky: 30;
+  --z-overlay: 50;
+  --z-top: 60;
+
+  --grid-max: 90rem;
+  --grid-gutter: clamp(1rem, 5vw, 5rem);
+  --focus-width: 3px;
+  --focus-offset: 3px;
+  --control-min-size: 2.75rem;
+  --measure-reading: min(72ch, 100%);
+  --measure-index: min(90ch, 100%);
+  --measure-profile: min(60ch, 100%);
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --motion-selection: 180ms;
+  --motion-fast: 120ms;
+  --motion-standard: 240ms;
+  --motion-slow: 480ms;
+  --stagger-step: 60ms;
+
+  /* Legacy aliases still read by knowledge-network (inside its style budget); removed in migration step 10. */
+  --paper: var(--color-canvas);
+  --paper-shade: var(--color-surface-subtle);
+  --ink: var(--color-ink);
+  --ink-muted: var(--color-ink-muted);
+  --rule: var(--color-border);
+  --rule-strong: var(--color-border-strong);
+  --signal: var(--color-signal);
+  --serif: var(--font-primary);
+}
