@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-// Gera base cartográfica SVG estática a partir de `world-atlas/countries-110m.json` (Natural Earth
-// 1:110m, Domínio Público) projetada com Natural Earth I em coordenadas [0, 960] x [0, 500].
+// Gera base cartográfica esférica 1:50m a partir de `world-atlas/countries-50m.json`
+// (Natural Earth, Domínio Público) com coordenadas geográficas `(lon, lat)` compactadas
+// para renderização em globo 3D e fallback estrutural `(cx, cy)`.
 //
 //   node scripts/content/build-world-map-base.mjs
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { feature } from 'topojson-client';
@@ -17,7 +18,16 @@ const MAX_Y = 1.422390506730596;
 const SCALE = Math.min((WIDTH - 2 * MARGIN) / (2 * MAX_X), (HEIGHT - 2 * MARGIN) / (2 * MAX_Y));
 
 const round1 = (value) => Math.round(value * 10) / 10;
+const round05 = (value) => {
+  const rounded = Math.round(value * 20) / 20;
+  return Object.is(rounded, -0) ? 0 : rounded;
+};
+const round2 = (value) => {
+  const rounded = Math.round(value * 100) / 100;
+  return Object.is(rounded, -0) ? 0 : rounded;
+};
 
+/** Projects WGS84 coordinates into flat reference SVG space (Natural Earth I polynomial). */
 export function projectNaturalEarth(lat, lon, width = WIDTH, height = HEIGHT) {
   const scale = Math.min((width - 2 * MARGIN) / (2 * MAX_X), (height - 2 * MARGIN) / (2 * MAX_Y));
   const clampedLat = Math.max(-89.9, Math.min(89.9, lat));
@@ -37,137 +47,151 @@ export function projectNaturalEarth(lat, lon, width = WIDTH, height = HEIGHT) {
   };
 }
 
-function normalizeRingLongitudes(ring) {
-  const nonEdge = ring.map(([lon]) => lon).filter((lon) => Math.abs(Math.abs(lon) - 180) > 1e-4);
-  const dominantSign = nonEdge.reduce((sum, lon) => sum + lon, 0) >= 0 ? 1 : -1;
-  return ring.map(([lon, lat], index) => {
-    if (Math.abs(Math.abs(lon) - 180) <= 1e-4) {
-      const prev = ring[index - 1]?.[0];
-      const next = ring[index + 1]?.[0];
-      const ref =
-        prev !== undefined && Math.abs(Math.abs(prev) - 180) > 1e-4
-          ? prev
-          : next !== undefined && Math.abs(Math.abs(next) - 180) > 1e-4
-            ? next
-            : dominantSign;
-      return [ref >= 0 ? 180 : -180, lat];
-    }
-    return [lon, lat];
-  });
+function normalizeLongitude(lon) {
+  let out = ((((lon + 180) % 360) + 360) % 360) - 180;
+  if (out === -180 && lon > 0) out = 180;
+  return Object.is(out, -0) ? 0 : out;
 }
 
-function ringMetrics(points) {
-  let minX = Infinity;
-  let minY = Infinity;
-  let maxX = -Infinity;
-  let maxY = -Infinity;
+function unwrapRingLongitudes(ring) {
+  if (!ring.length) return [];
+  const unwrapped = [];
+  let offset = 0;
+  let prevLon = ring[0][0];
+  for (const [lon, lat] of ring) {
+    let adjusted = lon + offset;
+    while (adjusted - prevLon > 180) {
+      adjusted -= 360;
+      offset -= 360;
+    }
+    while (adjusted - prevLon < -180) {
+      adjusted += 360;
+      offset += 360;
+    }
+    unwrapped.push([adjusted, lat]);
+    prevLon = adjusted;
+  }
+  return unwrapped;
+}
+
+function sqSegmentDistance(point, a, b) {
+  let x = a[0];
+  let y = a[1];
+  const dx = b[0] - x;
+  const dy = b[1] - y;
+  if (dx !== 0 || dy !== 0) {
+    const t = ((point[0] - x) * dx + (point[1] - y) * dy) / (dx * dx + dy * dy);
+    if (t > 1) {
+      x = b[0];
+      y = b[1];
+    } else if (t > 0) {
+      x += dx * t;
+      y += dy * t;
+    }
+  }
+  const pdx = point[0] - x;
+  const pdy = point[1] - y;
+  return pdx * pdx + pdy * pdy;
+}
+
+function douglasPeucker(points, tolerance) {
+  if (points.length <= 3) return points;
+  const tolSq = tolerance * tolerance;
+  let maxDistSq = 0;
+  let splitIndex = 0;
+  const last = points.length - 1;
+  for (let i = 1; i < last; i++) {
+    const distSq = sqSegmentDistance(points[i], points[0], points[last]);
+    if (distSq > maxDistSq) {
+      maxDistSq = distSq;
+      splitIndex = i;
+    }
+  }
+  if (maxDistSq > tolSq) {
+    const left = douglasPeucker(points.slice(0, splitIndex + 1), tolerance);
+    const right = douglasPeucker(points.slice(splitIndex), tolerance);
+    return left.slice(0, -1).concat(right);
+  }
+  return [points[0], points[last]];
+}
+
+function ringMetricsDegrees(points) {
+  let minLon = Infinity;
+  let minLat = Infinity;
+  let maxLon = -Infinity;
+  let maxLat = -Infinity;
   let doubleArea = 0;
-  let cxSum = 0;
-  let cySum = 0;
+  let lonSum = 0;
+  let latSum = 0;
   for (let i = 0; i < points.length; i++) {
     const [x0, y0] = points[i];
     const [x1, y1] = points[(i + 1) % points.length];
-    if (x0 < minX) minX = x0;
-    if (y0 < minY) minY = y0;
-    if (x0 > maxX) maxX = x0;
-    if (y0 > maxY) maxY = y0;
+    if (x0 < minLon) minLon = x0;
+    if (y0 < minLat) minLat = y0;
+    if (x0 > maxLon) maxLon = x0;
+    if (y0 > maxLat) maxLat = y0;
     const cross = x0 * y1 - x1 * y0;
     doubleArea += cross;
-    cxSum += (x0 + x1) * cross;
-    cySum += (y0 + y1) * cross;
+    lonSum += (x0 + x1) * cross;
+    latSum += (y0 + y1) * cross;
   }
   const area = Math.abs(doubleArea) / 2;
-  const cx = Math.abs(doubleArea) > 1e-3 ? cxSum / (3 * doubleArea) : (minX + maxX) / 2;
-  const cy = Math.abs(doubleArea) > 1e-3 ? cySum / (3 * doubleArea) : (minY + maxY) / 2;
+  const lon = Math.abs(doubleArea) > 1e-5 ? lonSum / (3 * doubleArea) : (minLon + maxLon) / 2;
+  const lat = Math.abs(doubleArea) > 1e-5 ? latSum / (3 * doubleArea) : (minLat + maxLat) / 2;
   return {
     area,
-    cx: round1(cx),
-    cy: round1(cy),
-    bbox: [round1(minX), round1(minY), round1(maxX), round1(maxY)],
+    lon: round2(normalizeLongitude(lon)),
+    lat: round2(Math.max(-85, Math.min(85, lat))),
+    bbox: [round2(minLon), round2(minLat), round2(maxLon), round2(maxLat)],
   };
 }
 
-function splitAntimeridianRing(ring) {
-  const normalized = normalizeRingLongitudes(ring);
-  const subRings = [[]];
-  for (let i = 0; i < normalized.length; i++) {
-    const pt = normalized[i];
-    const current = subRings[subRings.length - 1];
-    if (current.length > 0 && Math.abs(pt[0] - current[current.length - 1][0]) > 180) {
-      subRings.push([pt]);
-    } else {
-      current.push(pt);
+function encodeRing(rawRing) {
+  const unwrapped = unwrapRingLongitudes(rawRing);
+  if (unwrapped.length < 3) return null;
+
+  let simplified = douglasPeucker(unwrapped, 0.23);
+  if (simplified.length < 6) {
+    simplified = douglasPeucker(unwrapped, 0.05);
+  }
+  if (simplified.length < 4) {
+    simplified = unwrapped;
+  }
+
+  const rounded = simplified.map(([lon, lat]) => [round05(lon), round05(lat)]);
+  const dedup = [];
+  for (const pt of rounded) {
+    const prev = dedup[dedup.length - 1];
+    if (!prev || prev[0] !== pt[0] || prev[1] !== pt[1]) {
+      dedup.push(pt);
     }
   }
-  return subRings.filter((part) => part.length >= 3);
-}
+  if (
+    dedup.length > 1 &&
+    dedup[0][0] === dedup[dedup.length - 1][0] &&
+    dedup[0][1] === dedup[dedup.length - 1][1]
+  ) {
+    dedup.pop();
+  }
+  if (dedup.length < 3) return null;
 
-function polylinePath(coords, closed = false) {
-  if (!coords.length) return '';
-  const head = coords[0];
-  const rest = coords.slice(1);
-  return `M${head[0]} ${head[1]}${rest.map(([x, y]) => `L${x} ${y}`).join('')}${closed ? 'Z' : ''}`;
-}
-
-function buildSphereAndGraticule() {
-  const spherePts = [];
-  for (let lat = -85; lat <= 85; lat += 5) {
-    const p = projectNaturalEarth(lat, -180);
-    spherePts.push([p.x, p.y]);
-  }
-  for (let lon = -180; lon <= 180; lon += 15) {
-    const p = projectNaturalEarth(85, lon);
-    spherePts.push([p.x, p.y]);
-  }
-  for (let lat = 85; lat >= -85; lat -= 5) {
-    const p = projectNaturalEarth(lat, 180);
-    spherePts.push([p.x, p.y]);
-  }
-  for (let lon = 180; lon >= -180; lon -= 15) {
-    const p = projectNaturalEarth(-85, lon);
-    spherePts.push([p.x, p.y]);
-  }
-  const spherePath = polylinePath(spherePts, true);
-
-  const graticuleSegments = [];
-  for (const lat of [-60, -30, 30, 60]) {
-    const pts = [];
-    for (let lon = -180; lon <= 180; lon += 10) {
-      const p = projectNaturalEarth(lat, lon);
-      pts.push([p.x, p.y]);
-    }
-    graticuleSegments.push(polylinePath(pts, false));
-  }
-  for (const lon of [-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150]) {
-    const pts = [];
-    for (let lat = -85; lat <= 85; lat += 5) {
-      const p = projectNaturalEarth(lat, lon);
-      pts.push([p.x, p.y]);
-    }
-    graticuleSegments.push(polylinePath(pts, false));
-  }
-  const eqPts = [];
-  for (let lon = -180; lon <= 180; lon += 10) {
-    const p = projectNaturalEarth(0, lon);
-    eqPts.push([p.x, p.y]);
-  }
   return {
-    spherePath,
-    graticulePath: graticuleSegments.join(''),
-    equatorPath: polylinePath(eqPts, false),
+    points: dedup,
+    encoded: dedup.map(([lon, lat]) => `${lon},${lat}`).join(';'),
   };
 }
 
 export async function buildWorldMapBase() {
   const raw = JSON.parse(
-    await readFile(join(projectRoot, 'node_modules/world-atlas/countries-110m.json'), 'utf8'),
+    await readFile(join(projectRoot, 'node_modules/world-atlas/countries-50m.json'), 'utf8'),
   );
   const fc = feature(raw, raw.objects.countries);
   const countries = [];
 
   for (const feat of fc.features) {
-    const isoNumeric = String(feat.id ?? '').padStart(3, '0');
+    const isoNumeric = feat.id != null ? String(feat.id).padStart(3, '0') : '000';
     if (!/^\d{3}$/.test(isoNumeric) || isoNumeric === '010') continue;
+
     const polygons =
       feat.geometry?.type === 'Polygon'
         ? [feat.geometry.coordinates]
@@ -175,69 +199,72 @@ export async function buildWorldMapBase() {
           ? feat.geometry.coordinates
           : [];
 
-    const ringPaths = [];
+    const rings = [];
     let bestRing = null;
-    let globalMinX = Infinity;
-    let globalMinY = Infinity;
-    let globalMaxX = -Infinity;
-    let globalMaxY = -Infinity;
+    let minLon = Infinity;
+    let minLat = Infinity;
+    let maxLon = -Infinity;
+    let maxLat = -Infinity;
 
     for (const polygon of polygons) {
       for (const [ringIndex, rawRing] of polygon.entries()) {
-        for (const subRing of splitAntimeridianRing(rawRing)) {
-          const projected = subRing.map(([lon, lat]) => {
-            const p = projectNaturalEarth(lat, lon);
-            return [p.x, p.y];
-          });
-          ringPaths.push(polylinePath(projected, true));
-          const m = ringMetrics(projected);
-          if (m.bbox[0] < globalMinX) globalMinX = m.bbox[0];
-          if (m.bbox[1] < globalMinY) globalMinY = m.bbox[1];
-          if (m.bbox[2] > globalMaxX) globalMaxX = m.bbox[2];
-          if (m.bbox[3] > globalMaxY) globalMaxY = m.bbox[3];
-          if (ringIndex === 0 && (!bestRing || m.area > bestRing.area)) {
-            bestRing = m;
-          }
+        const prepared = encodeRing(rawRing);
+        if (!prepared) continue;
+        rings.push(prepared.encoded);
+        const m = ringMetricsDegrees(prepared.points);
+        if (m.bbox[0] < minLon) minLon = m.bbox[0];
+        if (m.bbox[1] < minLat) minLat = m.bbox[1];
+        if (m.bbox[2] > maxLon) maxLon = m.bbox[2];
+        if (m.bbox[3] > maxLat) maxLat = m.bbox[3];
+        if (ringIndex === 0 && (!bestRing || m.area > bestRing.area)) {
+          bestRing = m;
         }
       }
     }
 
-    if (!ringPaths.length || !bestRing) continue;
+    if (!rings.length || !bestRing) continue;
+    const flatCenter = projectNaturalEarth(bestRing.lat, bestRing.lon);
     countries.push({
       isoNumeric,
       name: String(feat.properties?.name ?? isoNumeric),
-      path: ringPaths.join(''),
-      cx: bestRing.cx,
-      cy: bestRing.cy,
-      bbox: [globalMinX, globalMinY, globalMaxX, globalMaxY],
+      lat: bestRing.lat,
+      lon: bestRing.lon,
+      cx: flatCenter.x,
+      cy: flatCenter.y,
+      bbox: [minLon, minLat, maxLon, maxLat],
+      rings,
     });
   }
 
-  countries.sort((a, b) => a.isoNumeric.localeCompare(b.isoNumeric));
-  const { spherePath, graticulePath, equatorPath } = buildSphereAndGraticule();
+  countries.sort(
+    (a, b) => a.isoNumeric.localeCompare(b.isoNumeric) || a.name.localeCompare(b.name),
+  );
+
   const payload = {
-    schemaVersion: 1,
+    schemaVersion: 2,
+    resolution: '50m',
     width: WIDTH,
     height: HEIGHT,
     scale: round1(SCALE),
     attribution: {
-      source: 'Natural Earth 1:110m Cultural Vectors',
+      source: 'Natural Earth 1:50m Cultural Vectors',
       license: 'Domínio Público (Public Domain)',
       url: 'https://www.naturalearthdata.com/',
     },
-    spherePath,
-    graticulePath,
-    equatorPath,
     countries,
   };
 
-  const outPath = join(projectRoot, 'src/app/features/world-map/data/natural-earth-110m.json');
+  const legacyPath = join(projectRoot, 'src/app/features/world-map/data/natural-earth-110m.json');
+  const outPath = join(projectRoot, 'src/app/features/world-map/data/natural-earth-globe.json');
   await mkdir(dirname(outPath), { recursive: true });
-  await writeFile(outPath, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
+  const jsonText = `${JSON.stringify(payload, null, 2)}\n`;
+  await writeFile(outPath, jsonText, 'utf8');
+  await rm(legacyPath, { force: true });
+
   return {
     outPath,
     countries: countries.length,
-    sizeBytes: Buffer.byteLength(JSON.stringify(payload)),
+    sizeBytes: Buffer.byteLength(jsonText),
   };
 }
 

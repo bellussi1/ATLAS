@@ -225,8 +225,8 @@ describe('world map queries', () => {
     };
 
     const model = buildWorldMapModel(graph, [
-      { isoNumeric: '076', name: 'Brazil', cx: 347.3, cy: 281.4 },
-      { isoNumeric: '276', name: 'Germany', cx: 502.6, cy: 101.1 },
+      { isoNumeric: '076', name: 'Brazil', cx: 347.3, cy: 281.4, lat: -10.84, lon: -53.12 },
+      { isoNumeric: '276', name: 'Germany', cx: 502.6, cy: 101.1, lat: 51.09, lon: 10.37 },
     ]);
 
     expect(model.territories.map((t) => t.id)).toContain('country-brazil');
@@ -234,6 +234,23 @@ describe('world map queries', () => {
       'polity',
     );
     expect(model.connections.length).toBeGreaterThanOrEqual(1);
+    expect(model.hotpoints.length).toBe(2);
+    expect(model.hotpoints.map((hp) => hp.year)).toEqual([1942, 1988]);
+    expect(model.hotpoints[0]).toMatchObject({
+      slug: 'feb-1942',
+      yearFrom: 1942,
+      yearTo: 1945,
+      territoryId: 'country-brazil',
+      territoryTitle: 'Brasil',
+      focusLat: -14.235,
+      focusLon: -51.9253,
+    });
+    expect(model.hotpoints[1]).toMatchObject({
+      slug: 'brasil-recorte-constitucional-1988',
+      yearFrom: 1988,
+      yearTo: 1992,
+      territoryId: 'country-brazil',
+    });
 
     const ww2Slice = filterWorldMap(model, {
       yearFrom: 1914,

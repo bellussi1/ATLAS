@@ -7,6 +7,7 @@ export const worldMapRoutes: Routes = [
     path: 'mapa',
     title: 'Mapa-múndi histórico — ATLAS',
     data: {
+      fullscreen: true,
       breadcrumb: 'Mapa-múndi',
       metaDescription:
         'Mapa-múndi histórico e geopolítico interativo do ATLAS: países, entidades históricas, regimes políticos e conexões documentadas por período.',

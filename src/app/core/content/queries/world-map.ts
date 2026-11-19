@@ -20,6 +20,8 @@ export interface WorldMapGeoFeature {
   readonly name: string;
   readonly cx: number;
   readonly cy: number;
+  readonly lat?: number;
+  readonly lon?: number;
 }
 
 export interface WorldMapPoint {
@@ -115,12 +117,28 @@ export interface WorldMapEraPreset {
   readonly note: string;
 }
 
+export interface WorldMapHotpoint {
+  readonly id: string;
+  readonly slug: string;
+  readonly title: string;
+  readonly year: number;
+  readonly yearFrom: number;
+  readonly yearTo: number;
+  readonly label: string;
+  readonly territoryId: string;
+  readonly territoryTitle: string;
+  readonly focusLat: number;
+  readonly focusLon: number;
+  readonly weight: number;
+}
+
 export interface WorldMapModel {
   readonly width: number;
   readonly height: number;
   readonly territories: readonly WorldMapTerritory[];
   readonly connections: readonly WorldMapConnection[];
   readonly decadeBins: readonly WorldMapDecadeBin[];
+  readonly hotpoints: readonly WorldMapHotpoint[];
   readonly minYear: number;
   readonly maxYear: number;
 }
@@ -393,23 +411,40 @@ export function buildWorldMapModel(
 
   const bucketsByKey = new Map<string, TerritoryBucket>();
   const territoryKeyByEntityId = new Map<string, string>();
+  const isoKeyByNormTitle = new Map<string, string>();
 
-  for (const entity of allEntities) {
+  const orderedPlaceEntities = [
+    ...allEntities.filter((entity) => entity.kind === 'place' && Boolean(entity.isoNumeric)),
+    ...allEntities.filter((entity) => entity.kind === 'place' && !entity.isoNumeric),
+  ];
+
+  for (const entity of orderedPlaceEntities) {
     if (entity.kind !== 'place') continue;
     const layer = layerForPlace(entity);
     if (!layer) continue;
 
     const isoNumeric = entity.isoNumeric ?? null;
     const geo = isoNumeric ? geoByIso.get(isoNumeric) : undefined;
-    const coords = entity.coordinates ?? null;
+    const explicitCoords = entity.coordinates ?? null;
+    const geoCoords =
+      geo?.lat !== undefined && geo?.lon !== undefined ? { lat: geo.lat, lon: geo.lon } : null;
+    const coords = explicitCoords ?? geoCoords;
     const point = geo
       ? { x: round1(geo.cx), y: round1(geo.cy) }
-      : coords
-        ? projectNaturalEarth(coords.lat, coords.lon)
+      : explicitCoords
+        ? projectNaturalEarth(explicitCoords.lat, explicitCoords.lon)
         : null;
     if (!point) continue;
 
-    const key = isoNumeric ? `iso:${isoNumeric}` : `entity:${entity.id}`;
+    const normTitle = normalizeFold(entity.title);
+    const matchedCanonicalIsoKey =
+      !isoNumeric && !entity.temporalExtent ? isoKeyByNormTitle.get(normTitle) : undefined;
+    const key = isoNumeric
+      ? `iso:${isoNumeric}`
+      : (matchedCanonicalIsoKey ?? `entity:${entity.id}`);
+    if (isoNumeric && !isoKeyByNormTitle.has(normTitle)) {
+      isoKeyByNormTitle.set(normTitle, key);
+    }
     territoryKeyByEntityId.set(entity.id, key);
     const attachedRegimes = regimesByCountryEntityId.get(entity.id) ?? [];
 
@@ -424,7 +459,7 @@ export function buildWorldMapModel(
       }
       if (entity.summary.length > existing.summary.length) existing.summary = entity.summary;
       if (entity.isoAlpha2 && !existing.isoAlpha2) existing.isoAlpha2 = entity.isoAlpha2;
-      if (coords && !existing.coordinates) existing.coordinates = coords;
+      if (explicitCoords || (coords && !existing.coordinates)) existing.coordinates = coords;
       for (const regime of attachedRegimes) {
         if (!existing.regimes.some((item) => item.id === regime.id)) existing.regimes.push(regime);
       }
@@ -712,15 +747,191 @@ export function buildWorldMapModel(
     decadeBins.push({ start, end, label: `${start}`, count });
   }
 
+  const minYear = decadeStartMin;
+  const maxYear = 2026;
+  const hotpoints = buildTimelineHotpoints({
+    allEntities,
+    semanticRelations,
+    territories,
+    territoryIdByEntityId,
+    entityTerritoryAnchors,
+    minYear,
+    maxYear,
+  });
+
   return {
     width: WORLD_MAP_WIDTH,
     height: WORLD_MAP_HEIGHT,
     territories,
     connections,
     decadeBins,
-    minYear: decadeStartMin,
-    maxYear: 2026,
+    hotpoints,
+    minYear,
+    maxYear,
   };
+}
+
+function normalizeFold(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
+const LAYER_RANK: Readonly<Record<WorldMapLayerId, number>> = {
+  country: 3,
+  polity: 2,
+  locality: 1,
+};
+
+function buildTimelineHotpoints(input: {
+  readonly allEntities: readonly (
+    | KnowledgeGraph['atlases'][number]['entities'][number]
+    | NetworkGraph['atlases'][number]['entities'][number]
+  )[];
+  readonly semanticRelations: readonly {
+    readonly fromId: string;
+    readonly toId: string;
+  }[];
+  readonly territories: readonly WorldMapTerritory[];
+  readonly territoryIdByEntityId: ReadonlyMap<string, string>;
+  readonly entityTerritoryAnchors: ReadonlyMap<string, readonly string[]>;
+  readonly minYear: number;
+  readonly maxYear: number;
+}): WorldMapHotpoint[] {
+  const territoryById = new Map(input.territories.map((item) => [item.id, item]));
+  const degreeById = new Map<string, number>();
+  for (const rel of input.semanticRelations) {
+    degreeById.set(rel.fromId, (degreeById.get(rel.fromId) ?? 0) + 1);
+    degreeById.set(rel.toId, (degreeById.get(rel.toId) ?? 0) + 1);
+  }
+
+  const candidates: (WorldMapHotpoint & { readonly isBrazilFocus: boolean })[] = [];
+
+  for (const entity of input.allEntities) {
+    const isEvent = entity.kind === 'event';
+    const isRegime = entity.kind === 'place' && entity.placeType === 'regime';
+    if (!isEvent && !isRegime) continue;
+
+    const ext = entity.temporalExtent;
+    if (!ext || ext.startYear === null) continue;
+    const year = ext.startYear;
+    if (year < input.minYear || year > input.maxYear) continue;
+
+    const candidateTerritoryIds = new Set<string>();
+    for (const tid of input.entityTerritoryAnchors.get(entity.id) ?? []) {
+      candidateTerritoryIds.add(tid);
+    }
+    if (isRegime && entity.regimeProfile?.countryIds) {
+      for (const cid of entity.regimeProfile.countryIds) {
+        const tid = input.territoryIdByEntityId.get(cid);
+        if (tid) candidateTerritoryIds.add(tid);
+      }
+    }
+
+    const anchoredWithCoords = [...candidateTerritoryIds]
+      .map((tid) => territoryById.get(tid))
+      .filter((t): t is WorldMapTerritory & { coordinates: { lat: number; lon: number } } =>
+        Boolean(t && t.coordinates),
+      );
+    if (anchoredWithCoords.length === 0) continue;
+
+    const normEntityTitle = normalizeFold(entity.title);
+    anchoredWithCoords.sort((a, b) => {
+      const aNorm = normalizeFold(a.title);
+      const bNorm = normalizeFold(b.title);
+      const aIdx = normEntityTitle.indexOf(aNorm);
+      const bIdx = normEntityTitle.indexOf(bNorm);
+      const aMatch = aIdx >= 0 ? 1 : 0;
+      const bMatch = bIdx >= 0 ? 1 : 0;
+      if (aMatch !== bMatch) return bMatch - aMatch;
+      if (aMatch && bMatch && aIdx !== bIdx) return aIdx - bIdx;
+      const recordDiff = b.records.length - a.records.length;
+      if (recordDiff !== 0) return recordDiff;
+      const layerDiff = LAYER_RANK[b.layer] - LAYER_RANK[a.layer];
+      if (layerDiff !== 0) return layerDiff;
+      return a.title.localeCompare(b.title, 'pt');
+    });
+
+    const focal = anchoredWithCoords[0];
+    const yearFrom = year;
+    const yearTo =
+      ext.endYear !== null && ext.endYear >= year
+        ? Math.min(input.maxYear, ext.endYear)
+        : Math.min(input.maxYear, year + 4);
+    const label =
+      ext.endYear !== null && ext.endYear !== year ? `${year}–${ext.endYear}` : String(year);
+    const degree = degreeById.get(entity.id) ?? 0;
+    const weight = degree + anchoredWithCoords.length;
+    const isBrazilFocus =
+      focal.slug === 'brasil' ||
+      normEntityTitle.includes('brasil') ||
+      normEntityTitle.includes('paraguai');
+
+    candidates.push({
+      id: entity.id,
+      slug: entity.slug,
+      title: entity.title,
+      year,
+      yearFrom,
+      yearTo,
+      label,
+      territoryId: focal.id,
+      territoryTitle: focal.title,
+      focusLat: focal.coordinates.lat,
+      focusLon: focal.coordinates.lon,
+      weight,
+      isBrazilFocus,
+    });
+  }
+
+  candidates.sort(
+    (a, b) => b.weight - a.weight || a.year - b.year || a.title.localeCompare(b.title, 'pt'),
+  );
+
+  const selected: WorldMapHotpoint[] = [];
+  const usedIds = new Set<string>();
+  const minGapYears = 12;
+  const maxHotpoints = 12;
+
+  const canPlace = (cand: WorldMapHotpoint): boolean =>
+    !usedIds.has(cand.id) &&
+    selected.every((item) => Math.abs(item.year - cand.year) >= minGapYears);
+
+  const pushHotpoint = (cand: WorldMapHotpoint & { isBrazilFocus: boolean }) => {
+    selected.push({
+      id: cand.id,
+      slug: cand.slug,
+      title: cand.title,
+      year: cand.year,
+      yearFrom: cand.yearFrom,
+      yearTo: cand.yearTo,
+      label: cand.label,
+      territoryId: cand.territoryId,
+      territoryTitle: cand.territoryTitle,
+      focusLat: cand.focusLat,
+      focusLon: cand.focusLon,
+      weight: cand.weight,
+    });
+    usedIds.add(cand.id);
+  };
+
+  let brazilPicked = 0;
+  for (const cand of candidates) {
+    if (!cand.isBrazilFocus || brazilPicked >= 3) continue;
+    if (!canPlace(cand)) continue;
+    pushHotpoint(cand);
+    brazilPicked += 1;
+  }
+
+  for (const cand of candidates) {
+    if (selected.length >= maxHotpoints) break;
+    if (!canPlace(cand)) continue;
+    pushHotpoint(cand);
+  }
+
+  selected.sort((a, b) => a.year - b.year || b.weight - a.weight);
+  return selected;
 }
 
 /** Filters territories, regimes, anchored records, and arcs strictly by temporalExtent & cues. */

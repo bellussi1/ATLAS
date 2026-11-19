@@ -25,15 +25,18 @@ describe('WorldMapPageComponent', () => {
     }),
   );
 
-  it('renders Natural Earth vector map, 7 relation families, and public attributions', async () => {
+  it('renders 3D globe canvas stage, 7 relation families, timeline hotpoints, and public attributions', async () => {
     const harness = await RouterTestingHarness.create();
-    await harness.navigateByUrl('/mapa', WorldMapPageComponent);
+    const component = await harness.navigateByUrl('/mapa', WorldMapPageComponent);
     const root = harness.routeNativeElement as HTMLElement;
 
     expect(root.querySelector('h1')?.textContent).toContain('Mapa-múndi');
-    expect(root.querySelector('svg.map-svg')).not.toBeNull();
-    expect(root.querySelectorAll('path.map-country').length).toBeGreaterThanOrEqual(170);
-    expect(root.querySelectorAll('#map-legend .legend-item').length).toBe(7);
+    expect(root.querySelector('canvas.globe-canvas')).not.toBeNull();
+    expect(component.model.hotpoints.length).toBeGreaterThanOrEqual(2);
+    expect(root.querySelectorAll('#map-legend .legend--families .legend-item').length).toBe(7);
+    expect(root.querySelectorAll('.timeline-hotpoint').length).toBe(
+      component.model.hotpoints.length,
+    );
     expect(root.querySelector('footer.map-attribution')?.textContent).toContain('Natural Earth');
     expect(root.querySelector('footer.map-attribution')?.textContent).toContain('Wikidata');
   });
@@ -71,7 +74,7 @@ describe('WorldMapPageComponent', () => {
     );
   });
 
-  it('highlights legend family on hover/focus and triggers surprise exploration', async () => {
+  it('highlights legend family, activates timeline hotpoint, and triggers surprise exploration', async () => {
     const harness = await RouterTestingHarness.create();
     const component = await harness.navigateByUrl('/mapa', WorldMapPageComponent);
     const root = harness.routeNativeElement as HTMLElement;
@@ -85,24 +88,40 @@ describe('WorldMapPageComponent', () => {
     harness.detectChanges();
     expect(component.hoveredFamilyId()).toBeNull();
 
-    root.querySelector<HTMLButtonElement>('.map-surprise-btn')!.click();
+    const firstHotpoint = root.querySelector<HTMLButtonElement>('.timeline-hotpoint');
+    expect(firstHotpoint).not.toBeNull();
+    firstHotpoint!.click();
+    harness.detectChanges();
+    expect(component.activeHotpointId()).not.toBeNull();
+    expect(component.hasTemporalFilter()).toBe(true);
+    expect(component.selectedTerritoryId()).not.toBeNull();
+
+    root.querySelector<HTMLButtonElement>('.chip--surprise')!.click();
     harness.detectChanges();
     expect(component.selectedTerritoryId()).not.toBeNull();
     expect(root.querySelector('#map-study-desk')?.textContent).toContain('Abrir verbete');
   });
 
-  it('exposes territories in #lista-acessivel and focuses on button click', async () => {
+  it('opens #lista-acessivel modal via Tabela button and focuses territory on button click', async () => {
     const harness = await RouterTestingHarness.create();
     const component = await harness.navigateByUrl('/mapa', WorldMapPageComponent);
     const root = harness.routeNativeElement as HTMLElement;
 
-    const details = root.querySelector<HTMLDetailsElement>('#lista-acessivel details');
-    expect(details).not.toBeNull();
-    const firstFocusBtn = details!.querySelector<HTMLButtonElement>('.table-action-btn');
+    const tabelaBtn = [...root.querySelectorAll<HTMLButtonElement>('.bar__actions .chip')].find(
+      (btn) => btn.textContent?.trim() === 'Tabela',
+    );
+    expect(tabelaBtn).toBeDefined();
+    tabelaBtn!.click();
+    harness.detectChanges();
+
+    const modal = root.querySelector('#lista-acessivel');
+    expect(modal).not.toBeNull();
+    const firstFocusBtn = modal!.querySelector<HTMLButtonElement>('.table-action-btn');
     expect(firstFocusBtn).not.toBeNull();
     firstFocusBtn!.click();
     harness.detectChanges();
 
+    expect(component.tableOpen()).toBe(false);
     expect(component.selectedTerritoryId()).not.toBeNull();
   });
 });

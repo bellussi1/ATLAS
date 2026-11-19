@@ -1,8 +1,8 @@
 # Mapa-múndi histórico e geopolítico (`/mapa`)
 
-- **Status:** atual (implementado em `/mapa` — Issue #101)
+- **Status:** atual (implementado em `/mapa` — Issue #101, redesign globo 3D em tela cheia no padrão `/grafos`)
 - **Última verificação:** 18/11/2026
-- **Escopo:** implementação entregue e verificada em `/mapa` (projeção Natural Earth 1:110m, enriquecimento Wikidata, linha do tempo, Mesa de Estudo, legenda acessível e lista tabular)
+- **Escopo:** `/mapa` em tela cheia (`fullscreen: true`, mesmo shell flutuante de `/grafos`), globo ortográfico 3D curvo em Canvas HiDPI com base **Natural Earth 1:50m** (`countries-50m.json`), arcos geodésicos elevados com oclusão esférica, linha do tempo inferior arrastável com **hotpoints** históricos derivados do grafo, Mesa de Estudo flutuante, legenda acessível e modal tabular (`#lista-acessivel`).
 
 ## 1. Objetivo e pergunta editorial
 
@@ -23,14 +23,14 @@ A página `/mapa` permitirá ao leitor:
 
 A interface segue integralmente os padrões aprovados em `atlas-editorial-geometrico`:
 
-- **Superfície de papel e tinta:** papel claro `#FBF8F1`, tinta grafite `#141211`, pautas suíças sutis, zero fundo escuro de monitoramento, zero aparência de painel de métricas ou cards repetitivos.
-- **Referência cartográfica:** atlas histórico editorial e modernismo suíço — traço fino em tinta sobre papel creme, projeção global equilibrada (**Natural Earth** ou **Robinson** em SVG vetorial estático, sem dependência de servidores de tiles externos), massas continentais em tom neutro quente e realce cromático apenas no país em foco e nas famílias de conexão.
-- **Composição da tela:**
-  1. **Barra superior compacta:** título editorial discreto, busca por país/acontecimento/conexão, seletor de projeção/recorte, filtro por recorte temporal e botão **"Surpreenda-me"** (sorteia um par país + período rico em evidências).
-  2. **Legenda na lateral esquerda:** famílias relacionais (cor + padrão de traço `stroke-dasharray` + efeito de hover que ilumina a família no mapa e atenua o restante) e camadas geográficas (países, cidades, locais, acontecimentos georreferenciados).
-  3. **Prancha do mapa central:** zoom e pan fluidos (mouse, toque e teclado `+`/`-`/`0`), rótulos protegidos contra colisão com os painéis laterais e linha do tempo inferior.
-  4. **Linha do tempo inferior:** faixa cronológica com ajuste de intervalo/ano e marcadores de densidade do acervo, permitindo comparar sincronias ("o que acontecia no mundo entre 1929 e 1945").
-  5. **Mesa de estudo à direita (ou gaveta no mobile):** ficha do país/conexão no período ativo — regime/organização política documentada, acontecimentos simultâneos, relações de entrada/saída, fontes e botões para abrir `/verbete/:slug` ou inspecionar a vizinhança no `/grafos`.
+- **Superfície de papel e tinta:** papel claro `#FBF8F1`, tinta grafite `#141211`, pautas suíças em grade pontilhada idêntica ao `/grafos`, painéis flutuantes com borda sólida `2px` e sombra deslocada dura, zero fundo escuro genérico e zero aparência de painel de métricas.
+- **Referência cartográfica:** globo ortográfico 3D curvo com sombreamento esférico neutro de papel mineral, contornos **Natural Earth 1:50m** recortados no horizonte visível sem artefatos, arcos geodésicos elevados com sombra na superfície e zero dependência de servidores de tiles externos.
+- **Composição em tela cheia (`100dvh`, padrão `/grafos`):**
+  1. **Barra superior flutuante:** assinatura ATLAS, título `Mapa-múndi`, busca pílula (atalho `/`), botões **Legenda**, **Surpreenda-me**, **Tabela**, atalhos **?** e link para `/grafos`.
+  2. **Legenda esquerda flutuante:** 7 famílias relacionais (cor + padrão `stroke-dasharray` exclusivo + seta direcional + spotlight em hover/foco) e 3 camadas territoriais com glifos geométricos.
+  3. **Globo 3D interativo central:** rotação por arraste com inércia (desligada em movimento reduzido), zoom (`1×`–`4,5×`), centralização óptica na área livre entre os painéis abertos e rótulos protegidos contra colisão.
+  4. **Linha do tempo inferior (`1750–2026`):** controle dual-range arrastável, janela temporal deslizável, botão `▶`/`⏸`, distribuição por décadas e **hotpoints** de eventos/regimes derivados diretamente do grafo que voam o globo até o território do marco.
+  5. **Mesa de estudo direita (recolhível no mobile):** aparece apenas com seleção ativa trazendo regimes vigentes (`regimeProfile`), conexões, acontecimentos ancorados, fontes e atalhos para `/verbete/:slug` e `/grafos`.
 
 ---
 
