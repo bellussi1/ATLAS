@@ -69,7 +69,7 @@ test('old reading addresses redirect to the canonical /leitura path', async ({ p
   }
 });
 
-test('home search opens the universal catalogue and the reading sheet stays available', async ({
+test('home search opens the universal catalogue and the reading list stays available', async ({
   page,
 }) => {
   await page.goto('/');
@@ -81,11 +81,18 @@ test('home search opens the universal catalogue and the reading sheet stays avai
   await expect(results.getByRole('link').first()).toBeVisible();
   await expect(page.locator('#explorer-query')).toHaveValue('liberalismo');
   await page.goto('/');
-  await page.getByRole('button', { name: /Leitura\s+Liberalismo/ }).click();
-  const sheetLink = page.getByRole('link', { name: 'Ler o texto completo' });
-  await expect(sheetLink).toHaveAttribute('href', '/leitura/liberalismo');
-  await sheetLink.click();
+  const readingLink = page
+    .getByRole('list', { name: 'Leituras em destaque' })
+    .getByRole('link', { name: /Liberalismo/ });
+  await expect(readingLink).toHaveAttribute('href', '/leitura/liberalismo');
+  await readingLink.click();
   await expect(page).toHaveURL(/\/leitura\/liberalismo$/);
+  await page.goto('/');
+  await expect(
+    page
+      .getByRole('region', { name: 'O mundo no tempo.' })
+      .getByRole('link', { name: /1914–1945/ }),
+  ).toHaveAttribute('href', '/mapa?anoDe=1914&anoAte=1945');
 });
 
 test('reading navigation includes the knowledge explorer', async ({ page }) => {
@@ -214,8 +221,7 @@ test('the chapter review explains its purpose and reveals the answer on demand',
 }) => {
   await routeContentFixture(page);
   await page.goto('/');
-  await page.locator('.cover-choice[data-reading="marxismo"]').click();
-  await page.getByRole('link', { name: 'Ler o texto completo' }).click();
+  await page.locator('.reading-line[data-reading="marxismo"]').click();
   await expect(page).toHaveURL(/\/leitura\/marxismo\/?$/);
   const review = page.locator('.chapter-review').first();
   await review.scrollIntoViewIfNeeded();

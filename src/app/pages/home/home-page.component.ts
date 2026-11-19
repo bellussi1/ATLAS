@@ -7,11 +7,11 @@ import {
   ElementRef,
   inject,
   signal,
-  viewChild,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { featureWithEditorialSlot, rankByPopularity } from '@core/analytics/popularity';
 import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
+import { WORLD_MAP_ERA_PRESETS } from '@core/content/queries/world-map-eras';
 import { readingPath } from '@core/routing/reading-routes';
 import popularity from '@metrics/popularity.json';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
@@ -149,14 +149,9 @@ export class HomePage {
     (item) => `/itinerario/${item.slug}`,
     popularity,
   );
-  readonly updatedLabel = (() => {
-    const [year, month, day] = compiledHome.updatedAt.split('-');
-    return `${day}/${month}/${year}`;
-  })();
+  /** Dated windows of the world map timeline, linked straight into `/mapa`. */
+  readonly mapEras = WORLD_MAP_ERA_PRESETS.filter((era) => era.yearFrom !== null);
   private readonly numberFormat = new Intl.NumberFormat('pt-BR');
-  readonly selected = signal<HomeReading>(this.readings[0]);
-  readonly sheet = viewChild<ElementRef<HTMLElement>>('sheet');
-  private selectionMotion?: Animation;
 
   constructor() {
     afterNextRender(() => {
@@ -214,30 +209,6 @@ export class HomePage {
     return this.numberFormat.format(value);
   }
 
-  selectSlug(slug: string): void {
-    const entry = this.readings.find((item) => item.slug === slug);
-    if (entry) {
-      this.selectionMotion?.cancel();
-      this.selected.set(entry);
-    }
-  }
-  select(entry: HomeReading, event: MouseEvent): void {
-    this.selectionMotion?.cancel();
-    this.selected.set(entry);
-    const element = this.sheet()?.nativeElement;
-    if (
-      !element ||
-      typeof element.animate !== 'function' ||
-      !event.detail ||
-      element.ownerDocument.defaultView?.matchMedia('(prefers-reduced-motion: reduce)').matches
-    )
-      return;
-    const tokens = element.ownerDocument.defaultView!.getComputedStyle(element);
-    this.selectionMotion = element.animate([{ opacity: 0.45 }, { opacity: 1 }], {
-      duration: parseFloat(tokens.getPropertyValue('--motion-selection')) || 180,
-      easing: tokens.getPropertyValue('--ease-out').trim() || 'cubic-bezier(0.23, 1, 0.32, 1)',
-    });
-  }
   recompose(): void {
     this.seed.update((seed) => (seed * 31 + 17) % 9973);
   }

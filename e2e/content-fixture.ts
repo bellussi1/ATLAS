@@ -60,10 +60,7 @@ export async function routeContentFixture(page: Page): Promise<void> {
 export async function openReadingFixture(page: Page, slug: string): Promise<void> {
   await routeContentFixture(page);
   await page.goto('/');
-  const select = page.locator('#sheet-select');
-  if (await select.isVisible()) await select.selectOption(slug);
-  else await page.locator(`.cover-choice[data-reading="${slug}"]`).click();
-  await page.getByRole('link', { name: 'Ler o texto completo' }).click();
+  await page.locator(`.reading-line[data-reading="${slug}"]`).click();
   await page.waitForURL(new RegExp(`/leitura/${slug}/?$`));
 }
 
