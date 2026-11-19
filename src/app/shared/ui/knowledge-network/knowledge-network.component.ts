@@ -67,7 +67,6 @@ import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illust
 import { illustrationPalette } from '@shared/ui/geometric-illustration/illustration';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
 import { AtlasSectionSwitcherComponent } from '@shared/ui/section-switcher/section-switcher.component';
-import { map } from 'rxjs';
 
 import { batchEdgeSegments, type EdgeSegment } from './network-batching';
 import { shapePath } from './network-shapes';
@@ -190,10 +189,6 @@ export class KnowledgeNetworkComponent {
   private readonly repository = inject(ContentRepository);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
-  private readonly queryNode = toSignal(
-    this.route.queryParamMap.pipe(map((params) => params.get('no'))),
-    { initialValue: this.route.snapshot.queryParamMap.get('no') },
-  );
   private readonly queryParams = toSignal(this.route.queryParamMap, {
     initialValue: this.route.snapshot.queryParamMap,
   });
@@ -995,6 +990,8 @@ export class KnowledgeNetworkComponent {
   private cycleOrigin: string | null = null;
   /** Last selection received from the chapter, so the graph does not echo it back. */
   private lastFocus: string | null = null;
+  /** Path already framed, so a resize does not re-frame it behind the reader. */
+  private frameRestoredPath = false;
 
   constructor() {
     const compiled = this.repository.layouts?.network;
@@ -1024,30 +1021,43 @@ export class KnowledgeNetworkComponent {
         if (this.positions()) this.reveal(id);
       });
     });
-    // A shared ?no= link selects its node once the compiled positions are ready.
-    effect(() => {
-      const id = this.queryNode();
-      const positions = this.positions();
-      if (this.embedded()) return;
-      if (!id) {
-        if (untracked(() => this.selectedId())) untracked(() => this.clearSelection());
-        return;
-      }
-      if (!positions || !this.nodeIndex.has(id)) return;
-      if (untracked(() => this.selectedId()) === id) return;
-      untracked(() => this.select(id, true));
-    });
-    // A shared de/para restores the path endpoints.
+    // A shared ?no= link selects its node and ?de/?para restore the whole path, without rewriting
+    // the address: the endpoints are restored before the selection so nothing drops them.
     effect(() => {
       const params = this.queryParams();
-      const de = params.get('de');
-      const para = params.get('para');
+      const positions = this.positions();
+      if (this.embedded()) return;
       untracked(() => {
+        const de = params.get('de');
+        const para = params.get('para');
         const nextFrom = de && this.nodeIndex.has(de) ? de : null;
         const nextTo = para && this.nodeIndex.has(para) ? para : null;
-        if (this.pathFrom() !== nextFrom) this.pathFrom.set(nextFrom);
-        if (this.pathTo() !== nextTo) this.pathTo.set(nextTo);
+        if (this.pathFrom() !== nextFrom || this.pathTo() !== nextTo) {
+          this.pathFrom.set(nextFrom);
+          this.pathTo.set(nextTo);
+          this.pathVariant.set(0);
+          // Endpoints came from the address, not from the path controls: frame them once measured.
+          this.frameRestoredPath = !!nextFrom && !!nextTo;
+        }
+        const id = params.get('no');
+        if (!id) {
+          if (this.selectedId()) this.clearSelection();
+          return;
+        }
+        if (!positions || !this.nodeIndex.has(id)) return;
+        if (this.selectedId() === id) return;
+        // A restored path frames itself; otherwise the chosen record is centred as usual.
+        this.select(id, !(nextFrom && nextTo), true);
       });
+    });
+    // A shared path is framed once the stage has been measured; the first read may precede layout.
+    effect(() => {
+      const path = this.pathEndpoints();
+      const positions = this.positions();
+      const { width, height } = this.size();
+      if (!this.frameRestoredPath || !path || !positions || !width || !height) return;
+      this.frameRestoredPath = false;
+      untracked(() => this.fitPath(false));
     });
     // In a chapter the legend starts folded: the map should read as a map, not as a dashboard.
     effect(() => {
