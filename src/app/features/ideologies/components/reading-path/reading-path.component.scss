@@ -30,8 +30,9 @@
   border: 2px solid var(--color-ink);
   background: var(--color-canvas);
   color: var(--color-ink);
+  max-inline-size: 100%;
   font: 650 var(--text-meta)/1.2 var(--font-sans);
-  white-space: nowrap;
+  text-align: start;
   cursor: pointer;
   transition:
     background-color var(--motion-fast),
