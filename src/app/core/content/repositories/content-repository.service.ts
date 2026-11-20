@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { inject, Injectable, makeStateKey, PLATFORM_ID, TransferState } from '@angular/core';
+import { mirrorIndexSchema, mirrorSlot } from '@core/content/media/mirror-index';
 import {
   adjacencySchema,
   type ContentBundle,
@@ -15,7 +16,6 @@ import {
   networkGraphSchema,
   searchIndexSchema,
 } from '@core/content/models/content-artifacts';
-import { mirrorIndexSchema, mirrorSlot } from '@core/content/media/mirror-index';
 import {
   artifactKey,
   type ContentPointer,

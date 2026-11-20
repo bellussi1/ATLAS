@@ -22,7 +22,10 @@ describe('licensed editorial assets', () => {
       providers: [
         {
           provide: ContentRepository,
-          useValue: { mediaUrl: (path: string) => `https://media.example.test${path}` },
+          useValue: {
+            mediaUrl: (path: string) => `https://media.example.test${path}`,
+            mirrorUrl: () => null,
+          },
         },
       ],
     });

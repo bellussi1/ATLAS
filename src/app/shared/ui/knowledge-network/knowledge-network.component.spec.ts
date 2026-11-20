@@ -19,6 +19,7 @@ describe('KnowledgeNetworkComponent', () => {
           useValue: {
             layouts: {},
             mediaUrl: (path: string) => path,
+            mirrorUrl: () => null,
             atlasForEntity: () =>
               methodologyKnowledgeGraph.atlases.find((atlas) => atlas.id === 'atlas-liberalism'),
             knowledgeGraph: {
@@ -137,6 +138,7 @@ describe('KnowledgeNetworkComponent', () => {
         knowledgeGraph: graph,
         layouts: { network: { width: 4000, height: 1000, positions, regions: [] } },
         mediaUrl: (path: string) => path,
+        mirrorUrl: () => null,
         atlasForEntity: () => graph.atlases[0],
       },
     });
