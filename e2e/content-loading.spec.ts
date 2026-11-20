@@ -2,7 +2,6 @@ import { readFile } from 'node:fs/promises';
 
 import AxeBuilder from '@axe-core/playwright';
 
-import { DEFAULT_CONTENT_BASE_URL } from '../src/app/core/content/models/content-pointer';
 import { expect, test } from './content-fixture';
 
 // The preview port serves the pinned release from /content (see src/index.html and scripts/preview.mjs),
