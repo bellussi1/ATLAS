@@ -73,6 +73,7 @@
     "infra:pages": "node scripts/infra/pages-deploy.mjs",
     "infra:pages:check": "node scripts/infra/pages-deploy.mjs --dry-run",
     "release": "node scripts/release/release.mjs",
+    "infra:backup-drafts": "node scripts/infra/backup-drafts.mjs",
     "rag": "node scripts/rag-runner.mjs",
     "rag:models": "node scripts/rag-runner.mjs models",
     "rag:ingest": "node scripts/rag-runner.mjs ingest-public",
