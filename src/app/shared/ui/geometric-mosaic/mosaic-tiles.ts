@@ -38,14 +38,14 @@ export interface MosaicTile {
 }
 
 const colors = {
-  red: 'var(--color-accent)',
+  red: 'var(--mosaic-red)',
   ink: 'var(--color-ink)',
-  paper: 'var(--color-canvas)',
-  ochre: 'var(--color-ochre-paper)',
-  orange: 'var(--color-orange-paper)',
-  rose: 'var(--color-rose-paper)',
-  teal: 'var(--color-teal-paper)',
-  indigo: 'var(--color-indigo)',
+  paper: 'var(--mosaic-paper)',
+  ochre: 'var(--mosaic-ochre)',
+  orange: 'var(--mosaic-orange)',
+  rose: 'var(--mosaic-rose)',
+  teal: 'var(--mosaic-green)',
+  indigo: 'var(--mosaic-indigo)',
   moss: 'var(--color-moss)',
   violet: 'var(--color-violet)',
   steel: 'var(--color-steel)',

@@ -66,6 +66,15 @@
   --text-on-stamp: var(--pig-tinta-900);
   --text-on-stamp-vermelho: var(--pig-cal-50);
   --text-on-stamp-jenipapo: var(--pig-cal-50);
+  /* Mosaic and illustration inks: saturated pigments, as printed on the reference stamps. */
+  --mosaic-red: var(--pig-pau-brasil-500);
+  --mosaic-ochre: var(--pig-ocre-500);
+  --mosaic-orange: var(--pig-urucum-500);
+  --mosaic-rose: var(--pig-rosa-500);
+  --mosaic-green: var(--pig-mata-500);
+  --mosaic-indigo: var(--pig-jenipapo-700);
+  --mosaic-paper: var(--pig-cal-200);
+
   /* Poster register: dark ground with paper text and an ochre accent. */
   --surface-poster: var(--pig-terra-900);
   --text-on-poster: var(--pig-cal-50);

@@ -140,36 +140,47 @@ h1 .line + .line {
   }
 }
 .poster-door {
-  display: inline-flex;
+  display: flex;
+  min-height: var(--control-min-size);
+  color: inherit;
+  text-decoration: none;
+  transition: transform var(--motion-fast) var(--ease-out);
+}
+.poster-door__stamp {
+  --stamp-padding: calc(var(--perforation-size) + var(--space-1))
+    calc(var(--perforation-size) + var(--space-2));
+
+  flex: 1;
+  min-inline-size: 0;
+}
+.poster-door__face {
+  display: flex;
   align-items: center;
   gap: 0.75rem;
-  min-height: var(--control-min-size);
-  padding: 0.65rem 1rem;
-  border: 2px solid var(--color-ink);
-  background: var(--color-surface-raised);
-  box-shadow: 4px 4px 0 var(--color-ink);
-  color: var(--color-ink);
-  text-decoration: none;
   span:nth-child(2) {
     display: grid;
+    flex: 1;
     gap: 0.1rem;
   }
   strong {
     font: 750 var(--text-body) / 1.2 var(--font-sans);
   }
   small {
-    color: var(--color-ink-muted);
     font: 500 var(--text-caption) / 1.2 var(--font-numeric);
     font-variant-numeric: tabular-nums;
   }
 }
-.poster-door:hover {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-on-strong-surface);
-  small {
-    color: var(--color-on-strong-surface);
+@media (hover: hover) and (pointer: fine) {
+  .poster-door:hover {
+    transform: translate(-2px, -2px);
   }
+  .poster-door:hover .poster-door__stamp {
+    --stamp-shadow: var(--shadow-offset-md);
+  }
+}
+.poster-door:focus-visible {
+  outline: var(--focus-width) solid var(--color-focus);
+  outline-offset: var(--focus-offset);
 }
 .poster-door__glyph {
   flex: none;
@@ -180,21 +191,17 @@ h1 .line + .line {
   }
   &--circle {
     border-radius: var(--radius-circle);
-    background: var(--color-accent);
+    background: currentcolor;
   }
   &--ring {
-    border: 3px solid var(--color-cartographic);
+    border: 3px solid currentcolor;
     border-radius: var(--radius-circle);
   }
   &--half {
     height: 0.45rem;
     border-radius: 0.9rem 0.9rem 0 0;
-    background: var(--color-ink);
+    background: currentcolor;
   }
-}
-.poster-door:hover .poster-door__glyph--circle,
-.poster-door:hover .poster-door__glyph--half {
-  background: currentcolor;
 }
 .console {
   display: grid;
@@ -203,8 +210,8 @@ h1 .line + .line {
   gap: 1rem clamp(1.5rem, 4vw, 4rem);
   align-items: end;
   padding: clamp(1.5rem, 3vw, 2.25rem) var(--home-inline);
-  background: var(--color-ink);
-  color: var(--color-canvas);
+  background: var(--surface-poster);
+  color: var(--text-on-poster);
 }
 form {
   display: grid;
@@ -212,7 +219,7 @@ form {
   align-items: end;
 }
 .console ::ng-deep .atlas-field label {
-  color: var(--color-canvas);
+  color: var(--text-on-poster);
   font: var(--text-small)/1.5 var(--font-mono);
 }
 .console ::ng-deep .atlas-field input {
@@ -1130,7 +1137,8 @@ form {
   }
   .poster-door {
     min-height: 3.5rem;
-    padding: 0.55rem 0.65rem;
+  }
+  .poster-door__face {
     gap: 0.5rem;
     small,
     .atlas-arrow {

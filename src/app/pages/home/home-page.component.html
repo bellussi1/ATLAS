@@ -18,12 +18,18 @@
         (focus)="doorMode.set('acervo')"
         (blur)="doorMode.set(null)"
       >
-        <span class="poster-door__glyph poster-door__glyph--square" aria-hidden="true"></span>
-        <span>
-          <strong>Explorar o acervo</strong>
-          <small>{{ format(stats.verbetes) }} fichas e {{ format(stats.sources) }} fontes</small>
-        </span>
-        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+        <app-stamp class="poster-door__stamp" tone="vermelho" shadow="sm">
+          <span class="poster-door__face">
+            <span class="poster-door__glyph poster-door__glyph--square" aria-hidden="true"></span>
+            <span>
+              <strong>Explorar o acervo</strong>
+              <small
+                >{{ format(stats.verbetes) }} fichas e {{ format(stats.sources) }} fontes</small
+              >
+            </span>
+            <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+          </span>
+        </app-stamp>
       </a>
       <a
         class="poster-door poster-door--grafo atlas-press"
@@ -33,12 +39,16 @@
         (focus)="doorMode.set('grafo')"
         (blur)="doorMode.set(null)"
       >
-        <span class="poster-door__glyph poster-door__glyph--circle" aria-hidden="true"></span>
-        <span>
-          <strong>Abrir o grafo</strong>
-          <small>{{ format(stats.links) }} ligações em rede</small>
-        </span>
-        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+        <app-stamp class="poster-door__stamp" tone="cal" shadow="sm">
+          <span class="poster-door__face">
+            <span class="poster-door__glyph poster-door__glyph--circle" aria-hidden="true"></span>
+            <span>
+              <strong>Abrir o grafo</strong>
+              <small>{{ format(stats.links) }} ligações em rede</small>
+            </span>
+            <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+          </span>
+        </app-stamp>
       </a>
       <a
         class="poster-door poster-door--mapa atlas-press"
@@ -48,12 +58,16 @@
         (focus)="doorMode.set('mapa')"
         (blur)="doorMode.set(null)"
       >
-        <span class="poster-door__glyph poster-door__glyph--ring" aria-hidden="true"></span>
-        <span>
-          <strong>Ver o mapa-múndi</strong>
-          <small>Países e impérios no tempo</small>
-        </span>
-        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+        <app-stamp class="poster-door__stamp" tone="mata" shadow="sm">
+          <span class="poster-door__face">
+            <span class="poster-door__glyph poster-door__glyph--ring" aria-hidden="true"></span>
+            <span>
+              <strong>Ver o mapa-múndi</strong>
+              <small>Países e impérios no tempo</small>
+            </span>
+            <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+          </span>
+        </app-stamp>
       </a>
       <a
         class="poster-door atlas-press"
@@ -63,12 +77,16 @@
         (focus)="doorMode.set('itinerarios')"
         (blur)="doorMode.set(null)"
       >
-        <span class="poster-door__glyph poster-door__glyph--half" aria-hidden="true"></span>
-        <span>
-          <strong>Seguir itinerários</strong>
-          <small>Roteiros passo a passo por perguntas</small>
-        </span>
-        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+        <app-stamp class="poster-door__stamp" tone="ocre" shadow="sm">
+          <span class="poster-door__face">
+            <span class="poster-door__glyph poster-door__glyph--half" aria-hidden="true"></span>
+            <span>
+              <strong>Seguir itinerários</strong>
+              <small>Roteiros passo a passo por perguntas</small>
+            </span>
+            <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+          </span>
+        </app-stamp>
       </a>
     </div>
   </div>
@@ -80,7 +98,7 @@
   />
 </section>
 
-<section class="console" aria-label="Busca e ferramentas" data-tone-section>
+<section class="console atlas-grain" aria-label="Busca e ferramentas" data-tone-section>
   <form role="search" aria-label="Busca no acervo" appReveal (submit)="search($event)">
     <app-text-field
       controlId="atlas-search"
