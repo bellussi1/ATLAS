@@ -74,7 +74,7 @@
   font: var(--text-caption)/1.4 var(--font-mono);
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .atlas-reading-chapter {
     scroll-margin-top: calc(var(--reading-bar-h, 9rem) + 0.5rem);
   }
