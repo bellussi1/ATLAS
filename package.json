@@ -65,6 +65,7 @@
     "preview": "node scripts/preview.mjs",
     "clean": "node scripts/clean.mjs",
     "check:links": "node scripts/check-links.mjs",
+    "perf": "node scripts/metrics/perf.mjs",
     "infra:switch-cdn": "node scripts/infra/switch-content-domain.mjs",
     "infra:content-worker": "npx --yes wrangler@latest deploy --config scripts/infra/content-delivery.wrangler.toml",
     "infra:raw-lifecycle": "node scripts/infra/raw-lifecycle.mjs",
