@@ -56,10 +56,6 @@
     <section class="contrast" aria-labelledby="contrast-title">
       <p class="eyebrow">Contraste mais claro</p>
       <h4 id="contrast-title">{{ c.axis.label }}</h4>
-      <p class="contrast-note">
-        Os dois registros se afastam neste eixo. A comparação usa a mesma escala do carrossel, com
-        as posições em palavras e a faixa de cada uma.
-      </p>
       <p class="contrast-poles">
         <span class="pole-low">{{ c.axis.low }}</span>
         <span class="sr-only">a</span>
@@ -124,7 +120,6 @@
     @for (row of rows(); track row.id) {
       <article class="entity carousel-item">
         <header class="entity-head">
-          <p class="entity-kicker">Registro</p>
           <h4>{{ row.title }}</h4>
           <p class="entity-meta">
             {{ row.evidence.length }}
