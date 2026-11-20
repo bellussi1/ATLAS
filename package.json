@@ -73,6 +73,7 @@
     "infra:pages": "node scripts/infra/pages-deploy.mjs",
     "infra:pages:check": "node scripts/infra/pages-deploy.mjs --dry-run",
     "release": "node scripts/release/release.mjs",
+    "infra:doctor": "node scripts/infra/doctor.mjs",
     "infra:backup-drafts": "node scripts/infra/backup-drafts.mjs",
     "infra:mirror-media": "node scripts/infra/mirror-media.mjs",
     "rag": "node scripts/rag-runner.mjs",
