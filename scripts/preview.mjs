@@ -4,6 +4,9 @@ import { extname, resolve, sep } from 'node:path';
 import { brotliCompressSync, gzipSync } from 'node:zlib';
 
 const root = resolve('dist/atlas/browser');
+// The app reads its content from /content on this port (see src/index.html): serve the pinned
+// release from the cache that content:fetch fills, as Pages serves it from R2 in production.
+const contentRoot = resolve('generated/content-cache');
 const port = Number(process.env.ATLAS_PREVIEW_PORT ?? 4305);
 
 // Mirrors the subset of `_headers` that Pages implements: path blocks, splats and placeholders.
@@ -69,8 +72,11 @@ const encode = (file, body) => {
 createServer(async (request, response) => {
   try {
     const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
-    let file = resolve(root, '.' + pathname);
-    if (file !== root && !file.startsWith(root + sep)) throw new Error('invalid path');
+    const isContent = pathname.startsWith('/content/');
+    const base = isContent ? contentRoot : root;
+    const relative = isContent ? pathname.slice('/content'.length) : pathname;
+    let file = resolve(base, '.' + relative);
+    if (file !== base && !file.startsWith(base + sep)) throw new Error('invalid path');
     if ((await stat(file)).isDirectory()) file = resolve(file, 'index.html');
     const body = await readFile(file);
     const type = types[extname(file)] ?? 'application/octet-stream';
