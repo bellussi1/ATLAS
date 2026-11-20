@@ -45,6 +45,7 @@ import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geome
 import { AtlasKindIconComponent, iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 import { AtlasPaginationComponent } from '@shared/ui/pagination/pagination.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
+import { AtlasStampComponent } from '@shared/ui/stamp/stamp.component';
 
 @Component({
   selector: 'app-explorer',
@@ -55,6 +56,7 @@ import { RecordCardComponent } from '@shared/ui/record-card/record-card.componen
     AtlasKindIconComponent,
     AtlasPaginationComponent,
     RecordCardComponent,
+    AtlasStampComponent,
   ],
   templateUrl: './explorer.component.html',
   styleUrl: './explorer.component.scss',

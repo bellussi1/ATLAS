@@ -52,23 +52,32 @@ h1 {
 .graph-entry {
   width: fit-content;
   min-block-size: 2.75rem;
+  display: flex;
+  margin-block-start: 0.35rem;
+  color: inherit;
+  font: 650 var(--text-small) / 1.3 var(--font-sans);
+  text-decoration: none;
+  transition: transform var(--motion-fast) var(--ease-out);
+}
+
+.graph-entry__stamp {
+  --stamp-padding: calc(var(--perforation-size) + 0.15rem)
+    calc(var(--perforation-size) + var(--space-2));
+}
+
+.graph-entry__face {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-block-start: 0.35rem;
-  padding: 0.45rem 0.9rem;
-  border: 2px solid var(--color-ink);
-  background: var(--color-canvas);
-  box-shadow: var(--shadow-offset-sm) var(--color-ink);
-  color: var(--color-ink);
-  font: 650 var(--text-small) / 1.3 var(--font-sans);
-  text-decoration: none;
 }
 
-.graph-entry:hover {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-on-strong-surface);
+@media (hover: hover) and (pointer: fine) {
+  .graph-entry:hover {
+    transform: translate(-2px, -2px);
+  }
+  .graph-entry:hover .graph-entry__stamp {
+    --stamp-shadow: var(--shadow-offset-md);
+  }
 }
 
 .graph-entry__glyph {
@@ -76,10 +85,6 @@ h1 {
   inline-size: 0.7rem;
   block-size: 0.7rem;
   border-radius: var(--radius-circle);
-  background: var(--color-accent);
-}
-
-.graph-entry:hover .graph-entry__glyph {
   background: currentcolor;
 }
 
@@ -304,14 +309,14 @@ h1 {
   gap: 0.55rem;
   padding: 1.15rem 1.25rem 1rem;
   border: 2px solid var(--color-ink);
-  box-shadow: 6px 6px 0 var(--color-ochre-paper);
-  background: var(--color-ink);
-  color: var(--color-canvas);
+  box-shadow: 6px 6px 0 var(--mosaic-ochre);
+  background: var(--surface-poster);
+  color: var(--text-on-poster);
   text-align: center;
 }
 
 .search-band > label {
-  color: var(--color-canvas);
+  color: var(--text-on-poster);
   font: 650 var(--text-caption) / 1.3 var(--font-mono);
   letter-spacing: 0.06em;
   text-transform: uppercase;

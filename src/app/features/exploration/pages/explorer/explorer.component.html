@@ -4,15 +4,23 @@
       <h1 id="explorer-title">{{ catalogue.title }}</h1>
       <p>{{ catalogue.description }}</p>
       <a class="graph-entry atlas-press" routerLink="/grafos">
-        <span class="graph-entry__glyph" aria-hidden="true"></span>
-        Ver o acervo como rede, em tela cheia
-        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+        <app-stamp class="graph-entry__stamp" tone="cal" shadow="sm">
+          <span class="graph-entry__face">
+            <span class="graph-entry__glyph" aria-hidden="true"></span>
+            Ver o acervo como rede, em tela cheia
+            <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+          </span>
+        </app-stamp>
       </a>
       @if (showMapEntry) {
         <a class="graph-entry atlas-press" routerLink="/mapa">
-          <span class="graph-entry__glyph" aria-hidden="true"></span>
-          Explorar territórios e regimes no mapa-múndi
-          <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+          <app-stamp class="graph-entry__stamp" tone="mata" shadow="sm">
+            <span class="graph-entry__face">
+              <span class="graph-entry__glyph" aria-hidden="true"></span>
+              Explorar territórios e regimes no mapa-múndi
+              <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+            </span>
+          </app-stamp>
         </a>
       }
     </div>
@@ -181,7 +189,7 @@
 
     <div class="archive-main">
       <form
-        class="search-band"
+        class="search-band atlas-grain"
         role="search"
         aria-label="Busca no acervo"
         (submit)="submitSearch($event)"

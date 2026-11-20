@@ -81,15 +81,8 @@
   color: var(--color-ink);
 }
 
-.itinerary__seal-pill {
-  padding: 0.25rem 0.55rem;
-  border: 1.5px solid var(--color-ink);
-  background: var(--color-surface-raised);
-  color: var(--color-ink);
-  &.is-verified {
-    background: var(--color-ink);
-    color: var(--color-canvas);
-  }
+.itinerary__seal {
+  margin-inline-start: var(--space-1);
 }
 
 .itinerary__head h1 {
@@ -392,31 +385,19 @@
   min-inline-size: 0;
 }
 
+/* Each stop is a stamp on paper; the active one lifts with a red shadow. */
 .stop {
-  padding: 1.35rem 1.5rem;
-  border: 2.5px solid var(--color-ink);
-  border-top-width: 6px;
-  border-top-color: var(--color-indigo);
-  background: var(--color-surface-raised);
-  box-shadow: var(--shadow-offset-md) var(--color-ink);
-  transition:
-    transform var(--motion-fast) var(--ease-out),
-    box-shadow var(--motion-fast) var(--ease-out),
-    background-color var(--motion-fast);
-  &[data-type='verbete'] {
-    border-top-color: var(--color-ochre-strong);
-  }
-  &[data-type='grafo'] {
-    border-top-color: var(--color-cartographic);
-  }
-  &[data-type='catalogo'] {
-    border-top-color: var(--color-accent);
-  }
+  transition: transform var(--motion-fast) var(--ease-out);
   &.is-active {
-    background: var(--color-canvas);
-    box-shadow: var(--shadow-offset-lg) var(--color-accent);
     transform: translate(-2px, -2px);
   }
+}
+.stop__stamp {
+  --stamp-padding: calc(var(--perforation-size) + 0.75rem) calc(var(--perforation-size) + 0.9rem);
+}
+.stop.is-active .stop__stamp {
+  --stamp-shadow: var(--shadow-offset-lg);
+  --stamp-shadow-color: var(--color-accent);
 }
 
 .stop__top {

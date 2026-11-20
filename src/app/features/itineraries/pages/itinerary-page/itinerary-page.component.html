@@ -16,9 +16,11 @@
           @if (item.branches.length) {
             <span class="itinerary__count-pill">{{ item.branches.length }} ramos</span>
           }
-          <span class="itinerary__seal-pill" [class.is-verified]="item.status === 'verified'">
-            {{ item.status === 'verified' ? 'Verificado' : 'Conferido por IA' }}
-          </span>
+          <app-seal
+            class="itinerary__seal"
+            [label]="item.status === 'verified' ? 'Verificado' : 'Conferido por IA'"
+            [tone]="item.status === 'verified' ? 'mata' : 'neutral'"
+          />
         </p>
         <h1 id="itinerary-title">{{ item.title }}</h1>
         <p class="itinerary__question">{{ item.question }}</p>
@@ -206,102 +208,106 @@
                   [attr.data-type]="stop.destination.type"
                   [class.is-active]="activeStop()?.id === stop.id"
                 >
-                  <div class="stop__top">
-                    <p class="stop__kicker">
-                      <span class="stop__badge" [attr.data-type]="stop.destination.type">
-                        <span
-                          class="stop__shape"
-                          [attr.data-shape]="nodeShape(stop.destination.type)"
-                          aria-hidden="true"
-                        ></span>
-                        {{ dest.kindLabel }}
-                      </span>
-                      <span>Parada {{ i + 1 }} de {{ item.stops.length }}</span>
-                    </p>
-                    <button
-                      type="button"
-                      class="stop__focus-btn"
-                      [attr.aria-pressed]="activeStop()?.id === stop.id"
-                      (click)="selectStop(stop.id, false)"
-                    >
-                      {{ activeStop()?.id === stop.id ? 'Em foco na mesa' : 'Focar na mesa' }}
-                    </button>
-                  </div>
-
-                  <h2>{{ stop.title }}</h2>
-                  <p class="stop__reason">{{ stop.reason }}</p>
-
-                  @if (stop.justification) {
-                    <p class="stop__justification">
-                      <strong>Por que vem aqui:</strong> {{ stop.justification }}
-                    </p>
-                  }
-
-                  <p class="stop__question"><strong>Pergunta-guia:</strong> {{ stop.question }}</p>
-
-                  @if (ctx) {
-                    <div class="stop__context-box">
-                      <p class="stop__context-meta">
-                        Ficha no acervo · {{ ctx.relationCount }}
-                        {{ ctx.relationCount === 1 ? 'ligação' : 'ligações' }} em rede
+                  <app-stamp class="stop__stamp" tone="cal">
+                    <div class="stop__top">
+                      <p class="stop__kicker">
+                        <span class="stop__badge" [attr.data-type]="stop.destination.type">
+                          <span
+                            class="stop__shape"
+                            [attr.data-shape]="nodeShape(stop.destination.type)"
+                            aria-hidden="true"
+                          ></span>
+                          {{ dest.kindLabel }}
+                        </span>
+                        <span>Parada {{ i + 1 }} de {{ item.stops.length }}</span>
                       </p>
-                      <p class="stop__context-summary">{{ ctx.summary }}</p>
-                      @if (ctx.claims.length) {
-                        <ul class="stop__claims" aria-label="Registros documentados da ficha">
-                          @for (claim of ctx.claims; track $index) {
-                            <li>{{ claim }}</li>
-                          }
-                        </ul>
-                      }
-                      @if (ctx.neighbors.length) {
-                        <div class="stop__neighbors">
-                          <span class="stop__neighbors-label">Conexões no grafo:</span>
-                          @for (neighbor of ctx.neighbors; track neighbor.slug) {
-                            <a class="neighbor-chip" [routerLink]="['/verbete', neighbor.slug]">
-                              <small>{{ neighbor.label }}</small>
-                              <span>{{ neighbor.title }}</span>
-                            </a>
-                          }
-                        </div>
-                      }
-                    </div>
-                  }
-
-                  @if (stop.sourceIds?.length) {
-                    <ul class="stop__sources" aria-label="Fontes desta parada">
-                      @for (sid of stop.sourceIds; track sid) {
-                        @if (sourceById().get(sid); as src) {
-                          <li>{{ src.title }}</li>
-                        }
-                      }
-                    </ul>
-                  }
-
-                  <div class="stop__actions">
-                    <a
-                      class="stop__link atlas-press"
-                      [routerLink]="dest.commands"
-                      [queryParams]="dest.queryParams"
-                      [fragment]="dest.fragment"
-                    >
-                      Abrir {{ dest.kindLabel }} <span aria-hidden="true">→</span>
-                    </a>
-                    @if (entityId) {
                       <button
                         type="button"
-                        class="stop__preview atlas-press"
-                        (click)="openContext(entityId, $event)"
+                        class="stop__focus-btn"
+                        [attr.aria-pressed]="activeStop()?.id === stop.id"
+                        (click)="selectStop(stop.id, false)"
                       >
-                        Prévia da ficha
+                        {{ activeStop()?.id === stop.id ? 'Em foco na mesa' : 'Focar na mesa' }}
                       </button>
-                    }
-                  </div>
+                    </div>
 
-                  @if (stop.coverage && stop.coverage !== 'complete' && stop.gap) {
-                    <p class="stop__gap" role="note">
-                      <strong>Lacuna registrada:</strong> {{ stop.gap }}
+                    <h2>{{ stop.title }}</h2>
+                    <p class="stop__reason">{{ stop.reason }}</p>
+
+                    @if (stop.justification) {
+                      <p class="stop__justification">
+                        <strong>Por que vem aqui:</strong> {{ stop.justification }}
+                      </p>
+                    }
+
+                    <p class="stop__question">
+                      <strong>Pergunta-guia:</strong> {{ stop.question }}
                     </p>
-                  }
+
+                    @if (ctx) {
+                      <div class="stop__context-box">
+                        <p class="stop__context-meta">
+                          Ficha no acervo · {{ ctx.relationCount }}
+                          {{ ctx.relationCount === 1 ? 'ligação' : 'ligações' }} em rede
+                        </p>
+                        <p class="stop__context-summary">{{ ctx.summary }}</p>
+                        @if (ctx.claims.length) {
+                          <ul class="stop__claims" aria-label="Registros documentados da ficha">
+                            @for (claim of ctx.claims; track $index) {
+                              <li>{{ claim }}</li>
+                            }
+                          </ul>
+                        }
+                        @if (ctx.neighbors.length) {
+                          <div class="stop__neighbors">
+                            <span class="stop__neighbors-label">Conexões no grafo:</span>
+                            @for (neighbor of ctx.neighbors; track neighbor.slug) {
+                              <a class="neighbor-chip" [routerLink]="['/verbete', neighbor.slug]">
+                                <small>{{ neighbor.label }}</small>
+                                <span>{{ neighbor.title }}</span>
+                              </a>
+                            }
+                          </div>
+                        }
+                      </div>
+                    }
+
+                    @if (stop.sourceIds?.length) {
+                      <ul class="stop__sources" aria-label="Fontes desta parada">
+                        @for (sid of stop.sourceIds; track sid) {
+                          @if (sourceById().get(sid); as src) {
+                            <li>{{ src.title }}</li>
+                          }
+                        }
+                      </ul>
+                    }
+
+                    <div class="stop__actions">
+                      <a
+                        class="stop__link atlas-press"
+                        [routerLink]="dest.commands"
+                        [queryParams]="dest.queryParams"
+                        [fragment]="dest.fragment"
+                      >
+                        Abrir {{ dest.kindLabel }} <span aria-hidden="true">→</span>
+                      </a>
+                      @if (entityId) {
+                        <button
+                          type="button"
+                          class="stop__preview atlas-press"
+                          (click)="openContext(entityId, $event)"
+                        >
+                          Prévia da ficha
+                        </button>
+                      }
+                    </div>
+
+                    @if (stop.coverage && stop.coverage !== 'complete' && stop.gap) {
+                      <p class="stop__gap" role="note">
+                        <strong>Lacuna registrada:</strong> {{ stop.gap }}
+                      </p>
+                    }
+                  </app-stamp>
                 </div>
 
                 @if (branchesByStop().get(stop.id); as branches) {

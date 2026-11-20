@@ -33,6 +33,8 @@ import {
   ContextPanelService,
 } from '@shared/ui/knowledge-context/context-panel.service';
 import { NotFoundMessageComponent } from '@shared/ui/not-found-message/not-found-message.component';
+import { AtlasSealComponent } from '@shared/ui/seal/seal.component';
+import { AtlasStampComponent } from '@shared/ui/stamp/stamp.component';
 import { catchError, from, map, of, switchMap } from 'rxjs';
 
 const KIND_PALETTES: Record<ItineraryKind, MosaicPalette> = {
@@ -80,7 +82,13 @@ interface DiagramBranchArc {
 
 @Component({
   selector: 'app-itinerary-page',
-  imports: [RouterLink, NotFoundMessageComponent, AtlasGeometricMosaicComponent],
+  imports: [
+    RouterLink,
+    NotFoundMessageComponent,
+    AtlasGeometricMosaicComponent,
+    AtlasSealComponent,
+    AtlasStampComponent,
+  ],
   templateUrl: './itinerary-page.component.html',
   styleUrl: './itinerary-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
