@@ -53,7 +53,9 @@ Pedido: entender o uso, ler o contexto do que está selecionado e cuidar do celu
 | No celular a mesa cobria 62% da tela e o globo ficava espremido sem forma de alternar.                                 | **Folha inferior** com dois estados: curta (42%, nome, resumo e ações) com o território visível acima, e erguida ("Ler a ficha inteira" / "Voltar ao globo", com alça). Uma nova seleção volta ao estado curto. No guia inicial, territórios e períodos vêm antes do glossário.                                                                                                                          |
 | Caracteres como ícone (× − + ⤢ ‹ › → ↗) em grafo, mapa e mesa, inclusive no `content:` dos marcadores.                 | `app-icon` (Lucide) nos botões e links; marcadores de `details` com a máscara `--icon-mask-chevron-down`, girando ao abrir. Nas listas de atalhos, setas viraram "Setas" e o menos é o hífen da tecla.                                                                                                                                                                                                   |
 
-Fica para depois: restaurar o marco ativo a partir da URL (hoje um link com `anoDe`/`anoAte` reabre o território, mas não o bloco do marco) e manter a barra de marcos acessível no celular enquanto a folha está aberta.
+Terceira rodada (20/11): o marco volta pela URL (`entidade` + período `anoDe`/`anoAte` ou `ano`, quando o período é de um ano só) e abre o bloco do marco; no celular, o bloco tem setas anterior e próximo, então a régua não é necessária com a folha erguida ou recolhida.
+
+Fica para depois: decidir a paleta das famílias (vermelho e verdes ainda dominantes) e revisar os dois "Brasil" nos dados, que são de conteúdo.
 
 ## Melhorar (próximas etapas)
 

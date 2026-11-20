@@ -1686,6 +1686,16 @@ export class WorldMapPageComponent {
 
       const paisSlug = params.get('pais');
       const entidadeSlug = params.get('entidade');
+      // A timeline marker is shared as its record slug plus the marker's own period: restore it as active.
+      const marco = entidadeSlug
+        ? this.model.hotpoints.find(
+            (hp) =>
+              hp.slug === entidadeSlug &&
+              hp.yearFrom === (anoDe ?? ano) &&
+              hp.yearTo === (anoAte ?? ano),
+          )
+        : undefined;
+      this.activeHotpointId.set(marco?.id ?? null);
       if (paisSlug) {
         const territory = this.territoryBySlug.get(paisSlug);
         if (territory) {

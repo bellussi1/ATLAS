@@ -102,6 +102,8 @@ export class MapStudyDeskComponent {
   readonly selectTerritory = output<string>();
   readonly selectConnection = output<string>();
   readonly hoverConnection = output<string | null>();
+  /** Previous or next timeline marker, so the sheet on a phone can walk the marks without the dock. */
+  readonly stepMarco = output<-1 | 1>();
 
   readonly showAllRecords = linkedSignal({
     source: () => this.territoryEntry()?.territory.id,

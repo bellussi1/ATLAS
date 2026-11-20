@@ -100,9 +100,27 @@
         <span class="desk-marco__year">{{ hp.label }}</span>
         <span>Marco na linha do tempo</span>
       </p>
-      <h3 id="desk-marco-title">
-        <a [routerLink]="['/verbete', hp.slug]">{{ hp.title }}</a>
-      </h3>
+      <div class="desk-marco__head">
+        <button
+          type="button"
+          class="desk-marco__step"
+          aria-label="Marco anterior"
+          (click)="stepMarco.emit(-1)"
+        >
+          <app-icon name="chevron-left" />
+        </button>
+        <h3 id="desk-marco-title">
+          <a [routerLink]="['/verbete', hp.slug]">{{ hp.title }}</a>
+        </h3>
+        <button
+          type="button"
+          class="desk-marco__step"
+          aria-label="Próximo marco"
+          (click)="stepMarco.emit(1)"
+        >
+          <app-icon name="chevron-right" />
+        </button>
+      </div>
       @if (hotpointRecord(); as rec) {
         @if (rec.lead) {
           <p class="desk-marco__what">{{ rec.lead }}</p>
