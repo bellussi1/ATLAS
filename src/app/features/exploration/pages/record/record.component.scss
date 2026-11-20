@@ -68,7 +68,8 @@ header.hero {
 .hero-media figure {
   margin: 0;
 }
-.hero-media app-licensed-asset {
+.hero-media app-licensed-asset,
+.hero-media app-halftone-figure {
   --asset-height: clamp(16rem, 32vw, 24rem);
   --asset-width: 100%;
   --asset-fit: cover;
@@ -419,4 +420,9 @@ small {
     flex-basis: 4.5rem;
     padding-inline: 0.5rem;
   }
+}
+
+.record-seal {
+  margin-inline-start: var(--space-2);
+  vertical-align: middle;
 }

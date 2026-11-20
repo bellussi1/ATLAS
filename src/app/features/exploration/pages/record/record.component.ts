@@ -20,9 +20,11 @@ import { EntityProfileComponent } from '@exploration/components/entity-profile/e
 import { AtlasClaimReferencesComponent } from '@shared/ui/claim-references/claim-references.component';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
 import { illustrationPalette } from '@shared/ui/geometric-illustration/illustration';
+import { AtlasHalftoneFigureComponent } from '@shared/ui/halftone-figure/halftone-figure.component';
 import { AtlasLicensedAssetComponent } from '@shared/ui/licensed-asset/licensed-asset.component';
 import { NotFoundMessageComponent } from '@shared/ui/not-found-message/not-found-message.component';
 import { RelationEntryComponent } from '@shared/ui/relation-entry/relation-entry.component';
+import { AtlasSealComponent } from '@shared/ui/seal/seal.component';
 
 @Component({
   selector: 'app-record',
@@ -30,6 +32,8 @@ import { RelationEntryComponent } from '@shared/ui/relation-entry/relation-entry
     AtlasGeometricIllustrationComponent,
     RouterLink,
     AtlasLicensedAssetComponent,
+    AtlasHalftoneFigureComponent,
+    AtlasSealComponent,
     AtlasClaimReferencesComponent,
     EntityProfileComponent,
     NotFoundMessageComponent,

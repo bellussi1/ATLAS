@@ -33,7 +33,12 @@
       [class.hero--flag]="isFlag()"
     >
       <div class="hero-text">
-        <p class="record-meta">{{ entry()?.kindLabel }} · {{ seal() }}</p>
+        <p class="record-meta">
+          {{ entry()?.kindLabel }}
+          @if (seal()) {
+            <app-seal class="record-seal" [label]="seal()" />
+          }
+        </p>
         <h1 [attr.lang]="presentation()?.locale">{{ entity.title }}</h1>
         @if (entity.discoveryMetadata?.description; as descriptor) {
           <p class="descriptor">{{ descriptor }}</p>
@@ -82,11 +87,21 @@
       @if (context()?.media; as media) {
         <div class="hero-media">
           @if (atlas(); as atlas) {
-            <app-licensed-asset
-              [atlas]="atlas"
-              [assetPath]="media.assetPath"
-              [alt]="'Imagem associada a ' + entity.title"
-            />
+            @if (entity.kind === 'person') {
+              <!-- People get the poster portrait; flags and documents stay untouched. -->
+              <app-halftone-figure
+                [atlas]="atlas"
+                [assetPath]="media.assetPath"
+                [alt]="'Imagem associada a ' + entity.title"
+                tone="rosa"
+              />
+            } @else {
+              <app-licensed-asset
+                [atlas]="atlas"
+                [assetPath]="media.assetPath"
+                [alt]="'Imagem associada a ' + entity.title"
+              />
+            }
           }
         </div>
       } @else if (illustration(); as art) {
