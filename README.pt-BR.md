@@ -20,7 +20,12 @@
 </p>
 
 <p align="center">
-  <a href="https://atlas-bellussi.pages.dev">atlas-bellussi.pages.dev</a>
+  <a href="https://atlas-bellussi.pages.dev">atlas-bellussi.pages.dev</a> ·
+  <a href="README.md">English</a>
+</p>
+
+<p align="center">
+  <a href="https://atlas-bellussi.pages.dev"><img src="docs/readme/atlas-home.webp" alt="Página inicial do ATLAS: a chamada &quot;Tudo se liga&quot; ao lado de uma composição geométrica." width="100%" /></a>
 </p>
 
 ---
