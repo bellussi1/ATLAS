@@ -82,7 +82,9 @@ createServer(async (request, response) => {
     const type = types[extname(file)] ?? 'application/octet-stream';
     const common = { ...headersFor(pathname), 'Content-Type': type };
     const accepts = request.headers['accept-encoding'] ?? '';
-    const canCompress = compressible.has(extname(file)) && body.length > 1024;
+    // Release objects are served as stored, as R2 does; brotli on a multi-megabyte bundle takes
+    // tens of seconds and stalls the first navigation that waits for it.
+    const canCompress = !isContent && compressible.has(extname(file)) && body.length > 1024;
     const encoding = !canCompress
       ? ''
       : /\bbr\b/.test(accepts)
