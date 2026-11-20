@@ -107,14 +107,15 @@
 .reading-card {
   position: relative;
   display: flex;
-  flex-direction: column;
-  border: 2px solid var(--color-ink);
-  background: var(--color-surface-raised);
-  box-shadow: 4px 4px 0 var(--color-ink);
   cursor: pointer;
-  transition:
-    transform var(--motion-fast) var(--ease-out),
-    box-shadow var(--motion-fast) var(--ease-out);
+  transition: transform var(--motion-fast) var(--ease-out);
+}
+/* A paper stamp with the mosaic inset inside the perforated margin, like a printed stamp. */
+.reading-card__stamp {
+  --stamp-padding: var(--perforation-size);
+
+  flex: 1;
+  min-inline-size: 0;
 }
 /* The title link covers the whole card, so any point of it opens the reading. */
 .reading-card__title a::after {
@@ -125,7 +126,11 @@
 .reading-card:hover,
 .reading-card:focus-within {
   transform: translate(-2px, -2px);
-  box-shadow: 7px 7px 0 var(--color-accent);
+}
+.reading-card:hover .reading-card__stamp,
+.reading-card:focus-within .reading-card__stamp {
+  --stamp-shadow: var(--shadow-offset-lg);
+  --stamp-shadow-color: var(--color-accent);
 }
 .reading-card:focus-within {
   outline: 3px solid var(--color-focus, var(--color-accent));
@@ -149,7 +154,7 @@
 }
 
 .reading-card__stripe {
-  border-bottom: 2px solid var(--color-ink);
+  border: 2px solid var(--color-ink);
   aspect-ratio: 5 / 1;
   overflow: hidden;
 }
@@ -159,7 +164,7 @@
   flex: 1 1 auto;
   flex-direction: column;
   gap: 0.6rem;
-  padding: 1.25rem 1.35rem;
+  padding: 1rem 0.6rem 0.6rem;
 }
 
 .reading-card__meta {

@@ -19,6 +19,7 @@ import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geome
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
 import { AtlasPaginationComponent } from '@shared/ui/pagination/pagination.component';
 import { AtlasSealComponent } from '@shared/ui/seal/seal.component';
+import { AtlasStampComponent } from '@shared/ui/stamp/stamp.component';
 import { AtlasTextFieldComponent } from '@shared/ui/text-field/text-field.component';
 
 import homeStats from '../../../../../../generated/home-stats.json';
@@ -55,6 +56,7 @@ const compiledStats = homeStats as { readings: ReadingCard[] };
     AtlasChevronComponent,
     AtlasPaginationComponent,
     AtlasSealComponent,
+    AtlasStampComponent,
   ],
   templateUrl: './readings-index.component.html',
   styleUrl: './readings-index.component.scss',

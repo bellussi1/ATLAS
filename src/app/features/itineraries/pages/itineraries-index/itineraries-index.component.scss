@@ -146,34 +146,18 @@
 
 .itinerary-card {
   position: relative;
+  display: flex;
   cursor: pointer;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  align-content: start;
-  gap: 1.25rem;
-  padding: 1.5rem;
-  border: 2.5px solid var(--color-ink);
-  border-top-width: 7px;
-  border-top-color: var(--color-accent);
-  background: var(--color-surface-raised);
-  box-shadow: 7px 7px 0 var(--color-ink);
-  transition:
-    transform var(--motion-fast) var(--ease-out),
-    box-shadow var(--motion-fast) var(--ease-out);
+  transition: transform var(--motion-fast) var(--ease-out);
   animation: card-enter 360ms var(--ease-out) both;
-  &[data-kind='comparativo'] {
-    border-top-color: var(--color-indigo);
-  }
-  &[data-kind='conceitual'] {
-    border-top-color: var(--color-cartographic);
-  }
-  &[data-kind='institucional'] {
-    border-top-color: var(--color-archive);
-  }
   &:hover,
   &:focus-within {
     transform: translate(-3px, -3px);
-    box-shadow: 10px 10px 0 var(--color-accent);
+  }
+  &:hover .itinerary-card__stamp,
+  &:focus-within .itinerary-card__stamp {
+    --stamp-shadow: var(--shadow-offset-lg);
+    --stamp-shadow-color: var(--color-accent);
   }
   &:focus-within {
     outline: 3px solid var(--color-accent);
@@ -188,6 +172,17 @@
   &:focus-within .itinerary-card__arrow {
     translate: 4px 0;
   }
+}
+/* Paper stamp; the content keeps the card grid inside the perforated margin. */
+.itinerary-card__stamp {
+  flex: 1;
+  min-inline-size: 0;
+}
+.itinerary-card__face {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 1.25rem;
 }
 /* The title link covers the whole card, so any point of it opens the itinerary. */
 .itinerary-card h2 a::after {

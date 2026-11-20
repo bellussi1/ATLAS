@@ -27,6 +27,7 @@ import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geome
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
 import { AtlasPaginationComponent } from '@shared/ui/pagination/pagination.component';
 import { AtlasSealComponent } from '@shared/ui/seal/seal.component';
+import { AtlasStampComponent } from '@shared/ui/stamp/stamp.component';
 import { from } from 'rxjs';
 
 /** Two rows of two cards. */
@@ -46,6 +47,7 @@ const KIND_PALETTES: Record<ItineraryKind, MosaicPalette> = {
     AtlasGeometricMosaicComponent,
     AtlasPaginationComponent,
     AtlasSealComponent,
+    AtlasStampComponent,
   ],
   templateUrl: './itineraries-index.component.html',
   styleUrl: './itineraries-index.component.scss',

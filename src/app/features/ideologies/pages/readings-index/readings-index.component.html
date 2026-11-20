@@ -72,37 +72,39 @@
     <ol class="readings-index__grid">
       @for (item of paged().items; track item.slug) {
         <li class="reading-card" [attr.data-palette]="item.palette">
-          <div class="reading-card__stripe" aria-hidden="true">
-            <app-geometric-mosaic
-              [columns]="5"
-              [rows]="1"
-              [palette]="item.palette"
-              [seed]="item.seed"
-            />
-          </div>
-          <div class="reading-card__body">
-            <p class="reading-card__meta">
-              <app-seal
-                class="reading-card__status"
-                [label]="item.statusLabel"
-                [tone]="isDraft(item) ? 'neutral' : 'accent'"
+          <app-stamp class="reading-card__stamp" tone="cal">
+            <div class="reading-card__stripe" aria-hidden="true">
+              <app-geometric-mosaic
+                [columns]="5"
+                [rows]="1"
+                [palette]="item.palette"
+                [seed]="item.seed"
               />
-              @if (item.minutes) {
-                <span>{{ item.minutes }} min</span>
-              }
-              @if (item.chapters) {
-                <span>{{ item.completeChapters ?? item.chapters }}/{{ item.chapters }} cap.</span>
-              }
-            </p>
-            <h2 class="reading-card__title">
-              <a [routerLink]="entryPath(item.slug)">{{ item.title }}</a>
-            </h2>
-            <p class="reading-card__tagline">{{ item.tagline }}</p>
-            <p class="reading-card__summary">{{ item.summary }}</p>
-            <span class="reading-card__cta" aria-hidden="true">
-              Abrir leitura <app-chevron />
-            </span>
-          </div>
+            </div>
+            <div class="reading-card__body">
+              <p class="reading-card__meta">
+                <app-seal
+                  class="reading-card__status"
+                  [label]="item.statusLabel"
+                  [tone]="isDraft(item) ? 'neutral' : 'accent'"
+                />
+                @if (item.minutes) {
+                  <span>{{ item.minutes }} min</span>
+                }
+                @if (item.chapters) {
+                  <span>{{ item.completeChapters ?? item.chapters }}/{{ item.chapters }} cap.</span>
+                }
+              </p>
+              <h2 class="reading-card__title">
+                <a [routerLink]="entryPath(item.slug)">{{ item.title }}</a>
+              </h2>
+              <p class="reading-card__tagline">{{ item.tagline }}</p>
+              <p class="reading-card__summary">{{ item.summary }}</p>
+              <span class="reading-card__cta" aria-hidden="true">
+                Abrir leitura <app-chevron />
+              </span>
+            </div>
+          </app-stamp>
         </li>
       }
     </ol>
