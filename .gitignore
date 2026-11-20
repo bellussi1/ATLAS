@@ -47,8 +47,12 @@ testem.log
 /typings
 __screenshots__/
 
-# Conteúdo de trabalho social (posts, imagens e pauta): fica local, fora do repositório público
-docs/social/
+# Conteúdo de trabalho social (posts, imagens e pauta): fica local, fora do repositório público.
+# Os scripts de automação são versionados; posts, imagens e calendário continuam locais.
+docs/social/**
+!docs/social/
+!docs/social/linkedin/
+!docs/social/linkedin/*.mjs
 
 # System files
 .DS_Store
@@ -73,3 +77,10 @@ experiments/rag/.pytest_cache/
 __pycache__/
 *.pyc
 *.egg-info/
+
+# Saída das execuções de enriquecimento e avaliação (regenerável).
+experiments/rag/eval/queues/
+experiments/rag/eval/runs/
+
+# Referências visuais de terceiros guardadas só localmente (repositório público)
+.agents/skills/atlas-editorial-geometrico/references/feira-afro/

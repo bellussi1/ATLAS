@@ -1,172 +1,197 @@
 :host([hidden]) {
   display: none;
 }
+
+/* The native button or link only carries layout, focus and motion; the stamp is the paper. */
 :host {
-  text-decoration: none;
-  --tab: var(--desk-line, var(--color-desk-line));
+  position: relative;
+  display: flex;
   width: 100%;
   height: 100%;
   min-height: 7.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  transition: transform var(--motion-fast) var(--ease-out);
+}
+
+.card-stamp {
+  --stamp-padding: calc(var(--perforation-size) + var(--space-2));
+
+  flex: 1;
+  min-width: 0;
+}
+
+.card-body {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-1);
-  text-align: left;
-  background: var(--desk-card, var(--color-desk-card));
+  height: 100%;
+}
+
+/* Text takes the stamp ink (ink, or paper on red and jenipapo); hierarchy comes from size and weight. */
+small,
+strong {
+  max-width: calc(100% - 2.6rem);
+}
+
+small {
+  font: var(--text-caption) var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+strong {
+  font: 700 var(--text-body) / 1.2 var(--font-sans);
+  text-wrap: balance;
+}
+
+/* Light paper for the text, a pigment band for the family: contrast stays high on every colour. */
+.card-kind {
+  --kind-icon-size: 0.95rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.card-band {
+  align-self: stretch;
+  max-width: none;
+  margin: 0 0 var(--space-1);
+  padding: 0.35rem 3.4rem 0.35rem 0.5rem;
+  background: var(--band);
+  color: var(--band-ink);
+}
+.card-body {
+  --band: var(--surface-stamp-ocre);
+  --band-ink: var(--text-on-stamp);
+}
+.card-body[data-band='rosa'] {
+  --band: var(--surface-stamp-rosa);
+}
+.card-body[data-band='mata'] {
+  --band: var(--surface-stamp-mata);
+}
+.card-body[data-band='urucum'] {
+  --band: var(--surface-stamp-urucum);
+}
+.card-body[data-band='jenipapo'] {
+  --band: var(--surface-stamp-jenipapo);
+  --band-ink: var(--text-on-stamp-jenipapo);
+}
+.card-body[data-band='vermelho'] {
+  --band: var(--surface-stamp-vermelho);
+  --band-ink: var(--text-on-stamp-vermelho);
+}
+
+.card-period {
+  margin-top: auto;
+  font: var(--text-caption) var(--font-mono);
+}
+
+.card-links {
+  width: 100%;
+  padding-top: var(--space-1);
+  border-top: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+  font: var(--text-caption) var(--font-mono);
+}
+
+/* Corner glyph on a paper disc, so it reads on every stamp colour. */
+.card-glyph {
+  --kind-icon-size: 1.5rem;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: content-box;
+  padding: 0.4rem;
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-circle);
+  background: var(--color-canvas);
   color: var(--color-ink);
-  border: 0;
-  border-top: 6px solid var(--tab);
-  padding: var(--space-3);
-  box-shadow: 0 6px 16px #0007;
-  transition: transform var(--motion-fast) var(--ease-out);
-  small,
-  strong {
-    max-width: calc(100% - 2.6rem);
-  }
-  small {
-    font: var(--text-caption) var(--font-mono);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-ink-muted);
-  }
-  strong {
-    color: var(--color-ink);
-    font: 700 var(--text-body)/1.2 var(--font-sans);
-    text-wrap: balance;
-  }
-  .card-kind {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    --kind-icon-size: 0.95rem;
-    color: var(--color-ink-muted);
-  }
-  .card-period {
-    margin-top: auto;
-    font: var(--text-caption) var(--font-mono);
-    color: var(--color-ink-muted);
-  }
-  .card-links {
-    font: var(--text-caption) var(--font-mono);
-    color: var(--color-ink-muted);
-    border-top: 1px solid color-mix(in srgb, var(--color-ink) 20%, transparent);
-    padding-top: var(--space-1);
-    width: 100%;
-  }
-  .card-glyph {
-    position: absolute;
-    top: 0;
-    right: 0;
-    --kind-icon-size: 1.7rem;
-    box-sizing: content-box;
-    padding: 0.55rem 0.55rem 0.9rem 0.9rem;
-    border-radius: 0 0 0 100%;
-    background: var(--tab);
-    color: var(--on-tab, var(--color-ink));
-    transition: transform var(--motion-standard) var(--ease-out);
-    transform-origin: top right;
-  }
-  position: relative;
-  overflow: hidden;
+  transform-origin: center;
+  transition: transform var(--motion-standard) var(--ease-out);
+}
+
+.card-picture {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: var(--radius-circle);
+  object-fit: cover;
+  filter: grayscale(1);
   transition:
-    transform var(--motion-fast) var(--ease-out),
-    box-shadow var(--motion-fast) var(--ease-out);
-  .card-picture {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 3.2rem;
-    height: 3.2rem;
-    object-fit: cover;
-    border-radius: 0 0 0 100%;
-    filter: grayscale(1);
-    transition:
-      filter var(--motion-standard),
-      width var(--motion-standard) var(--ease-out),
-      height var(--motion-standard) var(--ease-out);
-  }
-  .card-picture--flag {
-    width: 3.4rem;
-    height: 2.3rem;
-    object-fit: contain;
-    border: 1px solid var(--color-ink);
-    border-radius: 0;
-    background: var(--color-canvas);
-    filter: none;
-    box-shadow: 3px 3px 0 var(--color-border-strong);
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 4px;
-    width: 100%;
-    background: var(--tab);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--motion-standard) var(--ease-out);
-  }
-  &:hover {
+    filter var(--motion-standard),
+    width var(--motion-standard) var(--ease-out),
+    height var(--motion-standard) var(--ease-out);
+}
+
+.card-picture--flag {
+  width: 3.4rem;
+  height: 2.3rem;
+  border: 1px solid var(--color-ink);
+  border-radius: 0;
+  background: var(--color-canvas);
+  object-fit: contain;
+  filter: none;
+}
+
+.card-illustration {
+  --illustration-size: 3.2rem;
+
+  filter: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :host(:hover) {
     transform: translate(-3px, -3px);
-    box-shadow: 6px 6px 0 var(--tab);
-    .card-glyph {
-      transform: scale(1.25) rotate(-8deg);
-    }
-    .card-picture {
-      filter: none;
-      width: 4.2rem;
-      height: 4.2rem;
-    }
-    .card-picture--flag {
-      width: 3.8rem;
-      height: 2.55rem;
-    }
-    &::after {
-      transform: scaleX(1);
-    }
+  }
+
+  :host(:hover) .card-stamp {
+    --stamp-shadow: var(--shadow-offset-lg);
+  }
+
+  :host(:hover) .card-glyph {
+    transform: scale(1.15) rotate(-8deg);
+  }
+
+  :host(:hover) .card-picture {
+    width: 4.2rem;
+    height: 4.2rem;
+    filter: none;
+  }
+
+  :host(:hover) .card-picture--flag {
+    width: 3.8rem;
+    height: 2.55rem;
   }
 }
+
 :host([aria-pressed='true']) {
-  & {
-    outline: 3px solid #ffd400;
-    outline-offset: 3px;
-  }
+  outline: 3px solid var(--color-focus-on-dark);
+  outline-offset: 3px;
 }
+
+:host(.is-expanded) .card-stamp {
+  --stamp-shadow-color: var(--color-accent);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  :host {
+  :host,
+  .card-glyph {
     transition: none;
   }
+
+  :host(:hover),
   :host(:hover) .card-glyph {
     transform: none;
   }
-}
-/* Same families as the context sheet (knowledge-context): person, work, concept, event, idea. */
-:host([data-tone='person']) {
-  --tab: var(--color-rose-paper);
-}
-:host([data-tone='work']) {
-  --tab: var(--color-ochre-paper);
-}
-:host([data-tone='concept']) {
-  --tab: var(--color-teal-paper);
-}
-:host([data-tone='event']) {
-  --tab: var(--color-orange-paper);
-}
-:host([data-tone='idea']) {
-  --tab: var(--color-indigo);
-  --on-tab: var(--color-canvas);
-}
-:host([data-tone='reading']) {
-  --tab: var(--color-accent);
-  --on-tab: var(--color-canvas);
-}
-:host(.is-expanded) {
-  box-shadow: 6px 6px 0 var(--color-accent);
-}
-
-:host .card-illustration {
-  --illustration-size: 3.2rem;
-  filter: none;
 }

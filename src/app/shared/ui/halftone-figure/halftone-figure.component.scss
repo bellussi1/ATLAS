@@ -1,0 +1,87 @@
+:host {
+  --duo-light: var(--duotone-pau-brasil-light);
+  --duo-dark: var(--duotone-pau-brasil-dark);
+
+  display: block;
+}
+
+:host([data-tone='rosa']) {
+  --duo-light: var(--duotone-rosa-light);
+  --duo-dark: var(--duotone-rosa-dark);
+}
+:host([data-tone='mata']) {
+  --duo-light: var(--duotone-mata-light);
+  --duo-dark: var(--duotone-mata-dark);
+}
+:host([data-tone='jenipapo']) {
+  --duo-light: var(--duotone-jenipapo-light);
+  --duo-dark: var(--duotone-jenipapo-dark);
+}
+
+figure {
+  margin: 0;
+}
+
+/* Grey image multiplied on the light paper, then lightened by the dark ink: a two-colour print. */
+.plate {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--duo-light);
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: var(--asset-height, auto);
+  object-fit: var(--asset-fit, cover);
+  object-position: var(--asset-position, 50% 50%);
+  filter: grayscale(1) contrast(1.15);
+  mix-blend-mode: multiply;
+}
+
+.plate__ink,
+.plate__screen {
+  position: absolute;
+  inset: 0;
+}
+
+.plate__ink {
+  background: var(--duo-dark);
+  mix-blend-mode: lighten;
+}
+
+.plate__screen {
+  --halftone-angle: 160deg;
+
+  color: var(--duo-dark);
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+}
+
+figcaption {
+  margin-block: var(--space-2);
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+a:focus-visible {
+  outline: var(--focus-width) solid var(--color-focus);
+  outline-offset: var(--focus-offset);
+}
+
+@media (forced-colors: active) {
+  img {
+    filter: none;
+    mix-blend-mode: normal;
+  }
+  .plate__ink {
+    display: none;
+  }
+}

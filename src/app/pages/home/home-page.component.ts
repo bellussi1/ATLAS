@@ -19,6 +19,7 @@ import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive
 import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
+import { AtlasStampComponent, type StampTone } from '@shared/ui/stamp/stamp.component';
 import { AtlasTextFieldComponent } from '@shared/ui/text-field/text-field.component';
 
 import homeStats from '../../../../generated/home-stats.json';
@@ -98,6 +99,16 @@ const FEATURED_ITINERARIES: readonly HomeItinerary[] = [
 
 const compiledHome = homeStats as HomeData;
 
+/** Same families as the record cards: people rose, works and sources ochre, polities jenipapo. */
+const catalogueStamps: Record<string, StampTone> = {
+  pessoas: 'rosa',
+  obras: 'ocre',
+  paises: 'jenipapo',
+  acontecimentos: 'urucum',
+  conceitos: 'mata',
+  fontes: 'ocre',
+};
+
 @Component({
   selector: 'app-home-page',
   imports: [
@@ -106,6 +117,7 @@ const compiledHome = homeStats as HomeData;
     AtlasChevronComponent,
     AtlasGeometricMosaicComponent,
     AtlasRevealDirective,
+    AtlasStampComponent,
     HomeHowtoComponent,
     PosterLoomComponent,
     RouterLink,
@@ -124,7 +136,7 @@ export class HomePage {
   private readonly destroyRef = inject(DestroyRef);
   /** The poster keeps the base colour; each later section tints the page, as in the readings. */
   readonly tone = signal(0);
-  /** Base colour for the poster, then one tint per section step (`--tint-n` in styles.scss). */
+  /** Base colour for the poster, then one tint per section step (`--tint-n` in styles/tokens/_semantic.scss). */
   readonly tint = computed(() =>
     this.tone() ? `var(--tint-${this.tone()})` : 'var(--color-canvas)',
   );
@@ -224,5 +236,10 @@ export class HomePage {
     void this.router.navigate(['/acervo'], {
       queryParams: { q: this.query().trim() || null },
     });
+  }
+
+  /** Stamp paper per catalogue, matching the record card families. */
+  doorTone(path: string): StampTone {
+    return catalogueStamps[path] ?? 'cal';
   }
 }

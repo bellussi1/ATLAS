@@ -4,11 +4,24 @@ import { type ContentPackage } from '@core/content/models/content-artifacts';
 import { DEFAULT_CONTENT_BASE_URL } from '@core/content/models/content-pointer';
 import { firstValueFrom } from 'rxjs';
 
-/** Public R2 base URL; the only address the content layer knows. */
+/** Public R2 base URL; the browser can override it on the local preview port. */
 export const CONTENT_BASE_URL = new InjectionToken<string>('content base url', {
   providedIn: 'root',
-  factory: () => DEFAULT_CONTENT_BASE_URL,
+  factory: () => {
+    const override = (globalThis as typeof globalThis & { __ATLAS_CONTENT_BASE__?: string })
+      .__ATLAS_CONTENT_BASE__;
+    return override ?? DEFAULT_CONTENT_BASE_URL;
+  },
 });
+
+/**
+ * Absolute base with a trailing slash. A path-only base (the local preview uses `/content`)
+ * resolves against the page origin; `new URL(key, '/content/')` alone throws.
+ */
+export function contentBaseHref(base: string, origin = globalThis.location?.href): string {
+  const withSlash = `${base.replace(/\/+$/, '')}/`;
+  return new URL(withSlash, origin ?? 'https://atlas.invalid/').href;
+}
 
 /** Reads an object key relative to the base URL (for example `pointer.json` or `c/<sha256>.json`). */
 export const CONTENT_ASSET_READER = new InjectionToken<(key: string) => Promise<string>>(
@@ -17,11 +30,8 @@ export const CONTENT_ASSET_READER = new InjectionToken<(key: string) => Promise<
     providedIn: 'root',
     factory: () => {
       const http = inject(HttpClient);
-      const base = inject(CONTENT_BASE_URL);
-      return (key) =>
-        firstValueFrom(
-          http.get(new URL(key, `${base.replace(/\/+$/, '')}/`).href, { responseType: 'text' }),
-        );
+      const base = contentBaseHref(inject(CONTENT_BASE_URL));
+      return (key) => firstValueFrom(http.get(new URL(key, base).href, { responseType: 'text' }));
     },
   },
 );

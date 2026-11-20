@@ -1,0 +1,37 @@
+/*
+ * Primitive tokens: raw pigment values. Only semantic tokens may reference them;
+ * components use the semantic layer. Families and contrast pairs are documented in
+ * .agents/skills/atlas-editorial-geometrico/references/tokens.md.
+ */
+:root {
+  --pig-cal-50: #fbf8f1;
+  --pig-cal-100: #f3ecdf;
+  --pig-cal-200: #ede0d7;
+  --pig-tinta-900: #141211;
+  --pig-terra-900: #211e1e;
+
+  --pig-pau-brasil-500: #e40114;
+  --pig-pau-brasil-700: #b81d16;
+  --pig-pau-brasil-900: #811f1a;
+
+  --pig-urucum-300: #f6b27a;
+  --pig-urucum-500: #ef8a3a;
+  --pig-urucum-800: #9a4a0c;
+
+  --pig-ocre-300: #f2d48a;
+  --pig-ocre-500: #edbb5c;
+  --pig-ocre-800: #8a5f00;
+
+  --pig-mata-300: #9ccba6;
+  --pig-mata-500: #339a65;
+  --pig-mata-700: #1e6b44;
+  --pig-mata-900: #12422b;
+
+  --pig-jenipapo-500: #4a5079;
+  --pig-jenipapo-700: #363a5f;
+  --pig-jenipapo-900: #1f2238;
+
+  --pig-rosa-300: #eab0c2;
+  --pig-rosa-500: #e57a9a;
+  --pig-rosa-700: #9c3558;
+}

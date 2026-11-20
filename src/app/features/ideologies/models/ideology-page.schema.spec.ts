@@ -38,6 +38,8 @@ describe('Public pages', () => {
       'leitura/nazismo',
       'leitura/stalinismo',
       'leitura/trabalhismo',
+      'leitura/era-vargas',
+      'leitura/golpe-de-1964',
       'grafos',
       'acervo',
       'acervo/entidades',

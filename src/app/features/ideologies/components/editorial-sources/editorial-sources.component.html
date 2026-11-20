@@ -8,7 +8,7 @@
           [attr.rel]="newWindow() ? 'noopener noreferrer' : null"
           >{{ source.title }}
           @if (newWindow()) {
-            ↗
+            <app-icon name="external" />
           }
         </a>
       } @else {

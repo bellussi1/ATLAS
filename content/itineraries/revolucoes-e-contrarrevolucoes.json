@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-revolucoes-e-contrarrevolucoes",
+  "slug": "revolucoes-e-contrarrevolucoes",
+  "kind": "comparativo",
+  "title": "Revoluções e Contrarrevoluções: Um Comparativo",
+  "question": "Como as revoluções de 1789, 1917, 1949 e 1959 moldaram o mundo e quais foram as respostas conservadoras a elas?",
+  "deck": "Este itinerário explora as revoluções de 1789, 1917, 1949 e 1959, comparando seus contextos, causas e consequências. Também analisa as respostas conservadoras a essas transformações.",
+  "summary": "Este itinerário analisa quatro revoluções importantes do século XX e suas respostas conservadoras, oferecendo uma visão comparativa de seus impactos globais.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "revolucao-francesa",
+      "title": "A Revolução Francesa (1789)",
+      "reason": "A Revolução Francesa de 1789 foi um marco na história, derrubando a monarquia absolutista e dando início à era moderna.",
+      "question": "Quais foram as causas e as principais características da Revolução Francesa?",
+      "destination": {
+        "type": "verbete",
+        "slug": "french-revolution"
+      },
+      "justification": "Começamos com a Revolução Francesa como ponto de partida para entender as dinâmicas de revoluções e suas consequências.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "revolucao-russa",
+      "title": "A Revolução Russa de 1917",
+      "reason": "A Revolução Russa de 1917, com a ascensão do comunismo, teve um impacto profundo no século XX, influenciando movimentos revolucionários em todo o mundo.",
+      "question": "Como a Revolução Russa se diferenciou da Revolução Francesa e quais foram suas consequências?",
+      "destination": {
+        "type": "verbete",
+        "slug": "russian-revolution"
+      },
+      "justification": "A Revolução Russa, como uma revolução socialista, é analisada em contraste com a Revolução Francesa, explorando suas diferenças e impactos.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "china-1949",
+      "title": "A Revolução Chinesa de 1949",
+      "reason": "A vitória do Partido Comunista Chinês em 1949 marcou a ascensão de uma nova potência comunista e a intensificação da Guerra Fria.",
+      "question": "Quais foram os fatores que levaram à Revolução Chinesa e como ela impactou a geopolítica global?",
+      "destination": {
+        "type": "verbete",
+        "slug": "revolucao-comunista-chinesa"
+      },
+      "justification": "A Revolução Chinesa é analisada como um caso de sucesso do comunismo em um contexto diferente da União Soviética.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "cuba-1959",
+      "title": "A Revolução Cubana de 1959",
+      "reason": "A Revolução Cubana de 1959, liderada por Fidel Castro, representou uma vitória do comunismo na América Latina e um desafio aos Estados Unidos.",
+      "question": "Como a Revolução Cubana se encaixa no contexto da Guerra Fria e quais foram suas consequências para a região?",
+      "destination": {
+        "type": "verbete",
+        "slug": "revolucao-cubana"
+      },
+      "justification": "A Revolução Cubana é analisada como um caso de revolução comunista em um contexto geopolítico específico.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "contra-revol",
+      "title": "Respostas Conservadoras às Revoluções",
+      "reason": "As revoluções de 1789, 1917, 1949 e 1959 desencadearam reações conservadoras em diversos países, buscando conter a expansão de ideias revolucionárias.",
+      "question": "Quais foram as principais estratégias e movimentos conservadores que surgiram em resposta às revoluções?",
+      "destination": {
+        "type": "grafo"
+      },
+      "justification": "Este ponto sintetiza as respostas conservadoras às revoluções, mostrando a complexidade das reações à mudança social.",
+      "sourceIds": ["src-acervo"]
+    }
+  ],
+  "branches": [
+    {
+      "id": "anticomunismo",
+      "fromStop": "revolucao-russa",
+      "title": "O Surgimento do Anticomunismo",
+      "reason": "A Revolução Russa de 1917 impulsionou o movimento anticomunista, que se tornou uma força política importante no século XX.",
+      "question": "Como o anticomunismo se desenvolveu após a Revolução Russa e quais foram seus impactos?",
+      "destination": {
+        "type": "verbete",
+        "slug": "anticomunismo"
+      },
+      "justification": "Este ramo explora a ascensão do anticomunismo como uma resposta direta à Revolução Russa.",
+      "convergesAt": "contra-revol"
+    },
+    {
+      "id": "conservadorismo",
+      "fromStop": "china-1949",
+      "title": "O Conservadorismo em Face da Guerra Fria",
+      "reason": "A ascensão da China comunista intensificou a Guerra Fria e o conservadorismo se tornou uma força política importante em resposta ao comunismo.",
+      "question": "Como o conservadorismo se adaptou à Guerra Fria e quais foram suas principais características?",
+      "destination": {
+        "type": "verbete",
+        "slug": "esquerda-politica"
+      },
+      "justification": "Este ramo explora o conservadorismo como uma resposta à ascensão do comunismo na Guerra Fria.",
+      "exit": "true"
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "reason": "Para aprofundar o estudo dos eventos históricos relacionados às revoluções."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-acervo",
+      "title": "ATLAS — Registros e verbetes compilados no acervo"
+    }
+  ],
+  "updatedAt": "2026-11-19",
+  "version": "1.0.0"
+}

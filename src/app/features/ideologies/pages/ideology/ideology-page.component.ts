@@ -21,6 +21,7 @@ import { IdeologyRepository } from '@ideologies/services/ideology-repository.ser
 import { chapterReviews } from '@ideologies/utils/chapter-review';
 import { planPageMedia } from '@ideologies/utils/page-media-plan';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
+import { AtlasSealComponent, type SealTone } from '@shared/ui/seal/seal.component';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
 
 interface PageState {
@@ -39,6 +40,7 @@ interface PageState {
     EditorialSourcesComponent,
     IdeologyPosterComponent,
     AtlasGeometricMosaicComponent,
+    AtlasSealComponent,
   ],
   templateUrl: './ideology-page.component.html',
   styleUrl: './ideology-page.component.scss',
@@ -73,6 +75,11 @@ export class IdeologyPageComponent {
         ? `revisão de ${review.reviewer}`
         : 'revisão humana pendente';
     return `${status} · ${reviewer} · recorte e classificação`;
+  });
+  /** Ink of the editorial seal: green once a review is recorded, neutral for drafts. */
+  readonly reviewTone = computed<SealTone>(() => {
+    const status = this.page()?.review?.status;
+    return status === 'revisado' ? 'mata' : status === 'rascunho' ? 'neutral' : 'accent';
   });
   readonly roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
   /** Text for the always-present status region: screen readers announce changes to a live region that already exists. */

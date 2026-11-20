@@ -1,6 +1,8 @@
 <header>
   <p>Prévia de descoberta · {{ target.entry.kindLabel }}</p>
-  <button type="button" (click)="close()" aria-label="Fechar prévia">Fechar ×</button>
+  <button type="button" (click)="close()" aria-label="Fechar prévia">
+    Fechar <app-icon name="close" />
+  </button>
 </header>
 <div class="preview-body">
   <p class="state">{{ target.entry.stateLabel }}</p>

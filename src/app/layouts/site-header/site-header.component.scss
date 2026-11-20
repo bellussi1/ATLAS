@@ -1,5 +1,15 @@
+/*
+ * Floating card, like the graph and map bars, sticky on scroll. It sits in the same container as
+ * the page content (--grid-max with the gutter) and keeps one fixed height on every route.
+ */
 :host {
+  --header-bar: 3.5rem;
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--z-sticky);
   display: block;
+  padding: calc(12px + env(safe-area-inset-top)) var(--grid-gutter) 0;
+  pointer-events: none;
 }
 .visually-hidden {
   position: absolute;
@@ -11,17 +21,21 @@
 }
 .site-header {
   position: relative;
-  z-index: 30;
+  max-inline-size: calc(var(--grid-max) - 2 * var(--grid-gutter));
+  margin-inline: auto;
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-tight);
   background: var(--color-surface-raised);
+  box-shadow: 4px 4px 0 var(--color-ink);
+  pointer-events: auto;
 }
 .site-header__inner {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 1rem;
-  inline-size: min(100%, var(--grid-max));
-  margin-inline: auto;
-  padding: calc(12px + env(safe-area-inset-top)) var(--grid-gutter) 12px;
+  block-size: var(--header-bar);
+  padding: 0 0.75rem;
 }
 .brand {
   display: inline-flex;
@@ -32,7 +46,7 @@
 .brand__logo {
   display: block;
   inline-size: auto;
-  block-size: 40px;
+  block-size: 34px;
 }
 .menu-toggle {
   display: none;
@@ -78,7 +92,7 @@
 }
 .panel {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex: 1;
   align-items: center;
   justify-content: space-between;
@@ -87,7 +101,7 @@
 }
 .nav ul {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 0.25rem;
   margin: 0;
@@ -138,7 +152,7 @@
     border: 2px solid currentcolor;
   }
   &--circle {
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
   }
   &--half {
     block-size: 0.4rem;
@@ -192,7 +206,7 @@
   min-block-size: 44px;
   padding: 0 5.2rem 0 2.6rem;
   border: 1px solid var(--color-border-strong);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--color-canvas);
   color: var(--color-ink);
   font: 400 var(--text-body)/1 var(--font-sans);
@@ -210,7 +224,7 @@
   min-block-size: 2.15rem;
   padding: 0 0.85rem;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--color-ink);
   color: var(--color-canvas);
   font: 600 var(--text-meta)/1 var(--font-sans);
@@ -238,21 +252,25 @@
     animation: none;
   }
 }
-@media (max-width: 62rem) {
+/* Below this width the links and the search no longer fit one row: they move to the menu. */
+@media (max-width: 75rem) {
   .menu-toggle {
     display: inline-flex;
   }
   .panel {
     display: none;
     position: absolute;
-    inset-inline: 0;
-    inset-block-start: 100%;
+    inset-inline: -2px;
+    inset-block-start: calc(100% + 8px);
     flex-direction: column;
     align-items: stretch;
-    padding: 1rem var(--grid-gutter) 1.25rem;
-    border-block-end: 1px solid var(--color-border-strong);
+    max-block-size: calc(100dvh - var(--header-offset, 5rem) - 12px);
+    overflow-y: auto;
+    padding: 1rem 0.75rem 1.25rem;
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-tight);
     background: var(--color-surface-raised);
-    box-shadow: 0 14px 28px rgb(20 18 17 / 14%);
+    box-shadow: 4px 4px 0 var(--color-ink);
     &.is-open {
       display: flex;
       animation: panel-in var(--motion-standard) var(--ease-out) both;

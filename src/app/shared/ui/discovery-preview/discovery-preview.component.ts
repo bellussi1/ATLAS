@@ -1,6 +1,7 @@
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { Component, inject } from '@angular/core';
 import type { DiscoveryIndexEntry } from '@core/content/queries/discovery-index';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 
 export interface DiscoveryPreviewTarget {
   entry: DiscoveryIndexEntry;
@@ -9,7 +10,7 @@ export interface DiscoveryPreviewTarget {
 
 @Component({
   selector: 'app-discovery-preview',
-  imports: [],
+  imports: [AtlasIconComponent],
   templateUrl: './discovery-preview.component.html',
   styleUrl: './discovery-preview.component.scss',
 })

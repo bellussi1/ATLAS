@@ -70,7 +70,7 @@
   background: var(--color-surface-raised);
   color: var(--color-ink);
   text-decoration: none;
-  box-shadow: 5px 5px 0 var(--color-ink);
+  box-shadow: var(--shadow-offset-md) var(--color-ink);
   transition:
     transform var(--motion-standard) var(--ease-out),
     box-shadow var(--motion-standard) var(--ease-out);
@@ -79,7 +79,7 @@
 .end-card:hover,
 .end-card:focus-visible {
   transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0 var(--color-ink);
+  box-shadow: var(--shadow-offset-lg) var(--color-ink);
 }
 
 .end-card:focus-visible {
@@ -125,7 +125,7 @@
 
 [data-relation='continuidade'] .relation-mark {
   border: 2px solid var(--color-ink);
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background: var(--color-teal-paper);
 }
 

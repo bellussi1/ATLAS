@@ -66,6 +66,27 @@ Experimento modular em Python (`experiments/rag/`, fora do build Angular static-
 
 ---
 
+## Corpus Firecrawl Local
+
+Além do bundle publicado, a suíte indexa um corpus local de fontes públicas capturadas por `firecrawl-local` (`FIRECRAWL_CLOUD=off`). A descoberta usa Wikidata, Wikipédia pt/en e índices do Marxists Internet Archive; a indexação é incremental por `sha256` do documento e os rascunhos gerados por Ollama ficam em `eval/queues/enrichment-drafts/` com `ok: null`.
+
+```powershell
+npm run rag:graph-gaps
+npm run firecrawl:discover -- --graph --no-topics --graph-mode fonte,conteudo --limit 20 --apply
+npm run firecrawl:extract
+npm run rag:ingest-firecrawl
+npm run rag:relations -- --mode coocorrencia
+npm run rag:relations -- --mode padrao
+npm run rag:relation-drafts -- --max-drafts 5
+npm run rag:expand-claims -- --max-entities 3
+npm run rag:search -- "conceito de hegemonia em Gramsci"
+npm run enrich:watch
+```
+
+Contrato, licenças, score de descoberta e limites estão em [`docs/architecture/FLUXO-FIRECRAWL.md`](../../docs/architecture/FLUXO-FIRECRAWL.md). Nada desse corpus é publicado automaticamente.
+
+---
+
 ## Como reproduzir
 
 Pré-requisitos no workspace ATLAS:

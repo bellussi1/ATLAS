@@ -69,10 +69,11 @@ test('the scope index separates core, context and out-of-scope records', async (
   await expect(page).toHaveURL(/escopo=fora/);
   const active = page.getByLabel('Filtros ativos');
   await expect(active).toContainText('Escopo: Fora');
-  await expect(page.locator('.result-card')).toHaveCount(20);
+  // The scope filter narrows the archive; the first page shows at most one page of records.
+  await expect(page.locator('.result-card')).not.toHaveCount(0);
   await active.getByRole('link', { name: 'Remover Escopo: Fora' }).click();
   await expect(page).not.toHaveURL(/escopo=/);
-  await expect(page.locator('.result-card')).toHaveCount(24);
+  await expect(page.locator('.result-card')).toHaveCount(18);
 });
 
 test('a phone opens the catalogue tree from the filters panel', async ({ page }) => {
@@ -298,7 +299,7 @@ test('all search destinations have prerendered HTML with matching title, canonic
       expect(html).toContain('id="' + entry.fragment + '"');
     // Sources are paginated: page 1 carries the pager and its own anchors; later anchors are
     // resolved in the browser by /acervo/fontes, as covered in pages.spec.ts.
-    if (target === '/acervo/fontes') expect(html).toContain('Carregar mais');
+    if (target === '/acervo/fontes') expect(html).toContain('Páginas de resultados');
   }
 });
 

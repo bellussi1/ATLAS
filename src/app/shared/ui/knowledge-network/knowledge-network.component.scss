@@ -1,4 +1,18 @@
-﻿:host {
+/* Short local names for semantic tokens: the full names would push this sheet past its 25 kB budget. */
+:host {
+  --paper: var(--color-canvas);
+  --paper-shade: var(--color-surface-subtle);
+  --ink: var(--color-ink);
+  --ink-muted: var(--color-ink-muted);
+  --rule: var(--color-border);
+  --rule-strong: var(--color-border-strong);
+  --signal: var(--color-signal);
+  --link: var(--color-accent-hover);
+  --cap: var(--text-caption);
+  --serif: var(--font-primary);
+}
+
+:host {
   --card-shadow: 4px 4px 0 var(--ink);
   --rise: 240ms var(--ease-out);
   display: block;
@@ -94,7 +108,7 @@
     background-color 140ms;
   &:hover:not(:disabled) {
     transform: translate(-2px, -2px);
-    box-shadow: 3px 3px 0 var(--ink);
+    box-shadow: var(--shadow-offset-sm) var(--ink);
   }
   &:active:not(:disabled) {
     transform: translate(1px, 1px);
@@ -111,7 +125,7 @@
 }
 .chip--surprise {
   border-color: var(--signal);
-  color: var(--color-accent-hover);
+  color: var(--link);
   &:is(:hover, :focus-visible):not(:disabled) {
     background: var(--color-ochre-paper);
     color: var(--ink);
@@ -131,7 +145,7 @@ kbd {
   border-bottom-width: 2px;
   border-radius: 0.25rem;
   background: var(--paper);
-  font: 500 var(--text-caption)/1.3 var(--serif);
+  font: 500 var(--cap)/1.3 var(--serif);
   text-align: center;
 }
 .hint {
@@ -202,13 +216,13 @@ kbd {
   min-height: 44px;
   padding: 0 2.6rem;
   border: 2px solid var(--ink);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--paper);
   color: var(--ink);
   font: 400 var(--text-body)/1 var(--serif);
   transition: box-shadow 140ms;
   &:focus-visible {
-    box-shadow: 3px 3px 0 var(--color-focus);
+    box-shadow: var(--shadow-offset-sm) var(--color-focus);
   }
 }
 :is(.search__results button, .legend__item, .check) {
@@ -225,7 +239,7 @@ kbd {
   position: absolute;
   top: calc(100% + 0.5rem);
   inset-inline: 0;
-  z-index: 10;
+  z-index: var(--z-raised);
   margin: 0;
   padding: 0.25rem;
   list-style: none;
@@ -241,7 +255,7 @@ kbd {
     small {
       margin-left: auto;
       color: var(--ink-muted);
-      font-size: var(--text-caption);
+      font-size: var(--cap);
     }
   }
   .hint {
@@ -298,12 +312,14 @@ summary::-webkit-details-marker {
   }
 }
 :is(.panel summary, .link-group__toggle)::after {
-  content: '+';
-  color: var(--ink-muted);
-  font: 600 var(--text-body)/1 var(--serif);
+  content: '';
+  width: 1em;
+  height: 1em;
+  background: var(--ink-muted);
+  mask: var(--icon-mask-chevron-down) 50% / contain no-repeat;
 }
 :is(.panel[open] summary, .link-group__toggle[aria-expanded='true'])::after {
-  content: '−';
+  rotate: 180deg;
 }
 :is(.legend, .path-slots, .detail__path-list, .claims, .links) {
   display: grid;
@@ -337,7 +353,7 @@ summary::-webkit-details-marker {
     word-break: normal;
   }
   .legend__count {
-    font-size: var(--text-caption);
+    font-size: var(--cap);
   }
 }
 .legend__group {
@@ -383,7 +399,7 @@ summary::-webkit-details-marker {
 :is(.legend__count, .link-group__count) {
   margin-left: auto;
   color: var(--ink-muted);
-  font: 500 var(--text-caption)/1 var(--serif);
+  font: 500 var(--cap)/1 var(--serif);
 }
 .legend__mark {
   display: grid;
@@ -473,12 +489,12 @@ summary::-webkit-details-marker {
 }
 .panel__reset {
   color: var(--signal);
-  font: 650 var(--text-caption)/1.2 var(--serif);
+  font: 650 var(--cap)/1.2 var(--serif);
 }
 .legend__note {
   margin: 0;
   color: var(--ink-muted);
-  font: 400 var(--text-caption)/1.35 var(--serif);
+  font: 400 var(--cap)/1.35 var(--serif);
 }
 .legend__row.is-hovered .legend__item {
   background: var(--paper-shade);
@@ -535,7 +551,7 @@ summary::-webkit-details-marker {
   text-decoration: none;
 }
 .path-hint {
-  color: var(--color-accent-hover);
+  color: var(--link);
   font-weight: 600;
 }
 :is(.path-actions, .path-steps) {
@@ -557,7 +573,7 @@ summary::-webkit-details-marker {
 }
 .path-step__sep {
   color: var(--ink-muted);
-  font: 600 var(--text-caption)/1 var(--serif);
+  font: 600 var(--cap)/1 var(--serif);
 }
 
 // ---- canvas ----
@@ -662,7 +678,7 @@ summary::-webkit-details-marker {
   position: absolute;
   width: 2.2rem;
   height: 2.2rem;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background: var(--rule-strong);
   opacity: 0.28;
   animation: skeleton-pulse 1.2s var(--ease-out) infinite alternate;
@@ -818,7 +834,7 @@ summary::-webkit-details-marker {
   max-width: calc(100% - 1rem);
   padding: 0.6rem 0.75rem;
   pointer-events: none;
-  box-shadow: 3px 3px 0 var(--ink);
+  box-shadow: var(--shadow-offset-sm) var(--ink);
   animation: fade 120ms ease-out both;
   p {
     margin: 0;
@@ -856,7 +872,7 @@ summary::-webkit-details-marker {
 .tip__more {
   margin-top: 0.3rem !important;
   color: var(--ink-muted);
-  font: 500 var(--text-caption)/1.3 var(--serif);
+  font: 500 var(--cap)/1.3 var(--serif);
 }
 
 // ---- hud: status and zoom sit at the bottom of the free area ----
@@ -928,7 +944,7 @@ summary::-webkit-details-marker {
   border-radius: var(--radius-tight);
   background: transparent;
   color: var(--ink);
-  font: 600 var(--text-caption)/1.3 var(--serif);
+  font: 600 var(--cap)/1.3 var(--serif);
   text-decoration: underline;
   text-underline-offset: 0.15em;
   cursor: pointer;
@@ -965,7 +981,7 @@ summary::-webkit-details-marker {
 :is(.zoom__level, .zoom .zoom__tier) {
   display: grid;
   place-items: center;
-  font: 600 var(--text-caption)/1 var(--serif);
+  font: 600 var(--cap)/1 var(--serif);
 }
 .zoom__level {
   padding-inline: 0.55rem;
@@ -1138,8 +1154,8 @@ summary::-webkit-details-marker {
   min-width: 1.6rem;
   padding: 0.05rem 0.4rem;
   border: 1.5px solid var(--ink);
-  border-radius: 999px;
-  font: 700 var(--text-caption)/1 var(--serif);
+  border-radius: var(--radius-pill);
+  font: 700 var(--cap)/1 var(--serif);
 }
 .detail__more {
   summary {
@@ -1202,7 +1218,7 @@ summary::-webkit-details-marker {
 .detail__path-list {
   gap: 0.25rem;
   a {
-    color: var(--color-accent-hover);
+    color: var(--link);
     font: 600 var(--text-small)/1.3 var(--serif);
     text-underline-offset: 2px;
   }
@@ -1235,7 +1251,7 @@ summary::-webkit-details-marker {
 }
 .link-group__more {
   margin-block: 0.35rem 0.25rem;
-  color: var(--color-accent-hover);
+  color: var(--link);
   font: 650 var(--text-small) / 1.2 var(--serif);
   text-underline-offset: 0.15em;
 }
@@ -1250,7 +1266,7 @@ summary::-webkit-details-marker {
     }
     small {
       color: var(--ink-muted);
-      font: 500 var(--text-caption)/1.4 var(--serif);
+      font: 500 var(--cap)/1.4 var(--serif);
     }
   }
 }
@@ -1270,7 +1286,7 @@ summary::-webkit-details-marker {
     &:is(:hover, :focus-within) {
       border-color: var(--ink);
       background: var(--paper);
-      box-shadow: 3px 3px 0 var(--rule-strong);
+      box-shadow: var(--shadow-offset-sm) var(--rule-strong);
     }
   }
 }
@@ -1314,7 +1330,7 @@ summary::-webkit-details-marker {
   align-items: center;
   gap: 0.25rem 0.75rem;
   margin: 0;
-  font: 500 var(--text-caption)/1.3 var(--serif);
+  font: 500 var(--cap)/1.3 var(--serif);
   a {
     color: var(--ink);
     text-underline-offset: 2px;
@@ -1335,7 +1351,7 @@ summary::-webkit-details-marker {
 }
 :is(.weight--historical, .weight--action) {
   border-color: var(--signal);
-  color: var(--color-accent-hover);
+  color: var(--link);
 }
 :is(
   .chip[aria-expanded='true'],
@@ -1468,7 +1484,7 @@ summary::-webkit-details-marker {
   .bar__actions > * {
     flex: 0 0 auto;
     min-height: 40px;
-    font-size: var(--text-caption);
+    font-size: var(--cap);
   }
   :is(.search__key, .zoom .zoom__tier, .zoom__slider) {
     display: none;
@@ -1490,6 +1506,9 @@ summary::-webkit-details-marker {
     max-height: 46%;
     padding: 0.75rem;
   }
+  .detail__media {
+    order: 1;
+  }
   .detail__media img {
     max-height: 9rem;
   }
@@ -1508,11 +1527,15 @@ summary::-webkit-details-marker {
   }
 }
 
-// Keep the legend column on desktop even while the panel is closed. The stage is
-// absolute, so the map still uses the full window; the HUD no longer jumps left
-// when the panel appears after hydration.
-@media (min-width: 62rem) {
+// Keep the legend column where the legend opens by default, so the HUD does not jump
+// after hydration; below that the detail or the first card takes the legend's place.
+@media (min-width: 90rem) {
   .floating {
+    grid-template-columns: minmax(0, 19rem) minmax(0, 1fr) auto;
+  }
+}
+@media (min-width: 62rem) {
+  .floating.has-controls {
     grid-template-columns: minmax(0, 19rem) minmax(0, 1fr) auto;
   }
 }

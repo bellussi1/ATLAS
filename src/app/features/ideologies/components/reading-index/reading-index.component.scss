@@ -1,7 +1,7 @@
 :host {
   /* Follows the reading while scrolling; the page is the only scroller on desktop. */
   position: sticky;
-  top: 1rem;
+  top: calc(var(--header-offset, 0px) + 1rem);
   display: block;
   min-width: 0;
   align-self: start;
@@ -12,7 +12,8 @@
   :host {
     display: flex;
     flex-direction: column;
-    height: calc(100dvh - 2rem);
+    /* Fits below the sticky header (--header-offset) and its own top gap, so the last row stays in view. */
+    height: calc(100dvh - var(--header-offset, 0px) - 1rem - 1rem);
     overflow: hidden;
   }
 }
@@ -91,7 +92,11 @@ progress::-moz-progress-bar {
   flex: 1 1 auto;
   align-content: start;
   min-height: 0;
-  overflow: hidden;
+  /* The chapter list gives way to the controls below it: it scrolls instead of pushing them out. */
+  overflow-y: auto;
+}
+.index-controls {
+  flex: none;
 }
 
 .desktop-nav a.index-act {
@@ -171,7 +176,7 @@ a[aria-current='location'] .chapter-number[data-shape='0'] {
 }
 
 a[aria-current='location'] .chapter-number[data-shape='1'] {
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
 }
 
 a[aria-current='location'] .chapter-number[data-shape='2'] {

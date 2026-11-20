@@ -1,0 +1,41 @@
+<section class="start" aria-labelledby="graph-start-title">
+  <header class="start__head">
+    <h2 id="graph-start-title">Por onde começar</h2>
+    <button
+      type="button"
+      class="start__close"
+      aria-label="Fechar sugestões"
+      (click)="dismiss.emit()"
+    >
+      <app-icon name="close" />
+    </button>
+  </header>
+  <p class="start__lead">
+    Cada ponto é um verbete e cada linha, uma relação com fonte. A forma e a cor do ponto dizem o
+    tipo; a cor e o traço da linha, a família da relação.
+  </p>
+  @if (entries().length) {
+    <h3 class="start__label">Comece por um verbete</h3>
+    <ul class="start__entries">
+      @for (entry of entries(); track entry.id) {
+        <li>
+          <button type="button" class="start__entry" (click)="pick.emit(entry.id)">
+            <app-kind-icon [kind]="entry.icon" />
+            <span class="start__name">{{ entry.title }}</span>
+            <small>{{ entry.kind }}</small>
+          </button>
+        </li>
+      }
+    </ul>
+  }
+  @if (route(); as r) {
+    <h3 class="start__label">Ou siga um caminho</h3>
+    <button type="button" class="start__route" (click)="trace.emit(r)">
+      <span>{{ r.from.title }}</span>
+      <app-icon class="start__arrow" name="arrow-right" />
+      <span>{{ r.to.title }}</span>
+      <span class="visually-hidden">: mostrar como os dois verbetes se ligam</span>
+    </button>
+  }
+  <p class="start__hint">Busque pelo nome com <kbd>/</kbd> ou clique em qualquer ponto do mapa.</p>
+</section>

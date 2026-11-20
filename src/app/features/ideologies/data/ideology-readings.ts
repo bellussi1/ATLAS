@@ -259,6 +259,75 @@ export const ideologyReadings: readonly IdeologyReading[] = [
       },
     ],
   },
+  {
+    slug: 'era-vargas',
+    label: 'Era Vargas',
+    metaDescription:
+      'Do Estado oligárquico ao Estado social: revolução de 1930, Estado Novo, CLT, trabalhismo e legado.',
+    palette: 'nacionalismo',
+    connections: [
+      {
+        slug: 'trabalhismo',
+        relation: 'continuidade',
+        lead: true,
+        question: 'O que o Estado varguista deixou para o trabalhismo organizado?',
+        reason:
+          'Segue a institucionalização dos direitos do trabalho e a disputa política pelo legado de Vargas.',
+      },
+      {
+        slug: 'golpe-de-1964',
+        relation: 'continuidade',
+        question: 'Como a crise do pacto varguista desemboca no golpe?',
+        reason: 'Conecta a política de massas dos anos 1950 à ruptura de 1964.',
+      },
+      {
+        slug: 'liberalismo',
+        relation: 'contraste',
+        question: 'Como a agenda liberal disputou o Estado varguista?',
+        reason: 'Contrasta a centralização do Estado social com a crítica liberal.',
+      },
+      {
+        slug: 'social-democracia',
+        relation: 'contraste',
+        question: 'O Estado social brasileiro seguiu o modelo europeu?',
+        reason: 'Compara a construção brasileira com a social-democracia europeia.',
+      },
+    ],
+  },
+  {
+    slug: 'golpe-de-1964',
+    label: 'Golpe de 1964',
+    metaDescription:
+      'A ruptura democrática de 1964: crise política, atores, justificativas, apoio civil-militar e consequências.',
+    palette: 'conservadorismo',
+    connections: [
+      {
+        slug: 'era-vargas',
+        relation: 'continuidade',
+        lead: true,
+        question: 'Quais heranças do varguismo estão em disputa em 1964?',
+        reason: 'Recua até a formação do Estado social e da política de massas.',
+      },
+      {
+        slug: 'trabalhismo',
+        relation: 'contraste',
+        question: 'O que o golpe interrompe no trabalhismo?',
+        reason: 'Mostra a ruptura com o projeto trabalhista e com a organização sindical.',
+      },
+      {
+        slug: 'marxismo',
+        relation: 'contraste',
+        question: 'Como a esquerda interpretou a ruptura?',
+        reason: 'Confronta leituras sobre classes, Estado e revolução.',
+      },
+      {
+        slug: 'liberalismo',
+        relation: 'contraste',
+        question: 'Como a ordem e a propriedade foram invocadas?',
+        reason: 'Examina a justificativa liberal-conservadora do golpe.',
+      },
+    ],
+  },
 ];
 
 const readingBySlug = new Map(ideologyReadings.map((reading) => [reading.slug, reading]));

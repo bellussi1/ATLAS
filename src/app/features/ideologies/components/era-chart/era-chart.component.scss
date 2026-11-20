@@ -131,12 +131,12 @@
   inline-size: 0.7rem;
   block-size: 0.7rem;
   border: 2px solid var(--color-ink);
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background: var(--color-surface-raised);
 }
 .era-epoch.is-selected::after {
   background: var(--tone);
-  box-shadow: 0 0 0 4px var(--paper);
+  box-shadow: 0 0 0 4px var(--color-canvas);
   scale: 1.15;
 }
 .era-epoch::after {
@@ -179,8 +179,8 @@
     color var(--motion-fast) var(--ease-out);
 }
 .era-epoch.is-selected .epoch-years {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--color-ink);
+  color: var(--color-canvas);
 }
 .epoch-copy {
   display: grid;
@@ -197,7 +197,7 @@
   transition: color var(--motion-fast) var(--ease-out);
 }
 .era-epoch.is-selected .epoch-kicker {
-  color: var(--ink);
+  color: var(--color-ink);
 }
 .epoch-counts {
   color: var(--color-ink-muted);
@@ -226,8 +226,8 @@
   position: relative;
   inline-size: 1.5rem;
   block-size: 1.5rem;
-  border: 2px solid var(--ink);
-  background: var(--paper);
+  border: 2px solid var(--color-ink);
+  background: var(--color-canvas);
   transition:
     background-color var(--motion-fast) var(--ease-out),
     scale var(--motion-fast) var(--ease-out);
@@ -238,7 +238,7 @@
   position: absolute;
   inset-inline-start: 50%;
   inset-block-start: 50%;
-  background: var(--ink);
+  background: var(--color-ink);
   translate: -50% -50%;
   transition:
     transform var(--motion-fast) var(--ease-out),

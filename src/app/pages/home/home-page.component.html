@@ -10,46 +10,57 @@
     </p>
     <div class="poster-actions" aria-label="Acesso rápido">
       <a
-        class="poster-door poster-door--acervo atlas-press"
-        routerLink="/acervo"
-        [queryParams]="{ camada: 'registros' }"
+        class="poster-door atlas-press"
+        data-tone="vermelho"
+        routerLink="/leituras"
         (pointerenter)="doorMode.set('acervo')"
         (pointerleave)="doorMode.set(null)"
         (focus)="doorMode.set('acervo')"
         (blur)="doorMode.set(null)"
       >
-        <span class="poster-door__glyph poster-door__glyph--square" aria-hidden="true"></span>
-        <span>
-          <strong>Explorar o acervo</strong>
-          <small>{{ format(stats.verbetes) }} fichas e {{ format(stats.sources) }} fontes</small>
+        <span class="poster-door__swatch" aria-hidden="true"
+          ><span class="poster-door__glyph poster-door__glyph--square"></span
+        ></span>
+        <span class="poster-door__body">
+          <strong>Explorar leituras</strong>
+          <small
+            >{{ format(stats.readings) }} leituras contínuas em
+            {{ format(stats.chapters) }} capítulos</small
+          >
         </span>
         <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
       </a>
       <a
-        class="poster-door poster-door--grafo atlas-press"
+        class="poster-door atlas-press"
+        data-tone="jenipapo"
         routerLink="/grafos"
         (pointerenter)="doorMode.set('grafo')"
         (pointerleave)="doorMode.set(null)"
         (focus)="doorMode.set('grafo')"
         (blur)="doorMode.set(null)"
       >
-        <span class="poster-door__glyph poster-door__glyph--circle" aria-hidden="true"></span>
-        <span>
+        <span class="poster-door__swatch" aria-hidden="true"
+          ><span class="poster-door__glyph poster-door__glyph--circle"></span
+        ></span>
+        <span class="poster-door__body">
           <strong>Abrir o grafo</strong>
           <small>{{ format(stats.links) }} ligações em rede</small>
         </span>
         <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
       </a>
       <a
-        class="poster-door poster-door--mapa atlas-press"
+        class="poster-door atlas-press"
+        data-tone="ocre"
         routerLink="/mapa"
         (pointerenter)="doorMode.set('mapa')"
         (pointerleave)="doorMode.set(null)"
         (focus)="doorMode.set('mapa')"
         (blur)="doorMode.set(null)"
       >
-        <span class="poster-door__glyph poster-door__glyph--ring" aria-hidden="true"></span>
-        <span>
+        <span class="poster-door__swatch" aria-hidden="true"
+          ><span class="poster-door__glyph poster-door__glyph--ring"></span
+        ></span>
+        <span class="poster-door__body">
           <strong>Ver o mapa-múndi</strong>
           <small>Países e impérios no tempo</small>
         </span>
@@ -57,14 +68,17 @@
       </a>
       <a
         class="poster-door atlas-press"
+        data-tone="mata"
         routerLink="/itinerarios"
         (pointerenter)="doorMode.set('itinerarios')"
         (pointerleave)="doorMode.set(null)"
         (focus)="doorMode.set('itinerarios')"
         (blur)="doorMode.set(null)"
       >
-        <span class="poster-door__glyph poster-door__glyph--half" aria-hidden="true"></span>
-        <span>
+        <span class="poster-door__swatch" aria-hidden="true"
+          ><span class="poster-door__glyph poster-door__glyph--half"></span
+        ></span>
+        <span class="poster-door__body">
           <strong>Seguir itinerários</strong>
           <small>Roteiros passo a passo por perguntas</small>
         </span>
@@ -80,7 +94,7 @@
   />
 </section>
 
-<section class="console" aria-label="Busca e ferramentas" data-tone-section>
+<section class="console atlas-grain" aria-label="Busca e ferramentas" data-tone-section>
   <form role="search" aria-label="Busca no acervo" appReveal (submit)="search($event)">
     <app-text-field
       controlId="atlas-search"
@@ -270,13 +284,13 @@
 </section>
 
 <section
-  class="catalogue-band"
+  class="catalogue-band atlas-grain"
   aria-labelledby="catalogues-title"
   data-tone-section
   style="
-    --band-bg: var(--color-rose-paper);
+    --band-bg: var(--surface-stamp-ocre);
     --band-fg: var(--color-ink);
-    --band-em: var(--color-violet);
+    --band-em: var(--text-accent-on-poster);
   "
 >
   <header class="atlas-band-heading" appReveal data-reveal="wipe">
@@ -290,33 +304,47 @@
   <ul class="doors" appReveal>
     <li class="door door--wide door--search" data-stagger style="--stagger: 0">
       <a routerLink="/acervo" [queryParams]="{ camada: 'registros' }">
-        <span class="door-glyph" aria-hidden="true"></span>
-        <strong>Acervo completo</strong>
-        <span class="door-note">Busque em todas as fichas de uma vez, com filtros por tipo.</span>
-        <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true"
-          ><app-chevron
-        /></span>
+        <app-stamp class="door-stamp" tone="vermelho">
+          <span class="door-face">
+            <span class="door-glyph" aria-hidden="true"></span>
+            <strong>Acervo completo</strong>
+            <span class="door-note"
+              >Busque em todas as fichas de uma vez, com filtros por tipo.</span
+            >
+            <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true"
+              ><app-chevron
+            /></span>
+          </span>
+        </app-stamp>
       </a>
     </li>
     <li class="door door--wide door--net" data-stagger style="--stagger: 1">
       <a routerLink="/grafos">
-        <span class="door-glyph" aria-hidden="true"></span>
-        <strong>Rede de ligações</strong>
-        <span class="door-note">O acervo como mapa: siga quem se liga a quem.</span>
-        <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true"
-          ><app-chevron
-        /></span>
+        <app-stamp class="door-stamp" tone="cal">
+          <span class="door-face">
+            <span class="door-glyph" aria-hidden="true"></span>
+            <strong>Rede de ligações</strong>
+            <span class="door-note">O acervo como mapa: siga quem se liga a quem.</span>
+            <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true"
+              ><app-chevron
+            /></span>
+          </span>
+        </app-stamp>
       </a>
     </li>
     @for (catalogue of catalogues; track catalogue.path; let index = $index) {
       <li class="door" data-stagger [style.--stagger]="index + 2">
         <a [routerLink]="catalogueUrl(catalogue.path)">
-          <span class="door-glyph" aria-hidden="true"></span>
-          <strong>{{ catalogue.title }}</strong>
-          <span class="door-note">{{ catalogue.description }}</span>
-          <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true"
-            ><app-chevron
-          /></span>
+          <app-stamp class="door-stamp" [tone]="doorTone(catalogue.path)">
+            <span class="door-face">
+              <span class="door-glyph" aria-hidden="true"></span>
+              <strong>{{ catalogue.title }}</strong>
+              <span class="door-note">{{ catalogue.description }}</span>
+              <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true"
+                ><app-chevron
+              /></span>
+            </span>
+          </app-stamp>
         </a>
       </li>
     }

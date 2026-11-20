@@ -1,27 +1,33 @@
-@if (shownPicture(); as src) {
-  <img
-    class="card-picture"
-    [class.card-picture--flag]="pictureMode() === 'flag'"
-    [src]="src | contentMedia"
-    alt=""
-    loading="lazy"
-  />
-} @else if (illustration(); as art) {
-  <app-geometric-illustration
-    class="card-picture card-illustration"
-    [entityId]="art.id"
-    [kind]="art.kind"
-    [palette]="art.palette"
-    [decorative]="true"
-  />
-} @else {
-  <app-kind-icon class="card-glyph" [kind]="shownIcon()" />
-}
-<small class="card-kind"><app-kind-icon [kind]="shownIcon()" />{{ shownKind() }}</small>
-<strong>{{ shownTitle() }}</strong>
-@if (shownPeriod()) {
-  <span class="card-period">{{ shownPeriod() }}</span>
-}
-@if (shownNote()) {
-  <span class="card-links">{{ shownNote() }}</span>
-}
+<app-stamp class="card-stamp" tone="cal">
+  <span class="card-body" [attr.data-band]="stampTone()">
+    @if (shownPicture(); as src) {
+      <img
+        class="card-picture"
+        [class.card-picture--flag]="pictureMode() === 'flag'"
+        [src]="src | contentMedia"
+        alt=""
+        loading="lazy"
+      />
+    } @else if (illustration(); as art) {
+      <app-geometric-illustration
+        class="card-picture card-illustration"
+        [entityId]="art.id"
+        [kind]="art.kind"
+        [palette]="art.palette"
+        [decorative]="true"
+      />
+    } @else {
+      <app-kind-icon class="card-glyph" [kind]="shownIcon()" />
+    }
+    <small class="card-kind card-band"
+      ><app-kind-icon [kind]="shownIcon()" />{{ shownKind() }}</small
+    >
+    <strong>{{ shownTitle() }}</strong>
+    @if (shownPeriod()) {
+      <span class="card-period">{{ shownPeriod() }}</span>
+    }
+    @if (shownNote()) {
+      <span class="card-links">{{ shownNote() }}</span>
+    }
+  </span>
+</app-stamp>

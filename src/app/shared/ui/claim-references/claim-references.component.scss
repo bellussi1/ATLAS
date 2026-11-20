@@ -35,7 +35,7 @@ p {
 }
 .claim-reference__text {
   margin: 0.5rem 0 0.625rem;
-  font: 400 1.125rem/1.55 var(--font-serif, var(--serif));
+  font: 400 1.125rem/1.55 var(--font-serif, var(--font-primary));
   letter-spacing: 0;
 }
 .claim-reference__source {
@@ -61,11 +61,11 @@ blockquote {
   margin: 0 0 0.75rem;
   padding-left: 0.75rem;
   border-left: 2px solid var(--color-border-strong);
-  font-family: var(--font-serif, var(--serif));
+  font-family: var(--font-serif, var(--font-primary));
   color: var(--color-ink);
 }
 a {
-  color: var(--color-accent, var(--signal));
+  color: var(--color-accent, var(--color-signal));
   text-underline-offset: 0.2em;
 }
 a:focus-visible,

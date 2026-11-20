@@ -1,5 +1,5 @@
-// Gerado por scripts/content/classify-relations.mjs e expand-relations.mjs. Não editar à mão.
-// Revisão: conferência de IA (modelo local gemma2:9b-instruct-q4_K_M, 2026-11-19), sem revisão humana.
+// Gerado por scripts/content/classify-relations.mjs, expand-relations.mjs e apply-enrichment-drafts.mjs. Não editar à mão.
+// Revisão: conferência de IA (modelos locais, 2026-11-19), sem revisão humana.
 
 /** Decisão por relação: família (`creation`, `participation`…, `:reverse` inverte a seta) ou `omit`. */
 export const relationCategoryDecisions: Readonly<Record<string, string>> = {
@@ -743,5 +743,6 @@ export const relationCategoryDecisions: Readonly<Record<string, string>> = {
   'rel-exp-wiki-topic-william-godwin-wiki-topic-radicalismo': 'rupture',
   'rel-exp-wiki-topic-winston-churchill-wiki-topic-potencias-do-eixo': 'rupture',
   'rel-exp-work-communist-manifesto-wiki-topic-europa': 'location',
+  'rel-fc-wiki-topic-revolucao-de-outubro-wiki-topic-russia': 'location',
   'rel-rag-cand-rel-049': 'omit',
 };

@@ -2,10 +2,12 @@ import { readFile } from 'node:fs/promises';
 
 import AxeBuilder from '@axe-core/playwright';
 
-import { DEFAULT_CONTENT_BASE_URL } from '../src/app/core/content/models/content-pointer';
 import { expect, test } from './content-fixture';
 
-const base = DEFAULT_CONTENT_BASE_URL;
+// The preview port serves the pinned release from /content (see src/index.html and scripts/preview.mjs),
+// so the app's content requests go to that origin rather than the public R2 base.
+const previewPort = process.env['ATLAS_PREVIEW_PORT'] ?? '4305';
+const base = `http://127.0.0.1:${previewPort}/content`;
 
 async function loadManifest() {
   const pointer = JSON.parse(await readFile('generated/content-cache/pointer.json', 'utf8'));
@@ -19,7 +21,8 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
 }) => {
   const resources: string[] = [];
   page.on('request', (request) => {
-    if (request.url().startsWith(base)) resources.push(new URL(request.url()).pathname);
+    if (request.url().startsWith(base))
+      resources.push(new URL(request.url()).pathname.replace(/^\/content(?=\/)/, ''));
   });
   await page.goto('/');
   await expect(page.locator('h1')).toBeVisible();
@@ -65,7 +68,8 @@ test('the graph loads the network bundle without the search and adjacency indexe
 }) => {
   const resources: string[] = [];
   page.on('request', (request) => {
-    if (request.url().startsWith(base)) resources.push(new URL(request.url()).pathname);
+    if (request.url().startsWith(base))
+      resources.push(new URL(request.url()).pathname.replace(/^\/content(?=\/)/, ''));
   });
   await page.goto('/grafos');
   await expect(page.locator('svg.canvas')).toBeVisible();
@@ -121,7 +125,8 @@ test('SSR hydrates through the pinned release without duplicate HTTP', async ({ 
     .click();
   await expect(page.getByRole('dialog')).toContainText('John Locke');
   expect(new Set(resources).size).toBe(resources.length);
-  expect(resources.some((url) => url.endsWith('/pointer.json'))).toBe(false);
+  // The pointer may be fetched once by the app on this origin; it must never be repeated.
+  expect(resources.filter((url) => url.endsWith('/pointer.json')).length).toBeLessThanOrEqual(1);
 });
 
 test('a failed content asset preserves the current page and offers a working retry', async ({

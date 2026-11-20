@@ -1,0 +1,166 @@
+:host {
+  display: block;
+}
+
+.start {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.start__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  h2 {
+    margin: 0;
+    font: 700 var(--text-lead)/1.15 var(--font-primary);
+  }
+}
+
+.start__close {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-tight);
+  background: transparent;
+  color: var(--color-ink);
+  font: 600 1.1rem/1 var(--font-primary);
+  cursor: pointer;
+  &:hover {
+    background: var(--color-surface-subtle);
+  }
+}
+
+.start__lead,
+.start__hint {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font: 400 var(--text-small)/1.45 var(--font-primary);
+}
+
+.start__hint {
+  font-size: var(--text-caption);
+  kbd {
+    padding: 0 0.3rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: 2px;
+    font: 600 var(--text-caption)/1.4 var(--font-numeric);
+  }
+}
+
+.start__label {
+  margin: 0.35rem 0 0;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-ink-muted);
+  font: 600 var(--text-caption)/1.2 var(--font-primary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.start__entries {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.start__entry {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.35rem 0.25rem;
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-ink);
+  text-align: left;
+  cursor: pointer;
+  small {
+    color: var(--color-ink-muted);
+    font: 500 var(--text-caption)/1.2 var(--font-primary);
+  }
+  &:hover {
+    background: var(--color-surface-subtle);
+  }
+  &:hover .start__name {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+
+.start__name {
+  font: 650 var(--text-small)/1.25 var(--font-primary);
+}
+
+.start__route {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-tight);
+  background: var(--color-surface-subtle);
+  color: var(--color-ink);
+  font: 650 var(--text-small)/1.25 var(--font-primary);
+  text-align: left;
+  cursor: pointer;
+  &:hover {
+    background: var(--color-surface-raised);
+  }
+}
+
+.start__arrow {
+  color: var(--color-signal);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* On a phone the card shares the bottom of the screen with the map: one line and a row of doors. */
+@media (max-width: 40rem) {
+  .start {
+    gap: 0.45rem;
+  }
+  .start__lead,
+  .start__hint {
+    display: none;
+  }
+  .start__label {
+    margin: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+  .start__entries {
+    display: flex;
+    gap: 0.4rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 0.15rem;
+  }
+  .start__entry {
+    display: inline-flex;
+    width: auto;
+    white-space: nowrap;
+    padding-inline: 0.6rem;
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-tight);
+    small {
+      display: none;
+    }
+  }
+}

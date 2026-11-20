@@ -22,11 +22,13 @@ import type {
 import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
 import { illustrationPalette } from '@shared/ui/geometric-illustration/illustration';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import {
   AtlasKindIconComponent,
   type IconKind,
   iconKind,
 } from '@shared/ui/kind-icon/kind-icon.component';
+import { AtlasStampComponent } from '@shared/ui/stamp/stamp.component';
 
 interface RecordGroup {
   readonly id: string;
@@ -73,6 +75,8 @@ function splitLeadSummary(fullText: string): { lead: string; truncated: boolean 
     AtlasChevronComponent,
     AtlasGeometricIllustrationComponent,
     AtlasKindIconComponent,
+    AtlasStampComponent,
+    AtlasIconComponent,
     ContentMediaPipe,
   ],
   templateUrl: './map-study-desk.component.html',
@@ -98,6 +102,8 @@ export class MapStudyDeskComponent {
   readonly selectTerritory = output<string>();
   readonly selectConnection = output<string>();
   readonly hoverConnection = output<string | null>();
+  /** Previous or next timeline marker, so the sheet on a phone can walk the marks without the dock. */
+  readonly stepMarco = output<-1 | 1>();
 
   readonly showAllRecords = linkedSignal({
     source: () => this.territoryEntry()?.territory.id,
@@ -140,6 +146,21 @@ export class MapStudyDeskComponent {
     return [...map.entries()]
       .sort((a, b) => a[1].order - b[1].order)
       .map(([id, data]) => ({ id, label: data.label, items: data.items }));
+  });
+
+  /** The record behind the active timeline marker: what it is and how it ties to the territory. */
+  readonly hotpointRecord = computed(() => {
+    const hp = this.activeHotpoint();
+    const record = hp
+      ? this.territoryEntry()?.activeRecords.find((item) => item.slug === hp.slug)
+      : undefined;
+    if (!record) return null;
+    const summary = readerProse(record.summary) ?? record.summary ?? '';
+    const verb = record.relationLabel.trim();
+    return {
+      lead: summary ? splitLeadSummary(summary).lead : '',
+      relation: verb.charAt(0).toLocaleUpperCase('pt-BR') + verb.slice(1),
+    };
   });
 
   readonly hasGeoReference = computed(() => {

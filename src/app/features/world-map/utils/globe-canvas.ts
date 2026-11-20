@@ -585,7 +585,8 @@ export function renderGlobeFrame(
       ctx.fill();
     } else {
       const s = selected || hovered ? 4.2 : 3.4;
-      ctx.fillStyle = '#EEC35A';
+      // Ochre pigment (--pig-ocre-500); canvas cannot read custom properties directly.
+      ctx.fillStyle = '#EDBB5C';
       ctx.strokeStyle = '#141211';
       ctx.lineWidth = selected ? 2 : 1.2;
       ctx.fillRect(-s, -s, s * 2, s * 2);

@@ -2,207 +2,147 @@
   <img src="public/brand/atlas-logo.svg" alt="ATLAS" width="360" />
 </p>
 
-<h3 align="center">Uma enciclopédia visual para explorar ideias e compreender suas conexões.</h3>
+<h3 align="center">A visual encyclopedia for exploring ideas and how they connect.</h3>
 
 <p align="center">
-  História, política, economia e sociedade como uma rede navegável de pessoas, obras, conceitos e acontecimentos, sempre com a fonte por perto.
+  History, politics, economics and society as a navigable network of people, works, concepts and events, with the source always within reach.
+</p>
+
+<p align="center">
+  <a href="https://atlas-bellussi.pages.dev"><b>atlas-bellussi.pages.dev</b></a> ·
+  <a href="README.pt-BR.md">Português</a> ·
+  <a href="CONTRIBUTING.md">Contribute</a>
 </p>
 
 <p align="center">
   <img alt="Angular 21" src="https://img.shields.io/badge/Angular-21-b81d16?style=flat-square&logo=angular&logoColor=white" />
   <img alt="TypeScript strict" src="https://img.shields.io/badge/TypeScript-strict-141211?style=flat-square&logo=typescript&logoColor=white" />
-  <img alt="Static first" src="https://img.shields.io/badge/static--first-prerender-eec35a?style=flat-square" />
-  <img alt="Zod" src="https://img.shields.io/badge/conte%C3%BAdo-validado%20com%20Zod-363a5f?style=flat-square" />
-  <img alt="Wikimedia" src="https://img.shields.io/badge/dados-Wikipedia%20%C2%B7%20Wikidata%20%C2%B7%20Commons-7fbdb5?style=flat-square" />
-  <img alt="Playwright + axe" src="https://img.shields.io/badge/testes-Vitest%20%C2%B7%20Playwright%20%C2%B7%20axe-eab0c2?style=flat-square" />
-  <img alt="Código MIT" src="https://img.shields.io/badge/c%C3%B3digo-MIT-363a5f?style=flat-square" />
-  <img alt="Conteúdo CC BY-SA 4.0" src="https://img.shields.io/badge/conte%C3%BAdo-CC%20BY--SA%204.0-7fbdb5?style=flat-square" />
+  <img alt="Zod" src="https://img.shields.io/badge/content-Zod--validated-363a5f?style=flat-square" />
+  <img alt="Tests" src="https://img.shields.io/badge/tests-Vitest%20%C2%B7%20Playwright%20%C2%B7%20axe-eab0c2?style=flat-square" />
+  <img alt="Code MIT" src="https://img.shields.io/badge/code-MIT-363a5f?style=flat-square" />
+  <img alt="Content CC BY-SA 4.0" src="https://img.shields.io/badge/content-CC%20BY--SA%204.0-7fbdb5?style=flat-square" />
 </p>
 
 <p align="center">
-  <a href="https://atlas-bellussi.pages.dev">atlas-bellussi.pages.dev</a>
+  <a href="https://atlas-bellussi.pages.dev"><img src="docs/readme/atlas-home.webp" alt="ATLAS home page: the headline 'Tudo se liga' next to a geometric composition, with entry points to readings, graph, world map and itineraries." width="100%" /></a>
 </p>
 
 ---
 
-## Estado do projeto
+## Why
 
-ATLAS está em construção. Nem todo o acervo foi revisado:
+Encyclopedic text tends to blend documented fact, attributed thesis and interpretation in one paragraph. Knowledge graphs that keep them apart are rarely readable by non-specialists. ATLAS aims at both: a reading experience for students and curious readers, backed by typed data a developer can audit.
 
-- Parte do conteúdo tem **revisão de IA**, ainda sem revisão humana. Essa condição aparece no próprio site.
-- Lacunas e pendências são marcadas como tais, não preenchidas com texto genérico.
-- A cobertura varia entre as tradições e as entidades.
+Every claim is a record with its own citation and one of these classes:
 
-Erros, fontes faltando e sugestões são bem-vindos (veja [Contribuir](#contribuir)).
+| Class | Meaning |
+| --- | --- |
+| `documented-fact` | Supported directly by the cited source |
+| `attributed-thesis` | A position held by a named author or school |
+| `interpretation` | A reading of the evidence, marked as such |
+| `contested-claim` | Disputed between credible sources |
 
-## O que é
+Known gaps are declared at chapter level instead of being filled with generic text.
 
-O ATLAS não organiza o conhecimento em artigos isolados. Cada grande tema é uma leitura contínua, e as palavras, retratos, linhas do tempo e grafos abrem novos caminhos sem tirar você do contexto.
+## The content, in numbers
+
+From the published content release (graph of 2026-11-18):
 
 | | |
 | --- | --- |
-| **Leituras contínuas** | Textos longos por tradição, em capítulos, com índice e fontes ao lado de cada afirmação. |
-| **Acervo de verbetes** | Pessoas, obras, conceitos, acontecimentos, países, regimes, partidos, instituições e lugares, cada um com página permanente. |
-| **Rede de conhecimento** | Entidades com IDs estáveis e relações tipadas, reaproveitadas em todas as telas. |
-| **Contexto por demanda** | Termos e nós abrem fichas com fontes por hover, foco, toque ou clique. |
-| **Tipo de afirmação à vista** | Fato documentado, interpretação, controvérsia ou lacuna, sempre marcados. |
+| **1,320** entities | people, works, concepts, events, institutions, parties, places, ideologies |
+| **12,146** claims | every one with a citation |
+| **1,482** sources | |
+| **3,025** typed relations | |
+| **9** long-form readings, **20** itineraries | |
 
-## Rotas
+## Four views of the same graph
 
-| Rota | Conteúdo |
+| | |
 | --- | --- |
-| `/` | Página inicial: busca universal, entrada para as leituras e mesa de pesquisa |
-| `/leitura/:slug` | Leituras contínuas por tradição (`/marxismo`, `/liberalismo`, `/social-democracia` e `/anarquismo` redirecionam) |
-| `/acervo` | Busca no acervo, com filtros que ficam na URL |
-| `/acervo/<catálogo>` | Catálogos por tipo: entidades, ideologias, pessoas, obras, conceitos, países, estados, cidades, locais, regimes, partidos, instituições, acontecimentos, lugares e fontes. As antigas rotas de catálogo respondem 301 para cá |
-| `/grafos` | Mapa de ligações em tela cheia (`/grafo` e `/rede` redirecionam para cá) |
-| `/verbete/:slug` | Página permanente de uma entidade, com contexto, fontes e conexões |
+| <img src="docs/readme/atlas-reading.webp" alt="Reading on Marxism with portraits and starting questions." width="480" /> | **Readings.** Continuous text in chapters, with portraits, sources beside the claims and questions to start from. |
+| <img src="docs/readme/atlas-itineraries.webp" alt="Itineraries page with type filters and stamp-style cards." width="480" /> | **Itineraries.** Step-by-step routes that link readings, entries and graph nodes. |
+| <img src="docs/readme/atlas-graph.webp" alt="The collection graph with node-type filters." width="480" /> | **Graph.** The whole network, with node-type filters, search and paths between two entries. |
+| <img src="docs/readme/atlas-map.webp" alt="World globe with historical connections and a timeline." width="480" /> | **Map.** Countries, empires and cities on a globe, with a timeline from 1750 to 2026. |
 
-`/conhecimento` e `/comparar` redirecionam para `/acervo`. Caminhos desconhecidos mostram "Página não encontrada", sem redirecionar.
+## Project status
 
-As rotas publicadas são prerenderizadas no build. Leituras e verbetes não publicados não entram no prerender.
+ATLAS is under construction and not everything has been reviewed.
 
-## Começar
+- No claim has completed human review yet. Part of the content carries **AI review**, and the site says so.
+- Gaps and pending items are marked as such.
+- Coverage is uneven across traditions, and the interface is mostly in Portuguese.
 
-Requer **Node.js 24** e **npm 11** (e opcionalmente `uv`, **Ollama** e GPU CUDA para o pipeline local de fontes públicas e RAG).
+Mistakes, missing sources and suggestions are welcome (see [Contributing](#contributing)).
 
-**1 comando para preparar tudo (dependências, cache/build de conteúdo, ambiente Python/GPU e diagnóstico de modelos locais e credenciais):**
+## Run it locally
+
+Requires **Node.js 24** and **npm 11**. No credentials are needed to read or contribute code.
 
 ```bash
-npm run setup
+npm install
 npm start
 ```
 
-Abra `http://localhost:4200`. Para apenas inspecionar o ambiente sem alterar arquivos, use `npm run setup:check`.
+Open `http://localhost:4200`. `npm run setup` prepares everything in one go (dependencies, content cache and build, optional local RAG environment); `npm run setup:check` only inspects the environment.
 
-| Comando | Uso |
+| Command | Use |
 | --- | --- |
-| `npm run setup` | Prepara o ambiente completo em 1 comando (`node_modules`, cache R2, `content:build`, `experiments/rag/.venv` e diagnóstico de modelos/credenciais) |
-| `npm run setup:check` | Diagnostica Node, conteúdo, GPU, modelos Ollama/HuggingFace e credenciais R2 sem alterar nada |
-| `npm start` (ou `npm run dev`) | Compila o conteúdo e sobe o servidor local (`ng serve`) |
-| `npm run build` | Build de produção, prerender e cabeçalhos de segurança |
-| `npm run preview` | Serve a saída estática em `127.0.0.1:4305` |
-| `npm run publish:check` | Compila e simula a publicação no R2 e no Cloudflare Pages (`--dry-run`, sem alterar produção) |
-| `npm run content:publish` | Compila e publica o conteúdo no Cloudflare R2 em 1 comando |
-| `npm test` | Testes unitários (Vitest) |
-| `npm run test:e2e` | Jornadas no navegador, acessibilidade (axe) e estabilidade de layout (Playwright) |
-| `npm run test:content` | Testes dos scripts de conteúdo e setup |
-| `npm run test:ingestion` | Testes da ingestão Wikimedia |
-| `npm run lint` | ESLint, limites arquiteturais, Biome e Prettier |
-| `npm run typecheck` | TypeScript da aplicação e dos testes |
-| `npm run check:links` | Verifica links da saída estática |
-| `npm run verify` | Pipeline completo: auditoria, lint, testes, ingestão, build, links e E2E |
-| `npm run content:build` | Compila `content` nos artefatos que o app carrega |
-| `npm run rag:models` | Lista modelos locais configurados (Ollama + HuggingFace GPU) |
-| `npm run rag:ingest -- --topic trabalhismo` | Limpa, extrai afirmações com citação literal verificada e embebeda fontes públicas localmente |
-| `npm run rag:mine` | Minera filas humanas do acervo localmente (`bge-m3` + `bge-reranker-v2-m3`) |
-| `npm run rag:eval` | Verifica os gates de regressão da suíte experimental RAG |
+| `npm start` | Compile content and serve locally |
+| `npm run build` | Production build, prerender and security headers |
+| `npm test` | Unit tests (Vitest) |
+| `npm run test:e2e` | User journeys, accessibility (axe) and layout stability (Playwright) |
+| `npm run test:content` / `test:ingestion` | `node --test` suites for content and ingestion scripts |
+| `npm run lint` | ESLint, architecture boundaries, Biome and Prettier |
+| `npm run typecheck` | TypeScript for the app and the specs |
+| `npm run verify` | Full pipeline: audit, lint, tests, ingestion, build, links and E2E |
 
-`start`, `build`, `test`, `lint` e `typecheck` executam `content:build` antes. Depois de editar `content` com o servidor aberto, reinicie `npm start`.
-
-## Como funciona
+## How it works
 
 ```mermaid
 flowchart LR
-  W[Wikipedia · Wikidata · Commons] -->|ingestão reproduzível| S[Snapshots versionados]
-  E[Curadoria editorial<br/>JSON + fontes] --> V
-  S --> V{Zod: IDs, slugs,<br/>referências, licenças}
-  V -->|content:build| G[Manifesto, busca,<br/>adjacência e layouts]
-  G -->|content:publish| R[(Cloudflare R2<br/>objetos por hash)]
-  R -->|content:fetch no build| C[Cache local]
+  W[Wikipedia · Wikidata · Commons] -->|reproducible ingestion| S[Versioned snapshots]
+  E[Editorial curation<br/>JSON + sources] --> V
+  S --> V{Zod: IDs, slugs,<br/>references, licenses}
+  V -->|content:build| G[Manifest, search,<br/>adjacency, layouts]
+  G -->|content:publish| R[(Cloudflare R2<br/>objects by hash)]
+  R -->|content:fetch at build| C[Local cache]
   C --> A[Angular 21<br/>Signals · standalone]
-  A -->|prerender| H[Site estático]
+  A -->|prerender| H[Static site]
 ```
 
-- O conteúdo compilado é publicado no R2 como objetos imutáveis (`c/<sha256>.json`, `m/<sha256>.<ext>`). Só `pointer.json` é mutável.
-- `content/content-pointer.json` fixa a versão publicada. O build (`content:fetch`) a baixa, verificando tamanho e SHA-256.
-- O app lê o ponteiro e os objetos por hash, com integridade preservada na hidratação. Não há API em tempo de leitura.
-- Publicar (`npm run content:publish`) exige credenciais do R2 fora do repositório. Quem só lê ou contribui com código não precisa delas.
+- **Static-first and content-addressed.** Compiled content is published to R2 as immutable objects (`c/<sha256>.json`, `m/<sha256>.<ext>`). Only `pointer.json` is mutable. The build fetches the pinned release, checking size and SHA-256, and prerenders every published route. There is no API at reading time.
+- **Validated before it compiles.** Zod schemas check IDs, slugs, references and asset licenses.
+- **Angular 21.** Signals, standalone components, and TransferState so hydration does not download content twice.
+- **Enforced boundaries.** A custom ESLint rule (`architecture/boundaries`) keeps `core`, `shared` and features apart and blocks import cycles.
+- **AI with guardrails.** LLM-assisted extraction keeps only citations found verbatim in the source; a local RAG pipeline (`bge-m3` embeddings and a reranker, run with Ollama) suggests relations as drafts; AI review is labelled as such. The pipeline never publishes: publishing is a human decision.
 
-## Estrutura
+Read [architecture](docs/architecture/ARCHITECTURE.md), the [page standard](docs/design/PAGE_STANDARD.md) and the [docs index](docs/README.md) before contributing.
 
-```
-src/app/
-  app.routes.ts       composição central das rotas
-  core/
-    content/          modelos Zod, repositório, consultas puras, editorial, mídia
-    routing/          resolvers de conteúdo
-  shared/
-    ui/               componentes de apresentação reutilizáveis
-    directives/       comportamento compartilhado (revelação, contexto, links editoriais)
-    motion/           movimento compartilhado
-  features/
-    ideologies/       leituras de tradições: páginas, blocos, modelos, dados, serviço
-    exploration/      catálogos, busca, rede, verbetes e visualizações históricas
-    study/            trilha de estudo e progresso
-  layouts/            app-shell, cabeçalho e rodapé
-  pages/home/         página inicial
-content/              grafo, ideologias, conhecimento, tradições e traduções (fonte versionada)
-public/               marca, fontes, mídia, cabeçalhos e redirecionamentos
-scripts/              build e publicação de conteúdo, ingestão Wikimedia, pipeline de tradições
-e2e/                  jornadas no navegador
-docs/                 arquitetura, design, editorial, pesquisa e qualidade
-```
+## Contributing
 
-### Mapa da raiz
+There are two ways in, and one needs no code.
 
-| Entrada | Papel | Versionada? |
-|---|---|---|
-| `src/`, `content/`, `public/`, `scripts/`, `e2e/` | Código, conteúdo-fonte, marca e pipeline | sim |
-| `docs/` | Arquitetura, design, operação, pesquisas e histórico | sim |
-| `referencias/` | Três imagens de direção de arte e o `LEIA-ME` | sim; não são ativos de publicação |
-| `AGENTS.md`, `README.md`, `LICENSE*`, `SECURITY.md`, `CITATION.cff` | Contrato, apresentação, licenças e citação | sim |
-| `angular.json`, `package*.json`, `tsconfig*.json`, `eslint.config.js`, `biome.json`, `*.config.*` | Configuração de build, tipos e qualidade | sim |
-| `generated/` | Cache de conteúdo, respostas pagas, avaliações e capturas locais | não; recriável |
-| `dist/`, `.angular/`, `node_modules/` | Saída de build, cache do Angular e dependências | não; recriável |
-| `tmp/`, `output/` | Rascunhos de sessão e mídia de lançamento | não; local |
-| `.claude/worktrees/` | Worktrees de sessões paralelas | não; podem ser removidos após o merge |
-| `prompts/`, `templates/`, `animation-plans/` | Antigos artefatos de trabalho | agora em `docs/archive/2026-11/` e `docs/design/animation-plans/` |
+**Content and sources (no code needed)**
+- Found a wrong statement or a better source? Open a [content issue](https://github.com/bellussi1/ATLAS/issues/new/choose) with the entry and the source.
+- Issues labelled `conteúdo`, `imagens` and `novo atlas` are the places to start.
 
-Limpeza segura de build e testes: `npm run clean` mostra o que sairia; `npm run clean -- --yes` remove. O comando não toca em `content/`, `docs/`, `referencias/` nem em `output/`.
+**Code, design and accessibility**
+- Pick an issue labelled [`good first issue`](https://github.com/bellussi1/ATLAS/labels/good%20first%20issue) or [`help wanted`](https://github.com/bellussi1/ATLAS/labels/help%20wanted), and comment before starting.
+- Pull requests should pass `lint`, `typecheck`, `test`, `test:e2e` and `build`.
+- Say in the PR what was generated or assisted by AI. AI review is never presented as human review.
 
-Regras de dependência: `core` não importa apresentação; `shared` não importa features; features não acessam a implementação interna umas das outras. Imports entre responsabilidades usam os aliases de `tsconfig.json`. A regra `architecture/boundaries` do ESLint verifica os limites e a ausência de ciclos.
+Full guide in [CONTRIBUTING.md](CONTRIBUTING.md). This project follows a [code of conduct](CODE_OF_CONDUCT.md); report vulnerabilities through the [security policy](SECURITY.md).
 
-Leia antes de contribuir: [arquitetura](docs/architecture/ARCHITECTURE.md), [padrão de páginas](docs/design/PAGE_STANDARD.md) e [índice da documentação](docs/README.md).
+## License
 
-## Princípios editoriais
+- **Code:** [MIT](LICENSE).
+- **Editorial content, graph and relations:** [CC BY-SA 4.0](LICENSE-CONTEUDO.md). Text derived from Wikipedia keeps its original license.
+- **Images:** the license of each Wikimedia Commons file, recorded next to it. Not covered by this repository.
+- **Typography:** SIL Open Font License 1.1.
 
-- Fato, interpretação, hipótese e controvérsia são marcados como tais.
-- Nenhuma fonte, data, citação ou revisão humana é inventada. Lacunas aparecem como lacunas.
-- Linhas de crítica não são linhas de descendência. Proximidade em uma visualização não sugere causalidade.
-- Imagens só são publicadas com autoria e licença registradas junto a elas.
+To cite the project, use [CITATION.cff](CITATION.cff).
 
-## Pipeline de conteúdo
+## Credits
 
-Novas tradições e verbetes entram por uma pipeline com portas de verificação em cada estágio, e não por edição manual:
-
-| Comando | Uso |
-| --- | --- |
-| `npm run tradicao -- <slug> --stage N --dry-run` | Roda um estágio da pipeline de uma tradição (estado retomável, sem gastar nada no `--dry-run`) |
-| `npm run tradicao:coverage -- <slug>` | Mede o quanto falta para a tradição chegar ao piso de /marxismo e /liberalismo |
-| `npm run ideology:new` | Cria o esqueleto de uma leitura |
-| `npm run wiki:extract` | Extração de rascunhos a partir da Wikipedia (exige `ANTHROPIC_API_KEY`; os rascunhos ficam em um bucket privado) |
-| `npm run ingest:fetch-raw` e `npm run ingest:verify` | Baixam as respostas brutas do R2 e reproduzem as capturas Wikimedia offline |
-| `npm run publish:check` e `npm run content:publish` | Simula (`--dry-run`) ou compila e publica o conteúdo no R2 em 1 comando (exige credenciais em `~/.atlas/r2.env`) |
-| `npm run rag:ingest` e `npm run rag:mine` | Extração e mineração local de fontes públicas com modelos Ollama e `bge-m3` na GPU (sem gastar API paga; itens entram com revisão de IA e `ok: null`) |
-
-A pipeline não publica sozinha: publicar é decisão humana. Conteúdo extraído com IA é marcado como revisão de IA até que uma pessoa o revise. Os estágios estão em `.claude/skills/atlas-pipeline-tradicao/SKILL.md`.
-
-## Contribuir
-
-Encontrou um erro, uma fonte melhor ou uma conexão que falta? [Abra uma issue](https://github.com/bellussi1/ATLAS/issues) ou leia o [guia de contribuição](CONTRIBUTING.md). Pull requests devem passar `lint`, `typecheck`, `test`, `test:e2e` e `build`.
-
-Este projeto segue um [código de conduta](CODE_OF_CONDUCT.md). Vulnerabilidades: veja a [política de segurança](SECURITY.md).
-
-## Licença
-
-- **Código:** [MIT](LICENSE).
-- **Conteúdo editorial, grafo e relações:** [CC BY-SA 4.0](LICENSE-CONTEUDO.md). Textos derivados da Wikipedia mantêm a licença de origem.
-- **Imagens:** licença de cada arquivo do Wikimedia Commons, registrada junto a ela. Não são cobertas por este repositório.
-- **Tipografia:** SIL Open Font License 1.1.
-
-Detalhes, regras de reutilização e o aviso sobre conteúdo assistido por IA em [LICENSE-CONTEUDO.md](LICENSE-CONTEUDO.md). Para citar o projeto, use [CITATION.cff](CITATION.cff).
-
-## Créditos
-
-Imagens do [Wikimedia Commons](https://commons.wikimedia.org), com autoria e licença registradas em cada uma. Textos e dados de descoberta da Wikipedia (CC BY-SA 4.0) e do Wikidata (CC0), lidos de capturas reproduzíveis versionadas. Tipografia IBM Plex e Source Serif 4 sob a SIL Open Font License.
+Images from [Wikimedia Commons](https://commons.wikimedia.org), with author and license recorded on each. Text and discovery data from Wikipedia (CC BY-SA 4.0) and Wikidata (CC0), read from reproducible versioned snapshots. IBM Plex and Source Serif 4 under the SIL Open Font License.

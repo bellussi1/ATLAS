@@ -77,7 +77,7 @@
   stroke-width: 3;
 }
 .loom-globe {
-  fill: var(--color-teal-paper, #dcebe7);
+  fill: var(--color-teal-paper);
   stroke-width: 6;
 }
 .loom-edge {
@@ -166,7 +166,7 @@
 .recompose-dot {
   width: 0.9rem;
   height: 0.9rem;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background: var(--color-accent);
   transition: scale var(--motion-fast) var(--ease-out);
 }

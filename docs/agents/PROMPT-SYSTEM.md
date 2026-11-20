@@ -17,6 +17,7 @@ Este documento é o mapa das instruções que orientam agentes no repositório. 
 | Voz | `docs/design/GUIA-DE-VOZ.md` | Todo texto ao leitor |
 | Operação | `docs/operations/PRODUCAO.md` | Deploy, R2, Pages e CI |
 | Fluxo de população | `docs/architecture/FLUXO-DE-POPULACAO.md` | Pipeline de tradição |
+| Fluxo Firecrawl + RAG | `docs/architecture/FLUXO-FIRECRAWL.md` | Corpus local, indexação incremental e rascunhos |
 | Histórico | `docs/archive/2026-11/README.md` | Só quando precisar de decisão ou evidência antiga |
 | Skills | `.claude/skills/`, `.agents/skills/` | Sob demanda, pelo `skill` |
 | Comandos | `.opencode/commands/` | Quando o usuário invoca `/...` |

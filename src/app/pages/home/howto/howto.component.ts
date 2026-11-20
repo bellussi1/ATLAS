@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 
-/** "Quatro gestos, uma descoberta": the four-step guide on the home page. */
+/** Purpose of the archive, then the four-step guide on the home page. */
 @Component({
   selector: 'app-home-howto',
   imports: [AtlasChevronComponent, AtlasRevealDirective, RouterLink],
@@ -11,6 +11,23 @@ import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
   styleUrl: './howto.component.scss',
 })
 export class HomeHowtoComponent {
+  readonly purpose = [
+    {
+      term: 'Contexto',
+      shape: 'quarter',
+      text: 'Quem disse, quando e onde: datas, lugares e o período em que cada ideia ou fato aparece.',
+    },
+    {
+      term: 'Relações',
+      shape: 'circle',
+      text: 'Quem influenciou quem, o que rompeu com o quê, quem participou de cada acontecimento.',
+    },
+    {
+      term: 'Evidência',
+      shape: 'square',
+      text: 'Fato documentado, interpretação e controvérsia aparecem separados, cada um com a fonte.',
+    },
+  ] as const;
   readonly howTo = [
     {
       id: 'procurar',

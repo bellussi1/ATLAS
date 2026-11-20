@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-nacao-nacionalismo-e-imperio",
+  "slug": "nacao-nacionalismo-e-imperio",
+  "kind": "conceitual",
+  "title": "Nação, Nacionalismo e Império: Um Roteiro de Estudo",
+  "question": "Como as ideias de nação, nacionalismo e império moldaram a história global?",
+  "deck": "Este roteiro explora a complexa relação entre nação, nacionalismo e império, desde suas origens até os desafios contemporâneos da descolonização e da construção de identidades.",
+  "summary": "Um percurso pela formação do Estado-nação, pela expansão imperial e pelas independências que redesenharam a soberania.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "wiki-topic-estado-nacao",
+      "title": "O Conceito de Estado-Nação",
+      "reason": "O Estado-nação é a base para a compreensão de nações e nacionalismos. Esta parada define o conceito e sua evolução histórica.",
+      "question": "Quais são as características essenciais do Estado-nação?",
+      "destination": {
+        "type": "verbete",
+        "slug": "estado-nacao"
+      },
+      "justification": "Esta parada introduz o conceito fundamental que permeia o tema.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "wiki-topic-imperialismo",
+      "title": "O Império e a Expansão Colonial",
+      "reason": "O imperialismo é um motor importante para a formação de nações e a construção de identidades nacionais. Esta parada analisa as causas e consequências do imperialismo.",
+      "question": "Como o imperialismo moldou a formação de nações e identidades?",
+      "destination": {
+        "type": "verbete",
+        "slug": "imperialismo"
+      },
+      "justification": "Esta parada conecta o conceito de Estado-nação com o fenômeno do imperialismo.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "wiki-topic-colonialismo",
+      "title": "As Experiências Coloniais e a Resistência",
+      "reason": "O colonialismo teve um impacto profundo nas sociedades colonizadas, gerando movimentos de resistência e contribuindo para a formação de identidades nacionais.",
+      "question": "Quais foram os impactos do colonialismo nas sociedades colonizadas?",
+      "destination": {
+        "type": "verbete",
+        "slug": "colonialismo"
+      },
+      "justification": "Esta parada explora as consequências do imperialismo na formação de nações.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "wiki-topic-dissolucao-da-uniao-sovietica",
+      "title": "A Descolonização e a Nova Ordem Mundial",
+      "reason": "A dissolução da União Soviética marcou o fim da Guerra Fria e o início de uma nova era de globalização e redefinição de identidades nacionais.",
+      "question": "Como a descolonização e a queda do bloco soviético impactaram a ordem mundial?",
+      "destination": {
+        "type": "verbete",
+        "slug": "dissolucao-da-uniao-sovietica"
+      },
+      "justification": "Esta parada conecta o tema com eventos contemporâneos e a complexidade da formação de nações no mundo pós-colonial.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "descolonizacao",
+      "title": "Descolonização e novas soberanias",
+      "reason": "As independências africanas e asiáticas redefiniram império, nação e soberania no século XX.",
+      "question": "Como a descolonização reconfigurou a ordem internacional?",
+      "destination": {
+        "type": "verbete",
+        "slug": "descolonizacao"
+      },
+      "justification": "Liga império, nacionalismo e autodeterminação sem tratar a Guerra Fria como causa única.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "grafo-nacao",
+      "title": "Nacionalismo e autodeterminação em rede",
+      "reason": "O grafo reúne Estados, impérios, partidos e movimentos que disputam o significado de nação.",
+      "question": "Que conexões do acervo ajudam a comparar projetos nacionais?",
+      "justification": "Fecha o percurso no acervo, sem eleger uma definição única de nação.",
+      "destination": {
+        "type": "grafo"
+      },
+      "sourceIds": ["src-acervo"]
+    }
+  ],
+  "branches": [
+    {
+      "id": "branch-nacionalismo-e-identidades",
+      "fromStop": "wiki-topic-estado-nacao",
+      "title": "Nacionalismo e Identidades",
+      "reason": "Explorar as diferentes formas de nacionalismo e suas influências na construção de identidades.",
+      "question": "Como o nacionalismo molda as identidades individuais e coletivas?",
+      "destination": {
+        "type": "verbete",
+        "slug": "nacionalismo"
+      },
+      "justification": "Esta ramificação aprofunda a relação entre Estado-nação e nacionalismo.",
+      "convergesAt": "wiki-topic-colonialismo"
+    },
+    {
+      "id": "branch-imperios-e-poder",
+      "fromStop": "wiki-topic-imperialismo",
+      "title": "Impérios e Poder",
+      "reason": "Analisar a relação entre impérios, poder e a construção de identidades em diferentes contextos históricos.",
+      "question": "Como os impérios exercem influência sobre a formação de nações e identidades?",
+      "destination": {
+        "type": "verbete",
+        "slug": "imperio-alemao"
+      },
+      "justification": "Esta ramificação explora a dinâmica de poder e a influência dos impérios.",
+      "exit": "true"
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "reason": "Conectar o tema com eventos históricos relevantes"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-acervo",
+      "title": "ATLAS — Registros e verbetes compilados no acervo"
+    }
+  ],
+  "updatedAt": "2026-11-19",
+  "version": "1.0.0"
+}

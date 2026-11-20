@@ -52,66 +52,89 @@
       </button>
     </div>
 
+    <p class="itineraries__count" id="itineraries-results" role="status" aria-live="polite">
+      {{ filteredItems().length }}
+      {{ filteredItems().length === 1 ? 'itinerário' : 'itinerários' }}
+      @if (paged().pageCount > 1) {
+        <span>, página {{ paged().page }} de {{ paged().pageCount }}</span>
+      }
+      .
+    </p>
     <ul class="itineraries__grid">
-      @for (item of filteredItems(); track item.id) {
+      @for (item of paged().items; track item.id) {
         <li class="itinerary-card" [attr.data-kind]="item.kind">
-          <div class="itinerary-card__rail">
-            <app-geometric-mosaic
-              class="itinerary-card__mosaic"
-              [columns]="3"
-              [rows]="2"
-              [palette]="paletteFor(item.kind)"
-              [seed]="seedFor(item.slug)"
-            />
-            <span class="itinerary-card__seal" [class.is-verified]="item.status === 'verified'">
-              {{ statusLabel(item.status) }}
-            </span>
-          </div>
+          <app-stamp class="itinerary-card__stamp" tone="cal">
+            <div class="itinerary-card__face">
+              <div class="itinerary-card__rail">
+                <app-geometric-mosaic
+                  class="itinerary-card__mosaic"
+                  [columns]="3"
+                  [rows]="2"
+                  [palette]="paletteFor(item.kind)"
+                  [seed]="seedFor(item.slug)"
+                />
+                <app-seal
+                  class="itinerary-card__seal"
+                  [label]="statusLabel(item.status)"
+                  [tone]="item.status === 'verified' ? 'mata' : 'neutral'"
+                />
+              </div>
 
-          <div class="itinerary-card__body">
-            <p class="itinerary-card__meta">
-              <span class="itinerary-card__kind">{{ kindLabels[item.kind] }}</span>
-              <span>{{ item.stops.length }} paradas</span>
-              @if (item.branches.length > 0) {
-                <span>{{ item.branches.length }} ramos</span>
-              }
-            </p>
-            <h2>
-              <a [routerLink]="['/itinerario', item.slug]">{{ item.title }}</a>
-            </h2>
-            <p class="itinerary-card__question">{{ item.question }}</p>
-            <p class="itinerary-card__summary">{{ item.summary }}</p>
+              <div class="itinerary-card__body">
+                <p class="itinerary-card__meta">
+                  <span class="itinerary-card__kind">{{ kindLabels[item.kind] }}</span>
+                  <span>{{ item.stops.length }} paradas</span>
+                  @if (item.branches.length > 0) {
+                    <span>{{ item.branches.length }} ramos</span>
+                  }
+                </p>
+                <h2>
+                  <a [routerLink]="['/itinerario', item.slug]">{{ item.title }}</a>
+                </h2>
+                <p class="itinerary-card__question">{{ item.question }}</p>
+                <p class="itinerary-card__summary">{{ item.summary }}</p>
 
-            <ol class="itinerary-card__trail" aria-label="Prévia do percurso">
-              @for (stop of item.stops; track stop.id; let i = $index) {
-                <li class="trail-step">
-                  <span
-                    class="trail-step__node"
-                    [attr.data-type]="stop.destination.type"
-                    aria-hidden="true"
-                    >{{ i + 1 }}</span
-                  >
-                  <span class="trail-step__text">
-                    <span class="trail-step__kind">{{ destinationLabel(stop.destination) }}</span>
-                    <strong>{{ stop.title }}</strong>
+                <ol class="itinerary-card__trail" aria-label="Prévia do percurso">
+                  @for (stop of item.stops; track stop.id; let i = $index) {
+                    <li class="trail-step">
+                      <span
+                        class="trail-step__node"
+                        [attr.data-type]="stop.destination.type"
+                        aria-hidden="true"
+                        >{{ i + 1 }}</span
+                      >
+                      <span class="trail-step__text">
+                        <span class="trail-step__kind">{{
+                          destinationLabel(stop.destination)
+                        }}</span>
+                        <strong>{{ stop.title }}</strong>
+                      </span>
+                    </li>
+                  }
+                </ol>
+
+                @if (item.coverage !== 'complete' && item.coverageNote) {
+                  <p class="itinerary-card__coverage">{{ item.coverageNote }}</p>
+                }
+
+                <p class="itinerary-card__cta-row">
+                  <span class="itinerary-card__cta" aria-hidden="true">
+                    Abrir mapa do percurso
+                    <app-icon class="itinerary-card__arrow" name="arrow-right" />
                   </span>
-                </li>
-              }
-            </ol>
-
-            @if (item.coverage !== 'complete' && item.coverageNote) {
-              <p class="itinerary-card__coverage">{{ item.coverageNote }}</p>
-            }
-
-            <p class="itinerary-card__cta-row">
-              <span class="itinerary-card__cta" aria-hidden="true">
-                Abrir mapa do percurso <span class="itinerary-card__arrow">→</span>
-              </span>
-            </p>
-          </div>
+                </p>
+              </div>
+            </div>
+          </app-stamp>
         </li>
       }
     </ul>
+    <app-pagination
+      label="Páginas de itinerários"
+      [page]="paged().page"
+      [pageCount]="paged().pageCount"
+      (pageChange)="goToPage($event)"
+    />
   } @else {
     <div class="itineraries__empty" role="status">
       <h2>Não há itinerários publicados neste recorte.</h2>

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-desigualdade-capital-e-trabalho",
+  "slug": "desigualdade-capital-e-trabalho",
+  "kind": "historico",
+  "title": "Desigualdade, Capital e Trabalho: Uma Jornada Histórica",
+  "question": "Como a industrialização, os sindicatos e o Estado social moldaram a relação entre capital e trabalho?",
+  "deck": "Este itinerário explora a evolução da relação entre capital e trabalho, desde a Revolução Industrial até a emergência de modelos de Estado social.",
+  "summary": "Este percurso analisa o impacto da industrialização, o surgimento dos sindicatos e a formação de modelos de Estado social na dinâmica entre capital e trabalho.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "revolucao-industrial",
+      "title": "A Revolução Industrial",
+      "reason": "A Revolução Industrial marcou a transição para uma nova era de produção, com impactos profundos na organização do trabalho e na distribuição de renda.",
+      "question": "Quais foram as principais características da Revolução Industrial e como ela impactou a relação entre capital e trabalho?",
+      "destination": {
+        "type": "verbete",
+        "slug": "revolucao-industrial"
+      },
+      "justification": "Ponto de partida para entender as transformações sociais e econômicas que levaram à necessidade de regulamentação do trabalho.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "proletariado-e-capitalismo",
+      "title": "Proletariado e Capitalismo",
+      "reason": "A ascensão do proletariado e a lógica do capitalismo definiram a nova relação de trabalho e geraram conflitos sociais.",
+      "question": "Como a divisão entre proletariado e capitalistas moldou a dinâmica social e econômica da era industrial?",
+      "destination": {
+        "type": "verbete",
+        "slug": "capitalismo"
+      },
+      "justification": "Esta parada contextualiza o surgimento dos movimentos trabalhistas e a busca por regulamentação do trabalho.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "sindicatos-e-luta-por-direitos",
+      "title": "Sindicatos e a Luta por Direitos",
+      "reason": "A organização sindical representou uma resposta aos desafios enfrentados pelos trabalhadores e impulsionou a busca por direitos trabalhistas.",
+      "question": "Como os sindicatos se formaram e quais foram suas principais conquistas na luta por direitos trabalhistas?",
+      "destination": {
+        "type": "verbete",
+        "slug": "sindicato"
+      },
+      "justification": "Esta parada explora a importância dos sindicatos na construção de um modelo de Estado social.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "estado-social-e-bem-estar",
+      "title": "O Estado Social e o Bem-Estar",
+      "reason": "A partir do século XX, diversos países implementaram políticas de Estado social para garantir direitos e proteção aos trabalhadores.",
+      "question": "Quais foram os principais modelos de Estado social e como eles impactaram a relação entre capital e trabalho?",
+      "destination": {
+        "type": "verbete",
+        "slug": "estado-de-bem-estar-social"
+      },
+      "justification": "Esta parada analisa a evolução dos modelos de Estado social e sua influência na distribuição de renda e na proteção social.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "desigualdade-e-capitalismo-atual",
+      "title": "Desigualdade e o Capitalismo Atual",
+      "reason": "A desigualdade social persiste como um desafio no mundo contemporâneo, com debates sobre a justiça social e a distribuição de riqueza.",
+      "question": "Quais são as causas e as consequências da desigualdade social no contexto do capitalismo atual?",
+      "destination": {
+        "type": "grafo"
+      },
+      "justification": "Esta parada convida à reflexão sobre os desafios contemporâneos e as perspectivas para o futuro da relação entre capital e trabalho.",
+      "sourceIds": ["src-acervo"]
+    }
+  ],
+  "branches": [
+    {
+      "id": "anarquismo-social",
+      "fromStop": "proletariado-e-capitalismo",
+      "title": "Anarquismo Social",
+      "reason": "O anarquismo social oferece uma perspectiva crítica ao capitalismo e defende a abolição do Estado.",
+      "question": "Como o anarquismo social propõe transformar a relação entre capital e trabalho?",
+      "destination": {
+        "type": "verbete",
+        "slug": "anarquismo-social"
+      },
+      "justification": "Esta ramificação explora uma alternativa ao modelo capitalista e ao Estado social.",
+      "convergesAt": "desigualdade-e-capitalismo-atual"
+    },
+    {
+      "id": "libertarianismo",
+      "fromStop": "estado-social-e-bem-estar",
+      "title": "Libertarianismo",
+      "reason": "O libertarianismo defende a liberdade individual e a mínima intervenção estatal na economia.",
+      "question": "Como o libertarianismo se posiciona em relação ao Estado social e à regulação do mercado?",
+      "destination": {
+        "type": "verbete",
+        "slug": "libertarianismo"
+      },
+      "justification": "Esta ramificação explora uma visão contrária ao Estado social e à intervenção estatal na economia.",
+      "exit": "true"
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "reason": "Para aprofundar o estudo dos eventos históricos relacionados ao tema."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-acervo",
+      "title": "ATLAS — Registros e verbetes compilados no acervo"
+    }
+  ],
+  "updatedAt": "2026-11-19",
+  "version": "1.0.0"
+}

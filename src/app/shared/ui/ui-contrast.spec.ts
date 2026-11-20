@@ -1,9 +1,29 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const source = readFileSync(resolve(process.cwd(), 'src/styles.scss'), 'utf8');
+const tokenFiles = ['src/styles/tokens/_primitives.scss', 'src/styles/tokens/_semantic.scss'];
+const declarations = new Map(
+  tokenFiles.flatMap((file) =>
+    [...readFileSync(resolve(process.cwd(), file), 'utf8').matchAll(/--([\w-]+):\s*([^;]+);/g)].map(
+      ([, name, value]) => [name, value.trim()] as const,
+    ),
+  ),
+);
+
+/** Follows `var(--x)` references until a six-digit hex colour, so semantic tokens resolve to primitives. */
+function resolveToken(name: string, seen = new Set<string>()): string | undefined {
+  const value = declarations.get(name);
+  if (!value || seen.has(name)) return undefined;
+  if (/^#[\da-fA-F]{6}$/.test(value)) return value;
+  const reference = value.match(/^var\(--([\w-]+)\)$/);
+  return reference ? resolveToken(reference[1], new Set(seen).add(name)) : undefined;
+}
+
 const tokens = Object.fromEntries(
-  [...source.matchAll(/--([\w-]+):\s*(#[\da-fA-F]{6});/g)].map(([, name, value]) => [name, value]),
+  [...declarations.keys()].flatMap((name) => {
+    const value = resolveToken(name);
+    return value ? [[name, value]] : [];
+  }),
 );
 
 function luminance(color: string): number {
@@ -49,6 +69,35 @@ describe('semantic design token contrast', () => {
     ['color-on-strong-surface', 'color-accent-hover', 4.5],
     ['color-on-strong-surface', 'color-cartographic', 4.5],
     ['color-on-strong-surface', 'color-archive', 4.5],
+    ['color-ink', 'color-orange-paper', 4.5],
+    ['color-ochre-strong', 'color-canvas', 3],
+    ['color-tradition-rose', 'color-canvas', 4.5],
+    ['color-tradition-stone', 'color-canvas', 4.5],
+    ['color-tradition-ochre', 'color-canvas', 4.5],
+    ['color-tradition-moss', 'color-canvas', 4.5],
+    ['color-violet', 'color-canvas', 4.5],
+    ['color-indigo', 'color-canvas', 4.5],
+    ['color-info', 'color-canvas', 4.5],
+    ['text-on-stamp', 'surface-stamp-cal', 4.5],
+    ['text-on-stamp', 'surface-stamp-ocre', 4.5],
+    ['text-on-stamp', 'surface-stamp-mata', 4.5],
+    ['text-on-stamp', 'surface-stamp-rosa', 4.5],
+    ['text-on-stamp', 'surface-stamp-urucum', 4.5],
+    ['text-on-stamp-vermelho', 'surface-stamp-vermelho', 4.5],
+    ['text-on-stamp-jenipapo', 'surface-stamp-jenipapo', 4.5],
+    ['text-on-poster', 'surface-poster', 4.5],
+    ['text-accent-on-poster', 'surface-poster', 4.5],
+    // Poster register pairs, guarded before the first poster component ships.
+    ['pig-cal-50', 'pig-terra-900', 4.5],
+    ['pig-ocre-300', 'pig-terra-900', 4.5],
+    ['pig-urucum-300', 'pig-terra-900', 4.5],
+    ['pig-mata-300', 'pig-terra-900', 4.5],
+    ['pig-rosa-300', 'pig-terra-900', 4.5],
+    ['pig-cal-50', 'pig-pau-brasil-500', 4.5],
+    ['pig-cal-50', 'pig-mata-700', 4.5],
+    ['pig-cal-50', 'pig-jenipapo-700', 4.5],
+    ['pig-tinta-900', 'pig-ocre-500', 4.5],
+    ['pig-tinta-900', 'pig-mata-300', 4.5],
   ])('%s on %s meets its documented contrast minimum', (foreground, background, minimum) => {
     expect(tokens[foreground]).toBeDefined();
     expect(tokens[background]).toBeDefined();

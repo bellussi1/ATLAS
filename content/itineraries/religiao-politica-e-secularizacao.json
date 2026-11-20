@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-religiao-politica-e-secularizacao",
+  "slug": "religiao-politica-e-secularizacao",
+  "kind": "conceitual",
+  "title": "Religião, política e secularização",
+  "question": "Como instituições e tradições religiosas disputam a política e a laicidade?",
+  "deck": "Igreja, doutrina social, democracia cristã e islamismo político em perspectiva comparada.",
+  "summary": "Um roteiro sobre autoridade religiosa, partidos confessionais e a construção da laicidade, sem reduzir religião a epifenômeno.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "igreja-catolica",
+      "title": "Igreja Católica e poder temporal",
+      "reason": "A Igreja construiu autoridade sobre casamento, educação e legitimidade política ao longo de séculos.",
+      "question": "Como a Igreja exerceu poder fora do espaço religioso?",
+      "justification": "Distingue autoridade espiritual e poder secular.",
+      "destination": {
+        "type": "verbete",
+        "slug": "igreja-catolica"
+      },
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "doutrina-social-da-igreja",
+      "title": "Doutrina Social da Igreja",
+      "reason": "Respostas católicas à industrialização, ao trabalho e ao socialismo.",
+      "question": "Como a Igreja respondeu à questão social?",
+      "justification": "Mostra que a religião também produz programa econômico e social.",
+      "destination": {
+        "type": "verbete",
+        "slug": "doutrina-social-da-igreja"
+      },
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "democracia-crista",
+      "title": "Democracia cristã",
+      "reason": "Partidos e governos que traduziram compromisso religioso em programa democrático.",
+      "question": "O que a democracia cristã acrescenta ao debate entre liberalismo e social-democracia?",
+      "justification": "Conecta doutrina, partido e política de massas.",
+      "destination": {
+        "type": "verbete",
+        "slug": "democracia-crista"
+      },
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "islamismo",
+      "title": "Islamismo e política",
+      "reason": "Correntes e debates sobre lei, Estado e sociedade em países de maioria muçulmana.",
+      "question": "Como distintas tradições islâmicas pensam a autoridade política?",
+      "justification": "Evita tratar o islamismo como bloco único.",
+      "destination": {
+        "type": "verbete",
+        "slug": "islamismo"
+      },
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "grafo-secularizacao",
+      "title": "Laicidade e secularização",
+      "reason": "O grafo conecta instituições, conceitos e trajetórias que sustentam a discussão.",
+      "question": "O que muda quando o Estado reivindica neutralidade religiosa?",
+      "justification": "Fecha o percurso no acervo, não em uma tese única.",
+      "destination": {
+        "type": "grafo"
+      },
+      "sourceIds": ["src-acervo"]
+    }
+  ],
+  "branches": [
+    {
+      "id": "igreja-e-estado-no-mundo",
+      "fromStop": "igreja-catolica",
+      "title": "Relação entre Igreja e Estado em Outros Países",
+      "reason": "Comparar a relação entre Igreja e Estado no Brasil com outros países pode oferecer uma perspectiva mais ampla sobre o tema.",
+      "question": "Como a relação entre Igreja e Estado se configura em outros países?",
+      "destination": {
+        "type": "catalogo",
+        "path": "entidades"
+      },
+      "justification": "Esta ramificação amplia a análise para um contexto global, permitindo comparações e reflexões sobre diferentes modelos.",
+      "convergesAt": "doutrina-social-da-igreja"
+    },
+    {
+      "id": "teocracia-e-democracia",
+      "fromStop": "igreja-catolica",
+      "title": "Teocracia e Democracia: Contrastes e Convergências",
+      "reason": "Comparar a teocracia com a democracia pode ajudar a entender melhor a importância da laicidade e os desafios à secularização.",
+      "question": "Quais são as diferenças e semelhanças entre teocracia e democracia?",
+      "destination": {
+        "type": "verbete",
+        "slug": "teocracia"
+      },
+      "justification": "Esta ramificação aprofunda a análise sobre os modelos de governo e a relação entre religião e política.",
+      "exit": "true"
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "reason": "A história da relação entre religião e política no Brasil está marcada por eventos importantes."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-acervo",
+      "title": "ATLAS — Registros e verbetes compilados no acervo"
+    }
+  ],
+  "updatedAt": "2026-11-19",
+  "version": "1.0.0"
+}

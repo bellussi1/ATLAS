@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-autoritarismo-totalitarismo-e-resistencia",
+  "slug": "autoritarismo-totalitarismo-e-resistencia",
+  "kind": "comparativo",
+  "title": "Autoritarismo, Totalitarismo e Resistência no Século XX",
+  "question": "Como se manifestaram os regimes autoritários e totalitários no século XX e quais foram as formas de resistência?",
+  "deck": "Este itinerário explora a ascensão e queda de regimes autoritários e totalitários no século XX, analisando suas características, impactos e as diversas formas de resistência que surgiram contra eles.",
+  "summary": "Este itinerário analisa a ascensão e queda de regimes autoritários e totalitários no século XX, explorando suas características, impactos e as diversas formas de resistência que surgiram contra eles.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "autoritarismo-totalitarismo",
+      "title": "Autoritarismo e Totalitarismo: Conceitos e Diferenças",
+      "reason": "Esta parada define os conceitos de autoritarismo e totalitarismo, destacando suas características e diferenças.",
+      "question": "Quais são as principais características que distinguem o autoritarismo do totalitarismo?",
+      "destination": {
+        "type": "verbete",
+        "slug": "autoritarismo"
+      },
+      "justification": "Esta parada serve como introdução ao tema, estabelecendo o contexto para as discussões posteriores.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "nazismo-e-o-holocausto",
+      "title": "O Nazismo e o Holocausto: Um Exemplo de Totalitarismo",
+      "reason": "Esta parada analisa o nazismo como um exemplo extremo de totalitarismo, explorando suas ideologias, práticas e o genocídio contra os judeus.",
+      "question": "Como o nazismo se manifestou na prática e quais foram as consequências do Holocausto?",
+      "destination": {
+        "type": "verbete",
+        "slug": "nazismo"
+      },
+      "justification": "Esta parada aprofunda a compreensão do totalitarismo através de um caso histórico emblemático.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "fascismo-e-a-italia-fascista",
+      "title": "O Fascismo e a Itália Fascista: Um Modelo de Autoritarismo",
+      "reason": "Esta parada explora o fascismo como um modelo de autoritarismo, analisando suas características, o contexto histórico da Itália Fascista e o papel de Benito Mussolini.",
+      "question": "Quais foram as características do fascismo e como se manifestou na Itália Fascista?",
+      "destination": {
+        "type": "verbete",
+        "slug": "italia-fascista"
+      },
+      "justification": "Esta parada oferece uma análise de outro regime autoritário, comparando-o com o nazismo.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "ditaduras-militares-e-a-resistencia",
+      "title": "Ditaduras Militares e a Resistência: O Caso do Brasil",
+      "reason": "Esta parada analisa a ditadura militar brasileira como um exemplo de autoritarismo, explorando suas características, impactos sociais e as formas de resistência que se manifestaram durante o regime.",
+      "question": "Como se manifestou a resistência contra a ditadura militar no Brasil e quais foram seus impactos?",
+      "destination": {
+        "type": "verbete",
+        "slug": "ditadura-militar-brasileira"
+      },
+      "justification": "Esta parada contextualiza o tema dentro da história brasileira, mostrando como a resistência se manifestou em diferentes formas.",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "ideologias-e-movimentos-de-resistencia",
+      "title": "Ideologias e Movimentos de Resistência: Uma Abordagem Global",
+      "reason": "Esta parada explora as diversas ideologias e movimentos de resistência que se opuseram aos regimes autoritários e totalitários no século XX.",
+      "question": "Quais foram as principais ideologias e movimentos de resistência que se opuseram aos regimes autoritários e totalitários?",
+      "destination": {
+        "type": "grafo"
+      },
+      "justification": "Esta parada amplia a discussão para um panorama global, mostrando a diversidade de formas de resistência.",
+      "sourceIds": ["src-acervo"]
+    }
+  ],
+  "branches": [
+    {
+      "id": "esquerda-antistalinista",
+      "fromStop": "autoritarismo-totalitarismo",
+      "title": "A Esquerda Antistalinista: Críticas ao Totalitarismo Soviético",
+      "reason": "Esta ramificação explora a crítica de esquerda ao stalinismo, mostrando como a experiência soviética gerou movimentos de resistência dentro da própria esquerda.",
+      "question": "Como a experiência soviética gerou críticas de esquerda e quais foram as principais características da esquerda antistalinista?",
+      "destination": {
+        "type": "verbete",
+        "slug": "esquerda-antistalinista"
+      },
+      "justification": "Esta ramificação aprofunda a discussão sobre o totalitarismo, mostrando a complexidade das relações dentro da esquerda.",
+      "convergesAt": "ideologias-e-movimentos-de-resistencia"
+    },
+    {
+      "id": "trabalhismo-e-a-resistencia",
+      "fromStop": "ditaduras-militares-e-a-resistencia",
+      "title": "O Trabalhismo e a Resistência: O Caso do Brasil",
+      "reason": "Esta ramificação explora o papel do trabalhismo brasileiro na resistência à ditadura militar, mostrando como o movimento sindical se mobilizou contra o regime.",
+      "question": "Como o trabalhismo brasileiro se manifestou como força de resistência contra a ditadura militar?",
+      "destination": {
+        "type": "verbete",
+        "slug": "trabalhismo-brasileiro"
+      },
+      "justification": "Esta ramificação aprofunda a análise da resistência no Brasil, mostrando a importância do movimento trabalhista.",
+      "convergesAt": "ideologias-e-movimentos-de-resistencia"
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "reason": "Para aprofundar a compreensão dos regimes autoritários e totalitários, é importante analisar os eventos históricos que os antecederam e os que se seguiram."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-acervo",
+      "title": "ATLAS — Registros e verbetes compilados no acervo"
+    }
+  ],
+  "updatedAt": "2026-11-19",
+  "version": "1.0.0"
+}

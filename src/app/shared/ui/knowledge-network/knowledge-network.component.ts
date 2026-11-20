@@ -7,6 +7,7 @@ import {
   effect,
   ElementRef,
   inject,
+  Injector,
   input,
   output,
   signal,
@@ -65,11 +66,17 @@ import { ContentRepository } from '@core/content/repositories/content-repository
 import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
 import { illustrationPalette } from '@shared/ui/geometric-illustration/illustration';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
 import { AtlasSectionSwitcherComponent } from '@shared/ui/section-switcher/section-switcher.component';
 
 import { batchEdgeSegments, type EdgeSegment } from './network-batching';
 import { shapePath } from './network-shapes';
+import {
+  AtlasNetworkStartComponent,
+  type NetworkStartEntry,
+  type NetworkStartRoute,
+} from './network-start/network-start.component';
 
 interface LabelView extends PlacedLabel {
   worldX: number;
@@ -157,6 +164,18 @@ function runtimeForGraph(graph: KnowledgeGraph): CachedGraphRuntime {
   return runtime;
 }
 
+/** Doors into the graph: international and Brazilian references with many documented links. */
+const START_IDS = [
+  'person-karl-marx',
+  'person-adam-smith',
+  'event-french-revolution',
+  'wiki-topic-getulio-vargas',
+  'wiki-topic-guerra-fria',
+  'wiki-topic-simon-bolivar',
+  'wiki-topic-mahatma-gandhi',
+];
+const START_ROUTE = ['event-french-revolution', 'wiki-topic-getulio-vargas'] as const;
+
 const classificationLabels: Record<string, string> = {
   'documented-fact': 'Fato documentado',
   'attributed-thesis': 'Tese atribuída',
@@ -175,6 +194,8 @@ const classificationLabels: Record<string, string> = {
     AtlasChevronComponent,
     AtlasKindIconComponent,
     AtlasGeometricIllustrationComponent,
+    AtlasNetworkStartComponent,
+    AtlasIconComponent,
     ContentMediaPipe,
   ],
   templateUrl: './knowledge-network.component.html',
@@ -194,7 +215,9 @@ export class KnowledgeNetworkComponent {
   });
   private readonly destroyRef = inject(DestroyRef);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly injector = inject(Injector);
   private readonly stage = viewChild<ElementRef<HTMLElement>>('stage');
+  private readonly bar = viewChild<ElementRef<HTMLElement>>('bar');
   private readonly runtime = runtimeForGraph(this.repository.knowledgeGraph);
   private readonly network = this.runtime.network;
   private readonly nodeIndex = this.runtime.nodeIndex;
@@ -262,7 +285,21 @@ export class KnowledgeNetworkComponent {
   /** Explicit choice of the reader; until then the panel follows the screen size. */
   readonly controlsOpen = signal<boolean | null>(null);
   readonly wide = signal(false);
-  readonly controlsShown = computed(() => this.controlsOpen() ?? this.wide());
+  /** Room for legend, map and detail side by side; below it the detail takes the legend's place. */
+  readonly roomy = signal(false);
+  /** Bottom edge of the toolbar inside the stage, measured: it wraps to two or three rows. */
+  readonly barBottom = signal(0);
+  readonly controlsShown = computed(
+    () =>
+      this.controlsOpen() ??
+      (this.wide() &&
+        (this.roomy() ||
+          this.embedded() ||
+          !this.selected() ||
+          this.pathMode() ||
+          !!this.pathFrom() ||
+          !!this.pathTo())),
+  );
   readonly shortcutsOpen = signal(false);
   readonly view = signal<View>({ x: 0, y: 0, k: 1 });
   readonly size = signal({ width: 0, height: 0 });
@@ -401,6 +438,36 @@ export class KnowledgeNetworkComponent {
     }
     return null;
   });
+  /** The reader closed the first card; it stays closed for this visit. */
+  readonly startDismissed = signal(false);
+  readonly startShown = computed(
+    () =>
+      !this.embedded() &&
+      !this.startDismissed() &&
+      !this.selected() &&
+      !this.pathMode() &&
+      !this.pathFrom() &&
+      !this.pathTo(),
+  );
+  readonly startEntries = computed<readonly NetworkStartEntry[]>(() => {
+    const visible = this.visibleIds();
+    const entries = START_IDS.flatMap((id) => {
+      const node = this.nodeIndex.get(id);
+      return node && visible.has(id) ? [this.startEntry(node)] : [];
+    });
+    if (entries.length >= 4) return entries;
+    // A narrower cut falls back to its best-connected records.
+    return [...this.visible().nodes]
+      .sort((a, b) => b.degree - a.degree)
+      .slice(0, 6)
+      .map((node) => this.startEntry(node));
+  });
+  readonly startRoute = computed<NetworkStartRoute | null>(() => {
+    const [from, to] = START_ROUTE.map((id) => this.nodeIndex.get(id));
+    const visible = this.visibleIds();
+    if (!from || !to || !visible.has(from.id) || !visible.has(to.id)) return null;
+    return { from: this.startEntry(from), to: this.startEntry(to) };
+  });
   readonly pathFromTitle = computed(() => {
     const id = this.pathFrom();
     return id ? (this.nodeIndex.get(id)?.title ?? id) : null;
@@ -481,15 +548,18 @@ export class KnowledgeNetworkComponent {
     const wide = this.wide();
     return {
       left: wide && this.controlsShown() ? 19 * rem + 32 : 12,
-      right: wide && !this.embedded() && this.selected() ? 23 * rem + 32 : 12,
-      top: wide ? 92 : 84,
+      right:
+        wide && (this.startShown() || (!this.embedded() && this.selected())) ? 23 * rem + 32 : 12,
+      top: this.barBottom() ? this.barBottom() + 12 : wide ? 92 : 84,
       // On a phone the pill and the zoom stack over the bottom of the map; keep labels clear.
       bottom:
         !wide && this.embedded() && this.selectedVisible()
           ? 172
           : !wide && !this.embedded() && this.selected()
             ? Math.round(height * 0.5)
-            : 64,
+            : !wide && this.startShown()
+              ? Math.round(height * 0.3)
+              : 64,
       width,
     };
   });
@@ -1071,6 +1141,10 @@ export class KnowledgeNetworkComponent {
       this.reducedMotion.set(media?.matches ?? false);
       const onMedia = (event: MediaQueryListEvent) => this.reducedMotion.set(event.matches);
       media?.addEventListener('change', onMedia);
+      const roomyMedia = window.matchMedia?.('(min-width: 90rem)');
+      this.roomy.set(roomyMedia?.matches ?? false);
+      const onRoomy = (event: MediaQueryListEvent) => this.roomy.set(event.matches);
+      roomyMedia?.addEventListener('change', onRoomy);
       const wideMedia = window.matchMedia?.('(min-width: 62rem)');
       this.wide.set(wideMedia?.matches ?? false);
       const onWide = (event: MediaQueryListEvent) => {
@@ -1082,6 +1156,7 @@ export class KnowledgeNetworkComponent {
       const observer = new (globalThis.ResizeObserver ?? FallbackObserver)(() => {
         // A hidden or collapsed stage reports no size; keep the last real one.
         if (!element?.clientWidth || !element.clientHeight) return;
+        this.measureBar(element);
         this.size.set({ width: element.clientWidth, height: element.clientHeight });
         if (this.positions() && (!fitted || this.autoFit)) {
           const initialFit = !fitted;
@@ -1093,6 +1168,9 @@ export class KnowledgeNetworkComponent {
       });
       if (element) {
         observer.observe(element);
+        const bar = this.bar()?.nativeElement;
+        if (bar) observer.observe(bar);
+        this.measureBar(element);
         this.size.set({ width: element.clientWidth, height: element.clientHeight });
         if (this.positions() && this.size().width && !fitted) {
           fitted = true;
@@ -1150,6 +1228,7 @@ export class KnowledgeNetworkComponent {
         observer.disconnect();
         media?.removeEventListener('change', onMedia);
         wideMedia?.removeEventListener('change', onWide);
+        roomyMedia?.removeEventListener('change', onRoomy);
       });
     });
   }
@@ -1229,8 +1308,18 @@ export class KnowledgeNetworkComponent {
       this.pathMode.set(false);
       this.pathTargetSlot.set('from');
       if (this.visible().path?.found) this.fitPath();
+      this.revealPathPanel();
     }
     this.syncUrl(this.selectedId(), true);
+  }
+
+  dismissStart(): void {
+    this.startDismissed.set(true);
+    if (this.autoFit) this.fit();
+  }
+  traceRoute(route: NetworkStartRoute): void {
+    this.setPathEndpoint('from', route.from.id);
+    this.setPathEndpoint('to', route.to.id);
   }
   startPathSlot(slot: 'from' | 'to'): void {
     this.pathTargetSlot.set(slot);
@@ -2246,6 +2335,39 @@ export class KnowledgeNetworkComponent {
     if (sy < top) dy = top - sy;
     else if (sy > bottom) dy = bottom - sy;
     if (dx || dy) this.panBy(dx, dy);
+  }
+
+  private measureBar(stage: HTMLElement): void {
+    const bar = this.bar()?.nativeElement;
+    if (!bar) return;
+    const bottom = bar.getBoundingClientRect().bottom - stage.getBoundingClientRect().top;
+    if (bottom > 0) this.barBottom.set(Math.round(bottom));
+  }
+
+  /** The route is read in the legend: bring its panel into view once both ends are set. */
+  private revealPathPanel(): void {
+    afterNextRender(
+      () => {
+        const panel = this.host.nativeElement.querySelector<HTMLElement>('#graph-controls');
+        const slots = panel?.querySelector<HTMLElement>('.path-slots');
+        if (!panel || !slots) return;
+        const top = slots.getBoundingClientRect().top - panel.getBoundingClientRect().top;
+        panel.scrollTo?.({
+          top: panel.scrollTop + top - 56,
+          behavior: this.reducedMotion() ? 'auto' : 'smooth',
+        });
+      },
+      { injector: this.injector },
+    );
+  }
+
+  private startEntry(node: NetworkNode): NetworkStartEntry {
+    return {
+      id: node.id,
+      title: node.title,
+      kind: this.kindLabel(node),
+      icon: this.networkIcon(node),
+    };
   }
 }
 

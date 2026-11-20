@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-ciencia-estado-e-tecnocracia",
+  "slug": "ciencia-estado-e-tecnocracia",
+  "kind": "conceitual",
+  "title": "Ciência, Estado e Tecnocracia: Expertise, Planejamento e Decisão Pública",
+  "question": "Como a relação entre ciência, Estado e tecnocracia moldou a tomada de decisão pública?",
+  "deck": "Este itinerário explora a complexa interação entre ciência, Estado e tecnocracia, investigando como a expertise técnica influenciou a formulação de políticas públicas ao longo da história.",
+  "summary": "O percurso analisa o papel da tecnocracia, o impacto de diferentes ideologias e o contexto histórico em que ciência e Estado se entrelaçam na tomada de decisões.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "wiki-topic-tecnocracia",
+      "title": "Tecnocracia",
+      "reason": "Introdução ao conceito de tecnocracia, explorando sua definição, características e histórico.",
+      "question": "Quais são os princípios fundamentais da tecnocracia?",
+      "destination": {
+        "type": "verbete",
+        "slug": "tecnocracia"
+      },
+      "justification": "Ponto de partida para compreender a relação entre ciência e Estado.",
+      "contextEntityId": "wiki-topic-tecnocracia",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "wiki-topic-forma-de-governo",
+      "title": "Formas de Governo",
+      "reason": "Análise de diferentes formas de governo e como a participação da expertise técnica varia em cada modelo.",
+      "question": "Como a estrutura política influencia a incorporação da expertise técnica na tomada de decisão?",
+      "destination": {
+        "type": "verbete",
+        "slug": "forma-de-governo"
+      },
+      "justification": "Explica a diversidade de contextos em que a tecnocracia se manifesta.",
+      "contextEntityId": "wiki-topic-forma-de-governo",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "wiki-topic-governo",
+      "title": "Governo",
+      "reason": "Exploração do papel do governo na formulação de políticas públicas e a influência da tecnocracia nesse processo.",
+      "question": "Em que medida o governo se baseia na expertise técnica para formular políticas públicas?",
+      "destination": {
+        "type": "verbete",
+        "slug": "governo"
+      },
+      "justification": "Aprofunda a relação entre Estado e tecnocracia na prática.",
+      "contextEntityId": "wiki-topic-governo",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "wiki-topic-partido-republicano-estados-unidos",
+      "title": "Partido Republicano (EUA)",
+      "reason": "Análise do papel da tecnocracia em um partido político específico, o Partido Republicano dos EUA.",
+      "question": "Como a tecnocracia se manifesta dentro de um partido político?",
+      "destination": {
+        "type": "verbete",
+        "slug": "partido-republicano-estados-unidos"
+      },
+      "justification": "Apresenta um exemplo concreto da influência da tecnocracia em um contexto político.",
+      "contextEntityId": "wiki-topic-partido-republicano-estados-unidos",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "wiki-topic-trabalhismo-brasileiro",
+      "title": "Trabalhismo Brasileiro",
+      "reason": "Exploração da relação entre tecnocracia e trabalhismo no contexto brasileiro, incluindo o papel do Estado na regulação do trabalho.",
+      "question": "Como o trabalhismo brasileiro se relaciona com a tecnocracia e o Estado?",
+      "destination": {
+        "type": "verbete",
+        "slug": "trabalhismo-brasileiro"
+      },
+      "justification": "Aborda a tecnocracia em um contexto específico da história política brasileira.",
+      "contextEntityId": "wiki-ideologia-trabalhismo-brasileiro",
+      "sourceIds": ["src-acervo"]
+    },
+    {
+      "id": "grafo-ciencia-estado-tecnocracia",
+      "title": "Rede de Conexões",
+      "reason": "Visualização gráfica das relações entre ciência, Estado e tecnocracia, mostrando as interdependências e influências entre esses elementos.",
+      "question": "Quais são as principais conexões entre ciência, Estado e tecnocracia?",
+      "destination": {
+        "type": "grafo"
+      },
+      "justification": "Síntese visual do conhecimento adquirido ao longo do percurso.",
+      "sourceIds": ["src-acervo"]
+    }
+  ],
+  "branches": [
+    {
+      "id": "ramo-descentralizacao",
+      "fromStop": "wiki-topic-forma-de-governo",
+      "title": "Descentralização",
+      "reason": "Explorar como a descentralização pode influenciar a participação da tecnocracia na tomada de decisão.",
+      "question": "Como a descentralização impacta a relação entre ciência, Estado e tecnocracia?",
+      "destination": {
+        "type": "verbete",
+        "slug": "descentralizacao"
+      },
+      "justification": "Aborda uma alternativa à centralização do poder e sua influência na tecnocracia.",
+      "convergesAt": "grafo-ciencia-estado-tecnocracia"
+    },
+    {
+      "id": "ramo-ideologias",
+      "fromStop": "wiki-topic-tecnocracia",
+      "title": "Ideologias e Tecnocracia",
+      "reason": "Investigar como diferentes ideologias influenciam a visão e o papel da tecnocracia.",
+      "question": "Como diferentes ideologias se relacionam com a tecnocracia?",
+      "destination": {
+        "type": "catalogo",
+        "path": "ideologias"
+      },
+      "justification": "Amplia a compreensão da tecnocracia em diferentes contextos ideológicos.",
+      "exit": "true"
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "reason": "Conectar a tecnocracia com eventos históricos relevantes"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-acervo",
+      "title": "ATLAS — Registros e verbetes compilados no acervo"
+    }
+  ],
+  "updatedAt": "2026-11-19",
+  "version": "1.0.0"
+}

@@ -1,4 +1,4 @@
-<footer class="site-footer">
+<footer class="site-footer atlas-grain">
   <div class="site-footer__inner">
     <div class="footer-invitation" appReveal>
       <h2>Consulte o <em>acervo completo.</em></h2>
@@ -60,13 +60,13 @@
         <ul class="footer-links" appReveal>
           <li>
             <a href="https://github.com/bellussi1/ATLAS" rel="noopener"
-              >Código no GitHub <span aria-hidden="true">↗</span></a
-            >
+              >Código no GitHub <app-icon name="external"
+            /></a>
           </li>
           <li>
             <a href="https://github.com/bellussi1/ATLAS/issues" rel="noopener"
-              >Sugerir correção ou fonte <span aria-hidden="true">↗</span></a
-            >
+              >Sugerir correção ou fonte <app-icon name="external"
+            /></a>
           </li>
           <li>
             <a routerLink="/privacidade">Privacidade</a>
@@ -82,12 +82,11 @@
       </p>
       <p>
         Conteúdo em formação: textos com fontes e revisão humana pendente, sinalizada em cada
-        página. Tipografia Archivo, IBM Plex Mono e Source Serif 4 (SIL OFL). Construído com
-        Angular.
+        página. Tipografia Zilla Slab e Archivo (SIL OFL). Construído com Angular.
       </p>
     </div>
 
-    <a class="footer-signature" routerLink="/" aria-label="ATLAS, voltar à página inicial"
+    <a class="footer-signature" href="/" aria-label="ATLAS, voltar à página inicial" appHomeLink
       ><img src="/brand/atlas-logo-inverse.svg" alt="" width="280" height="80" loading="lazy"
     /></a>
     <p class="footer-version">

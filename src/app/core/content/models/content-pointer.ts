@@ -26,7 +26,15 @@ export const mediaLicenseSchema = z.object({
  */
 export const contentPointerSchema = z.object({
   schemaVersion: z.literal(1),
-  baseUrl: z.url({ protocol: /^https$/ }),
+  /** `https`, or `http` on a loopback host for the local release. */
+  baseUrl: z
+    .url({ protocol: /^https?$/ })
+    .refine(
+      (value) =>
+        value.startsWith('https:') ||
+        ['localhost', '127.0.0.1', '[::1]'].includes(new URL(value).hostname),
+      'http só é aceito em localhost.',
+    ),
   release: digest,
   manifest: artifact,
   /**

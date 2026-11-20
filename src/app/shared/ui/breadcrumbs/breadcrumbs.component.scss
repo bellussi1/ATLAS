@@ -15,23 +15,23 @@ ol {
   list-style: none;
 }
 li {
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
   font-size: var(--text-small);
 }
 li + li::before {
   content: '/';
   margin-right: 0.5rem;
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
 }
 a {
   color: inherit;
   text-underline-offset: 0.2em;
 }
 [aria-current='page'] {
-  color: var(--ink);
+  color: var(--color-ink);
   font-weight: 650;
 }
 a:focus-visible {
-  outline: 3px solid var(--signal);
+  outline: 3px solid var(--color-signal);
   outline-offset: 3px;
 }

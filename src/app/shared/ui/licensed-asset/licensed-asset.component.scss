@@ -19,15 +19,15 @@ p {
   line-height: 1.5;
 }
 a {
-  color: var(--color-accent, var(--signal));
+  color: var(--color-accent, var(--color-signal));
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
 a:focus-visible {
-  outline: 3px solid var(--color-accent, var(--signal));
+  outline: 3px solid var(--color-accent, var(--color-signal));
   outline-offset: 3px;
 }
 .license-block {
   padding: 0.75rem 1rem;
-  border-left: 0.2rem solid var(--color-border-strong, #57544d);
+  border-left: 0.2rem solid var(--color-border-strong);
 }

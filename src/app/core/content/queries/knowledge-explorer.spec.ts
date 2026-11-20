@@ -129,10 +129,10 @@ describe('Knowledge Explorer', () => {
     for (const value of [null, '', '0', '-1', '2x', '1.5'])
       expect(parseExplorerPage(value)).toBe(1);
   });
-  it('pages the archive by a fixed size of 24 records (6 columns of 4 rows)', () => {
+  it('pages the archive by a fixed size of 18 records (6 rows of 3 columns)', () => {
     const items = Array.from({ length: 50 }, (_, index) => index);
-    expect(explorerPage(items, 1)).toMatchObject({ pageCount: 3, start: 1, end: 24 });
-    expect(explorerPage(items, 3)).toMatchObject({ page: 3, start: 49, end: 50 });
+    expect(explorerPage(items, 1)).toMatchObject({ pageCount: 3, start: 1, end: 18 });
+    expect(explorerPage(items, 3)).toMatchObject({ page: 3, start: 37, end: 50 });
   });
   it('accepts shareable catalog returns and rejects external or arbitrary destinations', () => {
     expect(safeExplorerReturn('/pessoas?q=marx&estado=pending')).toBe(

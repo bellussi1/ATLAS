@@ -1,0 +1,53 @@
+<section class="start" aria-labelledby="map-start-title">
+  <header class="start__head">
+    <h2 id="map-start-title">Como ler o mapa</h2>
+    <button type="button" class="start__close" aria-label="Fechar o guia" (click)="dismiss.emit()">
+      <app-icon name="close" />
+    </button>
+  </header>
+  <dl class="start__guide">
+    <div>
+      <dt>Pontos e rótulos</dt>
+      <dd>Territórios com registros no acervo. Toque em um para abrir a ficha.</dd>
+    </div>
+    <div>
+      <dt>Arcos</dt>
+      <dd>Relações documentadas entre territórios; cor e traço dizem a família, na Legenda.</dd>
+    </div>
+    <div>
+      <dt>Linha do tempo</dt>
+      <dd>Um recorte ou um marco deixa no globo só o que vigorava naquele período.</dd>
+    </div>
+    <div>
+      <dt>Ver como lista</dt>
+      <dd>Os mesmos territórios e conexões em tabela, para ler e ordenar.</dd>
+    </div>
+  </dl>
+  @if (territories().length) {
+    <h3 class="start__label">Comece por um território</h3>
+    <ul class="start__places">
+      @for (place of territories(); track place.id) {
+        <li>
+          <button type="button" class="start__place" (click)="pickTerritory.emit(place.id)">
+            <span class="start__name">{{ place.title }}</span>
+            <small>{{ place.kind }}</small>
+          </button>
+        </li>
+      }
+    </ul>
+  }
+  @if (presets().length) {
+    <h3 class="start__label">Ou por um período</h3>
+    <ul class="start__periods">
+      @for (preset of presets(); track preset.id) {
+        <li>
+          <button type="button" class="start__period" (click)="pickPreset.emit(preset)">
+            <span class="start__name">{{ preset.label }}</span>
+            <small>{{ preset.note }}</small>
+            <app-icon class="start__go" name="chevron-right" />
+          </button>
+        </li>
+      }
+    </ul>
+  }
+</section>

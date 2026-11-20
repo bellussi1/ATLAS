@@ -1,4 +1,5 @@
 import {
+  afterNextRender,
   Component,
   DestroyRef,
   ElementRef,
@@ -10,6 +11,7 @@ import {
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { readingPath } from '@core/routing/reading-routes';
+import { HomeLinkDirective } from '@layouts/home-link.directive';
 import { filter, map } from 'rxjs';
 
 type Section = 'leituras' | 'itinerarios' | 'acervo' | 'grafos' | 'mapa' | null;
@@ -58,7 +60,7 @@ const sectionOf = (url: string): Section => {
 
 @Component({
   selector: 'app-site-header',
-  imports: [RouterLink],
+  imports: [HomeLinkDirective, RouterLink],
   templateUrl: './site-header.component.html',
   styleUrl: './site-header.component.scss',
   host: {
@@ -87,6 +89,21 @@ export class SiteHeaderComponent {
   constructor() {
     this.destroyRef.onDestroy(() => {
       this.destroyed = true;
+    });
+    // Sticky elements and fragment scrolling keep clear of the floating header.
+    afterNextRender(() => {
+      const host = this.element.nativeElement;
+      const root = host.ownerDocument.documentElement;
+      const publish = () =>
+        root.style.setProperty('--header-offset', `${host.offsetHeight + 12}px`);
+      publish();
+      if (typeof ResizeObserver === 'undefined') return;
+      const observer = new ResizeObserver(publish);
+      observer.observe(host);
+      this.destroyRef.onDestroy(() => {
+        observer.disconnect();
+        root.style.removeProperty('--header-offset');
+      });
     });
     this.router.events
       .pipe(

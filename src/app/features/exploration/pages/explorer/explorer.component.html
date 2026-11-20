@@ -4,15 +4,23 @@
       <h1 id="explorer-title">{{ catalogue.title }}</h1>
       <p>{{ catalogue.description }}</p>
       <a class="graph-entry atlas-press" routerLink="/grafos">
-        <span class="graph-entry__glyph" aria-hidden="true"></span>
-        Ver o acervo como rede, em tela cheia
-        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+        <app-stamp class="graph-entry__stamp" tone="cal" shadow="sm">
+          <span class="graph-entry__face">
+            <span class="graph-entry__glyph" aria-hidden="true"></span>
+            Ver o acervo como rede, em tela cheia
+            <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+          </span>
+        </app-stamp>
       </a>
       @if (showMapEntry) {
         <a class="graph-entry atlas-press" routerLink="/mapa">
-          <span class="graph-entry__glyph" aria-hidden="true"></span>
-          Explorar territórios e regimes no mapa-múndi
-          <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+          <app-stamp class="graph-entry__stamp" tone="mata" shadow="sm">
+            <span class="graph-entry__face">
+              <span class="graph-entry__glyph" aria-hidden="true"></span>
+              Explorar territórios e regimes no mapa-múndi
+              <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+            </span>
+          </app-stamp>
         </a>
       }
     </div>
@@ -48,7 +56,7 @@
           (click)="filtersOpen.set(false)"
           aria-label="Fechar filtros"
         >
-          ×
+          <app-icon name="close" />
         </button>
       </div>
 
@@ -181,14 +189,14 @@
 
     <div class="archive-main">
       <form
-        class="search-band"
+        class="search-band atlas-grain"
         role="search"
         aria-label="Busca no acervo"
         (submit)="submitSearch($event)"
       >
         <label for="explorer-query">Procurar no acervo</label>
         <div class="search-field">
-          <span class="search-field__icon" aria-hidden="true">⌕</span>
+          <app-icon class="search-field__icon" name="search" />
           <input
             id="explorer-query"
             type="search"
@@ -205,7 +213,7 @@
               (click)="clearQuery()"
               aria-label="Limpar busca"
             >
-              ×
+              <app-icon name="close" />
             </button>
           }
           <button type="submit" class="search-field__submit">Pesquisar</button>
@@ -237,8 +245,8 @@
               [queryParams]="filter.remove"
               queryParamsHandling="merge"
               [attr.aria-label]="'Remover ' + filter.label"
-              >{{ filter.label }} <span aria-hidden="true">×</span></a
-            >
+              >{{ filter.label }} <app-icon name="close"
+            /></a>
           }
           <a class="active-filter active-filter--clear" [routerLink]="catalogueUrl(catalogue.path)"
             >Limpar tudo</a
@@ -311,6 +319,7 @@
       }
 
       <section
+        id="explorer-results"
         aria-label="Resultados da busca"
         class="results"
         [class.results--cards]="recordGrid()"
@@ -444,14 +453,12 @@
         }
       </section>
 
-      @if (hasMore()) {
-        <div class="load-more">
-          <p>{{ results().length - visibleResults().length }} resultados restantes</p>
-          <button type="button" (click)="loadMore()">Carregar mais</button>
-        </div>
-      } @else if (visibleResults().length) {
-        <p class="results-end">Fim dos resultados.</p>
-      }
+      <app-pagination
+        label="Páginas de resultados"
+        [page]="paged().page"
+        [pageCount]="paged().pageCount"
+        (pageChange)="goToPage($event)"
+      />
     </div>
   </div>
 </section>

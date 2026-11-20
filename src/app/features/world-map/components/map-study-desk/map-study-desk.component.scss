@@ -21,7 +21,7 @@
   align-items: flex-start;
   gap: 8px;
   padding-bottom: 10px;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--color-border);
   h2 {
     margin: 4px 0 0;
     font: 700 1.55rem/1.12 var(--font-display-contrast);
@@ -41,14 +41,14 @@
 .detail__close {
   width: 36px;
   height: 36px;
-  border: 2px solid var(--ink);
+  border: 2px solid var(--color-ink);
   border-radius: var(--radius-tight);
   background: transparent;
-  color: var(--ink);
+  color: var(--color-ink);
   font-size: 1.15rem;
   cursor: pointer;
   &:hover {
-    background: var(--paper-shade);
+    background: var(--color-surface-subtle);
   }
 }
 .detail__collapse {
@@ -62,7 +62,7 @@
   flex-wrap: wrap;
   gap: 6px;
   font: 600 var(--text-caption)/1.2 var(--font-numeric);
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
   --kind-icon-size: 1rem;
 }
 .desk-family-bar {
@@ -74,9 +74,9 @@
 .desk-period-tag,
 .desk-period-pill {
   padding: 2px 6px;
-  border: 1px solid var(--rule-strong);
-  background: var(--paper);
-  color: var(--ink);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-canvas);
+  color: var(--color-ink);
   font: 600 var(--text-micro)/1.2 var(--font-numeric);
   font-variant-numeric: tabular-nums;
 }
@@ -87,7 +87,7 @@
 .desk-official {
   margin: 4px 0 0;
   font-size: var(--text-caption);
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
 }
 
 .desk-media {
@@ -100,8 +100,8 @@
     max-width: 100%;
     max-height: 11rem;
     margin-inline: auto;
-    border: 2px solid var(--ink);
-    background: var(--paper-shade);
+    border: 2px solid var(--color-ink);
+    background: var(--color-surface-subtle);
     object-fit: contain;
   }
   figcaption {
@@ -112,9 +112,9 @@
     line-clamp: 2;
     font-size: var(--text-micro);
     line-height: 1.35;
-    color: var(--ink-muted);
+    color: var(--color-ink-muted);
     a {
-      color: var(--ink);
+      color: var(--color-ink);
       text-decoration: underline;
     }
   }
@@ -125,12 +125,12 @@
   align-items: center;
   gap: 12px;
   padding: 8px 10px;
-  border: 1px solid var(--rule);
-  background: var(--paper);
+  border: 1px solid var(--color-border);
+  background: var(--color-canvas);
   app-geometric-illustration {
     flex: none;
     --illustration-size: 3.75rem;
-    --illustration-border: 1.5px solid var(--ink);
+    --illustration-border: 1.5px solid var(--color-ink);
   }
 }
 .desk-counts-line {
@@ -138,18 +138,18 @@
   gap: 2px;
   font: 600 var(--text-caption)/1.35 var(--font-numeric);
   font-variant-numeric: tabular-nums;
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
 }
 
 .desk-prose,
 .desk-note {
   margin: 0;
-  font: 400 var(--text-body)/1.6 var(--serif);
-  color: var(--ink);
+  font: 400 var(--text-body)/1.6 var(--font-primary);
+  color: var(--color-ink);
 }
 .desk-note {
   font-size: var(--text-small);
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
 }
 
 .desk-more summary,
@@ -160,10 +160,10 @@
   gap: 8px;
   min-height: 36px;
   padding: 6px 10px;
-  border: 1.5px solid var(--ink);
-  background: var(--paper);
-  color: var(--ink);
-  font: 600 var(--text-caption)/1.2 var(--serif);
+  border: 1.5px solid var(--color-ink);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font: 600 var(--text-caption)/1.2 var(--font-primary);
   cursor: pointer;
   list-style: none;
   &::-webkit-details-marker {
@@ -176,36 +176,73 @@
 }
 .desk-more p {
   margin: 8px 0 0;
-  font: 400 var(--text-small)/1.55 var(--serif);
+  font: 400 var(--text-small)/1.55 var(--font-primary);
 }
 
-.desk-callout {
-  padding: 8px 12px;
-  border-left: 3px solid var(--signal);
-  background: var(--paper);
+.desk-marco {
   display: grid;
-  gap: 4px;
+  gap: 6px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--color-signal);
+  background: var(--color-canvas);
   h3 {
     margin: 0;
-    font: 700 var(--text-small)/1.2 var(--font-display-contrast);
-    color: var(--signal);
-  }
-  p {
-    margin: 0;
-    font-size: var(--text-caption);
-    line-height: 1.45;
+    font: 700 var(--text-body)/1.25 var(--font-primary);
   }
   a {
-    color: var(--ink);
-    font-weight: 600;
+    color: var(--color-ink);
     text-decoration: underline;
-    text-underline-offset: 2px;
+    text-underline-offset: 0.2em;
   }
 }
-.desk-callout__meta {
-  color: var(--ink-muted);
-  font-family: var(--font-numeric);
+.desk-marco__head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  h3 {
+    min-width: 0;
+  }
+}
+.desk-marco__step {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-tight);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  cursor: pointer;
+  &:hover {
+    background: var(--color-surface-subtle);
+  }
+}
+.desk-marco__when {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--color-ink-muted);
+  font: 600 var(--text-caption)/1.2 var(--font-primary);
+}
+.desk-marco__year {
+  padding: 1px 6px;
+  background: var(--color-signal);
+  color: var(--color-canvas);
+  font: 700 var(--text-caption)/1.3 var(--font-numeric);
   font-variant-numeric: tabular-nums;
+}
+.desk-marco__what {
+  margin: 0;
+  font: 400 var(--text-small)/1.55 var(--font-primary);
+}
+.desk-marco__where,
+.desk-period-line {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font: 500 var(--text-caption)/1.45 var(--font-primary);
 }
 
 .desk-actions {
@@ -220,21 +257,21 @@
   gap: 6px;
   min-height: 40px;
   padding: 6px 12px;
-  border: 1.5px solid var(--ink);
+  border: 1.5px solid var(--color-ink);
   border-radius: var(--radius-tight);
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--color-canvas);
+  color: var(--color-ink);
   text-decoration: underline;
   font: 600 var(--text-caption)/1 var(--font-numeric);
   cursor: pointer;
   transition: background-color 140ms var(--ease-out);
   &:hover {
-    background: var(--paper-shade);
+    background: var(--color-surface-subtle);
   }
 }
 .desk-btn--primary {
-  background: var(--signal);
-  border-color: var(--signal);
+  background: var(--color-signal);
+  border-color: var(--color-signal);
   color: var(--color-on-strong-surface);
   text-decoration: none;
   &:hover {
@@ -247,11 +284,11 @@
   grid-template-columns: minmax(0, 1fr);
   gap: 8px;
   padding-top: 10px;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--color-border);
   h3 {
     margin: 0;
     font: 700 var(--text-small)/1.2 var(--font-display-contrast);
-    color: var(--ink);
+    color: var(--color-ink);
   }
 }
 .desk-list,
@@ -265,9 +302,9 @@
 
 .regime-card {
   padding: 8px 10px;
-  border: 1px solid var(--rule);
-  border-left: 3px solid var(--ink);
-  background: var(--paper);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-ink);
+  background: var(--color-canvas);
   display: grid;
   gap: 4px;
 }
@@ -279,7 +316,7 @@
   gap: 6px;
   font-size: var(--text-small);
   a {
-    color: var(--signal);
+    color: var(--color-signal);
     font-weight: 600;
     text-decoration: underline;
   }
@@ -287,19 +324,19 @@
 .regime-card__dates {
   font: 600 var(--text-micro)/1.2 var(--font-numeric);
   font-variant-numeric: tabular-nums;
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
 }
 .regime-card__period,
 .desk-record__meta {
   margin: 0;
   font-size: var(--text-caption);
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
 }
 .regime-cls {
   display: grid;
   gap: 2px;
   padding-top: 4px;
-  border-top: 1px dashed var(--rule);
+  border-top: 1px dashed var(--color-border);
   font-size: var(--text-caption);
 }
 
@@ -307,10 +344,10 @@
   width: 100%;
   text-align: left;
   padding: 8px 10px;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--color-border);
   border-left-width: 4px;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--color-canvas);
+  color: var(--color-ink);
   display: grid;
   gap: 2px;
   cursor: pointer;
@@ -319,10 +356,10 @@
     border-color 140ms var(--ease-out);
   &:is(:hover, :focus-visible) {
     background: var(--color-surface-raised);
-    border-color: var(--ink);
+    border-color: var(--color-ink);
   }
   small {
-    color: var(--ink-muted);
+    color: var(--color-ink-muted);
     font-size: var(--text-caption);
   }
 }
@@ -334,7 +371,7 @@
 }
 .desk-conn-family,
 .desk-conn-year {
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
   font: 600 var(--text-micro)/1.2 var(--font-numeric);
   font-variant-numeric: tabular-nums;
 }
@@ -346,40 +383,61 @@
 .desk-rec-group__title {
   margin: 2px 0 0;
   font: 600 var(--text-caption)/1.2 var(--font-numeric);
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
 }
 .desk-record {
   display: grid;
   gap: 2px;
   padding: 4px 8px;
-  border-left: 2px solid var(--rule);
+  border-left: 2px solid var(--color-border);
   &.is-highlighted {
-    border-left: 3px solid var(--signal);
-    background: var(--paper);
+    border-left: 3px solid var(--color-signal);
+    background: var(--color-canvas);
   }
 }
 .desk-record__link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--ink);
+  color: var(--color-ink);
   font-weight: 600;
   font-size: var(--text-small);
   text-decoration: underline;
   --kind-icon-size: 0.95rem;
 }
 
-.desk-path-list a {
-  color: var(--color-accent-hover);
-  text-decoration: underline;
-  font-size: var(--text-small);
+/* A reading is a citable object: the one place where the desk uses the stamp. */
+.desk-read {
+  display: block;
+  color: var(--color-ink);
+  text-decoration: none;
+  app-stamp {
+    --stamp-padding: var(--perforation-size);
+    display: block;
+  }
+  &:is(:hover, :focus-visible) .desk-read__title {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+.desk-read__kind,
+.desk-read__title {
+  display: block;
+}
+.desk-read__kind {
+  margin-bottom: 2px;
+  color: var(--color-ink-muted);
+  font: 600 var(--text-caption)/1.2 var(--font-primary);
+}
+.desk-read__title {
+  font: 700 var(--text-small)/1.25 var(--font-primary);
 }
 .desk-more-btn {
   justify-self: start;
   padding: 2px 0;
   border: 0;
   background: transparent;
-  color: var(--signal);
+  color: var(--color-signal);
   font-size: var(--text-caption);
   text-decoration: underline;
   cursor: pointer;
@@ -387,14 +445,14 @@
 
 .desk-ref {
   padding-top: 4px;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--color-border);
 }
 .desk-ref__body {
   display: grid;
   gap: 6px;
   margin-top: 8px;
   font-size: var(--text-caption);
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
   p {
     margin: 0;
   }
@@ -411,5 +469,13 @@
   .detail__collapse {
     display: inline-grid;
     place-items: center;
+  }
+}
+
+/* On a phone the desk is a sheet over the globe: name, summary and actions come before the picture. */
+@media (max-width: 40rem) {
+  .desk-media,
+  .desk-mosaic-strip {
+    order: 1;
   }
 }

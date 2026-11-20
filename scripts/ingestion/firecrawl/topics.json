@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "description": "Temas que orientam a descoberta de novas fontes para o corpus Firecrawl Local. Cada candidato nasce como rascunho de seed e só entra no corpus depois de `--apply` e extração local. Wikidata, Wikipédia e Marxists Internet Archive são camadas de descoberta; rótulos não provam pertencimento nem influência.",
+  "topics": [
+    {
+      "id": "marxismo",
+      "domain": "filosofia-politica",
+      "atlasGap": "Marxismo",
+      "wikidata": ["Q7264"],
+      "wikipedia": {
+        "pt": ["Marxismo", "Materialismo histórico", "Socialismo científico", "Luta de classes"],
+        "en": ["Marxism", "Historical materialism"]
+      },
+      "categories": {
+        "pt": ["Categoria:Marxismo"],
+        "en": ["Category:Marxism"]
+      },
+      "marxists": ["https://www.marxists.org/portugues/index.htm"]
+    },
+    {
+      "id": "liberalismo",
+      "domain": "filosofia-politica",
+      "atlasGap": "Liberalismo",
+      "wikidata": ["Q6216"],
+      "wikipedia": {
+        "pt": ["Liberalismo", "Liberalismo clássico", "Estado liberal"],
+        "en": ["Liberalism", "Classical liberalism"]
+      },
+      "categories": {
+        "pt": ["Categoria:Liberalismo"],
+        "en": ["Category:Liberalism"]
+      }
+    },
+    {
+      "id": "social-democracia",
+      "domain": "filosofia-politica",
+      "atlasGap": "Social-democracia",
+      "wikidata": ["Q121254"],
+      "wikipedia": {
+        "pt": ["Social-democracia", "Socialismo democrático", "Estado de bem-estar social"],
+        "en": ["Social democracy", "Democratic socialism"]
+      },
+      "categories": {
+        "pt": ["Categoria:Social-democracia"],
+        "en": ["Category:Social democracy"]
+      }
+    },
+    {
+      "id": "anarquismo",
+      "domain": "filosofia-politica",
+      "atlasGap": "Anarquismo",
+      "wikidata": ["Q6199"],
+      "wikipedia": {
+        "pt": ["Anarquismo", "Anarcossindicalismo", "Anarquismo individualista"],
+        "en": ["Anarchism", "Anarcho-syndicalism"]
+      },
+      "categories": {
+        "pt": ["Categoria:Anarquismo"],
+        "en": ["Category:Anarchism"]
+      },
+      "marxists": ["https://www.marxists.org/subject/anarchism/index.htm"]
+    },
+    {
+      "id": "nazismo",
+      "domain": "historia-mundial",
+      "atlasGap": "Nazismo",
+      "wikidata": ["Q7318"],
+      "wikipedia": {
+        "pt": ["Nazismo", "Alemanha Nazista", "Partido Nazista"],
+        "en": ["Nazism", "Nazi Germany"]
+      },
+      "categories": {
+        "pt": ["Categoria:Nazismo"],
+        "en": ["Category:Nazism"]
+      }
+    },
+    {
+      "id": "stalinismo",
+      "domain": "historia-mundial",
+      "atlasGap": "Stalinismo",
+      "wikipedia": {
+        "pt": ["Stalinismo", "União Soviética", "Grande Expurgo"],
+        "en": ["Stalinism", "Great Purge"]
+      },
+      "categories": {
+        "pt": ["Categoria:Stalinismo"],
+        "en": ["Category:Stalinism"]
+      }
+    },
+    {
+      "id": "trabalhismo",
+      "domain": "historia-brasil",
+      "atlasGap": "Trabalhismo",
+      "wikipedia": {
+        "pt": ["Trabalhismo", "Partido Trabalhista Brasileiro", "Getúlio Vargas"],
+        "en": ["Brazilian Labour Party", "Getúlio Vargas"]
+      },
+      "categories": {
+        "pt": ["Categoria:Trabalhismo"],
+        "en": ["Category:Labour movement in Brazil"]
+      }
+    },
+    {
+      "id": "era-vargas",
+      "domain": "historia-brasil",
+      "atlasGap": "Era Vargas",
+      "wikipedia": {
+        "pt": ["Era Vargas", "Estado Novo (Brasil)", "Revolução de 1930"],
+        "en": ["Vargas Era", "Estado Novo (Brazil)"]
+      },
+      "categories": {
+        "pt": ["Categoria:Era Vargas"],
+        "en": ["Category:Vargas Era"]
+      }
+    },
+    {
+      "id": "golpe-de-1964",
+      "domain": "historia-brasil",
+      "atlasGap": "Golpe de 1964",
+      "wikipedia": {
+        "pt": [
+          "Golpe de Estado no Brasil em 1964",
+          "Ato Institucional n.º 1",
+          "Ato Institucional n.º 5"
+        ],
+        "en": ["1964 Brazilian coup d'état", "Institutional Acts"]
+      },
+      "categories": {
+        "pt": ["Categoria:Golpe de Estado no Brasil em 1964"],
+        "en": ["Category:1964 Brazilian coup d'état"]
+      }
+    },
+    {
+      "id": "ditadura-militar-brasileira",
+      "domain": "historia-brasil",
+      "atlasGap": "Ditadura militar brasileira",
+      "wikipedia": {
+        "pt": ["Ditadura militar brasileira", "Lei da Anistia", "Diretas Já"],
+        "en": ["Military dictatorship in Brazil", "Diretas Já"]
+      },
+      "categories": {
+        "pt": ["Categoria:Ditadura militar no Brasil (1964–1985)"],
+        "en": ["Category:Military dictatorship in Brazil"]
+      }
+    }
+  ]
+}

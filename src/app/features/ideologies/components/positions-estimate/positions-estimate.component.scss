@@ -71,12 +71,6 @@
   margin: 0;
   font: 700 1.15rem/1.25 var(--font-sans);
 }
-.contrast-note {
-  max-width: 72ch;
-  margin: 0;
-  color: var(--color-ink-muted);
-  font: var(--text-meta)/1.5 var(--font-serif);
-}
 .contrast-poles {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -167,14 +161,6 @@
   align-items: start;
   padding-block-end: 0.75rem;
   border-block-end: 2px solid var(--color-ink);
-}
-.entity-kicker {
-  grid-column: 1;
-  margin: 0;
-  color: var(--color-ink-muted);
-  font: 700 0.65rem/1.2 var(--font-mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 .entity-head h4 {
   grid-column: 1;

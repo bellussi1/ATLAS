@@ -1,8 +1,11 @@
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, Location } from '@angular/common';
 import {
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   computed,
+  DestroyRef,
+  ElementRef,
   inject,
   Injector,
   signal,
@@ -13,26 +16,36 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { readerPredicate, readerProse } from '@core/content/editorial/reader-voice';
 import type { KnowledgeGraph } from '@core/content/models/content-schema';
 import type { ContextStop } from '@core/content/models/knowledge-context';
+import { type LinkedReading, readingsForEntity } from '@core/content/queries/cross-links';
 import {
   relationWeightDefinition,
   relationWeightOf,
 } from '@core/content/queries/knowledge-network';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { readingPath } from '@core/routing/reading-routes';
 import {
+  destinationKey,
   type Itinerary,
   type ItineraryDestination,
   type ItineraryKind,
   itineraryKindLabels,
 } from '@itineraries/models/itinerary.schema';
 import { ItineraryRepository } from '@itineraries/services/itinerary-repository.service';
-import { resolveItineraryDestination } from '@itineraries/utils/itinerary-destination';
+import {
+  itineraryDestinationTitle,
+  type ResolvedDestination,
+  resolveItineraryDestination,
+} from '@itineraries/utils/itinerary-destination';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import {
   contextKey,
   ContextPanelService,
 } from '@shared/ui/knowledge-context/context-panel.service';
 import { NotFoundMessageComponent } from '@shared/ui/not-found-message/not-found-message.component';
+import { AtlasSealComponent } from '@shared/ui/seal/seal.component';
+import { AtlasStampComponent } from '@shared/ui/stamp/stamp.component';
 import { catchError, from, map, of, switchMap } from 'rxjs';
 
 const KIND_PALETTES: Record<ItineraryKind, MosaicPalette> = {
@@ -41,6 +54,9 @@ const KIND_PALETTES: Record<ItineraryKind, MosaicPalette> = {
   conceitual: 'liberal',
   institucional: 'social-democracia',
 };
+
+/** How many other itineraries the closing section suggests. */
+const RELATED_ITINERARY_LIMIT = 3;
 
 interface StopNeighbor {
   slug: string;
@@ -54,33 +70,32 @@ interface StopEntityContext {
   relationCount: number;
   claims: readonly string[];
   neighbors: readonly StopNeighbor[];
+  readings: readonly LinkedReading[];
 }
 
-interface DiagramStopNode {
-  id: string;
-  index: number;
+interface LabelledDestination extends ResolvedDestination {
   title: string;
-  shortTitle: string;
-  type: ItineraryDestination['type'];
+}
+
+interface RelatedItinerary {
+  slug: string;
+  title: string;
+  question: string;
   kindLabel: string;
-  x: number;
-  y: number;
-}
-
-interface DiagramBranchArc {
-  id: string;
-  fromStop: string;
-  title: string;
-  x: number;
-  y: number;
-  pathD: string;
-  convergesAt?: string;
-  exit?: string;
+  stopCount: number;
+  shared: number;
 }
 
 @Component({
   selector: 'app-itinerary-page',
-  imports: [RouterLink, NotFoundMessageComponent, AtlasGeometricMosaicComponent],
+  imports: [
+    RouterLink,
+    NotFoundMessageComponent,
+    AtlasGeometricMosaicComponent,
+    AtlasIconComponent,
+    AtlasSealComponent,
+    AtlasStampComponent,
+  ],
   templateUrl: './itinerary-page.component.html',
   styleUrl: './itinerary-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -91,14 +106,20 @@ export class ItineraryPageComponent {
   private readonly content = inject(ContentRepository);
   private readonly contextPanel = inject(ContextPanelService);
   private readonly document = inject(DOCUMENT);
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly title = inject(Title);
+  private readonly location = inject(Location);
   private readonly injector = inject(Injector);
 
   readonly kindLabels = itineraryKindLabels;
   readonly loading = signal(true);
   readonly itinerary = signal<Itinerary | null>(null);
   readonly activeStopId = signal<string | null>(null);
+  /** Path of this page without fragment, for in-page anchors that bypass the router. */
+  readonly pagePath = signal('');
   private readonly graphSignal = signal<KnowledgeGraph | null>(null);
+  private readonly catalogue = signal<readonly Itinerary[]>([]);
+  private observer: IntersectionObserver | null = null;
 
   readonly branchesByStop = computed(() => {
     const current = this.itinerary();
@@ -127,6 +148,17 @@ export class ItineraryPageComponent {
     return new Map((current?.sources ?? []).map((source) => [source.id, source]));
   });
 
+  private readonly entityTitles = computed(() => {
+    const graph = this.graphSignal();
+    const bySlug = new Map<string, string>();
+    const byId = new Map<string, string>();
+    for (const entity of graph?.atlases.flatMap((atlas) => atlas.entities) ?? []) {
+      bySlug.set(entity.slug, entity.title);
+      byId.set(entity.id, entity.title);
+    }
+    return { entityTitleBySlug: bySlug, entityTitleById: byId };
+  });
+
   readonly stopContexts = computed(() => {
     const current = this.itinerary();
     const graph = this.graphSignal();
@@ -137,6 +169,17 @@ export class ItineraryPageComponent {
     const claims = graph.atlases.flatMap((atlas) => atlas.claims);
     const byId = new Map(entities.map((e) => [e.id, e]));
     const bySlug = new Map(entities.map((e) => [e.slug, e]));
+    const atlasIdsByEntity = new Map<string, string[]>();
+    for (const atlas of graph.atlases) {
+      for (const e of atlas.entities) {
+        const bucket = atlasIdsByEntity.get(e.id);
+        if (bucket) bucket.push(atlas.id);
+        else atlasIdsByEntity.set(e.id, [atlas.id]);
+      }
+    }
+    const readingsInPath = new Set(this.pathReadings().map((reading) => reading.slug));
+    // Stops that share a context entity would repeat the same chips; each neighbour shows once.
+    const shownNeighbors = new Set<string>();
     for (const stop of current.stops) {
       const entity = stop.contextEntityId
         ? byId.get(stop.contextEntityId)
@@ -159,10 +202,11 @@ export class ItineraryPageComponent {
       for (const rel of prioritizedRelations) {
         const isOutgoing = rel.fromEntityId === entity.id;
         const otherId = isOutgoing ? rel.toEntityId : rel.fromEntityId;
-        if (seenNeighbors.has(otherId)) continue;
+        if (seenNeighbors.has(otherId) || shownNeighbors.has(otherId)) continue;
         const other = byId.get(otherId);
         if (!other) continue;
         seenNeighbors.add(otherId);
+        shownNeighbors.add(otherId);
         neighbors.push({
           slug: other.slug,
           title: other.title,
@@ -174,95 +218,95 @@ export class ItineraryPageComponent {
         .filter((c) => c.entityId === entity.id && c.text.trim().length > 0)
         .slice(0, 2)
         .map((c) => readerProse(c.text) ?? c.text.trim());
+      // Readings tied to the stop's entity, minus the one the stop itself opens.
+      const ownReading =
+        stop.destination.type === 'leitura' || stop.destination.type === 'roteiro'
+          ? stop.destination.slug
+          : null;
+      const readings = readingsForEntity(
+        entity.id,
+        entity.slug,
+        atlasIdsByEntity.get(entity.id),
+      ).filter((reading) => reading.slug !== ownReading && !readingsInPath.has(reading.slug));
       result.set(stop.id, {
         entityId: entity.id,
         summary: entity.summary,
         relationCount: entityRelations.length,
         claims: entityClaims,
         neighbors,
+        readings,
       });
     }
     return result;
   });
 
+  /** Continuous readings the itinerary itself passes through, in order of first appearance. */
+  readonly pathReadings = computed<readonly LinkedReading[]>(() => {
+    const current = this.itinerary();
+    if (!current) return [];
+    const seen = new Map<string, LinkedReading>();
+    for (const item of [...current.stops, ...current.branches]) {
+      const dest = item.destination;
+      if ((dest.type !== 'leitura' && dest.type !== 'roteiro') || seen.has(dest.slug)) continue;
+      seen.set(dest.slug, {
+        slug: dest.slug,
+        title: itineraryDestinationTitle(dest),
+        path: readingPath(dest.slug),
+      });
+    }
+    return [...seen.values()];
+  });
+
+  /** Curated follow-ups with a readable title instead of the bare destination kind. */
+  readonly connections = computed(() => {
+    const current = this.itinerary();
+    const lookup = this.entityTitles();
+    return (current?.connections ?? []).map((conn) => ({
+      reason: conn.reason,
+      destination: {
+        ...resolveItineraryDestination(conn.destination),
+        title: itineraryDestinationTitle(conn.destination, lookup),
+      } satisfies LabelledDestination,
+    }));
+  });
+
+  /** Other published itineraries ranked by shared destinations and context entities. */
+  readonly relatedItineraries = computed<readonly RelatedItinerary[]>(() => {
+    const current = this.itinerary();
+    if (!current) return [];
+    const keysOf = (item: Itinerary) =>
+      new Set([
+        ...[...item.stops, ...item.branches].map((s) => destinationKey(s.destination)),
+        ...item.stops.flatMap((s) => (s.contextEntityId ? [`entity:${s.contextEntityId}`] : [])),
+      ]);
+    const own = keysOf(current);
+    return this.catalogue()
+      .filter((item) => item.slug !== current.slug)
+      .map((item) => {
+        const shared = [...keysOf(item)].filter((key) => own.has(key)).length;
+        return { item, shared, sameKind: item.kind === current.kind ? 1 : 0 };
+      })
+      .filter((entry) => entry.shared > 0 || entry.sameKind)
+      .sort((a, b) => b.shared - a.shared || b.sameKind - a.sameKind)
+      .slice(0, RELATED_ITINERARY_LIMIT)
+      .map(({ item, shared }) => ({
+        slug: item.slug,
+        title: item.title,
+        question: item.question,
+        kindLabel: itineraryKindLabels[item.kind],
+        stopCount: item.stops.length,
+        shared,
+      }));
+  });
+
   readonly activeStopIndex = computed(() => {
     const current = this.itinerary();
-    if (!current || !current.stops.length) return 0;
     const active = this.activeStopId();
-    const idx = active ? current.stops.findIndex((s) => s.id === active) : 0;
-    return idx >= 0 ? idx : 0;
-  });
-
-  readonly activeStop = computed(() => {
-    const current = this.itinerary();
-    if (!current || !current.stops.length) return null;
-    return current.stops[this.activeStopIndex()] ?? current.stops[0];
-  });
-
-  readonly diagram = computed(() => {
-    const current = this.itinerary();
-    if (!current || !current.stops.length) return null;
-    const count = current.stops.length;
-    const width = Math.max(720, count * 140);
-    const height = current.branches.length > 0 ? 228 : 112;
-    const padX = 72;
-    const mainY = 54;
-    const stepX = count > 1 ? (width - padX * 2) / (count - 1) : 0;
-
-    const nodes: DiagramStopNode[] = current.stops.map((stop, index) => {
-      const dest = resolveItineraryDestination(stop.destination);
-      const shortTitle =
-        stop.title.length > 22 ? `${stop.title.slice(0, 21).trimEnd()}…` : stop.title;
-      return {
-        id: stop.id,
-        index: index + 1,
-        title: stop.title,
-        shortTitle,
-        type: stop.destination.type,
-        kindLabel: dest.kindLabel,
-        x: padX + index * stepX,
-        y: mainY,
-      };
-    });
-
-    const nodeById = new Map(nodes.map((node) => [node.id, node]));
-    const mainPath =
-      nodes.length > 1 ? `M ${nodes[0].x} ${mainY} L ${nodes[nodes.length - 1].x} ${mainY}` : '';
-
-    const branches: DiagramBranchArc[] = [];
-    current.branches.forEach((branch, bIndex) => {
-      const from = nodeById.get(branch.fromStop);
-      if (!from) return;
-      const branchY = 132 + (bIndex % 2) * 44;
-      const target = branch.convergesAt ? nodeById.get(branch.convergesAt) : undefined;
-      if (target) {
-        const midX = (from.x + target.x) / 2;
-        const pathD = `M ${from.x} ${mainY} C ${from.x} ${branchY}, ${(from.x + midX) / 2} ${branchY}, ${midX} ${branchY} C ${(midX + target.x) / 2} ${branchY}, ${target.x} ${branchY}, ${target.x} ${mainY}`;
-        branches.push({
-          id: branch.id,
-          fromStop: branch.fromStop,
-          title: branch.title,
-          x: midX,
-          y: branchY,
-          pathD,
-          convergesAt: branch.convergesAt,
-        });
-      } else {
-        const endX = Math.min(width - 64, from.x + Math.max(105, stepX * 0.85));
-        const pathD = `M ${from.x} ${mainY} C ${from.x} ${branchY}, ${(from.x + endX) / 2} ${branchY}, ${endX} ${branchY}`;
-        branches.push({
-          id: branch.id,
-          fromStop: branch.fromStop,
-          title: branch.title,
-          x: endX,
-          y: branchY,
-          pathD,
-          exit: branch.exit,
-        });
-      }
-    });
-
-    return { width, height, mainPath, nodes, branches };
+    if (!current?.stops.length || !active) return 0;
+    return Math.max(
+      0,
+      current.stops.findIndex((s) => s.id === active),
+    );
   });
 
   readonly contextStops = computed<ContextStop[]>(() => {
@@ -292,6 +336,14 @@ export class ItineraryPageComponent {
       )
       .subscribe((graph) => this.graphSignal.set(graph));
 
+    from(this.repository.list())
+      .pipe(
+        pendingUntilEvent(this.injector),
+        catchError(() => of([] as readonly Itinerary[])),
+        takeUntilDestroyed(),
+      )
+      .subscribe((items) => this.catalogue.set(items));
+
     this.route.paramMap
       .pipe(
         map((params) => params.get('slug') ?? ''),
@@ -303,6 +355,7 @@ export class ItineraryPageComponent {
       )
       .subscribe((item) => {
         this.itinerary.set(item);
+        this.pagePath.set(this.location.path(false).split('#')[0]);
         const hashStop = this.route.snapshot?.fragment?.replace(/^parada-/, '');
         const initialStop =
           hashStop && item?.stops.some((s) => s.id === hashStop)
@@ -311,7 +364,10 @@ export class ItineraryPageComponent {
         this.activeStopId.set(initialStop);
         this.loading.set(false);
         this.title.setTitle(item ? `${item.title} — ATLAS` : 'Itinerário não encontrado — ATLAS');
+        afterNextRender(() => this.observeStops(), { injector: this.injector });
       });
+
+    inject(DestroyRef).onDestroy(() => this.observer?.disconnect());
   }
 
   destinationOf(destination: ItineraryDestination) {
@@ -344,28 +400,51 @@ export class ItineraryPageComponent {
     return hash;
   }
 
+  /**
+   * Marks a stop as the one being read. With `scrollIntoView`, brings it to the top and moves
+   * focus to its heading so keyboard and screen-reader users land where the eye goes.
+   */
   selectStop(stopId: string, scrollIntoView = false): void {
     this.activeStopId.set(stopId);
     if (!scrollIntoView) return;
     const el = this.document.getElementById(`parada-${stopId}`);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    if (!el) return;
+    const reduce = this.document.defaultView?.matchMedia?.('(prefers-reduced-motion: reduce)');
+    el.scrollIntoView({ behavior: reduce?.matches ? 'auto' : 'smooth', block: 'start' });
+    el.querySelector<HTMLElement>('.stop__title')?.focus({ preventScroll: true });
   }
 
-  stepBy(delta: -1 | 1): void {
-    const current = this.itinerary();
-    if (!current || !current.stops.length) return;
-    const nextIdx = Math.max(0, Math.min(current.stops.length - 1, this.activeStopIndex() + delta));
-    const nextStop = current.stops[nextIdx];
-    if (nextStop) {
-      this.selectStop(nextStop.id, true);
-    }
+  /** Jumps to the closing section once the last stop is read. */
+  goToEnd(): void {
+    const el = this.document.getElementById('depois-do-percurso');
+    if (!el) return;
+    const reduce = this.document.defaultView?.matchMedia?.('(prefers-reduced-motion: reduce)');
+    el.scrollIntoView({ behavior: reduce?.matches ? 'auto' : 'smooth', block: 'start' });
+    el.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true });
   }
 
   openContext(entityId: string, event: Event): void {
     const trigger = event.currentTarget as HTMLElement | null;
     if (!trigger) return;
     void this.contextPanel.open({ entityId }, trigger, this.contextStops());
+  }
+
+  /** Keeps the index in step with the stop under the reading line while scrolling. */
+  private observeStops(): void {
+    this.observer?.disconnect();
+    const view = this.document.defaultView;
+    if (!view || typeof view.IntersectionObserver !== 'function') return;
+    const items = this.host.nativeElement.querySelectorAll<HTMLElement>('.roadmap-item');
+    if (!items.length) return;
+    this.observer = new view.IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((entry) => entry.isIntersecting);
+        const last = visible.at(-1);
+        const id = last?.target.id.replace(/^parada-/, '');
+        if (id) this.activeStopId.set(id);
+      },
+      { rootMargin: '-30% 0px -60% 0px' },
+    );
+    for (const item of items) this.observer.observe(item);
   }
 }

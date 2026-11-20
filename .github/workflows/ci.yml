@@ -79,7 +79,7 @@ jobs:
           path: dist/atlas/browser
           retention-days: 7
       - run: npx playwright install --with-deps chromium
-      - run: npm run test:e2e
+      - run: npm run test:e2e -- --workers=1
 
   # Varredura de segredos em todo o histórico: o repositório é público.
   secrets:

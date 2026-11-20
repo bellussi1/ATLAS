@@ -4,7 +4,7 @@
 .language-notice {
   padding: 1rem;
   background: var(--color-teal-paper);
-  border-left: 3px solid var(--ink);
+  border-left: 3px solid var(--color-ink);
 }
 .record {
   max-width: var(--grid-max);
@@ -19,12 +19,12 @@
   margin-bottom: 1.5rem;
   font: var(--text-small)/1.5 var(--font-sans);
   a {
-    color: var(--ink-muted);
+    color: var(--color-ink-muted);
   }
   .record-back {
     margin-right: auto;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--color-ink);
     text-decoration: none;
   }
 }
@@ -44,22 +44,22 @@ header.hero {
   grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
   gap: clamp(1.5rem, 4vw, 4rem);
   align-items: start;
-  border-top: 3px solid var(--ink);
+  border-top: 3px solid var(--color-ink);
   padding-block: 1.5rem 2rem;
 }
 .descriptor {
   margin: -0.75rem 0 0.75rem;
   font: 600 var(--text-body)/1.4 var(--font-sans);
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
 }
 .aliases {
   margin: 0 0 1rem;
   font: var(--text-small)/1.5 var(--font-sans);
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
 }
 .hero-media app-geometric-illustration {
   --illustration-size: clamp(10rem, 24vw, 16rem);
-  --illustration-border: 2px solid var(--ink);
+  --illustration-border: 2px solid var(--color-ink);
 }
 .hero-media--illustration {
   display: flex;
@@ -68,7 +68,8 @@ header.hero {
 .hero-media figure {
   margin: 0;
 }
-.hero-media app-licensed-asset {
+.hero-media app-licensed-asset,
+.hero-media app-halftone-figure {
   --asset-height: clamp(16rem, 32vw, 24rem);
   --asset-width: 100%;
   --asset-fit: cover;
@@ -86,11 +87,11 @@ header.hero {
   flex-wrap: wrap;
   gap: 0;
   margin: 0 0 3rem;
-  border-block: 1px solid var(--ink);
+  border-block: 1px solid var(--color-ink);
   div {
     flex: 1 1 8rem;
     padding: 0.75rem 1rem;
-    border-left: 1px solid var(--rule);
+    border-left: 1px solid var(--color-border);
   }
   div:first-child {
     border-left: 0;
@@ -101,7 +102,7 @@ header.hero {
     font: var(--text-caption)/1.4 var(--font-sans);
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--ink-muted);
+    color: var(--color-ink-muted);
   }
   dd {
     margin: 0.125rem 0 0;
@@ -110,25 +111,25 @@ header.hero {
 }
 .toc {
   position: sticky;
-  top: 1rem;
+  top: calc(var(--header-offset, 0px) + 1rem);
   align-self: start;
   h2 {
     font: var(--text-caption)/1.4 var(--font-sans);
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--ink-muted);
+    color: var(--color-ink-muted);
   }
   ol {
     margin: 0;
     padding: 0;
     list-style: none;
-    border-left: 1px solid var(--rule);
+    border-left: 1px solid var(--color-border);
   }
   li a {
     display: block;
     padding: 0.35rem 0 0.35rem 0.75rem;
     font: var(--text-small)/1.4 var(--font-sans);
-    color: var(--ink);
+    color: var(--color-ink);
     text-decoration: none;
     &:hover {
       color: var(--color-accent);
@@ -139,16 +140,16 @@ header.hero {
 .group-label {
   margin: 1.5rem 0 0;
   font: 650 var(--text-compact)/1.3 var(--font-sans);
-  color: var(--ink);
+  color: var(--color-ink);
 }
 .connection-group .note {
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
   font: var(--text-small)/1.5 var(--font-sans);
 }
 .direction {
   margin: 0;
   font: var(--text-small)/1.5 var(--font-sans);
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
 }
 .related {
   display: grid;
@@ -161,11 +162,11 @@ header.hero {
     display: block;
     height: 100%;
     padding: 1rem;
-    border: 1px solid var(--rule);
-    color: var(--ink);
+    border: 1px solid var(--color-border);
+    color: var(--color-ink);
     text-decoration: none;
     &:hover {
-      border-color: var(--ink);
+      border-color: var(--color-ink);
     }
   }
   strong,
@@ -175,7 +176,7 @@ header.hero {
   span {
     margin-top: 0.25rem;
     font: var(--text-small)/1.5 var(--font-sans);
-    color: var(--ink-muted);
+    color: var(--color-ink-muted);
     display: -webkit-box;
     -webkit-line-clamp: 3;
     line-clamp: 3;
@@ -192,7 +193,7 @@ header.hero {
   list-style: none;
   li {
     padding: 0.125rem 0.5rem;
-    border: 1px solid var(--rule);
+    border: 1px solid var(--color-border);
     font: var(--text-caption)/1.5 var(--font-sans);
   }
 }
@@ -251,13 +252,13 @@ h1 {
   text-decoration: none;
 }
 .purchase-link:hover {
-  border-color: var(--ink);
+  border-color: var(--color-ink);
   background: var(--color-surface-raised);
 }
 .affiliate-note {
   max-width: 62ch;
   margin: 0.4rem 0 0;
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
   font: var(--text-caption)/1.5 var(--font-sans);
 }
 .copy-status {
@@ -278,12 +279,12 @@ h1 {
 .continuous-reading {
   margin: 0 0 2.5rem;
   padding: 1rem 1.25rem;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--color-ink);
   background: var(--color-surface-subtle, transparent);
 }
 .continuous-reading__kicker {
   margin: 0 0 0.35rem;
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
   font: 700 var(--text-micro)/1.2 var(--font-sans);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -307,7 +308,7 @@ h1 {
   list-style: none;
   span {
     margin-inline-start: 0.5rem;
-    color: var(--ink-muted);
+    color: var(--color-ink-muted);
     font: 600 var(--text-caption)/1.2 var(--font-mono);
     text-transform: uppercase;
   }
@@ -315,7 +316,7 @@ h1 {
 .reading-top {
   margin: 2.5rem 0 0;
   padding-block-start: 0.75rem;
-  border-block-start: 1px solid var(--rule);
+  border-block-start: 1px solid var(--color-border);
   font: var(--text-small)/1.4 var(--font-sans);
 }
 .reading section {
@@ -336,10 +337,10 @@ h3 {
 .reading .record-meta,
 .reading .reference {
   font: var(--text-small)/1.5 var(--font-sans);
-  color: var(--ink-muted);
+  color: var(--color-ink-muted);
 }
 .claim {
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--color-border);
   padding-block: 1rem;
 }
 .connection-list {
@@ -350,8 +351,8 @@ h3 {
 }
 .connection {
   padding: 0.75rem 1rem;
-  border: 1px solid var(--rule);
-  background: var(--paper);
+  border: 1px solid var(--color-border);
+  background: var(--color-canvas);
   h3 {
     margin: 0 0 0.25rem;
     font-size: var(--text-subhead);
@@ -362,7 +363,7 @@ summary {
   padding-block: 0.5rem;
 }
 .record-file {
-  background: var(--paper-shade);
+  background: var(--color-surface-subtle);
   padding: 1.5rem;
   align-self: start;
 }
@@ -419,4 +420,9 @@ small {
     flex-basis: 4.5rem;
     padding-inline: 0.5rem;
   }
+}
+
+.record-seal {
+  margin-inline-start: var(--space-2);
+  vertical-align: middle;
 }

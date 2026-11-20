@@ -1,0 +1,81 @@
+[
+  {
+    "slug": "esquerda-direita-e-populismos",
+    "kind": "comparativo",
+    "topic": "Esquerda, direita e populismos: espectro, liderança e mobilização de massas",
+    "keywords": [
+      "populismo",
+      "peronismo",
+      "trabalhismo",
+      "esquerda",
+      "direita",
+      "vargas",
+      "getulio vargas"
+    ]
+  },
+  {
+    "slug": "escravidao-abolicionismo-e-cidadania",
+    "kind": "historico",
+    "topic": "Escravidão, abolicionismo e cidadania no Brasil: leis, resistência e pós-abolição",
+    "keywords": [
+      "escravidao",
+      "abolio",
+      "lei aurea",
+      "lei do ventre livre",
+      "lei eusebio de queiros",
+      "cidadania"
+    ]
+  },
+  {
+    "slug": "primeira-republica-e-cidadania",
+    "kind": "institucional",
+    "topic": "Primeira República, coronelismo e cidadania: a Constituição de 1891 e seus limites",
+    "keywords": [
+      "primeira republica",
+      "coronelismo",
+      "federalismo",
+      "constituicao de 1891",
+      "republica",
+      "cidadania"
+    ]
+  },
+  {
+    "slug": "ciencia-estado-e-tecnocracia",
+    "kind": "conceitual",
+    "topic": "Ciência, Estado e tecnocracia: expertise, planejamento e decisão pública",
+    "keywords": [
+      "tecnocracia",
+      "desenvolvimentismo",
+      "planejamento",
+      "estado",
+      "ciencia",
+      "positivismo"
+    ]
+  },
+  {
+    "slug": "direitos-humanos-e-efetividade",
+    "kind": "conceitual",
+    "topic": "Direitos humanos e efetividade: declarações, constituições e o que sai do papel",
+    "keywords": [
+      "direitos humanos",
+      "declaracao universal",
+      "organizacao das nacoes unidas",
+      "constituicao de 1988",
+      "cidadania",
+      "habeas corpus"
+    ]
+  },
+  {
+    "slug": "america-latina-revolucoes-e-ditaduras",
+    "kind": "comparativo",
+    "topic": "América Latina: revoluções, reformas e ditaduras no século XX",
+    "keywords": [
+      "revolucao cubana",
+      "revolucao mexicana",
+      "peronismo",
+      "chile 1973",
+      "ditadura militar",
+      "revolucao sandinista"
+    ]
+  }
+]

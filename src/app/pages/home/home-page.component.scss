@@ -8,6 +8,8 @@
 
 .poster {
   display: grid;
+  /* The hero fills the first screen, so the search band starts below the fold. */
+  min-height: calc(100svh - var(--header-offset, 0px));
   grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.9fr);
   gap: clamp(1.5rem, 4vw, 4rem);
   align-items: stretch;
@@ -139,21 +141,54 @@ h1 .line + .line {
     --door: 3;
   }
 }
+/* Hero doors: a pigment swatch beside a light label, like the stamps of the colour board. */
 .poster-door {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
+  --door-swatch: var(--surface-stamp-vermelho);
+  --door-swatch-ink: var(--text-on-stamp-vermelho);
+
+  display: flex;
+  align-items: stretch;
   min-height: var(--control-min-size);
-  padding: 0.65rem 1rem;
   border: 2px solid var(--color-ink);
   background: var(--color-surface-raised);
-  box-shadow: 4px 4px 0 var(--color-ink);
+  box-shadow: var(--shadow-offset-sm) var(--color-ink);
   color: var(--color-ink);
   text-decoration: none;
-  span:nth-child(2) {
-    display: grid;
-    gap: 0.1rem;
+  transition:
+    transform var(--motion-fast) var(--ease-out),
+    box-shadow var(--motion-fast) var(--ease-out);
+  &[data-tone='jenipapo'] {
+    --door-swatch: var(--surface-stamp-jenipapo);
+    --door-swatch-ink: var(--text-on-stamp-jenipapo);
   }
+  &[data-tone='ocre'] {
+    --door-swatch: var(--surface-stamp-ocre);
+    --door-swatch-ink: var(--text-on-stamp);
+  }
+  &[data-tone='mata'] {
+    --door-swatch: var(--surface-stamp-mata);
+    --door-swatch-ink: var(--text-on-stamp);
+  }
+  > .atlas-arrow {
+    align-self: center;
+    margin-inline: 0.5rem 0.75rem;
+  }
+}
+.poster-door__swatch {
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: 2.75rem;
+  border-inline-end: 2px solid var(--color-ink);
+  background: var(--door-swatch);
+  color: var(--door-swatch-ink);
+}
+.poster-door__body {
+  display: grid;
+  flex: 1;
+  align-content: center;
+  gap: 0.1rem;
+  padding: 0.5rem 0.75rem;
   strong {
     font: 750 var(--text-body) / 1.2 var(--font-sans);
   }
@@ -163,13 +198,15 @@ h1 .line + .line {
     font-variant-numeric: tabular-nums;
   }
 }
-.poster-door:hover {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-on-strong-surface);
-  small {
-    color: var(--color-on-strong-surface);
+@media (hover: hover) and (pointer: fine) {
+  .poster-door:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-offset-md) var(--color-ink);
   }
+}
+.poster-door:focus-visible {
+  outline: var(--focus-width) solid var(--color-focus);
+  outline-offset: var(--focus-offset);
 }
 .poster-door__glyph {
   flex: none;
@@ -179,22 +216,18 @@ h1 .line + .line {
     border: 2px solid currentcolor;
   }
   &--circle {
-    border-radius: 50%;
-    background: var(--color-accent);
+    border-radius: var(--radius-circle);
+    background: currentcolor;
   }
   &--ring {
-    border: 3px solid var(--color-cartographic);
-    border-radius: 50%;
+    border: 3px solid currentcolor;
+    border-radius: var(--radius-circle);
   }
   &--half {
     height: 0.45rem;
     border-radius: 0.9rem 0.9rem 0 0;
-    background: var(--color-ink);
+    background: currentcolor;
   }
-}
-.poster-door:hover .poster-door__glyph--circle,
-.poster-door:hover .poster-door__glyph--half {
-  background: currentcolor;
 }
 .console {
   display: grid;
@@ -203,8 +236,8 @@ h1 .line + .line {
   gap: 1rem clamp(1.5rem, 4vw, 4rem);
   align-items: end;
   padding: clamp(1.5rem, 3vw, 2.25rem) var(--home-inline);
-  background: var(--color-ink);
-  color: var(--color-canvas);
+  background: var(--surface-poster);
+  color: var(--text-on-poster);
 }
 form {
   display: grid;
@@ -212,7 +245,7 @@ form {
   align-items: end;
 }
 .console ::ng-deep .atlas-field label {
-  color: var(--color-canvas);
+  color: var(--text-on-poster);
   font: var(--text-small)/1.5 var(--font-mono);
 }
 .console ::ng-deep .atlas-field input {
@@ -267,7 +300,7 @@ form {
   border-radius: 3rem 3rem 0 0;
 }
 .atlas-band-number--circle {
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
 }
 .atlas-band-number--quarter {
   border-radius: 0 60% 0 0;
@@ -336,7 +369,7 @@ form {
   color: var(--color-on-strong-surface);
   font: 750 var(--text-small) / 1 var(--font-numeric);
   &--br {
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     background: var(--color-moss);
   }
   &--source {
@@ -555,142 +588,71 @@ form {
   }
 }
 
-/* Explorar por tipo: doors with a geometric glyph, a note and an arrow. */
+/* Explorar por tipo: poster band, each catalogue a stamp on the dark ground. */
 .catalogue-band {
   padding: clamp(3rem, 6vw, 5rem) var(--home-inline);
   border-top: 1px solid var(--color-border-strong);
+  background: var(--surface-poster);
+  color: var(--text-on-poster);
+}
+.catalogue-band .atlas-band-heading {
+  border-bottom-color: var(--rule-on-poster);
+}
+.catalogue-band .atlas-band-heading > p:last-child {
+  color: var(--text-on-poster);
 }
 .doors {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-auto-flow: dense;
-  align-items: start;
+  align-items: stretch;
   gap: clamp(1rem, 2.2vw, 1.65rem) clamp(1rem, 2vw, 1.5rem);
   margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
   padding: 0;
   list-style: none;
 }
 .door {
+  --door-offset: 0rem;
+
   grid-column: span 4;
   min-inline-size: 0;
-  --door: var(--color-surface-raised);
-  --door-ink: var(--color-ink);
-  --door-shadow: var(--color-ink);
-  --door-offset: 0rem;
-  --door-radius: var(--radius-tight);
   margin-block-start: var(--door-offset);
 
-  /* Organic, asymmetric editorial rhythm: each entry feels like a distinct slip on the research table */
-  &:nth-child(1) {
-    grid-column: span 6;
-    --door: var(--color-ink);
-    --door-ink: var(--color-canvas);
-    --door-shadow: var(--color-accent);
-  }
+  /* Asymmetric rhythm: stamps of different widths, slightly off the baseline. */
+  &:nth-child(1),
   &:nth-child(2) {
     grid-column: span 6;
-    --door: var(--color-accent);
-    --door-ink: var(--color-accent-contrast);
-    --door-shadow: var(--color-ink);
-    --door-offset: 0.45rem;
-    --door-radius: var(--radius-tight) 1.75rem var(--radius-tight) var(--radius-tight);
   }
-  &:nth-child(3) {
-    grid-column: span 4;
-    --door: var(--color-desk-card);
-    --door-ink: var(--color-ink);
-    --door-shadow: var(--color-cartographic);
+  &:nth-child(2) {
+    --door-offset: 0.45rem;
   }
   &:nth-child(4) {
     grid-column: span 5;
-    --door: var(--color-ochre-paper);
-    --door-ink: var(--color-ink);
     --door-offset: -0.45rem;
-    --door-radius: 1.75rem var(--radius-tight) var(--radius-tight) var(--radius-tight);
   }
-  &:nth-child(5) {
-    grid-column: span 3;
-    --door: var(--color-canvas);
-    --door-ink: var(--color-ink);
-    --door-shadow: var(--color-indigo);
-    --door-offset: 0.65rem;
-  }
+  &:nth-child(5),
   &:nth-child(6) {
     grid-column: span 3;
-    --door: var(--color-teal-paper);
-    --door-ink: var(--color-ink);
-    --door-offset: 0.55rem;
-    --door-radius: var(--radius-tight) var(--radius-tight) 1.5rem var(--radius-tight);
+    --door-offset: 0.6rem;
   }
   &:nth-child(7) {
     grid-column: span 5;
-    --door: var(--color-rose-paper);
-    --door-ink: var(--color-ink);
     --door-offset: -0.35rem;
   }
   &:nth-child(8) {
-    grid-column: span 4;
-    --door: var(--color-indigo);
-    --door-ink: var(--color-canvas);
-    --door-shadow: var(--color-ochre-paper);
     --door-offset: 0.45rem;
-    --door-radius: var(--radius-tight) var(--radius-tight) var(--radius-tight) 1.75rem;
   }
 
   a {
-    position: relative;
-    display: grid;
-    grid-template-columns: 3.25rem minmax(0, 1fr);
-    grid-template-areas:
-      'glyph go'
-      'title title'
-      'note note';
-    gap: 0.35rem 1rem;
-    align-items: start;
-    align-content: start;
+    display: flex;
     block-size: 100%;
-    padding: 1.15rem 1.25rem 1.35rem;
-    overflow: hidden;
-    border: 3px solid var(--color-ink);
-    border-radius: var(--door-radius);
-    background: var(--door);
-    color: var(--door-ink);
-    box-shadow: 5px 5px 0 var(--door-shadow);
+    color: inherit;
     text-decoration: none;
-    transition:
-      transform var(--motion-standard) var(--ease-out),
-      box-shadow var(--motion-standard) var(--ease-out);
+    transition: transform var(--motion-standard) var(--ease-out);
   }
-  /* Archival slip inner dashed frame on canvas/paper cards */
-  &:nth-child(5) a {
-    border-width: 2px;
-    outline: 1.5px dashed color-mix(in srgb, var(--color-indigo) 45%, transparent);
-    outline-offset: -8px;
-  }
-  &:nth-child(3) a {
-    border-inline-start-width: 8px;
-    border-inline-start-color: var(--color-cartographic);
-  }
-  /* Wide featured cards adopt a horizontal editorial layout */
-  &:nth-child(1) a,
-  &:nth-child(2) a,
-  &:nth-child(7) a {
-    grid-template-columns: 3.5rem minmax(0, 1fr) auto;
-    grid-template-areas:
-      'glyph title go'
-      'glyph note go';
-    align-items: center;
-    padding-block: 1.35rem;
-  }
-  &:nth-child(1) strong,
-  &:nth-child(2) strong,
-  &:nth-child(7) strong {
-    margin-block-start: 0;
-  }
-  &:nth-child(1) .door-note,
-  &:nth-child(2) .door-note,
-  &:nth-child(7) .door-note {
-    max-inline-size: none;
+  a:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus-on-dark);
+    outline-offset: var(--focus-offset);
   }
   strong {
     grid-area: title;
@@ -718,6 +680,42 @@ form {
     text-decoration-color: color-mix(in srgb, currentcolor 40%, transparent);
   }
 }
+.door-stamp {
+  flex: 1;
+  min-inline-size: 0;
+}
+.door-face {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+  grid-template-areas:
+    'glyph go'
+    'title title'
+    'note note';
+  gap: 0.35rem 1rem;
+  align-items: start;
+  align-content: start;
+  block-size: 100%;
+}
+/* Wide featured stamps take a horizontal layout. */
+.door:nth-child(1) .door-face,
+.door:nth-child(2) .door-face,
+.door:nth-child(7) .door-face {
+  grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+  grid-template-areas:
+    'glyph title go'
+    'glyph note go';
+  align-items: center;
+}
+.door:nth-child(1) strong,
+.door:nth-child(2) strong,
+.door:nth-child(7) strong {
+  margin-block-start: 0;
+}
+.door:nth-child(1) .door-note,
+.door:nth-child(2) .door-note,
+.door:nth-child(7) .door-note {
+  max-inline-size: none;
+}
 .door-note {
   grid-area: note;
   max-inline-size: 32ch;
@@ -728,15 +726,15 @@ form {
   position: relative;
   inline-size: 3.5rem;
   block-size: 3.5rem;
-  border: 3px solid var(--door-ink);
-  background: var(--door-ink);
+  border: 3px solid currentcolor;
+  background: currentcolor;
   transition:
     border-radius var(--motion-standard) var(--ease-out),
     rotate var(--motion-standard) var(--ease-out);
 }
 /* Each door gets its own shape; the wide ones keep a hollow outline. */
 .door:nth-child(6n + 1) .door-glyph {
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
 }
 .door:nth-child(6n + 2) .door-glyph {
   border-start-end-radius: 100%;
@@ -750,7 +748,7 @@ form {
   background: transparent;
 }
 .door:nth-child(6n + 5) .door-glyph {
-  background: repeating-linear-gradient(90deg, var(--door-ink) 0 0.4rem, transparent 0.4rem 0.8rem);
+  background: repeating-linear-gradient(90deg, currentcolor 0 0.4rem, transparent 0.4rem 0.8rem);
 }
 .door:nth-child(6n) .door-glyph {
   border-radius: 50% 0;
@@ -763,7 +761,7 @@ form {
   inline-size: 2.5rem;
   block-size: 2.5rem;
   border: 3px solid currentcolor;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   font: 700 1.25rem/1 var(--font-sans);
   transition:
     background-color var(--motion-fast),
@@ -771,8 +769,7 @@ form {
     translate var(--motion-standard) var(--ease-out);
 }
 .door a:active {
-  transform: translate(3px, 3px);
-  box-shadow: 2px 2px 0 var(--color-ink);
+  transform: translate(2px, 2px);
 }
 
 /* Como ler o acervo: four plaques that reuse the shapes of the markers. */
@@ -798,7 +795,7 @@ form {
   padding: 1.25rem;
   border: 3px solid var(--color-ink);
   background: var(--color-surface-raised);
-  box-shadow: 5px 5px 0 var(--color-ink);
+  box-shadow: var(--shadow-offset-md) var(--color-ink);
   transition:
     transform var(--motion-standard) var(--ease-out),
     box-shadow var(--motion-standard) var(--ease-out),
@@ -830,7 +827,7 @@ form {
   background: var(--color-ink);
 }
 .method-shape--reading {
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background: var(--color-accent);
 }
 .method-shape--debate {
@@ -844,11 +841,11 @@ form {
 @media (hover: hover) and (pointer: fine) {
   .door a:hover {
     transform: translate(-3px, -4px);
-    box-shadow: 8px 8px 0 var(--door-shadow);
+  }
+  .door a:hover .door-stamp {
+    --stamp-shadow: var(--shadow-offset-lg);
   }
   .door a:hover .door-go {
-    background: var(--door-ink);
-    color: var(--door);
     translate: 4px 0;
   }
   .door a:hover .door-glyph {
@@ -856,7 +853,7 @@ form {
   }
   .method-card:hover {
     transform: translate(-3px, -3px);
-    box-shadow: 8px 8px 0 var(--color-ink);
+    box-shadow: var(--shadow-offset-lg) var(--color-ink);
     background: var(--color-canvas);
   }
   .method-card:hover .method-shape--fact {
@@ -869,7 +866,7 @@ form {
     rotate: 90deg;
   }
   .method-card:hover .method-shape--gap {
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
   }
 }
 @media (max-width: 80rem) {
@@ -915,16 +912,15 @@ form {
     grid-column: 1 / -1;
     --door-offset: 0rem;
   }
-  .door a,
-  .door:nth-child(1) a,
-  .door:nth-child(2) a,
-  .door:nth-child(7) a {
+  .door .door-face,
+  .door:nth-child(1) .door-face,
+  .door:nth-child(2) .door-face,
+  .door:nth-child(7) .door-face {
     grid-template-columns: 3rem minmax(0, 1fr) auto;
     grid-template-areas:
       'glyph title go'
       'glyph note note';
     align-items: center;
-    padding: 1rem;
   }
   .door strong {
     margin-block-start: 0;
@@ -977,7 +973,7 @@ form {
   padding: 1.15rem;
   border: 2px solid var(--color-ink);
   background: var(--color-surface-raised);
-  box-shadow: 5px 5px 0 var(--color-ink);
+  box-shadow: var(--shadow-offset-md) var(--color-ink);
   color: var(--color-ink);
   text-decoration: none;
   transition:
@@ -1167,8 +1163,9 @@ form {
   }
   .poster-door {
     min-height: 3.5rem;
-    padding: 0.55rem 0.65rem;
-    gap: 0.5rem;
+  }
+  .poster-door__body {
+    padding-inline: 0.55rem;
     small,
     .atlas-arrow {
       display: none;

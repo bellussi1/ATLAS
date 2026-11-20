@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "baseUrl": "https://atlas-content-delivery.atlas-bellussi.workers.dev",
-  "release": "d9c3d5577df4f5e8f252fbf4fdd8bbd2ad552b077f93d4fe80eea2b776e1d54b",
+  "release": "5974a46abb8c7fb8e755e03d55466ba8d03e35e742602e8ed593542078bf86da",
   "manifest": {
-    "sha256": "db6939d1cbb571f33b517101abff9d035c6b9253c0a37cbba8ac4c42cce84ef6",
-    "bytes": 12809
+    "sha256": "1bcab0550b399fa6aa664291731afa398bc4fbac397c009eee99f3ae703f2983",
+    "bytes": 17231
   },
   "bundle": {
-    "sha256": "de458b45655a3cb0b8e35aa8ef37e15d8a3224af9c0fb0e26b361d109260e3ad",
-    "bytes": 35828898
+    "sha256": "2e71a415fe45f119990c801cae3f20ae8bff6c920a60ed32147f73f7bd6f4a82",
+    "bytes": 35960562
   },
   "networkBundle": {
-    "sha256": "fc72ed0693529ab4947883606165f1ad630e227c9adecfcef8d0c86c60a60cd3",
-    "bytes": 7469780
+    "sha256": "f2b8f376a42b6531d222912ca0a7f570098426fa9ce845e00d87b5c9c6eb2469",
+    "bytes": 7471490
   },
   "artifacts": [
     {
@@ -71,14 +71,14 @@
       "file": "atlas-anarquismo.0fe83e9e6e6893f9375ebd186580b30bed040e78ca32b464639bdb00b0affce9.json"
     },
     {
-      "sha256": "8c3d44cc9920ec3e87432ad2788a70d1acc5440b37987aca6488c2e9489c0b17",
-      "bytes": 593251,
-      "file": "atlas-ideologias-principais.8c3d44cc9920ec3e87432ad2788a70d1acc5440b37987aca6488c2e9489c0b17.json"
+      "sha256": "281fb96a064102b416138a431e96bf6582520dc0c69b16cd9915a387968b5ccc",
+      "bytes": 595215,
+      "file": "atlas-ideologias-principais.281fb96a064102b416138a431e96bf6582520dc0c69b16cd9915a387968b5ccc.json"
     },
     {
-      "sha256": "13efb1de23d97a7c866ef9179c868ad867037369a0744f39570acffba96339be",
-      "bytes": 12324193,
-      "file": "atlas-verbetes-citados.13efb1de23d97a7c866ef9179c868ad867037369a0744f39570acffba96339be.json"
+      "sha256": "d7b6e847f45d055d88753b28caa44df9e2348e4b7c5d689c5b672c6b1c84f99b",
+      "bytes": 12325444,
+      "file": "atlas-verbetes-citados.d7b6e847f45d055d88753b28caa44df9e2348e4b7c5d689c5b672c6b1c84f99b.json"
     },
     {
       "sha256": "5e21d4bc125c15736c9a6b113449419a66fc36bff6dc6ca5cd38453572532797",
@@ -171,9 +171,34 @@
       "file": "ideology-trabalhismo.a2afe03f994375fc0f21b7221ed2a20041b77b62aa1c9dc4f8d031c6b8557fda.json"
     },
     {
+      "sha256": "e2b999319b63938519f3a116bc79147f1659e719dcab8b20832e04610947676a",
+      "bytes": 33037,
+      "file": "ideology-era-vargas.e2b999319b63938519f3a116bc79147f1659e719dcab8b20832e04610947676a.json"
+    },
+    {
+      "sha256": "c67ed9141c2bb3ebe8cf239ae707387def64d9dce7757a558bd8d82fbf907119",
+      "bytes": 34375,
+      "file": "ideology-golpe-de-1964.c67ed9141c2bb3ebe8cf239ae707387def64d9dce7757a558bd8d82fbf907119.json"
+    },
+    {
+      "sha256": "d71b847738dd3301fbbef42b55c8b223191c2dcc052580d3a256b4d5a3084b8c",
+      "bytes": 4981,
+      "file": "itinerary-america-latina-revolucoes-e-ditaduras.d71b847738dd3301fbbef42b55c8b223191c2dcc052580d3a256b4d5a3084b8c.json"
+    },
+    {
+      "sha256": "01b6f0f847e76a4c4d0f6f41ee48cd4487318852441f53b5bc43066ceaa9e854",
+      "bytes": 5777,
+      "file": "itinerary-autoritarismo-totalitarismo-e-resistencia.01b6f0f847e76a4c4d0f6f41ee48cd4487318852441f53b5bc43066ceaa9e854.json"
+    },
+    {
       "sha256": "61d41ecb67cf8b65a69653f1cacd710d68f4687178365e636d5d94a7a9573d18",
       "bytes": 8270,
       "file": "itinerary-capitalismo-trabalho-e-industrializacao.61d41ecb67cf8b65a69653f1cacd710d68f4687178365e636d5d94a7a9573d18.json"
+    },
+    {
+      "sha256": "2e0e940885a69f43d0b203dba07e86ee099387b2cfd5af4bae921acaf4b5243f",
+      "bytes": 5192,
+      "file": "itinerary-ciencia-estado-e-tecnocracia.2e0e940885a69f43d0b203dba07e86ee099387b2cfd5af4bae921acaf4b5243f.json"
     },
     {
       "sha256": "2b870e1c51649062a7f0bceac5a5c493dd6e1bede86252b4ac5592c60f9bb2df",
@@ -191,9 +216,24 @@
       "file": "itinerary-criticas-aos-autoritarismos.14cde2e728ea3accde1b19f71b787f3c80de4ce8c8d9276a450f72642cb05c8c.json"
     },
     {
+      "sha256": "3faf1273bc29f7c6b78cc9994f4f4543272fcf7c670b125424e7624cf07e3487",
+      "bytes": 5075,
+      "file": "itinerary-desigualdade-capital-e-trabalho.3faf1273bc29f7c6b78cc9994f4f4543272fcf7c670b125424e7624cf07e3487.json"
+    },
+    {
+      "sha256": "e9fb5be86481bdf787f8bdeebe90c99e18edcbecd1c7fc6df12fa66fcbf1d25c",
+      "bytes": 5492,
+      "file": "itinerary-direitos-humanos-e-efetividade.e9fb5be86481bdf787f8bdeebe90c99e18edcbecd1c7fc6df12fa66fcbf1d25c.json"
+    },
+    {
       "sha256": "d78d0dd2757e8798fee64188408eb20ae81fd7d43227057c85911acba7430e11",
       "bytes": 9425,
       "file": "itinerary-ditadura-militar-e-redemocratizacao.d78d0dd2757e8798fee64188408eb20ae81fd7d43227057c85911acba7430e11.json"
+    },
+    {
+      "sha256": "23f4bece04bab8b0af2086890cac798e97c6aecea1d4298b96b37c3ce06ea77b",
+      "bytes": 4964,
+      "file": "itinerary-esquerda-direita-e-populismos.23f4bece04bab8b0af2086890cac798e97c6aecea1d4298b96b37c3ce06ea77b.json"
     },
     {
       "sha256": "fb4225712a895b3bb0a8cf635e111c2bdcd7df6bfa749f5b28b1b78e24f56230",
@@ -206,6 +246,31 @@
       "file": "itinerary-guerra-fria-e-ordem-internacional.b45bb62d660ecd98bceefabe32bceb3737fd8170050c6666b3964d1dd2b41e32.json"
     },
     {
+      "sha256": "de883f06c118cb73054bb95038ac458f2ae3222b04f833792ceed2db06b3d632",
+      "bytes": 5305,
+      "file": "itinerary-guerras-mundiais-e-ordem-internacional.de883f06c118cb73054bb95038ac458f2ae3222b04f833792ceed2db06b3d632.json"
+    },
+    {
+      "sha256": "6d9be685681a38033ad37d0824044fc1d9c2b92065de96b0d38ba74f8f0109cc",
+      "bytes": 5071,
+      "file": "itinerary-nacao-nacionalismo-e-imperio.6d9be685681a38033ad37d0824044fc1d9c2b92065de96b0d38ba74f8f0109cc.json"
+    },
+    {
+      "sha256": "2c02e3b884ab08724dc7b3cd012652527206a9a42767a197be119b1c1a1ccbcd",
+      "bytes": 5084,
+      "file": "itinerary-primeira-republica-e-cidadania.2c02e3b884ab08724dc7b3cd012652527206a9a42767a197be119b1c1a1ccbcd.json"
+    },
+    {
+      "sha256": "e560bd01461ec6b0e06590b59f8ba4cdad9402ad9dd9c5d81fee2fc5c869d73b",
+      "bytes": 4154,
+      "file": "itinerary-religiao-politica-e-secularizacao.e560bd01461ec6b0e06590b59f8ba4cdad9402ad9dd9c5d81fee2fc5c869d73b.json"
+    },
+    {
+      "sha256": "9152ff18bdd6b5e8169b3698b2f3c206ae3ad388d118b941cb4da99efa615b07",
+      "bytes": 5131,
+      "file": "itinerary-revolucoes-e-contrarrevolucoes.9152ff18bdd6b5e8169b3698b2f3c206ae3ad388d118b941cb4da99efa615b07.json"
+    },
+    {
       "sha256": "8285e2cd88d0dc9a0aae16244ce824e806e4d796a95b920baf30146bc0143232",
       "bytes": 8523,
       "file": "itinerary-socialismo-reforma-e-revolucao.8285e2cd88d0dc9a0aae16244ce824e806e4d796a95b920baf30146bc0143232.json"
@@ -216,34 +281,34 @@
       "file": "itinerary-trabalhismo-e-estado-social.b184dda19d75f7eb3845f15e94b7e9efda44d60555946ed407a82e343d221125.json"
     },
     {
-      "sha256": "8f20a82e688a5c371a83c188776ac2359dd681cf2a94f2f6e947f90b4effc8e0",
-      "bytes": 12645562,
-      "file": "search.8f20a82e688a5c371a83c188776ac2359dd681cf2a94f2f6e947f90b4effc8e0.json"
+      "sha256": "6566803777829cd9252c1f6d340bd77c93cb57de962db1744f69d570e17e15ca",
+      "bytes": 12648178,
+      "file": "search.6566803777829cd9252c1f6d340bd77c93cb57de962db1744f69d570e17e15ca.json"
     },
     {
-      "sha256": "b307ad124f2dc942ad414a1d6b6b9f8d6aa24436565b98a94741923f38fe8110",
-      "bytes": 3077923,
-      "file": "adjacency.b307ad124f2dc942ad414a1d6b6b9f8d6aa24436565b98a94741923f38fe8110.json"
+      "sha256": "98e3571632a0492fdf2e5b06c9f29b8dd3fd198fcfe62aabeac29e64ab2879db",
+      "bytes": 3078800,
+      "file": "adjacency.98e3571632a0492fdf2e5b06c9f29b8dd3fd198fcfe62aabeac29e64ab2879db.json"
     },
     {
-      "sha256": "54f44b75852aeb9110d2801233d81562b2302068e5eeac045908734ab0a926f8",
-      "bytes": 2436602,
-      "file": "layouts.54f44b75852aeb9110d2801233d81562b2302068e5eeac045908734ab0a926f8.json"
+      "sha256": "938f1b882a32f0bf8e177f139d78bf04d6313288e0b90213cb9cbacc6b46caf8",
+      "bytes": 2437503,
+      "file": "layouts.938f1b882a32f0bf8e177f139d78bf04d6313288e0b90213cb9cbacc6b46caf8.json"
     },
     {
-      "sha256": "0d12a8b273addbb0f3bd201078cf88aec120c5287fcef516bed5e4df8d5016b5",
-      "bytes": 5033158,
-      "file": "network.0d12a8b273addbb0f3bd201078cf88aec120c5287fcef516bed5e4df8d5016b5.json"
+      "sha256": "7ac8c3d27e6d2b8ba4dd242b77c6913f18e354944132bf4905251f4de20960ce",
+      "bytes": 5033967,
+      "file": "network.7ac8c3d27e6d2b8ba4dd242b77c6913f18e354944132bf4905251f4de20960ce.json"
     },
     {
-      "sha256": "de458b45655a3cb0b8e35aa8ef37e15d8a3224af9c0fb0e26b361d109260e3ad",
-      "bytes": 35828898,
-      "file": "bundle.de458b45655a3cb0b8e35aa8ef37e15d8a3224af9c0fb0e26b361d109260e3ad.json"
+      "sha256": "2e71a415fe45f119990c801cae3f20ae8bff6c920a60ed32147f73f7bd6f4a82",
+      "bytes": 35960562,
+      "file": "bundle.2e71a415fe45f119990c801cae3f20ae8bff6c920a60ed32147f73f7bd6f4a82.json"
     },
     {
-      "sha256": "fc72ed0693529ab4947883606165f1ad630e227c9adecfcef8d0c86c60a60cd3",
-      "bytes": 7469780,
-      "file": "network-bundle.fc72ed0693529ab4947883606165f1ad630e227c9adecfcef8d0c86c60a60cd3.json"
+      "sha256": "f2b8f376a42b6531d222912ca0a7f570098426fa9ce845e00d87b5c9c6eb2469",
+      "bytes": 7471490,
+      "file": "network-bundle.f2b8f376a42b6531d222912ca0a7f570098426fa9ce845e00d87b5c9c6eb2469.json"
     }
   ],
   "media": [

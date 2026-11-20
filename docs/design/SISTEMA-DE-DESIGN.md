@@ -1,9 +1,11 @@
 Status: atual
-Última verificação: 08/11/2026
+Última verificação: 19/11/2026
 
 # Sistema de design acessível
 
-Base comum da interface, a partir da direção editorial do ATLAS: tipografia suíça, leitura em papel, cartografia e acentos de arquivo. A direção A foi aprovada e é a base da interface principal. As alternativas B e C do Prompt 04 e as páginas de laboratório foram retiradas da documentação e da aplicação.
+Base comum da interface, a partir da direção editorial do ATLAS: tipografia suíça, leitura em papel, cartografia e acentos de arquivo.
+
+> **Direção v2 aprovada em 19/11/2026, ainda não implementada.** A skill `atlas-editorial-geometrico` passou a definir três registros (leitura, mesa, cartaz), paleta de pigmentos brasileiros, selo perfurado, carimbo, retícula e grão. Tokens-alvo, matriz de substituição, componentes base e ordem de migração estão em [`.agents/skills/atlas-editorial-geometrico/references/tokens.md`](../../.agents/skills/atlas-editorial-geometrico/references/tokens.md). As tabelas abaixo descrevem o que existe hoje em `src/styles.scss` e serão atualizadas a cada etapa da migração. A direção A foi aprovada e é a base da interface principal. As alternativas B e C do Prompt 04 e as páginas de laboratório foram retiradas da documentação e da aplicação.
 
 Escopo público atual: `/`, `/marxismo` e `/liberalismo`. O showroom `/sistema` e as páginas antigas foram retirados; as descrições históricas abaixo não são rotas disponíveis.
 
@@ -41,7 +43,7 @@ Definidos em `src/styles.scss`. Aliases antigos (`--paper`, `--ink`, `--signal` 
 | Cartografia | `--color-cartographic` | `#315F54` |
 | Arquivo | `--color-archive` | `#176176` |
 
-**Tipografia:** Archivo (variável, WOFF2) para interface e títulos; Source Serif 4 (WOFF2, subset latin) para leitura; IBM Plex Mono (WOFF2) para metadados. Arquivos locais e avisos OFL em `public/fonts/`. Política única: `font-display: swap`, sem `optional` nem TTF. Escala de texto, espaçamento, raio, largura de leitura e movimento definidos como tokens em `:root`. Raios discretos; sem modo escuro global.
+**Tipografia:** Zilla Slab (400, 400 itálico, 600, 700) é a família principal (`--font-primary`) de texto e títulos; Archivo variável (`wght` 100–900, `wdth` 62–125) cobre números e display de contraste. Não há mono real: `--font-mono` aponta para a Zilla. Source Serif 4 e IBM Plex não são mais carregadas. Arquivos locais e avisos OFL em `public/fonts/`. Política única: `font-display: swap`, sem `optional` nem TTF. Escala de texto, espaçamento, raio, largura de leitura e movimento definidos como tokens em `:root`. Raios discretos; sem modo escuro global.
 
 ## Componentes
 
@@ -115,7 +117,7 @@ Catálogo de skills com prefixo `atlas-`. Frontend e interação orientaram a co
 
 Mesa aprovada pelo usuário. Tokens adicionados: `color-teal-paper` (#85BDB5), `color-ochre-paper` (#EDC45B), `color-rose-paper` (#E9B4BF), `color-indigo` (#37395E); papel, tinta e vermelho continuam base. Texto principal nas três superfícies claras e branco sobre índigo com cobertura de contraste automatizada.
 
-Skill própria: `.agents/skills/atlas-editorial-geometrico/SKILL.md`, instalada em `~/.codex/skills/atlas-editorial-geometrico`. A cópia versionada é a fonte; ao alterá-la, atualizar a instalação local. `references/mesa-aprovada.png` preserva a composição aprovada antes da ampliação de cores. O validador estrutural passou; a validação concreta cobre esta aplicação, não a skill em geral.
+Skill própria: `.agents/skills/atlas-editorial-geometrico/SKILL.md` (v2). A cópia versionada é a fonte; não há instalação local sincronizada nesta máquina (conferido em 19/11/2026). `references/mesa-aprovada.png` preserva a composição aprovada antes da ampliação de cores. O validador estrutural passou; a validação concreta cobre esta aplicação, não a skill em geral.
 
 **Verificação no Chrome:** em 320 px, documento e viewport com 320 px; termos com sublinhado computado. Trocar para o artigo atualizou título, motivo rosa e destino. Contexto por Enter abriu o artigo real Conhecimento com contexto. Leitura sem overflow horizontal. Movimento reduzido ativo. Suíte automatizada: 100 testes em seis arquivos.
 

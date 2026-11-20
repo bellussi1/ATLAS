@@ -1,14 +1,18 @@
+import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   inject,
   Injector,
   signal,
+  untracked,
 } from '@angular/core';
 import { pendingUntilEvent, takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router, RouterLink } from '@angular/router';
 import { rankByPopularity } from '@core/analytics/popularity';
+import { explorerPage } from '@core/content/queries/knowledge-explorer';
 import {
   type Itinerary,
   type ItineraryDestination,
@@ -21,7 +25,14 @@ import { resolveItineraryDestination } from '@itineraries/utils/itinerary-destin
 import popularity from '@metrics/popularity.json';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
+import { AtlasPaginationComponent } from '@shared/ui/pagination/pagination.component';
+import { AtlasSealComponent } from '@shared/ui/seal/seal.component';
+import { AtlasStampComponent } from '@shared/ui/stamp/stamp.component';
 import { from } from 'rxjs';
+
+/** Two rows of two cards. */
+const ITINERARIES_PAGE_SIZE = 4;
 
 const KIND_PALETTES: Record<ItineraryKind, MosaicPalette> = {
   historico: 'tissi',
@@ -32,7 +43,14 @@ const KIND_PALETTES: Record<ItineraryKind, MosaicPalette> = {
 
 @Component({
   selector: 'app-itineraries-index',
-  imports: [RouterLink, AtlasGeometricMosaicComponent],
+  imports: [
+    RouterLink,
+    AtlasGeometricMosaicComponent,
+    AtlasIconComponent,
+    AtlasPaginationComponent,
+    AtlasSealComponent,
+    AtlasStampComponent,
+  ],
   templateUrl: './itineraries-index.component.html',
   styleUrl: './itineraries-index.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -41,6 +59,7 @@ export class ItinerariesIndexComponent {
   private readonly repository = inject(ItineraryRepository);
   private readonly router = inject(Router);
   private readonly injector = inject(Injector);
+  private readonly document = inject(DOCUMENT);
   readonly kindLabels = itineraryKindLabels;
   readonly kinds = itineraryKinds;
   readonly loading = signal(true);
@@ -51,8 +70,17 @@ export class ItinerariesIndexComponent {
     const all = this.items();
     return kind === 'all' ? all : all.filter((item) => item.kind === kind);
   });
+  readonly page = signal(1);
+  readonly paged = computed(() =>
+    explorerPage(this.filteredItems(), this.page(), ITINERARIES_PAGE_SIZE),
+  );
 
   constructor() {
+    // A new filter starts from the first page.
+    effect(() => {
+      this.selectedKind();
+      untracked(() => this.page.set(1));
+    });
     from(this.repository.list())
       .pipe(pendingUntilEvent(this.injector), takeUntilDestroyed())
       .subscribe({
@@ -95,5 +123,12 @@ export class ItinerariesIndexComponent {
     if (!list.length) return;
     const picked = list[Math.floor(Math.random() * list.length)];
     void this.router.navigate(['/itinerario', picked.slug]);
+  }
+
+  goToPage(page: number): void {
+    this.page.set(page);
+    this.document
+      .getElementById('itineraries-results')
+      ?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 }
