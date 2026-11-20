@@ -1,5 +1,5 @@
-<app-stamp class="card-stamp" [tone]="stampTone()">
-  <span class="card-body">
+<app-stamp class="card-stamp" tone="cal">
+  <span class="card-body" [attr.data-band]="stampTone()">
     @if (shownPicture(); as src) {
       <img
         class="card-picture"
@@ -19,7 +19,9 @@
     } @else {
       <app-kind-icon class="card-glyph" [kind]="shownIcon()" />
     }
-    <small class="card-kind"><app-kind-icon [kind]="shownIcon()" />{{ shownKind() }}</small>
+    <small class="card-kind card-band"
+      ><app-kind-icon [kind]="shownIcon()" />{{ shownKind() }}</small
+    >
     <strong>{{ shownTitle() }}</strong>
     @if (shownPeriod()) {
       <span class="card-period">{{ shownPeriod() }}</span>

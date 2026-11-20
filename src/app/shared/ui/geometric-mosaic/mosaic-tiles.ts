@@ -52,12 +52,13 @@ const colors = {
 };
 
 const palettes: Record<MosaicPalette, readonly string[]> = {
+  // No green beside the red in the house palette: red and green side by side read as a flag.
   atlas: [
     colors.red,
     colors.ink,
     colors.ochre,
     colors.paper,
-    colors.teal,
+    colors.orange,
     colors.rose,
     colors.indigo,
   ],

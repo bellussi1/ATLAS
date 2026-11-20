@@ -8,6 +8,8 @@
 
 .poster {
   display: grid;
+  /* The hero fills the first screen, so the search band starts below the fold. */
+  min-height: calc(100svh - var(--header-offset, 0px));
   grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.9fr);
   gap: clamp(1.5rem, 4vw, 4rem);
   align-items: stretch;
@@ -139,33 +141,59 @@ h1 .line + .line {
     --door: 3;
   }
 }
+/* Hero doors: a pigment swatch beside a light label, like the stamps of the colour board. */
 .poster-door {
-  display: flex;
-  min-height: var(--control-min-size);
-  color: inherit;
-  text-decoration: none;
-  transition: transform var(--motion-fast) var(--ease-out);
-}
-.poster-door__stamp {
-  --stamp-padding: calc(var(--perforation-size) + var(--space-1))
-    calc(var(--perforation-size) + var(--space-2));
+  --door-swatch: var(--surface-stamp-vermelho);
+  --door-swatch-ink: var(--text-on-stamp-vermelho);
 
-  flex: 1;
-  min-inline-size: 0;
-}
-.poster-door__face {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  span:nth-child(2) {
-    display: grid;
-    flex: 1;
-    gap: 0.1rem;
+  align-items: stretch;
+  min-height: var(--control-min-size);
+  border: 2px solid var(--color-ink);
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-offset-sm) var(--color-ink);
+  color: var(--color-ink);
+  text-decoration: none;
+  transition:
+    transform var(--motion-fast) var(--ease-out),
+    box-shadow var(--motion-fast) var(--ease-out);
+  &[data-tone='jenipapo'] {
+    --door-swatch: var(--surface-stamp-jenipapo);
+    --door-swatch-ink: var(--text-on-stamp-jenipapo);
   }
+  &[data-tone='ocre'] {
+    --door-swatch: var(--surface-stamp-ocre);
+    --door-swatch-ink: var(--text-on-stamp);
+  }
+  &[data-tone='mata'] {
+    --door-swatch: var(--surface-stamp-mata);
+    --door-swatch-ink: var(--text-on-stamp);
+  }
+  > .atlas-arrow {
+    align-self: center;
+    margin-inline: 0.5rem 0.75rem;
+  }
+}
+.poster-door__swatch {
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: 2.75rem;
+  border-inline-end: 2px solid var(--color-ink);
+  background: var(--door-swatch);
+  color: var(--door-swatch-ink);
+}
+.poster-door__body {
+  display: grid;
+  flex: 1;
+  align-content: center;
+  gap: 0.1rem;
+  padding: 0.5rem 0.75rem;
   strong {
     font: 750 var(--text-body) / 1.2 var(--font-sans);
   }
   small {
+    color: var(--color-ink-muted);
     font: 500 var(--text-caption) / 1.2 var(--font-numeric);
     font-variant-numeric: tabular-nums;
   }
@@ -173,9 +201,7 @@ h1 .line + .line {
 @media (hover: hover) and (pointer: fine) {
   .poster-door:hover {
     transform: translate(-2px, -2px);
-  }
-  .poster-door:hover .poster-door__stamp {
-    --stamp-shadow: var(--shadow-offset-md);
+    box-shadow: var(--shadow-offset-md) var(--color-ink);
   }
 }
 .poster-door:focus-visible {
@@ -1138,8 +1164,8 @@ form {
   .poster-door {
     min-height: 3.5rem;
   }
-  .poster-door__face {
-    gap: 0.5rem;
+  .poster-door__body {
+    padding-inline: 0.55rem;
     small,
     .atlas-arrow {
       display: none;

@@ -52,12 +52,42 @@ strong {
   text-wrap: balance;
 }
 
+/* Light paper for the text, a pigment band for the family: contrast stays high on every colour. */
 .card-kind {
   --kind-icon-size: 0.95rem;
 
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+}
+.card-band {
+  align-self: stretch;
+  max-width: none;
+  margin: 0 0 var(--space-1);
+  padding: 0.35rem 3.4rem 0.35rem 0.5rem;
+  background: var(--band);
+  color: var(--band-ink);
+}
+.card-body {
+  --band: var(--surface-stamp-ocre);
+  --band-ink: var(--text-on-stamp);
+}
+.card-body[data-band='rosa'] {
+  --band: var(--surface-stamp-rosa);
+}
+.card-body[data-band='mata'] {
+  --band: var(--surface-stamp-mata);
+}
+.card-body[data-band='urucum'] {
+  --band: var(--surface-stamp-urucum);
+}
+.card-body[data-band='jenipapo'] {
+  --band: var(--surface-stamp-jenipapo);
+  --band-ink: var(--text-on-stamp-jenipapo);
+}
+.card-body[data-band='vermelho'] {
+  --band: var(--surface-stamp-vermelho);
+  --band-ink: var(--text-on-stamp-vermelho);
 }
 
 .card-period {
@@ -81,6 +111,7 @@ strong {
   right: 0;
   box-sizing: content-box;
   padding: 0.4rem;
+  border: 2px solid var(--color-ink);
   border-radius: var(--radius-circle);
   background: var(--color-canvas);
   color: var(--color-ink);

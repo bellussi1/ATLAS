@@ -50,7 +50,8 @@ Valores, rampas e pares de contraste medidos estão em [tokens.md](references/to
 - `mata-500` aceita texto claro apenas grande (3,8:1); texto corrido em verde usa `mata-700`.
 - Proporção indicativa: leitura ≈ 70% papel · 20% tinta · 8% suporte · 2% ação; cartaz ≈ 50% fundo · 35% blocos · 10% texto claro · 5% ação.
 - Categoria nunca é comunicada só por cor: rótulo textual e motivo acompanham.
-- Brasilidade vem da procedência e da gráfica, não de verde-amarelo, bandeira, fauna ou folclore.
+- Brasilidade vem da procedência e da gráfica, não de verde-amarelo, bandeira, fauna ou folclore. O foco é internacional e brasileiro: evitar vermelho e verde lado a lado como par dominante (lê-se como a bandeira de Portugal). O mosaico da casa (`atlas`) não tem verde; quando os dois aparecem juntos, separar por ocre, papel, rosa ou jenipapo.
+- O verde de suporte é sempre o `mata-500` (#339A65); os verdes pastel e o teal antigo saíram.
 
 ## 4. Tipografia
 
@@ -67,6 +68,8 @@ Regras: caixa normal em textos de interface; versalete condensado só em rótulo
 Cada material tem uma função; nenhum é textura genérica.
 
 - **Selo perfurado** (`app-stamp`): moldura de objetos citáveis e destacáveis, como ficha, fonte, verbete ou cartão de leitura. Como nas referências (`references/feira-afro/02.webp` e `07.webp`, locais): papel chapado em cor saturada (tons 500), sem sombra por padrão, furos redondos com vão igual ao diâmetro, grão opcional. Não usar em containers de layout, formulários ou blocos de texto. A perfuração usa `mask`; foco e sombra ficam no elemento pai (`outline` e `filter: drop-shadow`), porque a máscara corta os dois.
+- **Uso contido do selo:** o selo marca o que se destaca ou se cita (card de registro, porta de catálogo, card de leitura ou itinerário, parada). Não é moldura padrão: botões, filtros, campos, avisos, placas explicativas e portas do herói usam outros componentes. Texto corrido e cards com várias linhas ficam em papel claro dentro do selo, com a cor em faixa ou bloco (como a prancha `07.webp`: margem creme + bloco de cor); selo inteiro saturado só para rótulos curtos. A sombra de tinta é permitida.
+- **Portas e atalhos:** amostra de pigmento à esquerda com o glifo e rótulo em papel claro, borda de tinta e sombra deslocada; sem perfuração.
 - **Carimbo** (`app-seal`): estado editorial e de revisão ("Com fontes · revisão pendente", revisão de IA). Texto real, nunca só ícone; não sugere aprovação que não existe.
 - **Retícula**: sombra e degradê de formas geométricas e duotone de retratos. Para fotos, só em licenças que permitem adaptação (nunca ND), aplicada em tempo de render, com "imagem com tratamento de cor" registrado na área de fontes; alt text inalterado; original acessível pela fonte.
 - **Grão**: SVG estático pequeno, opacidade baixa, só em superfícies chapadas de cartaz; nunca sob texto corrido; desligado na impressão.
