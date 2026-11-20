@@ -19,7 +19,7 @@ const fixtureItinerary: Itinerary = JSON.parse(
 );
 
 describe('ItineraryPageComponent', () => {
-  it('renders stops, reasons, questions and branches without progress checkboxes', async () => {
+  it('renders the route as a linear reading with an index, next-stop steps and an ending', async () => {
     await TestBed.configureTestingModule({
       imports: [ItineraryPageComponent],
       providers: [
@@ -32,7 +32,7 @@ describe('ItineraryPageComponent', () => {
         },
         {
           provide: ItineraryRepository,
-          useValue: { bySlug: async () => fixtureItinerary },
+          useValue: { bySlug: async () => fixtureItinerary, list: async () => [fixtureItinerary] },
         },
       ],
     }).compileComponents();
@@ -47,6 +47,23 @@ describe('ItineraryPageComponent', () => {
     expect(root.querySelectorAll('.stop').length).toBe(6);
     expect(root.querySelectorAll('.branch').length).toBe(2);
     expect(root.querySelectorAll('input[type="checkbox"]').length).toBe(0);
+    // Index: one entry per stop plus the closing section, first stop current.
+    expect(root.querySelectorAll('.itinerary-index__item').length).toBe(7);
+    expect(root.querySelector('[aria-current="step"]')?.textContent).toContain(
+      fixtureItinerary.stops[0].title,
+    );
+    // One step forward between stops, and a final step to what comes next.
+    expect(root.querySelectorAll('.roadmap-connector:not(.roadmap-connector--end)').length).toBe(5);
+    expect(root.querySelectorAll('.roadmap-connector--end').length).toBe(1);
+    expect(root.querySelector('#depois-do-percurso h2')?.textContent).toContain(
+      'Depois do percurso',
+    );
+    // Curated follow-ups carry a readable title, not only the destination kind.
+    const connectionTitles = [...root.querySelectorAll('.connections a > span')].map((el) =>
+      el.textContent?.trim(),
+    );
+    expect(connectionTitles.length).toBe(fixtureItinerary.connections.length);
+    for (const title of connectionTitles) expect(title).not.toMatch(/^(Catálogo|Verbete) →$/);
   });
 
   it('shows the not-found message for an unknown itinerary slug', async () => {
@@ -62,7 +79,7 @@ describe('ItineraryPageComponent', () => {
         },
         {
           provide: ItineraryRepository,
-          useValue: { bySlug: async () => null },
+          useValue: { bySlug: async () => null, list: async () => [] },
         },
       ],
     }).compileComponents();

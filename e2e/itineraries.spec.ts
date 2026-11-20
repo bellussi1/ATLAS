@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test';
 
+import { waitForHydration } from './content-fixture';
+
 test('itinerarios index renders cleanly on desktop and 320px mobile without overflow', async ({
   page,
 }) => {
@@ -15,28 +17,38 @@ test('itinerarios index renders cleanly on desktop and 320px mobile without over
   expect(overflow).toBe(false);
 });
 
-test('trabalhismo roadmap renders connected stops, branches and overview without 320px overflow', async ({
+test('trabalhismo route reads top to bottom: index, stops, next steps and ending without 320px overflow', async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/itinerario/trabalhismo-e-estado-social');
+  await waitForHydration(page);
   await expect(
     page.getByRole('heading', {
       level: 1,
       name: /Trabalhismo brasileiro e Estado social em perspectiva comparada/i,
     }),
   ).toBeVisible();
-  await expect(page.locator('.roadmap-diagram')).toBeVisible();
-  await expect(page.locator('.roadmap-desk')).toBeVisible();
+  const index = page.getByRole('navigation', { name: /Percurso/ });
+  await expect(index).toBeVisible();
   await expect(page.locator('.roadmap-track .stop')).toHaveCount(6);
   await expect(page.locator('.roadmap-track .branch')).toHaveCount(3);
-  await expect(page.locator('.roadmap-connector')).toHaveCount(5);
+  await expect(page.locator('.roadmap-connector:not(.roadmap-connector--end)')).toHaveCount(5);
 
-  await page
-    .locator('.roadmap-desk')
-    .getByRole('button', { name: /Próxima/i })
-    .click();
-  await expect(page.locator('.roadmap-desk')).toContainText('Parada 2 de 6');
+  // The step button moves reading (and focus) to the next stop; the index follows.
+  await page.locator('.roadmap-connector').first().click();
+  await expect(page.locator('#parada-marco-era-vargas .stop__title')).toBeFocused();
+  await expect(index.locator('[aria-current="step"]')).toContainText('A Era Vargas');
+
+  // The end of the route points to real follow-ups and other itineraries.
+  await page.locator('.roadmap-connector--end').click();
+  const ending = page.locator('#depois-do-percurso');
+  await expect(ending.getByRole('heading', { level: 2, name: 'Depois do percurso' })).toBeFocused();
+  await expect(ending.locator('.connections a').first()).toContainText('Acontecimentos');
+  await expect(ending.locator('.related-itinerary').first()).toHaveAttribute(
+    'href',
+    /\/itinerario\//,
+  );
 
   await page.setViewportSize({ width: 320, height: 640 });
   const overflow = await page.evaluate(
@@ -50,6 +62,7 @@ test('branch convergence link stays on itinerary page and focuses target stop', 
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/itinerario/comparativo-liberdade');
+  await waitForHydration(page);
   await expect(page.locator('.roadmap-track .stop')).toHaveCount(6);
   const convergeLink = page
     .locator('.branch__target a', {
@@ -58,8 +71,12 @@ test('branch convergence link stays on itinerary page and focuses target stop', 
     .first();
   await convergeLink.click();
   await expect(page).toHaveURL(/\/itinerario\/comparativo-liberdade/);
+  await expect(page).toHaveTitle(/Liberalismo e socialismo/);
   await expect(page.locator('#parada-critica-marxista')).toHaveClass(/is-active/);
-  await expect(page.locator('.roadmap-desk')).toContainText('Parada 3 de 6');
+  await expect(page.locator('#parada-critica-marxista .stop__title')).toBeFocused();
+  await expect(
+    page.getByRole('navigation', { name: /Percurso/ }).locator('[aria-current="step"]'),
+  ).toContainText('Marxismo');
 });
 
 test('home exposes itinerarios band and footer/header links', async ({ page }) => {
