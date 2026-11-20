@@ -294,4 +294,73 @@ describe('world map queries', () => {
     });
     expect(pickSurpriseCandidate(model)).not.toBeNull();
   });
+  it('folds a same-named place with only a start year into the current country', () => {
+    const base = {
+      aliases: [],
+      context: 'Contexto.',
+      uncertainty: 'low' as const,
+      revision: 1,
+      sections: [{ heading: 'Resumo', paragraphs: ['Texto.'] }],
+      kind: 'place' as const,
+      coordinates: { lat: -14.235, lon: -51.9253 },
+    };
+    const graph = {
+      id: 'knowledge-graph-atlas',
+      version: '1.1.0',
+      updatedAt: '2026-11-20',
+      atlases: [
+        {
+          id: 'atlas-teste',
+          slug: 'teste',
+          title: 'Teste',
+          description: 'Atlas de teste.',
+          version: '1.0.0',
+          updatedAt: '2026-11-20',
+          entityIds: [],
+          sources: [],
+          evidences: [],
+          citations: [],
+          reviews: [],
+          assetLicenses: [],
+          claims: [],
+          learningPaths: [],
+          relations: [],
+          entities: [
+            {
+              ...base,
+              id: 'country-brazil',
+              slug: 'brasil',
+              title: 'Brasil',
+              summary: 'País.',
+              temporalExtent: null,
+              placeType: 'country' as const,
+              placeCategory: 'country' as const,
+              isoAlpha2: 'BR',
+              isoNumeric: '076',
+            },
+            {
+              ...base,
+              id: 'wiki-topic-brasil',
+              slug: 'brasil-wikipedia',
+              title: 'Brasil',
+              summary: 'O maior país da América do Sul, com cerca de 8,5 milhões de km².',
+              temporalExtent: {
+                startYear: 1500,
+                endYear: null,
+                precision: 'year' as const,
+                label: '1500–',
+              },
+              placeCategory: 'city' as const,
+            },
+          ],
+        },
+      ],
+    } as unknown as KnowledgeGraph;
+
+    const brazil = buildWorldMapModel(graph).territories.filter((item) => item.title === 'Brasil');
+
+    expect(brazil).toHaveLength(1);
+    expect(brazil[0].layer).toBe('country');
+    expect(brazil[0].memberSlugs).toEqual(['brasil', 'brasil-wikipedia']);
+  });
 });

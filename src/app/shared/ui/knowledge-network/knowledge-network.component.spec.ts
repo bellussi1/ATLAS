@@ -772,4 +772,36 @@ describe('KnowledgeNetworkComponent', () => {
     fixture.detectChanges();
     expect(card()).toBeNull();
   });
+  it('suggests the best-connected neighbours of the selection and follows one', async () => {
+    const fixture = await render();
+    const instance = fixture.componentInstance;
+    const target = instance.visible().nodes.find((node) => node.degree >= 2);
+    expect(target).toBeTruthy();
+    instance.select(target!.id);
+    fixture.detectChanges();
+    const steps = instance.nextSteps();
+    const degrees = steps.map((step) => step.degree);
+
+    expect(steps.length).toBeGreaterThan(0);
+    expect(steps.length).toBeLessThanOrEqual(3);
+    expect(degrees).toEqual([...degrees].sort((a, b) => b - a));
+    expect(root(fixture).querySelector('app-network-next h3')?.textContent).toContain(
+      'Para onde seguir',
+    );
+    root(fixture).querySelector<HTMLButtonElement>('.next__item')?.click();
+    fixture.detectChanges();
+    expect(instance.selectedId()).toBe(steps[0].id);
+  });
+
+  it('folds the node-type list while a path is traced and reopens it once cleared', async () => {
+    const fixture = await render();
+    const instance = fixture.componentInstance;
+    expect(instance.kindsOpen()).toBe(true);
+    instance.togglePathMode();
+    fixture.detectChanges();
+    expect(instance.kindsOpen()).toBe(false);
+    instance.togglePathMode();
+    fixture.detectChanges();
+    expect(instance.kindsOpen()).toBe(true);
+  });
 });
