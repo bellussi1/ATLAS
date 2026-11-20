@@ -56,12 +56,15 @@
   --color-tradition-moss: var(--pig-mata-700);
 
   /* Stamp papers (citable objects) and the ink printed on them. */
-  --surface-stamp-cal: var(--pig-cal-100);
-  --surface-stamp-ocre: var(--pig-ocre-300);
-  --surface-stamp-mata: var(--pig-mata-300);
-  --surface-stamp-rosa: var(--pig-rosa-300);
-  --surface-stamp-urucum: var(--pig-urucum-300);
+  /* Saturated and flat, like printed stamps; text is ink except on red. */
+  --surface-stamp-cal: var(--pig-cal-200);
+  --surface-stamp-ocre: var(--pig-ocre-500);
+  --surface-stamp-mata: var(--pig-mata-500);
+  --surface-stamp-rosa: var(--pig-rosa-500);
+  --surface-stamp-urucum: var(--pig-urucum-500);
+  --surface-stamp-vermelho: var(--pig-pau-brasil-500);
   --text-on-stamp: var(--pig-tinta-900);
+  --text-on-stamp-vermelho: var(--pig-cal-50);
   /* Seal (editorial status) inks. */
   --seal-ink-accent: var(--pig-pau-brasil-700);
   --seal-ink-mata: var(--pig-mata-700);
@@ -125,8 +128,9 @@
   /* Legacy diffuse lift of the record card, removed when the card becomes a stamp. */
   --shadow-card-lift: 0 6px 16px #0007;
 
-  --perforation-size: 0.75rem;
-  --perforation-gap: 0.375rem;
+  /* Round bites as wide as the paper between them, as on the reference stamps. */
+  --perforation-size: 0.625rem;
+  --perforation-gap: 0.625rem;
   --grain-opacity: 0.14;
   --halftone-cell: 6px;
 

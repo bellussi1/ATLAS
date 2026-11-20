@@ -1,6 +1,6 @@
 import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-export type StampTone = 'cal' | 'ocre' | 'mata' | 'rosa' | 'urucum';
+export type StampTone = 'cal' | 'ocre' | 'mata' | 'rosa' | 'urucum' | 'vermelho';
 export type StampShadow = 'none' | 'sm' | 'md' | 'lg';
 
 /**
@@ -22,7 +22,8 @@ export type StampShadow = 'none' | 'sm' | 'md' | 'lg';
 })
 export class AtlasStampComponent {
   readonly tone = input<StampTone>('cal');
-  readonly shadow = input<StampShadow>('md');
+  /** Stamps sit flat on the page; an offset shadow is an exception for lifted states. */
+  readonly shadow = input<StampShadow>('none');
   /** Paper grain, for poster compositions only; never behind running text. */
   readonly grain = input(false, { transform: booleanAttribute });
 }

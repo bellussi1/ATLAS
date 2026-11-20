@@ -19,25 +19,27 @@ Componentes usam só semânticos. Primitivos aparecem apenas em `_semantic.scss`
 |---|---|---|
 | `--pig-cal-50` | `#FBF8F1` | atual `--color-canvas` |
 | `--pig-cal-100` | `#F3ECDF` | superfície sutil quente |
+| `--pig-cal-200` | `#EDE0D7` | selo creme (prancha) |
 | `--pig-tinta-900` | `#141211` | atual `--color-ink` |
-| `--pig-terra-900` | `#241B19` | fundo escuro do cartaz |
-| `--pig-pau-brasil-500` | `#D42A1F` | só superfície |
+| `--pig-terra-900` | `#211E1E` | fundo escuro do cartaz (prancha) |
+| `--pig-pau-brasil-500` | `#E40114` | só superfície (prancha) |
 | `--pig-pau-brasil-700` | `#B81D16` | atual `--color-accent` |
 | `--pig-pau-brasil-900` | `#811F1A` | atual `--color-accent-hover` |
 | `--pig-urucum-300` | `#F6B27A` | |
 | `--pig-urucum-500` | `#EF8A3A` | atual `--color-orange-paper` |
 | `--pig-urucum-800` | `#9A4A0C` | atual `--color-orange-strong` |
 | `--pig-ocre-300` | `#F2D48A` | |
-| `--pig-ocre-500` | `#E8B84E` | substitui `#EEC35A` |
+| `--pig-ocre-500` | `#EDBB5C` | prancha; substitui `#EEC35A` |
 | `--pig-ocre-800` | `#8A5F00` | texto ocre sobre claro |
 | `--pig-mata-300` | `#9CCBA6` | substitui `--color-teal-paper` |
-| `--pig-mata-500` | `#2E8F5E` | superfície; texto claro só grande |
+| `--pig-mata-500` | `#339A65` | prancha; selo com texto tinta (5,29:1); texto claro só grande |
 | `--pig-mata-700` | `#1E6B44` | texto verde |
 | `--pig-mata-900` | `#12422B` | |
 | `--pig-jenipapo-500` | `#4A5079` | |
 | `--pig-jenipapo-700` | `#363A5F` | atual `--color-indigo` |
 | `--pig-jenipapo-900` | `#1F2238` | |
 | `--pig-rosa-300` | `#EAB0C2` | atual `--color-rose-paper` |
+| `--pig-rosa-500` | `#E57A9A` | selo rosa (tinta 6,74:1) |
 | `--pig-rosa-700` | `#9C3558` | texto rosa |
 
 Os estados (`info`, `success`, `warning`, `danger`) mantêm os valores atuais até revisão própria.
@@ -78,7 +80,7 @@ Os estados (`info`, `success`, `warning`, `danger`) mantêm os valores atuais at
 | `--surface-page` | cal-50 | terra-900 |
 | `--text-primary` | tinta-900 | cal-50 |
 | `--text-accent` | pau-brasil-700 | ocre-300 |
-| `--surface-stamp-{cal,ocre,mata,rosa,urucum}` | cal-100, ocre-300, mata-300, rosa-300, urucum-300 | a definir com `_registers.scss` |
+| `--surface-stamp-{cal,ocre,mata,rosa,urucum,vermelho}` | cal-200, ocre-500, mata-500, rosa-500, urucum-500, pau-brasil-500 (texto cal) | iguais |
 | `--text-on-stamp` | tinta-900 | cal-50 (exceto ocre: tinta) |
 
 Mesa usa os valores de leitura; as famílias do grafo e do mapa mantêm tokens próprios com `stroke-dasharray`.
@@ -88,7 +90,7 @@ Mesa usa os valores de leitura; as famílias do grafo e do mapa mantêm tokens p
 | Grupo | Tokens |
 |---|---|
 | Forma | `--radius-none: 0`, `--radius-tight: .125rem`, `--radius-panel: .25rem`, `--radius-pill: 999px`, `--radius-circle: 50%` |
-| Perfuração | `--perforation-size`, `--perforation-gap` |
+| Perfuração | `--perforation-size: .625rem`, `--perforation-gap: .625rem` (vão = diâmetro) |
 | Elevação | `--shadow-offset-sm: 3px 3px 0`, `--shadow-offset-md: 5px 5px 0`, `--shadow-offset-lg: 8px 8px 0` (cor sempre tinta) |
 | Camada | `--z-base: 0`, `--z-raised: 10`, `--z-dropdown: 20`, `--z-sticky: 30`, `--z-overlay: 50`, `--z-top: 60`; valores de 0 a 15 dentro de um contexto de empilhamento local continuam literais |
 | Material | `--grain-opacity: .14`, `--halftone-cell: 6px`; duotone em `--duotone-{rosa,pau-brasil,mata,jenipapo}-{light,dark}`; carimbo em `--seal-ink-{accent,mata,neutral}` |

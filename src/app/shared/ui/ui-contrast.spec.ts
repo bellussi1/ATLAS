@@ -78,6 +78,12 @@ describe('semantic design token contrast', () => {
     ['color-violet', 'color-canvas', 4.5],
     ['color-indigo', 'color-canvas', 4.5],
     ['color-info', 'color-canvas', 4.5],
+    ['text-on-stamp', 'surface-stamp-cal', 4.5],
+    ['text-on-stamp', 'surface-stamp-ocre', 4.5],
+    ['text-on-stamp', 'surface-stamp-mata', 4.5],
+    ['text-on-stamp', 'surface-stamp-rosa', 4.5],
+    ['text-on-stamp', 'surface-stamp-urucum', 4.5],
+    ['text-on-stamp-vermelho', 'surface-stamp-vermelho', 4.5],
     // Poster register pairs, guarded before the first poster component ships.
     ['pig-cal-50', 'pig-terra-900', 4.5],
     ['pig-ocre-300', 'pig-terra-900', 4.5],

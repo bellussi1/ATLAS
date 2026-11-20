@@ -81,3 +81,6 @@ __pycache__/
 # Saída das execuções de enriquecimento e avaliação (regenerável).
 experiments/rag/eval/queues/
 experiments/rag/eval/runs/
+
+# Referências visuais de terceiros guardadas só localmente (repositório público)
+.agents/skills/atlas-editorial-geometrico/references/feira-afro/

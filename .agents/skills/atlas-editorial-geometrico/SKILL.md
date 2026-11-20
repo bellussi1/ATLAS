@@ -14,7 +14,7 @@ A v2 funde a base aprovada (mesa de pesquisa, modernismo suíço, atlas editoria
 1. Tokens e componentes reais em `src/styles.scss` e `src/app/shared/ui` mandam no que existe hoje.
 2. Esta skill define o alvo. Os tokens de pigmento (`--pig-*`) e os registros só passam a existir quando a migração os implementar; até lá, não referenciá-los no código.
 3. `references/` traz os detalhes: [paleta e tokens](references/tokens.md), [o que as referências de 11/2026 acrescentaram](references/referencias-2026-11.md), [contrato de exploração](references/ideology-interaction.md) e [a mesa aprovada](references/mesa-aprovada.png).
-4. Imagens de referência são inspiração, nunca ativos. Não copiar peças, lettering, ilustrações ou símbolos de terceiros.
+4. Imagens de referência são inspiração, nunca ativos. Não copiar peças, lettering, ilustrações ou símbolos de terceiros. As peças da Feira Afro ficam em `references/feira-afro/` (fora do git); antes de desenhar selo, cor ou retícula, abrir as imagens e comparar o resultado renderizado com elas.
 
 ## 2. Três registros
 
@@ -66,8 +66,8 @@ Regras: caixa normal em textos de interface; versalete condensado só em rótulo
 
 Cada material tem uma função; nenhum é textura genérica.
 
-- **Selo perfurado** (`app-stamp`, a criar): moldura de objetos citáveis e destacáveis, como ficha, fonte, verbete ou cartão de leitura. Não usar em containers de layout, formulários ou blocos de texto. A perfuração usa `mask`; foco e sombra ficam no elemento pai (`outline` e `filter: drop-shadow`), porque a máscara corta os dois.
-- **Carimbo** (`app-seal`, a criar): estado editorial e de revisão ("Com fontes · revisão pendente", revisão de IA). Texto real, nunca só ícone; não sugere aprovação que não existe.
+- **Selo perfurado** (`app-stamp`): moldura de objetos citáveis e destacáveis, como ficha, fonte, verbete ou cartão de leitura. Como nas referências (`references/feira-afro/02.webp` e `07.webp`, locais): papel chapado em cor saturada (tons 500), sem sombra por padrão, furos redondos com vão igual ao diâmetro, grão opcional. Não usar em containers de layout, formulários ou blocos de texto. A perfuração usa `mask`; foco e sombra ficam no elemento pai (`outline` e `filter: drop-shadow`), porque a máscara corta os dois.
+- **Carimbo** (`app-seal`): estado editorial e de revisão ("Com fontes · revisão pendente", revisão de IA). Texto real, nunca só ícone; não sugere aprovação que não existe.
 - **Retícula**: sombra e degradê de formas geométricas e duotone de retratos. Para fotos, só em licenças que permitem adaptação (nunca ND), aplicada em tempo de render, com "imagem com tratamento de cor" registrado na área de fontes; alt text inalterado; original acessível pela fonte.
 - **Grão**: SVG estático pequeno, opacidade baixa, só em superfícies chapadas de cartaz; nunca sob texto corrido; desligado na impressão.
 - **Fio**: linha contínua que liga peças relacionadas. É a figura de "relação" do ATLAS (base em `pages/home/poster-loom`). Só liga o que tem relação real ou destino real.
