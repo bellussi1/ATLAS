@@ -22,6 +22,7 @@ import type {
 import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
 import { illustrationPalette } from '@shared/ui/geometric-illustration/illustration';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import {
   AtlasKindIconComponent,
   type IconKind,
@@ -75,6 +76,7 @@ function splitLeadSummary(fullText: string): { lead: string; truncated: boolean 
     AtlasGeometricIllustrationComponent,
     AtlasKindIconComponent,
     AtlasStampComponent,
+    AtlasIconComponent,
     ContentMediaPipe,
   ],
   templateUrl: './map-study-desk.component.html',
@@ -142,6 +144,21 @@ export class MapStudyDeskComponent {
     return [...map.entries()]
       .sort((a, b) => a[1].order - b[1].order)
       .map(([id, data]) => ({ id, label: data.label, items: data.items }));
+  });
+
+  /** The record behind the active timeline marker: what it is and how it ties to the territory. */
+  readonly hotpointRecord = computed(() => {
+    const hp = this.activeHotpoint();
+    const record = hp
+      ? this.territoryEntry()?.activeRecords.find((item) => item.slug === hp.slug)
+      : undefined;
+    if (!record) return null;
+    const summary = readerProse(record.summary) ?? record.summary ?? '';
+    const verb = record.relationLabel.trim();
+    return {
+      lead: summary ? splitLeadSummary(summary).lead : '',
+      relation: verb.charAt(0).toLocaleUpperCase('pt-BR') + verb.slice(1),
+    };
   });
 
   readonly hasGeoReference = computed(() => {

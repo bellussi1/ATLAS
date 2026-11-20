@@ -48,4 +48,38 @@ describe('map study desk', () => {
     const actions = host.querySelector('.desk-actions');
     expect(actions?.nextElementSibling?.contains(link ?? null)).toBe(true);
   });
+  it('leads with the active timeline marker: when, what and how it ties to the territory', () => {
+    TestBed.configureTestingModule({ providers: [provideRouter([])] });
+    const fixture = TestBed.createComponent(MapStudyDeskComponent);
+    fixture.componentRef.setInput('territoryEntry', {
+      ...entry,
+      activeRecords: [
+        {
+          id: 'event-golpe',
+          slug: 'golpe-de-1964',
+          title: 'Golpe de 1964',
+          kind: 'event',
+          summary: 'Rebelião militar que depôs João Goulart.',
+          relationLabel: 'ocorreu em',
+          temporalExtent: null,
+        },
+      ],
+    });
+    fixture.componentRef.setInput('activeHotpoint', {
+      id: 'hp-golpe',
+      slug: 'golpe-de-1964',
+      title: 'Golpe de 1964',
+      label: '1964',
+      year: 1964,
+    });
+    fixture.detectChanges();
+    const marco = (fixture.nativeElement as HTMLElement).querySelector('.desk-marco');
+
+    expect(marco?.querySelector('h3 a')?.getAttribute('href')).toBe('/verbete/golpe-de-1964');
+    expect(marco?.textContent).toContain('1964');
+    expect(marco?.textContent).toContain('Rebelião militar');
+    expect(marco?.querySelector('.desk-marco__where')?.textContent?.trim()).toBe(
+      'Ocorreu em Brasil',
+    );
+  });
 });

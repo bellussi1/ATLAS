@@ -66,6 +66,7 @@ import { ContentRepository } from '@core/content/repositories/content-repository
 import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
 import { illustrationPalette } from '@shared/ui/geometric-illustration/illustration';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
 import { AtlasSectionSwitcherComponent } from '@shared/ui/section-switcher/section-switcher.component';
 
@@ -194,6 +195,7 @@ const classificationLabels: Record<string, string> = {
     AtlasKindIconComponent,
     AtlasGeometricIllustrationComponent,
     AtlasNetworkStartComponent,
+    AtlasIconComponent,
     ContentMediaPipe,
   ],
   templateUrl: './knowledge-network.component.html',

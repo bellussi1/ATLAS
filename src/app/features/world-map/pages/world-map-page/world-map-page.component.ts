@@ -8,6 +8,7 @@ import {
   effect,
   ElementRef,
   inject,
+  linkedSignal,
   PLATFORM_ID,
   signal,
   untracked,
@@ -38,6 +39,7 @@ import {
   type WorldMapTerritory,
 } from '@core/content/queries/world-map';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import { AtlasSectionSwitcherComponent } from '@shared/ui/section-switcher/section-switcher.component';
 import { MapStudyDeskComponent } from '@world-map/components/map-study-desk/map-study-desk.component';
 import globeMapData from '@world-map/data/natural-earth-globe.json';
@@ -62,6 +64,11 @@ import {
   unprojectScreen,
   type Vec3,
 } from '@world-map/utils/globe-projection';
+
+import {
+  MapStartComponent,
+  type MapStartTerritory,
+} from '../../components/map-start/map-start.component';
 
 interface GlobeBaseMap {
   readonly attribution: {
@@ -140,9 +147,26 @@ function parseSvgDash(dash: string): readonly number[] {
     .filter((value) => Number.isFinite(value) && value > 0);
 }
 
+/** Places to start from: Brazil, its region and the powers that recur across the periods. */
+const START_TERRITORIES = [
+  'Brasil',
+  'Argentina',
+  'Estados Unidos',
+  'França',
+  'União Soviética',
+  'Índia',
+  'África do Sul',
+];
+
 @Component({
   selector: 'app-world-map-page',
-  imports: [AtlasSectionSwitcherComponent, RouterLink, MapStudyDeskComponent],
+  imports: [
+    AtlasIconComponent,
+    AtlasSectionSwitcherComponent,
+    RouterLink,
+    MapStartComponent,
+    MapStudyDeskComponent,
+  ],
   templateUrl: './world-map-page.component.html',
   styleUrl: './world-map-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -327,6 +351,29 @@ export class WorldMapPageComponent {
     Boolean(this.selectedConnectionId() || this.selectedTerritoryId()),
   );
   readonly deskShown = computed(() => this.hasSelection() && !this.detailsCollapsed());
+  /** The reader closed the reading guide; it stays closed for this visit. */
+  readonly startDismissed = signal(false);
+  readonly startShown = computed(
+    () => !this.hasSelection() && !this.startDismissed() && !this.tableOpen(),
+  );
+  /** Either the study desk or the reading guide occupies the side (or the bottom sheet). */
+  readonly panelShown = computed(() => this.deskShown() || this.startShown());
+  /** On a phone the desk opens as a short sheet over the globe; the reader can raise it to read. */
+  readonly deskExpanded = linkedSignal({
+    source: () => this.selectedTerritoryId() ?? this.selectedConnectionId(),
+    computation: () => false,
+  });
+  readonly startTerritories = computed<readonly MapStartTerritory[]>(() =>
+    START_TERRITORIES.flatMap((title) => {
+      const territory = this.model.territories.find(
+        (item) => item.title === title && item.layer !== 'locality',
+      );
+      return territory
+        ? [{ id: territory.id, title: territory.title, kind: this.layerLabel(territory.layer) }]
+        : [];
+    }),
+  );
+  readonly startPresets = this.eraPresets.filter((preset) => preset.yearFrom !== null);
   readonly hasTemporalFilter = computed(() => this.yearFrom() !== null || this.yearTo() !== null);
 
   readonly filtered = computed(() =>
@@ -744,7 +791,8 @@ export class WorldMapPageComponent {
     effect(() => {
       // Re-measure free globe area whenever floating sidebars open/collapse.
       this.legendShown();
-      this.deskShown();
+      this.panelShown();
+      this.deskExpanded();
       this.hasTemporalFilter();
       if (this.isBrowser) this.scheduleLayoutMeasure();
     });
@@ -796,6 +844,11 @@ export class WorldMapPageComponent {
   selectConnection(id: string): void {
     this.selectedConnectionId.set(id);
     this.detailsCollapsed.set(false);
+  }
+
+  startFromPreset(preset: { yearFrom: number | null; yearTo: number | null }): void {
+    this.applyPreset(preset.yearFrom, preset.yearTo);
+    this.startDismissed.set(true);
   }
 
   applyPreset(yearFrom: number | null, yearTo: number | null): void {

@@ -8,7 +8,11 @@
         ></span>
         <span>{{ familyLabel(conn.family) }}</span>
       </p>
-      <h2>{{ conn.fromTitle }} → {{ conn.toTitle }}</h2>
+      <h2>
+        {{ conn.fromTitle }} <app-icon name="arrow-right" /><span class="visually-hidden">
+          para </span
+        >{{ conn.toTitle }}
+      </h2>
     </div>
     <div class="detail__head-btns">
       <button
@@ -17,7 +21,7 @@
         aria-label="Recolher detalhes"
         (click)="collapseDesk.emit()"
       >
-        <span aria-hidden="true">−</span>
+        <app-icon name="minus" />
       </button>
       <button
         type="button"
@@ -25,7 +29,7 @@
         aria-label="Voltar à ficha do território"
         (click)="closeConnection.emit()"
       >
-        <span aria-hidden="true">×</span>
+        <app-icon name="close" />
       </button>
     </div>
   </header>
@@ -41,7 +45,7 @@
     <section class="desk-block" aria-label="Mediação histórica">
       <h3>Mediação histórica</h3>
       <a class="desk-link-btn" [routerLink]="['/verbete', via.slug]">
-        Abrir {{ via.title }} <span aria-hidden="true">→</span>
+        Abrir {{ via.title }} <app-icon name="arrow-right" />
       </a>
     </section>
   }
@@ -77,7 +81,7 @@
         aria-label="Recolher detalhes"
         (click)="collapseDesk.emit()"
       >
-        <span aria-hidden="true">−</span>
+        <app-icon name="minus" />
       </button>
       <button
         type="button"
@@ -85,10 +89,28 @@
         aria-label="Limpar seleção do mapa"
         (click)="closeDesk.emit()"
       >
-        <span aria-hidden="true">×</span>
+        <app-icon name="close" />
       </button>
     </div>
   </header>
+
+  @if (activeHotpoint(); as hp) {
+    <section class="desk-marco" aria-labelledby="desk-marco-title">
+      <p class="desk-marco__when">
+        <span class="desk-marco__year">{{ hp.label }}</span>
+        <span>Marco na linha do tempo</span>
+      </p>
+      <h3 id="desk-marco-title">
+        <a [routerLink]="['/verbete', hp.slug]">{{ hp.title }}</a>
+      </h3>
+      @if (hotpointRecord(); as rec) {
+        @if (rec.lead) {
+          <p class="desk-marco__what">{{ rec.lead }}</p>
+        }
+        <p class="desk-marco__where">{{ rec.relation }} {{ t.title }}</p>
+      }
+    </section>
+  }
 
   @if (media(); as asset) {
     <figure class="desk-media">
@@ -153,26 +175,21 @@
     <details class="desk-more">
       <summary>
         <span>Ler resumo completo</span>
-        <span class="desk-more__icon" aria-hidden="true">+</span>
+        <app-icon class="desk-more__icon" name="plus" />
       </summary>
       <p>{{ cleanSummary() }}</p>
     </details>
   }
 
-  @if (hasTemporalFilter() || activeHotpoint()) {
-    <section class="desk-callout" aria-label="Contexto no recorte temporal ativo">
-      <h3>Neste recorte ({{ activePeriodLabel() }})</h3>
-      @if (activeHotpoint(); as hp) {
-        <p class="desk-callout__lead">
-          Marco em foco: <a [routerLink]="['/verbete', hp.slug]">{{ hp.title }}</a> ({{ hp.label }})
-        </p>
-      }
-      <p class="desk-callout__meta">
-        {{ entry.activeRegimes.length }} regimes vigentes,
-        {{ territoryConnections().length }} conexões e {{ entry.activeRecords.length }} registros no
-        intervalo.
-      </p>
-    </section>
+  @if (hasTemporalFilter()) {
+    <p class="desk-period-line">
+      Em {{ activePeriodLabel() }}: {{ entry.activeRegimes.length }}
+      {{ entry.activeRegimes.length === 1 ? 'regime vigente' : 'regimes vigentes' }},
+      {{ territoryConnections().length }}
+      {{ territoryConnections().length === 1 ? 'conexão' : 'conexões' }} e
+      {{ entry.activeRecords.length }}
+      {{ entry.activeRecords.length === 1 ? 'registro' : 'registros' }}.
+    </p>
   }
 
   <div class="desk-actions">
@@ -258,7 +275,13 @@
                 }
               </span>
               <strong>
-                {{ conn.fromTerritoryId === t.id ? '→ ' + conn.toTitle : '← ' + conn.fromTitle }}
+                @if (conn.fromTerritoryId === t.id) {
+                  <app-icon name="arrow-right" /><span class="visually-hidden">para </span
+                  >{{ conn.toTitle }}
+                } @else {
+                  <app-icon name="arrow-left" /><span class="visually-hidden">de </span
+                  >{{ conn.fromTitle }}
+                }
               </strong>
               <small>{{ conn.label }}</small>
             </button>
@@ -305,7 +328,7 @@
     <details class="desk-ref">
       <summary>
         <span>Referência geográfica</span>
-        <span class="desk-more__icon" aria-hidden="true">+</span>
+        <app-icon class="desk-more__icon" name="plus" />
       </summary>
       <div class="desk-ref__body">
         @if (t.territorialScope) {

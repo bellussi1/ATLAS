@@ -7,7 +7,7 @@
       aria-label="Fechar sugestões"
       (click)="dismiss.emit()"
     >
-      <span aria-hidden="true">×</span>
+      <app-icon name="close" />
     </button>
   </header>
   <p class="start__lead">
@@ -32,7 +32,7 @@
     <h3 class="start__label">Ou siga um caminho</h3>
     <button type="button" class="start__route" (click)="trace.emit(r)">
       <span>{{ r.from.title }}</span>
-      <span class="start__arrow" aria-hidden="true">→</span>
+      <app-icon class="start__arrow" name="arrow-right" />
       <span>{{ r.to.title }}</span>
       <span class="visually-hidden">: mostrar como os dois verbetes se ligam</span>
     </button>

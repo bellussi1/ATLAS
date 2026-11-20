@@ -1,5 +1,5 @@
 <section class="world-map-page" aria-labelledby="world-map-title">
-  <div class="floating" [class.has-detail]="deskShown()" [class.has-legend]="legendShown()">
+  <div class="floating" [class.has-detail]="panelShown()" [class.has-legend]="legendShown()">
     <header #topBar class="bar card">
       <a class="bar__home" routerLink="/" aria-label="ATLAS, voltar ao início">
         <img src="/brand/atlas-logo.svg" alt="" width="105" height="30" />
@@ -55,7 +55,7 @@
           aria-controls="map-legend"
           (click)="toggleLegend()"
         >
-          Legenda
+          Legenda e camadas
         </button>
         <button
           type="button"
@@ -381,7 +381,7 @@
               aria-label="Fechar atalhos"
               (click)="shortcutsOpen.set(false)"
             >
-              <span aria-hidden="true">×</span>
+              <app-icon name="close" />
             </button>
           </header>
           <div class="shortcuts__cols">
@@ -390,9 +390,9 @@
               <dl>
                 <dt><kbd>/</kbd></dt>
                 <dd>Buscar país, império ou evento</dd>
-                <dt><kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd></dt>
+                <dt><kbd>Setas</kbd></dt>
                 <dd>Girar o globo 3D quando o mapa está em foco</dd>
-                <dt><kbd>+</kbd><kbd>−</kbd><kbd>0</kbd></dt>
+                <dt><kbd>+</kbd><kbd>-</kbd><kbd>0</kbd></dt>
                 <dd>Aproximar, afastar, reenquadrar</dd>
                 <dt><kbd>L</kbd></dt>
                 <dd>Mostrar ou ocultar legenda</dd>
@@ -451,13 +451,13 @@
 
         <div class="zoom card" role="group" aria-label="Controle de ampliação do globo">
           <button type="button" aria-label="Aproximar globo" (click)="zoomStep(1.25)">
-            <span aria-hidden="true">+</span>
+            <app-icon name="plus" />
           </button>
           <button type="button" aria-label="Afastar globo" (click)="zoomStep(1 / 1.25)">
-            <span aria-hidden="true">−</span>
+            <app-icon name="minus" />
           </button>
           <button type="button" aria-label="Reenquadrar globo completo" (click)="resetZoom()">
-            <span aria-hidden="true">⤢</span>
+            <app-icon name="expand" />
           </button>
           <span class="zoom__level" aria-hidden="true">{{ zoomPercent() }}%</span>
         </div>
@@ -614,7 +614,7 @@
             aria-keyshortcuts="["
             (click)="stepHotpoint(-1)"
           >
-            <span aria-hidden="true">‹</span>
+            <app-icon name="chevron-left" />
           </button>
           @if (previewHotpoint(); as hp) {
             <p class="timeline-marker__text">
@@ -634,7 +634,7 @@
             aria-keyshortcuts="]"
             (click)="stepHotpoint(1)"
           >
-            <span aria-hidden="true">›</span>
+            <app-icon name="chevron-right" />
           </button>
         </div>
 
@@ -680,11 +680,32 @@
       #studyDesk
       id="map-study-desk"
       class="detail card"
-      [class.detail--empty]="!hasSelection()"
+      [class.detail--empty]="!hasSelection() && !startShown()"
+      [class.is-expanded]="deskExpanded()"
       [class.detail--collapsed]="detailsCollapsed()"
-      aria-label="Mesa de estudo cartográfica"
+      [attr.aria-label]="hasSelection() ? 'Mesa de estudo cartográfica' : 'Como ler o mapa'"
       aria-live="polite"
     >
+      @if (hasSelection()) {
+        <button
+          type="button"
+          class="detail__grip"
+          [attr.aria-expanded]="deskExpanded()"
+          aria-controls="map-study-desk"
+          (click)="deskExpanded.set(!deskExpanded())"
+        >
+          <app-icon [name]="deskExpanded() ? 'chevron-down' : 'chevron-up'" />
+          {{ deskExpanded() ? 'Voltar ao globo' : 'Ler a ficha inteira' }}
+        </button>
+      } @else if (startShown()) {
+        <app-map-start
+          [territories]="startTerritories()"
+          [presets]="startPresets"
+          (pickTerritory)="selectTerritory($event)"
+          (pickPreset)="startFromPreset($event)"
+          (dismiss)="startDismissed.set(true)"
+        />
+      }
       <app-map-study-desk
         [territoryEntry]="selectedFilteredTerritory()"
         [connection]="selectedConnection()"
@@ -726,7 +747,7 @@
             aria-label="Fechar lista"
             (click)="tableOpen.set(false)"
           >
-            <span aria-hidden="true">×</span>
+            <app-icon name="close" />
           </button>
         </header>
         <p class="table-drawer__lead">

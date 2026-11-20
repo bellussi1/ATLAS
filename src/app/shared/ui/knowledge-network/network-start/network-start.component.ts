@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import { AtlasKindIconComponent, type IconKind } from '@shared/ui/kind-icon/kind-icon.component';
 
 export interface NetworkStartEntry {
@@ -16,7 +17,7 @@ export interface NetworkStartRoute {
 /** First card of the graph: what the drawing shows and a few doors into it. */
 @Component({
   selector: 'app-network-start',
-  imports: [AtlasKindIconComponent],
+  imports: [AtlasIconComponent, AtlasKindIconComponent],
   templateUrl: './network-start.component.html',
   styleUrl: './network-start.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
