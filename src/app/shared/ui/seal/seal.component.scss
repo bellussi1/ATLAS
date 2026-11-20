@@ -1,0 +1,37 @@
+:host {
+  --seal-ink: var(--seal-ink-accent);
+
+  display: inline-block;
+  color: var(--seal-ink);
+}
+
+:host([data-tone='mata']) {
+  --seal-ink: var(--seal-ink-mata);
+}
+:host([data-tone='neutral']) {
+  --seal-ink: var(--seal-ink-neutral);
+}
+
+/* Double rule of a rubber stamp, slightly off the baseline like an inked mark. */
+.seal {
+  display: inline-block;
+  padding: var(--space-1) var(--space-2);
+  border: 2px solid currentColor;
+  box-shadow:
+    inset 0 0 0 2px var(--color-canvas),
+    inset 0 0 0 3px currentColor;
+  font-family: var(--font-display-contrast);
+  font-size: var(--text-caption);
+  font-stretch: 75%;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  transform: rotate(-1.5deg);
+}
+
+@media (forced-colors: active) {
+  .seal {
+    box-shadow: none;
+  }
+}

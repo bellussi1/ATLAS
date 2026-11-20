@@ -1,0 +1,23 @@
+@if (treatable(); as record) {
+  <figure>
+    <div class="plate">
+      <img [src]="record.assetPath | contentMedia" [alt]="alt()" [attr.loading]="loading()" />
+      <span class="plate__ink" aria-hidden="true"></span>
+      <span class="plate__screen atlas-halftone" aria-hidden="true"></span>
+    </div>
+    <figcaption>
+      {{ creator(record) }}
+      <a [href]="record.licenseUrl" target="_blank" rel="noopener noreferrer">{{
+        record.license
+      }}</a>
+      · imagem com tratamento de cor
+    </figcaption>
+  </figure>
+} @else {
+  <app-licensed-asset
+    [atlas]="atlas()"
+    [assetPath]="assetPath()"
+    [alt]="alt()"
+    [loading]="loading()"
+  />
+}

@@ -1,0 +1,64 @@
+:host {
+  --stamp-paper: var(--surface-stamp-cal);
+  --stamp-shadow: var(--shadow-offset-md);
+
+  display: block;
+  color: var(--text-on-stamp);
+  filter: drop-shadow(var(--stamp-shadow) var(--color-ink));
+}
+
+:host([data-tone='ocre']) {
+  --stamp-paper: var(--surface-stamp-ocre);
+}
+:host([data-tone='mata']) {
+  --stamp-paper: var(--surface-stamp-mata);
+}
+:host([data-tone='rosa']) {
+  --stamp-paper: var(--surface-stamp-rosa);
+}
+:host([data-tone='urucum']) {
+  --stamp-paper: var(--surface-stamp-urucum);
+}
+
+:host([data-shadow='none']) {
+  filter: none;
+}
+:host([data-shadow='sm']) {
+  --stamp-shadow: var(--shadow-offset-sm);
+}
+:host([data-shadow='lg']) {
+  --stamp-shadow: var(--shadow-offset-lg);
+}
+
+.stamp__paper {
+  --r: calc(var(--perforation-size) / 2);
+  --s: calc(var(--perforation-size) + var(--perforation-gap));
+  --hole: #0000 calc(100% - 0.5px), #000;
+
+  /* Wider than focus width + offset, so inner focus rings never reach the perforation. */
+  padding: calc(var(--perforation-size) + var(--space-3));
+  background: var(--stamp-paper);
+  /* One layer per edge, each opaque except its holes; intersecting them leaves a perforated sheet. */
+  mask:
+    radial-gradient(circle var(--r) at 50% 0, var(--hole)) 50% 0 / var(--s) 100% round no-repeat,
+    radial-gradient(circle var(--r) at 50% 100%, var(--hole)) 50% 0 / var(--s) 100% round no-repeat,
+    radial-gradient(circle var(--r) at 0 50%, var(--hole)) 0 50% / 100% var(--s) no-repeat round,
+    radial-gradient(circle var(--r) at 100% 50%, var(--hole)) 0 50% / 100% var(--s) no-repeat round;
+  mask-composite: intersect;
+}
+
+@media (forced-colors: active) {
+  :host {
+    filter: none;
+  }
+  .stamp__paper {
+    mask: none;
+    border: 1px solid CanvasText;
+  }
+}
+
+@media print {
+  :host {
+    filter: none;
+  }
+}

@@ -1,0 +1,39 @@
+/*
+ * Materials of the poster register (skill section 5). Decorative only: they never
+ * carry meaning, sit behind content and drop out in print and forced colours.
+ */
+
+/* Paper grain for flat poster surfaces. Never behind running text. */
+.atlas-grain {
+  position: relative;
+  isolation: isolate;
+}
+
+.atlas-grain::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  content: '';
+  mix-blend-mode: multiply;
+  opacity: var(--grain-opacity);
+  pointer-events: none;
+}
+
+/*
+ * Halftone screen: a dot layer in the current colour that fades along --halftone-angle.
+ * Apply to a decorative element (aria-hidden) laid over a flat shape.
+ */
+.atlas-halftone {
+  background-image: radial-gradient(circle, currentColor 32%, #0000 34%);
+  background-size: var(--halftone-cell) var(--halftone-cell);
+  mask-image: linear-gradient(var(--halftone-angle, 135deg), #000 10%, #0000 85%);
+  pointer-events: none;
+}
+
+@media print, (forced-colors: active) {
+  .atlas-grain::after,
+  .atlas-halftone {
+    display: none;
+  }
+}

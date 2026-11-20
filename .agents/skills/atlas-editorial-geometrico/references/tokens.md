@@ -1,6 +1,6 @@
 # Tokens do design system · alvo v2
 
-Estado: **etapas 1 e 2 implementadas** (19/11/2026). `src/styles/tokens/_primitives.scss` e `_semantic.scss` existem e as cores de suporte já apontam para os pigmentos; neutros, estados e cores do mapa seguem com valores próprios. `_registers.scss` entra com os primeiros componentes de cartaz.
+Estado: **etapas 1 a 3 implementadas** (19/11/2026); primitivos P0 em `shared/ui/{stamp,seal,halftone-figure}` e `src/styles/_materials.scss`, ainda sem adoção nas telas. `src/styles/tokens/_primitives.scss` e `_semantic.scss` existem e as cores de suporte já apontam para os pigmentos; neutros, estados e cores do mapa seguem com valores próprios. `_registers.scss` entra com os primeiros componentes de cartaz.
 
 ## Camadas
 
@@ -78,7 +78,7 @@ Os estados (`info`, `success`, `warning`, `danger`) mantêm os valores atuais at
 | `--surface-page` | cal-50 | terra-900 |
 | `--text-primary` | tinta-900 | cal-50 |
 | `--text-accent` | pau-brasil-700 | ocre-300 |
-| `--surface-stamp-a..e` | urucum-300, ocre-300, mata-300, rosa-300, cal-100 | pau-brasil-500, ocre-500, mata-500, jenipapo-700, urucum-500 |
+| `--surface-stamp-{cal,ocre,mata,rosa,urucum}` | cal-100, ocre-300, mata-300, rosa-300, urucum-300 | a definir com `_registers.scss` |
 | `--text-on-stamp` | tinta-900 | cal-50 (exceto ocre: tinta) |
 
 Mesa usa os valores de leitura; as famílias do grafo e do mapa mantêm tokens próprios com `stroke-dasharray`.
@@ -91,7 +91,7 @@ Mesa usa os valores de leitura; as famílias do grafo e do mapa mantêm tokens p
 | Perfuração | `--perforation-size`, `--perforation-gap` |
 | Elevação | `--shadow-offset-sm: 3px 3px 0`, `--shadow-offset-md: 5px 5px 0`, `--shadow-offset-lg: 8px 8px 0` (cor sempre tinta) |
 | Camada | `--z-base: 0`, `--z-raised: 10`, `--z-dropdown: 20`, `--z-sticky: 30`, `--z-overlay: 50`, `--z-top: 60`; valores de 0 a 15 dentro de um contexto de empilhamento local continuam literais |
-| Material | `--grain-opacity`, `--halftone-cell` |
+| Material | `--grain-opacity: .14`, `--halftone-cell: 6px`; duotone em `--duotone-{rosa,pau-brasil,mata,jenipapo}-{light,dark}`; carimbo em `--seal-ink-{accent,mata,neutral}` |
 | Tipo | `--font-text` (Zilla Slab), `--font-display` e `--font-numeric` (Archivo), `--font-label` (Archivo `wdth` 75) |
 | Espaço | escala atual + `--space-24` |
 | Motion | atual (120/180/240/480 ms, `--ease-out`) |

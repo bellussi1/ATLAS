@@ -1,6 +1,7 @@
 @use '@angular/cdk/overlay-prebuilt.css';
 @use './styles/tokens/primitives';
 @use './styles/tokens/semantic';
+@use './styles/materials';
 @use './app/shared/ui/ui-primitives';
 
 @tailwind base;
