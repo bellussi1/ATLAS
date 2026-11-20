@@ -56,7 +56,7 @@ From the published content release (graph of 2026-11-18):
 | **3,025** typed relations | |
 | **9** long-form readings, **20** itineraries | |
 
-## Four ways into the same graph
+## Four views of the same graph
 
 | | |
 | --- | --- |
