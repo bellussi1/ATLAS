@@ -29,6 +29,14 @@ Atualizado em 19/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 - **E2E das fichas de contexto (`e2e/ideology-sheets.spec.ts`):** 4 a 6 de 7 falham também no commit `654f8db`, anterior à migração (painel não acopla à direita, backdrop intercepta clique); `knowledge-explorer` passa. Investigar à parte.
 - **Próxima ação:** revisar visualmente as rotas no navegador e decidir push; investigar o E2E das fichas.
 
+## Publicação e infraestrutura (20/11, após a v0.3.0)
+
+- **Comandos novos** (detalhes em [`operations/PRODUCAO.md`](operations/PRODUCAO.md)): `npm run release` (dry-run por padrão; `--apply` no `develop` publica conteúdo só se o hash mudou, sobe a versão e commita; na `master` cria a tag anotada; nunca faz push), `npm run infra:backup-drafts` (queues e runs de `experiments/rag/eval` no `atlas-drafts`, por hash, com `--restore`), `npm run infra:mirror-media` (imagens da Wikimedia reproduzíveis como `m/<sha256>.<ext>`, registro em `content/media-mirror.json`), `npm run infra:doctor` (credenciais, Worker, ponteiro, segredos do GitHub e rodapé) e `npm run perf`.
+- **Espelho de imagens:** código, testes e leitura no app prontos (`mirror` no ponteiro, `ContentMediaPipe` → `mirrorUrl`, fallback para o hotlink). **Ainda não executado**: faltam `infra:mirror-media` (1.083 imagens candidatas, 0 excluídas; ~100 KB cada) e `content:publish`. Nada foi enviado ao R2.
+- **Tag `v0.2.0` nunca foi criada** (só `v0.1.0` e `v0.3.0`); registrado no roteiro, sem criar retroativamente.
+- **Achado do `infra:doctor`:** no fim desta rodada o site ainda mostrava `v0.1.0` enquanto o CI da `master` (v0.3.0) rodava; o doctor passa quando o `deploy-pages` termina.
+- **Desempenho (build local, preview, sem throttling, mediana de 3):** JS inicial 512 KiB bruto / 145 gzip / 127 brotli, maior chunk `world-map-page` 334 KiB (inclui 236 KB de GeoJSON), `ideology-page` 237 KiB; release 80,5 MiB (bundle 34,3, network 7,1). `app-shell` iniciava com cabeçalho nas rotas de tela cheia (`router.url` ainda era `/`) e o removia depois: CLS de `/grafos` 0,29 → 0,14; `/mapa` 0,508 → 0,473; `/` e `/leitura/marxismo` ficaram ~0,00; LCP sempre abaixo de 0,5 s. `decoding="async"` em `licensed-asset` e `halftone-figure`. **Pendente:** o CLS restante é o próprio layout de `/mapa` (barra e HUD mudam de posição quando os dados chegam) e `/grafos` (a coluna da legenda aparece); `/leitura/*` baixa o bundle inteiro (~5 MB gzip); brotli no R2 em vez de gzip reduziria ~20%.
+
 ## Publicação v0.2.0 (19/11)
 
 - **Header:** cartão flutuante sticky, altura fixa (3,5rem, menu compacto abaixo de 75rem), no mesmo container do conteúdo (`--grid-max` com gutter); grafo e mapa seguem sem ele. Altura publicada em `--header-offset` para `scroll-padding` e painéis sticky. Logo do header e do rodapé rolam suave ao topo na home (`layouts/home-link.directive.ts`).

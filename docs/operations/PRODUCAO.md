@@ -15,15 +15,26 @@ Site: `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). O CI
 
 `public/404.html` é servido pelo Pages com status 404 para endereços desconhecidos; `/verbete/*` continua na SPA para slugs não prerenderizados. O `uptime.yml` exige 404 no caminho inexistente.
 
-## Versão e tag em cada publicação
+## Roteiro de uma publicação (um comando)
 
-Toda publicação em produção (release de conteúdo no R2 ou deploy do Pages) sobe a versão em `package.json` e `package-lock.json` (semver: `minor` para funcionalidade ou conteúdo novo, `patch` para correção) e cria a tag anotada `vX.Y.Z` no commit de merge da `master`, enviada ao GitHub. O rodapé mostra a versão (`v{{ version }}`), então a produção e a tag sempre conferem.
+`npm run release` orquestra o roteiro. Sem `--apply` ele só verifica e imprime o plano; nunca faz push nem deploy.
 
 ```powershell
-npm version 0.2.0 --no-git-tag-version
-git tag -a v0.2.0 -m "v0.2.0"
-git push origin v0.2.0
+npm run infra:doctor                 # credenciais, Worker, ponteiro, segredos do GitHub e rodapé do site
+npm run release                      # no develop: lint, typecheck, testes, test:content, test:ingestion, build, check:links e plano
+npm run release -- --apply          # no develop: content:publish (só se o hash mudou), sobe a versão e commita
 ```
+
+1. No `develop` o comando confere a árvore, roda as verificações e compara o hash que `content:build` calcula com `content/content-pointer.json`. Só chama `content:publish` se mudou (com `--apply`), sugere `minor` (há `feat`, `perf` ou mudança incompatível) ou `patch` (`--bump` força) e cria dois commits: `chore(content): publica release <hash>` e `chore(release): sobe a versao do app`.
+2. Depois, à mão: `git push origin develop`, PR para a `master` (`gh pr create --base master --head develop`) e merge. O CI valida e o job `deploy-pages` publica o Pages.
+3. Na `master`, após o merge: `git pull` e `npm run release -- --apply` cria a tag anotada `vX.Y.Z` no commit de merge; `git push origin vX.Y.Z` a envia.
+4. `npm run infra:doctor` confirma que o rodapé do site mostra a versão nova (falha enquanto o deploy não termina).
+
+`--skip a,b` ignora verificações pelo nome (aparece como aviso). Os assuntos dos commits seguem o hook: `tipo(escopo): resumo`, minúsculo e sem ponto final.
+
+Toda publicação em produção sobe a versão em `package.json` e `package-lock.json` (semver) e tem a tag `vX.Y.Z`; o rodapé mostra `v{{ version }}`. **A tag `v0.2.0` nunca foi criada**: o repositório tem `v0.1.0` e `v0.3.0`. Não crie `v0.2.0` retroativamente; o histórico só tem esse salto.
+
+Sem o comando, o equivalente manual é `npm version X.Y.Z --no-git-tag-version`, commit, PR, `git tag -a vX.Y.Z -m vX.Y.Z` na `master` e `git push origin vX.Y.Z`.
 
 ## O que fica a cargo de uma pessoa
 
@@ -60,8 +71,44 @@ npm run content:publish                                      # republica o point
 
 ## Pendências
 
-- Espelhar no R2 as imagens da Wikimedia com licença de reprodução (hoje há hotlink).
-- O deploy do Pages depende dos segredos `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID`; sem eles o job `deploy-pages` falha na `master`.
+- Rodar `npm run infra:mirror-media` (sem `--dry-run`) e `npm run content:publish` para efetivar o espelho das imagens da Wikimedia (hoje o código está pronto e o app cai no hotlink até o ponteiro ter `mirror`).
+- Rodar `npm run infra:backup-drafts` e guardar o resultado (o bucket privado ainda não tem cópia de `experiments/rag/eval`).
+- O deploy do Pages depende dos segredos `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID`; sem eles o job `deploy-pages` falha na `master`. O `infra:doctor` confere a presença.
+- As credenciais do R2 existem só em `~/.atlas/r2.env` desta máquina. Guarde uma cópia no gerenciador de senhas; sem ela, perder a máquina impede publicar conteúdo (a produção continua no ar).
+
+## Espelho das imagens da Wikimedia
+
+As ~1.080 imagens licenciadas eram servidas direto do `thumb.wikimedia.org`. `npm run infra:mirror-media` copia para o `atlas-public` as que a licença permite reproduzir (`reproducibleAsset`: licença conhecida, reprodução permitida; ND e uso justo ficam de fora) como objetos imutáveis `m/<sha256>.<ext>`, sem reencodar os bytes. O registro com criador, licença, URL de origem, página do arquivo e dimensões fica em `content/media-mirror.json` (versionado). É incremental: o que já está no arquivo não é baixado de novo.
+
+```powershell
+npm run content:build
+npm run infra:mirror-media -- --dry-run     # candidatos e exclusões, sem rede
+npm run infra:mirror-media -- --limit 25    # teste pequeno
+npm run infra:mirror-media                  # todas as novas
+npm run content:publish                     # fixa o índice do espelho no ponteiro (mirror) e verifica cada objeto no R2
+```
+
+O `content:publish` publica o índice compacto como artefato `media-mirror.<sha>.json` e o fixa no ponteiro; ele recusa o release se algum objeto espelhado faltar no bucket. O app lê o índice junto do bundle e `ContentMediaPipe` troca o endereço da Wikimedia pelo do espelho (`mirrorUrl`); sem espelho, mantém o hotlink. O `infra:prune-releases` nunca apaga chave citada em `content/media-mirror.json` (nem em versões antigas dele).
+
+## Backup dos rascunhos
+
+`experiments/rag/eval/queues/` e `runs/` (saída de modelos ainda não aprovada, fora do git) são espelhados no bucket **privado** `atlas-drafts`, por hash, em `backup/objects/<sha256>` com um índice `backup/<conjunto>/index.json`. Nunca toca o `atlas-public`.
+
+```powershell
+npm run infra:backup-drafts -- --dry-run
+npm run infra:backup-drafts
+npm run infra:backup-drafts -- --restore queues --to experiments/rag/eval/queues
+```
+
+A restauração baixa o índice do conjunto, confere o SHA-256 de cada arquivo e recusa caminhos fora do destino. Em outra máquina, restaure para um diretório vazio e depois mova; ela sobrescreve arquivos de mesmo nome.
+
+## Diagnóstico
+
+`npm run infra:doctor` não imprime segredos: confere as chaves de `~/.atlas/r2.env`, o `pointer.json` do Worker, se o ponteiro do repositório bate com o do R2, os segredos do GitHub (`gh secret list`) e se o rodapé do site mostra a versão do `package.json`. Cada falha traz a ação sugerida.
+
+## Desempenho
+
+`npm run build` seguido de `npm run perf` mede o peso inicial (JS bruto/gzip/brotli), os maiores chunks, o tamanho do release e, com Playwright, LCP e CLS (mediana de 3) em `/`, `/leitura/marxismo`, `/mapa` e `/grafos`. `--static` pula o navegador; `--out arquivo.json` grava o relatório.
 
 ## CDN de conteúdo (Worker)
 
