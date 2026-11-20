@@ -1,0 +1,18 @@
+<section class="next" aria-labelledby="detail-next">
+  <h3 id="detail-next">Para onde seguir</h3>
+  <p class="next__hint">Os vizinhos mais ligados deste verbete.</p>
+  <ul class="next__list">
+    @for (step of steps(); track step.id) {
+      <li>
+        <button type="button" class="next__item" (click)="pick.emit(step.id)">
+          <app-kind-icon [kind]="step.icon" />
+          <span class="next__name">{{ step.title }}</span>
+          <small
+            >{{ step.verb }} · {{ step.degree }}
+            {{ step.degree === 1 ? 'conexão' : 'conexões' }}</small
+          >
+        </button>
+      </li>
+    }
+  </ul>
+</section>

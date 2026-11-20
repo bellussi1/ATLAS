@@ -185,6 +185,10 @@ export class MapStudyDeskComponent {
     return FAMILY_MAP.get(familyId)?.label ?? 'Conexão';
   }
 
+  familyNote(familyId: RelationFamilyId): string {
+    return FAMILY_MAP.get(familyId)?.note ?? '';
+  }
+
   familyColorVar(familyId: RelationFamilyId): string {
     return FAMILY_MAP.get(familyId)?.color ?? '--color-border-strong';
   }

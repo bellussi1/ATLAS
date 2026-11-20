@@ -9,6 +9,7 @@ import {
   inject,
   Injector,
   input,
+  linkedSignal,
   output,
   signal,
   untracked,
@@ -71,6 +72,10 @@ import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component
 import { AtlasSectionSwitcherComponent } from '@shared/ui/section-switcher/section-switcher.component';
 
 import { batchEdgeSegments, type EdgeSegment } from './network-batching';
+import {
+  AtlasNetworkNextComponent,
+  type NetworkNextStep,
+} from './network-next/network-next.component';
 import { shapePath } from './network-shapes';
 import {
   AtlasNetworkStartComponent,
@@ -194,6 +199,7 @@ const classificationLabels: Record<string, string> = {
     AtlasChevronComponent,
     AtlasKindIconComponent,
     AtlasGeometricIllustrationComponent,
+    AtlasNetworkNextComponent,
     AtlasNetworkStartComponent,
     AtlasIconComponent,
     ContentMediaPipe,
@@ -467,6 +473,27 @@ export class KnowledgeNetworkComponent {
     const visible = this.visibleIds();
     if (!from || !to || !visible.has(from.id) || !visible.has(to.id)) return null;
     return { from: this.startEntry(from), to: this.startEntry(to) };
+  });
+  /** The three best-connected neighbours of the selected record, each once. */
+  readonly nextSteps = computed<readonly NetworkNextStep[]>(() => {
+    const seen = new Set<string>();
+    return [...this.selectedLinks()]
+      .sort((a, b) => b.other.degree - a.other.degree)
+      .filter((link) => !seen.has(link.other.id) && !!seen.add(link.other.id))
+      .slice(0, 3)
+      .map((link) => ({
+        id: link.other.id,
+        title: link.other.title,
+        icon: this.networkIcon(link.other),
+        verb: this.linkVerb(link),
+        degree: link.other.degree,
+      }));
+  });
+  readonly pathActive = computed(() => this.pathMode() || !!this.pathFrom() || !!this.pathTo());
+  /** The node-type list folds while a route is being read, so the route stays in view. */
+  readonly kindsOpen = linkedSignal({
+    source: () => this.pathActive(),
+    computation: (active) => !active,
   });
   readonly pathFromTitle = computed(() => {
     const id = this.pathFrom();

@@ -363,6 +363,11 @@ summary::-webkit-details-marker {
   color: var(--color-ink-muted);
   white-space: nowrap;
 }
+.legend__how {
+  margin: 4px 0 0;
+  color: var(--color-ink-muted);
+  font: 400 var(--text-caption)/1.45 var(--font-primary);
+}
 .highlight-empty {
   margin: 0;
   padding: 6px 8px;
@@ -1345,8 +1350,17 @@ th[aria-sort='descending'] .sort-btn::after {
     gap: 4px;
   }
   .search {
-    flex-basis: 100%;
-    order: 3;
+    flex: 1 1 7rem;
+    order: 1;
+  }
+  /* The heading stays for screen readers and the page outline; the logo carries the name on screen. */
+  .bar__title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
   .search__input {
     min-height: 36px;
@@ -1356,9 +1370,9 @@ th[aria-sort='descending'] .sort-btn::after {
   .timeline-hotpoint__year {
     display: none;
   }
-  /* One compact header row (logo, title, sections), then search, then a swipeable row of tools. */
+  /* Logo, search and menu share the first row; the tools get the second. */
   app-section-switcher {
-    margin-left: auto;
+    order: 2;
   }
   .bar__actions {
     order: 4;

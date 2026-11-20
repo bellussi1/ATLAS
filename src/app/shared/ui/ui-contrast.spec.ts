@@ -78,6 +78,11 @@ describe('semantic design token contrast', () => {
     ['color-violet', 'color-canvas', 4.5],
     ['color-indigo', 'color-canvas', 4.5],
     ['color-info', 'color-canvas', 4.5],
+    // Relation families draw lines over paper: every family colour keeps 3:1.
+    ['color-steel', 'color-canvas', 3],
+    ['color-moss', 'color-canvas', 3],
+    ['color-accent', 'color-canvas', 3],
+    ['color-border-strong', 'color-canvas', 3],
     ['text-on-stamp', 'surface-stamp-cal', 4.5],
     ['text-on-stamp', 'surface-stamp-ocre', 4.5],
     ['text-on-stamp', 'surface-stamp-mata', 4.5],

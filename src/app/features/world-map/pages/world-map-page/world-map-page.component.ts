@@ -120,15 +120,10 @@ const ALL_LAYERS: readonly {
   { id: 'locality', label: 'Cidades e lugares' },
 ];
 
-const FAMILY_COLOR_FALLBACKS: Readonly<Record<RelationFamilyId, string>> = {
-  influenced: '#b81d16',
-  rupture: '#9a4a0c',
-  participation: '#164f60',
-  creation: '#24563b',
-  continuity: '#363a5f',
-  affiliation: '#363a5f',
-  location: '#777268',
-};
+/** Colours before the page reads the tokens: the same token of each family as the legend. */
+const FAMILY_COLOR_FALLBACKS = Object.fromEntries(
+  relationFamilies.map((family) => [family.id, '#777268']),
+) as Record<RelationFamilyId, string>;
 
 const ALL_FAMILY_IDS = relationFamilies.map((family) => family.id);
 
@@ -1349,15 +1344,12 @@ export class WorldMapPageComponent {
     const resolve = (cssVar: string, fallback: string) =>
       style.getPropertyValue(cssVar).trim() || fallback;
 
-    this.familyColorMap.set({
-      influenced: resolve('--color-accent', FAMILY_COLOR_FALLBACKS.influenced),
-      rupture: resolve('--color-orange-strong', FAMILY_COLOR_FALLBACKS.rupture),
-      participation: resolve('--color-info', FAMILY_COLOR_FALLBACKS.participation),
-      creation: resolve('--color-success', FAMILY_COLOR_FALLBACKS.creation),
-      continuity: resolve('--color-indigo', FAMILY_COLOR_FALLBACKS.continuity),
-      affiliation: resolve('--color-indigo', FAMILY_COLOR_FALLBACKS.affiliation),
-      location: resolve('--color-border-strong', FAMILY_COLOR_FALLBACKS.location),
-    });
+    // One source: the legend and the arcs on the globe read the same token of each family.
+    this.familyColorMap.set(
+      Object.fromEntries(
+        relationFamilies.map((family) => [family.id, resolve(family.color, '#777268')]),
+      ) as Record<RelationFamilyId, string>,
+    );
   }
 
   private scheduleLayoutMeasure(): void {
