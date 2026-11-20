@@ -1,3 +1,15 @@
+/* Short local names for semantic tokens: the full names would push this sheet past its 25 kB budget. */
+:host {
+  --paper: var(--color-canvas);
+  --paper-shade: var(--color-surface-subtle);
+  --ink: var(--color-ink);
+  --ink-muted: var(--color-ink-muted);
+  --rule: var(--color-border);
+  --rule-strong: var(--color-border-strong);
+  --signal: var(--color-signal);
+  --serif: var(--font-primary);
+}
+
 ﻿:host {
   --card-shadow: 4px 4px 0 var(--ink);
   --rise: 240ms var(--ease-out);

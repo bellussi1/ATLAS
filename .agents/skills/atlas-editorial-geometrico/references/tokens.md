@@ -1,6 +1,6 @@
 # Tokens do design system · alvo v2
 
-Estado: **etapas 1 a 3 implementadas** (19/11/2026); primitivos P0 em `shared/ui/{stamp,seal,halftone-figure}` e `src/styles/_materials.scss`, ainda sem adoção nas telas. `src/styles/tokens/_primitives.scss` e `_semantic.scss` existem e as cores de suporte já apontam para os pigmentos; neutros, estados e cores do mapa seguem com valores próprios. `_registers.scss` entra com os primeiros componentes de cartaz.
+Estado: **migração concluída em 20/11/2026** (etapas 1 a 10). Selo nos cards de registro e nas portas de catálogo da home, carimbo em leituras, itinerários e verbetes, duotone no retrato de pessoa, rodapé no registro cartaz. Aliases legados só existem no `:host` de `knowledge-network` (orçamento de 25 kB). Pendências: `_registers.scss` não foi necessário (os registros usam tokens próprios como `--surface-poster`); globo do mapa desenha cores fixas no canvas.
 
 ## Camadas
 

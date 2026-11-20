@@ -45,9 +45,8 @@
   --color-orange-strong: var(--pig-urucum-800);
   --color-cartographic: #315f54;
   --color-archive: #176176;
-  /* Paper and line of the record desk, shared by cards and the context sheet. */
+  /* Paper of the record desk (itinerary stops, home door base). */
   --color-desk-card: #efe8d6;
-  --color-desk-line: #5f5e59;
   --color-map-land: #efe9da;
   /* Per-tradition reading accents (ideology page). */
   --color-tradition-rose: var(--pig-rosa-700);
@@ -162,14 +161,4 @@
   --motion-standard: 240ms;
   --motion-slow: 480ms;
   --stagger-step: 60ms;
-
-  /* Legacy aliases still read by knowledge-network (inside its style budget); removed in migration step 10. */
-  --paper: var(--color-canvas);
-  --paper-shade: var(--color-surface-subtle);
-  --ink: var(--color-ink);
-  --ink-muted: var(--color-ink-muted);
-  --rule: var(--color-border);
-  --rule-strong: var(--color-border-strong);
-  --signal: var(--color-signal);
-  --serif: var(--font-primary);
 }
