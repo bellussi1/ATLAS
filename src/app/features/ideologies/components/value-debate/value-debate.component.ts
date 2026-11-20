@@ -7,12 +7,14 @@ import { ContentRepository } from '@core/content/repositories/content-repository
 import { readingPath } from '@core/routing/reading-routes';
 import { study } from '@ideologies/data/value-study';
 import { AtlasDiscoveryPreviewDirective } from '@shared/directives/discovery-preview/discovery-preview.directive';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 import { AtlasStudyExerciseComponent } from '@shared/ui/study-exercise/study-exercise.component';
 
 @Component({
   selector: 'app-marx-atlas-page',
   imports: [
+    AtlasIconComponent,
     RouterLink,
     AtlasStudyExerciseComponent,
     AtlasDiscoveryPreviewDirective,

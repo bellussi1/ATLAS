@@ -1,5 +1,6 @@
 import { Component, computed, input, signal } from '@angular/core';
 import type { EditorialReference } from '@ideologies/models/editorial-reference';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 
 interface ShownReference extends EditorialReference {
   /** Stable key for the visible record; the same source can keep distinct locators. */
@@ -10,6 +11,7 @@ let nextSourcesId = 0;
 
 @Component({
   selector: 'app-editorial-sources',
+  imports: [AtlasIconComponent],
   templateUrl: './editorial-sources.component.html',
   styleUrl: './editorial-sources.component.scss',
 })

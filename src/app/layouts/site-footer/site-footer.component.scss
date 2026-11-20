@@ -62,7 +62,11 @@
     transform var(--motion-standard) var(--ease-out),
     box-shadow var(--motion-standard) var(--ease-out);
   &::after {
-    content: '→';
+    content: '';
+    inline-size: 1em;
+    block-size: 1em;
+    background: currentcolor;
+    mask: var(--icon-mask-arrow-right) center / contain no-repeat;
     transition: translate var(--motion-standard) var(--ease-out);
   }
   &:hover {

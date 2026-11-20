@@ -29,6 +29,7 @@ import {
   illustrationPalette,
   needsIllustration,
 } from '@shared/ui/geometric-illustration/illustration';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import { RelationEntryComponent } from '@shared/ui/relation-entry/relation-entry.component';
 
 import { ContextTextComponent } from './context-text.component';
@@ -68,6 +69,7 @@ function toneOf(kind: string): string {
 @Component({
   selector: 'app-knowledge-context',
   imports: [
+    AtlasIconComponent,
     RouterLink,
     AtlasChevronComponent,
     RelationEntryComponent,

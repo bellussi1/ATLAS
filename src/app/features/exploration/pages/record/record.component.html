@@ -2,7 +2,7 @@
   <nav aria-label="Caminhos do registro" class="record-nav">
     @if (returnTree(); as back) {
       <a class="record-back" [routerLink]="back"
-        ><span aria-hidden="true">←</span> Voltar aos resultados</a
+        ><app-icon name="arrow-left" /> Voltar aos resultados</a
       >
     }
     <a routerLink="/acervo">Buscar no acervo</a>
@@ -70,8 +70,8 @@
               [href]="buy.url"
               target="_blank"
               [attr.rel]="buy.affiliate ? 'sponsored noopener noreferrer' : 'noopener noreferrer'"
-              >Comprar na Amazon <span aria-hidden="true">↗</span></a
-            >
+              >Comprar na Amazon <app-icon name="external"
+            /></a>
           }
         </p>
         @if (amazon(); as buy) {

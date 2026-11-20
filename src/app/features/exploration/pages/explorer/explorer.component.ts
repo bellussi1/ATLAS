@@ -42,6 +42,7 @@ import { ContentRepository } from '@core/content/repositories/content-repository
 import { readingPath } from '@core/routing/reading-routes';
 import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import { AtlasKindIconComponent, iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 import { AtlasPaginationComponent } from '@shared/ui/pagination/pagination.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
@@ -50,6 +51,7 @@ import { AtlasStampComponent } from '@shared/ui/stamp/stamp.component';
 @Component({
   selector: 'app-explorer',
   imports: [
+    AtlasIconComponent,
     RouterLink,
     AtlasChevronComponent,
     AtlasGeometricMosaicComponent,

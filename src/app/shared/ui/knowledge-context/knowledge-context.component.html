@@ -37,7 +37,7 @@
         <div class="context-actions">
           @if (trail().length) {
             <button type="button" class="panel-button" aria-label="Voltar" (click)="back()">
-              <span aria-hidden="true">←</span> <span class="panel-button-text">Voltar</span>
+              <app-icon name="arrow-left" /> <span class="panel-button-text">Voltar</span>
             </button>
           }
           <button
@@ -47,7 +47,7 @@
             title="Fechar"
             (click)="close()"
           >
-            <span aria-hidden="true">×</span>
+            <app-icon name="close" />
           </button>
         </div>
       </header>
@@ -111,7 +111,7 @@
                 [attr.aria-label]="'Anterior, registro ' + pos.at + ' de ' + pos.total"
                 (click)="step(-1)"
               >
-                <span aria-hidden="true">‹</span>
+                <app-icon name="chevron-left" />
               </button>
               <span class="context-position" aria-live="polite"
                 >{{ pos.at }} de {{ pos.total }}</span
@@ -122,7 +122,7 @@
                 [attr.aria-label]="'Próximo, registro ' + pos.at + ' de ' + pos.total"
                 (click)="step(1)"
               >
-                <span aria-hidden="true">›</span>
+                <app-icon name="chevron-right" />
               </button>
             </div>
           }

@@ -249,8 +249,13 @@ header p.context-description {
   align-items: center;
 }
 .context-trail li + li::before {
-  content: '›';
-  margin: 0 0.4rem;
+  content: '';
+  display: inline-block;
+  inline-size: 1em;
+  block-size: 1em;
+  margin: 0 0.2rem;
+  background: currentcolor;
+  mask: var(--icon-mask-chevron-right) center / contain no-repeat;
   color: var(--color-ink-muted);
 }
 .context-trail button {
@@ -362,11 +367,15 @@ header p.context-description {
   cursor: pointer;
 }
 .relation-group summary::before {
-  content: '▸';
+  content: '';
   flex: none;
+  inline-size: 1em;
+  block-size: 1em;
+  background: currentcolor;
+  mask: var(--icon-mask-chevron-right) center / contain no-repeat;
 }
 .relation-group[open] summary::before {
-  content: '▾';
+  mask-image: var(--icon-mask-chevron-down);
 }
 .group-count {
   color: var(--color-ink-muted);

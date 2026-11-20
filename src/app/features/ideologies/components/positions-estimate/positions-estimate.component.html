@@ -139,7 +139,7 @@
             [attr.aria-label]="'Ver ficha de ' + row.title"
             [appKnowledgeContext]="{ entityId: row.id }"
           >
-            Ver ficha <span aria-hidden="true">↗</span>
+            Ver ficha <app-icon name="external" />
           </button>
         </header>
 
@@ -233,8 +233,8 @@
                         <li>
                           @if (source.url) {
                             <a [href]="source.url" target="_blank" rel="noopener noreferrer"
-                              >{{ source.title }} <span aria-hidden="true">↗</span></a
-                            >
+                              >{{ source.title }} <app-icon name="external"
+                            /></a>
                           } @else {
                             <span>{{ source.title }}</span>
                           }

@@ -194,12 +194,16 @@ h1 {
     cursor: pointer;
   }
   summary::before {
-    content: '▸';
+    content: '';
     flex: none;
+    inline-size: 1em;
+    block-size: 1em;
     margin-right: 0.4rem;
+    background: currentcolor;
+    mask: var(--icon-mask-chevron-right) center / contain no-repeat;
   }
   &[open] summary::before {
-    content: '▾';
+    mask-image: var(--icon-mask-chevron-down);
   }
   ul {
     display: grid;

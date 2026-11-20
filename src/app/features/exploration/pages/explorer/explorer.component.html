@@ -56,7 +56,7 @@
           (click)="filtersOpen.set(false)"
           aria-label="Fechar filtros"
         >
-          ×
+          <app-icon name="close" />
         </button>
       </div>
 
@@ -196,7 +196,7 @@
       >
         <label for="explorer-query">Procurar no acervo</label>
         <div class="search-field">
-          <span class="search-field__icon" aria-hidden="true">⌕</span>
+          <app-icon class="search-field__icon" name="search" />
           <input
             id="explorer-query"
             type="search"
@@ -213,7 +213,7 @@
               (click)="clearQuery()"
               aria-label="Limpar busca"
             >
-              ×
+              <app-icon name="close" />
             </button>
           }
           <button type="submit" class="search-field__submit">Pesquisar</button>
@@ -245,8 +245,8 @@
               [queryParams]="filter.remove"
               queryParamsHandling="merge"
               [attr.aria-label]="'Remover ' + filter.label"
-              >{{ filter.label }} <span aria-hidden="true">×</span></a
-            >
+              >{{ filter.label }} <app-icon name="close"
+            /></a>
           }
           <a class="active-filter active-filter--clear" [routerLink]="catalogueUrl(catalogue.path)"
             >Limpar tudo</a

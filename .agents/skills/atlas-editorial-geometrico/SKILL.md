@@ -83,6 +83,7 @@ Cada material tem uma função; nenhum é textura genérica.
 - Sem ilustração figurativa de assuntos, mascotes ou ícones de objetos: risco de caricatura em conteúdo político e de dado fingido. A expressividade fica na geometria, na tipografia e nos materiais.
 - Não usar símbolos culturais com significado próprio (Adinkra, grafismos indígenas, emblemas religiosos) como ornamento. Datas de vida em formato neutro ("1938–2020"), sem cruz.
 - Ícones de tipo (`kind-icon`) continuam geométricos, com rótulo.
+- **Ícones de interface vêm de biblioteca, nunca de caractere.** Setas, fechar, mais/menos, busca e chevrons usam `app-icon` (`shared/ui/icon`, Lucide via `@lucide/angular`, traço 2,25 px); para marcadores em pseudo-elemento use as máscaras `--icon-mask-*` dos tokens. Proibido `→ ← ↗ × ⌕ › ▸ ▾ + −` como ícone em HTML ou em `content:`. Ícone novo entra primeiro no vocabulário de `icon.component.ts`. Ícone sozinho leva `label`; ao lado de texto fica oculto para leitores de tela.
 
 ## 7. Composição e mesa de pesquisa
 

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import type { ChapterReview } from '@ideologies/utils/chapter-review';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 
 let nextReviewId = 0;
 
@@ -11,7 +12,7 @@ let nextReviewId = 0;
  */
 @Component({
   selector: 'app-chapter-review',
-  imports: [KnowledgeContextDirective],
+  imports: [AtlasIconComponent, KnowledgeContextDirective],
   templateUrl: './chapter-review.component.html',
   styleUrl: './chapter-review.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
