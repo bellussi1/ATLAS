@@ -25,6 +25,7 @@ import { resolveItineraryDestination } from '@itineraries/utils/itinerary-destin
 import popularity from '@metrics/popularity.json';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import { AtlasPaginationComponent } from '@shared/ui/pagination/pagination.component';
 import { AtlasSealComponent } from '@shared/ui/seal/seal.component';
 import { AtlasStampComponent } from '@shared/ui/stamp/stamp.component';
@@ -45,6 +46,7 @@ const KIND_PALETTES: Record<ItineraryKind, MosaicPalette> = {
   imports: [
     RouterLink,
     AtlasGeometricMosaicComponent,
+    AtlasIconComponent,
     AtlasPaginationComponent,
     AtlasSealComponent,
     AtlasStampComponent,

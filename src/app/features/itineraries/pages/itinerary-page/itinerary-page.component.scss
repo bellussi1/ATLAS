@@ -562,18 +562,22 @@
     display: none;
   }
 
-  summary::before {
-    content: '+';
+  .stop__context-toggle {
     display: grid;
     place-items: center;
     inline-size: 1.25rem;
     block-size: 1.25rem;
     border: 1.5px solid var(--color-ink);
-    font: 700 var(--text-caption) / 1 var(--font-mono);
+    font-size: var(--text-caption);
   }
 
-  &[open] summary::before {
-    content: '−';
+  .stop__context-minus,
+  &[open] .stop__context-plus {
+    display: none;
+  }
+
+  &[open] .stop__context-minus {
+    display: inline-flex;
   }
 
   summary:focus-visible {

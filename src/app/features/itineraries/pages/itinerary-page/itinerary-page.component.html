@@ -5,7 +5,7 @@
 } @else if (itinerary(); as item) {
   <article class="itinerary" [attr.data-kind]="item.kind" aria-labelledby="itinerary-title">
     <nav class="itinerary__crumb" aria-label="Caminho">
-      <a routerLink="/itinerarios">← Todos os itinerários</a>
+      <a routerLink="/itinerarios"><app-icon name="arrow-left" /> Todos os itinerários</a>
     </nav>
 
     <header class="itinerary__head">
@@ -52,7 +52,7 @@
             [href]="pagePath() + '#parada-' + firstStop.id"
             (click)="$event.preventDefault(); selectStop(firstStop.id, true)"
           >
-            Começar pela parada 1 <span aria-hidden="true">↓</span>
+            Começar pela parada 1 <app-icon name="chevron-down" />
           </a>
         }
       </div>
@@ -97,7 +97,7 @@
               @if (branchesByStop().get(stop.id); as branches) {
                 <ul class="itinerary-index__branches" aria-label="Desvios desta parada">
                   @for (branch of branches; track branch.id) {
-                    <li><span aria-hidden="true">↳</span> {{ branch.title }}</li>
+                    <li><app-icon name="chevron-right" /> {{ branch.title }}</li>
                   }
                 </ul>
               }
@@ -108,7 +108,9 @@
               [href]="pagePath() + '#depois-do-percurso'"
               (click)="$event.preventDefault(); goToEnd()"
             >
-              <span class="itinerary-index__marker" aria-hidden="true">→</span>
+              <span class="itinerary-index__marker" aria-hidden="true"
+                ><app-icon name="arrow-right"
+              /></span>
               <span class="itinerary-index__text">
                 <span class="itinerary-index__name">Depois do percurso</span>
                 <small>Leituras e itinerários</small>
@@ -162,7 +164,7 @@
                       [queryParams]="dest.queryParams"
                       [fragment]="dest.fragment"
                     >
-                      Abrir {{ dest.kindLabel }} <span aria-hidden="true">→</span>
+                      Abrir {{ dest.kindLabel }} <app-icon name="arrow-right" />
                     </a>
                     @if (entityId) {
                       <button
@@ -205,6 +207,10 @@
                   @if (ctx) {
                     <details class="stop__context">
                       <summary>
+                        <span class="stop__context-toggle" aria-hidden="true">
+                          <app-icon class="stop__context-plus" name="plus" />
+                          <app-icon class="stop__context-minus" name="minus" />
+                        </span>
                         Na ficha do acervo · {{ ctx.relationCount }}
                         {{ ctx.relationCount === 1 ? 'ligação' : 'ligações' }}
                       </summary>
@@ -242,7 +248,7 @@
                   @for (branch of branches; track branch.id) {
                     <div class="branch">
                       <p class="branch__kicker">
-                        <span aria-hidden="true">↳</span> Desvio opcional
+                        <app-icon name="chevron-right" /> Desvio opcional
                       </p>
                       <h3>{{ branch.title }}</h3>
                       <p>{{ branch.reason }}</p>
@@ -260,12 +266,12 @@
                             [queryParams]="bDest.queryParams"
                             [fragment]="bDest.fragment"
                           >
-                            Abrir {{ bDest.kindLabel }} <span aria-hidden="true">→</span>
+                            Abrir {{ bDest.kindLabel }} <app-icon name="arrow-right" />
                           </a>
                         }
                         @if (branch.convergesAt; as targetId) {
                           <p class="branch__target">
-                            <span aria-hidden="true">↺</span>
+                            <app-icon name="arrow-left" />
                             Volta ao percurso na parada
                             {{ stopNumberById().get(targetId) ?? '' }}:
                             <a
@@ -277,7 +283,7 @@
                           </p>
                         } @else if (branch.exit) {
                           <p class="branch__target">
-                            <span aria-hidden="true">↗</span> Termina fora do percurso:
+                            <app-icon name="external" /> Termina fora do percurso:
                             {{ branch.exit }}
                           </p>
                         }
@@ -295,7 +301,9 @@
                 >
                   <span class="roadmap-connector__label">Próxima · parada {{ i + 2 }}</span>
                   <span class="roadmap-connector__title">{{ nextStop.title }}</span>
-                  <span class="roadmap-connector__arrow" aria-hidden="true">↓</span>
+                  <span class="roadmap-connector__arrow" aria-hidden="true"
+                    ><app-icon name="chevron-down"
+                  /></span>
                 </button>
               } @else if (last) {
                 <button
@@ -305,7 +313,9 @@
                 >
                   <span class="roadmap-connector__label">Fim do percurso</span>
                   <span class="roadmap-connector__title">Para onde seguir</span>
-                  <span class="roadmap-connector__arrow" aria-hidden="true">↓</span>
+                  <span class="roadmap-connector__arrow" aria-hidden="true"
+                    ><app-icon name="chevron-down"
+                  /></span>
                 </button>
               }
             </li>
@@ -331,7 +341,7 @@
                     [fragment]="conn.destination.fragment"
                   >
                     <small>{{ conn.destination.kindLabel }}</small>
-                    <span>{{ conn.destination.title }} <span aria-hidden="true">→</span></span>
+                    <span>{{ conn.destination.title }} <app-icon name="arrow-right" /></span>
                   </a>
                   <p>{{ conn.reason }}</p>
                 </li>
@@ -385,7 +395,7 @@
     }
 
     <footer class="itinerary__foot">
-      <a routerLink="/itinerarios">← Todos os itinerários</a>
+      <a routerLink="/itinerarios"><app-icon name="arrow-left" /> Todos os itinerários</a>
     </footer>
   </article>
 } @else {

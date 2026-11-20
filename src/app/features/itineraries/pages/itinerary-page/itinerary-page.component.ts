@@ -38,6 +38,7 @@ import {
 } from '@itineraries/utils/itinerary-destination';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import {
   contextKey,
   ContextPanelService,
@@ -91,6 +92,7 @@ interface RelatedItinerary {
     RouterLink,
     NotFoundMessageComponent,
     AtlasGeometricMosaicComponent,
+    AtlasIconComponent,
     AtlasSealComponent,
     AtlasStampComponent,
   ],
