@@ -84,6 +84,9 @@ describe('semantic design token contrast', () => {
     ['text-on-stamp', 'surface-stamp-rosa', 4.5],
     ['text-on-stamp', 'surface-stamp-urucum', 4.5],
     ['text-on-stamp-vermelho', 'surface-stamp-vermelho', 4.5],
+    ['text-on-stamp-jenipapo', 'surface-stamp-jenipapo', 4.5],
+    ['text-on-poster', 'surface-poster', 4.5],
+    ['text-accent-on-poster', 'surface-poster', 4.5],
     // Poster register pairs, guarded before the first poster component ships.
     ['pig-cal-50', 'pig-terra-900', 4.5],
     ['pig-ocre-300', 'pig-terra-900', 4.5],

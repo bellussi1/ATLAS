@@ -20,6 +20,7 @@ import {
   type IconKind,
   iconKind,
 } from '@shared/ui/kind-icon/kind-icon.component';
+import { AtlasStampComponent, type StampTone } from '@shared/ui/stamp/stamp.component';
 
 /** Colour families shared with the context sheet, so a card and the sheet it opens match. */
 export type RecordTone = 'person' | 'work' | 'concept' | 'event' | 'idea' | 'reading';
@@ -38,6 +39,16 @@ const toneByIcon: Record<IconKind, RecordTone> = {
   institution: 'idea',
   polity: 'idea',
   record: 'reading',
+};
+
+/** Stamp paper per family; the context sheet keeps the same families. */
+const stampByTone: Record<RecordTone, StampTone> = {
+  person: 'rosa',
+  work: 'ocre',
+  concept: 'mata',
+  event: 'urucum',
+  idea: 'jenipapo',
+  reading: 'vermelho',
 };
 
 const kindNames: Record<string, string> = {
@@ -64,7 +75,12 @@ const kindNames: Record<string, string> = {
   // Attribute selector so the host stays a native button or link.
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'button[appRecordCard], a[appRecordCard]',
-  imports: [AtlasKindIconComponent, AtlasGeometricIllustrationComponent, ContentMediaPipe],
+  imports: [
+    AtlasKindIconComponent,
+    AtlasGeometricIllustrationComponent,
+    AtlasStampComponent,
+    ContentMediaPipe,
+  ],
   templateUrl: './record-card.component.html',
   styleUrl: './record-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -167,4 +183,5 @@ export class RecordCardComponent {
     if (tone) return toneByIcon[iconKind(tone)];
     return toneByIcon[this.shownIcon()];
   });
+  readonly stampTone = computed<StampTone>(() => stampByTone[this.shownTone()]);
 }

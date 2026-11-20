@@ -82,7 +82,11 @@
           </div>
           <div class="reading-card__body">
             <p class="reading-card__meta">
-              <span class="reading-card__status">{{ item.statusLabel }}</span>
+              <app-seal
+                class="reading-card__status"
+                [label]="item.statusLabel"
+                [tone]="isDraft(item) ? 'neutral' : 'accent'"
+              />
               @if (item.minutes) {
                 <span>{{ item.minutes }} min</span>
               }

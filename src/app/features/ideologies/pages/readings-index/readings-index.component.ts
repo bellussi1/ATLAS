@@ -18,6 +18,7 @@ import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
 import { AtlasPaginationComponent } from '@shared/ui/pagination/pagination.component';
+import { AtlasSealComponent } from '@shared/ui/seal/seal.component';
 import { AtlasTextFieldComponent } from '@shared/ui/text-field/text-field.component';
 
 import homeStats from '../../../../../../generated/home-stats.json';
@@ -53,6 +54,7 @@ const compiledStats = homeStats as { readings: ReadingCard[] };
     AtlasTextFieldComponent,
     AtlasChevronComponent,
     AtlasPaginationComponent,
+    AtlasSealComponent,
   ],
   templateUrl: './readings-index.component.html',
   styleUrl: './readings-index.component.scss',
@@ -65,25 +67,22 @@ export class ReadingsIndexComponent {
     compiledStats.readings,
     (item) => `/leitura/${item.slug}`,
     popularity,
-    { eligible: (item) => !item.statusLabel.toLowerCase().includes('rascunho') },
+    { eligible: (item) => !this.isDraft(item) },
   );
   readonly query = signal('');
+
   readonly statusFilter = signal<StatusFilter>('all');
 
   readonly reviewedCount = computed(
-    () =>
-      this.readings.filter((item) => !item.statusLabel.toLowerCase().includes('rascunho')).length,
+    () => this.readings.filter((item) => !this.isDraft(item)).length,
   );
-  readonly draftCount = computed(
-    () =>
-      this.readings.filter((item) => item.statusLabel.toLowerCase().includes('rascunho')).length,
-  );
+  readonly draftCount = computed(() => this.readings.filter((item) => this.isDraft(item)).length);
 
   readonly filtered = computed(() => {
     const q = this.query().trim().toLowerCase();
     const filter = this.statusFilter();
     return this.readings.filter((item) => {
-      const isDraft = item.statusLabel.toLowerCase().includes('rascunho');
+      const isDraft = this.isDraft(item);
       if (filter === 'reviewed' && isDraft) {
         return false;
       }
@@ -135,5 +134,9 @@ export class ReadingsIndexComponent {
     if (!pool.length) return;
     const picked = pool[Math.floor(Math.random() * pool.length)];
     void this.router.navigateByUrl(this.entryPath(picked.slug));
+  }
+
+  isDraft(item: Pick<ReadingCard, 'statusLabel'>): boolean {
+    return item.statusLabel.toLowerCase().includes('rascunho');
   }
 }

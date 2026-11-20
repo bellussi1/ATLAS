@@ -217,18 +217,7 @@
 }
 
 .itinerary-card__seal {
-  display: inline-flex;
-  justify-content: center;
-  padding: 0.35rem 0.6rem;
-  border: 1.5px solid var(--color-ink);
-  background: var(--color-canvas);
-  color: var(--color-ink);
-  font: 700 var(--text-caption) / 1.2 var(--font-mono);
-  text-transform: uppercase;
-  &.is-verified {
-    background: var(--color-ink);
-    color: var(--color-canvas);
-  }
+  justify-self: start;
 }
 
 .itinerary-card__body {

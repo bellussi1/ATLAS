@@ -26,6 +26,7 @@ import popularity from '@metrics/popularity.json';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
 import { AtlasPaginationComponent } from '@shared/ui/pagination/pagination.component';
+import { AtlasSealComponent } from '@shared/ui/seal/seal.component';
 import { from } from 'rxjs';
 
 /** Two rows of two cards. */
@@ -40,7 +41,12 @@ const KIND_PALETTES: Record<ItineraryKind, MosaicPalette> = {
 
 @Component({
   selector: 'app-itineraries-index',
-  imports: [RouterLink, AtlasGeometricMosaicComponent, AtlasPaginationComponent],
+  imports: [
+    RouterLink,
+    AtlasGeometricMosaicComponent,
+    AtlasPaginationComponent,
+    AtlasSealComponent,
+  ],
   templateUrl: './itineraries-index.component.html',
   styleUrl: './itineraries-index.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

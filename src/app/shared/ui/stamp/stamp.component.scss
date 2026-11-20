@@ -1,11 +1,13 @@
 :host {
   --stamp-paper: var(--surface-stamp-cal);
   --stamp-shadow: var(--shadow-offset-md);
+  --stamp-shadow-color: var(--color-ink);
 
   display: flex;
   flex-direction: column;
   color: var(--text-on-stamp);
-  filter: drop-shadow(var(--stamp-shadow) var(--color-ink));
+  filter: drop-shadow(var(--stamp-shadow) var(--stamp-shadow-color));
+  transition: filter var(--motion-fast) var(--ease-out);
 }
 
 :host([data-tone='ocre']) {
@@ -19,6 +21,11 @@
 }
 :host([data-tone='urucum']) {
   --stamp-paper: var(--surface-stamp-urucum);
+}
+:host([data-tone='jenipapo']) {
+  --stamp-paper: var(--surface-stamp-jenipapo);
+
+  color: var(--text-on-stamp-jenipapo);
 }
 :host([data-tone='vermelho']) {
   --stamp-paper: var(--surface-stamp-vermelho);
@@ -42,8 +49,9 @@
   --hole: #0000 calc(100% - 0.5px), #000;
 
   /* Wider than focus width + offset, so inner focus rings never reach the perforation. */
+  display: block;
   flex: 1;
-  padding: calc(var(--perforation-size) + var(--space-3));
+  padding: var(--stamp-padding, calc(var(--perforation-size) + var(--space-3)));
   background: var(--stamp-paper);
   /* One layer per edge, each opaque except its holes; intersecting them leaves a perforated sheet. */
   mask:

@@ -71,9 +71,11 @@
               [palette]="paletteFor(item.kind)"
               [seed]="seedFor(item.slug)"
             />
-            <span class="itinerary-card__seal" [class.is-verified]="item.status === 'verified'">
-              {{ statusLabel(item.status) }}
-            </span>
+            <app-seal
+              class="itinerary-card__seal"
+              [label]="statusLabel(item.status)"
+              [tone]="item.status === 'verified' ? 'mata' : 'neutral'"
+            />
           </div>
 
           <div class="itinerary-card__body">

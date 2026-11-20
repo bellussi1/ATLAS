@@ -63,8 +63,16 @@
   --surface-stamp-rosa: var(--pig-rosa-500);
   --surface-stamp-urucum: var(--pig-urucum-500);
   --surface-stamp-vermelho: var(--pig-pau-brasil-500);
+  --surface-stamp-jenipapo: var(--pig-jenipapo-700);
   --text-on-stamp: var(--pig-tinta-900);
   --text-on-stamp-vermelho: var(--pig-cal-50);
+  --text-on-stamp-jenipapo: var(--pig-cal-50);
+  /* Poster register: dark ground with paper text and an ochre accent. */
+  --surface-poster: var(--pig-terra-900);
+  --text-on-poster: var(--pig-cal-50);
+  --text-accent-on-poster: var(--pig-ocre-300);
+  --rule-on-poster: var(--pig-cal-200);
+
   /* Seal (editorial status) inks. */
   --seal-ink-accent: var(--pig-pau-brasil-700);
   --seal-ink-mata: var(--pig-mata-700);
@@ -125,8 +133,6 @@
   --shadow-offset-sm: 3px 3px 0;
   --shadow-offset-md: 5px 5px 0;
   --shadow-offset-lg: 8px 8px 0;
-  /* Legacy diffuse lift of the record card, removed when the card becomes a stamp. */
-  --shadow-card-lift: 0 6px 16px #0007;
 
   /* Round bites as wide as the paper between them, as on the reference stamps. */
   --perforation-size: 0.625rem;
