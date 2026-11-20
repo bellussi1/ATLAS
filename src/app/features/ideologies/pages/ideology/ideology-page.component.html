@@ -8,7 +8,7 @@
   >
     <app-ideology-poster [page]="page" [basePath]="basePath()" />
     <details class="editorial-strip">
-      <summary>{{ reviewSummary() }}</summary>
+      <summary><app-seal [label]="reviewSummary()" [tone]="reviewTone()" /></summary>
       <p>{{ page.classificationNote }}</p>
       <p>Atualizado em {{ page.review.updatedAt }}. {{ page.identity.signature }}.</p>
     </details>
