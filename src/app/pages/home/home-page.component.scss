@@ -555,142 +555,71 @@ form {
   }
 }
 
-/* Explorar por tipo: doors with a geometric glyph, a note and an arrow. */
+/* Explorar por tipo: poster band, each catalogue a stamp on the dark ground. */
 .catalogue-band {
   padding: clamp(3rem, 6vw, 5rem) var(--home-inline);
   border-top: 1px solid var(--color-border-strong);
+  background: var(--surface-poster);
+  color: var(--text-on-poster);
+}
+.catalogue-band .atlas-band-heading {
+  border-bottom-color: var(--rule-on-poster);
+}
+.catalogue-band .atlas-band-heading > p:last-child {
+  color: var(--text-on-poster);
 }
 .doors {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-auto-flow: dense;
-  align-items: start;
+  align-items: stretch;
   gap: clamp(1rem, 2.2vw, 1.65rem) clamp(1rem, 2vw, 1.5rem);
   margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
   padding: 0;
   list-style: none;
 }
 .door {
+  --door-offset: 0rem;
+
   grid-column: span 4;
   min-inline-size: 0;
-  --door: var(--color-surface-raised);
-  --door-ink: var(--color-ink);
-  --door-shadow: var(--color-ink);
-  --door-offset: 0rem;
-  --door-radius: var(--radius-tight);
   margin-block-start: var(--door-offset);
 
-  /* Organic, asymmetric editorial rhythm: each entry feels like a distinct slip on the research table */
-  &:nth-child(1) {
-    grid-column: span 6;
-    --door: var(--color-ink);
-    --door-ink: var(--color-canvas);
-    --door-shadow: var(--color-accent);
-  }
+  /* Asymmetric rhythm: stamps of different widths, slightly off the baseline. */
+  &:nth-child(1),
   &:nth-child(2) {
     grid-column: span 6;
-    --door: var(--color-accent);
-    --door-ink: var(--color-accent-contrast);
-    --door-shadow: var(--color-ink);
-    --door-offset: 0.45rem;
-    --door-radius: var(--radius-tight) 1.75rem var(--radius-tight) var(--radius-tight);
   }
-  &:nth-child(3) {
-    grid-column: span 4;
-    --door: var(--color-desk-card);
-    --door-ink: var(--color-ink);
-    --door-shadow: var(--color-cartographic);
+  &:nth-child(2) {
+    --door-offset: 0.45rem;
   }
   &:nth-child(4) {
     grid-column: span 5;
-    --door: var(--color-ochre-paper);
-    --door-ink: var(--color-ink);
     --door-offset: -0.45rem;
-    --door-radius: 1.75rem var(--radius-tight) var(--radius-tight) var(--radius-tight);
   }
-  &:nth-child(5) {
-    grid-column: span 3;
-    --door: var(--color-canvas);
-    --door-ink: var(--color-ink);
-    --door-shadow: var(--color-indigo);
-    --door-offset: 0.65rem;
-  }
+  &:nth-child(5),
   &:nth-child(6) {
     grid-column: span 3;
-    --door: var(--color-teal-paper);
-    --door-ink: var(--color-ink);
-    --door-offset: 0.55rem;
-    --door-radius: var(--radius-tight) var(--radius-tight) 1.5rem var(--radius-tight);
+    --door-offset: 0.6rem;
   }
   &:nth-child(7) {
     grid-column: span 5;
-    --door: var(--color-rose-paper);
-    --door-ink: var(--color-ink);
     --door-offset: -0.35rem;
   }
   &:nth-child(8) {
-    grid-column: span 4;
-    --door: var(--color-indigo);
-    --door-ink: var(--color-canvas);
-    --door-shadow: var(--color-ochre-paper);
     --door-offset: 0.45rem;
-    --door-radius: var(--radius-tight) var(--radius-tight) var(--radius-tight) 1.75rem;
   }
 
   a {
-    position: relative;
-    display: grid;
-    grid-template-columns: 3.25rem minmax(0, 1fr);
-    grid-template-areas:
-      'glyph go'
-      'title title'
-      'note note';
-    gap: 0.35rem 1rem;
-    align-items: start;
-    align-content: start;
+    display: flex;
     block-size: 100%;
-    padding: 1.15rem 1.25rem 1.35rem;
-    overflow: hidden;
-    border: 3px solid var(--color-ink);
-    border-radius: var(--door-radius);
-    background: var(--door);
-    color: var(--door-ink);
-    box-shadow: var(--shadow-offset-md) var(--door-shadow);
+    color: inherit;
     text-decoration: none;
-    transition:
-      transform var(--motion-standard) var(--ease-out),
-      box-shadow var(--motion-standard) var(--ease-out);
+    transition: transform var(--motion-standard) var(--ease-out);
   }
-  /* Archival slip inner dashed frame on canvas/paper cards */
-  &:nth-child(5) a {
-    border-width: 2px;
-    outline: 1.5px dashed color-mix(in srgb, var(--color-indigo) 45%, transparent);
-    outline-offset: -8px;
-  }
-  &:nth-child(3) a {
-    border-inline-start-width: 8px;
-    border-inline-start-color: var(--color-cartographic);
-  }
-  /* Wide featured cards adopt a horizontal editorial layout */
-  &:nth-child(1) a,
-  &:nth-child(2) a,
-  &:nth-child(7) a {
-    grid-template-columns: 3.5rem minmax(0, 1fr) auto;
-    grid-template-areas:
-      'glyph title go'
-      'glyph note go';
-    align-items: center;
-    padding-block: 1.35rem;
-  }
-  &:nth-child(1) strong,
-  &:nth-child(2) strong,
-  &:nth-child(7) strong {
-    margin-block-start: 0;
-  }
-  &:nth-child(1) .door-note,
-  &:nth-child(2) .door-note,
-  &:nth-child(7) .door-note {
-    max-inline-size: none;
+  a:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus-on-dark);
+    outline-offset: var(--focus-offset);
   }
   strong {
     grid-area: title;
@@ -718,6 +647,42 @@ form {
     text-decoration-color: color-mix(in srgb, currentcolor 40%, transparent);
   }
 }
+.door-stamp {
+  flex: 1;
+  min-inline-size: 0;
+}
+.door-face {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+  grid-template-areas:
+    'glyph go'
+    'title title'
+    'note note';
+  gap: 0.35rem 1rem;
+  align-items: start;
+  align-content: start;
+  block-size: 100%;
+}
+/* Wide featured stamps take a horizontal layout. */
+.door:nth-child(1) .door-face,
+.door:nth-child(2) .door-face,
+.door:nth-child(7) .door-face {
+  grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+  grid-template-areas:
+    'glyph title go'
+    'glyph note go';
+  align-items: center;
+}
+.door:nth-child(1) strong,
+.door:nth-child(2) strong,
+.door:nth-child(7) strong {
+  margin-block-start: 0;
+}
+.door:nth-child(1) .door-note,
+.door:nth-child(2) .door-note,
+.door:nth-child(7) .door-note {
+  max-inline-size: none;
+}
 .door-note {
   grid-area: note;
   max-inline-size: 32ch;
@@ -728,8 +693,8 @@ form {
   position: relative;
   inline-size: 3.5rem;
   block-size: 3.5rem;
-  border: 3px solid var(--door-ink);
-  background: var(--door-ink);
+  border: 3px solid currentcolor;
+  background: currentcolor;
   transition:
     border-radius var(--motion-standard) var(--ease-out),
     rotate var(--motion-standard) var(--ease-out);
@@ -750,7 +715,7 @@ form {
   background: transparent;
 }
 .door:nth-child(6n + 5) .door-glyph {
-  background: repeating-linear-gradient(90deg, var(--door-ink) 0 0.4rem, transparent 0.4rem 0.8rem);
+  background: repeating-linear-gradient(90deg, currentcolor 0 0.4rem, transparent 0.4rem 0.8rem);
 }
 .door:nth-child(6n) .door-glyph {
   border-radius: 50% 0;
@@ -771,8 +736,7 @@ form {
     translate var(--motion-standard) var(--ease-out);
 }
 .door a:active {
-  transform: translate(3px, 3px);
-  box-shadow: 2px 2px 0 var(--color-ink);
+  transform: translate(2px, 2px);
 }
 
 /* Como ler o acervo: four plaques that reuse the shapes of the markers. */
@@ -844,11 +808,11 @@ form {
 @media (hover: hover) and (pointer: fine) {
   .door a:hover {
     transform: translate(-3px, -4px);
-    box-shadow: var(--shadow-offset-lg) var(--door-shadow);
+  }
+  .door a:hover .door-stamp {
+    --stamp-shadow: var(--shadow-offset-lg);
   }
   .door a:hover .door-go {
-    background: var(--door-ink);
-    color: var(--door);
     translate: 4px 0;
   }
   .door a:hover .door-glyph {
@@ -915,16 +879,15 @@ form {
     grid-column: 1 / -1;
     --door-offset: 0rem;
   }
-  .door a,
-  .door:nth-child(1) a,
-  .door:nth-child(2) a,
-  .door:nth-child(7) a {
+  .door .door-face,
+  .door:nth-child(1) .door-face,
+  .door:nth-child(2) .door-face,
+  .door:nth-child(7) .door-face {
     grid-template-columns: 3rem minmax(0, 1fr) auto;
     grid-template-areas:
       'glyph title go'
       'glyph note note';
     align-items: center;
-    padding: 1rem;
   }
   .door strong {
     margin-block-start: 0;
