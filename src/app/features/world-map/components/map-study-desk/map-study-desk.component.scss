@@ -369,10 +369,31 @@
   --kind-icon-size: 0.95rem;
 }
 
-.desk-path-list a {
-  color: var(--color-accent-hover);
-  text-decoration: underline;
-  font-size: var(--text-small);
+/* A reading is a citable object: the one place where the desk uses the stamp. */
+.desk-read {
+  display: block;
+  color: var(--color-ink);
+  text-decoration: none;
+  app-stamp {
+    --stamp-padding: var(--perforation-size);
+    display: block;
+  }
+  &:is(:hover, :focus-visible) .desk-read__title {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+.desk-read__kind,
+.desk-read__title {
+  display: block;
+}
+.desk-read__kind {
+  margin-bottom: 2px;
+  color: var(--color-ink-muted);
+  font: 600 var(--text-caption)/1.2 var(--font-primary);
+}
+.desk-read__title {
+  font: 700 var(--text-small)/1.25 var(--font-primary);
 }
 .desk-more-btn {
   justify-self: start;
@@ -411,5 +432,13 @@
   .detail__collapse {
     display: inline-grid;
     place-items: center;
+  }
+}
+
+/* On a phone the desk is a sheet over the globe: name, summary and actions come before the picture. */
+@media (max-width: 40rem) {
+  .desk-media,
+  .desk-mosaic-strip {
+    order: 1;
   }
 }

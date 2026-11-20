@@ -125,9 +125,24 @@
         [decorative]="true"
       />
       <div class="desk-counts-line">
-        <span>{{ entry.activeRegimes.length }} regimes</span>
-        <span>{{ entry.connectionCount }} conexões</span>
-        <span>{{ entry.activeRecords.length }} registros</span>
+        @if (entry.activeRegimes.length) {
+          <span
+            >{{ entry.activeRegimes.length }}
+            {{ entry.activeRegimes.length === 1 ? 'regime' : 'regimes' }}</span
+          >
+        }
+        @if (entry.connectionCount) {
+          <span
+            >{{ entry.connectionCount }}
+            {{ entry.connectionCount === 1 ? 'conexão' : 'conexões' }}</span
+          >
+        }
+        @if (entry.activeRecords.length) {
+          <span
+            >{{ entry.activeRecords.length }}
+            {{ entry.activeRecords.length === 1 ? 'registro' : 'registros' }}</span
+          >
+        }
       </div>
     </div>
   }
@@ -168,6 +183,34 @@
       Abrir rede no grafo
     </a>
   </div>
+
+  @if (readings().length > 0 || itineraries().length > 0) {
+    <section class="desk-block" aria-labelledby="desk-reads-title">
+      <h3 id="desk-reads-title">Leituras e itinerários</h3>
+      <ul class="desk-path-list">
+        @for (reading of readings(); track reading.slug) {
+          <li>
+            <a class="desk-read" [routerLink]="reading.path">
+              <app-stamp tone="cal" shadow="sm">
+                <span class="desk-read__kind">Leitura</span>
+                <span class="desk-read__title">{{ reading.title }}</span>
+              </app-stamp>
+            </a>
+          </li>
+        }
+        @for (it of itineraries(); track it.slug) {
+          <li>
+            <a class="desk-read" [routerLink]="it.path">
+              <app-stamp tone="cal" shadow="sm">
+                <span class="desk-read__kind">{{ it.kindLabel }}</span>
+                <span class="desk-read__title">{{ it.title }}</span>
+              </app-stamp>
+            </a>
+          </li>
+        }
+      </ul>
+    </section>
+  }
 
   @if (entry.activeRegimes.length > 0) {
     <section class="desk-block" aria-label="Regimes políticos no recorte">
@@ -255,24 +298,6 @@
           }}
         </button>
       }
-    </section>
-  }
-
-  @if (readings().length > 0 || itineraries().length > 0) {
-    <section class="desk-block" aria-label="Leituras e itinerários relacionados">
-      <h3>Leituras e itinerários</h3>
-      <ul class="desk-path-list">
-        @for (reading of readings(); track reading.slug) {
-          <li>
-            <a [routerLink]="reading.path">Leitura: {{ reading.title }} →</a>
-          </li>
-        }
-        @for (it of itineraries(); track it.slug) {
-          <li>
-            <a [routerLink]="it.path">{{ it.kindLabel }}: {{ it.title }} →</a>
-          </li>
-        }
-      </ul>
     </section>
   }
 

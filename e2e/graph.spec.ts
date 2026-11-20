@@ -37,6 +37,8 @@ test('names a small, spread set of references at the global view and more up clo
 }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/grafos');
+  // The first card narrows the free area; label spread is measured over the whole map.
+  await page.getByRole('button', { name: 'Fechar sugestões' }).click();
   await expect(page.locator('.labels text.label').first()).toBeVisible();
   const measure = () =>
     page.evaluate(() => {

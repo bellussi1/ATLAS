@@ -52,6 +52,10 @@
   .floating {
     grid-template-columns: minmax(0, 19rem) minmax(0, 1fr) auto;
   }
+  /* A closed legend gives its column back to the timeline. */
+  .floating:not(.has-legend) > .hud {
+    grid-column: 1 / 3;
+  }
 }
 
 .card {
@@ -607,6 +611,7 @@ summary::-webkit-details-marker {
 }
 
 .timeline-dock {
+  container-type: inline-size;
   padding: 10px 14px;
   display: grid;
   gap: 8px;
@@ -894,6 +899,21 @@ summary::-webkit-details-marker {
 @media (max-width: 40rem) {
   .timeline-marker__place {
     display: none;
+  }
+}
+
+/* Narrow dock (phone, or the study desk open beside it): years live in the marker bar. */
+@container (max-width: 38rem) {
+  .timeline-hotpoint__year {
+    display: none;
+  }
+  .timeline-presets {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    > * {
+      flex: 0 0 auto;
+    }
   }
 }
 

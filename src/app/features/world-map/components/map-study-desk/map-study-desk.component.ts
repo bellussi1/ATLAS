@@ -27,6 +27,7 @@ import {
   type IconKind,
   iconKind,
 } from '@shared/ui/kind-icon/kind-icon.component';
+import { AtlasStampComponent } from '@shared/ui/stamp/stamp.component';
 
 interface RecordGroup {
   readonly id: string;
@@ -73,6 +74,7 @@ function splitLeadSummary(fullText: string): { lead: string; truncated: boolean 
     AtlasChevronComponent,
     AtlasGeometricIllustrationComponent,
     AtlasKindIconComponent,
+    AtlasStampComponent,
     ContentMediaPipe,
   ],
   templateUrl: './map-study-desk.component.html',

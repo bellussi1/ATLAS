@@ -1,5 +1,5 @@
 <section class="world-map-page" aria-labelledby="world-map-title">
-  <div class="floating" [class.has-detail]="deskShown()">
+  <div class="floating" [class.has-detail]="deskShown()" [class.has-legend]="legendShown()">
     <header #topBar class="bar card">
       <a class="bar__home" routerLink="/" aria-label="ATLAS, voltar ao início">
         <img src="/brand/atlas-logo.svg" alt="" width="105" height="30" />

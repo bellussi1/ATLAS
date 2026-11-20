@@ -1,6 +1,10 @@
 ﻿<div class="graph-page">
-  <div class="floating" [class.has-detail]="!!selected() && !embedded() && !detailsCollapsed()">
-    <header class="bar card">
+  <div
+    class="floating"
+    [class.has-controls]="controlsShown()"
+    [class.has-detail]="(!!selected() && !embedded() && !detailsCollapsed()) || startShown()"
+  >
+    <header class="bar card" #bar>
       @if (!embedded()) {
         <a class="bar__home" routerLink="/" aria-label="ATLAS, voltar ao início">
           <img src="/brand/atlas-logo.svg" alt="" width="105" height="30" />
@@ -831,9 +835,9 @@
     @if (!embedded()) {
       <aside
         class="detail card"
-        [class.detail--empty]="!selected()"
+        [class.detail--empty]="!selected() && !startShown()"
         [class.detail--collapsed]="detailsCollapsed()"
-        aria-label="Detalhes do verbete"
+        [attr.aria-label]="selected() ? 'Detalhes do verbete' : 'Por onde começar'"
         aria-live="polite"
       >
         @if (selected(); as node) {
@@ -941,7 +945,7 @@
                   <ul class="detail__path-list">
                     @for (reading of selectedReadings(); track reading.slug) {
                       <li>
-                        <a [routerLink]="reading.path">Dossiê: {{ reading.title }} →</a>
+                        <a [routerLink]="reading.path">Leitura: {{ reading.title }} →</a>
                       </li>
                     }
                   </ul>
@@ -1054,6 +1058,14 @@
               </section>
             }
           }
+        } @else if (startShown()) {
+          <app-network-start
+            [entries]="startEntries()"
+            [route]="startRoute()"
+            (pick)="select($event, true)"
+            (trace)="traceRoute($event)"
+            (dismiss)="dismissStart()"
+          />
         }
       </aside>
     }

@@ -563,7 +563,10 @@ export class WorldMapPageComponent {
 
   readonly selectedReadings = computed(() => {
     const territory = this.selectedFilteredTerritory()?.territory;
-    return territory ? readingsForEntity(territory.id, territory.slug) : [];
+    // Same rule as the graph: the territory's own links plus the reading of its collection.
+    return territory
+      ? readingsForEntity(territory.id, territory.slug, this.selectedAtlasId() ?? undefined)
+      : [];
   });
 
   readonly selectedItineraries = computed(() => {
@@ -1345,7 +1348,9 @@ export class WorldMapPageComponent {
     const freeLeft = isWideLayout && legendRect ? legendRect.right + 12 : 12;
     const freeRight = isWideLayout && deskRect ? deskRect.left - 12 : sr.width - 12;
     const freeTop = barRect ? barRect.bottom + 8 : 68;
-    const freeBottom = timelineRect ? timelineRect.top - 8 : sr.height - 150;
+    // On a phone the study desk is a sheet over the bottom of the globe.
+    const sheetTop = !isWideLayout && deskRect ? deskRect.top - 8 : sr.height;
+    const freeBottom = Math.min(timelineRect ? timelineRect.top - 8 : sr.height - 150, sheetTop);
 
     const availW = Math.max(120, freeRight - freeLeft);
     const availH = Math.max(120, freeBottom - freeTop);

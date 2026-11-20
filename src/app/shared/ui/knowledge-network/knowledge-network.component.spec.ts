@@ -755,4 +755,21 @@ describe('KnowledgeNetworkComponent', () => {
       true,
     );
   });
+  it('opens with a first card that names doors into the graph and steps aside once one is picked', async () => {
+    const fixture = await render();
+    const card = () => root(fixture).querySelector('app-network-start');
+    expect(card()?.querySelector('h2')?.textContent).toContain('Por onde começar');
+    const entry = card()?.querySelector<HTMLButtonElement>('.start__entry');
+    expect(entry).toBeTruthy();
+    const title = entry?.querySelector('.start__name')?.textContent?.trim();
+    entry?.click();
+    fixture.detectChanges();
+    expect(card()).toBeNull();
+    expect(fixture.componentInstance.selected()?.title).toBe(title);
+    fixture.componentInstance.clearSelection();
+    fixture.detectChanges();
+    card()?.querySelector<HTMLButtonElement>('.start__close')?.click();
+    fixture.detectChanges();
+    expect(card()).toBeNull();
+  });
 });

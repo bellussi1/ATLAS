@@ -7,6 +7,7 @@
   --rule: var(--color-border);
   --rule-strong: var(--color-border-strong);
   --signal: var(--color-signal);
+  --link: var(--color-accent-hover);
   --serif: var(--font-primary);
 }
 
@@ -123,7 +124,7 @@
 }
 .chip--surprise {
   border-color: var(--signal);
-  color: var(--color-accent-hover);
+  color: var(--link);
   &:is(:hover, :focus-visible):not(:disabled) {
     background: var(--color-ochre-paper);
     color: var(--ink);
@@ -547,7 +548,7 @@ summary::-webkit-details-marker {
   text-decoration: none;
 }
 .path-hint {
-  color: var(--color-accent-hover);
+  color: var(--link);
   font-weight: 600;
 }
 :is(.path-actions, .path-steps) {
@@ -1214,7 +1215,7 @@ summary::-webkit-details-marker {
 .detail__path-list {
   gap: 0.25rem;
   a {
-    color: var(--color-accent-hover);
+    color: var(--link);
     font: 600 var(--text-small)/1.3 var(--serif);
     text-underline-offset: 2px;
   }
@@ -1247,7 +1248,7 @@ summary::-webkit-details-marker {
 }
 .link-group__more {
   margin-block: 0.35rem 0.25rem;
-  color: var(--color-accent-hover);
+  color: var(--link);
   font: 650 var(--text-small) / 1.2 var(--serif);
   text-underline-offset: 0.15em;
 }
@@ -1347,7 +1348,7 @@ summary::-webkit-details-marker {
 }
 :is(.weight--historical, .weight--action) {
   border-color: var(--signal);
-  color: var(--color-accent-hover);
+  color: var(--link);
 }
 :is(
   .chip[aria-expanded='true'],
@@ -1502,6 +1503,9 @@ summary::-webkit-details-marker {
     max-height: 46%;
     padding: 0.75rem;
   }
+  .detail__media {
+    order: 1;
+  }
   .detail__media img {
     max-height: 9rem;
   }
@@ -1520,11 +1524,15 @@ summary::-webkit-details-marker {
   }
 }
 
-// Keep the legend column on desktop even while the panel is closed. The stage is
-// absolute, so the map still uses the full window; the HUD no longer jumps left
-// when the panel appears after hydration.
-@media (min-width: 62rem) {
+// Keep the legend column where the legend opens by default, so the HUD does not jump
+// after hydration; below that the detail or the first card takes the legend's place.
+@media (min-width: 90rem) {
   .floating {
+    grid-template-columns: minmax(0, 19rem) minmax(0, 1fr) auto;
+  }
+}
+@media (min-width: 62rem) {
+  .floating.has-controls {
     grid-template-columns: minmax(0, 19rem) minmax(0, 1fr) auto;
   }
 }
