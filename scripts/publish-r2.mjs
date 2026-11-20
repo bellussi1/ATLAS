@@ -8,6 +8,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 import { formatJson } from './content/source-graph.mjs';
+import { compactIndex, mirrorFile } from './infra/media-mirror.mjs';
 import {
   artifactKey,
   atomicFile,
@@ -122,6 +123,36 @@ async function checkPinnedMedia(config, item) {
   console.log(`mídia já publicada: ${item.key}`);
 }
 
+/**
+ * The mirrored Commons images are already on the bucket (npm run infra:mirror-media). Their compact
+ * index is published as one more immutable artifact and pinned in the pointer; a mirrored object
+ * missing from the bucket stops the release before the pointer changes.
+ */
+async function loadMirror(config) {
+  const entries = await readFile(join(projectRoot, mirrorFile), 'utf8')
+    .then((text) => JSON.parse(text).entries)
+    .catch((error) => {
+      if (error.code === 'ENOENT') return [];
+      throw error;
+    });
+  if (entries.length === 0) return null;
+  const body = Buffer.from(compactIndex(entries));
+  const sha256 = sha256Hex(body);
+  if (config) {
+    for (let offset = 0; offset < entries.length; offset += 8) {
+      await Promise.all(
+        entries.slice(offset, offset + 8).map(async (entry) => {
+          const head = await r2(config, 'HEAD', entry.key);
+          if (head.status !== 200 || Number(head.headers.get('content-length')) !== entry.bytes)
+            throw new Error(`Imagem espelhada ausente ou divergente no R2: ${entry.key}`);
+        }),
+      );
+    }
+  }
+  console.log(`espelho de imagens: ${entries.length} objetos verificados`);
+  return { body, sha256, bytes: body.byteLength, file: `media-mirror.${sha256}.json` };
+}
+
 async function main() {
   const config = await loadR2Config().catch((error) => {
     if (!dryRun) throw error;
@@ -136,6 +167,21 @@ async function main() {
 
   const { manifest, manifestBody, manifestEntry, artifacts } = await loadArtifacts();
   const { media, skipped } = await loadMedia(manifest, existing ?? { media: [] });
+  const mirror = await loadMirror(config);
+  if (mirror) {
+    await putImmutable(config, {
+      key: artifactKey(mirror.sha256),
+      body: mirror.body,
+      contentType: 'application/json',
+      compress: true,
+    });
+    artifacts.push({
+      file: mirror.file,
+      sha256: mirror.sha256,
+      bytes: mirror.bytes,
+      body: mirror.body,
+    });
+  }
 
   await putImmutable(config, {
     key: artifactKey(manifestEntry.sha256),
@@ -170,6 +216,7 @@ async function main() {
     networkBundle: manifest.networkBundle
       ? { sha256: manifest.networkBundle.sha256, bytes: manifest.networkBundle.bytes }
       : null,
+    mirror: mirror ? { sha256: mirror.sha256, bytes: mirror.bytes } : null,
     artifacts: artifacts.map(({ file, sha256, bytes }) => ({ file, sha256, bytes })),
     media: media.map(({ body, ...item }) => item),
   });

@@ -51,3 +51,13 @@ test('deduplicates repeated pointers and never drops the current one', () => {
     ['d', 'c'],
   );
 });
+
+test('as chaves do espelho de imagens entram nas chaves retidas', () => {
+  const pointer = {
+    release: 'a',
+    manifest: { sha256: 'm' },
+    artifacts: [],
+    media: [],
+  };
+  assert.ok(keysForPointers([pointer], ['m/abc.jpg']).has('m/abc.jpg'));
+});

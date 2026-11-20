@@ -42,7 +42,25 @@ for (const commit of commits) {
   }
 }
 const retained = keepPointers(current, history, keep);
-const required = keysForPointers(retained);
+// Mirrored images are named by content/media-mirror.json, not by the pointer: keep every key the
+// file ever held (it only grows), so a rollback never loses an image.
+const git = (...gitArgs) =>
+  execFileSync('git', gitArgs, { encoding: 'utf8', maxBuffer: 256 * 1024 * 1024 }).trim();
+const mirrorRevisions = git('log', '--format=%H', '--', 'content/media-mirror.json')
+  .split(/\r?\n/)
+  .filter(Boolean);
+const mirrorKeys = [];
+for (const revision of ['', ...mirrorRevisions]) {
+  try {
+    const text = revision
+      ? git('show', `${revision}:content/media-mirror.json`)
+      : await readFile(new URL('../../content/media-mirror.json', import.meta.url), 'utf8');
+    mirrorKeys.push(...JSON.parse(text).entries.map((entry) => entry.key));
+  } catch {
+    // The file may not exist yet, or not in an older commit.
+  }
+}
+const required = keysForPointers(retained, mirrorKeys);
 const config = await loadR2Config();
 const objects = (await listR2Objects(config, 'c/')).concat(await listR2Objects(config, 'm/'));
 const removable = objects.filter((object) => !required.has(object.key));

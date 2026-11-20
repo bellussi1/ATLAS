@@ -15,6 +15,7 @@ import {
   networkGraphSchema,
   searchIndexSchema,
 } from '@core/content/models/content-artifacts';
+import { mirrorIndexSchema, mirrorSlot } from '@core/content/media/mirror-index';
 import {
   artifactKey,
   type ContentPointer,
@@ -63,6 +64,8 @@ export class ContentRepository {
   private readonly requests = new Map<string, Promise<string>>();
   private pointer?: Promise<ContentPointer>;
   private pinned?: ContentPointer;
+  private mirror: ReadonlyMap<string, string> | null = null;
+  private mirrorPending?: Promise<void>;
   private manifest?: Promise<ContentManifest>;
   private pending?: Promise<KnowledgeGraph>;
   private networkPending?: Promise<KnowledgeGraph>;
@@ -145,6 +148,11 @@ export class ContentRepository {
   mediaUrl(assetPath: string): string | null {
     const entry = this.pinned?.media.find((item) => item.path === assetPath);
     return this.pinned && entry ? `${this.pinned.baseUrl}/${entry.key}` : null;
+  }
+  /** Mirrored copy of a Commons thumbnail in the pinned release; null when it was not mirrored. */
+  mirrorUrl(assetPath: string): string | null {
+    const object = this.mirror?.get(mirrorSlot(assetPath));
+    return this.pinned && object ? `${this.pinned.baseUrl}/m/${object}` : null;
   }
   findBySlug(slug: string | null, atlas: Atlas = this.atlas): Entity | undefined {
     return atlas.entities.find((entity) => entity.slug === slug);
@@ -232,6 +240,19 @@ export class ContentRepository {
       });
     return this.pointer;
   }
+  /** Best effort: a missing or invalid mirror index leaves the original Commons addresses. */
+  private loadMirror(pointer: ContentPointer): Promise<void> {
+    const resource = pointer.mirror;
+    if (!resource) return Promise.resolve();
+    this.mirrorPending ??= this.resource(resource, 'media-mirror')
+      .then((value) => {
+        this.mirror = new Map(Object.entries(mirrorIndexSchema.parse(value).entries));
+      })
+      .catch(() => {
+        this.mirrorPending = undefined;
+      });
+    return this.mirrorPending;
+  }
   private getManifest(): Promise<ContentManifest> {
     this.manifest ??= this.getPointer()
       .then((pointer) => this.resource(pointer.manifest, 'manifest.json'))
@@ -274,6 +295,7 @@ export class ContentRepository {
     if (this.state && this.networkOnly) this.state = null;
     this.pending ??= (async () => {
       const pointer = await this.getPointer();
+      const mirror = this.loadMirror(pointer);
       if (this.browser) {
         this.state = pointer.bundle
           ? await this.buildBundleState(pointer.bundle)
@@ -313,6 +335,7 @@ export class ContentRepository {
           this.transfer.set(makeStateKey<string>(`content:${key}`), text);
         }
       }
+      await mirror;
       return this.state.graph;
     })().catch((error: unknown) => {
       this.pending = undefined;
@@ -328,10 +351,12 @@ export class ContentRepository {
     if (this.pending) return this.pending;
     this.networkPending ??= (async () => {
       const pointer = await this.getPointer();
+      const mirror = this.loadMirror(pointer);
       this.state = pointer.networkBundle
         ? await this.buildNetworkBundleState(pointer.networkBundle)
         : await this.buildNetworkState(await this.getManifest());
       this.networkOnly = true;
+      await mirror;
       return this.state.graph;
     })().catch((error: unknown) => {
       this.networkPending = undefined;
