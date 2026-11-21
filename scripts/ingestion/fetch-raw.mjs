@@ -28,13 +28,19 @@ if (base.protocol !== 'https:' || base.username || base.password || base.pathnam
 
 async function download(key) {
   for (let attempt = 0; attempt < 7; attempt++) {
-    const result = await fetch(new URL(key, base), {
-      signal: AbortSignal.timeout(60_000),
-    });
-    if (result.ok) {
-      const body = await result.arrayBuffer();
-      // R2 stores the capture gzip-encoded; the digest is of the original JSON.
-      return decodeRawBody(Buffer.from(body));
+    let result;
+    try {
+      result = await fetch(new URL(key, base), { signal: AbortSignal.timeout(60_000) });
+      if (result.ok) {
+        const body = await result.arrayBuffer();
+        // R2 stores the capture gzip-encoded; the digest is of the original JSON.
+        return decodeRawBody(Buffer.from(body));
+      }
+    } catch (error) {
+      // A dropped connection or a timeout is worth another attempt, not a failed release.
+      if (attempt === 6) throw error;
+      await delay(2000 * 2 ** attempt);
+      continue;
     }
     if (![429, 500, 502, 503, 504].includes(result.status) || attempt === 6)
       throw new Error(`Falha ao baixar ${key}: HTTP ${result.status}`);
