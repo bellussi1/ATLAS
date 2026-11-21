@@ -41,6 +41,10 @@ import { CONTENT_ASSET_READER, CONTENT_INITIAL_PACKAGE, CONTENT_PREFETCH } from 
 /** Largest object, in characters, that the server hands to the browser through TransferState. */
 const TRANSFER_LIMIT_CHARS = 16_000;
 
+/** How much of the release the loaded state carries; a deeper state satisfies a shallower one. */
+type ContentDepth = 'network' | 'reading' | 'full';
+const DEPTH_RANK: Record<ContentDepth, number> = { network: 0, reading: 1, full: 2 };
+
 /** Large immutable artifacts stay on R2 instead of repeating in every prerendered HTML. */
 export const isTransferable = (value: string): boolean => value.length <= TRANSFER_LIMIT_CHARS;
 
@@ -67,10 +71,10 @@ export class ContentRepository {
   private mirror: ReadonlyMap<string, string> | null = null;
   private mirrorPending?: Promise<void>;
   private manifest?: Promise<ContentManifest>;
-  private pending?: Promise<KnowledgeGraph>;
+  private readonly loads = new Map<'reading' | 'full', Promise<KnowledgeGraph>>();
   private networkPending?: Promise<KnowledgeGraph>;
-  /** True when only the graph and layouts were loaded for /grafos. */
-  private networkOnly = false;
+  /** What the current state holds: the projection for /grafos, the lean bundle or everything. */
+  private depth: ContentDepth = 'full';
   private readonly readings = new Map<string, Promise<IdeologyBundle | null>>();
 
   get knowledgeGraph(): KnowledgeGraph {
@@ -117,7 +121,7 @@ export class ContentRepository {
     if (!reading) {
       reading = (async () => {
         // The bundle already carries every reading, so opening one costs no extra request.
-        if (!this.state || this.networkOnly) await this.prepare();
+        await this.prepare('reading');
         const bundled = this.state?.ideologies?.[id];
         if (bundled) return bundled;
         const manifest = await this.getManifest();
@@ -131,8 +135,13 @@ export class ContentRepository {
     return reading;
   }
 
+  /** The explorer needs the whole package, including the full-text index and backlinks. */
   loadKnowledgeGraph(): Observable<KnowledgeGraph> {
-    return defer(() => from(this.prepare()));
+    return defer(() => from(this.prepare('full')));
+  }
+  /** Readings and records skip the explorer-only index weight when the release has the lean bundle. */
+  loadReadingGraph(): Observable<KnowledgeGraph> {
+    return defer(() => from(this.prepare('reading')));
   }
   /** The full-screen graph only needs the collections and the compiled positions. */
   loadNetworkGraph(): Observable<KnowledgeGraph> {
@@ -140,7 +149,7 @@ export class ContentRepository {
   }
   loadAtlas(): Observable<Atlas> {
     return defer(async () => {
-      await this.prepare();
+      await this.prepare('full');
       return this.atlas;
     });
   }
@@ -177,25 +186,39 @@ export class ContentRepository {
    * Safe to call repeatedly; skipped on SSR, save-data or slow connections when `idle` is true.
    */
   warmBundle(idle = false): void {
-    if (!this.browser || !this.prefetchEnabled || (this.state && !this.networkOnly) || this.pending)
-      return;
-    if (idle && !this.canAutoPrefetch()) return;
-    void this.getPointer()
-      .then((pointer) => {
-        if (!pointer.bundle) return;
-        const key = artifactKey(pointer.bundle.sha256);
-        if (!this.requests.has(key)) void this.asset(key).catch(() => undefined);
-      })
-      .catch(() => undefined);
+    this.warm('full', idle);
+  }
+  /** Same as `warmBundle` for what a reading or a record needs: the lean bundle when published. */
+  warmReading(idle = false): void {
+    this.warm('reading', idle);
   }
   /** Starts fetching the network bundle into the in-flight request cache before opening `/grafos`. */
   warmNetwork(): void {
-    if (!this.browser || !this.prefetchEnabled || this.state || this.networkPending || this.pending)
+    if (
+      !this.browser ||
+      !this.prefetchEnabled ||
+      this.state ||
+      this.networkPending ||
+      this.loads.size
+    )
       return;
     void this.getPointer()
       .then((pointer) => {
         if (!pointer.networkBundle) return;
         const key = artifactKey(pointer.networkBundle.sha256);
+        if (!this.requests.has(key)) void this.asset(key).catch(() => undefined);
+      })
+      .catch(() => undefined);
+  }
+  private warm(want: 'reading' | 'full', idle: boolean): void {
+    if (!this.browser || !this.prefetchEnabled || this.loads.has(want)) return;
+    if (this.state && DEPTH_RANK[this.depth] >= DEPTH_RANK[want]) return;
+    if (idle && !this.canAutoPrefetch()) return;
+    void this.getPointer()
+      .then((pointer) => {
+        const target = this.bundleFor(pointer, want);
+        if (!target) return;
+        const key = artifactKey(target.sha256);
         if (!this.requests.has(key)) void this.asset(key).catch(() => undefined);
       })
       .catch(() => undefined);
@@ -287,75 +310,102 @@ export class ContentRepository {
     }
   }
 
-  private async prepare(): Promise<KnowledgeGraph> {
-    if (this.state && !this.networkOnly) return this.state.graph;
+  /** The lean bundle serves readings when the release has it; otherwise the full one does. */
+  private bundleFor(pointer: ContentPointer, want: 'reading' | 'full') {
+    return want === 'reading' ? (pointer.readingBundle ?? pointer.bundle) : pointer.bundle;
+  }
+  private satisfies(want: 'reading' | 'full'): boolean {
+    return !!this.state && DEPTH_RANK[this.depth] >= DEPTH_RANK[want];
+  }
+  private async prepare(want: 'reading' | 'full'): Promise<KnowledgeGraph> {
+    if (this.satisfies(want)) return this.requireState().graph;
     if (this.networkPending) await this.networkPending.catch(() => undefined);
-    if (this.state && !this.networkOnly) return this.state.graph;
+    if (this.satisfies(want)) return this.requireState().graph;
+    // The full package already holds everything the lean one does; do not download both.
+    const full = this.loads.get('full');
+    if (want === 'reading' && full) return full;
     // A network-only package is upgraded in place when a route needs search or adjacency.
-    if (this.state && this.networkOnly) this.state = null;
-    this.pending ??= (async () => {
-      const pointer = await this.getPointer();
-      const mirror = this.loadMirror(pointer);
-      if (this.browser) {
-        this.state = pointer.bundle
-          ? await this.buildBundleState(pointer.bundle)
-          : await this.buildState(await this.getManifest());
-        this.networkOnly = false;
-      } else {
-        let snapshots = ContentRepository.serverSnapshots.get(this.read);
-        if (!snapshots) {
-          snapshots = new Map();
-          ContentRepository.serverSnapshots.set(this.read, snapshots);
-        }
-        const hash = pointer.bundle?.sha256 ?? pointer.manifest.sha256;
-        let snapshot = snapshots.get(hash);
-        if (!snapshot) {
-          snapshots.clear();
-          snapshot = (async () => {
-            const state = pointer.bundle
-              ? await this.buildBundleState(pointer.bundle)
-              : await this.buildState(await this.getManifest());
-            const assets = await Promise.all(
-              [...this.requests]
-                .filter(([key]) => key !== 'pointer.json')
-                .map(async ([key, request]) => [key, await request] as const),
-            );
-            return { state, assets: new Map(assets.filter(([, text]) => isTransferable(text))) };
-          })();
-          snapshots.set(hash, snapshot);
-          snapshot.catch(() => {
-            if (snapshots.get(hash) === snapshot) snapshots.delete(hash);
-          });
-        }
-        const cached = await snapshot;
-        this.state = cached.state;
-        this.networkOnly = false;
-        for (const [key, text] of cached.assets) {
-          this.requests.set(key, Promise.resolve(text));
-          this.transfer.set(makeStateKey<string>(`content:${key}`), text);
-        }
+    if (this.state && this.depth === 'network') this.state = null;
+    let load = this.loads.get(want);
+    if (!load) {
+      load = this.load(want).catch((error: unknown) => {
+        this.loads.delete(want);
+        this.manifest = undefined;
+        this.pointer = undefined;
+        this.requests.delete('pointer.json');
+        throw error;
+      });
+      this.loads.set(want, load);
+    }
+    return load;
+  }
+  private async load(want: 'reading' | 'full'): Promise<KnowledgeGraph> {
+    const pointer = await this.getPointer();
+    const mirror = this.loadMirror(pointer);
+    const target = this.bundleFor(pointer, want);
+    // Without a bundle the manifest path loads every collection, which is the full package.
+    const depth: ContentDepth = want === 'reading' && pointer.readingBundle ? 'reading' : 'full';
+    let state: ContentPackage;
+    if (this.browser) {
+      state = target
+        ? await this.buildBundleState(target)
+        : await this.buildState(await this.getManifest());
+    } else {
+      let snapshots = ContentRepository.serverSnapshots.get(this.read);
+      if (!snapshots) {
+        snapshots = new Map();
+        ContentRepository.serverSnapshots.set(this.read, snapshots);
       }
-      await mirror;
-      return this.state.graph;
-    })().catch((error: unknown) => {
-      this.pending = undefined;
-      this.manifest = undefined;
-      this.pointer = undefined;
-      this.requests.delete('pointer.json');
-      throw error;
-    });
-    return this.pending;
+      const hash = target?.sha256 ?? pointer.manifest.sha256;
+      let snapshot = snapshots.get(hash);
+      if (!snapshot) {
+        // Prerendering alternates between the lean and the full package; keep both parsed.
+        if (snapshots.size >= 2) snapshots.clear();
+        snapshot = (async () => {
+          const built = target
+            ? await this.buildBundleState(target)
+            : await this.buildState(await this.getManifest());
+          const assets = await Promise.all(
+            [...this.requests]
+              .filter(([key]) => key !== 'pointer.json')
+              .map(async ([key, request]) => [key, await request] as const),
+          );
+          return {
+            state: built,
+            assets: new Map(assets.filter(([, text]) => isTransferable(text))),
+          };
+        })();
+        snapshots.set(hash, snapshot);
+        snapshot.catch(() => {
+          if (snapshots.get(hash) === snapshot) snapshots.delete(hash);
+        });
+      }
+      const cached = await snapshot;
+      state = cached.state;
+      for (const [key, text] of cached.assets) {
+        this.requests.set(key, Promise.resolve(text));
+        this.transfer.set(makeStateKey<string>(`content:${key}`), text);
+      }
+    }
+    // A slower lean load must not replace a full package that finished first.
+    if (!this.state || DEPTH_RANK[depth] >= DEPTH_RANK[this.depth]) {
+      this.state = state;
+      this.depth = depth;
+    }
+    await mirror;
+    return this.requireState().graph;
   }
   private async prepareNetwork(): Promise<KnowledgeGraph> {
     if (this.state) return this.state.graph;
-    if (this.pending) return this.pending;
+    const loading = this.loads.get('full') ?? this.loads.get('reading');
+    if (loading) return loading;
     this.networkPending ??= (async () => {
       const pointer = await this.getPointer();
       const mirror = this.loadMirror(pointer);
       this.state = pointer.networkBundle
         ? await this.buildNetworkBundleState(pointer.networkBundle)
         : await this.buildNetworkState(await this.getManifest());
-      this.networkOnly = true;
+      this.depth = 'network';
       await mirror;
       return this.state.graph;
     })().catch((error: unknown) => {

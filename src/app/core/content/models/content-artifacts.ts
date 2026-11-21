@@ -131,6 +131,11 @@ export const contentManifestSchema = z.object({
   bundle: resourceSchema.nullable().default(null),
   /** The projection plus compiled layouts for `/grafos`, in one request. */
   networkBundle: resourceSchema.nullable().default(null),
+  /**
+   * The bundle without the weight only the explorer reads (full-text index and backlinks), for
+   * readings and records. Optional so older releases fall back to `bundle`.
+   */
+  readingBundle: resourceSchema.nullable().default(null),
   /** Optional so releases published before itineraries keep working. */
   itineraries: z.array(resourceSchema.extend({ id: z.string(), slug: networkSlug })).optional(),
 });
@@ -226,23 +231,27 @@ export const layoutsSchema = z.object({
     }),
   ),
 });
+/** The only layout the app reads at runtime; the other layouts stay in the standalone artifact. */
+export const runtimeLayoutsSchema = z.object({ network: layoutsSchema.shape.network });
 /** The complete payload of a reading route, released as one immutable object. */
 export const contentBundleSchema = z.object({
   graph: knowledgeGraphSchema,
   search: searchIndexSchema,
   adjacency: adjacencySchema,
-  layouts: layoutsSchema,
+  layouts: runtimeLayoutsSchema,
   /** Readings travel with the bundle so opening one does not cost another request. */
   ideologies: z.record(z.string(), ideologyBundleSchema).default({}),
   /** Verified itineraries travel with the bundle when present. */
   itineraries: z.record(z.string(), z.unknown()).optional(),
 });
+/** Same shape as the full bundle; `search` entries carry an empty `searchText` and `backlinks`. */
+export const readingBundleSchema = contentBundleSchema;
 export const networkBundleSchema = z.object({
   graph: networkGraphSchema,
-  layouts: layoutsSchema,
+  layouts: runtimeLayoutsSchema,
 });
 export type ContentManifest = z.infer<typeof contentManifestSchema>;
-export type ContentLayouts = z.infer<typeof layoutsSchema>;
+export type ContentLayouts = z.infer<typeof runtimeLayoutsSchema>;
 export type ContentAdjacency = z.infer<typeof adjacencySchema>;
 export type ContentBundle = z.infer<typeof contentBundleSchema>;
 export type NetworkBundle = z.infer<typeof networkBundleSchema>;

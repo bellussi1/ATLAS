@@ -32,6 +32,7 @@ const {
   contentBundleSchema,
   contentManifestSchema,
   networkBundleSchema,
+  readingBundleSchema,
   networkGraphSchema,
   searchIndexSchema,
   adjacencySchema,
@@ -356,11 +357,13 @@ export async function buildContent({
   }
 
   const graphDocument = { id: graph.id, version: graph.version, updatedAt: graph.updatedAt };
+  // The app reads only `layouts.network` at runtime; the other layouts stay in layouts.<hash>.json.
+  const runtimeLayouts = { network: layouts.network };
   const bundle = contentBundleSchema.parse({
     graph: { ...graphDocument, atlases: graph.atlases },
     search,
     adjacency,
-    layouts,
+    layouts: runtimeLayouts,
     ideologies: Object.fromEntries(
       readings.map(({ slug, page, supplement }) => [slug, { page, supplement }]),
     ),
@@ -372,7 +375,13 @@ export async function buildContent({
         }
       : {}),
   });
-  const networkBundle = networkBundleSchema.parse({ graph: networkGraph, layouts });
+  const networkBundle = networkBundleSchema.parse({ graph: networkGraph, layouts: runtimeLayouts });
+  // Readings and records never run the explorer's full-text search or read backlinks; those two
+  // fields are most of the index (about 10 of 12 MB), so the lean bundle blanks them.
+  const readingBundle = readingBundleSchema.parse({
+    ...bundle,
+    search: search.map((entry) => ({ ...entry, searchText: '', backlinks: [] })),
+  });
   const resources = {
     schemaVersion: 1,
     graph: graphDocument,
@@ -382,6 +391,7 @@ export async function buildContent({
     network: await asset('network', networkGraph),
     networkBundle: await asset('network-bundle', networkBundle),
     bundle: await asset('bundle', bundle),
+    readingBundle: await asset('reading-bundle', readingBundle),
     search: await asset('search', search),
     adjacency: await asset('adjacency', adjacency),
     layouts: await asset('layouts', layouts),
@@ -398,7 +408,10 @@ export async function buildContent({
     // The fixture keeps the pre-bundle path small for unit/e2e tests while including all compiled
     // collections, readings (even unlisted ones) and itineraries referenced in the manifest.
     const fixtureAssets = assets.filter(
-      ({ file }) => !file.startsWith('bundle.') && !file.startsWith('network-bundle.'),
+      ({ file }) =>
+        !file.startsWith('bundle.') &&
+        !file.startsWith('network-bundle.') &&
+        !file.startsWith('reading-bundle.'),
     );
     const manifestBody = `${JSON.stringify(manifest)}\n`;
     const pointer = buildPointer({
@@ -413,6 +426,7 @@ export async function buildContent({
       media: [],
       bundle: null,
       networkBundle: null,
+      readingBundle: null,
     });
     await mkdir(join(projectRoot, 'generated/testing'), { recursive: true });
     await atomicFile(

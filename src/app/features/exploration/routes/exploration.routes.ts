@@ -3,6 +3,7 @@ import { explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import {
   knowledgeContentResolver,
   networkContentResolver,
+  readingContentResolver,
 } from '@core/routing/knowledge-content.resolver';
 import {
   knowledgeEntryBreadcrumbResolver,
@@ -59,7 +60,7 @@ export const explorationRoutes: Routes = [
     runGuardsAndResolvers: 'paramsOrQueryParamsChange',
     title: knowledgeEntryTitleResolver,
     resolve: {
-      knowledge: knowledgeContentResolver,
+      knowledge: readingContentResolver,
       breadcrumb: knowledgeEntryBreadcrumbResolver,
       breadcrumbParent: knowledgeEntryCatalogueResolver,
       metaDescription: knowledgeEntryDescriptionResolver,

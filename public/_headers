@@ -6,10 +6,16 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; script-src 'self' https://gc.zgo.at https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://upload.wikimedia.org https://thumb.wikimedia.org https://atlas-content-delivery.atlas-bellussi.workers.dev https://*.goatcounter.com; font-src 'self'; connect-src 'self' https://atlas-content-delivery.atlas-bellussi.workers.dev https://*.goatcounter.com https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'
 
-# The build names scripts and styles by content hash, so they never change in place.
-/*.js
+# The build names scripts and styles by content hash, so they never change in place. Pages merges
+# the headers of every matching rule, so a broad `/*.js` would add "immutable" to
+# `/analytics-config.js` next to its `no-cache`; match only the hashed bundles instead.
+/main-*.js
   Cache-Control: public, max-age=31536000, immutable
-/*.css
+/chunk-*.js
+  Cache-Control: public, max-age=31536000, immutable
+/polyfills-*.js
+  Cache-Control: public, max-age=31536000, immutable
+/styles-*.css
   Cache-Control: public, max-age=31536000, immutable
 # Fonts and brand files keep their names; cache them for long enough to help repeat visits.
 /fonts/*

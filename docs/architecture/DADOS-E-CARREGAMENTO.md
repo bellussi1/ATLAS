@@ -1,5 +1,5 @@
 Status: atual
-Última verificação: 08/11/2026
+Última verificação: 20/11/2026
 
 # Dados particionados e carregamento
 
@@ -67,10 +67,30 @@ npm run preview:local   # serve dist + /content na porta 4305
 ## Carregamento, cache e hidratação
 
 - `knowledgeContentResolver` prepara o conteúdo antes de ativar cada leitura; o componente mantém acesso síncrono ao grafo validado. Home não solicita o acervo. `loadCollection(id)` busca uma coleção; `loadKnowledgeGraph()` lê o `bundle.<hash>.json` (grafo, busca, adjacência, layouts e leituras). `loadNetworkGraph()` lê o `network-bundle.<hash>.json`; releases sem os pacotes caem no manifesto e nas coleções.
-- **Política atual:** o ponteiro publicado traz `bundle` e `networkBundle`, então uma navegação de leitura ou catálogo baixa **um** objeto de conteúdo além do `pointer.json`, em vez de 16. O pacote preserva consumidores síncronos e todas as conexões globais, inclusive fontes e relações de outros atlas. Particionar os arquivos não significa carregar só uma entidade ou coleção. Busca e layouts são preparados em conjunto; um carregamento mais granular ou por entidade pode vir depois, com medição e mudança deliberada dos contratos.
+- **Política atual:** o ponteiro publicado traz três pacotes, e cada rota baixa **um**, além do `pointer.json`:
+  - `readingBundle` (leituras e `/verbete/*`): grafo completo, relações (adjacência), índice por id (título, caminho, tipo, traduções), leituras e itinerários. Sai de dentro dele o que só o explorador usa: `searchText` e `backlinks` do índice (cerca de 10 dos 12,6 MB) vêm vazios.
+  - `bundle` (explorador `/acervo/*`): o mesmo conteúdo com busca de texto e backlinks completos.
+  - `networkBundle` (`/grafos` e `/mapa`): projeção enxuta do grafo e o layout da rede.
+  Os três carregam só `layouts.network`, o único layout lido em runtime; `layouts.exploration`, `atlases` e `editorial` (2,3 MB) ficam no `layouts.<hash>.json` avulso. Releases sem `readingBundle` caem em `bundle`; sem pacotes, no manifesto e nas coleções. O repositório guarda a profundidade do estado (`network` < `reading` < `full`): quem pede menos reaproveita o que há, quem pede mais troca o estado no lugar, e uma carga `reading` não baixa nada se a `full` já está em curso. O pacote preserva consumidores síncronos e todas as conexões globais, inclusive fontes e relações de outros atlas. Fatiar mais (por atlas, sem as coleções de `atlas-verbetes-citados`, 12 MB) pede carregamento assíncrono de fichas e do vocabulário de hover; fica para uma mudança deliberada dos contratos.
+- **Mapa:** os contornos Natural Earth (`natural-earth-globe.json`, ~200 KB) são um chunk próprio, buscado em paralelo ao `networkBundle` por um resolver da rota `/mapa` (`globeBaseMapResolver`); a página lê `route.snapshot.data['globe']`, então SSR e hidratação seguem síncronos. O `warmReading` do mapa e o hover em "Leituras" aquecem o `readingBundle`, não mais o `bundle`.
 - **Navegador:** HttpClient busca o texto dos assets locais; o repositório valida tamanho, SHA-256, JSON, Zod e referências globais. Requisições simultâneas compartilham a mesma promessa; cada URL com hash fica em cache de memória durante a sessão e no cache HTTP imutável. A página nunca vê estado parcial. A sessão mantém sua versão coerente e não troca de manifesto entre seleções.
 - **Prerender:** `app.config.server.ts` fornece um leitor de arquivos para `generated/content`, que não entra no browser. Os textos passam por TransferState; na hidratação são consumidos e removidos, evitando nova requisição. As três páginas seguem prerenderizadas e os controles operáveis após a hidratação.
 - **Falhas:** HTTP com erro, hash divergente ou dado inválido impedem a ativação da leitura. Promessas com erro são descartadas, e a falha invalida o manifesto em cache para que o retry encontre uma versão corrigida. O shell mantém a página anterior, mostra aviso acessível e permite tentar de novo. Após recuperação, o foco vai ao conteúdo. Não substitui auditoria WCAG integral.
+
+## Medição (20/11/2026, `build:local`, preview local sem compressão)
+
+Antes: ponteiro de 5974a46a… (`bundle` 35 960 562 B, `networkBundle` 7 471 490 B). Depois: release 86f8e85f… . Bytes de conteúdo vêm do preview local (sem Brotli); em produção o Worker/Cloudflare comprime, então valem a proporção e a ordem de grandeza.
+
+| Rota | Conteúdo antes | Conteúdo depois | JS depois (bruto) |
+| --- | --- | --- | --- |
+| `/` | 0 | 0 | 156 KiB |
+| `/leitura/marxismo` | 35,96 MB (`bundle`) | 21,90 MB (`readingBundle`) | 342 KiB |
+| `/mapa` | 7,47 MB (`networkBundle`) + 35,96 MB aquecidos em ociosidade | 4,90 MB (`networkBundle`) + 21,90 MB aquecidos em ociosidade | 313 KiB |
+| `/grafos` | 7,47 MB | 4,90 MB | 253 KiB |
+
+"Antes" são os bytes dos artefatos do release anterior (o código antigo baixava exatamente esses objetos); "depois" foi medido com Chromium (CDP, `encodedDataLength`) sobre o preview local. JS inicial e hashes do build: **448,81 kB** bruto / 113 kB transferido antes e depois (sem mudança); maior chunk lazy: `world-map-page` **341,74 kB** → `ideology-page` **236,01 kB** (o mapa ficou em 141,87 kB, mais 200,08 kB de contornos em chunk próprio, carregado só em `/mapa`). Redução do pacote de leitura: −39% bruto; `networkBundle`: −34%. `ideology-page` (236 kB) não tem divisão natural sem hidratação incremental (`@defer (hydrate on …)`), que o projeto não usa: um `@defer` comum tiraria atlas e debate do HTML prerenderizado.
+
+Para rodar os E2E de carregamento sobre o release local, depois de `npm run build:local` execute `node scripts/security-headers.mjs` (sem os hashes de CSP o preview bloqueia o script inline que aponta para `/content`) e use a porta 4305 (o apontamento só vale nela).
 
 ## Integração com a ingestão
 
@@ -83,7 +103,7 @@ A publicação prepara as novas mídias, grava os novos shards e troca o manifes
 - A arquitetura separa fontes de derivados e tira o grafo do JS, mas não promete redução de todo o tráfego inicial. Índices e TransferState também têm custo, registrado no relatório de qualidade.
 - O índice interno preserva destinos de registro (`/verbete/*`) e de fontes (`/acervo/fontes`). As três páginas não expõem links novos fora do Router real; catálogos e permalinks reconciliam os destinos antigos com os redirecionamentos.
 - Layouts compilados cobrem as visualizações das páginas públicas atuais. Componentes antigos não publicados continuam no repositório; não se declara eliminação de todo cálculo visual.
-- O cache descrito é de sessão e TransferState. Cache HTTP, CDN e publicação são responsabilidade da hospedagem; não houve deploy.
+- O cache descrito é de sessão e TransferState. Cache HTTP, CDN e publicação são responsabilidade da hospedagem; não houve deploy. Em `public/_headers`, só `main-*.js`, `chunk-*.js`, `polyfills-*.js` e `styles-*.css` (nomes com hash) recebem `immutable`: o Pages concatena os cabeçalhos de todas as regras que casam, e o antigo `/*.js` somava `immutable` ao `no-cache` de `/analytics-config.js`.
 - Artefatos com hash antigos podem permanecer em `generated` entre builds locais. Build em checkout limpo começa sem eles; o manifesto identifica os recursos da versão ativa.
 - **Rollback:** reverter o commit da fase restaura o modelo anterior. Para rollback de conteúdo após a migração, restaurar o manifesto canônico e os shards versionados correspondentes; não editar hashes nem apagar capturas brutas.
 

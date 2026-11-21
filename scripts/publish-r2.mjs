@@ -47,6 +47,7 @@ async function loadArtifacts() {
     ...(manifest.network ? [manifest.network] : []),
     ...(manifest.bundle ? [manifest.bundle] : []),
     ...(manifest.networkBundle ? [manifest.networkBundle] : []),
+    ...(manifest.readingBundle ? [manifest.readingBundle] : []),
   ];
   const artifacts = [];
   for (const resource of resources) {
@@ -217,6 +218,9 @@ async function main() {
       ? { sha256: manifest.networkBundle.sha256, bytes: manifest.networkBundle.bytes }
       : null,
     mirror: mirror ? { sha256: mirror.sha256, bytes: mirror.bytes } : null,
+    readingBundle: manifest.readingBundle
+      ? { sha256: manifest.readingBundle.sha256, bytes: manifest.readingBundle.bytes }
+      : null,
     artifacts: artifacts.map(({ file, sha256, bytes }) => ({ file, sha256, bytes })),
     media: media.map(({ body, ...item }) => item),
   });

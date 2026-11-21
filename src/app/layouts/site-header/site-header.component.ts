@@ -126,6 +126,14 @@ export class SiteHeaderComponent {
       },
     );
   }
+  /** Readings open from the lean bundle; only the archive explorer needs the full one. */
+  warmReadings(): void {
+    void import('@core/content/repositories/content-repository.service').then(
+      ({ ContentRepository }) => {
+        if (!this.destroyed) this.injector.get(ContentRepository).warmReading();
+      },
+    );
+  }
   warmGraph(): void {
     void import('@core/content/repositories/content-repository.service').then(
       ({ ContentRepository }) => {
