@@ -21,8 +21,8 @@
     },
     {
       "id": "atlas-liberalism",
-      "file": "collections/atlas-liberalism.cb9ec43265d158f75c0aaa5a9aac271bd179ca714afad5aeb11b39afdb7d96a4.json",
-      "sha256": "cb9ec43265d158f75c0aaa5a9aac271bd179ca714afad5aeb11b39afdb7d96a4"
+      "file": "collections/atlas-liberalism.a0f0057a2bc5095cd637e1fe563235ba1138539af33c8f5927c546f9fbb0825b.json",
+      "sha256": "a0f0057a2bc5095cd637e1fe563235ba1138539af33c8f5927c546f9fbb0825b"
     },
     {
       "id": "atlas-marx-valor",
@@ -31,13 +31,13 @@
     },
     {
       "id": "atlas-constitutional-contexts",
-      "file": "collections/atlas-constitutional-contexts.656f11bb1e25814536c6e080117507c5745e708e282cea1f5dbec4589c1240a6.json",
-      "sha256": "656f11bb1e25814536c6e080117507c5745e708e282cea1f5dbec4589c1240a6"
+      "file": "collections/atlas-constitutional-contexts.e992dcd0ac27874377929cf4907a833bdfeafa033d1e417544088047c6dd6621.json",
+      "sha256": "e992dcd0ac27874377929cf4907a833bdfeafa033d1e417544088047c6dd6621"
     },
     {
       "id": "atlas-marxismo",
-      "file": "collections/atlas-marxismo.c9ef4b5e9f0d0f69e6c01773185ea7b0cbeac8d340e6c6caf9f1d871e54e6f55.json",
-      "sha256": "c9ef4b5e9f0d0f69e6c01773185ea7b0cbeac8d340e6c6caf9f1d871e54e6f55"
+      "file": "collections/atlas-marxismo.05cacded14df3460d27ac66352697692bff5f6187dd901ed2a06ee8738d737fa.json",
+      "sha256": "05cacded14df3460d27ac66352697692bff5f6187dd901ed2a06ee8738d737fa"
     },
     {
       "id": "atlas-liberalismo",
@@ -51,28 +51,28 @@
     },
     {
       "id": "atlas-social-democracia",
-      "file": "collections/atlas-social-democracia.b9a8caa07f53cdc081a053a4e34ee578b0d93109ae9bc190ef37f4c38de2db46.json",
-      "sha256": "b9a8caa07f53cdc081a053a4e34ee578b0d93109ae9bc190ef37f4c38de2db46"
+      "file": "collections/atlas-social-democracia.f08692c67b073f9baefcde024ff7b25b339e145ac6c53540275d6aa3a85f40cc.json",
+      "sha256": "f08692c67b073f9baefcde024ff7b25b339e145ac6c53540275d6aa3a85f40cc"
     },
     {
       "id": "atlas-anarquismo",
-      "file": "collections/atlas-anarquismo.58916e357f7e1b88bdc34ceb840a3d43200d48c90d835a2c0c6f9dd43ecaccc0.json",
-      "sha256": "58916e357f7e1b88bdc34ceb840a3d43200d48c90d835a2c0c6f9dd43ecaccc0"
+      "file": "collections/atlas-anarquismo.b1ae0de892d77bd1ab16b769d8c6d5b21b0261c5a21ff172b00468d480d593d9.json",
+      "sha256": "b1ae0de892d77bd1ab16b769d8c6d5b21b0261c5a21ff172b00468d480d593d9"
     },
     {
       "id": "atlas-ideologias-principais",
-      "file": "collections/atlas-ideologias-principais.64201af8e58c75a1bcb833ef4a777551923f583f3f431406021209c73d25b7ef.json",
-      "sha256": "64201af8e58c75a1bcb833ef4a777551923f583f3f431406021209c73d25b7ef"
+      "file": "collections/atlas-ideologias-principais.5dc1575313a792a44493cd1b2ef09b586241f99e530f9c52a1fa444cfd969d25.json",
+      "sha256": "5dc1575313a792a44493cd1b2ef09b586241f99e530f9c52a1fa444cfd969d25"
     },
     {
       "id": "atlas-verbetes-citados",
-      "file": "collections/atlas-verbetes-citados.0df5b2dfbaa63ed22eb074b9823e85f752d818dcd558bbc9649e1ab96fe9fc5d.json",
-      "sha256": "0df5b2dfbaa63ed22eb074b9823e85f752d818dcd558bbc9649e1ab96fe9fc5d"
+      "file": "collections/atlas-verbetes-citados.6035ca455fbef44c4189f677f7b221f0cb1a1ed4c92a0b8c8effcaaddcdf0fc2.json",
+      "sha256": "6035ca455fbef44c4189f677f7b221f0cb1a1ed4c92a0b8c8effcaaddcdf0fc2"
     },
     {
       "id": "atlas-nazismo",
-      "file": "collections/atlas-nazismo.68d0045ac2b2bc79b23108869a60f79645604b95055bb89b372e7729c98975fb.json",
-      "sha256": "68d0045ac2b2bc79b23108869a60f79645604b95055bb89b372e7729c98975fb"
+      "file": "collections/atlas-nazismo.810b42580161ef18b0eb8aa637c42b4069cda88c9c597ea97cf5491dbeebe0d8.json",
+      "sha256": "810b42580161ef18b0eb8aa637c42b4069cda88c9c597ea97cf5491dbeebe0d8"
     },
     {
       "id": "atlas-stalinismo",
@@ -81,8 +81,8 @@
     },
     {
       "id": "atlas-trabalhismo",
-      "file": "collections/atlas-trabalhismo.5154bfb31c58a1d64f7ab27dd65af061773c7b49e51bbe96fdcc74ae3e3e430c.json",
-      "sha256": "5154bfb31c58a1d64f7ab27dd65af061773c7b49e51bbe96fdcc74ae3e3e430c"
+      "file": "collections/atlas-trabalhismo.0afeab5344b96e7af2879d72f7a87bfeb2ef0213102c664e3ceb0f136e780fad.json",
+      "sha256": "0afeab5344b96e7af2879d72f7a87bfeb2ef0213102c664e3ceb0f136e780fad"
     },
     {
       "id": "atlas-era-vargas",

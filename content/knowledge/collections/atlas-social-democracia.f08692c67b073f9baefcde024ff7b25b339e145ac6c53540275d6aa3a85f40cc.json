@@ -11,7 +11,6 @@
     "wiki-topic-augusto-pinochet",
     "wiki-topic-bernardo-arevalo",
     "wiki-topic-bolsa-familia",
-    "wiki-topic-brasil",
     "wiki-topic-bruno-kreisky",
     "wiki-topic-clarin",
     "wiki-topic-congresso-nacional-africano",
@@ -312,59 +311,6 @@
         "attribution": "Texto da Wikipédia (pt), revisão 73306059, CC BY-SA 4.0"
       },
       "kind": "concept"
-    },
-    {
-      "id": "wiki-topic-brasil",
-      "slug": "brasil-wikipedia",
-      "title": "Brasil",
-      "summary": "É o maior país da América do Sul, com cerca de 8,5 milhões de quilômetros quadrados e 214,2 milhões de habitantes em julho de 2026. Sua Constituição, promulgada em 1988, o concebe como república federativa presidencialista formada por 26 estados, um Distrito Federal e 5 571 municípios. O território foi alcançado pelos portugueses em 1500 e teve sua independência proclamada em 1822. O artigo percorre sua história política, da Primeira República à Sexta República, além de geografia, economia, demografia e instituições.",
-      "aliases": ["República Federativa do Brasil"],
-      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
-      "temporalExtent": {
-        "startYear": 1500,
-        "endYear": null,
-        "precision": "year",
-        "label": "1500–"
-      },
-      "uncertainty": "unknown",
-      "revision": 1,
-      "sections": [
-        {
-          "heading": "Resumo",
-          "paragraphs": [
-            "É o maior país da América do Sul, com cerca de 8,5 milhões de quilômetros quadrados e 214,2 milhões de habitantes em julho de 2026. Sua Constituição, promulgada em 1988, o concebe como república federativa presidencialista formada por 26 estados, um Distrito Federal e 5 571 municípios. O território foi alcançado pelos portugueses em 1500 e teve sua independência proclamada em 1822. O artigo percorre sua história política, da Primeira República à Sexta República, além de geografia, economia, demografia e instituições."
-          ]
-        },
-        {
-          "heading": "Origem",
-          "paragraphs": [
-            "O território atual do Brasil foi oficialmente descoberto pelos portugueses em 22 de abril de 1500, em expedição liderada por Pedro Álvares Cabral."
-          ]
-        },
-        {
-          "heading": "Ideias centrais",
-          "paragraphs": [
-            "A Constituição atual, de 1988, define o Brasil como república federativa presidencialista."
-          ]
-        }
-      ],
-      "editorialStatus": "pending",
-      "scope": "nucleo",
-      "textLocale": "pt-BR",
-      "externalIds": { "wikidata": "Q155", "wikipedia": "Brasil" },
-      "discoveryMetadata": {
-        "description": "País sul-americano, o maior da América Latina e o quinto maior do mundo em área territorial, com República Federativa como forma de Estado.",
-        "wikipediaTitle": "Brasil",
-        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Brasil",
-        "wikipediaLanguage": "pt",
-        "categories": [],
-        "fetchedAt": "2026-11-05",
-        "contentLicense": "CC BY-SA 4.0",
-        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "attribution": "Texto da Wikipédia (pt), revisão 73374206, CC BY-SA 4.0"
-      },
-      "kind": "place",
-      "coordinates": { "lat": -14, "lon": -53 }
     },
     {
       "id": "wiki-topic-bruno-kreisky",
@@ -2864,13 +2810,6 @@
       "publicationDate": null
     },
     {
-      "id": "src-wiki-topic-brasil",
-      "title": "Brasil (Wikipédia pt)",
-      "url": "https://pt.wikipedia.org/wiki/Brasil",
-      "edition": "revisão 73374206; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
-      "publicationDate": null
-    },
-    {
       "id": "src-wiki-topic-bruno-kreisky",
       "title": "Bruno Kreisky (Wikipédia pt)",
       "url": "https://pt.wikipedia.org/wiki/Bruno_Kreisky",
@@ -3639,104 +3578,6 @@
       "id": "ev-wiki-topic-bolsa-familia-rel-002",
       "sourceId": "src-wiki-topic-bolsa-familia",
       "locator": "O educador e político Cristovam Buarque, um dos pioneiros na implantação do Bolsa Escola – programa que deu origem ao Bolsa Família – foi enfático nas críticas às mudanças no programa de distribuição de renda do governo federal",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-brasil-001",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "O território que atualmente forma o Brasil foi oficialmente descoberto pelos portugueses em 22 de abril de 1500, em expedição liderada pelo navegador Pedro Álvares Cabral.",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-brasil-002",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "Sua atual constituição, promulgada em 1988, concebe o Brasil como uma república federativa presidencialista",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-brasil-003",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "O território que atualmente forma o Brasil foi oficialmente descoberto pelos portugueses em 22 de abril de 1500",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-brasil-004",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "Em 1532, ocorreu a fundação da primeira cidade do Brasil, São Vicente",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-brasil-005",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "declarando a independência do país do Reino Unido de Portugal, Brasil e Algarves, em 7 de setembro de 1822",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-brasil-006",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "Em 15 de novembro de 1889, desgastada por anos de estagnação econômica",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-brasil-007",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "foi deposto pelo golpe de 1964, que resultou na instauração de um regime militar",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-brasil-008",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "até um governo civil e eleito democraticamente assumir o poder em 1985, com o fim da ditadura militar",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-brasil-009",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "que foi promulgada em 5 de outubro de 1988",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-brasil-010",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "o quinto maior do mundo em área territorial",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-brasil-011",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "Como potência regional e média, a nação tem reconhecimento e influência internacional",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-brasil-012",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "Esta alegação, porém, é parcialmente contestada por outros países, como a Argentina e o México",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-brasil-rel-001",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "É membro fundador da Organização das Nações Unidas (ONU), G20, BRICS, Comunidade dos Países de Língua Portuguesa (CPLP)",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-brasil-rel-003",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "Através da Operação Condor, o governo brasileiro também participou na perseguição internacional a dissidentes sul-americanos em geral.",
       "accessedAt": "2026-11-05",
       "note": null
     },
@@ -7507,13 +7348,6 @@
       "note": null
     },
     {
-      "id": "ev-wiki-topic-brasil-013",
-      "sourceId": "src-wiki-topic-brasil",
-      "locator": "No entanto, o país ainda mantém níveis notáveis de corrupção, criminalidade e desigualdade social",
-      "accessedAt": "2026-11-09",
-      "note": null
-    },
-    {
       "id": "ev-wiki-topic-direita-politica-013",
       "sourceId": "src-wiki-topic-direita-politica",
       "locator": "Houve críticas consideráveis sobre a redução da política num simples eixo esquerda-direita.",
@@ -8013,66 +7847,6 @@
     {
       "id": "cit-wiki-topic-bolsa-familia-010",
       "evidenceId": "ev-wiki-topic-bolsa-familia-010",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-brasil-001",
-      "evidenceId": "ev-wiki-topic-brasil-001",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-brasil-002",
-      "evidenceId": "ev-wiki-topic-brasil-002",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-brasil-003",
-      "evidenceId": "ev-wiki-topic-brasil-003",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-brasil-004",
-      "evidenceId": "ev-wiki-topic-brasil-004",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-brasil-005",
-      "evidenceId": "ev-wiki-topic-brasil-005",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-brasil-006",
-      "evidenceId": "ev-wiki-topic-brasil-006",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-brasil-007",
-      "evidenceId": "ev-wiki-topic-brasil-007",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-brasil-008",
-      "evidenceId": "ev-wiki-topic-brasil-008",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-brasil-009",
-      "evidenceId": "ev-wiki-topic-brasil-009",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-brasil-010",
-      "evidenceId": "ev-wiki-topic-brasil-010",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-brasil-011",
-      "evidenceId": "ev-wiki-topic-brasil-011",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-brasil-012",
-      "evidenceId": "ev-wiki-topic-brasil-012",
       "relation": "supports"
     },
     {
@@ -10371,11 +10145,6 @@
       "relation": "supports"
     },
     {
-      "id": "cit-wiki-topic-brasil-013",
-      "evidenceId": "ev-wiki-topic-brasil-013",
-      "relation": "supports"
-    },
-    {
       "id": "cit-wiki-topic-direita-politica-013",
       "evidenceId": "ev-wiki-topic-direita-politica-013",
       "relation": "supports"
@@ -10883,102 +10652,6 @@
       "classification": "interpretation",
       "editorialStatus": "pending",
       "citationIds": ["cit-wiki-topic-bolsa-familia-010"]
-    },
-    {
-      "id": "claim-wiki-topic-brasil-001",
-      "entityId": "wiki-topic-brasil",
-      "text": "O território atual do Brasil foi oficialmente descoberto pelos portugueses em 22 de abril de 1500, em expedição liderada por Pedro Álvares Cabral.",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-brasil-001"]
-    },
-    {
-      "id": "claim-wiki-topic-brasil-002",
-      "entityId": "wiki-topic-brasil",
-      "text": "A Constituição atual, de 1988, define o Brasil como república federativa presidencialista.",
-      "classification": "attributed-thesis",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-brasil-002"]
-    },
-    {
-      "id": "claim-wiki-topic-brasil-003",
-      "entityId": "wiki-topic-brasil",
-      "text": "Descoberta oficial do território pelos portugueses, na expedição de Pedro Álvares Cabral. (1500-04-22).",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-brasil-003"]
-    },
-    {
-      "id": "claim-wiki-topic-brasil-004",
-      "entityId": "wiki-topic-brasil",
-      "text": "Fundação da primeira cidade do Brasil, São Vicente. (1532).",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-brasil-004"]
-    },
-    {
-      "id": "claim-wiki-topic-brasil-005",
-      "entityId": "wiki-topic-brasil",
-      "text": "Declaração da independência do país. (1822-09-07).",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-brasil-005"]
-    },
-    {
-      "id": "claim-wiki-topic-brasil-006",
-      "entityId": "wiki-topic-brasil",
-      "text": "Derrubada da monarquia por golpe militar. (1889-11-15).",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-brasil-006"]
-    },
-    {
-      "id": "claim-wiki-topic-brasil-007",
-      "entityId": "wiki-topic-brasil",
-      "text": "Deposição de João Goulart pelo golpe que instaurou regime militar. (1964).",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-brasil-007"]
-    },
-    {
-      "id": "claim-wiki-topic-brasil-008",
-      "entityId": "wiki-topic-brasil",
-      "text": "Governo civil e eleito democraticamente assume o poder, com o fim da ditadura militar. (1985).",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-brasil-008"]
-    },
-    {
-      "id": "claim-wiki-topic-brasil-009",
-      "entityId": "wiki-topic-brasil",
-      "text": "Promulgação da Constituição Federal. (1988-10-05).",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-brasil-009"]
-    },
-    {
-      "id": "claim-wiki-topic-brasil-010",
-      "entityId": "wiki-topic-brasil",
-      "text": "O Brasil é o quinto maior país do mundo em área territorial.",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-brasil-010"]
-    },
-    {
-      "id": "claim-wiki-topic-brasil-011",
-      "entityId": "wiki-topic-brasil",
-      "text": "O Brasil é descrito como potência regional e média com reconhecimento e influência internacional.",
-      "classification": "interpretation",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-brasil-011"]
-    },
-    {
-      "id": "claim-wiki-topic-brasil-012",
-      "entityId": "wiki-topic-brasil",
-      "text": "A liderança política brasileira na América Latina é parcialmente contestada por Argentina e México.",
-      "classification": "contested-claim",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-brasil-012"]
     },
     {
       "id": "claim-wiki-topic-bruno-kreisky-001",
@@ -14653,14 +14326,6 @@
       "citationIds": ["cit-wiki-topic-grande-depressao-013"]
     },
     {
-      "id": "claim-wiki-topic-brasil-013",
-      "entityId": "wiki-topic-brasil",
-      "text": "A corrupção, a criminalidade e a desigualdade social são apontadas no artigo como problemas que o país ainda mantém em níveis notáveis.",
-      "classification": "interpretation",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-brasil-013"]
-    },
-    {
       "id": "claim-wiki-topic-direita-politica-013",
       "entityId": "wiki-topic-direita-politica",
       "text": "Há críticas consideráveis à redução da política a um eixo esquerda-direita.",
@@ -15257,102 +14922,6 @@
     {
       "id": "rev-wiki-topic-bolsa-familia-010",
       "claimId": "claim-wiki-topic-bolsa-familia-010",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-brasil-001",
-      "claimId": "claim-wiki-topic-brasil-001",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-brasil-002",
-      "claimId": "claim-wiki-topic-brasil-002",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-brasil-003",
-      "claimId": "claim-wiki-topic-brasil-003",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-brasil-004",
-      "claimId": "claim-wiki-topic-brasil-004",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-brasil-005",
-      "claimId": "claim-wiki-topic-brasil-005",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-brasil-006",
-      "claimId": "claim-wiki-topic-brasil-006",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-brasil-007",
-      "claimId": "claim-wiki-topic-brasil-007",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-brasil-008",
-      "claimId": "claim-wiki-topic-brasil-008",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-brasil-009",
-      "claimId": "claim-wiki-topic-brasil-009",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-brasil-010",
-      "claimId": "claim-wiki-topic-brasil-010",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-brasil-011",
-      "claimId": "claim-wiki-topic-brasil-011",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-brasil-012",
-      "claimId": "claim-wiki-topic-brasil-012",
       "status": "pending",
       "reviewer": null,
       "reviewedAt": null,
@@ -19031,14 +18600,6 @@
       "note": "Revisão humana não registrada"
     },
     {
-      "id": "rev-wiki-topic-brasil-013",
-      "claimId": "claim-wiki-topic-brasil-013",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
       "id": "rev-wiki-topic-direita-politica-013",
       "claimId": "claim-wiki-topic-direita-politica-013",
       "status": "pending",
@@ -20063,7 +19624,7 @@
     },
     {
       "id": "rel-wiki-topic-brasil-001",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-organizacao-das-nacoes-unidas",
       "type": "documented-association",
       "label": "fundou",
@@ -20081,7 +19642,7 @@
     },
     {
       "id": "rel-wiki-topic-brasil-003",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-operacao-condor",
       "type": "participated_in",
       "label": "participou de",
@@ -20172,7 +19733,7 @@
     {
       "id": "rel-wiki-topic-dilma-rousseff-003",
       "fromEntityId": "wiki-topic-dilma-rousseff",
-      "toEntityId": "wiki-topic-brasil",
+      "toEntityId": "country-brazil",
       "type": "documented-association",
       "label": "governou",
       "reverseLabel": "foi governado por",
@@ -21619,7 +21180,7 @@
     },
     {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-golpe-militar-90",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-golpe-militar",
       "type": "influenced",
       "label": "influenciou",
@@ -21632,7 +21193,7 @@
     },
     {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-monarquia-91",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-monarquia",
       "type": "influenced",
       "label": "influenciou",
@@ -21645,7 +21206,7 @@
     },
     {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-ditadura-mili-92",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-ditadura-militar",
       "type": "influenced",
       "label": "influenciou",
@@ -21658,7 +21219,7 @@
     },
     {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-ditadura-93",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-ditadura",
       "type": "event_influenced_ideology",
       "label": "influenciou a ideologia",
@@ -21671,7 +21232,7 @@
     },
     {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-lideranca-94",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-lideranca",
       "type": "associated_with",
       "label": "associado a",
@@ -23127,7 +22688,7 @@
     },
     {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-corrupcao-22",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-corrupcao",
       "type": "associated_with",
       "label": "associado a",
@@ -23140,7 +22701,7 @@
     },
     {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-desigualdade--23",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-desigualdade-social",
       "type": "associated_with",
       "label": "associado a",
@@ -23153,7 +22714,7 @@
     },
     {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-poder-844f13",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-poder",
       "type": "event_influenced_ideology",
       "label": "influenciou a ideologia",
@@ -23283,7 +22844,7 @@
     },
     {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-america-l-5dcb5f",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-america-latina",
       "type": "influence",
       "label": "influenciou",
@@ -23568,19 +23129,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-cooperati-wiki-topic-brasil-99b201",
-      "fromEntityId": "wiki-topic-cooperativismo",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] No Brasil, o modelo de cooperativismo é unitário, com a cooperação regulada por uma única lei orgânica.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-cooperativismo-002"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-partido-d-wiki-topic-impeachme-2057f9",
       "fromEntityId": "wiki-topic-partido-dos-trabalhadores",
       "toEntityId": "wiki-topic-impeachment-de-dilma-rousseff",
@@ -23621,7 +23169,7 @@
     },
     {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-america-b46b94",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-america",
       "type": "associated_with",
       "label": "associado a",
@@ -23630,19 +23178,6 @@
       "temporalExtent": null,
       "uncertainty": "low",
       "evidenceIds": ["ev-wiki-topic-brasil-012"],
-      "editorialStatus": "pending"
-    },
-    {
-      "id": "rel-ai-exp-wiki-topic-desempreg-wiki-topic-brasil-4e7aff",
-      "fromEntityId": "wiki-topic-desemprego",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "influenced",
-      "label": "influenciou",
-      "reverseLabel": "foi influenciado por",
-      "context": "[conferência de IA] No Brasil, a migração de pessoas de uma região para outra em busca de trabalho é apontada como um agravante do desemprego.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-desemprego-003"],
       "editorialStatus": "pending"
     },
     {
@@ -23698,21 +23233,8 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-bolsa-fam-wiki-topic-brasil-8281b4",
-      "fromEntityId": "wiki-topic-bolsa-familia",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "influenced",
-      "label": "influenciou",
-      "reverseLabel": "foi influenciado por",
-      "context": "[conferência de IA] A FAO cita o programa entre os responsáveis pela saída do Brasil do Mapa Mundial da Fome. (2014).",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-bolsa-familia-006"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-constitui-812f8e",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-constituicao",
       "type": "associated_with",
       "label": "associado a",
@@ -23725,7 +23247,7 @@
     },
     {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-militar-bdfd5f",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-militar",
       "type": "influenced",
       "label": "influenciou",
@@ -23738,7 +23260,7 @@
     },
     {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-joao-goul-c5d129",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-joao-goulart",
       "type": "influenced",
       "label": "influenciou",
@@ -23751,7 +23273,7 @@
     },
     {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-mexico-0e2377",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-mexico",
       "type": "associated_with",
       "label": "associado a",
@@ -23815,21 +23337,8 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-universid-wiki-topic-brasil-6dddfd",
-      "fromEntityId": "wiki-topic-universidade-federal-de-minas-gerais",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] Segundo o ARWU, a UFMG está classificada entre as cinco melhores universidades no Brasil e no mundo.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-universidade-federal-de-minas-gerais-011"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-governo-d83044",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-governo",
       "type": "associated_with",
       "label": "associado a",
@@ -23842,7 +23351,7 @@
     },
     {
       "id": "rel-ai-exp-wiki-topic-brasil-wiki-topic-argentina-7de653",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-argentina",
       "type": "associated_with",
       "label": "associado a",
@@ -24303,7 +23812,7 @@
     {
       "id": "rel-exp-wiki-topic-partido-dos-trabalhadores-wiki-topic-brasil",
       "fromEntityId": "wiki-topic-partido-dos-trabalhadores",
-      "toEntityId": "wiki-topic-brasil",
+      "toEntityId": "country-brazil",
       "type": "documented-association",
       "label": "fundou",
       "reverseLabel": "foi fundada por",
