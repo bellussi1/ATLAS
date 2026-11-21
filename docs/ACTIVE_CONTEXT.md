@@ -113,8 +113,8 @@ Atualizado em 19/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 
 ## Próxima ação
 
-0. **Publicado em produção (19/11):** release `58e0b932` no R2 e deploy no Pages com Era Vargas, Golpe de 1964 e 20 itinerários. Revisar em produção e, quando a leitura humana acontecer, promover os selos de `com-fontes` para `revisado` com revisor identificado.
-1. Fechar a Onda 2: `Estado` e `Revolução` precisam de 1 tipo de bloco cada; Karl Marx, Adam Smith, Segunda Guerra e Ditadura militar precisam de prosa com fonte.
+0. **Release v0.4.0 (21/11):** conteúdo `4c091248` no R2 (Brasil e Portugal unidos no grafo, pacote enxuto de leituras, Estado e Revolução no piso) e front com o design system Feira Afro, ícones Lucide, índice da leitura em barra e folha, tour com volta ao topo, "Por onde começar" na home e bundle fatiado por rota. Espelho de imagens da Wikimedia (`infra:mirror-media`) **não** foi rodado: depende de aval. Revisar em produção e promover selos `com-fontes` para `revisado` só com revisor identificado.
+1. Fechar a Onda 2: Karl Marx, Adam Smith, Segunda Guerra e Ditadura militar precisam de prosa com fonte.
 2. Criar a leitura `Escravidão e abolição` (Wave 3) para sustentar o itinerário `escravidao-abolicionismo-e-cidadania`, que não fecha sem verbetes.
 3. Publicar os posts `09-slider` (18/12), `10-mapa` (21/11) e `11-lacunas` (24/11): dry-runs já passaram; falta token e revisão do PDF.
 4. Fatiar o bundle de 35 MB por rota (#96) e a proveniência raw do piloto (#83).
@@ -134,3 +134,10 @@ Atualizado em 19/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 - Números do README vêm do release `5974a46`; o app local mostra 1.318 registros e 2.513 ligações, ou seja, o conteúdo local diverge do release publicado.
 - **Índice da leitura — barra e folha (20/11):** no celular e até 900px o índice vira barra compacta sob o cabeçalho (capítulo, "N de 12", % lido, setas anterior/próximo) que abre folha `dialog` com a lista (alvos de 44px, foco preso, Esc ou o voltar do navegador fecham sem sair da página, controle de movimento e "Voltar de onde veio" no rodapé); antes ele ficava sob o cabeçalho fixo e o seletor nativo ocupava ~25% da tela. Desktop: lista com altura natural, rolagem própria que mantém o capítulo atual à vista, sem cabeçalho preto. E2E `pages.spec` ajustado (barra/folha no lugar do select). Pendente: `ideology-sheets` e `knowledge-network`/`app-shell` (specs de outra frente) seguem falhando.
 - **Como usar (20/11):** a seção da home virou "Por onde começar": faixa de três termos, um caminho principal (Ler, `/leituras`) e três linhas (Seguir `/grafos`, Situar `/mapa?anoDe=1914&anoAte=1945`, Percorrer `/itinerarios`), cada uma com exemplo tirado de `home-stats.json`, das eras do mapa e de um itinerário publicado; fecha com link para `/acervo`. Sem abas nem arte inventada; 2000px para ~1270px no celular. Sem mudança em tokens.
+
+## 2026-11-21 — Release v0.4.0
+
+- `develop` reúne `master` (hotfix do `fetch-raw`) e as frentes de E2E das fichas, desempenho por rota, qualidade do grafo e Onda 2. Conflito único em `content-repository.service.ts`/`r2-content.mjs`/`publish-r2.mjs`/`content-pointer.ts`: mantidos espelho de mídia e pacote enxuto. `world-map.spec` passou a validar a união por ISO.
+- Verificado: lint, typecheck, `npm test` 499/499, `test:content` 245/245, `test:ingestion` 85/85, build (1.401 rotas), `check:links`, E2E principais 80/81 na porta 4305. A falha restante (`pages.spec:530`, imagens repetidas) vem do `build:local` sem as 3 mídias no cache local (retratos com `src` vazio); o release publicado tem as mídias.
+- E2E local precisa da porta 4305: só nela `src/index.html` aponta o conteúdo para `/content`; em outra porta o app lê o release de produção e os testes de carregamento falham.
+- Pendências humanas: revisão de fontes, 30 perguntas do benchmark, Android/iOS, `AMAZON_ASSOCIATE_TAG`, token/PDF do LinkedIn, cópia segura de `~/.atlas/r2.env`. A pasta `referencias/` aparece apagada na árvore local sem commit; não foi tocada.
