@@ -70,6 +70,7 @@ import { illustrationPalette } from '@shared/ui/geometric-illustration/illustrat
 import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
 import { AtlasSectionSwitcherComponent } from '@shared/ui/section-switcher/section-switcher.component';
+import { TourService } from '@shared/ui/tour/tour.service';
 
 import { batchEdgeSegments, type EdgeSegment } from './network-batching';
 import {
@@ -222,6 +223,7 @@ export class KnowledgeNetworkComponent {
   private readonly destroyRef = inject(DestroyRef);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly injector = inject(Injector);
+  protected readonly tour = inject(TourService);
   private readonly stage = viewChild<ElementRef<HTMLElement>>('stage');
   private readonly bar = viewChild<ElementRef<HTMLElement>>('bar');
   private readonly runtime = runtimeForGraph(this.repository.knowledgeGraph);

@@ -41,6 +41,7 @@ import {
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import { AtlasSectionSwitcherComponent } from '@shared/ui/section-switcher/section-switcher.component';
+import { TourService } from '@shared/ui/tour/tour.service';
 import { MapStudyDeskComponent } from '@world-map/components/map-study-desk/map-study-desk.component';
 import globeMapData from '@world-map/data/natural-earth-globe.json';
 import {
@@ -172,6 +173,7 @@ const START_TERRITORIES = [
 export class WorldMapPageComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
+  protected readonly tour = inject(TourService);
   private readonly repository = inject(ContentRepository);
   private readonly document = inject(DOCUMENT);
   private readonly hostRef = inject<ElementRef<HTMLElement>>(ElementRef);
@@ -953,7 +955,7 @@ export class WorldMapPageComponent {
     this.selectedTerritoryId.set(hp.territoryId);
     this.highlightedRecordSlug.set(hp.slug);
     this.detailsCollapsed.set(false);
-    this.flyTo(hp.focusLon, hp.focusLat, Math.max(this.zoomFactor(), 1.55));
+    this.flyTo(hp.focusLon, hp.focusLat, this.zoomFactor());
     this.syncQueryParams();
   }
 
@@ -1746,11 +1748,7 @@ export class WorldMapPageComponent {
     this.highlightedRecordSlug.set(recordSlug);
     this.detailsCollapsed.set(false);
     if (territory.coordinates) {
-      this.flyTo(
-        territory.coordinates.lon,
-        territory.coordinates.lat,
-        Math.max(this.zoomFactor(), 1.45),
-      );
+      this.flyTo(territory.coordinates.lon, territory.coordinates.lat, this.zoomFactor());
     }
     if (syncUrl) this.syncQueryParams();
   }

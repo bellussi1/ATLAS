@@ -38,6 +38,7 @@ describe('ATLAS navigation', () => {
       '/grafos',
       '/mapa',
       '/privacidade',
+      '/cookies',
       ...explorerCatalogues.map((catalogue) => catalogueUrl(catalogue.path)),
     ];
     for (const a of root.querySelectorAll<HTMLAnchorElement>('a[href]'))

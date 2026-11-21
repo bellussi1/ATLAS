@@ -17,6 +17,7 @@ const declaredDestinations = [
   '/grafos',
   '/mapa',
   '/privacidade',
+  '/cookies',
   ...explorerCatalogues.map((catalogue) => catalogueUrl(catalogue.path)),
 ];
 

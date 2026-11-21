@@ -62,6 +62,7 @@ describe('Public pages', () => {
       'itinerario/:slug',
       'mapa',
       'privacidade',
+      'cookies',
     ]);
     expect(routes.find((r) => r.path === '**')?.title).toBe('Página não encontrada — ATLAS');
   });

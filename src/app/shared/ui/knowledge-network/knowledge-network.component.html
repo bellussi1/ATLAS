@@ -55,6 +55,11 @@
         }
       </form>
       <div class="bar__actions">
+        @if (!embedded()) {
+          <button type="button" class="chip" (click)="tour.start('grafo')">
+            <app-icon name="help" />Tour guiado
+          </button>
+        }
         <button
           type="button"
           class="chip"
