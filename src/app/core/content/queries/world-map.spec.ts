@@ -294,7 +294,7 @@ describe('world map queries', () => {
     });
     expect(pickSurpriseCandidate(model)).not.toBeNull();
   });
-  it('folds a same-named place with only a start year into the current country', () => {
+  it('unites places that share an ISO code and keeps a same-named place without one apart', () => {
     const base = {
       aliases: [],
       context: 'Contexto.',
@@ -350,6 +350,17 @@ describe('world map queries', () => {
                 precision: 'year' as const,
                 label: '1500–',
               },
+              placeCategory: 'country' as const,
+              isoAlpha2: 'BR',
+              isoNumeric: '076',
+            },
+            {
+              ...base,
+              id: 'wiki-topic-brasil-sem-iso',
+              slug: 'brasil-sem-iso',
+              title: 'Brasil',
+              summary: 'Um registro de mesmo nome, sem código ISO.',
+              temporalExtent: null,
               placeCategory: 'city' as const,
             },
           ],
@@ -359,8 +370,9 @@ describe('world map queries', () => {
 
     const brazil = buildWorldMapModel(graph).territories.filter((item) => item.title === 'Brasil');
 
-    expect(brazil).toHaveLength(1);
-    expect(brazil[0].layer).toBe('country');
-    expect(brazil[0].memberSlugs).toEqual(['brasil', 'brasil-wikipedia']);
+    // The graph holds one country record: the map unites by ISO code and never by name alone.
+    expect(brazil).toHaveLength(2);
+    const country = brazil.find((item) => item.layer === 'country');
+    expect(country?.memberSlugs).toEqual(['brasil', 'brasil-wikipedia']);
   });
 });
