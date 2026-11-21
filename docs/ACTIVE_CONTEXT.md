@@ -124,3 +124,11 @@ Atualizado em 19/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 
 - `README.md` agora é em inglês (hero, as quatro páginas, modelo de afirmações, arquitetura, contribuição em duas trilhas); o antigo virou `README.pt-BR.md`, com link cruzado. Capturas locais em `docs/readme/*.webp`. Nada commitado.
 - Números do README vêm do release `5974a46`; o app local mostra 1.318 registros e 2.513 ligações, ou seja, o conteúdo local diverge do release publicado.
+
+## 2026-11-20 — Qualidade do grafo: Brasil e Portugal unificados
+
+- **Dado:** `wiki-topic-brasil` e `wiki-topic-portugal` (cópias enciclopédicas, sem país tipado) foram absorvidos por `country-brazil` e `country-portugal` com `scripts/content/merge-entities.mjs --from <id> --into <id>`. Relações (47 do Brasil, 10 de Portugal; 20 viraram duplicata e foram somadas), afirmações e blocos de dossiê (era-vargas, golpe-de-1964, ditadura-militar-brasileira, trabalhismo) apontam para a canônica. A cadeia afirmação, revisão, citação, evidência e fonte da cópia foi para `atlas-constitutional-contexts` com os mesmos IDs (o esquema exige afirmação e entidade na mesma coleção). A canônica herdou apelidos, `externalIds` e `discoveryMetadata`; título, resumo, contexto e seções não mudaram para não invalidar a tradução aprovada. As seções "Origem" e "Ideias centrais" da cópia (texto da Wikipédia) deixaram de existir como texto; os fatos seguem nas afirmações.
+- **Redirect:** `/verbete/brasil-wikipedia` e `/verbete/portugal-wikipedia` para o slug canônico em `public/_redirects`.
+- **Código:** `world-map.ts` não funde mais por título; só une entidades com o mesmo ISO. Teste novo `scripts/content/graph-quality.spec.mjs` (sem dois países com o mesmo nome, nenhum lugar não tipado repete título de país).
+- **Release:** o hash mudou (build local `2671d86f…`, antes `5974a46a`). Nada publicado; `content/content-pointer.json` intacto. Falta `npm run content:publish` (decisão humana).
+- **Pendente:** `npm run enrich:apply` NÃO rodou. O Ollama local não respondeu em `localhost:11434` e os rascunhos (`enrichment-claims/`, `relacoes-por-embedding-drafts/`) estão fora do git, só no checkout principal. Subir o Ollama e rodar `--dry-run` no checkout que tem os rascunhos.
