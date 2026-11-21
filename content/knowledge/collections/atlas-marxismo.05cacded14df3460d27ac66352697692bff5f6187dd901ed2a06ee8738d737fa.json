@@ -2243,19 +2243,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-maoismo-wiki-topic-brasil-68b1da",
-      "fromEntityId": "wiki-topic-maoismo",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "influenced",
-      "label": "influenciou",
-      "reverseLabel": "foi influenciado por",
-      "context": "[conferência de IA] O Partido Comunista do Brasil adotou o maoismo como orientação entre 1962 e 1976.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-maoismo-007"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-maoismo-wiki-topic-partido-c-427625",
       "fromEntityId": "wiki-topic-maoismo",
       "toEntityId": "wiki-topic-partido-comunista-do-brasil",

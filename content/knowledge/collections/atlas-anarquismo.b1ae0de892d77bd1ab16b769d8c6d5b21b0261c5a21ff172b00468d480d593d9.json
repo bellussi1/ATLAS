@@ -18089,7 +18089,7 @@
     {
       "id": "rel-wiki-topic-fernando-henrique-cardoso-007",
       "fromEntityId": "wiki-topic-fernando-henrique-cardoso",
-      "toEntityId": "wiki-topic-brasil",
+      "toEntityId": "country-brazil",
       "type": "documented-association",
       "label": "governou",
       "reverseLabel": "foi governado por",
@@ -20458,19 +20458,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-rio-da-pr-wiki-topic-brasil-c71d84",
-      "fromEntityId": "wiki-topic-rio-da-prata",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] A livre navegação era objetivo do Império do Brasil e do Uruguai, contrariando interesses das Províncias Unidas do Rio da Prata e do Paraguai.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-rio-da-prata-007"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-rio-da-pr-wiki-topic-paraguai-1f56fc",
       "fromEntityId": "wiki-topic-rio-da-prata",
       "toEntityId": "wiki-topic-paraguai",
@@ -20900,19 +20887,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-america-d-wiki-topic-brasil-643642",
-      "fromEntityId": "wiki-topic-america-do-sul",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] O Brasil representa atualmente a metade da população e do produto econômico da região.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-america-do-sul-010"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-chile-wiki-topic-peru-532d12",
       "fromEntityId": "wiki-topic-chile",
       "toEntityId": "wiki-topic-peru",
@@ -21001,19 +20975,6 @@
       "temporalExtent": null,
       "uncertainty": "low",
       "evidenceIds": ["ev-wiki-topic-sindicato-001"],
-      "editorialStatus": "pending"
-    },
-    {
-      "id": "rel-ai-exp-wiki-topic-sindicato-wiki-topic-brasil-8c11dc",
-      "fromEntityId": "wiki-topic-sindicato",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] O artigo indica, em sua bibliografia, a obra Direito do trabalho no Brasil.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-sindicato-004"],
       "editorialStatus": "pending"
     },
     {

@@ -1,0 +1,89 @@
+<article class="cookies">
+  <h1>Cookies e armazenamento.</h1>
+  <p class="cookies__deck">
+    O ATLAS não define nenhum cookie. Guarda no seu navegador apenas dois recados, que servem ao
+    próprio funcionamento do site e não identificam ninguém.
+  </p>
+
+  <section>
+    <h2>O que fica guardado</h2>
+    <div
+      class="cookies__table"
+      role="region"
+      aria-label="Itens guardados no navegador"
+      tabindex="0"
+    >
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Onde</th>
+            <th scope="col">Para quê</th>
+            <th scope="col">Até quando</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><code>atlas:tour:v1:…</code></th>
+            <td>Armazenamento local</td>
+            <td>
+              Lembrar que o tour guiado de cada página já foi mostrado, para não abri-lo de novo na
+              próxima visita.
+            </td>
+            <td>Até você limpar os dados do site</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>atlas:chunk-reload</code></th>
+            <td>Armazenamento da aba</td>
+            <td>
+              Evitar que a página recarregue sem parar quando uma versão nova do site é publicada
+              enquanto você a lê.
+            </td>
+            <td>Até fechar a aba</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Esses itens são necessários ao que você usa no site e ficam só no seu aparelho: o ATLAS não os
+      envia a ninguém. Por isso não há faixa de aceitar cookies.
+    </p>
+  </section>
+
+  <section>
+    <h2>Medição de visitas</h2>
+    <p>
+      A medição é agregada e sem cookies. Veja como funciona, quem processa e como desligar em
+      <a routerLink="/privacidade">Privacidade</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Rever os tours</h2>
+    <p>
+      Cada página abre o tour guiado na primeira visita. Para vê-los de novo em todas as páginas,
+      apague o recado acima.
+    </p>
+    <button type="button" class="cookies__reset" (click)="resetTours()">
+      Mostrar os tours de novo
+    </button>
+    <p class="cookies__status" role="status">
+      @if (cleared()) {
+        Pronto. Cada página volta a abrir o tour na próxima visita.
+      }
+    </p>
+  </section>
+
+  <section>
+    <h2>Como apagar tudo</h2>
+    <p>
+      Nas configurações do navegador, limpe os dados do site. Nada de importante se perde: você só
+      volta a ver os tours.
+    </p>
+  </section>
+
+  <p class="cookies__note">
+    Última atualização: 20/11/2026. Dúvidas ou pedido de remoção: abra uma issue no
+    <a href="https://github.com/bellussi1/ATLAS/issues" rel="noopener">repositório</a>.
+  </p>
+</article>

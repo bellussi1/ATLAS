@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, PlatformLocation } from '@angular/common';
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Meta, Title } from '@angular/platform-browser';
@@ -21,6 +21,8 @@ import {
   NavigationFailureComponent,
   type NavigationFailureKind,
 } from './navigation-failure/navigation-failure.component';
+
+const fullscreenPath = /^\/(grafos|grafo|rede|mapa|mapa-mundi)(?:\/|$)/;
 
 @Component({
   selector: 'app-root',
@@ -56,7 +58,9 @@ export class AppComponent {
   readonly loadingLabel = signal('Carregando…');
   /** Routes with `data.fullscreen` own the whole window: no header, breadcrumbs or footer. */
   readonly fullscreen = signal(
-    /^\/(grafos|grafo|rede|mapa|mapa-mundi)(?:\/|$)/.test(this.router.url.split(/[?#]/)[0]),
+    // `router.url` is still '/' while the shell is built, so the prerendered and first client
+    // renders showed the header and then dropped it (a layout shift). The location is already right.
+    fullscreenPath.test(inject(PlatformLocation).pathname),
   );
   readonly pageTitle = signal('ATLAS — compreender o mundo');
 
@@ -97,7 +101,7 @@ export class AppComponent {
       this.previousTitle.set(null);
       this.retrying.set(false);
       const path = event.urlAfterRedirects.split(/[?#]/)[0];
-      this.fullscreen.set(/^\/(grafos|grafo|rede|mapa|mapa-mundi)(?:\/|$)/.test(path));
+      this.fullscreen.set(fullscreenPath.test(path));
       // Moving to another page hands focus to its content; query and fragment changes keep it.
       if (this.currentPath !== null && path !== this.currentPath) this.focusMainContent();
       this.currentPath = path;

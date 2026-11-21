@@ -33,6 +33,7 @@ const routes = [
   '/mapa',
   '/verbete/brasil',
   '/privacidade',
+  '/cookies',
 ];
 
 for (const width of [390, 1440])

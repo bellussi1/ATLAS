@@ -1,9 +1,10 @@
-import { webcrypto } from 'node:crypto';
+import { createHash, webcrypto } from 'node:crypto';
 
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { makeStateKey, PLATFORM_ID, TransferState } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { mirrorSlot } from '@core/content/media/mirror-index';
 import { queryKnowledgeRelations } from '@core/content/queries/knowledge-graph';
 import {
   contentAssetFixture,
@@ -214,5 +215,131 @@ describe('ContentRepository generated assets', () => {
     request.flush('{"schemaVersion":999}');
     await pending;
     http.verify();
+  });
+
+  describe('lean reading bundle', () => {
+    const digest = (text: string) => createHash('sha256').update(text).digest('hex');
+    const bundleText = (ideologies: Record<string, unknown>) =>
+      JSON.stringify({
+        graph: methodologyKnowledgeGraph,
+        search: [],
+        adjacency: {},
+        layouts: {},
+        ideologies,
+      });
+    const lean = bundleText({ lean: { page: {}, supplement: {} } });
+    const full = bundleText({ full: { page: {}, supplement: {} } });
+    const pointer = {
+      ...JSON.parse(contentAssetFixture['pointer.json']),
+      bundle: { sha256: digest(full), bytes: new TextEncoder().encode(full).byteLength },
+      readingBundle: { sha256: digest(lean), bytes: new TextEncoder().encode(lean).byteLength },
+    };
+    const assets: Record<string, string> = {
+      ...contentAssetFixture,
+      'pointer.json': JSON.stringify(pointer),
+      [`c/${pointer.bundle.sha256}.json`]: full,
+      [`c/${pointer.readingBundle.sha256}.json`]: lean,
+    };
+    beforeEach(() => {
+      TestBed.resetTestingModule();
+      TestBed.configureTestingModule({
+        providers: [
+          { provide: PLATFORM_ID, useValue: 'browser' },
+          { provide: CONTENT_PREFETCH, useValue: false },
+          {
+            provide: CONTENT_ASSET_READER,
+            useValue: async (path: string) => {
+              reads.push(path);
+              return assets[path];
+            },
+          },
+        ],
+      });
+    });
+
+    it('serves a reading from the lean bundle and never downloads the full one', async () => {
+      const repository = TestBed.inject(ContentRepository);
+      await firstValueFrom(repository.loadReadingGraph());
+      expect(reads).toEqual(['pointer.json', `c/${pointer.readingBundle.sha256}.json`]);
+      expect(repository.bundledItineraries).toBeUndefined();
+      expect(await repository.loadIdeology('lean')).not.toBeNull();
+    });
+
+    it('upgrades to the full bundle for the explorer and then serves readings from it', async () => {
+      const repository = TestBed.inject(ContentRepository);
+      await firstValueFrom(repository.loadReadingGraph());
+      await firstValueFrom(repository.loadKnowledgeGraph());
+      expect(reads).toContain(`c/${pointer.bundle.sha256}.json`);
+      const total = reads.length;
+      await firstValueFrom(repository.loadReadingGraph());
+      expect(reads).toHaveLength(total);
+      expect(await repository.loadIdeology('full')).not.toBeNull();
+    });
+
+    it('does not fetch the lean bundle once the full one is loading or loaded', async () => {
+      const repository = TestBed.inject(ContentRepository);
+      const [, graph] = await Promise.all([
+        firstValueFrom(repository.loadKnowledgeGraph()),
+        firstValueFrom(repository.loadReadingGraph()),
+      ]);
+      expect(graph).toBe(repository.knowledgeGraph);
+      expect(reads).not.toContain(`c/${pointer.readingBundle.sha256}.json`);
+    });
+  });
+});
+
+describe('ContentRepository mirrored media', () => {
+  const thumbnail =
+    'https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Chapel.jpg/960px-Chapel.jpg';
+  const object = `${'a'.repeat(64)}.jpg`;
+
+  async function setup(indexBody: string | null) {
+    vi.stubGlobal('crypto', webcrypto);
+    const assets: Record<string, string> = { ...contentAssetFixture };
+    const pointer = JSON.parse(assets['pointer.json']);
+    if (indexBody) {
+      const bytes = new TextEncoder().encode(indexBody);
+      const sha256 = Buffer.from(await webcrypto.subtle.digest('SHA-256', bytes)).toString('hex');
+      pointer.mirror = { sha256, bytes: bytes.byteLength };
+      assets[`c/${sha256}.json`] = indexBody;
+    }
+    assets['pointer.json'] = JSON.stringify(pointer);
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: PLATFORM_ID, useValue: 'browser' },
+        { provide: CONTENT_PREFETCH, useValue: false },
+        {
+          provide: CONTENT_ASSET_READER,
+          useValue: async (path: string) => {
+            if (!Object.hasOwn(assets, path)) throw new Error(`Missing ${path}`);
+            return assets[path];
+          },
+        },
+      ],
+    });
+    const repository = TestBed.inject(ContentRepository);
+    await firstValueFrom(repository.loadKnowledgeGraph());
+    return { repository, baseUrl: pointer.baseUrl as string };
+  }
+  afterEach(() => {
+    TestBed.resetTestingModule();
+    vi.unstubAllGlobals();
+  });
+
+  it('resolves a mirrored thumbnail to the immutable object on the bucket', async () => {
+    const index = JSON.stringify({
+      schemaVersion: 1,
+      entries: { [mirrorSlot(thumbnail)]: object },
+    });
+    const { repository, baseUrl } = await setup(`${index}\n`);
+    expect(repository.mirrorUrl(thumbnail)).toBe(`${baseUrl}/m/${object}`);
+    expect(repository.mirrorUrl(`${thumbnail}?other`)).toBeNull();
+  });
+
+  it('keeps the original address when the release has no mirror or the index is invalid', async () => {
+    expect((await setup(null)).repository.mirrorUrl(thumbnail)).toBeNull();
+    TestBed.resetTestingModule();
+    const broken = await setup('{"schemaVersion":1,"entries":{"x":"nope"}}\n');
+    expect(broken.repository.mirrorUrl(thumbnail)).toBeNull();
   });
 });

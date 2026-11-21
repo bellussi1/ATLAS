@@ -55,6 +55,11 @@
         }
       </form>
       <div class="bar__actions">
+        @if (!embedded()) {
+          <button type="button" class="chip" (click)="tour.start('grafo')">
+            <app-icon name="help" />Tour guiado
+          </button>
+        }
         <button
           type="button"
           class="chip"
@@ -94,7 +99,11 @@
       [class.is-shown]="controlsShown()"
       aria-label="Legenda e filtros"
     >
-      <details class="panel" open>
+      <details
+        class="panel"
+        [open]="kindsOpen()"
+        (toggle)="kindsOpen.set($any($event.target).open)"
+      >
         <summary>
           <h2>Tipos de nó</h2>
           <span class="panel__badge" [class.panel__badge--accent]="kindsOn().size < kinds.length">
@@ -967,6 +976,9 @@
                   </ul>
                 }
               </section>
+            }
+            @if (nextSteps().length) {
+              <app-network-next [steps]="nextSteps()" (pick)="select($event, true)" />
             }
             <section aria-labelledby="detail-links">
               <h3 id="detail-links">

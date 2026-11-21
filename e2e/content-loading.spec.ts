@@ -37,8 +37,10 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
   const compiled = resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path));
   const manifest = await loadManifest();
   if (manifest.bundle) {
-    // The reading route downloads the packaged graph, indexes and layouts in one object.
-    expect(compiled).toEqual([`/c/${manifest.bundle.sha256}.json`]);
+    // The reading route downloads one packaged object: the lean bundle when the release has it,
+    // which leaves out the explorer's full-text index and backlinks.
+    const reading = manifest.readingBundle ?? manifest.bundle;
+    expect(compiled).toEqual([`/c/${reading.sha256}.json`]);
     expect(resources.filter((path) => path === '/pointer.json')).toHaveLength(1);
     await page.locator('.site-header').getByRole('link', { name: 'Leituras', exact: true }).click();
     await expect(page.locator('h1')).toHaveText('Leituras contínuas');
@@ -158,7 +160,7 @@ test('a missing content object keeps the current page and retries after recovery
   page,
 }) => {
   const pointer = JSON.parse(await readFile('generated/content-cache/pointer.json', 'utf8'));
-  const bundle = `/c/${pointer.bundle.sha256}.json`;
+  const bundle = `/c/${(pointer.readingBundle ?? pointer.bundle).sha256}.json`;
   await page.goto('/leituras');
   await page.route(`${base}${bundle}`, (route) =>
     route.fulfill({ status: 404, contentType: 'text/plain', body: 'missing object' }),

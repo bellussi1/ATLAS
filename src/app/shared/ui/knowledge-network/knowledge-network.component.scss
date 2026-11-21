@@ -1460,12 +1460,14 @@ summary::-webkit-details-marker {
     height: 1.6rem;
     width: calc(1.6rem * 3.5);
   }
+  /* Logo, search and menu share the first row; the tools get the second. */
   app-section-switcher {
-    margin-left: auto;
+    order: 2;
   }
   .search {
-    flex-basis: 100%;
-    order: 3;
+    flex: 1 1 7rem;
+    order: 1;
+    min-width: 0;
   }
   .search__input {
     min-height: 40px;

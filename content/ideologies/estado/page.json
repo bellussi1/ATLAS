@@ -36,9 +36,7 @@
       ],
       "question": "O que define Estado?",
       "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
-      "sourceIds": [
-        "src-wiki-topic-estado"
-      ],
+      "sourceIds": ["src-wiki-topic-estado"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -56,9 +54,7 @@
       ],
       "question": "Como e em que contexto Estado surgiu?",
       "bridge": "Visto o contexto de formação, seguem os eixos e processos centrais.",
-      "sourceIds": [
-        "src-wiki-topic-estado"
-      ],
+      "sourceIds": ["src-wiki-topic-estado"],
       "review": null,
       "gap": "Usa passagens de contexto histórico porque a fonte principal não separa uma seção de origens.",
       "coverage": "partial",
@@ -76,12 +72,8 @@
               "paragraphs": [
                 "Segundo a Convenção de Montevidéu de 1933, o Estado como pessoa de direito internacional deve ter população permanente, território definido, governo e capacidade de relações com outros Estados."
               ],
-              "sourceIds": [
-                "src-wiki-topic-estado"
-              ],
-              "entityIds": [
-                "wiki-topic-estado"
-              ],
+              "sourceIds": ["src-wiki-topic-estado"],
+              "entityIds": ["wiki-topic-estado"],
               "classification": "alegação empírica"
             }
           ]
@@ -99,9 +91,7 @@
       ],
       "question": "Quais ideias e práticas estruturam Estado?",
       "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
-      "sourceIds": [
-        "src-wiki-topic-estado"
-      ],
+      "sourceIds": ["src-wiki-topic-estado"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -119,12 +109,8 @@
               "paragraphs": [
                 "Segundo Max Weber, Estado é uma forma de governo que mantém o monopólio do uso legítimo da violência, embora outras definições sejam comuns."
               ],
-              "sourceIds": [
-                "src-wiki-topic-estado"
-              ],
-              "entityIds": [
-                "wiki-topic-estado"
-              ],
+              "sourceIds": ["src-wiki-topic-estado"],
+              "entityIds": ["wiki-topic-estado"],
               "classification": "tese atribuída"
             }
           ]
@@ -156,9 +142,7 @@
       "blocks": [
         {
           "type": "entities",
-          "entityIds": [
-            "wiki-topic-estado"
-          ],
+          "entityIds": ["wiki-topic-estado"],
           "mode": "concepts",
           "notes": {
             "wiki-topic-estado": "Nomes alternativos: State."
@@ -188,9 +172,7 @@
       ],
       "question": "Em que períodos históricos Estado se formou e mudou?",
       "bridge": "Da cronologia, passamos aos atores, protagonistas e obras ligadas ao recorte.",
-      "sourceIds": [
-        "src-wiki-topic-estado"
-      ],
+      "sourceIds": ["src-wiki-topic-estado"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -208,12 +190,8 @@
               "paragraphs": [
                 "Convenção de Montevidéu sobre os Direitos e Deveres dos Estados, que estabelece qualificações do Estado como pessoa de direito internacional."
               ],
-              "sourceIds": [
-                "src-wiki-topic-estado"
-              ],
-              "entityIds": [
-                "wiki-topic-estado"
-              ],
+              "sourceIds": ["src-wiki-topic-estado"],
+              "entityIds": ["wiki-topic-estado"],
               "classification": "alegação empírica"
             },
             {
@@ -224,12 +202,8 @@
               "paragraphs": [
                 "Declaração sobre a Concessão da Independência aos Países e Povos Coloniais, que instituiu o contexto jurídico para a soberania popular segundo Adom Getachew."
               ],
-              "sourceIds": [
-                "src-wiki-topic-estado"
-              ],
-              "entityIds": [
-                "wiki-topic-estado"
-              ],
+              "sourceIds": ["src-wiki-topic-estado"],
+              "entityIds": ["wiki-topic-estado"],
               "classification": "alegação empírica"
             }
           ]
@@ -248,9 +222,7 @@
               "end": 1960
             }
           ],
-          "entityIds": [
-            "wiki-topic-estado"
-          ],
+          "entityIds": ["wiki-topic-estado"],
           "markerIds": [],
           "markerNotes": {}
         },
@@ -362,9 +334,7 @@
         },
         {
           "type": "entities",
-          "entityIds": [
-            "wiki-topic-ciencia-politica"
-          ],
+          "entityIds": ["wiki-topic-ciencia-politica"],
           "mode": "documents",
           "notes": {
             "wiki-topic-ciencia-politica": "[conferência de IA] Há debate interno sobre o objeto de estudo: para alguns, o Estado; para outros, o poder."
@@ -539,9 +509,7 @@
       ],
       "question": "Quais críticas e controvérsias cercam Estado?",
       "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
-      "sourceIds": [
-        "src-wiki-topic-estado"
-      ],
+      "sourceIds": ["src-wiki-topic-estado"],
       "review": null,
       "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
       "coverage": "partial",
@@ -559,12 +527,8 @@
               "paragraphs": [
                 "A visão predatória, defendida por Charles Tilly, compara o Estado a uma forma de crime organizado."
               ],
-              "sourceIds": [
-                "src-wiki-topic-estado"
-              ],
-              "entityIds": [
-                "wiki-topic-estado"
-              ],
+              "sourceIds": ["src-wiki-topic-estado"],
+              "entityIds": ["wiki-topic-estado"],
               "classification": "alegação empírica"
             },
             {
@@ -575,12 +539,8 @@
               "paragraphs": [
                 "A frase 'L'État, c'est moi' é atribuída a Luís XIV, mas provavelmente é apócrifa."
               ],
-              "sourceIds": [
-                "src-wiki-topic-estado"
-              ],
-              "entityIds": [
-                "wiki-topic-estado"
-              ],
+              "sourceIds": ["src-wiki-topic-estado"],
+              "entityIds": ["wiki-topic-estado"],
               "classification": "alegação empírica"
             }
           ]
@@ -670,27 +630,127 @@
       "kicker": "Roteiro de leitura",
       "minutes": 1,
       "narrative": [
-        "Obras ligadas à tradição: O Príncipe, Bíblia."
+        "Obras ligadas à tradição: O Príncipe, Bíblia.",
+        "O roteiro parte dos textos clássicos que fixaram o vocabulário do Estado moderno (Maquiavel, Hobbes, Locke), passa pela crítica marxista e pela definição de Weber e chega às leituras contemporâneas, do Estado mínimo de Nozick à tese de Tilly sobre a guerra e a formação estatal.",
+        "Para o caso brasileiro, Faoro e Carvalho oferecem interpretações distintas e concorrentes sobre a origem e a feição do Estado no país."
       ],
       "question": "Que obras e documentos aprofundam o estudo de Estado?",
       "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
-      "sourceIds": [
-        "src-wiki-topic-o-principe",
-        "src-wiki-topic-biblia"
-      ],
+      "sourceIds": ["src-wiki-topic-o-principe", "src-wiki-topic-biblia"],
       "review": null,
-      "gap": "Obras ligadas à tradição; edição e nível de leitura ainda pendentes.",
-      "coverage": "partial",
+      "gap": null,
+      "coverage": "complete",
       "layout": "documents",
       "blocks": [
         {
           "type": "entities",
-          "entityIds": [
-            "wiki-topic-o-principe",
-            "wiki-topic-biblia"
-          ],
+          "entityIds": ["wiki-topic-o-principe", "wiki-topic-biblia"],
           "mode": "documents",
           "notes": {}
+        },
+        {
+          "type": "reading-path",
+          "works": [
+            {
+              "title": "O Príncipe",
+              "author": "Nicolau Maquiavel",
+              "year": "1532",
+              "edition": "Roma, 1532 (escrito em 1513)",
+              "level": "introdutório",
+              "theme": "Poder e política",
+              "why": "Texto curto e fundador do vocabulário moderno do Estado: trata da conquista e da conservação do poder político.",
+              "kind": "primária",
+              "entityId": "wiki-topic-o-principe"
+            },
+            {
+              "title": "Leviatã",
+              "author": "Thomas Hobbes",
+              "year": "1651",
+              "edition": "Londres, 1651",
+              "level": "intermediário",
+              "theme": "Contrato e soberania",
+              "why": "Defende que a autoridade soberana nasce de um pacto para escapar da guerra de todos contra todos; é a referência da teoria contratualista do Estado.",
+              "kind": "primária",
+              "entityId": null
+            },
+            {
+              "title": "Segundo tratado sobre o governo civil",
+              "author": "John Locke",
+              "year": "1689",
+              "edition": "Londres, 1689",
+              "level": "intermediário",
+              "theme": "Governo limitado",
+              "why": "Fundamenta o governo no consentimento e nos direitos naturais, em contraste com a soberania absoluta de Hobbes.",
+              "kind": "primária",
+              "entityId": null
+            },
+            {
+              "title": "O Estado e a revolução",
+              "author": "Vladimir Lênin",
+              "year": "1917",
+              "edition": "Escrito em 1917; publicado em Petrogrado, 1918",
+              "level": "intermediário",
+              "theme": "Crítica marxista",
+              "why": "Expõe a leitura leninista do Estado como instrumento de dominação de classe e a defesa de sua superação revolucionária.",
+              "kind": "primária",
+              "entityId": null
+            },
+            {
+              "title": "A política como vocação",
+              "author": "Max Weber",
+              "year": "1919",
+              "edition": "Conferência de Munique, 1919",
+              "level": "intermediário",
+              "theme": "Definição sociológica",
+              "why": "Contém a definição mais citada de Estado: a comunidade humana que reivindica, com êxito, o monopólio do uso legítimo da força física em um território.",
+              "kind": "primária",
+              "entityId": null
+            },
+            {
+              "title": "Anarquia, Estado e utopia",
+              "author": "Robert Nozick",
+              "year": "1974",
+              "edition": "Nova York, Basic Books, 1974",
+              "level": "avançado",
+              "theme": "Estado mínimo",
+              "why": "Argumenta que só um Estado mínimo, restrito à proteção contra a força e a fraude, seria justificável; é a principal formulação libertária contemporânea.",
+              "kind": "primária",
+              "entityId": null
+            },
+            {
+              "title": "War Making and State Making as Organized Crime",
+              "author": "Charles Tilly",
+              "year": "1985",
+              "edition": "Em Bringing the State Back In, Cambridge University Press, 1985",
+              "level": "avançado",
+              "theme": "Formação histórica",
+              "why": "Compara a formação dos Estados europeus a uma forma de extorsão por proteção, tese que o verbete atribui ao autor.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "Os donos do poder",
+              "author": "Raymundo Faoro",
+              "year": "1958",
+              "edition": "Porto Alegre, Globo, 1958",
+              "level": "avançado",
+              "theme": "Caso brasileiro",
+              "why": "Interpreta o Estado brasileiro pela continuidade de um estamento burocrático patrimonial herdado de Portugal.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "A construção da ordem",
+              "author": "José Murilo de Carvalho",
+              "year": "1980",
+              "edition": "Rio de Janeiro, Campus, 1980",
+              "level": "intermediário",
+              "theme": "Caso brasileiro",
+              "why": "Estuda a formação da elite política imperial e a centralização do Estado no Brasil do século XIX.",
+              "kind": "estudo",
+              "entityId": null
+            }
+          ]
         }
       ]
     },

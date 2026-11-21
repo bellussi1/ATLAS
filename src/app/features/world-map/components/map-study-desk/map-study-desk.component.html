@@ -35,7 +35,8 @@
   </header>
 
   <p class="desk-period-pill">{{ formatExtent(conn.temporalExtent) }}</p>
-  <p class="desk-prose">{{ conn.label }}</p>
+  <p class="desk-prose">{{ familyNote(conn.family) }}</p>
+  <p class="desk-note"><strong>Registro que sustenta:</strong> {{ conn.label }}</p>
 
   @if (readableText(conn.context); as ctx) {
     <p class="desk-note">{{ ctx }}</p>
@@ -51,6 +52,13 @@
   }
 
   <div class="desk-actions">
+    <a
+      class="desk-btn desk-btn--primary"
+      [routerLink]="['/grafos']"
+      [queryParams]="{ de: conn.fromTerritoryId, para: conn.toTerritoryId }"
+    >
+      Ver o caminho no grafo <app-icon name="arrow-right" />
+    </a>
     <button type="button" class="desk-btn" (click)="selectTerritory.emit(conn.fromTerritoryId)">
       Focar {{ conn.fromTitle }}
     </button>
@@ -301,7 +309,7 @@
                   >{{ conn.fromTitle }}
                 }
               </strong>
-              <small>{{ conn.label }}</small>
+              <small><span class="desk-conn-why">Registro:</span> {{ conn.label }}</small>
             </button>
           </li>
         }

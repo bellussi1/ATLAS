@@ -1,59 +1,47 @@
+<ng-template #chapterList>
+  @for (group of groups(); track $index) {
+    @if (group.label) {
+      <a
+        class="index-act"
+        [href]="'#' + group.items[0].section.anchor"
+        (click)="followChapter($event, group.items[0].section.anchor)"
+        >{{ group.label }}<small>{{ group.items.length }} capítulos</small></a
+      >
+    }
+    @for (item of group.items; track item.section.anchor) {
+      <a
+        [href]="'#' + item.section.anchor"
+        [attr.aria-current]="active() === item.section.anchor ? 'location' : null"
+        (click)="followChapter($event, item.section.anchor)"
+      >
+        <span class="chapter-number" [attr.data-shape]="item.index % 4"
+          >{{ item.index + 1 < 10 ? '0' : '' }}{{ item.index + 1 }}</span
+        >
+        <span class="chapter-title">
+          {{ item.section.title }}
+          @if (item.section.minutes !== undefined && item.section.minutes > 1) {
+            <small>{{ item.section.minutes }} min</small>
+          }
+        </span>
+      </a>
+    }
+  }
+</ng-template>
+
 <aside class="reading-index" aria-label="Orientação da leitura" [attr.data-tone]="tone()">
   <div class="index-topline">
     <p class="index-heading">Nesta leitura</p>
-    <label class="progress-label" for="reading-progress">Você leu {{ progress() }}%</label>
+    <label class="progress-label" for="reading-progress">Lido: {{ progress() }}%</label>
   </div>
   <progress id="reading-progress" max="100" [value]="progress()"></progress>
 
-  <nav class="desktop-nav" aria-label="Capítulos">
-    @for (group of groups(); track $index) {
-      @if (group.label) {
-        <a
-          class="index-act"
-          [href]="'#' + group.items[0].section.anchor"
-          [attr.data-open]="group.label === activeGroup()"
-          (click)="followChapter($event, group.items[0].section.anchor)"
-          >{{ group.label }}<small>{{ group.items.length }} capítulos</small></a
-        >
-      }
-      @for (item of group.items; track item.section.anchor) {
-        <a
-          [href]="'#' + item.section.anchor"
-          [attr.aria-current]="active() === item.section.anchor ? 'location' : null"
-          (click)="followChapter($event, item.section.anchor)"
-        >
-          <span class="chapter-number" [attr.data-shape]="item.index % 4"
-            >{{ item.index + 1 < 10 ? '0' : '' }}{{ item.index + 1 }}</span
-          >
-          <span class="chapter-title">
-            {{ item.section.title }}
-            @if (item.section.minutes !== undefined) {
-              <small>{{ item.section.minutes }} min</small>
-            }
-          </span>
-        </a>
-      }
-    }
+  <nav class="desktop-nav" aria-label="Capítulos" #desktopList>
+    <ng-container *ngTemplateOutlet="chapterList" />
   </nav>
-
-  <div class="mobile-picker">
-    <label for="reading-chapter-picker">Ir para capítulo</label>
-    <select id="reading-chapter-picker" (change)="selectChapter($event)">
-      @for (group of groups(); track $index) {
-        <optgroup [label]="group.label || 'Capítulos'">
-          @for (item of group.items; track item.section.anchor) {
-            <option [value]="item.section.anchor" [selected]="active() === item.section.anchor">
-              {{ item.index + 1 < 10 ? '0' : '' }}{{ item.index + 1 }} · {{ item.section.title }}
-            </option>
-          }
-        </optgroup>
-      }
-    </select>
-  </div>
 
   <div class="index-controls">
     @if (hasPrevious()) {
-      <button type="button" class="return-control" (click)="previousRequested.emit()">
+      <button type="button" class="return-control" (click)="returnToPrevious()">
         Voltar de onde veio
       </button>
     }
@@ -66,4 +54,74 @@
       {{ reducedMotion() ? 'Restaurar movimento' : 'Reduzir movimento' }}
     </button>
   </div>
+
+  <div class="mobile-bar">
+    <button
+      type="button"
+      class="step-button"
+      aria-label="Capítulo anterior"
+      [disabled]="!position().previous"
+      (click)="goTo(position().previous?.anchor)"
+    >
+      <app-icon name="chevron-left" />
+    </button>
+    <button
+      type="button"
+      class="bar-current"
+      aria-haspopup="dialog"
+      aria-controls="reading-sheet"
+      [attr.aria-expanded]="sheetOpen()"
+      (click)="openSheet()"
+    >
+      <span class="bar-meta"
+        >Capítulo {{ position().index + 1 }} de {{ position().total }} · {{ progress() }}%
+        lido</span
+      >
+      <span class="bar-title">{{ position().current?.title }}</span>
+      <app-icon name="chevron-up" />
+    </button>
+    <button
+      type="button"
+      class="step-button"
+      aria-label="Próximo capítulo"
+      [disabled]="!position().next"
+      (click)="goTo(position().next?.anchor)"
+    >
+      <app-icon name="chevron-right" />
+    </button>
+    <span class="bar-progress" aria-hidden="true" [style.width.%]="progress()"></span>
+  </div>
+
+  <dialog
+    #sheet
+    id="reading-sheet"
+    class="sheet"
+    aria-labelledby="reading-sheet-title"
+    (close)="onSheetClosed()"
+  >
+    <div class="sheet-head">
+      <h2 id="reading-sheet-title">Capítulos</h2>
+      <button type="button" class="sheet-close" (click)="closeSheet()">
+        <app-icon name="close" />
+        <span>Fechar</span>
+      </button>
+    </div>
+    @if (sheetOpen()) {
+      <nav class="sheet-list" aria-label="Capítulos">
+        <ng-container *ngTemplateOutlet="chapterList" />
+      </nav>
+      <div class="sheet-foot">
+        @if (hasPrevious()) {
+          <button type="button" (click)="returnToPrevious()">Voltar de onde veio</button>
+        }
+        <button
+          type="button"
+          [attr.aria-pressed]="reducedMotion()"
+          (click)="motionToggleRequested.emit()"
+        >
+          {{ reducedMotion() ? 'Restaurar movimento' : 'Reduzir movimento' }}
+        </button>
+      </div>
+    }
+  </dialog>
 </aside>

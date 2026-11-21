@@ -34,6 +34,12 @@ export const routes: Routes = [
     title: 'Privacidade — ATLAS',
   },
   {
+    path: 'cookies',
+    loadComponent: () =>
+      import('./pages/cookies/cookies-page.component').then((m) => m.CookiesPageComponent),
+    title: 'Cookies e armazenamento — ATLAS',
+  },
+  {
     path: '**',
     loadComponent: () =>
       import('@shared/ui/not-found-message/not-found-message.component').then(

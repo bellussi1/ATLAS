@@ -10,7 +10,7 @@ async function loadedRepository() {
   const { ContentRepository } =
     await import('@core/content/repositories/content-repository.service');
   const repository = injector.get(ContentRepository);
-  await firstValueFrom(repository.loadKnowledgeGraph());
+  await firstValueFrom(repository.loadReadingGraph());
   return repository;
 }
 

@@ -41,8 +41,8 @@ import {
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import { AtlasSectionSwitcherComponent } from '@shared/ui/section-switcher/section-switcher.component';
+import { TourService } from '@shared/ui/tour/tour.service';
 import { MapStudyDeskComponent } from '@world-map/components/map-study-desk/map-study-desk.component';
-import globeMapData from '@world-map/data/natural-earth-globe.json';
 import {
   type GlobeHitConnection,
   hitTestConnectionArc,
@@ -120,15 +120,10 @@ const ALL_LAYERS: readonly {
   { id: 'locality', label: 'Cidades e lugares' },
 ];
 
-const FAMILY_COLOR_FALLBACKS: Readonly<Record<RelationFamilyId, string>> = {
-  influenced: '#b81d16',
-  rupture: '#9a4a0c',
-  participation: '#164f60',
-  creation: '#24563b',
-  continuity: '#363a5f',
-  affiliation: '#363a5f',
-  location: '#777268',
-};
+/** Colours before the page reads the tokens: the same token of each family as the legend. */
+const FAMILY_COLOR_FALLBACKS = Object.fromEntries(
+  relationFamilies.map((family) => [family.id, '#777268']),
+) as Record<RelationFamilyId, string>;
 
 const ALL_FAMILY_IDS = relationFamilies.map((family) => family.id);
 
@@ -177,6 +172,7 @@ const START_TERRITORIES = [
 export class WorldMapPageComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
+  protected readonly tour = inject(TourService);
   private readonly repository = inject(ContentRepository);
   private readonly document = inject(DOCUMENT);
   private readonly hostRef = inject<ElementRef<HTMLElement>>(ElementRef);
@@ -195,7 +191,7 @@ export class WorldMapPageComponent {
     initialValue: this.route.snapshot.queryParamMap,
   });
 
-  readonly baseMap: GlobeBaseMap = globeMapData as unknown as GlobeBaseMap;
+  readonly baseMap = this.route.snapshot.data['globe'] as GlobeBaseMap;
   readonly eraPresets = WORLD_MAP_ERA_PRESETS;
   readonly families: readonly RelationFamilyDefinition[] = relationFamilies;
   readonly layers = ALL_LAYERS;
@@ -779,7 +775,7 @@ export class WorldMapPageComponent {
         this.resizeObserver = new ResizeObserver(() => this.scheduleLayoutMeasure());
         this.resizeObserver.observe(stage);
       }
-      this.repository.warmBundle(true);
+      this.repository.warmReading(true);
       this.schedulePaint();
     });
 
@@ -958,7 +954,7 @@ export class WorldMapPageComponent {
     this.selectedTerritoryId.set(hp.territoryId);
     this.highlightedRecordSlug.set(hp.slug);
     this.detailsCollapsed.set(false);
-    this.flyTo(hp.focusLon, hp.focusLat, Math.max(this.zoomFactor(), 1.55));
+    this.flyTo(hp.focusLon, hp.focusLat, this.zoomFactor());
     this.syncQueryParams();
   }
 
@@ -1349,15 +1345,12 @@ export class WorldMapPageComponent {
     const resolve = (cssVar: string, fallback: string) =>
       style.getPropertyValue(cssVar).trim() || fallback;
 
-    this.familyColorMap.set({
-      influenced: resolve('--color-accent', FAMILY_COLOR_FALLBACKS.influenced),
-      rupture: resolve('--color-orange-strong', FAMILY_COLOR_FALLBACKS.rupture),
-      participation: resolve('--color-info', FAMILY_COLOR_FALLBACKS.participation),
-      creation: resolve('--color-success', FAMILY_COLOR_FALLBACKS.creation),
-      continuity: resolve('--color-indigo', FAMILY_COLOR_FALLBACKS.continuity),
-      affiliation: resolve('--color-indigo', FAMILY_COLOR_FALLBACKS.affiliation),
-      location: resolve('--color-border-strong', FAMILY_COLOR_FALLBACKS.location),
-    });
+    // One source: the legend and the arcs on the globe read the same token of each family.
+    this.familyColorMap.set(
+      Object.fromEntries(
+        relationFamilies.map((family) => [family.id, resolve(family.color, '#777268')]),
+      ) as Record<RelationFamilyId, string>,
+    );
   }
 
   private scheduleLayoutMeasure(): void {
@@ -1754,11 +1747,7 @@ export class WorldMapPageComponent {
     this.highlightedRecordSlug.set(recordSlug);
     this.detailsCollapsed.set(false);
     if (territory.coordinates) {
-      this.flyTo(
-        territory.coordinates.lon,
-        territory.coordinates.lat,
-        Math.max(this.zoomFactor(), 1.45),
-      );
+      this.flyTo(territory.coordinates.lon, territory.coordinates.lat, this.zoomFactor());
     }
     if (syncUrl) this.syncQueryParams();
   }

@@ -1,0 +1,93 @@
+.cookies {
+  max-inline-size: 46rem;
+  margin: 0 auto;
+  padding: 2rem var(--grid-gutter) 4rem;
+
+  h1 {
+    margin: 0.4rem 0 1rem;
+    font: 800 clamp(2.4rem, 7vw, 4.6rem) / 0.95 var(--font-sans);
+    letter-spacing: -0.04em;
+  }
+
+  h2 {
+    margin: 2.2rem 0 0.6rem;
+    font: 700 1.15rem/1.2 var(--font-sans);
+  }
+
+  p {
+    max-inline-size: 40rem;
+    color: var(--color-ink-muted);
+    font: 400 1.05rem/1.65 var(--font-serif);
+  }
+
+  a {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  code {
+    font: 600 0.9em var(--font-numeric);
+    overflow-wrap: anywhere;
+  }
+}
+
+.cookies__deck {
+  border-block-start: 3px solid var(--color-ink);
+  padding-block-start: 1rem;
+  color: var(--color-ink);
+  font: 400 1.25rem/1.5 var(--font-serif);
+}
+
+.cookies__table {
+  overflow-x: auto;
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-tight);
+  background: var(--color-surface-raised);
+  table {
+    inline-size: 100%;
+    min-inline-size: 36rem;
+    border-collapse: collapse;
+    font: 400 0.95rem/1.5 var(--font-primary);
+  }
+  th,
+  td {
+    padding: 0.7rem 0.8rem;
+    border-block-end: 1px solid var(--color-border);
+    text-align: start;
+    vertical-align: top;
+  }
+  thead th {
+    background: var(--color-surface-subtle);
+    font-weight: 700;
+  }
+  tbody tr:last-child :is(th, td) {
+    border-block-end: 0;
+  }
+}
+
+.cookies__reset {
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-tight);
+  background: var(--color-surface-raised);
+  color: var(--color-ink);
+  box-shadow: 3px 3px 0 var(--color-ink);
+  font: 650 var(--text-small) / 1 var(--font-primary);
+  cursor: pointer;
+  &:hover {
+    background: var(--color-surface-subtle);
+  }
+}
+
+.cookies__status {
+  min-block-size: 1.65em;
+}
+
+.cookies__note {
+  margin-block-start: 2.6rem;
+  padding-block-start: 1rem;
+  border-block-start: 1px solid var(--color-border-strong);
+  font: 400 0.9rem/1.5 var(--font-sans);
+}

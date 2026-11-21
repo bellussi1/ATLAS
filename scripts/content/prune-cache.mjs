@@ -37,6 +37,7 @@ function collectPointerKeys(pointer) {
   for (const artifact of pointer.artifacts ?? []) keys.add(`c/${artifact.sha256}.json`);
   if (pointer.bundle) keys.add(`c/${pointer.bundle.sha256}.json`);
   if (pointer.networkBundle) keys.add(`c/${pointer.networkBundle.sha256}.json`);
+  if (pointer.readingBundle) keys.add(`c/${pointer.readingBundle.sha256}.json`);
   for (const item of pointer.media ?? []) keys.add(item.key);
   return keys;
 }
@@ -58,6 +59,7 @@ async function collectManifestFiles() {
   add(manifest.network);
   add(manifest.bundle);
   add(manifest.networkBundle);
+  add(manifest.readingBundle);
   return files;
 }
 

@@ -5,6 +5,7 @@
         [src]="record.assetPath | contentMedia"
         [alt]="alt()"
         [attr.loading]="loading()"
+        decoding="async"
         [attr.fetchpriority]="fetchPriority()"
       />
       @if (credit()) {

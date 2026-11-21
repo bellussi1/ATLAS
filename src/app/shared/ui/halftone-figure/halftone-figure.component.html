@@ -1,7 +1,12 @@
 @if (treatable(); as record) {
   <figure>
     <div class="plate">
-      <img [src]="record.assetPath | contentMedia" [alt]="alt()" [attr.loading]="loading()" />
+      <img
+        [src]="record.assetPath | contentMedia"
+        [alt]="alt()"
+        [attr.loading]="loading()"
+        decoding="async"
+      />
       <span class="plate__ink" aria-hidden="true"></span>
       <span class="plate__screen atlas-halftone" aria-hidden="true"></span>
     </div>

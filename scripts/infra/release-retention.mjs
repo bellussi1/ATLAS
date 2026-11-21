@@ -12,8 +12,8 @@ export function keepPointers(current, history, keep = 4) {
 }
 
 /** Every immutable key a set of pointers still needs. */
-export function keysForPointers(pointers) {
-  const keys = new Set(['pointer.json']);
+export function keysForPointers(pointers, extraKeys = []) {
+  const keys = new Set(['pointer.json', ...extraKeys]);
   for (const pointer of pointers) {
     keys.add(`c/${pointer.manifest.sha256}.json`);
     for (const artifact of pointer.artifacts) keys.add(`c/${artifact.sha256}.json`);

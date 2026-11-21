@@ -17,6 +17,7 @@ const declaredDestinations = [
   '/grafos',
   '/mapa',
   '/privacidade',
+  '/cookies',
   ...explorerCatalogues.map((catalogue) => catalogueUrl(catalogue.path)),
 ];
 
@@ -385,11 +386,15 @@ test('ideology reading controls stay in sync on desktop and mobile', async ({ pa
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
-    const chapterPicker = page.getByLabel('Ir para capítulo');
-    await expect(chapterPicker.locator('option')).toHaveCount(12);
-    await chapterPicker.selectOption(secondAnchor);
-    await expect(chapterPicker).toHaveValue(secondAnchor);
+    const chapterBar = page.locator('app-ideology-reading-index .bar-current');
+    await expect(chapterBar).toBeVisible();
+    await chapterBar.click();
+    const sheet = page.getByRole('dialog', { name: 'Capítulos' });
+    await expect(sheet.locator('a:not(.index-act)')).toHaveCount(12);
+    await sheet.locator(`a[href="#${secondAnchor}"]`).click();
+    await expect(sheet).toBeHidden();
     await expect(page.locator(`#${secondAnchor}`)).toBeFocused();
+    await expect(chapterBar).toContainText('Capítulo 2 de 12');
   }
 });
 

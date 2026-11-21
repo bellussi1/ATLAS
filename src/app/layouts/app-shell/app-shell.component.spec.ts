@@ -1,4 +1,6 @@
+import { PlatformLocation } from '@angular/common';
 import { provideHttpClient } from '@angular/common/http';
+import { MOCK_PLATFORM_LOCATION_CONFIG, MockPlatformLocation } from '@angular/common/testing';
 import { PLATFORM_ID } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
@@ -36,6 +38,7 @@ describe('ATLAS navigation', () => {
       '/grafos',
       '/mapa',
       '/privacidade',
+      '/cookies',
       ...explorerCatalogues.map((catalogue) => catalogueUrl(catalogue.path)),
     ];
     for (const a of root.querySelectorAll<HTMLAnchorElement>('a[href]'))
@@ -96,5 +99,27 @@ describe('ATLAS navigation', () => {
     expect(root.querySelector('.nav-loading')?.textContent).toContain(
       'Preparando a rede de ligações…',
     );
+  });
+});
+
+describe('ATLAS shell on a fullscreen address', () => {
+  it('starts without header and footer, so the first render does not shift', () => {
+    TestBed.configureTestingModule({
+      imports: [AppComponent],
+      providers: [
+        provideRouter(routes),
+        provideHttpClient(),
+        ...provideContentFixture(),
+        { provide: PLATFORM_ID, useValue: 'server' },
+        { provide: MOCK_PLATFORM_LOCATION_CONFIG, useValue: { startUrl: 'http://localhost/mapa' } },
+        { provide: PlatformLocation, useClass: MockPlatformLocation },
+      ],
+    });
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    expect(root.querySelector('header')).toBeNull();
+    expect(root.querySelector('footer')).toBeNull();
+    expect(root.querySelector('main')).not.toBeNull();
   });
 });
