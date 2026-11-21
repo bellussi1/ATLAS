@@ -36,9 +36,7 @@
       ],
       "question": "O que define Revolução?",
       "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
-      "sourceIds": [
-        "src-wiki-conceito-revolucao"
-      ],
+      "sourceIds": ["src-wiki-conceito-revolucao"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -56,9 +54,7 @@
       ],
       "question": "Como e em que contexto Revolução surgiu?",
       "bridge": "Visto o contexto de formação, seguem os eixos e processos centrais.",
-      "sourceIds": [
-        "src-wiki-conceito-revolucao"
-      ],
+      "sourceIds": ["src-wiki-conceito-revolucao"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -76,12 +72,8 @@
               "paragraphs": [
                 "O uso político do termo foi estabelecido em 1688 para designar a substituição do Rei Jaime II por Guilherme III, evento chamado de Revolução Gloriosa."
               ],
-              "sourceIds": [
-                "src-wiki-conceito-revolucao"
-              ],
-              "entityIds": [
-                "wiki-conceito-revolucao"
-              ],
+              "sourceIds": ["src-wiki-conceito-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
               "classification": "alegação empírica"
             }
           ]
@@ -99,9 +91,7 @@
       ],
       "question": "Quais ideias e práticas estruturam Revolução?",
       "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
-      "sourceIds": [
-        "src-wiki-conceito-revolucao"
-      ],
+      "sourceIds": ["src-wiki-conceito-revolucao"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -119,12 +109,8 @@
               "paragraphs": [
                 "Na perspectiva jurídica, revolução é a derrubada por meios ilegais da ordem jurídica vigente, seguida da instauração de uma nova ordem."
               ],
-              "sourceIds": [
-                "src-wiki-conceito-revolucao"
-              ],
-              "entityIds": [
-                "wiki-conceito-revolucao"
-              ],
+              "sourceIds": ["src-wiki-conceito-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
               "classification": "tese atribuída"
             }
           ]
@@ -137,14 +123,10 @@
       "title": "Conceitos e palavras-chave",
       "kicker": "Conceitos e palavras-chave",
       "minutes": 1,
-      "narrative": [
-        "Também chamada de revolution."
-      ],
+      "narrative": ["Também chamada de revolution."],
       "question": "Que termos e conceitos ajudam a compreender Revolução?",
       "bridge": "Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.",
-      "sourceIds": [
-        "src-wiki-conceito-revolucao"
-      ],
+      "sourceIds": ["src-wiki-conceito-revolucao"],
       "review": null,
       "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
       "coverage": "partial",
@@ -152,9 +134,7 @@
       "blocks": [
         {
           "type": "entities",
-          "entityIds": [
-            "wiki-conceito-revolucao"
-          ],
+          "entityIds": ["wiki-conceito-revolucao"],
           "mode": "concepts",
           "notes": {
             "wiki-conceito-revolucao": "Nomes alternativos: revolution."
@@ -177,10 +157,7 @@
       ],
       "question": "Em que períodos históricos Revolução se formou e mudou?",
       "bridge": "Da cronologia, passamos aos atores, protagonistas e obras ligadas ao recorte.",
-      "sourceIds": [
-        "src-wiki-conceito-revolucao",
-        "src-wiki-topic-revolucao"
-      ],
+      "sourceIds": ["src-wiki-conceito-revolucao", "src-wiki-topic-revolucao"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -198,12 +175,8 @@
               "paragraphs": [
                 "Nicolau Copérnico emprega o termo revolução, com sentido astronômico, em De revolutionibus orbium coelestium."
               ],
-              "sourceIds": [
-                "src-wiki-conceito-revolucao"
-              ],
-              "entityIds": [
-                "wiki-conceito-revolucao"
-              ],
+              "sourceIds": ["src-wiki-conceito-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
               "classification": "alegação empírica"
             },
             {
@@ -214,12 +187,8 @@
               "paragraphs": [
                 "Estabelece-se o uso político do termo para designar a substituição do Rei Jaime II por Guilherme III, chamada Revolução Gloriosa."
               ],
-              "sourceIds": [
-                "src-wiki-conceito-revolucao"
-              ],
-              "entityIds": [
-                "wiki-conceito-revolucao"
-              ],
+              "sourceIds": ["src-wiki-conceito-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
               "classification": "alegação empírica"
             },
             {
@@ -230,12 +199,8 @@
               "paragraphs": [
                 "Estabelecimento do uso político do termo para designar a substituição do Rei Jaime II por Guilherme III, chamada Revolução Gloriosa."
               ],
-              "sourceIds": [
-                "src-wiki-topic-revolucao"
-              ],
-              "entityIds": [
-                "wiki-conceito-revolucao"
-              ],
+              "sourceIds": ["src-wiki-topic-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
               "classification": "alegação empírica"
             },
             {
@@ -246,12 +211,8 @@
               "paragraphs": [
                 "Ocorrência da Revolução Russa, citada entre as revoluções recentes do século XX."
               ],
-              "sourceIds": [
-                "src-wiki-topic-revolucao"
-              ],
-              "entityIds": [
-                "wiki-conceito-revolucao"
-              ],
+              "sourceIds": ["src-wiki-topic-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
               "classification": "alegação empírica"
             },
             {
@@ -262,12 +223,8 @@
               "paragraphs": [
                 "A Revolução Iraniana derrubou o Estado Imperial do Irã e instaurou uma república islâmica."
               ],
-              "sourceIds": [
-                "src-wiki-topic-revolucao"
-              ],
-              "entityIds": [
-                "wiki-conceito-revolucao"
-              ],
+              "sourceIds": ["src-wiki-topic-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
               "classification": "alegação empírica"
             }
           ]
@@ -301,9 +258,7 @@
               "end": 1979
             }
           ],
-          "entityIds": [
-            "wiki-conceito-revolucao"
-          ],
+          "entityIds": ["wiki-conceito-revolucao"],
           "markerIds": [],
           "markerNotes": {}
         },
@@ -597,10 +552,7 @@
       ],
       "question": "Quais críticas e controvérsias cercam Revolução?",
       "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
-      "sourceIds": [
-        "src-wiki-conceito-revolucao",
-        "src-wiki-topic-revolucao"
-      ],
+      "sourceIds": ["src-wiki-conceito-revolucao", "src-wiki-topic-revolucao"],
       "review": null,
       "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo. Este capítulo reúne apenas o que o grafo sustenta hoje: duas críticas registradas com fonte, uma sobre o alcance geográfico limitado das teorias de segunda geração e outra sobre o uso historicográfico dos termos Revolução Inglesa e Revolução Gloriosa. Não há, no acervo, passagem que registre a defesa original dessas teorias, a resposta dos autores criticados ou os limites aceitos por cada lado. Publicar esses papéis exigiria fonte que os nomeie; enquanto isso, o capítulo declara a lacuna em vez de preenchê-la com síntese. Quem quiser fechar a lacuna tem caminho curto: localizar a formulação original das teorias de segunda geração, registrar a citação que a defende e abrir a crítica correspondente com a mesma fonte. Enquanto isso, as duas entradas abaixo seguem marcadas como críticas, não como balanço do debate.",
       "coverage": "partial",
@@ -618,12 +570,8 @@
               "paragraphs": [
                 "As teorias da segunda geração receberam críticas quanto à extensão geográfica limitada e à dificuldade de verificação empírica."
               ],
-              "sourceIds": [
-                "src-wiki-conceito-revolucao"
-              ],
-              "entityIds": [
-                "wiki-conceito-revolucao"
-              ],
+              "sourceIds": ["src-wiki-conceito-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
               "classification": "alegação empírica"
             },
             {
@@ -634,12 +582,8 @@
               "paragraphs": [
                 "Uma corrente minoritária de historiadores marxistas usa os termos Revolução Inglesa e Revolução Gloriosa para designar períodos distintos da mesma revolução."
               ],
-              "sourceIds": [
-                "src-wiki-topic-revolucao"
-              ],
-              "entityIds": [
-                "wiki-conceito-revolucao"
-              ],
+              "sourceIds": ["src-wiki-topic-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
               "classification": "alegação empírica"
             }
           ]
@@ -719,7 +663,8 @@
       "minutes": 1,
       "narrative": [
         "A bibliografia do verbete lista Hannah Arendt, com a obra On Revolution, publicada em 1963.",
-        "Obras ligadas à tradição: Ciência política, Jurista, Bíblia."
+        "O roteiro segue a sucessão das interpretações: a crítica contemporânea de Burke, a leitura de Marx, a continuidade apontada por Tocqueville, as teorias de primeira geração (Brinton) e de segunda geração (Skocpol), e a reflexão de Arendt.",
+        "Para o Brasil, Prado Júnior e Fausto tratam de sentidos diferentes de revolução: a transformação estrutural do país e o movimento de 1930."
       ],
       "question": "Que obras e documentos aprofundam o estudo de Revolução?",
       "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
@@ -729,8 +674,8 @@
         "src-wiki-topic-biblia"
       ],
       "review": null,
-      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
-      "coverage": "partial",
+      "gap": null,
+      "coverage": "complete",
       "layout": "documents",
       "blocks": [
         {
@@ -745,25 +690,121 @@
               "paragraphs": [
                 "A bibliografia do verbete lista Hannah Arendt, com a obra On Revolution, publicada em 1963."
               ],
-              "sourceIds": [
-                "src-wiki-conceito-revolucao"
-              ],
-              "entityIds": [
-                "wiki-conceito-revolucao"
-              ],
+              "sourceIds": ["src-wiki-conceito-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
               "classification": "alegação empírica"
             }
           ]
         },
         {
           "type": "entities",
-          "entityIds": [
-            "wiki-topic-ciencia-politica",
-            "wiki-topic-jurista",
-            "wiki-topic-biblia"
-          ],
+          "entityIds": ["wiki-topic-ciencia-politica", "wiki-topic-jurista", "wiki-topic-biblia"],
           "mode": "documents",
           "notes": {}
+        },
+        {
+          "type": "reading-path",
+          "works": [
+            {
+              "title": "Reflexões sobre a Revolução em França",
+              "author": "Edmund Burke",
+              "year": "1790",
+              "edition": "Londres, 1790",
+              "level": "intermediário",
+              "theme": "Crítica conservadora",
+              "why": "Primeira grande crítica à Revolução Francesa, escrita ainda em seu curso: defende a mudança gradual e desconfia de projetos abstratos de refundação.",
+              "kind": "crítica",
+              "entityId": null
+            },
+            {
+              "title": "O 18 de Brumário de Luís Bonaparte",
+              "author": "Karl Marx",
+              "year": "1852",
+              "edition": "Die Revolution, Nova York, 1852",
+              "level": "intermediário",
+              "theme": "Análise marxista",
+              "why": "Lê o golpe de 1851 na França como desdobramento de uma revolução derrotada e discute a relação entre classes e política.",
+              "kind": "primária",
+              "entityId": null
+            },
+            {
+              "title": "O Antigo Regime e a Revolução",
+              "author": "Alexis de Tocqueville",
+              "year": "1856",
+              "edition": "Paris, 1856",
+              "level": "intermediário",
+              "theme": "Continuidade e ruptura",
+              "why": "Sustenta que a Revolução Francesa deu continuidade à centralização administrativa do Antigo Regime, em vez de simplesmente rompê-la.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "The Anatomy of Revolution",
+              "author": "Crane Brinton",
+              "year": "1938",
+              "edition": "Nova York, W. W. Norton, 1938",
+              "level": "introdutório",
+              "theme": "Teoria comparada",
+              "why": "Compara as revoluções inglesa, americana, francesa e russa para propor fases comuns; ilustra as teorias de primeira geração.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "A era das revoluções, 1789–1848",
+              "author": "Eric Hobsbawm",
+              "year": "1962",
+              "edition": "Londres, Weidenfeld & Nicolson, 1962",
+              "level": "introdutório",
+              "theme": "Panorama histórico",
+              "why": "Situa a revolução industrial e a Revolução Francesa como processos duplos que redesenharam a Europa.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "On Revolution",
+              "author": "Hannah Arendt",
+              "year": "1963",
+              "edition": "Nova York, Viking Press, 1963",
+              "level": "avançado",
+              "theme": "Teoria política",
+              "why": "Compara as revoluções americana e francesa e discute a fundação da liberdade política; consta da bibliografia do verbete.",
+              "kind": "estudo",
+              "entityId": "wiki-conceito-revolucao"
+            },
+            {
+              "title": "States and Social Revolutions",
+              "author": "Theda Skocpol",
+              "year": "1979",
+              "edition": "Cambridge University Press, 1979",
+              "level": "avançado",
+              "theme": "Teoria de segunda geração",
+              "why": "Explica as revoluções francesa, russa e chinesa por estruturas estatais e pressões internacionais, não por vontades de grupos; é a obra central das teorias de segunda geração.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "A revolução brasileira",
+              "author": "Caio Prado Júnior",
+              "year": "1966",
+              "edition": "São Paulo, Brasiliense, 1966",
+              "level": "avançado",
+              "theme": "Caso brasileiro",
+              "why": "Debate o sentido de uma revolução no Brasil a partir da formação colonial do país e discute a tese de etapas.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "A Revolução de 1930: historiografia e história",
+              "author": "Boris Fausto",
+              "year": "1970",
+              "edition": "São Paulo, Brasiliense, 1970",
+              "level": "intermediário",
+              "theme": "Caso brasileiro",
+              "why": "Revisa as interpretações da Revolução de 1930 e o debate sobre seu caráter.",
+              "kind": "estudo",
+              "entityId": null
+            }
+          ]
         }
       ]
     },
