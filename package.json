@@ -11,7 +11,7 @@
     "content:local": "node scripts/content/build-local-release.mjs",
     "content:prune": "node scripts/content/prune-cache.mjs",
     "content:review-firecrawl": "node scripts/content/review-firecrawl-queue.mjs",
-    "build:local": "npm run content:build && npm run content:local && npm run ng -- build",
+    "build:local": "npm run content:build && npm run content:local && npm run ng -- build && node scripts/security-headers.mjs",
     "preview:local": "npm run build:local && node scripts/content/preview-local.mjs",
     "itinerary:check": "node scripts/content/check-itineraries.mjs",
     "content:fetch": "node scripts/content/fetch-content.mjs",
