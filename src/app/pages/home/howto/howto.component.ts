@@ -1,78 +1,89 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { WORLD_MAP_ERA_PRESETS } from '@core/content/queries/world-map-eras';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
-import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
+import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 
-/** Purpose of the archive, then the four-step guide on the home page. */
+import homeStats from '../../../../../generated/home-stats.json';
+
+const { counts, readings } = homeStats;
+const era = WORLD_MAP_ERA_PRESETS.find((item) => item.id === '1914-1945');
+const format = (value: number) => new Intl.NumberFormat('pt-BR').format(value);
+const leadTitles = readings.slice(0, 2).map((item) => item.title);
+
+interface HowtoPath {
+  readonly id: string;
+  readonly tone: 'vermelho' | 'jenipapo' | 'ocre' | 'rosa';
+  readonly shape: 'square' | 'circle' | 'ring' | 'half';
+  readonly verb: string;
+  readonly text: string;
+  readonly example: string;
+  readonly path: string;
+  readonly queryParams?: Record<string, number | null>;
+}
+
+/** What to do in the archive: one real destination per gesture, with an example from the data. */
 @Component({
   selector: 'app-home-howto',
-  imports: [AtlasChevronComponent, AtlasRevealDirective, RouterLink],
+  imports: [AtlasIconComponent, AtlasRevealDirective, RouterLink],
   templateUrl: './howto.component.html',
   styleUrl: './howto.component.scss',
 })
 export class HomeHowtoComponent {
   readonly purpose = [
-    {
-      term: 'Contexto',
-      shape: 'quarter',
-      text: 'Quem disse, quando e onde: datas, lugares e o período em que cada ideia ou fato aparece.',
-    },
-    {
-      term: 'Relações',
-      shape: 'circle',
-      text: 'Quem influenciou quem, o que rompeu com o quê, quem participou de cada acontecimento.',
-    },
+    { term: 'Contexto', shape: 'quarter', text: 'Quando e onde cada ideia ou fato aparece.' },
+    { term: 'Relações', shape: 'circle', text: 'Quem influenciou quem e quem participou do quê.' },
     {
       term: 'Evidência',
       shape: 'square',
-      text: 'Fato documentado, interpretação e controvérsia aparecem separados, cada um com a fonte.',
+      text: 'Fato, interpretação e controvérsia, cada um com a fonte.',
     },
   ] as const;
-  readonly howTo = [
-    {
-      id: 'procurar',
-      verb: 'Procurar',
-      short: 'Um nome, um conceito, uma pergunta',
-      title: 'Comece por uma palavra',
-      body: 'Digite um nome, conceito ou pergunta na busca. Ela percorre o acervo inteiro e separa o que é pessoa, obra, conceito ou acontecimento.',
-      action: 'Abrir o acervo',
-      path: '/acervo',
-      fragment: undefined,
-    },
-    {
-      id: 'abrir',
-      verb: 'Abrir',
-      short: 'Termos em vermelho abrem fichas',
-      title: 'Abra o termo sem sair do texto',
-      body: 'Nas leituras, palavras sublinhadas em vermelho abrem uma ficha com resumo, datas e fontes. Feche e você volta exatamente ao ponto onde estava.',
-      action: 'Ler uma tradição',
-      path: '/',
-      fragment: 'leituras',
-    },
+
+  readonly lead: HowtoPath = {
+    id: 'ler',
+    tone: 'vermelho',
+    shape: 'square',
+    verb: 'Ler uma leitura contínua',
+    text: 'Um assunto de ponta a ponta, em capítulos. Termos sublinhados abrem a ficha sem tirar você do texto.',
+    example: `${leadTitles.join(', ')} e mais ${counts.readings - leadTitles.length} leituras, com ${format(counts.chapters)} capítulos no total.`,
+    path: '/leituras',
+  };
+
+  readonly others: readonly HowtoPath[] = [
     {
       id: 'seguir',
-      verb: 'Seguir',
-      short: 'Cada ficha leva à próxima',
-      title: 'Siga as ligações',
-      body: 'Toda ficha mostra com quem e com o que ela se liga: influências, autores, obras e acontecimentos. Na rede, busque um nome e isole a vizinhança em 1 ou 2 saltos.',
-      action: 'Abrir a rede',
+      tone: 'jenipapo',
+      shape: 'circle',
+      verb: 'Seguir as ligações',
+      text: 'Busque um nome e isole a vizinhança dele em um ou dois saltos.',
+      example: `${format(counts.links)} ligações entre ${format(counts.nodes)} pontos do acervo.`,
       path: '/grafos',
-      fragment: undefined,
     },
     {
-      id: 'conferir',
-      verb: 'Conferir',
-      short: 'Fonte, data e tipo de afirmação à vista',
-      title: 'Confira a evidência',
-      body: 'Cada trecho indica se é fato documentado, interpretação, controvérsia ou lacuna, com a fonte por perto. As datas e o estado de revisão também ficam declarados.',
-      action: 'Ver como lemos o acervo',
-      path: '/',
-      fragment: 'metodo',
+      id: 'situar',
+      tone: 'ocre',
+      shape: 'ring',
+      verb: 'Situar no mapa',
+      text: 'Países e impérios em cada época, com recorte de datas.',
+      example: era ? `${era.label}: ${era.note}` : 'Escolha uma época na linha do tempo.',
+      path: '/mapa',
+      queryParams: era ? { anoDe: era.yearFrom, anoAte: era.yearTo } : undefined,
+    },
+    {
+      id: 'percorrer',
+      tone: 'rosa',
+      shape: 'half',
+      verb: 'Percorrer um itinerário',
+      text: 'Roteiros passo a passo que partem de uma pergunta.',
+      example:
+        'Como o trabalhismo combinou legislação social e nacionalismo desenvolvimentista no Brasil?',
+      path: '/itinerarios',
     },
   ];
-  readonly step = signal(this.howTo[0]);
-  readonly stepNumber = computed(() => this.howTo.indexOf(this.step()) + 1);
-  nextStep(): void {
-    this.step.set(this.howTo[this.stepNumber() % this.howTo.length]);
-  }
+
+  readonly archive = {
+    verbetes: format(counts.verbetes),
+    sources: format(counts.sources),
+  };
 }
