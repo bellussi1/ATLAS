@@ -12125,19 +12125,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-ideology-conservativ-wiki-topic-brasil-ea2e1a",
-      "fromEntityId": "ideology-conservative-liberalism",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] Há discordância sobre associar liberalismo com conservadorismo no Brasil.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-ideology-conservative-liberalism-003"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-wiki-wd-q9353-p737-q37621",
       "fromEntityId": "person-john-locke",
       "toEntityId": "wiki-topic-thomas-hobbes",

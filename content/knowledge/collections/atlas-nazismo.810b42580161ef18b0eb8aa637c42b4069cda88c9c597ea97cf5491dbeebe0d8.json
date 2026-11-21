@@ -3816,19 +3816,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-eugenia-wiki-topic-brasil-453ec5",
-      "fromEntityId": "wiki-topic-eugenia",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] Entre as obras listadas sobre o tema está um texto de Marcos Virgílio da Silva sobre eugenia e as cidades no Brasil.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-eugenia-004"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-eugenia-wiki-topic-sao-paulo-a103ec",
       "fromEntityId": "wiki-topic-eugenia",
       "toEntityId": "wiki-topic-sao-paulo",

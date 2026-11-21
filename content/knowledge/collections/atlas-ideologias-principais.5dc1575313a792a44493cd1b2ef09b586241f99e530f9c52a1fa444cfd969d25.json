@@ -15231,19 +15231,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-tecnocrac-wiki-topic-brasil-ddf0f1",
-      "fromEntityId": "wiki-topic-tecnocracia",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] A tecnocracia no Brasil teria sido interrompida por uma plutocracia marcada por intervenções negativas do Estado na política econômica.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-tecnocracia-008"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-tecnocrac-wiki-topic-estado-6a40a2",
       "fromEntityId": "wiki-topic-tecnocracia",
       "toEntityId": "wiki-topic-estado",

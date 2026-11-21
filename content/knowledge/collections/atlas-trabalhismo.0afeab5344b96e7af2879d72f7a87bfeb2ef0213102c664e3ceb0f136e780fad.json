@@ -8063,19 +8063,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-justica-d-wiki-topic-brasil-d0784b",
-      "fromEntityId": "wiki-topic-justica-do-trabalho",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] No Brasil, a prestação jurisdicional é feita por 24 Tribunais Regionais do Trabalho, distribuídos pelo território nacional, e o Tribunal Superior do Trabalho é a instância máxima.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-justica-do-trabalho-002"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-partido-t-wiki-topic-1945-aaa95f",
       "fromEntityId": "wiki-topic-partido-trabalhista-brasileiro-1945",
       "toEntityId": "wiki-topic-1945",
@@ -8258,19 +8245,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-politica--wiki-topic-brasil-066cae",
-      "fromEntityId": "wiki-topic-politica-do-brasil",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] O Brasil é descrito como república federal presidencialista.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-politica-do-brasil-007"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-solidaris-ideology-liberalism-5d2e12",
       "fromEntityId": "wiki-topic-solidarismo",
       "toEntityId": "ideology-liberalism",
@@ -8401,19 +8375,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-julio-de--wiki-topic-brasil-fff4ca",
-      "fromEntityId": "wiki-topic-julio-de-castilhos",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "influenced",
-      "label": "influenciou",
-      "reverseLabel": "foi influenciado por",
-      "context": "[conferência de IA] Castilhos disseminou o ideário positivista no Brasil.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-julio-de-castilhos-002"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-julio-de--wiki-topic-governo-fa4f27",
       "fromEntityId": "wiki-topic-julio-de-castilhos",
       "toEntityId": "wiki-topic-governo",
@@ -8437,19 +8398,6 @@
       "temporalExtent": null,
       "uncertainty": "low",
       "evidenceIds": ["ev-wiki-topic-julio-de-castilhos-009"],
-      "editorialStatus": "pending"
-    },
-    {
-      "id": "rel-ai-exp-wiki-topic-periodo-p-wiki-topic-brasil-a454af",
-      "fromEntityId": "wiki-topic-periodo-populista",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] O artigo indica que o período recebe outros nomes, como República Populista, Quarta República Brasileira e República de 46, e que se refere à história do Brasil a partir de 1946.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-periodo-populista-001"],
       "editorialStatus": "pending"
     },
     {
@@ -8515,19 +8463,6 @@
       "temporalExtent": null,
       "uncertainty": "low",
       "evidenceIds": ["ev-wiki-topic-estado-001"],
-      "editorialStatus": "pending"
-    },
-    {
-      "id": "rel-ai-exp-wiki-topic-exercito--wiki-topic-brasil-d5de0e",
-      "fromEntityId": "wiki-topic-exercito-brasileiro",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "influenced",
-      "label": "influenciou",
-      "reverseLabel": "foi influenciado por",
-      "context": "[conferência de IA] O Exército Brasileiro origina-se das forças de defesa do Império Português no Brasil Colônia.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-exercito-brasileiro-001"],
       "editorialStatus": "pending"
     },
     {

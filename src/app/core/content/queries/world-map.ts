@@ -368,7 +368,6 @@ export function buildWorldMapModel(
 
   const bucketsByKey = new Map<string, TerritoryBucket>();
   const territoryKeyByEntityId = new Map<string, string>();
-  const isoKeyByNormTitle = new Map<string, string>();
 
   const orderedPlaceEntities = [
     ...allEntities.filter((entity) => entity.kind === 'place' && Boolean(entity.isoNumeric)),
@@ -393,19 +392,8 @@ export function buildWorldMapModel(
         : null;
     if (!point) continue;
 
-    const normTitle = normalizeFold(entity.title);
-    // A place with the same name as a current country is that country (a second "Brasil" with only a
-    // start year is the same territory); a dated historical polity keeps its own bucket.
-    const matchedCanonicalIsoKey =
-      !isoNumeric && (!entity.temporalExtent || layer !== 'polity')
-        ? isoKeyByNormTitle.get(normTitle)
-        : undefined;
-    const key = isoNumeric
-      ? `iso:${isoNumeric}`
-      : (matchedCanonicalIsoKey ?? `entity:${entity.id}`);
-    if (isoNumeric && !isoKeyByNormTitle.has(normTitle)) {
-      isoKeyByNormTitle.set(normTitle, key);
-    }
+    // O grafo mantém um só registro por país; só entidades com o mesmo ISO se unem.
+    const key = isoNumeric ? `iso:${isoNumeric}` : `entity:${entity.id}`;
     territoryKeyByEntityId.set(entity.id, key);
     const attachedRegimes = regimesByCountryEntityId.get(entity.id) ?? [];
 

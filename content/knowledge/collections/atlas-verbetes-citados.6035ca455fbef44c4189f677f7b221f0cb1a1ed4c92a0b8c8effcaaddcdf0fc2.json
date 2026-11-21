@@ -717,7 +717,6 @@
     "wiki-topic-politico",
     "wiki-topic-polonia",
     "wiki-topic-poluicao",
-    "wiki-topic-portugal",
     "wiki-topic-portugues-brasileiro",
     "wiki-topic-portugues-europeu",
     "wiki-topic-potencias-do-eixo",
@@ -37966,60 +37965,6 @@
       "kind": "concept"
     },
     {
-      "id": "wiki-topic-portugal",
-      "slug": "portugal-wikipedia",
-      "title": "Portugal",
-      "summary": "Portugal, oficialmente República Portuguesa, é um país unitário no sudoeste da Europa, com parte continental na Península Ibérica e os arquipélagos dos Açores e da Madeira no Atlântico Norte. Seu território tem área de 92 090 km² e é o país mais a ocidente do continente europeu. Ao longo da história, passou por Reconquista, Condado Portucalense, Descobrimentos, União Ibérica, Revolução de 5 de Outubro de 1910 e Revolução de 25 de Abril de 1974. Importa como caso de referência sobre formação de Estado-nação, expansão marítima e transição democrática no século XX.",
-      "aliases": ["República Portuguesa"],
-      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
-      "temporalExtent": null,
-      "uncertainty": "unknown",
-      "revision": 1,
-      "sections": [
-        {
-          "heading": "Resumo",
-          "paragraphs": [
-            "Portugal, oficialmente República Portuguesa, é um país unitário no sudoeste da Europa, com parte continental na Península Ibérica e os arquipélagos dos Açores e da Madeira no Atlântico Norte. Seu território tem área de 92 090 km² e é o país mais a ocidente do continente europeu. Ao longo da história, passou por Reconquista, Condado Portucalense, Descobrimentos, União Ibérica, Revolução de 5 de Outubro de 1910 e Revolução de 25 de Abril de 1974. Importa como caso de referência sobre formação de Estado-nação, expansão marítima e transição democrática no século XX."
-          ]
-        },
-        {
-          "heading": "Origem",
-          "paragraphs": [
-            "O artigo afirma que o nome do país provém da cidade do Porto, cujo nome latino-celta era Portus Cale."
-          ]
-        },
-        {
-          "heading": "Ideias centrais",
-          "paragraphs": [
-            "Portugal é apresentado como um país que tem sido continuamente povoado desde os tempos pré-históricos."
-          ]
-        },
-        {
-          "heading": "Controvérsias",
-          "paragraphs": [
-            "A origem do nome Portugal é apresentada como incerta, com mais de uma hipótese registrada no artigo."
-          ]
-        }
-      ],
-      "editorialStatus": "pending",
-      "scope": "nucleo",
-      "textLocale": "pt-BR",
-      "externalIds": { "wikidata": "Q45", "wikipedia": "Portugal" },
-      "discoveryMetadata": {
-        "description": "País soberano unitário do sudoeste europeu, com territórios insulares no Atlântico Norte.",
-        "wikipediaTitle": "Portugal",
-        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Portugal",
-        "wikipediaLanguage": "pt",
-        "categories": [],
-        "fetchedAt": "2026-11-05",
-        "contentLicense": "CC BY-SA 4.0",
-        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "attribution": "Texto da Wikipédia (pt), revisão 73363074, CC BY-SA 4.0"
-      },
-      "kind": "place",
-      "coordinates": { "lat": 38.7, "lon": -9.1833 }
-    },
-    {
       "id": "wiki-topic-portugues-brasileiro",
       "slug": "portugues-brasileiro",
       "title": "Português brasileiro",
@@ -54332,13 +54277,6 @@
       "title": "Poluição (Wikipédia pt)",
       "url": "https://pt.wikipedia.org/wiki/Polui%C3%A7%C3%A3o",
       "edition": "revisão 73057590; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
-      "publicationDate": null
-    },
-    {
-      "id": "src-wiki-topic-portugal",
-      "title": "Portugal (Wikipédia pt)",
-      "url": "https://pt.wikipedia.org/wiki/Portugal",
-      "edition": "revisão 73363074; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
       "publicationDate": null
     },
     {
@@ -102444,83 +102382,6 @@
       "id": "ev-wiki-topic-poluicao-006",
       "sourceId": "src-wiki-topic-poluicao",
       "locator": "são frequentemente citados como poluidores, embora a própria substância libertada, por si só não seja prejudicial",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-portugal-001",
-      "sourceId": "src-wiki-topic-portugal",
-      "locator": "O nome do país provém da sua segunda maior cidade, Porto, cujo nome latino-celta era Portus Cale.",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-portugal-002",
-      "sourceId": "src-wiki-topic-portugal",
-      "locator": "tem sido continuamente povoado desde os tempos pré-históricos",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-portugal-003",
-      "sourceId": "src-wiki-topic-portugal",
-      "locator": "A etimologia do nome Portugal é incerta.",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-portugal-004",
-      "sourceId": "src-wiki-topic-portugal",
-      "locator": "Em 1139 foi estabelecido o Reino de Portugal",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-portugal-005",
-      "sourceId": "src-wiki-topic-portugal",
-      "locator": "Com a Revolução de 5 de Outubro de 1910, a monarquia foi abolida",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-portugal-006",
-      "sourceId": "src-wiki-topic-portugal",
-      "locator": "A democracia representativa foi instaurada após a Revolução de 25 de Abril de 1974",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-portugal-007",
-      "sourceId": "src-wiki-topic-portugal",
-      "locator": "em 20 de dezembro de 1999, deu-se a transferência da administração de Macau para a República Popular da China",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-portugal-008",
-      "sourceId": "src-wiki-topic-portugal",
-      "locator": "A etimologia do nome Portugal é incerta.",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-portugal-009",
-      "sourceId": "src-wiki-topic-portugal",
-      "locator": "Portugal é a nação mais a ocidente do continente europeu.",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-portugal-rel-001",
-      "sourceId": "src-wiki-topic-portugal",
-      "locator": "É membro da Organização das Nações Unidas (ONU), da União Europeia (incluindo a Zona Euro e o Espaço Schengen), da Organização do Tratado do Atlântico Norte (NATO)",
-      "accessedAt": "2026-11-05",
-      "note": null
-    },
-    {
-      "id": "ev-wiki-topic-portugal-rel-002",
-      "sourceId": "src-wiki-topic-portugal",
-      "locator": "É membro da Organização das Nações Unidas (ONU)",
       "accessedAt": "2026-11-05",
       "note": null
     },
@@ -158680,51 +158541,6 @@
     {
       "id": "cit-wiki-topic-poluicao-006",
       "evidenceId": "ev-wiki-topic-poluicao-006",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-portugal-001",
-      "evidenceId": "ev-wiki-topic-portugal-001",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-portugal-002",
-      "evidenceId": "ev-wiki-topic-portugal-002",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-portugal-003",
-      "evidenceId": "ev-wiki-topic-portugal-003",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-portugal-004",
-      "evidenceId": "ev-wiki-topic-portugal-004",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-portugal-005",
-      "evidenceId": "ev-wiki-topic-portugal-005",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-portugal-006",
-      "evidenceId": "ev-wiki-topic-portugal-006",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-portugal-007",
-      "evidenceId": "ev-wiki-topic-portugal-007",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-portugal-008",
-      "evidenceId": "ev-wiki-topic-portugal-008",
-      "relation": "supports"
-    },
-    {
-      "id": "cit-wiki-topic-portugal-009",
-      "evidenceId": "ev-wiki-topic-portugal-009",
       "relation": "supports"
     },
     {
@@ -222795,78 +222611,6 @@
       "classification": "interpretation",
       "editorialStatus": "pending",
       "citationIds": ["cit-wiki-topic-poluicao-006"]
-    },
-    {
-      "id": "claim-wiki-topic-portugal-001",
-      "entityId": "wiki-topic-portugal",
-      "text": "O artigo afirma que o nome do país provém da cidade do Porto, cujo nome latino-celta era Portus Cale.",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-portugal-001"]
-    },
-    {
-      "id": "claim-wiki-topic-portugal-002",
-      "entityId": "wiki-topic-portugal",
-      "text": "Portugal é apresentado como um país que tem sido continuamente povoado desde os tempos pré-históricos.",
-      "classification": "attributed-thesis",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-portugal-002"]
-    },
-    {
-      "id": "claim-wiki-topic-portugal-003",
-      "entityId": "wiki-topic-portugal",
-      "text": "A origem do nome Portugal é apresentada como incerta, com mais de uma hipótese registrada no artigo.",
-      "classification": "contested-claim",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-portugal-003"]
-    },
-    {
-      "id": "claim-wiki-topic-portugal-004",
-      "entityId": "wiki-topic-portugal",
-      "text": "Estabelecimento do Reino de Portugal. (1139).",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-portugal-004"]
-    },
-    {
-      "id": "claim-wiki-topic-portugal-005",
-      "entityId": "wiki-topic-portugal",
-      "text": "Revolução de 5 de Outubro de 1910, com abolição da monarquia. (1910).",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-portugal-005"]
-    },
-    {
-      "id": "claim-wiki-topic-portugal-006",
-      "entityId": "wiki-topic-portugal",
-      "text": "Revolução de 25 de Abril de 1974, que pôs fim à ditadura. (1974).",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-portugal-006"]
-    },
-    {
-      "id": "claim-wiki-topic-portugal-007",
-      "entityId": "wiki-topic-portugal",
-      "text": "Transferência da administração de Macau para a República Popular da China. (1999-12-20).",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-portugal-007"]
-    },
-    {
-      "id": "claim-wiki-topic-portugal-008",
-      "entityId": "wiki-topic-portugal",
-      "text": "A etimologia do nome Portugal é incerta, com mais de uma hipótese registrada.",
-      "classification": "contested-claim",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-portugal-008"]
-    },
-    {
-      "id": "claim-wiki-topic-portugal-009",
-      "entityId": "wiki-topic-portugal",
-      "text": "Portugal é o país mais a ocidente do continente europeu.",
-      "classification": "documented-fact",
-      "editorialStatus": "pending",
-      "citationIds": ["cit-wiki-topic-portugal-009"]
     },
     {
       "id": "claim-wiki-topic-portugues-brasileiro-001",
@@ -294993,78 +294737,6 @@
       "note": "Revisão humana não registrada"
     },
     {
-      "id": "rev-wiki-topic-portugal-001",
-      "claimId": "claim-wiki-topic-portugal-001",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-portugal-002",
-      "claimId": "claim-wiki-topic-portugal-002",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-portugal-003",
-      "claimId": "claim-wiki-topic-portugal-003",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-portugal-004",
-      "claimId": "claim-wiki-topic-portugal-004",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-portugal-005",
-      "claimId": "claim-wiki-topic-portugal-005",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-portugal-006",
-      "claimId": "claim-wiki-topic-portugal-006",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-portugal-007",
-      "claimId": "claim-wiki-topic-portugal-007",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-portugal-008",
-      "claimId": "claim-wiki-topic-portugal-008",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
-      "id": "rev-wiki-topic-portugal-009",
-      "claimId": "claim-wiki-topic-portugal-009",
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "note": "Revisão humana não registrada"
-    },
-    {
       "id": "rev-wiki-topic-portugues-brasileiro-001",
       "claimId": "claim-wiki-topic-portugues-brasileiro-001",
       "status": "pending",
@@ -330034,7 +329706,7 @@
     {
       "id": "rel-wiki-topic-divorcio-001",
       "fromEntityId": "wiki-topic-divorcio",
-      "toEntityId": "wiki-topic-portugal",
+      "toEntityId": "country-portugal",
       "type": "documented-association",
       "label": "ocorreu em",
       "reverseLabel": "foi palco de",
@@ -330592,7 +330264,7 @@
     {
       "id": "rel-wiki-topic-eurico-gaspar-dutra-004",
       "fromEntityId": "wiki-topic-eurico-gaspar-dutra",
-      "toEntityId": "wiki-topic-brasil",
+      "toEntityId": "country-brazil",
       "type": "documented-association",
       "label": "governou",
       "reverseLabel": "foi governado por",
@@ -333688,7 +333360,7 @@
     {
       "id": "rel-wiki-topic-operacao-lava-jato-001",
       "fromEntityId": "wiki-topic-operacao-lava-jato",
-      "toEntityId": "wiki-topic-portugal",
+      "toEntityId": "country-portugal",
       "type": "documented-association",
       "label": "ocorreu em",
       "reverseLabel": "foi palco de",
@@ -334397,7 +334069,7 @@
     },
     {
       "id": "rel-wiki-topic-portugal-001",
-      "fromEntityId": "wiki-topic-portugal",
+      "fromEntityId": "country-portugal",
       "toEntityId": "wiki-topic-organizacao-do-tratado-do-atlantico-norte",
       "type": "documented-association",
       "label": "foi membro de",
@@ -334415,7 +334087,7 @@
     },
     {
       "id": "rel-wiki-topic-portugal-002",
-      "fromEntityId": "wiki-topic-portugal",
+      "fromEntityId": "country-portugal",
       "toEntityId": "wiki-topic-organizacao-das-nacoes-unidas",
       "type": "documented-association",
       "label": "foi membro de",
@@ -334524,7 +334196,7 @@
     {
       "id": "rel-wiki-topic-privatizacao-001",
       "fromEntityId": "wiki-topic-privatizacao",
-      "toEntityId": "wiki-topic-brasil",
+      "toEntityId": "country-brazil",
       "type": "documented-association",
       "label": "ocorreu em",
       "reverseLabel": "foi palco de",
@@ -336882,7 +336554,7 @@
     {
       "id": "rel-wiki-topic-hiperinflacao-002",
       "fromEntityId": "wiki-topic-hiperinflacao",
-      "toEntityId": "wiki-topic-brasil",
+      "toEntityId": "country-brazil",
       "type": "documented-association",
       "label": "ocorreu em",
       "reverseLabel": "foi palco de",
@@ -340980,7 +340652,7 @@
     {
       "id": "rel-wd-wiki-topic-golpe-de-estado-no-brasil-em-1964-p276-wiki-topic-brasil",
       "fromEntityId": "wiki-topic-golpe-de-estado-no-brasil-em-1964",
-      "toEntityId": "wiki-topic-brasil",
+      "toEntityId": "country-brazil",
       "type": "documented-association",
       "label": "ocorreu em",
       "reverseLabel": "foi palco de",
@@ -341761,7 +341433,7 @@
     },
     {
       "id": "rel-wd-wiki-topic-portugal-p710-wiki-topic-guerra-do-iraque",
-      "fromEntityId": "wiki-topic-portugal",
+      "fromEntityId": "country-portugal",
       "toEntityId": "wiki-topic-guerra-do-iraque",
       "type": "participated_in",
       "label": "participou de",
@@ -343993,7 +343665,7 @@
     },
     {
       "id": "rel-wd-wiki-topic-brasil-p112-wiki-topic-mercado-comum-do-sul",
-      "fromEntityId": "wiki-topic-brasil",
+      "fromEntityId": "country-brazil",
       "toEntityId": "wiki-topic-mercado-comum-do-sul",
       "type": "documented-association",
       "label": "fundou",
@@ -344738,7 +344410,7 @@
     {
       "id": "rel-wd-wiki-topic-pandemia-de-covid-19-no-brasil-p276-wiki-topic-brasil",
       "fromEntityId": "wiki-topic-pandemia-de-covid-19-no-brasil",
-      "toEntityId": "wiki-topic-brasil",
+      "toEntityId": "country-brazil",
       "type": "documented-association",
       "label": "ocorreu em",
       "reverseLabel": "foi palco de",
@@ -347306,7 +346978,7 @@
     {
       "id": "rel-wd-wiki-topic-revolucao-de-25-de-abril-de-1974-p276-wiki-topic-portugal",
       "fromEntityId": "wiki-topic-revolucao-de-25-de-abril-de-1974",
-      "toEntityId": "wiki-topic-portugal",
+      "toEntityId": "country-portugal",
       "type": "documented-association",
       "label": "ocorreu em",
       "reverseLabel": "foi palco de",
@@ -349673,19 +349345,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-aborto-wiki-topic-brasil-e0a57c",
-      "fromEntityId": "wiki-topic-aborto",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] No Brasil, um estudo transversal associou gênero masculino, idade mais avançada e fundamentalismo religioso a atitudes negativas contra mulheres que interrompem a gravidez.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-aborto-005"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-academia--wiki-topic-literatur-0c0961",
       "fromEntityId": "wiki-topic-academia-brasileira-de-letras",
       "toEntityId": "wiki-topic-literatura",
@@ -350193,19 +349852,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-basebol-wiki-topic-portugal-bb1b53",
-      "fromEntityId": "wiki-topic-basebol",
-      "toEntityId": "wiki-topic-portugal",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] Foi inaugurado o primeiro campo oficial de beisebol em Portugal, em Abrantes. (2006-07-22).",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-basebol-010"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-basqueteb-wiki-topic-associaca-f138d1",
       "fromEntityId": "wiki-topic-basquetebol",
       "toEntityId": "wiki-topic-associacao",
@@ -350414,19 +350060,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-bolsa-esc-wiki-topic-brasil-e57aee",
-      "fromEntityId": "wiki-topic-bolsa-escola",
-      "toEntityId": "wiki-topic-brasil",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] O projeto do Distrito Federal foi premiado no Brasil e no exterior.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-bolsa-escola-007"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-brasilia-wiki-topic-copa-do-m-171004",
       "fromEntityId": "wiki-topic-brasilia",
       "toEntityId": "wiki-topic-copa-do-mundo-fifa",
@@ -350495,19 +350128,6 @@
       "id": "rel-ai-exp-wiki-topic-carlos-an-country-brazil-0e3e87",
       "fromEntityId": "wiki-topic-carlos-antonio-lopez",
       "toEntityId": "country-brazil",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] Assinatura de tratados comerciais com o Brasil (1850).",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-carlos-antonio-lopez-005"],
-      "editorialStatus": "pending"
-    },
-    {
-      "id": "rel-ai-exp-wiki-topic-carlos-an-wiki-topic-brasil-7cfbe2",
-      "fromEntityId": "wiki-topic-carlos-antonio-lopez",
-      "toEntityId": "wiki-topic-brasil",
       "type": "associated_with",
       "label": "associado a",
       "reverseLabel": "associado a",
@@ -350687,19 +350307,6 @@
       "editorialStatus": "pending"
     },
     {
-      "id": "rel-ai-exp-wiki-topic-casamento-wiki-topic-portugal-7711e3",
-      "fromEntityId": "wiki-topic-casamento",
-      "toEntityId": "wiki-topic-portugal",
-      "type": "associated_with",
-      "label": "associado a",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] Realizaram-se em Portugal 32 399 casamentos, dos quais 422 entre pessoas do mesmo sexo. (2016).",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-casamento-006"],
-      "editorialStatus": "pending"
-    },
-    {
       "id": "rel-ai-exp-wiki-topic-casamento-wiki-topic-poder-6a475d",
       "fromEntityId": "wiki-topic-casamento",
       "toEntityId": "wiki-topic-poder",
@@ -350807,19 +350414,6 @@
       "id": "rel-ai-exp-wiki-topic-classe-me-country-brazil-fa43e9",
       "fromEntityId": "wiki-topic-classe-media",
       "toEntityId": "country-brazil",
-      "type": "documented-association",
-      "label": "associação documentada com",
-      "reverseLabel": "associado a",
-      "context": "[conferência de IA] No Brasil, a classe média se firmou na década de 1930, no contexto da industrialização promovida por Getúlio Vargas.",
-      "temporalExtent": null,
-      "uncertainty": "low",
-      "evidenceIds": ["ev-wiki-topic-classe-media-002"],
-      "editorialStatus": "pending"
-    },
-    {
-      "id": "rel-ai-exp-wiki-topic-classe-me-wiki-topic-brasil-01c5c9",
-      "fromEntityId": "wiki-topic-classe-media",
-      "toEntityId": "wiki-topic-brasil",
       "type": "documented-association",
       "label": "associação documentada com",
       "reverseLabel": "associado a",
@@ -355722,7 +355316,7 @@
     {
       "id": "rel-exp-wiki-topic-desigualdade-social-wiki-topic-portugal",
       "fromEntityId": "wiki-topic-desigualdade-social",
-      "toEntityId": "wiki-topic-portugal",
+      "toEntityId": "country-portugal",
       "type": "documented-association",
       "label": "ocorre em",
       "reverseLabel": "é o local de",
@@ -355740,7 +355334,7 @@
     {
       "id": "rel-exp-wiki-topic-esperanca-de-vida-wiki-topic-portugal",
       "fromEntityId": "wiki-topic-esperanca-de-vida",
-      "toEntityId": "wiki-topic-portugal",
+      "toEntityId": "country-portugal",
       "type": "documented-association",
       "label": "ocorreu em",
       "reverseLabel": "abrange",
