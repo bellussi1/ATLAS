@@ -60,7 +60,15 @@ jobs:
           path: generated/raw-cache
           key: raw-${{ hashFiles('scripts/ingestion/**/raw/**/manifest.json') }}
           restore-keys: raw-
-      - run: npm run ingest:fetch-raw
+      # The download resumes from generated/raw-cache, so a connection that dies mid-run (the Node
+      # HTTP client can throw from a socket event, outside any promise) costs one more pass.
+      - run: |
+          for attempt in 1 2 3; do
+            npm run ingest:fetch-raw && exit 0
+            echo "fetch-raw falhou (tentativa $attempt de 3)"
+            sleep 20
+          done
+          exit 1
         id: fetch-raw
         if: steps.ingestion-changed.outputs.changed == 'true'
       - name: Preservar capturas para retomada
