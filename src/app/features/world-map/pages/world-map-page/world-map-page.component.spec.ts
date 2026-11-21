@@ -4,6 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { provideContentFixture } from '@testing/content-fixture';
+import { globeBaseMapResolver } from '@world-map/data/globe-base-map.resolver';
 
 import { WorldMapPageComponent } from './world-map-page.component';
 
@@ -12,7 +13,11 @@ describe('WorldMapPageComponent', () => {
     TestBed.configureTestingModule({
       providers: [
         provideRouter([
-          { path: 'mapa', component: WorldMapPageComponent },
+          {
+            path: 'mapa',
+            component: WorldMapPageComponent,
+            resolve: { globe: globeBaseMapResolver },
+          },
           { path: 'verbete/:slug', children: [] },
           { path: 'grafos', children: [] },
           { path: 'leitura/:slug', children: [] },

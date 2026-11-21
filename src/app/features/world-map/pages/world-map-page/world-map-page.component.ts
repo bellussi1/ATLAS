@@ -42,7 +42,6 @@ import { ContentRepository } from '@core/content/repositories/content-repository
 import { AtlasIconComponent } from '@shared/ui/icon/icon.component';
 import { AtlasSectionSwitcherComponent } from '@shared/ui/section-switcher/section-switcher.component';
 import { MapStudyDeskComponent } from '@world-map/components/map-study-desk/map-study-desk.component';
-import globeMapData from '@world-map/data/natural-earth-globe.json';
 import {
   type GlobeHitConnection,
   hitTestConnectionArc,
@@ -195,7 +194,7 @@ export class WorldMapPageComponent {
     initialValue: this.route.snapshot.queryParamMap,
   });
 
-  readonly baseMap: GlobeBaseMap = globeMapData as unknown as GlobeBaseMap;
+  readonly baseMap = this.route.snapshot.data['globe'] as GlobeBaseMap;
   readonly eraPresets = WORLD_MAP_ERA_PRESETS;
   readonly families: readonly RelationFamilyDefinition[] = relationFamilies;
   readonly layers = ALL_LAYERS;
@@ -779,7 +778,7 @@ export class WorldMapPageComponent {
         this.resizeObserver = new ResizeObserver(() => this.scheduleLayoutMeasure());
         this.resizeObserver.observe(stage);
       }
-      this.repository.warmBundle(true);
+      this.repository.warmReading(true);
       this.schedulePaint();
     });
 
