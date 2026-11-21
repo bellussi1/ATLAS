@@ -21,6 +21,14 @@ Tour para sete páginas: `/leituras`, `/leitura/:slug`, `/itinerarios`, `/itiner
 
 O ATLAS não define cookies. O registro de que um tour foi mostrado fica só no navegador, serve à própria função pedida pelo leitor e não identifica ninguém; por isso não há faixa de consentimento. `/cookies` lista cada item guardado (esse e o `atlas:chunk-reload`, da aba), o motivo e a duração, e remete à página de privacidade para a medição sem cookies. Revisar com o responsável se a política mudar (um item novo exige uma linha nova na tabela).
 
+## Rolagem
+
+- **Ao iniciar**: a página volta ao topo antes de o destaque aparecer (rolagem suave, esperando o `scrollend`, com sondagem e teto de 1,5 s como reserva), então nada pisca durante a rolagem. Páginas que não rolam (grafo, mapa) seguem direto.
+- **Ao encerrar**: volta ao topo do mesmo jeito.
+- **Entre passos**: o driver.js rola direto até o alvo seguinte; voltar ao topo a cada passo esconderia os alvos que ficam mais abaixo. O destaque respeita o cabeçalho fixo (`scroll-margin-block-start` com `--header-offset`).
+- **Ao trocar de rota**: o tour é encerrado e o roteador já posiciona a nova página no topo.
+- **Movimento reduzido** (`prefers-reduced-motion` ou `html.atlas-reduced-motion`): a volta ao topo é imediata e o driver.js roda sem animação nem rolagem suave.
+
 ## Acessibilidade e movimento
 
 Teclado: setas e Esc do driver.js; os botões têm 44 px e foco visível. O foco volta ao botão que abriu o tour. Com `prefers-reduced-motion`, sem animação e sem rolagem suave. O cartão do tour segue o registro "mesa" (papel, contorno de tinta, sombra deslocada).

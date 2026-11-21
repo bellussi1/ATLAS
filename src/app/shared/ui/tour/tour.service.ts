@@ -109,7 +109,8 @@ export class TourService {
     this.markSeen(id);
     this.ensureStyles();
     const opener = document.activeElement as HTMLElement | null;
-    const { driver } = await import('driver.js');
+    // The page returns to its top before the spotlight appears, so nothing blinks while it scrolls.
+    const [{ driver }] = await Promise.all([import('driver.js'), scrollToTop()]);
     const opened = await this.revealFoldedTargets(TOURS[id].steps);
     const steps = TOURS[id].steps.flatMap((step) => {
       const element = visibleElement(step.selector);
@@ -131,7 +132,7 @@ export class TourService {
       this.fold(opened);
       return;
     }
-    const calm = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    const calm = prefersCalm();
     const tour = driver({
       steps,
       showProgress: true,
@@ -153,6 +154,7 @@ export class TourService {
         this.showLauncher(true);
         this.fold(opened);
         if (opener?.isConnected) opener.focus({ preventScroll: true });
+        void scrollToTop();
       },
     });
     this.active = { destroy: () => tour.destroy() };
@@ -231,6 +233,43 @@ export class TourService {
       if (control.isConnected && control.getAttribute('aria-expanded') === 'true') control.click();
     }
   }
+}
+
+/** The reader asked for less motion, in the system or with the ATLAS motion control. */
+function prefersCalm(): boolean {
+  return (
+    (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false) ||
+    document.documentElement.classList.contains('atlas-reduced-motion')
+  );
+}
+
+/**
+ * Takes the page back to the top, smoothly, and resolves when it gets there (`scrollend`, with a
+ * poll and a cap as fallback). With reduced motion the jump is immediate. A page that does not
+ * scroll (the graph, the map) resolves at once.
+ */
+async function scrollToTop(): Promise<void> {
+  if (window.scrollY <= 1) return;
+  const calm = prefersCalm();
+  window.scrollTo({ top: 0, behavior: calm ? 'auto' : 'smooth' });
+  if (calm) return;
+  await new Promise<void>((resolve) => {
+    let last = window.scrollY;
+    let still = 0;
+    const finish = (): void => {
+      clearTimeout(cap);
+      clearInterval(poll);
+      document.removeEventListener('scrollend', finish);
+      resolve();
+    };
+    const cap = setTimeout(finish, 1500);
+    const poll = setInterval(() => {
+      still = window.scrollY === last ? still + 1 : 0;
+      last = window.scrollY;
+      if (window.scrollY <= 1 || still >= 5) finish();
+    }, 60);
+    document.addEventListener('scrollend', finish, { once: true });
+  });
 }
 
 /** A link that already picks something (a node, a territory, a path) is a shared view. */

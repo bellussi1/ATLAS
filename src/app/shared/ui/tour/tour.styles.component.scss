@@ -2,6 +2,11 @@
 
 @include meta.load-css('driver.js/dist/driver.css');
 
+/* The step scrolls into view below the sticky header, never under it. */
+.driver-active-element {
+  scroll-margin-block-start: calc(var(--header-offset, 0px) + 1rem);
+}
+
 /* ATLAS theme: paper card, ink border and offset shadow, like the other cards. */
 .driver-popover.atlas-tour {
   max-width: min(22rem, calc(100vw - 2rem));

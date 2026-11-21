@@ -75,6 +75,59 @@ describe('TourService', () => {
     expect(drive).not.toHaveBeenCalled();
   });
 
+  describe('scrolling', () => {
+    const scrollTo = vi.fn();
+
+    beforeEach(() => {
+      scrollTo.mockClear();
+      window.scrollTo = scrollTo as unknown as typeof window.scrollTo;
+      Object.defineProperty(window, 'scrollY', { value: 600, configurable: true });
+      show('.itineraries__intro');
+    });
+
+    afterEach(() => {
+      Object.defineProperty(window, 'scrollY', { value: 0, configurable: true });
+      document.documentElement.classList.remove('atlas-reduced-motion');
+    });
+
+    it('takes the page to the top smoothly before the spotlight opens', async () => {
+      const done = TestBed.inject(TourService).start('itinerarios');
+      document.dispatchEvent(new Event('scrollend'));
+      await done;
+
+      expect(scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
+      expect(drive).toHaveBeenCalledOnce();
+      expect(scrollTo.mock.invocationCallOrder[0]).toBeLessThan(drive.mock.invocationCallOrder[0]);
+    });
+
+    it('jumps at once when the reader asked for less motion', async () => {
+      document.documentElement.classList.add('atlas-reduced-motion');
+
+      await TestBed.inject(TourService).start('itinerarios');
+
+      expect(scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'auto' });
+      expect(config).toMatchObject({ animate: false, smoothScroll: false });
+    });
+
+    it('does not scroll a page that is already at the top', async () => {
+      Object.defineProperty(window, 'scrollY', { value: 0, configurable: true });
+
+      await TestBed.inject(TourService).start('itinerarios');
+
+      expect(scrollTo).not.toHaveBeenCalled();
+    });
+
+    it('goes back to the top when the tour ends', async () => {
+      Object.defineProperty(window, 'scrollY', { value: 0, configurable: true });
+      await TestBed.inject(TourService).start('itinerarios');
+      Object.defineProperty(window, 'scrollY', { value: 450, configurable: true });
+
+      (config as unknown as { onDestroyed: () => void }).onDestroyed();
+
+      expect(scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
+    });
+  });
+
   it('forgets which tours were shown, so every page offers its tour again', () => {
     const service = TestBed.inject(TourService);
     service.markSeen('leituras');
