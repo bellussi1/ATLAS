@@ -35,7 +35,7 @@ jobs:
           key: content-cache-${{ hashFiles('content/content-pointer.json') }}
       - run: npm ci --ignore-scripts
       - run: npm run content:fetch
-      - uses: astral-sh/setup-uv@v5
+      - uses: astral-sh/setup-uv@v7
         with:
           python-version: '3.12'
       - name: Instalar dependências Python (CPU CI)
