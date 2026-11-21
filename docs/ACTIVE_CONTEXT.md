@@ -101,7 +101,7 @@ Atualizado em 19/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 
 1. **RAG & revisão humana (15/11):** marcar `human_ok` em `experiments/rag/eval/questions.jsonl` (`0/100`), calibrar juiz LLM com 30 rótulos e triar `experiments/rag/eval/queues/`.
 2. **Revisão humana de fontes e conteúdo:** auditoria humana das fontes dos dossiês (#9), itinerário `trabalhismo-e-estado-social` (#92), 20 imagens do acervo (#94) e 30 perguntas do benchmark (#95).
-3. **Performance / Infra / Produto:** carregamento sob demanda sem bundle completo de `35 MB` nas leituras (#88), auditoria de cache/pacotes (#96), proveniência raw do piloto no repo/worker (#83), teste real em Android (#93) e configuração de `AMAZON_ASSOCIATE_TAG` quando aprovado o programa.
+3. **Performance / Infra / Produto:** ~~carregamento sob demanda sem bundle completo de `35 MB` nas leituras (#88)~~ e ~~auditoria de cache/pacotes (#96)~~ (20/11: `readingBundle` de 21,9 MB nas leituras e verbetes, `layouts` enxutos, GeoJSON do mapa em chunk próprio, `_headers` sem `immutable` em `analytics-config.js`; falta publicar o release com `content:publish`; fatiar abaixo de 20 MB pede fichas e vocabulário de hover assíncronos, ver `architecture/DADOS-E-CARREGAMENTO.md`), proveniência raw do piloto no repo/worker (#83), teste real em Android (#93) e configuração de `AMAZON_ASSOCIATE_TAG` quando aprovado o programa.
 
 ## Próxima ação
 
@@ -109,7 +109,7 @@ Atualizado em 19/11/2026. Handoff curto entre sessões (regra em [`README.md`](R
 1. Fechar a Onda 2: `Estado` e `Revolução` precisam de 1 tipo de bloco cada; Karl Marx, Adam Smith, Segunda Guerra e Ditadura militar precisam de prosa com fonte.
 2. Criar a leitura `Escravidão e abolição` (Wave 3) para sustentar o itinerário `escravidao-abolicionismo-e-cidadania`, que não fecha sem verbetes.
 3. Publicar os posts `09-slider` (18/12), `10-mapa` (21/11) e `11-lacunas` (24/11): dry-runs já passaram; falta token e revisão do PDF.
-4. Fatiar o bundle de 35 MB por rota (#96) e a proveniência raw do piloto (#83).
+4. Publicar o release com `readingBundle` (`content:publish`, depois deploy) e tratar a proveniência raw do piloto (#83). Se for preciso baixar de 21,9 MB nas leituras: carregar `atlas-verbetes-citados` (12 MB) sob demanda.
 5. Conferência humana: fontes dos dossiês (#9), 30 perguntas do benchmark (#95), teste em Android/iOS (#93) e `AMAZON_ASSOCIATE_TAG` quando aprovado.
 
 ## Mapa rápido

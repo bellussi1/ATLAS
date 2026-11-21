@@ -301,6 +301,7 @@ export function buildPointer({
   media,
   bundle = null,
   networkBundle = null,
+  readingBundle = null,
 }) {
   return contentPointerSchema.parse({
     schemaVersion: 1,
@@ -309,6 +310,7 @@ export function buildPointer({
     manifest,
     bundle,
     networkBundle,
+    readingBundle,
     artifacts,
     media,
   });

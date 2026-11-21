@@ -1,4 +1,4 @@
-import { webcrypto } from 'node:crypto';
+import { createHash, webcrypto } from 'node:crypto';
 
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
@@ -214,5 +214,75 @@ describe('ContentRepository generated assets', () => {
     request.flush('{"schemaVersion":999}');
     await pending;
     http.verify();
+  });
+
+  describe('lean reading bundle', () => {
+    const digest = (text: string) => createHash('sha256').update(text).digest('hex');
+    const bundleText = (ideologies: Record<string, unknown>) =>
+      JSON.stringify({
+        graph: methodologyKnowledgeGraph,
+        search: [],
+        adjacency: {},
+        layouts: {},
+        ideologies,
+      });
+    const lean = bundleText({ lean: { page: {}, supplement: {} } });
+    const full = bundleText({ full: { page: {}, supplement: {} } });
+    const pointer = {
+      ...JSON.parse(contentAssetFixture['pointer.json']),
+      bundle: { sha256: digest(full), bytes: new TextEncoder().encode(full).byteLength },
+      readingBundle: { sha256: digest(lean), bytes: new TextEncoder().encode(lean).byteLength },
+    };
+    const assets: Record<string, string> = {
+      ...contentAssetFixture,
+      'pointer.json': JSON.stringify(pointer),
+      [`c/${pointer.bundle.sha256}.json`]: full,
+      [`c/${pointer.readingBundle.sha256}.json`]: lean,
+    };
+    beforeEach(() => {
+      TestBed.resetTestingModule();
+      TestBed.configureTestingModule({
+        providers: [
+          { provide: PLATFORM_ID, useValue: 'browser' },
+          { provide: CONTENT_PREFETCH, useValue: false },
+          {
+            provide: CONTENT_ASSET_READER,
+            useValue: async (path: string) => {
+              reads.push(path);
+              return assets[path];
+            },
+          },
+        ],
+      });
+    });
+
+    it('serves a reading from the lean bundle and never downloads the full one', async () => {
+      const repository = TestBed.inject(ContentRepository);
+      await firstValueFrom(repository.loadReadingGraph());
+      expect(reads).toEqual(['pointer.json', `c/${pointer.readingBundle.sha256}.json`]);
+      expect(repository.bundledItineraries).toBeUndefined();
+      expect(await repository.loadIdeology('lean')).not.toBeNull();
+    });
+
+    it('upgrades to the full bundle for the explorer and then serves readings from it', async () => {
+      const repository = TestBed.inject(ContentRepository);
+      await firstValueFrom(repository.loadReadingGraph());
+      await firstValueFrom(repository.loadKnowledgeGraph());
+      expect(reads).toContain(`c/${pointer.bundle.sha256}.json`);
+      const total = reads.length;
+      await firstValueFrom(repository.loadReadingGraph());
+      expect(reads).toHaveLength(total);
+      expect(await repository.loadIdeology('full')).not.toBeNull();
+    });
+
+    it('does not fetch the lean bundle once the full one is loading or loaded', async () => {
+      const repository = TestBed.inject(ContentRepository);
+      const [, graph] = await Promise.all([
+        firstValueFrom(repository.loadKnowledgeGraph()),
+        firstValueFrom(repository.loadReadingGraph()),
+      ]);
+      expect(graph).toBe(repository.knowledgeGraph);
+      expect(reads).not.toContain(`c/${pointer.readingBundle.sha256}.json`);
+    });
   });
 });

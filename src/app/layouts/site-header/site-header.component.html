@@ -24,8 +24,8 @@
               title="Leituras contínuas por tema"
               [class.is-active]="section() === 'leituras'"
               [attr.aria-current]="section() === 'leituras' ? 'page' : null"
-              (pointerenter)="warmArchive()"
-              (focus)="warmArchive()"
+              (pointerenter)="warmReadings()"
+              (focus)="warmReadings()"
               (click)="close()"
               ><span class="nav__glyph nav__glyph--quarter" aria-hidden="true"></span>Leituras</a
             >

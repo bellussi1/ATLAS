@@ -43,6 +43,8 @@ export const contentPointerSchema = z.object({
    */
   bundle: artifact.nullable().default(null),
   networkBundle: artifact.nullable().default(null),
+  /** The bundle without the explorer-only index weight, for readings and records. */
+  readingBundle: artifact.nullable().default(null),
   artifacts: z
     .array(artifact.extend({ file: z.string().regex(/^[a-z0-9-]+\.[a-f0-9]{64}\.json$/) }))
     .min(1),

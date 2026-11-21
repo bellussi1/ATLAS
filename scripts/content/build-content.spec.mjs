@@ -86,11 +86,21 @@ test('build is deterministic offline and emits search, directed adjacency and st
   assert.equal(bundle.graph.atlases.length, (await readSourceGraph()).atlases.length);
   assert.ok(bundle.search.some((entry) => entry.id === 'person-karl-marx'));
   assert.ok(bundle.adjacency['person-karl-marx'].length > 0);
-  assert.deepEqual(bundle.layouts, layouts);
+  assert.deepEqual(bundle.layouts, { network: layouts.network });
   assert.ok(Object.keys(bundle.ideologies).length > 0);
   const networkBundle = await read(manifest.networkBundle);
   assert.equal(networkBundle.graph.atlases.length, (await readSourceGraph()).atlases.length);
-  assert.deepEqual(networkBundle.layouts, layouts);
+  assert.deepEqual(networkBundle.layouts, { network: layouts.network });
+  const readingBundle = await read(manifest.readingBundle);
+  assert.deepEqual(readingBundle.graph, bundle.graph);
+  assert.deepEqual(readingBundle.adjacency, bundle.adjacency);
+  assert.deepEqual(readingBundle.ideologies, bundle.ideologies);
+  assert.equal(readingBundle.search.length, bundle.search.length);
+  assert.ok(
+    readingBundle.search.every((entry) => entry.searchText === '' && !entry.backlinks.length),
+  );
+  assert.ok(readingBundle.search.every((entry, index) => entry.path === bundle.search[index].path));
+  assert.ok(manifest.readingBundle.bytes < manifest.bundle.bytes * 0.8);
 });
 
 test('invalid references fail the build instead of emitting an inconsistent manifest', async () => {

@@ -1,5 +1,5 @@
 import { type Routes } from '@angular/router';
-import { knowledgeContentResolver } from '@core/routing/knowledge-content.resolver';
+import { readingContentResolver } from '@core/routing/knowledge-content.resolver';
 import { READING_ROOT } from '@core/routing/reading-routes';
 import { ideologyReadings } from '@ideologies/data/ideology-readings';
 
@@ -13,7 +13,7 @@ function ideologyRoutesFor(slug: string, label: string, metaDescription: string)
       path: `${READING_ROOT}/${slug}`,
       title: `${label}: ideias e divergências — ATLAS`,
       data: { slug, breadcrumb: label, metaDescription },
-      resolve: { knowledge: knowledgeContentResolver },
+      resolve: { knowledge: readingContentResolver },
       loadComponent: () =>
         import('@ideologies/pages/ideology/ideology-page.component').then(
           (m) => m.IdeologyPageComponent,
