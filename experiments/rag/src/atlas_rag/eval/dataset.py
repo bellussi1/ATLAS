@@ -44,6 +44,8 @@ _STOP_TITLE_TOKENS = {
     "para",
     "por",
     "com",
+    # Generic qualifier: "social" alone in a country text is not a mention of "Liberalismo social".
+    "social",
 }
 
 
